@@ -87,8 +87,8 @@ public class PatternDrawer : PropertyDrawer
         for (int i = 0; i < offsetArrayProp.arraySize; ++i)
         {
             var offsetProp = offsetArrayProp.GetArrayElementAtIndex(i);
-            int x = offsetProp.FindPropertyRelative("x").intValue + dimensions.x;
-            int y = offsetProp.FindPropertyRelative("y").intValue + dimensions.y;
+            int x = offsetProp.FindPropertyRelative("x").intValue;
+            int y = offsetProp.FindPropertyRelative("y").intValue;
             if (x >= 0 && y >= 0 && y < rows && x < cols)
                 values[x, y] = true;
         }
@@ -107,8 +107,8 @@ public class PatternDrawer : PropertyDrawer
                 {
                     offsetArrayProp.InsertArrayElementAtIndex(0);
                     var offsetProp = offsetArrayProp.GetArrayElementAtIndex(0);
-                    offsetProp.FindPropertyRelative("x").intValue = x - dimensions.x;
-                    offsetProp.FindPropertyRelative("y").intValue = y - dimensions.y;
+                    offsetProp.FindPropertyRelative("x").intValue = x;
+                    offsetProp.FindPropertyRelative("y").intValue = y;
                 }
             }
         }
