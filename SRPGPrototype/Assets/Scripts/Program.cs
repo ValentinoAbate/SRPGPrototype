@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Program : GridObject
 {
-    [System.Flags]
-    public enum ProgColors
+    public enum ProgColor
     { 
         White,
         Pink,
@@ -14,7 +13,7 @@ public class Program : GridObject
     }
     public TileUI.Type tileType;
 
-    public ProgColors colors;
+    public ProgColor colors;
     public Pattern shape;
     private List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
 

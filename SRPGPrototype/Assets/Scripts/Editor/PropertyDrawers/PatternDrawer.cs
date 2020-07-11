@@ -59,7 +59,7 @@ public class PatternDrawer : PropertyDrawer
         float checkWidth = Mathf.Min(maxCheckWidth, position.width / values.GetLength(1));
         float checkStartX = position.x + ((position.width - checkWidth * values.GetLength(0)) / 2);
         Rect checkRect = new Rect(UIRect) { width = checkWidth };
-        for (int y = 0; y < values.GetLength(1); ++y)
+        for (int y = values.GetLength(1) - 1; y >= 0; --y)
         {
             checkRect.x = checkStartX;
             for (int x = 0; x < values.GetLength(0); ++x)

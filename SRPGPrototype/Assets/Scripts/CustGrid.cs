@@ -27,7 +27,6 @@ public class CustGrid : Grid<Program>
         Initialize();
         foreach(var prog in shell.programs)
             Add(prog.location, prog.program);
-        SpawnTileUI(Vector2Int.zero, TileUI.Type.CustWhite);
     }
 
     public override void Add(Vector2Int pos, Program obj)
