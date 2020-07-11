@@ -11,6 +11,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     public int Rows => field.GetLength(1);
     public int Cols => field.GetLength(0);
 
+    public Vector2 CenterToVextexOffset => new Vector2((cellSize.x + skewXOffset) * 0.5f, cellSize.y * 0.5f);
+
     [Header("Grid")]
     public Vector2 cellSize = new Vector2(1, 1);
     public float skewAngle = 0;
@@ -32,7 +34,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         InitializeField();
         InitializeSkew();
         Gizmos.color = Color.black;
-        Vector2 offset = new Vector2((cellSize.x + skewXOffset) * 0.5f, -cellSize.y / 2);
+        Vector2 offset = CenterToVextexOffset;
         for(int row = 0; row <= Rows; ++row)
         {
             Vector2 point1 = GetSpace(new Vector2Int(row, 0)) - offset;
@@ -76,7 +78,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// </summary>
     private void InitializeGridLines()
     {
-        Vector2 offset = new Vector2((cellSize.x + skewXOffset) * 0.5f, -cellSize.y / 2);
+        Vector2 offset = CenterToVextexOffset;
         // Draw row lines
         for (int y = 0; y <= Rows; ++y)
         {
@@ -111,12 +113,12 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
             return new TileUI.Entry() { pos = OutOfBounds, type = TileUI.Type.Empty };
 
         // Calculate Vertices
-        Vector2 offset = new Vector2((cellSize.x + skewXOffset) * 0.5f, -cellSize.y / 2);
-        var v1 = GetSpace(p) - offset;
-        var v2 = v1 + new Vector2(cellSize.x, 0);
-        var v3 = GetSpace(p + Vector2Int.down) - offset;
-        var v4 = v3 + new Vector2(cellSize.x, 0);
-        // Else create a new tile
+        Vector2 offset = CenterToVextexOffset;
+        var v1 = GetSpace(p) + offset; // Top right corner
+        var v2 = v1 + new Vector2(-cellSize.x, 0); // Top left corner
+        var v3 = GetSpace(p + Vector2Int.down) + offset; // Bottom right corner
+        var v4 = v3 + new Vector2(-cellSize.x, 0); // Bottom left corner
+        // Create a new tile
         return tileUIManager.SpawnTileUI(p, type, v1, v2, v3, v4);
     }
 
@@ -138,9 +140,9 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         // If in editor mode and the application is not playing, make sure the skew is initialized
         if (Application.isEditor && !Application.isPlaying)
             InitializeSkew();
-        float y = transform.position.y - pos.y * (cellSize.y);
+        float y = transform.position.y + pos.y * (cellSize.y);
         float x = transform.position.x + pos.x * (cellSize.x);
-        x += skewXOffset * pos.y;
+        x += skewXOffset * (pos.y);
         return new Vector2(x, y);
     }
 
@@ -181,7 +183,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// <summary>
     /// Return the object of type T at the given grid position, or null if the position is empty or filled with an object that is not of type T
     /// </summary>
-    public T Get<T>(Vector2Int pos) where T : FieldObject
+    public T Get<T>(Vector2Int pos) where T : Obj
     {
         if (IsLegal(pos))
         {
@@ -193,7 +195,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         return null;
     }
 
-    public T Find<T>(Predicate<T> pred) where T : FieldObject
+    public T Find<T>(Predicate<T> pred) where T : Obj
     {
         //brute force foreach of field; might optimize later
         foreach (var obj in field)
@@ -209,7 +211,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         return null;
     }
 
-    public List<T> FindAll<T>(Predicate<T> pred = null) where T : FieldObject
+    public List<T> FindAll<T>(Predicate<T> pred = null) where T : Obj
     {
         var objects = new List<T>();
         //brute force foreach of field; might optimize later
@@ -233,13 +235,14 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     }
 
     /// <summary>
-    /// Set's the object at the given grid position to the given FieldObject reference (if pos is a legal Grid Vector2Intition)
+    /// Set's the object at the given grid position to the given Obj reference (if pos is a legal Grid Vector2Intition)
     /// </summary>
     public void Set(Vector2Int pos, Obj obj)
     {
         if(IsLegal(pos))
         {
-            field[obj.Pos.x, obj.Pos.y] = obj == null ? null : obj;
+            // ?? operator not used to to Unity Object wrapper
+            field[pos.x, pos.y] = (obj == null ? null : obj);
         }
 
     }
@@ -268,7 +271,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     }
 
     /// <summary>
-    /// Move a FieldObject to a new grid space.
+    /// Move a Obj to a new grid space.
     /// Move fails if destination is illegal or occupied.
     /// Preconditdion: obj's Vector2Intition is legal (see IsLegal())
     /// Does not update the object's world position. Use MoveAndSetWorldVector2Int() to move and set world position.
@@ -289,7 +292,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// Swap two Field Objects' grid positions and then update their world positions based on the new values.
     /// Preconditdion: both objs' Vector2Intition are legal (see IsLegal()).
     /// </summary>
-    public void SwapAndSetWorldPos(FieldObject obj1, FieldObject obj2)
+    public void SwapAndSetWorldPos(Obj obj1, Obj obj2)
     {
         Swap(obj1, obj2);
         // Set the transforms
@@ -302,7 +305,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// Preconditdion: both objs' Vector2Intition are legal (see IsLegal()).
     /// Does not update the objects' world positions. Use SwapAndSetWorldVector2Int() to swap and set world position.
     /// </summary>
-    public void Swap(FieldObject obj1, FieldObject obj2)
+    public void Swap(Obj obj1, Obj obj2)
     {
         // Swap positions
         Vector2Int temp = obj1.Pos;
