@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2825defd5bd0a44da17293ad3c7977d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pos: {x: 0, y: 0}
+  tileType: 1
   colors: 0
   shape:
-    patternOffsets:
-    - {x: -1, y: -1}
+    patternOffsets: []
     dimensions: {x: 1, y: 1}

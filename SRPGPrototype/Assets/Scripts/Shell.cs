@@ -11,7 +11,7 @@ public class Shell : MonoBehaviour
     public struct InstalledProgram
     {
         public Program program;
-        public Vector2 location;
+        public Vector2Int location;
     }
 
 }

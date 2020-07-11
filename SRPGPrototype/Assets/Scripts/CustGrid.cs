@@ -25,6 +25,8 @@ public class CustGrid : Grid<Program>
     private void Awake()
     {
         Initialize();
+        foreach(var prog in shell.programs)
+            Add(prog.location, prog.program);
     }
 
     public override void Add(Vector2Int pos, Program obj)
@@ -34,6 +36,7 @@ public class CustGrid : Grid<Program>
             Set(shiftPos, obj);
         }
         obj.Pos = pos;
+        obj.Show(pos, this);
     }
 
     public override void Remove(Program obj)
@@ -43,6 +46,7 @@ public class CustGrid : Grid<Program>
             Set(shiftPos, null);
         }
         obj.Pos = OutOfBounds;
+        obj.Hide(this);
     }
 
 }
