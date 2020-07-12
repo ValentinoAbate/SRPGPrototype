@@ -17,6 +17,7 @@ public class TileUI : MonoBehaviour
     }
 
     public ObjDict tilePrefabs;
+    public ColorDict colors = new ColorDict();
     private Dictionary<Vector2Int, List<GameObject>> tiles = new Dictionary<Vector2Int, List<GameObject>>();
 
     public bool HasActiveTileUI(Vector2Int p)
@@ -39,6 +40,11 @@ public class TileUI : MonoBehaviour
         var obj = Instantiate(tilePrefabs[t]);
         var qMesh = obj.GetComponent<QuadMesh>();
         qMesh.SetMesh(v1, v2, v3, v4);
+        if(colors.ContainsKey(t))
+        {
+            var rend = obj.GetComponent<MeshRenderer>().material;
+            rend.SetColor("ColorMain", colors[t]);
+        }
         if (tiles.ContainsKey(p))
             tiles[p].Add(obj);
         else
@@ -79,4 +85,5 @@ public class TileUI : MonoBehaviour
     }
 
     [System.Serializable] public class ObjDict : SDictionary<Type, GameObject> { };
+    [System.Serializable] public class ColorDict : SDictionary<Type, Color> { };
 }

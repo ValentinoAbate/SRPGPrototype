@@ -15,5 +15,6 @@ public class TileUIInspector : Editor
         Undo.RecordObject(data, data.name);
         data.tilePrefabs.DoGUILayout((key) => data.tilePrefabs.KeyGUIFixedWidth(key, labelWidth),
             data.tilePrefabs.ValueGUIObj, data.tilePrefabs.EnumAddGUIVal, "Tile UI Prefabs", true);
+        data.colors.DoGUILayout((val) => EditorGUILayout.ColorField(val), data.colors.EnumAddGUIVal, "Tile Colors", true);
     }
 }

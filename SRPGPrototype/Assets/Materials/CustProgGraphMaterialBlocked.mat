@@ -24,4 +24,5 @@ Material:
     - BoolFixed: 1
     - Boolean_1F67160A: 1
     m_Colors:
+    - ColorMain: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
     - Color_9201ADC9: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}

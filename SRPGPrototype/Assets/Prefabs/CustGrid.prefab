@@ -64,13 +64,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-    _keys: 0100000002000000030000000400000005000000
+    _keys: 010000000200000003000000040000000500000000000000
     _values:
-    - {fileID: 3889325369411212626, guid: a208bf03c3ba0534c9c1f9fa2469d999, type: 3}
-    - {fileID: 3889325369411212626, guid: 3d562b8e1f64ac340a1115b54737870a, type: 3}
-    - {fileID: 3889325369411212626, guid: c308b9ee58d52f64788c88bea886045f, type: 3}
-    - {fileID: 3889325369411212626, guid: e49c7bfdbcf70fa44a67b5164c951b7d, type: 3}
+    - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
+    - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
+    - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
+    - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
     - {fileID: 3889325369411212626, guid: 7a57fc64e6c46144dbcaaa12319ffd3d, type: 3}
+    - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
+  colors:
+    _keys: 0000000001000000020000000300000004000000
+    _values:
+    - {r: 0, g: 0, b: 0, a: 0}
+    - {r: 1, g: 1, b: 1, a: 0.8}
+    - {r: 0, g: 1, b: 0.13333344, a: 0.8}
+    - {r: 0, g: 0.2166667, b: 1, a: 0.8}
+    - {r: 1, g: 0, b: 0.8999996, a: 0.8}
 --- !u!1001 &346511299433481575
 PrefabInstance:
   m_ObjectHideFlags: 0
