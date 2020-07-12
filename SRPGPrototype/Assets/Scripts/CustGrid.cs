@@ -25,25 +25,52 @@ public class CustGrid : Grid<Program>
     private void Awake()
     {
         Initialize();
-        foreach(var prog in shell.programs)
-            Add(prog.location, prog.program);
+        // Add preinstalled programs
+        foreach(var preInstall in shell.programs)
+        {
+            Add(preInstall.location, preInstall.program);
+            // Add the "fixed" program attribute
+            preInstall.program.attributes |= Program.Attributes.Fixed;
+        }
+
+
+        // Spawn blocked tile UI in blocked tiles
+        var offsetsSet = shell.custArea.OffsetsSet;
+        for (int x = 0; x < Dimensions.x; ++x)
+        {
+            for (int y = 0; y < Dimensions.y; ++y)
+            {
+                var pos = new Vector2Int(x, y);
+                if (!offsetsSet.Contains(pos))
+                    SpawnTileUI(pos, TileUI.Type.CustBlocked);
+            }
+        }
     }
 
-    public override void Add(Vector2Int pos, Program obj)
+    public override void Add(Vector2Int addPos, Program obj)
     {
-        foreach(var shiftPos in obj.shape.OffsetsShifted(pos))
+        var positions = obj.shape.OffsetsShifted(addPos);
+        foreach(var pos in positions)
         {
-            Set(shiftPos, obj);
+            if (IsLegal(pos) && !IsEmpty(pos))
+            {
+                Debug.LogWarning("Program: " + obj.name + " overlaps another program at " + pos.ToString());
+                return;
+            }
         }
-        obj.Pos = pos;
-        obj.Show(pos, this);
+        foreach (var pos in positions)
+        {
+            Set(pos, obj);
+        }
+        obj.Pos = addPos;
+        obj.Show(addPos, this);
     }
 
     public override void Remove(Program obj)
     {
-        foreach (var shiftPos in obj.shape.OffsetsShifted(obj.Pos))
+        foreach (var pos in obj.shape.OffsetsShifted(obj.Pos))
         {
-            Set(shiftPos, null);
+            Set(pos, null);
         }
         obj.Pos = OutOfBounds;
         obj.Hide(this);

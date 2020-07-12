@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class Program : GridObject
 {
-    public enum ProgColor
+    public enum PColor
     { 
         White,
         Pink,
         Blue,
         Green,
     }
+
+    [System.Flags]
+    public enum Attributes
+    { 
+        None = 0,
+        Fixed = 1,
+    }
+
+    [SerializeField]
+    private string displayName;
+    public string DisplayName => displayName;
+
     public TileUI.Type tileType;
 
-    public ProgColor colors;
+    public PColor colors;
+    public Attributes attributes;
     public Pattern shape;
     private List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
 

@@ -154,9 +154,9 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     {
         float leniency = (cellSize.x / 2);
         float yleniency = cellSize.y / 2;
-        int row = Mathf.FloorToInt(transform.position.y + yleniency - worldSpace.y / (cellSize.y));
-        int col = Mathf.FloorToInt((worldSpace.x + leniency - transform.position.x - (skewXOffset * row)) / (cellSize.x));
-        return new Vector2Int(row, col);
+        int y = -Mathf.FloorToInt(transform.position.y + yleniency - worldSpace.y / (cellSize.y));
+        int x = Mathf.FloorToInt((worldSpace.x + leniency - transform.position.x - (skewXOffset * y)) / (cellSize.x));
+        return new Vector2Int(x, y);
     }
 
     public bool ContainsPoint(Vector2 worldSpace)
@@ -187,12 +187,20 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     {
         if (IsLegal(pos))
         {
-            // Avoid references to destroyed GameObjects not working with the ?. operator (return a ture null value)
+            // Avoid references to destroyed GameObjects not working with the ?. operator (return a true null value)
             if (field[pos.x, pos.y] == null)
                 return null;
             return field[pos.x, pos.y] as T;
         }
         return null;
+    }
+
+    public Obj Get(Vector2Int pos)
+    {
+        // Avoid references to destroyed GameObjects not working with the ?. operator (return a true null value)
+        if (field[pos.x, pos.y] == null)
+            return null;
+        return field[pos.x, pos.y];
     }
 
     public T Find<T>(Predicate<T> pred) where T : Obj

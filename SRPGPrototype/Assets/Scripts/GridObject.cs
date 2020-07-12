@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GridObject : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] [HideInInspector]
     private Vector2Int pos;
     public Vector2Int Pos { get => pos; set => pos = value; }
 }
