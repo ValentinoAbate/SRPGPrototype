@@ -20,7 +20,7 @@ public class Program : GridObject
     }
 
     [SerializeField]
-    private string displayName;
+    private string displayName = string.Empty;
     public string DisplayName => displayName;
 
     public TileUI.Type tileType;
