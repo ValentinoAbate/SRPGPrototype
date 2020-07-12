@@ -59,7 +59,7 @@ public class CustUI : MonoBehaviour
             if(grid.IsLegal(mousePos))
             {
                 var prog = grid.Get(mousePos);
-                if(prog != null)
+                if(prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
                 {
                     var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
                     var progButtonComponent = pButton.GetComponent<ProgramButton>();

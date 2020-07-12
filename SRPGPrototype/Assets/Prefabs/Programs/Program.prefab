@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  displayName: 
   tileType: 1
   colors: 0
+  attributes: 0
   shape:
     patternOffsets: []
     dimensions: {x: 1, y: 1}

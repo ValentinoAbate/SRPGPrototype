@@ -29,9 +29,9 @@ public class CustGrid : Grid<Program>
         foreach(var preInstall in shell.preInstalledPrograms)
         {
             var program = Instantiate(preInstall.program.gameObject, transform).GetComponent<Program>();
-            Add(preInstall.location, program);
             // Add the "fixed" program attribute
             program.attributes |= Program.Attributes.Fixed;
+            Add(preInstall.location, program);
             shell.programs.Add(new Shell.InstalledProgram() { location = preInstall.location, program = program });
         }
 

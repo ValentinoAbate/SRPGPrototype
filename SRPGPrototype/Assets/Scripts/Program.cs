@@ -36,6 +36,13 @@ public class Program : GridObject
         {
             uiEntries.Add(grid.SpawnTileUI(shiftPos, tileType));
         }
+        if (attributes.HasFlag(Attributes.Fixed))
+        {
+            foreach(var entry in uiEntries)
+            {
+                entry.obj.GetComponent<MeshRenderer>().material.SetFloat("BoolFixed", 1);
+            }
+        }
     }
 
     public void Hide(CustGrid grid)
