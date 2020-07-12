@@ -49,7 +49,6 @@ public class TileUI : MonoBehaviour
     public void Remove(Entry entry)
     {
         var p = entry.pos;
-        var t = entry.type;
         if (!tiles.ContainsKey(p))
             return;
         var list = tiles[p];
@@ -67,6 +66,8 @@ public class TileUI : MonoBehaviour
 
     private void ClearTile(Vector2Int p)
     {
+        foreach (var obj in tiles[p])
+            Destroy(obj);
         tiles.Remove(p);
     }
 

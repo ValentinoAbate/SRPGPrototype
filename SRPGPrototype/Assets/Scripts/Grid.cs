@@ -236,10 +236,14 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         return objects;
     }
 
-    public virtual void Add(Vector2Int pos, Obj obj)
+    /// <summary>
+    /// Add an object to the grid. Returns true if successful, else false
+    /// </summary>
+    public virtual bool Add(Vector2Int pos, Obj obj)
     {
         Set(pos, obj);
         obj.Pos = pos;
+        return true;
     }
 
     /// <summary>

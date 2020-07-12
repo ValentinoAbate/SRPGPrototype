@@ -24,32 +24,49 @@ public class CustUI : MonoBehaviour
         }
     }
 
-    public void PickupProgram(ProgramButton pButton, Program p)
+    public void PickupProgram(ProgramButton button, Program p)
     {
         if(pButton != null)
             pButton.Cancel();
-        this.pButton = pButton;
+        pButton = button;
         selectedProgram = p;
 
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("You clicked on: " + grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition)).ToString());
-        }
         if (selectedProgram != null)
         {
             if(Input.GetMouseButtonDown(0))
             {
-                grid.Add(grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition)), selectedProgram);
-                selectedProgram = null;
+                var mousePos = grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                if (grid.IsLegal(mousePos) && grid.Add(mousePos, selectedProgram))
+                {
+                    selectedProgram = null;
+                    Destroy(pButton.gameObject);
+                }
+
             }
             else if(Input.GetMouseButtonDown(1))
             {
                 pButton.Cancel();
                 selectedProgram = null;
+            }
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            var mousePos = grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            if(grid.IsLegal(mousePos))
+            {
+                var prog = grid.Get(mousePos);
+                if(prog != null)
+                {
+                    var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
+                    var progButtonComponent = pButton.GetComponent<ProgramButton>();
+                    progButtonComponent.Initialize(prog, this);
+                    grid.Remove(prog);
+
+                }
             }
         }
     }

@@ -47,15 +47,20 @@ public class CustGrid : Grid<Program>
         }
     }
 
-    public override void Add(Vector2Int addPos, Program obj)
+    public override bool Add(Vector2Int addPos, Program obj)
     {
         var positions = obj.shape.OffsetsShifted(addPos);
         foreach(var pos in positions)
         {
-            if (IsLegal(pos) && !IsEmpty(pos))
+            if(!IsLegal(pos))
+            {
+                Debug.LogWarning("Program: " + obj.name + " attempted to be added to an illegal pos:  " + pos.ToString());
+                return false;
+            }
+            if (!IsEmpty(pos))
             {
                 Debug.LogWarning("Program: " + obj.name + " overlaps another program at " + pos.ToString());
-                return;
+                return false;
             }
         }
         foreach (var pos in positions)
@@ -64,6 +69,7 @@ public class CustGrid : Grid<Program>
         }
         obj.Pos = addPos;
         obj.Show(addPos, this);
+        return true;
     }
 
     public override void Remove(Program obj)
@@ -72,8 +78,8 @@ public class CustGrid : Grid<Program>
         {
             Set(pos, null);
         }
-        obj.Pos = OutOfBounds;
         obj.Hide(this);
+        obj.Pos = OutOfBounds;
     }
 
 }
