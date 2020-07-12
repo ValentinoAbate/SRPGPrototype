@@ -75,7 +75,12 @@ PrefabInstance:
     - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
         type: 3}
       propertyPath: programs.Array.size
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
+        type: 3}
+      propertyPath: preInstalledPrograms.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
         type: 3}
@@ -121,44 +126,6 @@ PrefabInstance:
         type: 3}
       propertyPath: custArea.patternOffsets.Array.data[5].y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[0].program
-      value: 
-      objectReference: {fileID: 2576600437051023739, guid: 8f5bc05c6c5c14b4f9798801801bf134,
-        type: 3}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[0].location.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[1].program
-      value: 
-      objectReference: {fileID: 2576600437051023739, guid: 280d34ba7a057294aaa1cc9fae9f5844,
-        type: 3}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[2].program
-      value: 
-      objectReference: {fileID: 2576600437051023739, guid: 24e715e7a67d0134b9d7c60dcf697416,
-        type: 3}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[1].location.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[2].location.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
-        type: 3}
-      propertyPath: programs.Array.data[2].location.x
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
         type: 3}
@@ -284,6 +251,17 @@ PrefabInstance:
         type: 3}
       propertyPath: custArea.patternOffsets.Array.data[15].y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
+        type: 3}
+      propertyPath: preInstalledPrograms.Array.data[0].program
+      value: 
+      objectReference: {fileID: 2576600437051023739, guid: 8f5bc05c6c5c14b4f9798801801bf134,
+        type: 3}
+    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
+        type: 3}
+      propertyPath: preInstalledPrograms.Array.data[0].location.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544e2912c79cd85468e40cd50074932f, type: 3}

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour
 {
-    public Pattern custArea;
-    public List<InstalledProgram> programs;
+    public Pattern custArea = null;
+    public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
+    public List<InstalledProgram> programs = new List<InstalledProgram>();
 
     [System.Serializable]
     public struct InstalledProgram

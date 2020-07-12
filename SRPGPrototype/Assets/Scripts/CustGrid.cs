@@ -26,11 +26,13 @@ public class CustGrid : Grid<Program>
     {
         Initialize();
         // Add preinstalled programs
-        foreach(var preInstall in shell.programs)
+        foreach(var preInstall in shell.preInstalledPrograms)
         {
-            Add(preInstall.location, preInstall.program);
+            var program = Instantiate(preInstall.program.gameObject, transform).GetComponent<Program>();
+            Add(preInstall.location, program);
             // Add the "fixed" program attribute
-            preInstall.program.attributes |= Program.Attributes.Fixed;
+            program.attributes |= Program.Attributes.Fixed;
+            shell.programs.Add(new Shell.InstalledProgram() { location = preInstall.location, program = program });
         }
 
 
@@ -50,9 +52,10 @@ public class CustGrid : Grid<Program>
     public override bool Add(Vector2Int addPos, Program obj)
     {
         var positions = obj.shape.OffsetsShifted(addPos);
+        var shellPositions = shell.custArea.OffsetsSet;
         foreach(var pos in positions)
         {
-            if(!IsLegal(pos))
+            if(!IsLegal(pos) || !shellPositions.Contains(pos))
             {
                 Debug.LogWarning("Program: " + obj.name + " attempted to be added to an illegal pos:  " + pos.ToString());
                 return false;
