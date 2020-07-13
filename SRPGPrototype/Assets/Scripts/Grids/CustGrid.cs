@@ -4,8 +4,40 @@ using UnityEngine;
 
 public class CustGrid : Grid<Program>
 {
-    private Shell shell;
-    public override Vector2Int Dimensions => shell.custArea.Dimensions;
+    public Shell Shell
+    {
+        get => shell;
+        set
+        {
+            if (value == shell)
+                return;
+            // Set the shell value
+            shell = value;
+            // Reinitialize the grid
+            Initialize();
+
+            // Add already installed programs
+            foreach (var program in shell.AllPrograms)
+            {
+                Add(program.location, program.program);
+            }
+
+            // Spawn blocked tile UI in blocked tiles
+            var offsetsSet = shell.custArea.OffsetsSet;
+            for (int x = 0; x < Dimensions.x; ++x)
+            {
+                for (int y = 0; y < Dimensions.y; ++y)
+                {
+                    var pos = new Vector2Int(x, y);
+                    if (!offsetsSet.Contains(pos))
+                        SpawnTileUI(pos, TileUI.Type.CustBlocked);
+                }
+            }
+        }
+    }
+
+    private Shell shell = null;
+    public override Vector2Int Dimensions => Shell.custArea.Dimensions;
 
     protected override void OnDrawGizmos()
     {
@@ -27,31 +59,8 @@ public class CustGrid : Grid<Program>
 
     private void Start()
     {
-        shell = PersistantData.main.inventory.EquippedShell;
-        Initialize();
-
-        // Add preinstalled programs
-        foreach (var preInstall in shell.preInstalledPrograms)
-        {
-            var program = Instantiate(preInstall.program.gameObject, transform).GetComponent<Program>();
-            // Add the "fixed" program attribute
-            program.attributes |= Program.Attributes.Fixed;
-            Add(preInstall.location, program);
-            shell.programs.Add(new Shell.InstalledProgram() { location = preInstall.location, program = program });
-        }
-
-
-        // Spawn blocked tile UI in blocked tiles
-        var offsetsSet = shell.custArea.OffsetsSet;
-        for (int x = 0; x < Dimensions.x; ++x)
-        {
-            for (int y = 0; y < Dimensions.y; ++y)
-            {
-                var pos = new Vector2Int(x, y);
-                if (!offsetsSet.Contains(pos))
-                    SpawnTileUI(pos, TileUI.Type.CustBlocked);
-            }
-        }
+        shell = null;
+        Shell = PersistantData.main.inventory.EquippedShell;
     }
 
     public override bool Add(Vector2Int addPos, Program obj)

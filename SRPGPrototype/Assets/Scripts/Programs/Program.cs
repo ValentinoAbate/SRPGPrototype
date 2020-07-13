@@ -19,9 +19,11 @@ public class Program : GridObject
         Fixed = 1,
     }
 
-    [SerializeField]
-    private string displayName = string.Empty;
     public string DisplayName => displayName;
+    [SerializeField] private string displayName = string.Empty;
+
+    public string Description => description;
+    [SerializeField] private string description = string.Empty;
 
     public TileUI.Type tileType;
 
