@@ -16,7 +16,8 @@ public class PersistantData : MonoBehaviour
         if(main == null)
         {
             main = this;
-            DontDestroyOnLoad(transform);
+            if(Application.isPlaying)
+                DontDestroyOnLoad(transform);
         }
         else
         {

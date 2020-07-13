@@ -19,8 +19,9 @@ public class UnitPlayer : Combatant
     [SerializeField] private string displayName = string.Empty;
     public override string DisplayName => displayName;
 
-    public override Shell Shell => shell;
-    [SerializeField] private Shell shell = null;
+    public override Shell Shell => PersistantData.main.inventory.EquippedShell;
+
+    public Transform actionContainer;
 
     // Start is called before the first frame update
     void Start()

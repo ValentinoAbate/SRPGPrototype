@@ -18,6 +18,16 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public int APCost => apCost;
     [SerializeField] private int apCost = 1;
 
+    public int MaxUsesPerBattle => maxUsesPerBattle;
+    [SerializeField] private int maxUsesPerBattle = 10;
+
+    public int TimesUsedThisBattle { get; set; } = 0;
+
+    public int MaxUsesPerTurn => maxUsesPerTurn;
+    [SerializeField] private int maxUsesPerTurn = 3;
+
+    public int TimesUsedThisTurn { get; set; } = 0;
+
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
 
