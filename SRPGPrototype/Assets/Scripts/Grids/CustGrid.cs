@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CustGrid : Grid<Program>
 {
-    public Shell shell;
+    private Shell shell;
     public override Vector2Int Dimensions => shell.custArea.Dimensions;
 
     protected override void OnDrawGizmos()
     {
+        if (PersistantData.main == null)
+            return;
+        shell = PersistantData.main.inventory.EquippedShell;
         base.OnDrawGizmos();
         var offsetsSet = shell.custArea.OffsetsSet;
         for (int x = 0; x < Dimensions.x; ++x)
@@ -22,11 +25,13 @@ public class CustGrid : Grid<Program>
         }
     }
 
-    private void Awake()
+    private void Start()
     {
+        shell = PersistantData.main.inventory.EquippedShell;
         Initialize();
+
         // Add preinstalled programs
-        foreach(var preInstall in shell.preInstalledPrograms)
+        foreach (var preInstall in shell.preInstalledPrograms)
         {
             var program = Instantiate(preInstall.program.gameObject, transform).GetComponent<Program>();
             // Add the "fixed" program attribute

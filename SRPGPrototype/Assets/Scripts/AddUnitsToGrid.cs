@@ -15,10 +15,4 @@ public class AddUnitsToGrid : MonoBehaviour
             unit.transform.position = grid.GetSpace(unit.Pos);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

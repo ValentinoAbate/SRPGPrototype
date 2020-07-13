@@ -5,18 +5,19 @@ using UnityEngine;
 public class CustUI : MonoBehaviour
 {
     public CustGrid grid;
-    public Inventory inventory;
 
     public GameObject programButtonPrefab;
 
     public GameObject programButtonContainer;
 
+    private Inventory inventory;
     private ProgramButton pButton;
     private Program selectedProgram;
 
-    private void Awake()
+    private void Start()
     {
-        foreach(var program in inventory.programs)
+        inventory = PersistantData.main.inventory;
+        foreach(var program in inventory.AllPrograms)
         {
             var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
             var progButtonComponent = pButton.GetComponent<ProgramButton>();
@@ -40,8 +41,9 @@ public class CustUI : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 var mousePos = grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (grid.IsLegal(mousePos))
+                if (grid.IsLegal(mousePos) && grid.Add(mousePos, selectedProgram))
                 {
+                    inventory.RemoveProgram(selectedProgram);
                     selectedProgram = null;
                     Destroy(pButton.gameObject);
                 }
@@ -65,6 +67,7 @@ public class CustUI : MonoBehaviour
                     var progButtonComponent = pButton.GetComponent<ProgramButton>();
                     progButtonComponent.Initialize(prog, this);
                     grid.Remove(prog);
+                    inventory.AddProgram(prog);
 
                 }
             }
