@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1574268107}
-  menu: {fileID: 1846914391}
   cursor: {fileID: 1582542992}
 --- !u!1 &14333673
 GameObject:
@@ -833,11 +832,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582542989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a40d37736c8a47c4a8c1985965e39275, type: 3}
+  m_Script: {fileID: 11500000, guid: 51b74411393a0204d8c4b4e0b4156907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1574268107}
-  ui: {fileID: 13409020}
 --- !u!1001 &1622589440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1213,18 +1211,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1846914389}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1846914391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2212468556699181140, guid: b5e9364f40bff21469d14913c7ae1252,
-    type: 3}
-  m_PrefabInstance: {fileID: 1846914389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950f805a0a300c4459d79aa56551155d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1954731251
 GameObject:
   m_ObjectHideFlags: 0
