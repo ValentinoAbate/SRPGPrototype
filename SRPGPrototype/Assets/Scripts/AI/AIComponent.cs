@@ -29,8 +29,8 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Combatant
         if (distCmp != 0)
             return distCmp;
         // If grid distance is the same, compare hp
-        if (obj1.Hp != obj2.Hp)
-            return obj1.Hp.CompareTo(obj2.Hp);
+        if (obj1.HP != obj2.HP)
+            return obj1.HP.CompareTo(obj2.HP);
         // Later will compare based on explicit sorting order (names)
         return 0;
     }

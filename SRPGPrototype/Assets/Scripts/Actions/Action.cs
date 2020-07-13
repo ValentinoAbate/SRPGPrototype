@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using UnityEngine;
 
 public class Action : MonoBehaviour, IEnumerable<SubAction>
@@ -19,10 +18,10 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public int APCost => apCost;
     [SerializeField] private int apCost = 1;
 
-    public List<SubAction> subActions;
-
     public string DisplayName => displayName;
-    [SerializeField] private string displayName;
+    [SerializeField] private string displayName = string.Empty;
+
+    public List<SubAction> subActions;
 
     private void Awake()
     {

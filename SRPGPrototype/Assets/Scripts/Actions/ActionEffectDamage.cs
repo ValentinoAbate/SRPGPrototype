@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionEffectDamage : ActionEffect
 {
-    public int damage;
+    public int damage = 1;
 
     public override void ApplyEffect(BattleGrid grid, Combatant user, PositionData targetData)
     {
@@ -12,6 +12,6 @@ public class ActionEffectDamage : ActionEffect
         if (target == null)
             return;
         target.Damage(damage);
-        Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + target.Hp + " hp");
+        Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + target.HP + " hp");
     }
 }

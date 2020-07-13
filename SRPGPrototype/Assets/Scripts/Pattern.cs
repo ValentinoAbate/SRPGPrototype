@@ -14,6 +14,8 @@ public class Pattern
     [SerializeField]
     private Vector2Int dimensions = new Vector2Int(1, 1);
 
+    public Vector2Int Center => new Vector2Int(dimensions.x / 2, dimensions.y / 2);
+
     public IEnumerable<Vector2Int> OffsetsShifted(Vector2Int shift)
     {
         return patternOffsets.Select((o) => o + shift);

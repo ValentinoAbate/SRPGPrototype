@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2671863499721434950}
-  - component: {fileID: 8897997873165231299}
+  - component: {fileID: 2227870287527632981}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8897997873165231299
+--- !u!114 &2227870287527632981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068486978419434115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6017c713638252145b31982f32bb08d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f0752e1ba5e6394fb724aef05207904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
-  maxHp: 3
-  maxAP: 3
+  actions: []
+  maxHP: 3
   displayName: Obstacle
 --- !u!1 &8683891458397964560
 GameObject:

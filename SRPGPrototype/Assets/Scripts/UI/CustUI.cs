@@ -40,7 +40,7 @@ public class CustUI : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 var mousePos = grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (grid.IsLegal(mousePos) && grid.Add(mousePos, selectedProgram))
+                if (grid.IsLegal(mousePos))
                 {
                     selectedProgram = null;
                     Destroy(pButton.gameObject);

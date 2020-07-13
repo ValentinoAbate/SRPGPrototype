@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class UnitPlayer : Combatant
 {
-    public override Team CTeam => Team.Player;
+    public override Team UnitTeam => Team.Player;
 
-    public override int MaxHp => maxHp;
-    private int maxHp = 3;
+    public override int MaxHP => maxHP;
+    private int maxHP = 3;
 
-    public override int Hp { get; protected set; }
+    public override int HP { get; protected set; }
 
     public override int MaxAP => maxAP;
     private int maxAP = 3;
 
     public override int AP { get; protected set; }
 
-    public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
+    public override string DisplayName => displayName;
 
-    public override List<Action> Actions => actions;
-    [SerializeField] private List<Action> actions = new List<Action>();
+    public override Shell Shell => shell;
+    [SerializeField] private Shell shell = null;
 
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
         ResetStats();
     }

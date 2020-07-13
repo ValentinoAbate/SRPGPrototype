@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class UnitObstacle : Combatant
 {
-    public override Team CTeam => Team.None;
+    public override int MaxHP => maxHP;
+    [SerializeField] private int maxHP = 3;
 
-    public override int MaxHp => maxHp;
-    [SerializeField] private int maxHp = 3;
+    public override int HP { get; protected set; }
 
-    public override int Hp { get; protected set; }
-
-    public override int MaxAP => maxAP;
-    [SerializeField] private int maxAP = 3;
+    public override int MaxAP => 0;
 
     public override int AP { get => 0; protected set { } }
 
-    public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
+    public override string DisplayName => displayName;
 
-    public override List<Action> Actions => throw new System.NotImplementedException();
+    public override Team UnitTeam => Team.None;
 
-    private void Awake()
+    public override Shell Shell => throw new System.NotImplementedException();
+
+    // Start is called before the first frame update
+    void Start()
     {
         ResetStats();
     }

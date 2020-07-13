@@ -11,31 +11,34 @@ public abstract class Combatant : GridObject
         Player,
     }
 
-    public abstract Team CTeam { get; }
-    public abstract int MaxHp { get; }
-    public abstract int Hp { get; protected set; }
-    public bool Dead => Hp <= 0;
+    public abstract Team UnitTeam { get; }
+    public abstract int MaxHP { get; }
+    public abstract int HP { get; protected set; }
+    public bool Dead => HP <= 0;
     public abstract int MaxAP { get; }
     public abstract int AP { get; protected set; }
     public abstract string DisplayName { get; }
-    public abstract List<Action> Actions { get; } 
+
+    public abstract Shell Shell { get; }
+
+    public List<Action> actions;
 
     public virtual void Damage(int damage)
     {
-        if (damage > Hp)
+        if (damage > HP)
             Kill();
         else
-            Hp -= damage;
+            HP -= damage;
     }
 
     public void Kill()
     {
-        Hp = 0;
+        HP = 0;
     }
 
-    public void ResetStats()
+    public virtual void ResetStats()
     {
-        Hp = MaxHp;
+        HP = MaxHP;
         AP = MaxAP;
     }
 
