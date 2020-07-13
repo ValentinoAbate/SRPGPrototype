@@ -23,7 +23,7 @@ public class Program : GridObject
     [SerializeField] private string displayName = string.Empty;
 
     public string Description => description;
-    [SerializeField] private string description = string.Empty;
+    [SerializeField] [TextArea(2,4)] private string description = string.Empty;
 
     public TileUI.Type tileType;
 

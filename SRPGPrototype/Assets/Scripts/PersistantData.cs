@@ -9,6 +9,7 @@ using UnityEngine;
 public class PersistantData : MonoBehaviour
 {
     public static PersistantData main;
+    public PlayerStats stats;
     public Inventory inventory;
 
     private void Awake()

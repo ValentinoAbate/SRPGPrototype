@@ -20,7 +20,7 @@ public class Shell : MonoBehaviour
 
     public void Uninstall(Program program, Vector2Int location)
     {
-        var ind = programs.FindIndex((iProg) => iProg.program == program && iProg.location == location);
+        var ind = programs.FindIndex((iProg) => iProg.program.DisplayName == program.DisplayName && iProg.location == location);
         if (ind >= 0)
         {
             Destroy(programs[ind].program.gameObject);

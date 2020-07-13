@@ -6,13 +6,11 @@ public class UnitPlayer : Combatant
 {
     public override Team UnitTeam => Team.Player;
 
-    public override int MaxHP => maxHP;
-    private int maxHP = 3;
+    public override int MaxHP => Stats.MaxHp;
 
-    public override int HP { get; protected set; }
+    public override int HP { get => Stats.Hp; protected set => Stats.Hp = value; }
 
-    public override int MaxAP => maxAP;
-    private int maxAP = 3;
+    public override int MaxAP => Stats.MaxAP;
 
     public override int AP { get; protected set; }
 
@@ -21,11 +19,13 @@ public class UnitPlayer : Combatant
 
     public override Shell Shell => PersistantData.main.inventory.EquippedShell;
 
+    private PlayerStats Stats => PersistantData.main.stats;
+
     public Transform actionContainer;
 
     // Start is called before the first frame update
     void Start()
     {
-        ResetStats();
+        AP = MaxAP;
     }
 }
