@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f44b910d56af114ca85f004c1e28c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortLayerName: 
+  sortLayerName: GridUI
   sortLayerOrder: 0
 --- !u!114 &2001857286567512118
 MonoBehaviour:

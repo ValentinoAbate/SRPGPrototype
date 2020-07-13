@@ -8,7 +8,7 @@ public class BattleGrid : Grid<Combatant>
     public override Vector2Int Dimensions => dimensions;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Initialize();
     }

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   apCost: 1
+  displayName: Action
