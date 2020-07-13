@@ -33,5 +33,11 @@ public abstract class Combatant : GridObject
         Hp = 0;
     }
 
+    public void ResetStats()
+    {
+        Hp = MaxHp;
+        AP = MaxAP;
+    }
+
     public bool CanUseAction(Action action) => AP >= action.APCost;
 }
