@@ -2,9 +2,20 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustUI : MonoBehaviour
 {
+    public bool Compiled
+    {
+        get => !compileButton.interactable;
+        private set
+        {
+            compileButton.interactable = !value;
+            exitCustButton.interactable = value;
+        }
+    }
+
     public CustGrid grid;
     [Header("Program Button UI")]
     public GameObject programButtonPrefab;
@@ -15,6 +26,10 @@ public class CustUI : MonoBehaviour
     public TextMeshProUGUI programNameText;
     public TextMeshProUGUI programDescText;
     public TextMeshProUGUI programAttrText;
+
+    [Header("Compile UI")]
+    public Button compileButton;
+    public Button exitCustButton;
 
     private Inventory inventory;
     private ProgramButton pButton;
@@ -56,6 +71,7 @@ public class CustUI : MonoBehaviour
                     grid.Shell.Install(selectedProgram, mousePos);
                     selectedProgram = null;
                     Destroy(pButton.gameObject);
+                    Compiled = false;
                 }
 
             }
@@ -81,6 +97,7 @@ public class CustUI : MonoBehaviour
                         grid.Shell.Uninstall(prog, prog.Pos);
                         grid.Remove(prog);
                         inventory.AddProgram(prog);
+                        Compiled = false;
                     }
                 }
             }
@@ -126,5 +143,16 @@ public class CustUI : MonoBehaviour
         if (fromGrid != descEnabledFromGrid)
             return;
         programDescWindow.SetActive(false);
+    }
+
+    public void Compile()
+    {
+        if (grid.Shell.Compile(out PlayerStats stats, out List<Player.ProgramAction> actions))
+        {
+            PersistantData.main.player.ClearActions();
+            PersistantData.main.player.AddActions(actions);
+            PersistantData.main.player.stats.SetMaxValues(stats);
+            Compiled = true;
+        }
     }
 }

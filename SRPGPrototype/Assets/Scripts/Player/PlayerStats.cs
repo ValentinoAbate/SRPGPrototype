@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats
 {
     public int MaxHp { get; set; }
 
@@ -13,4 +13,13 @@ public class PlayerStats : MonoBehaviour
     public int Repair { get; set; }
 
     public void RestoreHpToMax() => Hp = MaxHp;
+
+    public void SetMaxValues(PlayerStats other)
+    {
+        MaxHp = other.MaxHp;
+        MaxAP = other.MaxAP;
+        Repair = other.Repair;
+        if (Hp > MaxHp)
+            RestoreHpToMax();
+    }
 }

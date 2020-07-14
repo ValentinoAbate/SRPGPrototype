@@ -4,15 +4,5 @@ using UnityEngine;
 
 public abstract class ProgramEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void ApplyEffect(Program program, ref PlayerStats stats, ref List<Player.ProgramAction> actions);
 }

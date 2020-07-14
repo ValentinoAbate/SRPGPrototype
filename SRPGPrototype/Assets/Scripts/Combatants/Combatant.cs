@@ -21,7 +21,7 @@ public abstract class Combatant : GridObject
 
     public abstract Shell Shell { get; }
 
-    public List<Action> actions;
+    public abstract List<Action> Actions { get; }
 
     public virtual void Damage(int damage)
     {

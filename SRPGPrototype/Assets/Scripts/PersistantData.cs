@@ -9,7 +9,7 @@ using UnityEngine;
 public class PersistantData : MonoBehaviour
 {
     public static PersistantData main;
-    public PlayerStats stats;
+    public Player player;
     public Inventory inventory;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class PersistantData : MonoBehaviour
             if(Application.isPlaying)
                 DontDestroyOnLoad(transform);
         }
-        else
+        else if (Application.isPlaying)
         {
             Destroy(gameObject);
         }

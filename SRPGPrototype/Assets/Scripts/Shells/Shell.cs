@@ -11,7 +11,15 @@ public class Shell : MonoBehaviour
     public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
     public IEnumerable<InstalledProgram> AllPrograms => programs;
     private List<InstalledProgram> programs = new List<InstalledProgram>();
-    
+
+    private void Awake()
+    {
+        foreach (var iProg in preInstalledPrograms)
+        {
+            Install(iProg.program, iProg.location);
+        }
+    }
+
     public void Install(Program program, Vector2Int location)
     {
         var prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
@@ -28,12 +36,28 @@ public class Shell : MonoBehaviour
         }
     }
 
-    private void Awake()
+    /// <summary>
+    /// Compiles the stats and abilities from the programs in the shell, and outputs them.
+    /// Will become more complicated, with adjacency, etc. later
+    /// Returns false if the compile in considered invalid (either because of a compile rule or MaxHp <= 0)
+    /// </summary>
+    public bool Compile(out PlayerStats stats, out List<Player.ProgramAction> actions)
     {
-        foreach(var iProg in preInstalledPrograms)
+        stats = new PlayerStats();
+        actions = new List<Player.ProgramAction>();
+        foreach(var install in programs)
         {
-            Install(iProg.program, iProg.location);
+            foreach(var effect in install.program.Effects)
+            {
+                effect.ApplyEffect(install.program, ref stats, ref actions);
+            }
         }
+        if(stats.MaxHp <= 0)
+        {
+            Debug.LogWarning("Compile Error: Max Hp <= 0");
+            return false;
+        }
+        return true;
     }
 
     [System.Serializable]

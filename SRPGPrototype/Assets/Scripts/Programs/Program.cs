@@ -19,6 +19,7 @@ public class Program : GridObject
         Fixed = 1,
     }
 
+    public ProgramEffect[] Effects => GetComponents<ProgramEffect>();
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
 
@@ -30,6 +31,7 @@ public class Program : GridObject
     public PColor colors;
     public Attributes attributes;
     public Pattern shape;
+
     private List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
 
     public void Show(Vector2Int pos, CustGrid grid)

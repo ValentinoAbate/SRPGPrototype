@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UnitPlayer : Combatant
@@ -8,24 +9,31 @@ public class UnitPlayer : Combatant
 
     public override int MaxHP => Stats.MaxHp;
 
-    public override int HP { get => Stats.Hp; protected set => Stats.Hp = value; }
+    public override int HP { get => Stats.Hp; protected set { Stats.Hp = value; unitUI.Hp = value; } }
 
     public override int MaxAP => Stats.MaxAP;
 
-    public override int AP { get; protected set; }
+    public override int AP { get => ap; protected set { ap = value; unitUI.AP = value; } }
+    private int ap = 0;
 
     [SerializeField] private string displayName = string.Empty;
     public override string DisplayName => displayName;
 
     public override Shell Shell => PersistantData.main.inventory.EquippedShell;
 
-    private PlayerStats Stats => PersistantData.main.stats;
+    private PlayerStats Stats => PersistantData.main.player.stats;
 
-    public Transform actionContainer;
+    public override List<Action> Actions => PersistantData.main.player.Actions.Select((pA) => pA.action).ToList();
+
+    public UnitUI unitUI;
 
     // Start is called before the first frame update
     void Start()
     {
         AP = MaxAP;
+        if (HP <= 0)
+            HP = MaxHP;
+        // Make sure UI gets updated
+        HP = HP;
     }
 }
