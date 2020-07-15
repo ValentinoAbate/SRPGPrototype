@@ -16,7 +16,7 @@ public class UnitEnemy : Combatant
     public override int MaxAP => maxAP;
     [SerializeField] private int maxAP = 3;
 
-    public override int AP { get => ap; protected set { ap = value; unitUI.AP = value; } }
+    public override int AP { get => ap; set { ap = value; unitUI.AP = value; } }
     private int ap = 0;
 
     [SerializeField] private string displayName = string.Empty;
@@ -28,9 +28,21 @@ public class UnitEnemy : Combatant
 
     public UnitUI unitUI;
 
+    private AIComponent<UnitEnemy> ai;
+
+    private void Awake()
+    {
+        ai = GetComponent<AIComponent<UnitEnemy>>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         ResetStats();
+    }
+
+    public IEnumerator DoTurn(BattleGrid grid)
+    {
+        yield return StartCoroutine(ai.DoTurn(grid, this));
     }
 }

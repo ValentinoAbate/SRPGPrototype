@@ -16,7 +16,7 @@ public abstract class Combatant : GridObject
     public abstract int HP { get; protected set; }
     public bool Dead => HP <= 0;
     public abstract int MaxAP { get; }
-    public abstract int AP { get; protected set; }
+    public abstract int AP { get; set; }
     public abstract string DisplayName { get; }
 
     public abstract Shell Shell { get; }
@@ -43,4 +43,15 @@ public abstract class Combatant : GridObject
     }
 
     public bool CanUseAction(Action action) => AP >= action.APCost;
+
+    public virtual IEnumerator OnPhaseStart()
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator OnPhaseEnd()
+    {
+        AP = MaxAP;
+        yield break;
+    }
 }

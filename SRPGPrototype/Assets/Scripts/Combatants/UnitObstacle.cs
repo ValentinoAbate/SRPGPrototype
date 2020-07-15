@@ -12,7 +12,7 @@ public class UnitObstacle : Combatant
 
     public override int MaxAP => 0;
 
-    public override int AP { get => 0; protected set { } }
+    public override int AP { get => 0; set { } }
 
     [SerializeField] private string displayName = string.Empty;
     public override string DisplayName => displayName;

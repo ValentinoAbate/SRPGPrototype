@@ -13,7 +13,7 @@ public class UnitPlayer : Combatant
 
     public override int MaxAP => Stats.MaxAP;
 
-    public override int AP { get => ap; protected set { ap = value; unitUI.AP = value; } }
+    public override int AP { get => ap; set { ap = value; unitUI.AP = value; } }
     private int ap = 0;
 
     [SerializeField] private string displayName = string.Empty;

@@ -27,11 +27,14 @@ public class ActionMenu : MonoBehaviour
         actions.Sort((a1, a2) => a1.ActionType.CompareTo(a2.ActionType));
         foreach(var action in actions)
         {
+            // Continue if the use doesn't have enough AP to use an action
+            if (!unit.CanUseAction(action))
+                continue;
             GameObject prefab = buttonPrefabs[action.ActionType];
             var button = Instantiate(prefab, actionButtonContainer).GetComponent<ActionButton>();
             button.Initialize(action);
             button.button.onClick.RemoveAllListeners();
-            button.button.onClick.AddListener(() => ui.ActionUI(action, unit));
+            button.button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
             button.button.onClick.AddListener(Hide);
         }
     }
