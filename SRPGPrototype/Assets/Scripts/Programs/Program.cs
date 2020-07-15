@@ -36,6 +36,7 @@ public class Program : GridObject
 
     public void Show(Vector2Int pos, CustGrid grid)
     {
+        uiEntries.Clear();
         foreach (var shiftPos in shape.OffsetsShifted(pos))
         {
             uiEntries.Add(grid.SpawnTileUI(shiftPos, tileType));
