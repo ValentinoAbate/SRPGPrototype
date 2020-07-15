@@ -15,7 +15,7 @@ public class ActionMenu : MonoBehaviour
     {
         buttonPrefabs = new Dictionary<Action.Type, GameObject>()
         {
-            {Action.Type.Action, actionButtonPrefab },
+            {Action.Type.Standard, actionButtonPrefab },
             {Action.Type.Move, actionButtonMovePrefab },
             {Action.Type.Hybrid, actionButtonHybridPrefab },
         };

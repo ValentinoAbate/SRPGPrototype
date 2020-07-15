@@ -7,13 +7,13 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public enum Type
     { 
         Move,
-        Action,
+        Standard,
         Hybrid,
     }
 
 
     public Type ActionType => type;
-    [SerializeField] Type type = Type.Action;
+    [SerializeField] Type type = Type.Standard;
 
     public int APCost => apCost;
     [SerializeField] private int apCost = 1;

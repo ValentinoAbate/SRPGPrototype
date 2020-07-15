@@ -8,7 +8,7 @@ public class EnemyPhase : Phase
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
     public BattleGrid grid;
 
-    public List<UnitEnemy> units = new List<UnitEnemy>();
+    public List<EnemyUnit> units = new List<EnemyUnit>();
 
     public override IEnumerator OnPhaseStart()
     {

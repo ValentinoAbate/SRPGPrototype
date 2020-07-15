@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UnitPlayer : Combatant
+public class PlayerUnit : Combatant
 {
     public override Team UnitTeam => Team.Player;
 

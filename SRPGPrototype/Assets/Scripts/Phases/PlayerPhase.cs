@@ -9,7 +9,7 @@ public class PlayerPhase : Phase
 
     public BattleUI ui;
 
-    public List<UnitPlayer> units = new List<UnitPlayer>();
+    public List<PlayerUnit> units = new List<PlayerUnit>();
 
     public override IEnumerator OnPhaseStart()
     {

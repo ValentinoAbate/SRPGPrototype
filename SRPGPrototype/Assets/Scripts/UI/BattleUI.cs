@@ -37,7 +37,7 @@ public class BattleUI : MonoBehaviour
 
     private void SelectPlayer(Vector2Int pos)
     {
-        var playerUnit = grid.Get<UnitPlayer>(pos);
+        var playerUnit = grid.Get<PlayerUnit>(pos);
         if (playerUnit != null)
         {
             EnterActionMenu(playerUnit);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitObstacle : Combatant
+public class ObstacleUnit : Combatant
 {
     public override int MaxHP => maxHP;
     [SerializeField] private int maxHP = 3;

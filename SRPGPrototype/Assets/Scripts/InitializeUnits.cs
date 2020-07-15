@@ -15,13 +15,13 @@ public class InitializeUnits : MonoBehaviour
         {
             grid.Add(grid.GetPos(unit.transform.position), unit);
             unit.transform.position = grid.GetSpace(unit.Pos);
-            if(unit is UnitPlayer)
+            if(unit is PlayerUnit)
             {
-                playerPhase.units.Add(unit as UnitPlayer);
+                playerPhase.units.Add(unit as PlayerUnit);
             }
-            else if(unit is UnitEnemy)
+            else if(unit is EnemyUnit)
             {
-                enemyPhase.units.Add(unit as UnitEnemy);
+                enemyPhase.units.Add(unit as EnemyUnit);
             }
         }
     }

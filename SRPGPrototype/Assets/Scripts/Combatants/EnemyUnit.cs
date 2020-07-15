@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitEnemy : Combatant
+public class EnemyUnit : Combatant
 {
     public override Team UnitTeam => Team.Enemy;
 
@@ -24,15 +24,15 @@ public class UnitEnemy : Combatant
 
     public override Shell Shell => throw new NotImplementedException();
 
-    public override List<Action> Actions => throw new NotImplementedException();
+    public override List<Action> Actions => ai.Actions;
 
     public UnitUI unitUI;
 
-    private AIComponent<UnitEnemy> ai;
+    private AIComponent<EnemyUnit> ai;
 
     private void Awake()
     {
-        ai = GetComponent<AIComponent<UnitEnemy>>();
+        ai = GetComponent<AIComponent<EnemyUnit>>();
     }
 
     // Start is called before the first frame update

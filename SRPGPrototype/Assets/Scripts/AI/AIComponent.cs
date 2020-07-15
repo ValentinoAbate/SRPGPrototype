@@ -5,9 +5,10 @@ using UnityEngine;
 public abstract class AIComponent<T> : MonoBehaviour where T : Combatant
 {
     // amount of time to pause for each square moved
-    public const float moveDelay = 0.1f;
+    public const float moveDelay = 0.3f;
+    public const float attackDelay = 0.5f;
 
-    public virtual bool StandardActivateChargedAction => true;
+    public abstract List<Action> Actions { get; }
 
     public abstract IEnumerator DoTurn(BattleGrid grid, T self);
 
