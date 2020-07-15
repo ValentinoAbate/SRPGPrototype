@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class Program : GridObject
@@ -25,6 +26,9 @@ public class Program : GridObject
 
     public string Description => description;
     [SerializeField] [TextArea(2,4)] private string description = string.Empty;
+
+    public Rarity Rarity => rarity;
+    [SerializeField] Rarity rarity = Rarity.Common;
 
     public TileUI.Type tileType;
 
