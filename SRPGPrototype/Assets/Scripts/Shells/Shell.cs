@@ -16,22 +16,32 @@ public class Shell : MonoBehaviour
     {
         foreach (var iProg in preInstalledPrograms)
         {
-            Install(iProg.program, iProg.location);
+            Install(iProg.program, iProg.location, true);
         }
     }
 
-    public void Install(Program program, Vector2Int location)
+    public void Install(Program program, Vector2Int location, bool fromAsset = false)
     {
-        var prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
-        programs.Add(new InstalledProgram(prog, location));
+        if(fromAsset)
+        {
+            var prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
+            programs.Add(new InstalledProgram(prog, location));
+        }
+        else
+        {
+            program.transform.SetParent(transform);
+            programs.Add(new InstalledProgram(program, location));
+        }
+
     }
 
-    public void Uninstall(Program program, Vector2Int location)
+    public void Uninstall(Program program, Vector2Int location, bool destroy = false)
     {
         var ind = programs.FindIndex((iProg) => iProg.program.DisplayName == program.DisplayName && iProg.location == location);
         if (ind >= 0)
         {
-            Destroy(programs[ind].program.gameObject);
+            if(destroy)
+                Destroy(programs[ind].program.gameObject);
             programs.RemoveAt(ind);
         }
     }

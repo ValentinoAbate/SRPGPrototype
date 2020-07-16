@@ -9,11 +9,12 @@ public class Inventory : MonoBehaviour
         get => equippedShell;
         set
         {
-            if (value.transform.IsChildOf(transform))
+            // Already in inventory
+            if (value.transform.IsChildOf(shellContainer.transform))
                 equippedShell = value;
-            else
+            else // From asset
             {
-                equippedShell = Instantiate(value.gameObject, transform).GetComponent<Shell>();
+                equippedShell = Instantiate(value.gameObject, shellContainer.transform).GetComponent<Shell>();
                 shells.Remove(value);
             }
         }
@@ -21,29 +22,58 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Shell equippedShell = null;
     [SerializeField]
+    private Transform shellContainer = null;
+    [SerializeField]
     private List<Shell> shells = new List<Shell>();
+    [SerializeField]
+    private Transform programContainer = null;
     [SerializeField]
     private List<Program> programs = new List<Program>();
 
+
     public IEnumerable<Program> AllPrograms => programs;
 
-    public void AddProgram(Program p)
+    public void AddProgram(Program p, bool fromAsset = false)
     {
-
+        if(fromAsset)
+        {
+            programs.Add(Instantiate(p.gameObject, programContainer.transform).GetComponent<Program>());
+        }
+        else
+        {
+            p.transform.SetParent(programContainer.transform);
+            programs.Add(p);
+        }
     }
 
-    public void RemoveProgram(Program p)
+    public void RemoveProgram(Program p, bool destroy = false)
     {
-
+        programs.Remove(p);
+        if(destroy)
+        {
+            Destroy(p.gameObject);
+        }
     }
 
-    public void AddShell(Shell s)
+    public void AddShell(Shell s, bool fromAsset = false)
     {
-
+        if (fromAsset)
+        {
+            shells.Add(Instantiate(s.gameObject, shellContainer.transform).GetComponent<Shell>());
+        }
+        else
+        {
+            s.transform.SetParent(shellContainer.transform);
+            shells.Add(s);
+        }
     }
 
-    public void RemoveShell(Shell s)
+    public void RemoveShell(Shell s, bool destroy = false)
     {
-
+        shells.Remove(s);
+        if (destroy)
+        {
+            Destroy(s.gameObject);
+        }
     }
 }

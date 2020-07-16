@@ -14,6 +14,8 @@ public class PhaseManager : MonoBehaviour, IPausable
     public int Turn { get; private set; }
     public Phase ActivePhase { get => phases[currPhase]; }
 
+    public LootManager loot;
+
     private List<Phase> phases;
     private int currPhase;
     public bool Transitioning { get; private set; } = true;
@@ -66,6 +68,7 @@ public class PhaseManager : MonoBehaviour, IPausable
 
     public void EndBattle()
     {
+        PersistantData.main.inventory.AddProgram(loot.GetDropStandard(LootManager.LootQuality.Standard), true);
         SceneTransitionManager.main.TransitionToScene("Cust");
     }
 
