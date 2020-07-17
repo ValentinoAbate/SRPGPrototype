@@ -12,6 +12,7 @@ public class BattleUI : MonoBehaviour
     public ActionMenu menu;
     public BattleCursor cursor;
     public Button endTurnButton;
+    public ActionDescriptionUI actionDescription;
 
     public bool PlayerPhaseUIEnabled
     {
@@ -25,6 +26,7 @@ public class BattleUI : MonoBehaviour
 
     private void Start()
     {
+        actionDescription.Hide();
         EnterUnitSelection();
     }
 
@@ -54,11 +56,13 @@ public class BattleUI : MonoBehaviour
     private void CancelActionMenu()
     {
         menu.Hide();
+        actionDescription.Hide();
         EnterUnitSelection();
     }
 
     public void EnterActionUI(Action action, Combatant unit)
     {
+        actionDescription.Hide();
         int currAction = 0;
         var entries = new List<TileUI.Entry>();
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref entries);
@@ -86,6 +90,8 @@ public class BattleUI : MonoBehaviour
         if (++currAction >= action.subActions.Count)
         {
             unit.AP -= action.APCost;
+            action.TimesUsedThisBattle++;
+            action.TimesUsedThisTurn++;
             EnterUnitSelection();
         }
         else

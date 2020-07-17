@@ -11,6 +11,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         Hybrid,
     }
 
+    public bool Usable => TimesUsedThisBattle < maxUsesPerBattle && TimesUsedThisTurn < maxUsesPerTurn;
 
     public Type ActionType => type;
     [SerializeField] Type type = Type.Standard;

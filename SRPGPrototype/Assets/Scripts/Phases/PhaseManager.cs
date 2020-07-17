@@ -34,6 +34,7 @@ public class PhaseManager : MonoBehaviour, IPausable
         phases = new List<Phase>();
         phases.AddRange(GetComponentsInChildren<Phase>());
         phases.RemoveAll((p) => !p.enabled);
+        phases.ForEach((p) => p.Initialize());
     }
 
     /// <summary>

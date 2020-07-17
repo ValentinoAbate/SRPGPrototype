@@ -42,7 +42,11 @@ public abstract class Combatant : GridObject
         AP = MaxAP;
     }
 
-    public bool CanUseAction(Action action) => AP >= action.APCost;
+    public bool CanUseAction(Action action)
+    {
+        return AP >= action.APCost;
+    }
+
 
     public virtual IEnumerator OnPhaseStart()
     {

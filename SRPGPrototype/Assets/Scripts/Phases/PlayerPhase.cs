@@ -11,6 +11,11 @@ public class PlayerPhase : Phase
 
     public List<PlayerUnit> units = new List<PlayerUnit>();
 
+    public override void Initialize()
+    {
+        units.ForEach((u) => u.Actions.ForEach((a) => a.TimesUsedThisBattle = 0));
+    }
+
     public override IEnumerator OnPhaseStart()
     {
         RemoveAllDead();

@@ -36,4 +36,12 @@ public class PlayerUnit : Combatant
         // Make sure UI gets updated
         HP = HP;
     }
+
+    // Reset uses per turn
+    public override IEnumerator OnPhaseStart()
+    {
+        foreach (var action in Actions)
+            action.TimesUsedThisTurn = 0;
+        yield break;
+    }
 }
