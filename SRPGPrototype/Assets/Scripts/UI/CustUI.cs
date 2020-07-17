@@ -147,11 +147,13 @@ public class CustUI : MonoBehaviour
 
     public void Compile()
     {
-        if (grid.Shell.Compile(out PlayerStats stats, out List<Player.ProgramAction> actions))
+        if (grid.Shell.Compile(out PlayerStats stats, out List<Shell.ActionProgram> actions))
         {
-            PersistantData.main.player.ClearActions();
-            PersistantData.main.player.AddActions(actions);
-            PersistantData.main.player.stats.SetMaxValues(stats);
+            var player = PersistantData.main.player;
+            player.ClearActions();
+            foreach(var actionProgram in actions)
+                player.AddAction(actionProgram.action, actionProgram.program);
+            player.stats.SetMaxValues(stats);
             Compiled = true;
         }
     }

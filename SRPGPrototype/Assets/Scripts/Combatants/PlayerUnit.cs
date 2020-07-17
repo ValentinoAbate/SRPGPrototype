@@ -23,7 +23,7 @@ public class PlayerUnit : Combatant
 
     private PlayerStats Stats => PersistantData.main.player.stats;
 
-    public override List<Action> Actions => PersistantData.main.player.Actions.Select((pA) => pA.action).ToList();
+    public override List<Action> Actions => PersistantData.main.player.Actions.ToList();
 
     public UnitUI unitUI;
 

@@ -6,8 +6,8 @@ public class ProgramEffectAddAction : ProgramEffect
 {
     public Action action;
 
-    public override void ApplyEffect(Program program, ref PlayerStats stats, ref List<Player.ProgramAction> actions)
+    public override void ApplyEffect(Program program, ref PlayerStats stats, ref List<Shell.ActionProgram> actions)
     {
-        actions.Add(new Player.ProgramAction(program, action));
+        actions.Add(new Shell.ActionProgram(action, program));
     }
 }

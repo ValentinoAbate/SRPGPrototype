@@ -6,39 +6,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public PlayerStats stats = new PlayerStats();
-    public IEnumerable<ProgramAction> Actions => actions;
-    private List<ProgramAction> actions = new List<ProgramAction>();
+    public IEnumerable<Action> Actions => actions;
+    private List<Action> actions = new List<Action>();
 
     public void ClearActions()
     {
-        foreach(var pA in actions)
+        foreach(var action in actions)
         {
-            Destroy(pA.action.gameObject);
+            Destroy(action.gameObject);
         }
         actions.Clear();
     }
 
-    public void AddAction(ProgramAction action)
+    public void AddAction(Action action, Program program)
     {
-        var newAction = Instantiate(action.action, transform).GetComponent<Action>();
-        actions.Add(new ProgramAction(action.program, newAction));
+        var newAction = Instantiate(action, transform).GetComponent<Action>();
+        newAction.Program = program;
+        actions.Add(newAction);
     }
-
-    public void AddActions(IEnumerable<ProgramAction> actions)
-    {
-        foreach(var pA in actions)
-            AddAction(pA);
-    }
-
-    public struct ProgramAction
-    {
-        public Program program;
-        public Action action;
-        public ProgramAction(Program program, Action action)
-        {
-            this.program = program;
-            this.action = action;
-        }
-    }
-
 }

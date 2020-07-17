@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,10 +52,10 @@ public class Shell : MonoBehaviour
     /// Will become more complicated, with adjacency, etc. later
     /// Returns false if the compile in considered invalid (either because of a compile rule or MaxHp <= 0)
     /// </summary>
-    public bool Compile(out PlayerStats stats, out List<Player.ProgramAction> actions)
+    public bool Compile(out PlayerStats stats, out List<ActionProgram> actions)
     {
         stats = new PlayerStats();
-        actions = new List<Player.ProgramAction>();
+        actions = new List<ActionProgram>();
         foreach(var install in programs)
         {
             foreach(var effect in install.program.Effects)
@@ -69,6 +70,18 @@ public class Shell : MonoBehaviour
         }
         return true;
     }
+
+    public struct ActionProgram
+    {
+        public Program program;
+        public Action action;
+        public ActionProgram(Action action, Program program)
+        {
+            this.action = action;
+            this.program = program;
+        }
+    }
+
 
     [System.Serializable]
     public struct InstalledProgram

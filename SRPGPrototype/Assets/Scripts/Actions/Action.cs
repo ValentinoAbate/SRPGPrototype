@@ -13,6 +13,8 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
 
     public bool Usable => TimesUsedThisBattle < maxUsesPerBattle && TimesUsedThisTurn < maxUsesPerTurn;
 
+    public Program Program { get; set; }
+
     public Type ActionType => type;
     [SerializeField] Type type = Type.Standard;
 
