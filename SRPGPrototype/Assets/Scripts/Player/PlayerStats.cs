@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ public class PlayerStats
 {
     public int MaxHp { get; set; }
 
-    public int Hp { get; set; }
+    public int Hp { get => hp; set => hp = Math.Min(MaxHp, value); }
+    private int hp;
 
     public int MaxAP { get; set; }
 

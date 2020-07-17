@@ -68,7 +68,10 @@ public class PhaseManager : MonoBehaviour, IPausable
 
     public void EndBattle()
     {
-        PersistantData.main.inventory.AddProgram(loot.GetDropStandard(LootManager.LootQuality.Standard), true);
+        var pData = PersistantData.main;
+        var stats = pData.player.stats;
+        stats.Hp += stats.Repair;
+        pData.inventory.AddProgram(loot.GetDropStandard(LootManager.LootQuality.Standard), true);
         SceneTransitionManager.main.TransitionToScene("Cust");
     }
 
