@@ -21,9 +21,9 @@ public class PlayerUnit : Combatant
 
     public override Shell Shell => PersistantData.main.inventory.EquippedShell;
 
-    private PlayerStats Stats => PersistantData.main.player.stats;
+    private Stats Stats => Shell.Stats;
 
-    public override List<Action> Actions => PersistantData.main.player.Actions.ToList();
+    public override List<Action> Actions => Shell.Actions.ToList();
 
     public UnitUI unitUI;
 

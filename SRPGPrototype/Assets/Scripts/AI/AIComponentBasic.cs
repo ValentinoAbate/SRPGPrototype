@@ -45,7 +45,7 @@ public class AIComponentBasic : AIComponent<EnemyUnit>
                     {
                         if (playerUnits.Any((u) => u.Pos == tPos))
                         {
-                            self.AP -= standardAction.APCost;
+                            standardAction.Use(self);
                             subAction.Use(grid, self, pos);
                             yield return new WaitForSeconds(0.5f);
                             Debug.Log(self.DisplayName + " is targeting tile: " + pos.ToString() + " for an attack!");
@@ -82,7 +82,7 @@ public class AIComponentBasic : AIComponent<EnemyUnit>
             // If any of the target positions targeting this square contain a player unit
             if(sub.targetPattern.Target(grid, self, pos).Any((p) => playerUnits.Any((playerUnit) => p == playerUnit.Pos)))
             {
-                self.AP -= moveAction.APCost;
+                moveAction.Use(self);
                 sub.Use(grid, self, pos);
                 yield return new WaitForSeconds(moveDelay);
                 yield break;
@@ -91,7 +91,7 @@ public class AIComponentBasic : AIComponent<EnemyUnit>
         var posByPathDist = movePositions.Select((p) => new Tuple<Vector2Int, int>(p, playerUnits.Min((unit) => GetPathDist(grid, p, unit.Pos))));
         // Else find the position that can be moved to that brings us closest to a player unit
         var closestPos = posByPathDist.OrderBy((t) => t.Item2).First().Item1;
-        self.AP -= moveAction.APCost;
+        moveAction.Use(self);
         sub.Use(grid, self, closestPos);
         yield return new WaitForSeconds(moveDelay);
     }

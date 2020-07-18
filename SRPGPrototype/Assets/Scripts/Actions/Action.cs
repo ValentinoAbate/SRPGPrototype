@@ -48,6 +48,25 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
             new List<SubAction>(GetComponentsInChildren<SubAction>());
     }
 
+    public void Use(Combatant user)
+    {
+        user.AP -= APCost;
+        ++TimesUsedThisBattle;
+        ++TimesUsedThisTurn;
+        if (Program == null)
+            return;
+        if(Program.attributes.HasFlag(Program.Attributes.Transient))
+        {
+            Program.GetComponent<ProgramAttributeTransient>().Uses++;
+        }
+    }
+
+    public void CopyTemporaryValues(Action other)
+    {
+        TimesUsedThisTurn = other.TimesUsedThisTurn;
+        TimesUsedThisBattle = other.TimesUsedThisBattle;
+    }
+
     public IEnumerator<SubAction> GetEnumerator()
     {
         return subActions.GetEnumerator();

@@ -35,6 +35,8 @@ public class BattleUI : MonoBehaviour
         playerPhase.CheckEndPhase();
         cursor.OnClick = SelectPlayer;
         cursor.OnCancel = null;
+        cursor.OnUnHighlight = null;
+        cursor.OnHighlight = null;
     }
 
     private void SelectPlayer(Vector2Int pos)
@@ -51,6 +53,8 @@ public class BattleUI : MonoBehaviour
         menu.Show(this, unit);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;
+        cursor.OnUnHighlight = null;
+        cursor.OnHighlight = null;
     }
 
     private void CancelActionMenu()
@@ -64,10 +68,13 @@ public class BattleUI : MonoBehaviour
     {
         actionDescription.Hide();
         int currAction = 0;
-        var entries = new List<TileUI.Entry>();
-        cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref entries);
-        entries = ShowPattern(action.subActions[currAction].range, unit.Pos, TileUI.Type.CustGreen);
-        cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref entries);
+        var targetRangeEntries = new List<TileUI.Entry>();
+        var targetPatternEntires = new List<TileUI.Entry>();
+        targetRangeEntries = ShowPattern(action.subActions[currAction].range, unit.Pos, TileUI.Type.CustGreen);
+        cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
+        cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
+        cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction, ref targetPatternEntires);
+        cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntires);
     }
 
     private void ExitActionUI(Combatant unit, ref List<TileUI.Entry> entries)
@@ -75,10 +82,21 @@ public class BattleUI : MonoBehaviour
         if(entries != null)
         {
             HideManyTiles(entries);
+            cursor.OnUnHighlight?.Invoke(unit.Pos);
             entries.Clear();
         }
         EnterActionMenu(unit);
     }
+
+    private void HighlightActionTarget(Vector2Int pos, Action action, Combatant unit, ref int currAction, ref List<TileUI.Entry> entries)
+    {
+        var subAction = action.subActions[currAction];
+        if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
+            return;
+        entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustPink);
+
+    }
+
 
     private void SelectActionTarget(Vector2Int pos, Action action, Combatant unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
@@ -87,11 +105,10 @@ public class BattleUI : MonoBehaviour
             return;
         subAction.Use(grid, unit, pos);
         HideManyTiles(entries);
+        cursor.OnUnHighlight?.Invoke(pos);
         if (++currAction >= action.subActions.Count)
         {
-            unit.AP -= action.APCost;
-            action.TimesUsedThisBattle++;
-            action.TimesUsedThisTurn++;
+            action.Use(unit);
             EnterUnitSelection();
         }
         else

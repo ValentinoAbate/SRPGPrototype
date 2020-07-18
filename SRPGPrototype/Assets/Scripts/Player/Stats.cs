@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats
+public class Stats
 {
     public int MaxHp { get; set; }
 
@@ -12,15 +12,24 @@ public class PlayerStats
 
     public int MaxAP { get; set; }
 
+    private int baseRepair = 0;
+
     public int Repair { get; set; }
 
     public void RestoreHpToMax() => Hp = MaxHp;
 
-    public void SetMaxValues(PlayerStats other)
+    public void DoRepair()
     {
-        MaxHp = other.MaxHp;
-        MaxAP = other.MaxAP;
-        Repair = other.Repair;
+        MaxHp += Repair;
+        Repair = baseRepair;
+    }
+
+    public void SetShellValues(Stats compiledStats)
+    {
+        MaxHp = compiledStats.MaxHp;
+        MaxAP = compiledStats.MaxAP;
+        baseRepair = compiledStats.Repair;
+        Repair = compiledStats.Repair;
         if (Hp > MaxHp)
             RestoreHpToMax();
     }

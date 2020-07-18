@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -134,8 +136,28 @@ public class CustUI : MonoBehaviour
         descEnabledFromGrid = fromGrid;
         programNameText.text = p.DisplayName;
         programDescText.text = p.Description;
-        programAttrText.text = p.attributes.HasFlag(Program.Attributes.Fixed) ? "Fixed" : string.Empty;
+        programAttrText.text = GetAttributesText(p);
         programDescWindow.SetActive(true);
+    }
+
+    private string GetAttributesText(Program p)
+    {
+        var attTexts = new List<string>();
+        if (p.attributes.HasFlag(Program.Attributes.Fixed))
+        {
+            attTexts.Add("Fixed");
+        }
+        if(p.attributes.HasFlag(Program.Attributes.Transient))
+        {
+            var transientAttr = p.GetComponent<ProgramAttributeTransient>();
+            string errorText = "Error: No Attribute Component found";
+            attTexts.Add("Transient " + (transientAttr == null ? errorText : transientAttr.UsesLeft.ToString()));
+        }
+        if (attTexts.Count <= 0)
+            return string.Empty;
+        if (attTexts.Count == 1)
+            return attTexts[0];
+        return attTexts.Aggregate((s1, s2) => s1 + ", " + s2);
     }
 
     public void HideProgramDescriptionWindow(bool fromGrid)
@@ -147,14 +169,6 @@ public class CustUI : MonoBehaviour
 
     public void Compile()
     {
-        if (grid.Shell.Compile(out PlayerStats stats, out List<Shell.ActionProgram> actions))
-        {
-            var player = PersistantData.main.player;
-            player.ClearActions();
-            foreach(var actionProgram in actions)
-                player.AddAction(actionProgram.action, actionProgram.program);
-            player.stats.SetMaxValues(stats);
-            Compiled = true;
-        }
+        Compiled = grid.Shell.Compile();
     }
 }

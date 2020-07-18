@@ -18,7 +18,10 @@ public class Program : GridObject
     { 
         None = 0,
         Fixed = 1,
+        Transient = 2,
     }
+
+    public Shell Shell { get; set; }
 
     public ProgramEffect[] Effects => GetComponents<ProgramEffect>();
     public string DisplayName => displayName;

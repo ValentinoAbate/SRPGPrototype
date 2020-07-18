@@ -34,7 +34,6 @@ public class PhaseManager : MonoBehaviour, IPausable
         phases = new List<Phase>();
         phases.AddRange(GetComponentsInChildren<Phase>());
         phases.RemoveAll((p) => !p.enabled);
-        phases.ForEach((p) => p.Initialize());
     }
 
     /// <summary>
@@ -64,15 +63,15 @@ public class PhaseManager : MonoBehaviour, IPausable
     /// </summary>
     private IEnumerator StartBattle()
     {
+        phases.ForEach((p) => p.Initialize());
         yield break;
     }
 
     public void EndBattle()
     {
-        var pData = PersistantData.main;
-        var stats = pData.player.stats;
-        stats.Hp += stats.Repair;
-        pData.inventory.AddProgram(loot.GetDropStandard(LootManager.LootQuality.Standard), true);
+        var inv = PersistantData.main.inventory;
+        inv.EquippedShell.Stats.DoRepair();
+        inv.AddProgram(loot.GetDropStandard(LootManager.LootQuality.Standard), true);
         SceneTransitionManager.main.TransitionToScene("Cust");
     }
 
