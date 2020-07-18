@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
 
-public class Program : GridObject
+public class Program : GridObject, ILootable
 {
     public enum PColor
     { 

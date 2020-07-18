@@ -5,13 +5,13 @@ using UnityEngine;
 using RandomUtils;
 using System.Linq;
 
-public class LootManager : MonoBehaviour
+public class Loot<T> where T : ILootable
 {
     /// <summary>
     /// A link to the 
     /// </summary>
     public enum LootQuality
-    { 
+    {
         Standard,
         High,
         Max,
@@ -19,26 +19,24 @@ public class LootManager : MonoBehaviour
         Even,
     }
 
-    public List<Program> lootPrograms = new List<Program>();
-
-    private Dictionary<Rarity, List<Program>> dropTables = new Dictionary<Rarity, List<Program>>();
+    private readonly Dictionary<Rarity, List<T>> dropTables = new Dictionary<Rarity, List<T>>();
 
     private Dictionary<LootQuality, WeightedSet<Rarity>> standardLootRarities;
 
-    private void Awake()
+    public Loot(List<T> loot)
     {
-        BuildDropTables();
         BuildStandardLootRarities();
+        BuildDropTables(loot);
     }
 
-    private void BuildDropTables()
+    private void BuildDropTables(List<T> loot)
     {
         dropTables.Clear();
-        foreach (var program in lootPrograms)
+        foreach (var item in loot)
         {
-            if (!dropTables.ContainsKey(program.Rarity))
-                dropTables.Add(program.Rarity, new List<Program>());
-            dropTables[program.Rarity].Add(program);
+            if (!dropTables.ContainsKey(item.Rarity))
+                dropTables.Add(item.Rarity, new List<T>());
+            dropTables[item.Rarity].Add(item);
         }
     }
 
@@ -82,12 +80,12 @@ public class LootManager : MonoBehaviour
         };
     }
 
-    public Program GetDropStandard(LootQuality quality, System.Predicate<Program> filter = null)
+    public T GetDropStandard(LootQuality quality, System.Predicate<T> filter = null)
     {
         return GetDropCustom(standardLootRarities[quality], filter);
     }
 
-    public Program GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<Program> filter = null)
+    public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter = null)
     {
         var rarity = RandomU.instance.Choice(rarities);
         if(filter == null)

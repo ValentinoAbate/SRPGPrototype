@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7226524408786965483}
-  - component: {fileID: 7226524408786965476}
+  - component: {fileID: 1516806356104852194}
   m_Layer: 0
   m_Name: LootManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7226524408786965476
+--- !u!114 &1516806356104852194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,18 +40,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7226524408786965477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1cb6b09c12dcd408c85af4d2704b69, type: 3}
+  m_Script: {fileID: 11500000, guid: a170109fefa75844695c235e775b17d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrograms:
-  - {fileID: 4551076113953349650, guid: a2914311ef38d644b9a9a1195ceca40a, type: 3}
-  - {fileID: 2357944613507835519, guid: 9b5d0ac0dd239ef499750c7ea91b5498, type: 3}
-  - {fileID: 2357944613507835519, guid: 424e04626f2a94144ac639d6580f4565, type: 3}
-  - {fileID: 4551076113953349650, guid: 0619cbc4030d6eb42884797dfac4dac5, type: 3}
-  - {fileID: 4551076113953349650, guid: 6f6ed396b0d906f4b91bfcdf04b260ed, type: 3}
-  - {fileID: 4551076113953349650, guid: cab9d325ecf06644a8b630db3c3b01b0, type: 3}
+  programs:
   - {fileID: 4551076113953349650, guid: 3fc5ae0d554b2644194aa25e197393da, type: 3}
-  - {fileID: 2357944613507835519, guid: 8b6a2cf2c5f513447acfd5fd3cf84fb3, type: 3}
   - {fileID: 4551076113953349650, guid: 4fa8bc833e4c1c547842fcf19c05b474, type: 3}
   - {fileID: 4551076113953349650, guid: 928eaa3d4c72e7840b98c766bfe164c9, type: 3}
   - {fileID: 4551076113953349650, guid: 9badfe4bdec79b4409cfaa6e19315adf, type: 3}
+  - {fileID: 2357944613507835519, guid: 9b5d0ac0dd239ef499750c7ea91b5498, type: 3}
+  - {fileID: 2357944613507835519, guid: 424e04626f2a94144ac639d6580f4565, type: 3}
+  - {fileID: 4551076113953349650, guid: 0619cbc4030d6eb42884797dfac4dac5, type: 3}
+  - {fileID: 4551076113953349650, guid: 93d8e6e8d5dfa914299a0c37f2b8b592, type: 3}
+  - {fileID: 4551076113953349650, guid: 6f6ed396b0d906f4b91bfcdf04b260ed, type: 3}
+  - {fileID: 4551076113953349650, guid: cab9d325ecf06644a8b630db3c3b01b0, type: 3}
+  - {fileID: 2357944613507835519, guid: 8b6a2cf2c5f513447acfd5fd3cf84fb3, type: 3}
+  - {fileID: 4551076113953349650, guid: e82abe8317bdedb4daab7d668419b18a, type: 3}
+  shells: []

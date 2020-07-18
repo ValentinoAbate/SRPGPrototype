@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Shell : MonoBehaviour
+public class Shell : MonoBehaviour, ILootable
 {
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
+
+    public Rarity Rarity => rarity;
+    [SerializeField] private Rarity rarity = Rarity.PreInstall;
 
     public Pattern custArea = null;
     public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
