@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ActionEffect : MonoBehaviour
 {
     public virtual void Initialize(BattleGrid grid, Combatant user, List<Vector2Int> targetPositions) { }
-    public abstract void ApplyEffect(BattleGrid grid, Combatant user, PositionData targetData);
+    public abstract void ApplyEffect(BattleGrid grid, Action action, Combatant user, PositionData targetData);
 
     public struct PositionData
     {

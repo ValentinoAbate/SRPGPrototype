@@ -15,7 +15,7 @@ public class SubAction : MonoBehaviour
         effects = GetComponents<ActionEffect>();
     }
 
-    public void Use(BattleGrid grid, Combatant user, Vector2Int selectedPos)
+    public void Use(BattleGrid grid, Action action, Combatant user, Vector2Int selectedPos)
     {
         // Get target positions
         var targetPositions = hasPattern ? targetPattern.Target(grid, user, selectedPos) : new List<Vector2Int>();
@@ -27,7 +27,7 @@ public class SubAction : MonoBehaviour
             effect.Initialize(grid, user, targetPositions);
             foreach(var position in targetPositions)
             {
-                effect.ApplyEffect(grid, user, new ActionEffect.PositionData(position, selectedPos));
+                effect.ApplyEffect(grid, action, user, new ActionEffect.PositionData(position, selectedPos));
             }
         }
     }

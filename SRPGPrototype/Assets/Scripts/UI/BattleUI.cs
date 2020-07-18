@@ -103,7 +103,7 @@ public class BattleUI : MonoBehaviour
         var subAction = action.subActions[currAction];
         if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
             return;
-        subAction.Use(grid, unit, pos);
+        subAction.Use(grid, action, unit, pos);
         HideManyTiles(entries);
         cursor.OnUnHighlight?.Invoke(pos);
         if (++currAction >= action.subActions.Count)

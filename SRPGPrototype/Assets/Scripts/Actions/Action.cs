@@ -34,6 +34,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
 
+    [HideInInspector]
     public List<SubAction> subActions;
 
     private void Awake()
