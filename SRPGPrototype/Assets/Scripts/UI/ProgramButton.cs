@@ -10,8 +10,8 @@ public class ProgramButton : MonoBehaviour
 {
 
     public TextMeshProUGUI buttonNameText;
-    private Button button;
-    private EventTrigger trigger;
+    public Button button;
+    public EventTrigger trigger;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class ProgramButton : MonoBehaviour
     {
         buttonNameText.text = p.DisplayName;
 
-        button.onClick.AddListener(() => uiManager.PickupProgram(this, p));
+        button.onClick.AddListener(() => uiManager.PickupProgramFromButton(this, p));
         button.onClick.AddListener(() => button.interactable = false);
         trigger.triggers.Clear();
         var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };

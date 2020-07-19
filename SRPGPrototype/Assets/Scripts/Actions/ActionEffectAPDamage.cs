@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectDamage : ActionEffect
+public class ActionEffectAPDamage : ActionEffect
 {
     public ProgramNumber damage = new ProgramNumber();
     private int damageNumber;
@@ -17,7 +17,7 @@ public class ActionEffectDamage : ActionEffect
         var target = grid.Get(targetData.targetPos);
         if (target == null)
             return;
-        target.Damage(damageNumber);
-        Debug.Log(target.DisplayName + " takes " + damageNumber.ToString() + " damage and is now at " + target.HP + " hp");
+        target.AP -= damageNumber;
+        Debug.Log(target.DisplayName + " takes " + damageNumber.ToString() + " AP damage and is now at " + target.AP + " hp");
     }
 }

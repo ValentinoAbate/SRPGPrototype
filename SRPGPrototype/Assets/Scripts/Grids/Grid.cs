@@ -22,6 +22,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     public TileUI tileUIManager;
 
     private Obj[,] field;
+    private List<LineRenderer> lines = new List<LineRenderer>();
 
     /// <summary>
     /// Display grid lines in-editor when gizmos are drawn
@@ -78,6 +79,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// </summary>
     private void InitializeGridLines()
     {
+        lines.ForEach((l) => Destroy(l.gameObject));
+        lines.Clear();
         Vector2 offset = CenterToVextexOffset;
         // Draw row lines
         for (int y = 0; y <= Rows; ++y)
@@ -86,6 +89,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
             Vector2 point1 = GetSpace(new Vector2Int(y, 0)) - offset;
             Vector2 point2 = GetSpace(new Vector2Int(y, Cols)) - offset;
             line.SetPositions(new Vector3[] { point1, point2 });
+            lines.Add(line);
         }
         // Drawn column lines
         for (int x = 0; x <= Cols; ++x)
@@ -94,6 +98,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
             Vector2 point1 = GetSpace(new Vector2Int(0, x)) - offset;
             Vector2 point2 = GetSpace(new Vector2Int(Rows, x)) - offset;
             line.SetPositions(new Vector3[] { point1, point2 });
+            lines.Add(line);
         }
     }
 

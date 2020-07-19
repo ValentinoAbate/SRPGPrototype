@@ -645,8 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b74411393a0204d8c4b4e0b4156907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 1130085307957486608}
-  ui: {fileID: 1130085309517156903}
+  battleGrid: {fileID: 1130085307957486608}
 --- !u!1 &1130085307957486609
 GameObject:
   m_ObjectHideFlags: 0

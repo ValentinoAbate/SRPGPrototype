@@ -11,6 +11,17 @@ public class CustGrid : Grid<Program>
         {
             if (value == shell)
                 return;
+            // Clear previous shell if applicable
+            if(shell != null)
+            {
+                foreach (var program in FindAll<Program>())
+                {
+                    program.Hide(this);
+                    Remove(program);
+                }
+                blockedUI.ForEach((e) => RemoveTileUI(e));
+                blockedUI.Clear();
+            }
             // Set the shell value
             shell = value;
             // Reinitialize the grid
@@ -30,12 +41,13 @@ public class CustGrid : Grid<Program>
                 {
                     var pos = new Vector2Int(x, y);
                     if (!offsetsSet.Contains(pos))
-                        SpawnTileUI(pos, TileUI.Type.CustBlocked);
+                        blockedUI.Add(SpawnTileUI(pos, TileUI.Type.CustBlocked));
                 }
             }
         }
     }
 
+    private List<TileUI.Entry> blockedUI = new List<TileUI.Entry>();
     private Shell shell = null;
     public override Vector2Int Dimensions => Shell.custArea.Dimensions;
 

@@ -8,16 +8,26 @@ using UnityEngine.UI;
 
 public class CustUI : MonoBehaviour
 {
-    public bool Compiled
+    public bool EquippedShellCompiled
     {
-        get => !compileButton.interactable;
+        get => exitToBattleButton.interactable;
         private set
         {
-            compileButton.interactable = !value;
-            exitCustButton.interactable = value;
+            exitToBattleButton.interactable = value;
         }
     }
 
+    public GameObject shellMenuUI;
+    public GameObject custUI;
+    public CustCursor cursor;
+
+    [Header("Shell Menu UI")]
+    public ShellButton equippedShellButton;
+    public GameObject shellButtonPrefab;
+    public GameObject shellButtonContainer;
+    public Button exitToBattleButton;
+
+    [Header("Cust UI")]
     public CustGrid grid;
     [Header("Program Button UI")]
     public GameObject programButtonPrefab;
@@ -41,88 +51,124 @@ public class CustUI : MonoBehaviour
     {
         HideProgramDescriptionWindow(descEnabledFromGrid);
         inventory = PersistantData.main.inventory;
-        foreach(var program in inventory.AllPrograms)
+        EnterShellMenu();
+    }
+
+    #region Shell Menu UI
+
+    public void EnterShellMenu()
+    {
+        EquippedShellCompiled = inventory.EquippedShell.Compiled;
+        cursor.NullAllActions();
+        GenerateShellButtons();
+        shellMenuUI.SetActive(true);
+        custUI.SetActive(false);
+    }
+
+    public void EquipShell(Shell s)
+    {
+        inventory.EquippedShell = s;
+        EquippedShellCompiled = s.Compiled;
+        GenerateShellButtons();
+    }
+
+    private void GenerateShellButtons()
+    {
+        shellButtonContainer.transform.DestroyAllChildren();
+        foreach (var shell in inventory.Shells)
+        {
+            if (shell == inventory.EquippedShell)
+            {
+                equippedShellButton.Initialize(shell, this, true);
+                continue;
+            }
+            var sButton = Instantiate(shellButtonPrefab, shellButtonContainer.transform);
+            var progButtonComponent = sButton.GetComponent<ShellButton>();
+            progButtonComponent.Initialize(shell, this);
+        }
+    }
+
+    #endregion
+
+    #region Cust UI
+
+    public void EnterCust(Shell s)
+    {
+        grid.Shell = s;
+        programButtonContainer.transform.DestroyAllChildren();
+        foreach (var program in inventory.Programs)
         {
             var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
             var progButtonComponent = pButton.GetComponent<ProgramButton>();
             progButtonComponent.Initialize(program, this);
         }
+        shellMenuUI.SetActive(false);
+        custUI.SetActive(true);
+        // Set cursor properties
+        cursor.NullAllActions();
+        cursor.OnHighlight = (pos) => HighlightProgram(pos);
+        cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
     }
 
-    public void PickupProgram(ProgramButton button, Program p)
+    public void HighlightProgram(Vector2Int pos)
     {
-        if(pButton != null)
-            pButton.Cancel();
-        pButton = button;
-        selectedProgram = p;
-
-    }
-
-    private Vector3 previousMousePos = Vector3.zero;
-    private Vector2Int previousGridPos = new Vector2Int(-100, -100);
-    private void Update()
-    {
-        if (selectedProgram != null)
+        if (grid.IsLegal(pos) && !grid.IsEmpty(pos))
         {
-            if(Input.GetMouseButtonDown(0))
-            {
-                var mousePos = GetMouseGridPos();
-                if (grid.IsLegal(mousePos) && grid.Add(mousePos, selectedProgram))
-                {
-                    inventory.RemoveProgram(selectedProgram);
-                    grid.Shell.Install(selectedProgram, mousePos);
-                    selectedProgram = null;
-                    Destroy(pButton.gameObject);
-                    Compiled = false;
-                }
-
-            }
-            else if(Input.GetMouseButtonDown(1))
-            {
-                pButton.Cancel();
-                selectedProgram = null;
-            }
+            ShowProgramDescriptionWindow(grid.Get(pos), true);
         }
         else
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                var mousePos = GetMouseGridPos();
-                if (grid.IsLegal(mousePos))
-                {
-                    var prog = grid.Get(mousePos);
-                    if (prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
-                    {
-                        var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
-                        var progButtonComponent = pButton.GetComponent<ProgramButton>();
-                        progButtonComponent.Initialize(prog, this);
-                        grid.Shell.Uninstall(prog, prog.Pos);
-                        grid.Remove(prog);
-                        inventory.AddProgram(prog);
-                        Compiled = false;
-                    }
-                }
-            }
-            else if(Input.mousePosition != previousMousePos)
-            {
-                previousMousePos = Input.mousePosition;
-                var mousePos = GetMouseGridPos();
-                if(mousePos != previousGridPos)
-                {
-                    previousGridPos = mousePos;
-                    if (grid.IsLegal(mousePos) && !grid.IsEmpty(mousePos))
-                    {
-                        ShowProgramDescriptionWindow(grid.Get(mousePos), true);
-                    }
-                    else
-                    {
-                        HideProgramDescriptionWindow(true);
+            HideProgramDescriptionWindow(true);
 
-                    }
-                }
+        }
+    }
+
+    public void PickupProgramFromButton(ProgramButton button, Program p)
+    {
+        if (pButton != null)
+            pButton.Cancel();
+        pButton = button;
+        selectedProgram = p;
+        cursor.OnCancel = () => CancelProgramPlacement(p, button);
+        cursor.OnClick = (pos) => PlaceProgam(button, p, pos);
+    }
+
+    public void CancelProgramPlacement(Program p , ProgramButton b)
+    {
+        b.Cancel();
+        // Set cursor properties
+        cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
+        cursor.OnClick = null;
+    }
+
+    public void PickupProgramFromGrid(Vector2Int pos)
+    {
+        if (grid.IsLegal(pos))
+        {
+            var prog = grid.Get(pos);
+            if (prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
+            {
+                var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
+                var progButtonComponent = pButton.GetComponent<ProgramButton>();
+                progButtonComponent.Initialize(prog, this);
+                grid.Shell.Uninstall(prog, prog.Pos);
+                grid.Remove(prog);
+                inventory.AddProgram(prog);
             }
         }
+    }
 
+    public void PlaceProgam(ProgramButton button, Program p, Vector2Int pos)
+    {
+        if (grid.IsLegal(pos) && grid.Add(pos, selectedProgram))
+        {
+            inventory.RemoveProgram(selectedProgram);
+            grid.Shell.Install(selectedProgram, pos);
+            selectedProgram = null;
+            Destroy(pButton.gameObject);
+            cursor.OnClick = null;
+            cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
+        }
     }
 
     private Vector2Int GetMouseGridPos()
@@ -169,6 +215,8 @@ public class CustUI : MonoBehaviour
 
     public void Compile()
     {
-        Compiled = grid.Shell.Compile();
+        grid.Shell.Compile();
     }
+
+    #endregion
 }

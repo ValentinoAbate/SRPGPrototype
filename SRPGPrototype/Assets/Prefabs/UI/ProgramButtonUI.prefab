@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonNameText: {fileID: 7055661582566077901}
+  button: {fileID: 7055661582928041818}
+  trigger: {fileID: 2399227691253282118}
 --- !u!114 &2399227691253282118
 MonoBehaviour:
   m_ObjectHideFlags: 0

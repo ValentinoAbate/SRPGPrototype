@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
             else // From asset
             {
                 equippedShell = Instantiate(value.gameObject, shellContainer.transform).GetComponent<Shell>();
-                shells.Remove(value);
+                //shells.Remove(value);
             }
         }
     }
@@ -30,8 +30,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private List<Program> programs = new List<Program>();
 
-
-    public IEnumerable<Program> AllPrograms => programs;
+    public IEnumerable<Shell> Shells => shells;
+    public IEnumerable<Program> Programs => programs;
 
     public void AddProgram(Program p, bool fromAsset = false)
     {

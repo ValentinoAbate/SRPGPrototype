@@ -24,7 +24,7 @@ public class SubAction : MonoBehaviour
 
         foreach (var effect in effects)
         {
-            effect.Initialize(grid, user, targetPositions);
+            effect.Initialize(grid, action, user, targetPositions);
             foreach(var position in targetPositions)
             {
                 effect.ApplyEffect(grid, action, user, new ActionEffect.PositionData(position, selectedPos));

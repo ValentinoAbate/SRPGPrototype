@@ -2,59 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleCursor : MonoBehaviour
+public abstract class Cursor<T> : MonoBehaviour where T : GridObject
 {
     public System.Action<Vector2Int> OnClick { get; set; }
     public System.Action OnCancel { get; set; }
     public System.Action<Vector2Int> OnHighlight { get; set; }
     public System.Action<Vector2Int> OnUnHighlight { get; set; }
 
-    public BattleGrid grid;
-    public BattleUI ui;
+    public abstract Grid<T> Grid { get; }
     private Vector3 previousMousePos = Vector3.zero;
     private Vector2Int previousMouseGridPos = Vector2Int.zero;
 
     private void Awake()
     {
-        previousMouseGridPos = Grid<Combatant>.OutOfBounds;
+        previousMouseGridPos = Grid<T>.OutOfBounds;
     }
 
-    private void Update()
+    public void NullAllActions()
     {
-        if(Input.mousePosition != previousMousePos)
+        OnCancel = null;
+        OnClick = null;
+        OnHighlight = null;
+        OnUnHighlight = null;
+    }
+
+    public void CheckInput()
+    {
+        if (Input.mousePosition != previousMousePos)
         {
             var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var mouseGridPos = grid.GetPos(mouseWorldPos);
-            if(mouseGridPos != previousMouseGridPos)
+            var mouseGridPos = Grid.GetPos(mouseWorldPos);
+            if (mouseGridPos != previousMouseGridPos)
             {
-                if (previousMouseGridPos != Grid<Combatant>.OutOfBounds)
+                if (previousMouseGridPos != Grid<T>.OutOfBounds)
                     OnUnHighlight?.Invoke(previousMouseGridPos);
-                if (grid.IsLegal(mouseGridPos))
+                if (Grid.IsLegal(mouseGridPos))
                 {
-                    transform.position = grid.GetSpace(mouseGridPos);
+                    transform.position = Grid.GetSpace(mouseGridPos);
                     OnHighlight?.Invoke(mouseGridPos);
                     previousMouseGridPos = mouseGridPos;
                 }
                 else
                 {
-                    previousMouseGridPos = Grid<Combatant>.OutOfBounds;
+                    previousMouseGridPos = Grid<T>.OutOfBounds;
                 }
             }
             previousMousePos = Input.mousePosition;
         }
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var mouseGridPos = grid.GetPos(mouseWorldPos);
-            if(grid.IsLegal(mouseGridPos))
+            var mouseGridPos = Grid.GetPos(mouseWorldPos);
+            if (Grid.IsLegal(mouseGridPos))
                 OnClick?.Invoke(mouseGridPos);
         }
-        else if(Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1))
         {
-            if(OnCancel != null)
+            if (OnCancel != null)
             {
                 OnCancel.Invoke();
             }
         }
+    }
+
+    private void Update()
+    {
+        CheckInput();
     }
 }

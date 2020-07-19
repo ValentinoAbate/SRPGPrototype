@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, ILootable
 {
+    public bool Compiled { get; private set; } = false;
+
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
 
@@ -88,6 +90,7 @@ public class Shell : MonoBehaviour, ILootable
         {
             Debug.LogWarning("Compile Error: Max Hp <= 0");
             newActions.ForEach((a) => Destroy(a.gameObject));
+            Compiled = false;
             return false;
         }
         // Apply compile changes to actions and stats
@@ -102,6 +105,7 @@ public class Shell : MonoBehaviour, ILootable
         }
         actions.Clear();
         actions.AddRange(newActions);
+        Compiled = true;
         return true;
     }
 
