@@ -1,0 +1,168 @@
+General Ideas:
+- Make the basic attack transient?
+- Basic move along path is additive with adjacents.
+- Negative space - scales / shapes with biggest adjacent empty space or number of empty spaces
+- Heal to full when installed - cannot be uninstalled
+- Cannot switch shells while uninstalled
+- Moves should cost low AP compared to standard actions?
+- program fusion
+- AP goes up after each usage instead of uses per turn?
+- Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
+
+Color Mapping:
+- Blue (circle): Move actions, Defense buffs, AP buffs, Abilities, Modifiers
+- Red (triangle): Attack actions, Power buffs, AP buffs, Abilities, Modifiers
+- Green (square): Support actions, HP buffs, Repair buffs, Abilities, Modifiers
+- Yellow (star): Hybrid actions, Speed buffs, Abilities, Modifiers
+- White (hexagon): Restrictions, Abilities, Modifiers
+- Shapes added for addional mapping and colorblind accesibility
+
+Shell concepts:
+- Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
+- Concentric circles (Uncommon): any program installed in "s" counts as adjacent to all other programs
+ 	- o o o o o
+	- o i x i o
+	- o x s x o
+	- o i x i o
+	- o o o o o
+- Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
+
+Themes: Themes for a player to build a deck around
+- DOT
+- Stat gain / spending
+- Evolving
+- Destroying
+- Fixed Programs
+- Colors
+- Hitting Multiple targets - This one is good
+- Moving a lot - This one is good
+- Get free move action - This one is good
+- Moving enemy unit - this one is good
+- Scouting - this one is good
+
+Special Effects:
+- Pattern is adjacent area / negative space
+
+Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always have a min/max
++ Constant
++ Number of [attribute] programs installed (- action type)
+- Number of [attribute] squares installed
+- Highest/lowest adjacent programs/square of [attribute]
+- Number of empty spaces left
+- Highest/lowest adjacent empty spaces
+- Target/user value of [stat]
++ Dimensions of the shell
++ Coordinate of install position
+
+Stats: quantities availible to the player. 
++ MaxAP (min: 0, max: none)
++ AP (min: 0, max: MaxAP) - Recharges to MaxAP at end of turn and end of battle
++ MaxHP (min: 0, max: none) - Recharges to shell level at end of encounter. 0 means you die.
++ HP (min: 0, max: MaxHP)
++ Repair (min: 0, max: none) - Added to your hp and then resets to shell level after repairing
+- Power (min: none, max: none) - Added to the damage of any effect. gets one closer to zero after being used. resets to shell level after an encounter
+- Speed (min: none, max: none) - Subtracted from the AP cost of any action. Get one closer to zero after being applied. resets to shell level after an encounter
+- Defense (min: none, max: none) - Subtracted from any damage taken. Get closer to zero after being applied. resets to shell level after an encounter.
+
+
+Effects: Apply to a pattern
++ Deal [x] damage
+- Steal [x] hp
+- Steal [x] hp as [stat]
+- Steal [stat] as [stat]
+- Deal [x] [stat] damage
+	- Deal AP damage equal to enemy speed
++ Reduce [x] AP
+- Move to end of [path]
++ Jump / Teleport target
+- Push target
+- Pull Target
+- Swap with target
+- Reposition / throw target
+- Add [x] [stat]
+- Give free move action - good
+
+Patterns:
+- Path [x] tiles (usually move, but could be effect)
+- Circle [x] radius
+- Square [x] sidelength
+
+Costs: This effect must first be applied to the user to use this action (fails if effect impossible)
+- pay [x] [stat]
+
+Attributes: Attributes of a program, common attributes are the program colors
++ Colors
++ Rarities
++ Fixed
++ Action Type (Standard / Move / Hybrid)
++ Transient ([x]) - Destroy after [x] uses or activations
+- Corrupted ([time]) - Destroy after time
+- Unstable ([trigger]) - Destroy when triggered
+- Transforms ([trigger]) - Permanently Change to Unknown program when triggered
+- Promotes ([trigger], [time]) - Changes to promoted program effects when triggered (until time has passed)
+
+Time: An amount of time
+- [x] encounters
+- [x] turns
+
+Scopes: a group of programs to which something is applied
+- All programs
+- All programs of [attribute]
+- Adjacent programs
+- Non-adjacent programs
+- Modified programs
+
+Modifiers: These effects modify other programs in a certain scope (see scope)
+- [scope] programs have [x] less/more uses per turn/battle (min/max [y])
+- [scope] programs do [x] more/less damage
+- [scope] transient programs have [x] more uses. (pair with fixed, unstable - any/all modified programs are destroyed)
+- Add [attribute] to [scope] (Fixed, transient, color, etc. pair with fixed)
+- Apply cost to [scope] programs
+
+Abilities: These effects give the player special passive abilities
+- AP carries over to next turn (pair with -AP gain)
+- AP doesn't recharge at the end of the turn (pair with + MaxAP)
+- HP fully recharges at the end of the battle (Pair with -MaxHP)
+- Any AP left at the end of the turn is dealt as damage (Pair with positive effect)
+- You can go into [x] repair debt (damages you at repair)
+- You can go into [x] AP dept (damages you when AP rechanges)
+- Using the same action more than once in a turn [scales] it
+- Actions can be lowered to 0 AP (pair with -uses per turn / battle modifiers)
+- MaxHP + [x], Unstable HP <= [y]
+- When [trigger] gain [ability]/[stat] for [time]
+	- When a program is destroyed, gain "All attacks do +1 damage" for 1 encounter
+	- Using a hybrid action gives you +1 speed. You cannot install non-hybrid actions
+- Any transient action that hits more than [x] targets doesn't use a degrade
+	- [x] is 2
+	- Add Transient 3 + number of fixed transient programs installed
+
+Trigger: Trigger an effect on this condition
+- When any/all [scope] programs transform / promote / destroy
+- After [x] uses
+- When stat is less/greater/equal to [x]
+- After an [attribute] progarm is used
+
+Action conditions:
+- Can only use if moved more/less than [x] tiles
+- Can only use if used more/less that [x] different actions this turn
+- Can't use any other action this turn
+
+Cust resrictions:
++ Can't/must put same colors next to each other (Only can't rn)
+- Can't have a program that is adjacent to two or more programs of different colors
+- Can't/must use [color] color
+- Can't use more/less than [x] colors
+- Can't use more/less than [x] programs
+- Can't use more/less than [x] of [type] of program
+-
+
+Recurring enemies that build shells and have the same macro mechanics as you do:
+- Maybe simulate them playing the game, or use other players' data?
+
+Passive:
+
+
+
+- Promotion mechanics (Shogi? Look into mini-shogi), maybe macro level upgrades with specific conditions? Maybe micro mid-encounter.
+- Maybe look into battleship?
+- Maybe have inventory be a limited grid

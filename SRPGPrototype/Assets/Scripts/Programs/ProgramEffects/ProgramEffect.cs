@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class ProgramEffect : MonoBehaviour
 {
-    public abstract void ApplyEffect(Program program, ref Stats stats, ref List<Action> actions);
+    public abstract void ApplyEffect(Program program, ref Shell.CompileData data);
 }

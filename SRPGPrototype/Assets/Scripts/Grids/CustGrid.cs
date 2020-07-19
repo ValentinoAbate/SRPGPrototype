@@ -28,7 +28,7 @@ public class CustGrid : Grid<Program>
             Initialize();
 
             // Add already installed programs
-            foreach (var program in shell.AllPrograms)
+            foreach (var program in shell.Programs)
             {
                 Add(program.location, program.program);
             }

@@ -8,10 +8,10 @@ public class ProgramEffectModifyStat : ProgramEffect
     public int maxHpModifier;
     public int repairModifier;
 
-    public override void ApplyEffect(Program program, ref Stats stats, ref List<Action> actions)
+    public override void ApplyEffect(Program program, ref Shell.CompileData data)
     {
-        stats.MaxAP += maxAPModifier;
-        stats.MaxHp += maxHpModifier;
-        stats.Repair += repairModifier;
+        data.stats.MaxAP += maxAPModifier;
+        data.stats.MaxHp += maxHpModifier;
+        data.stats.Repair += repairModifier;
     }
 }

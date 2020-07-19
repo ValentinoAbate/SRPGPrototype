@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Program : GridObject, ILootable
 {
-    public enum PColor
+    public enum Color
     { 
         White,
         Pink,
@@ -34,7 +34,7 @@ public class Program : GridObject, ILootable
 
     public TileUI.Type tileType;
 
-    public PColor colors;
+    public Program.Color colors;
     public Attributes attributes;
     public Pattern shape;
 

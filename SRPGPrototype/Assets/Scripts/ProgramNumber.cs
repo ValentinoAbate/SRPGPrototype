@@ -35,7 +35,7 @@ public class ProgramNumber
     [SerializeField]
     private Program.Attributes attributes = Program.Attributes.None;
     [SerializeField]
-    private Program.PColor color = Program.PColor.White;
+    private Program.Color color = Program.Color.White;
     [SerializeField]
     private Rarity rarity = Rarity.Common;
 
@@ -47,15 +47,15 @@ public class ProgramNumber
         int number = 0;
         if(type == Type.NumberOfInstallsAtrribute)
         {
-            number = p.Shell.AllPrograms.Count((p2) => p2.program.attributes.HasFlag(attributes));
+            number = p.Shell.Programs.Count((p2) => p2.program.attributes.HasFlag(attributes));
         }
         else if(type == Type.NumberOfInstallsColor)
         {
-            number = p.Shell.AllPrograms.Count((p2) => p2.program.colors == color);
+            number = p.Shell.Programs.Count((p2) => p2.program.colors == color);
         }
         else if(type == Type.NumberOfInstallsRarity)
         {
-            number = p.Shell.AllPrograms.Count((p2) => p2.program.Rarity == rarity);
+            number = p.Shell.Programs.Count((p2) => p2.program.Rarity == rarity);
         }
         else if(type == Type.InstallX)
         {

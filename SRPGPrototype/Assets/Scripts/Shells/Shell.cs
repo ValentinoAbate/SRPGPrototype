@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, ILootable
 {
+    public delegate bool Restriction(Shell shell, out string errorMessage);
     public bool Compiled { get; private set; } = false;
 
     public string DisplayName => displayName;
@@ -16,7 +17,7 @@ public class Shell : MonoBehaviour, ILootable
 
     public Pattern custArea = null;
     public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
-    public IEnumerable<InstalledProgram> AllPrograms => programs;
+    public IEnumerable<InstalledProgram> Programs => programs;
     private List<InstalledProgram> programs = new List<InstalledProgram>();
 
     public IEnumerable<Action> Actions => actions;
@@ -24,8 +25,11 @@ public class Shell : MonoBehaviour, ILootable
 
     public Stats Stats { get; set; } = new Stats();
 
+    [HideInInspector] public Program[,] installMap;
+
     private void Awake()
     {
+        installMap = new Program[custArea.Dimensions.x, custArea.Dimensions.y];
         foreach (var iProg in preInstalledPrograms)
         {
             Install(iProg.program, iProg.location, true);
@@ -46,7 +50,9 @@ public class Shell : MonoBehaviour, ILootable
             programs.Add(new InstalledProgram(program, location));
             program.Shell = this;
         }
-
+        var positions = program.shape.OffsetsShifted(location);
+        foreach (var pos in positions)
+            installMap[pos.x, pos.y] = program;
     }
 
     public void Uninstall(Program program, Vector2Int location, bool destroy = false)
@@ -57,7 +63,10 @@ public class Shell : MonoBehaviour, ILootable
         var ind = programs.FindIndex((iProg) => iProg.program.DisplayName == program.DisplayName && iProg.location == location);
         if (ind >= 0)
         {
-            if(destroy)
+            var positions = program.shape.OffsetsShifted(location);
+            foreach (var pos in positions)
+                installMap[pos.x, pos.y] = null;
+            if (destroy)
                 Destroy(programs[ind].program.gameObject);
             programs.RemoveAt(ind);
         }
@@ -70,15 +79,17 @@ public class Shell : MonoBehaviour, ILootable
     /// </summary>
     public bool Compile()
     {
-        var stats = new Stats();
         var newActions = new List<Action>();
+        var compileData = new CompileData(new Stats(), new List<Action>(), new List<Restriction>());
+        // Look through programs and apply program effects
         foreach(var install in programs)
         {
             foreach(var effect in install.program.Effects)
             {
-                var addedActions = new List<Action>();
-                effect.ApplyEffect(install.program, ref stats, ref addedActions);
-                foreach(var action in addedActions)
+                compileData.actions.Clear();
+                effect.ApplyEffect(install.program, ref compileData);
+                // Instantiate new actions
+                foreach(var action in compileData.actions)
                 {
                     var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
                     actionInstance.Program = install.program;
@@ -86,15 +97,27 @@ public class Shell : MonoBehaviour, ILootable
                 }
             }
         }
-        if(stats.MaxHp <= 0)
+        // Check Max Hp
+        if(compileData.stats.MaxHp <= 0)
         {
             Debug.LogWarning("Compile Error: Max Hp <= 0");
             newActions.ForEach((a) => Destroy(a.gameObject));
             Compiled = false;
             return false;
         }
+        // Check restirctions
+        foreach(var restriction in compileData.restrictions)
+        {
+            if(restriction(this, out string errorMessage))
+            {
+                Debug.LogWarning(errorMessage);
+                newActions.ForEach((a) => Destroy(a.gameObject));
+                Compiled = false;
+                return false;
+            }
+        }
         // Apply compile changes to actions and stats
-        Stats.SetShellValues(stats);
+        Stats.SetShellValues(compileData.stats);
         // Copy Temporary values of already instantiated actions to their newly generated copies
         foreach(var action in actions)
         {
@@ -108,6 +131,20 @@ public class Shell : MonoBehaviour, ILootable
         Compiled = true;
         return true;
     }
+
+    public struct CompileData
+    {
+        public Stats stats;
+        public List<Action> actions;
+        public List<Restriction> restrictions;
+        public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
+        {
+            this.stats = stats;
+            this.actions = actions;
+            this.restrictions = restrictions;
+        }
+    }
+
 
     [System.Serializable]
     public struct InstalledProgram
