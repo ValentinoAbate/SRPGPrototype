@@ -25,6 +25,9 @@ Shell concepts:
 	- o x s x o
 	- o i x i o
 	- o o o o o
+- Big Shell: A bigass shell that can only have 5 tile or bigger squares.
+- Limit colors to low numbers
+- No common programs
 - Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
 
 Themes: Themes for a player to build a deck around
