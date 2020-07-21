@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class AIComponentTurret : AIComponent<Unit>
 {
-    public Unit.Teams targetTeams = Unit.Teams.Player;
+    public List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
     public Action standardAction;
 
     public override List<Action> Actions => new List<Action> { standardAction };

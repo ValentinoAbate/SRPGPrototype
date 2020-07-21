@@ -4,16 +4,14 @@ using UnityEngine;
 
 public abstract class Unit : GridObject
 {
-    [System.Flags]
-    public enum Teams
+    public enum Team
     { 
         None,
-        Enemy = 1,
-        Player = 2,
-        All = Enemy | Player,
+        Enemy,
+        Player,
     }
 
-    public abstract Teams Team { get; }
+    public abstract Team UnitTeam { get; }
     public abstract int MaxHP { get; }
     public abstract int HP { get; protected set; }
     public bool Dead => HP <= 0;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyUnit : Unit
 {
-    public override Teams Team => Teams.Enemy;
+    public override Team UnitTeam => Team.Enemy;
 
     public override int MaxHP => maxHP;
     [SerializeField] private int maxHP = 3;

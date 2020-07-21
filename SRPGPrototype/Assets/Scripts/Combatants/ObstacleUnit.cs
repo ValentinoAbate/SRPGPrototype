@@ -17,7 +17,7 @@ public class ObstacleUnit : Unit
     [SerializeField] private string displayName = string.Empty;
     public override string DisplayName => displayName;
 
-    public override Teams Team => Teams.None;
+    public override Team UnitTeam => Team.None;
 
     public override Shell Shell => throw new System.NotImplementedException();
 

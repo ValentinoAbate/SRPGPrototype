@@ -13,7 +13,7 @@ using UnityEngine;
 /// </summary>
 public class AIComponentBasic : AIComponent<Unit>
 {
-    public Unit.Teams targetTeams = Unit.Teams.Player;
+    public List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
     public Action moveAction;
     public Action standardAction;
 

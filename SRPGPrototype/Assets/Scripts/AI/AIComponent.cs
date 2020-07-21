@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using SerializableCollections.Utilities;
 
 public abstract class AIComponent<T> : MonoBehaviour where T : Unit
 {
@@ -88,21 +89,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         return BattleGrid.OutOfBounds;
     }
 
-    protected List<Unit> FindTargetsOnTeams(BattleGrid grid, Unit.Teams teams)
+    protected List<Unit> FindTargetsOnTeams(BattleGrid grid, List<Unit.Team> teams)
     {
-        var ret = new List<Unit>();
-        if(teams.HasFlag(Unit.Teams.All))
-        {
-            ret.AddRange(grid.FindAll<Unit>());
-            return ret;
-        }
-        foreach(var flag in SerializableCollections.Utilities.EnumUtils.GetValues<Unit.Teams>())
-        {
-            if (flag == Unit.Teams.None || !teams.HasFlag(flag))
-                continue;
-            ret.AddRange(grid.FindAll<Unit>((c) => c.Team.HasFlag(flag)));
-        }
-        return ret;
+        return grid.FindAll<Unit>((c) => teams.Any((team) => c.UnitTeam == team));
     }
 
     private struct PosValuePair

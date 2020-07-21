@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerUnit : Unit
 {
-    public override Teams Team => Teams.Player;
+    public override Team UnitTeam => Team.Player;
 
     public override int MaxHP => Stats.MaxHp;
 
