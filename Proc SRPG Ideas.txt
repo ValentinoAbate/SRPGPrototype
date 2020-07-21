@@ -161,6 +161,9 @@ Cust resrictions:
 
 Recurring enemies that build shells and have the same macro mechanics as you do:
 - Maybe simulate them playing the game, or use other players' data?
+- Based on "Rivals" from pokemon
+- Procedurally generate / select their goals, and have them be helpful or antagonistic depending on if what the player is doing helps or hinders those goals
+
 
 Passive:
 
@@ -169,3 +172,17 @@ Passive:
 - Promotion mechanics (Shogi? Look into mini-shogi), maybe macro level upgrades with specific conditions? Maybe micro mid-encounter.
 - Maybe look into battleship?
 - Maybe have inventory be a limited grid
+
+Encounter Design:
+- Base off of Dnd CR?
+- Each unit has a CR rating, and assemble an ecnounter based off a CR budget
+- Possibly give units a "Theme" tag too (heavy, ranged, diagonal, AOE, etc)?
+- Choose next unit based on current board (with previous units factored in)
+- Certain units could want to be in an encounter with certain other units or not want to be
+- Limit unit list by area?
+- Inputs to generation alg:
+	- Grid dimensions?
+	- Number of units?
+	- Unit list?
+	- Optional: "Theme" heur
+	- Optional: partially-constructed encounter to add to (like a seed encounter)
