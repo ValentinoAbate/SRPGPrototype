@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Combatant : GridObject
+public abstract class Unit : GridObject
 {
-    public enum Team
+    [System.Flags]
+    public enum Teams
     { 
         None,
-        Enemy,
-        Player,
+        Enemy = 1,
+        Player = 2,
+        All = Enemy | Player,
     }
 
-    public abstract Team UnitTeam { get; }
+    public abstract Teams Team { get; }
     public abstract int MaxHP { get; }
     public abstract int HP { get; protected set; }
     public bool Dead => HP <= 0;

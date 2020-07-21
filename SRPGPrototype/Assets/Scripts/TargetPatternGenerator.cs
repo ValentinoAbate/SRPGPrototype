@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class TargetPatternGenerator : MonoBehaviour
 {
-    public abstract List<Vector2Int> Generate(BattleGrid grid, Combatant user, Vector2Int targetPos);
+    public abstract List<Vector2Int> Generate(BattleGrid grid, Unit user, Vector2Int targetPos);
 }

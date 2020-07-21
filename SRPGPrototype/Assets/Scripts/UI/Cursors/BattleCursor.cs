@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleCursor : Cursor<Combatant>
+public class BattleCursor : Cursor<Unit>
 {
-    public override Grid<Combatant> Grid => battleGrid;
+    public override Grid<Unit> Grid => battleGrid;
     public BattleGrid battleGrid;
 }

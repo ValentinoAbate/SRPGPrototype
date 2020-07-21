@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class ActionEffect : MonoBehaviour
 {
-    public virtual void Initialize(BattleGrid grid, Action action, Combatant user, List<Vector2Int> targetPositions) { }
-    public abstract void ApplyEffect(BattleGrid grid, Action action, Combatant user, PositionData targetData);
+    public virtual void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions) { }
+    public abstract void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData);
 
     public struct PositionData
     {
@@ -22,7 +22,7 @@ public abstract class ActionEffect : MonoBehaviour
         }
     }
 
-    protected List<Combatant> GetTargetList(BattleGrid grid, List<Vector2Int> targetPositions)
+    protected List<Unit> GetTargetList(BattleGrid grid, List<Vector2Int> targetPositions)
     {
         return targetPositions.Select((pos) => grid.Get(pos)).Where((c) => c != null).ToList();
     }

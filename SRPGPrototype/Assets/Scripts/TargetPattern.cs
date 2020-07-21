@@ -17,7 +17,7 @@ public class TargetPattern
     public Pattern pattern;
     public TargetPatternGenerator generator = null;
 
-    public List<Vector2Int> Target(BattleGrid grid, Combatant user, Vector2Int targetPos)
+    public List<Vector2Int> Target(BattleGrid grid, Unit user, Vector2Int targetPos)
     {
         if(patternType == Type.Simple)
             return new List<Vector2Int> { targetPos };

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionEffectSetPosition : ActionEffect
 {
-    public override void ApplyEffect(BattleGrid grid, Action action, Combatant user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
     {
         var target = grid.Get(targetData.targetPos);
         if (target == null)

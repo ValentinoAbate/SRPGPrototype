@@ -49,7 +49,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
             new List<SubAction>(GetComponentsInChildren<SubAction>());
     }
 
-    public void Use(Combatant user)
+    public void Use(Unit user)
     {
         user.AP -= APCost;
         ++TimesUsedThisBattle;

@@ -10,7 +10,7 @@ public class InitializeUnits : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var units = GetComponentsInChildren<Combatant>();
+        var units = GetComponentsInChildren<Unit>();
         foreach (var unit in units)
         {
             grid.Add(grid.GetPos(unit.transform.position), unit);

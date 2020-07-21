@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleUnit : Combatant
+public class ObstacleUnit : Unit
 {
     public override int MaxHP => maxHP;
     [SerializeField] private int maxHP = 3;
@@ -17,7 +17,7 @@ public class ObstacleUnit : Combatant
     [SerializeField] private string displayName = string.Empty;
     public override string DisplayName => displayName;
 
-    public override Team UnitTeam => Team.None;
+    public override Teams Team => Teams.None;
 
     public override Shell Shell => throw new System.NotImplementedException();
 

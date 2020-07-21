@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUnit : Combatant
+public class EnemyUnit : Unit
 {
-    public override Team UnitTeam => Team.Enemy;
+    public override Teams Team => Teams.Enemy;
 
     public override int MaxHP => maxHP;
     [SerializeField] private int maxHP = 3;
@@ -28,11 +28,11 @@ public class EnemyUnit : Combatant
 
     public UnitUI unitUI;
 
-    private AIComponent<EnemyUnit> ai;
+    private AIComponent<Unit> ai;
 
     private void Awake()
     {
-        ai = GetComponent<AIComponent<EnemyUnit>>();
+        ai = GetComponent<AIComponent<Unit>>();
     }
 
     // Start is called before the first frame update

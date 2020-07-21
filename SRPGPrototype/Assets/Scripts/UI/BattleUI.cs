@@ -48,7 +48,7 @@ public class BattleUI : MonoBehaviour
         }
     }
 
-    private void EnterActionMenu(Combatant unit)
+    private void EnterActionMenu(Unit unit)
     {
         menu.Show(this, unit);
         cursor.OnClick = null;
@@ -64,7 +64,7 @@ public class BattleUI : MonoBehaviour
         EnterUnitSelection();
     }
 
-    public void EnterActionUI(Action action, Combatant unit)
+    public void EnterActionUI(Action action, Unit unit)
     {
         actionDescription.Hide();
         int currAction = 0;
@@ -77,7 +77,7 @@ public class BattleUI : MonoBehaviour
         cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntires);
     }
 
-    private void ExitActionUI(Combatant unit, ref List<TileUI.Entry> entries)
+    private void ExitActionUI(Unit unit, ref List<TileUI.Entry> entries)
     {
         if(entries != null)
         {
@@ -88,7 +88,7 @@ public class BattleUI : MonoBehaviour
         EnterActionMenu(unit);
     }
 
-    private void HighlightActionTarget(Vector2Int pos, Action action, Combatant unit, ref int currAction, ref List<TileUI.Entry> entries)
+    private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
         if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
@@ -98,7 +98,7 @@ public class BattleUI : MonoBehaviour
     }
 
 
-    private void SelectActionTarget(Vector2Int pos, Action action, Combatant unit, ref int currAction, ref List<TileUI.Entry> entries)
+    private void SelectActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
         if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
@@ -117,7 +117,7 @@ public class BattleUI : MonoBehaviour
         }
     }
 
-    private void CancelTargetSelection(Action action, Combatant unit, ref int currAction, ref List<TileUI.Entry> entries)
+    private void CancelTargetSelection(Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         if (currAction <= 0)
         {
@@ -143,7 +143,7 @@ public class BattleUI : MonoBehaviour
         return ret;
     }
 
-    public List<TileUI.Entry> ShowTargetPattern(TargetPattern p, Combatant user, Vector2Int target, TileUI.Type type)
+    public List<TileUI.Entry> ShowTargetPattern(TargetPattern p, Unit user, Vector2Int target, TileUI.Type type)
     {
         var ret = new List<TileUI.Entry>();
         foreach (var pos in p.Target(grid, user, target))

@@ -22,7 +22,7 @@ public class ActionMenu : MonoBehaviour
         };
     }
 
-    public void Show(BattleUI ui, Combatant unit)
+    public void Show(BattleUI ui, Unit unit)
     {
         var actions = new List<Action>(unit.Actions);
         actions.Sort((a1, a2) => a1.ActionType.CompareTo(a2.ActionType));

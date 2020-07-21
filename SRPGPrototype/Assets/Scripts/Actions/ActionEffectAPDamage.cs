@@ -7,12 +7,12 @@ public class ActionEffectAPDamage : ActionEffect
     public ProgramNumber damage = new ProgramNumber();
     private int damageNumber;
 
-    public override void Initialize(BattleGrid grid, Action action, Combatant user, List<Vector2Int> targetPositions)
+    public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
         damageNumber = damage.Value(action.Program);
     }
 
-    public override void ApplyEffect(BattleGrid grid, Action action, Combatant user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
     {
         var target = grid.Get(targetData.targetPos);
         if (target == null)
