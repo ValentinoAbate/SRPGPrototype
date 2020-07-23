@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1966410172860045962}
   - component: {fileID: 924881669996203}
+  - component: {fileID: 7614538173333979010}
   m_Layer: 0
   m_Name: PersistantData
   m_TagString: Untagged
@@ -45,6 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 55494175348055542}
+  combatData: {fileID: 7614538173333979010}
+--- !u!114 &7614538173333979010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966410172860045965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58392b6fd341a214b97f515283033afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterData: {fileID: 11400000, guid: 751383b8a655ce2489bcab5a5ed8f8ab, type: 2}
 --- !u!1 &4248664083197221016
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,11 @@ public class PlayerPhase : Phase
 
     public BattleUI ui;
 
-    public List<PlayerUnit> units = new List<PlayerUnit>();
+    private List<PlayerUnit> units = new List<PlayerUnit>();
 
-    public override void Initialize()
+    public override void Initialize(IEnumerable<Unit> allUnits)
     {
+        units = new List<PlayerUnit>(allUnits.Where((u) => u is PlayerUnit).Select((u) => u as PlayerUnit));
         units.ForEach((u) => u.Actions.ForEach((a) => a.TimesUsedThisBattle = 0));
     }
 

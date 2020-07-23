@@ -8,6 +8,9 @@ public class EncounterGenerator : MonoBehaviour
 {
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter, Vector2Int dimensions);
     public delegate float NextUnitWeighting(Unit u, Encounter encounter, Vector2Int dimensions);
+
+    public Encounter Generate(EncounterData data) => Generate(data.dimensions, data.budget, data.enemies, data.obstacles, data.seed);
+
     public Encounter Generate(Vector2Int dimensions, int budget, List<EnemyUnit> enemies, 
         List<ObstacleUnit> obstacles, Encounter seed = null)
     {
@@ -20,14 +23,14 @@ public class EncounterGenerator : MonoBehaviour
             encounter.reinforcements.AddRange(seed.reinforcements);
             positions = positions.Where((pos) => seed.units.All((unit) => unit.pos != pos)).ToList();
         }
-        // Populate with 
+        // Populate with enemies
         var availableUnits = new List<EnemyUnit>(enemies);
         availableUnits.RemoveAll((unit) => unit.EncounterData.cost > budget);
-        while (budget > 0 || availableUnits.Count <= 0)
+        while (budget > 0 && availableUnits.Count > 0)
         {
             var nextUnit = NextUnit(encounter, positions, availableUnits);
             encounter.units.Add(nextUnit);
-            budget -= (nextUnit.enemy as EnemyUnit).EncounterData.cost;
+            budget -= (nextUnit.unit as EnemyUnit).EncounterData.cost;
             // Remoave all units that are now too expensive
             availableUnits.RemoveAll((unit) => unit.EncounterData.cost > budget);
         }
@@ -39,7 +42,7 @@ public class EncounterGenerator : MonoBehaviour
         return new Encounter.UnitEntry() 
         { 
             pos = RandomU.instance.Choice(validPositions), 
-            enemy = RandomU.instance.Choice(enemies) 
+            unit = RandomU.instance.Choice(enemies) 
         };
     }
 

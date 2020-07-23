@@ -10,6 +10,7 @@ public class PersistantData : MonoBehaviour
 {
     public static PersistantData main;
     public Inventory inventory;
+    public CombatEventData combatData;
 
     private void Awake()
     {

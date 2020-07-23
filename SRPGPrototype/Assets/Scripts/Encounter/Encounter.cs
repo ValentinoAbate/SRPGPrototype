@@ -11,7 +11,7 @@ public class Encounter
     [System.Serializable]
     public struct UnitEntry
     {
-        public Vector2 pos;
-        public Unit enemy;
+        public Vector2Int pos;
+        public Unit unit;
     }
 }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
+  m_Name: EncounterTest
+  m_EditorClassIdentifier: 
+  dimensions: {x: 8, y: 8}
+  budget: 7
+  enemies:
+  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
+  - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
+  - {fileID: 4568531750757968395, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}
+  - {fileID: 3916272055479900397, guid: dd9b6a8d92c190f43bf3e0c3c8c1880a, type: 3}
+  - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
+  - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
+  obstacles:
+  - {fileID: 0}
+  seed:
+    units:
+    - pos: {x: 3, y: 5}
+      unit: {fileID: 493724828840264545, guid: d9eca834aabc2ae4b834ab9ed8985602, type: 3}
+    reinforcements: []

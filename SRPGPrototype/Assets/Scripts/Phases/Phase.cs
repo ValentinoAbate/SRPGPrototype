@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Phase : MonoBehaviour, IPausable
@@ -10,7 +11,7 @@ public abstract class Phase : MonoBehaviour, IPausable
     public PhaseManager manager;
     public GameObject phaseTransitionPrefab;
 
-    public virtual void Initialize()
+    public virtual void Initialize(IEnumerable<Unit> allUnits)
     {
 
     }
