@@ -1,5 +1,5 @@
 General Ideas:
-- Make the basic attack transient?
+- Make the basic attack transient - not really working, find some other downside
 - Basic move along path is additive with adjacents.
 - Negative space - scales / shapes with biggest adjacent empty space or number of empty spaces
 - Heal to full when installed - cannot be uninstalled
@@ -9,12 +9,13 @@ General Ideas:
 - AP goes up after each usage instead of uses per turn?
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
 
-Color Mapping:
-- Blue (circle): Move actions, Defense buffs, AP buffs, Abilities, Modifiers
-- Red (triangle): Attack actions, Power buffs, AP buffs, Abilities, Modifiers
-- Green (square): Support actions, HP buffs, Repair buffs, Abilities, Modifiers
-- Yellow (star): Hybrid actions, Speed buffs, Abilities, Modifiers
-- White (hexagon): Restrictions, Abilities, Modifiers
+Color Mapping (action type to color not really working right now):
+- Blue (circle): Move actions
+- Red (triangle): Attack actions
+- Green (square): Support actions
+- Yellow (star): Hybrid actions
+- White (hexagon): Programs whose colors are set by special means
+- Non-action programs may be any color
 - Shapes added for addional mapping and colorblind accesibility
 
 Shell concepts:
@@ -25,7 +26,8 @@ Shell concepts:
 	- o x s x o
 	- o i x i o
 	- o o o o o
-- Big Shell: A bigass shell that can only have 5 tile or bigger squares.
+- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 5x max hp, 2x AP, no adjacency 
+- Big Shell: A bigass shell that can only have certain number of programs installed and takes a penalty for any empty squares
 - Limit colors to low numbers
 - No common programs
 - Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
@@ -174,6 +176,7 @@ Passive:
 - Maybe have inventory be a limited grid
 
 Encounter Design:
+- Grid gets bigger after every boss -> 6 x 6 -> 7 x 7 -> 8 x 8
 - Base off of Dnd CR?
 - Each unit has a CR rating, and assemble an ecnounter based off a CR budget
 - Possibly give units a "Theme" tag too (heavy, ranged, diagonal, AOE, etc)?

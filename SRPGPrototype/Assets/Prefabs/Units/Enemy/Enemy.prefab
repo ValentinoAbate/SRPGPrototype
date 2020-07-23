@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
-  maxHP: 2
+  maxHP: 4
   maxAP: 2
   displayName: Enemy
   unitUI: {fileID: 5273064424718646244}

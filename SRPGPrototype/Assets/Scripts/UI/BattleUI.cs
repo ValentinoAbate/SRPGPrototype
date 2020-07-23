@@ -93,7 +93,7 @@ public class BattleUI : MonoBehaviour
         var subAction = action.subActions[currAction];
         if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
             return;
-        entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustPink);
+        entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustWhite);
 
     }
 

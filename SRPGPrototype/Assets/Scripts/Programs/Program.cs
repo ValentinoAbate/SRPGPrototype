@@ -7,9 +7,10 @@ public class Program : GridObject, ILootable
     public enum Color
     { 
         White,
-        Pink,
+        Red,
         Blue,
         Green,
+        Yellow,
     }
 
     [System.Flags]
@@ -19,6 +20,15 @@ public class Program : GridObject, ILootable
         Fixed = 1,
         Transient = 2,
     }
+
+    private static readonly Dictionary<Color, TileUI.Type> tileTypes = new Dictionary<Color, TileUI.Type>()
+    {
+        { Color.White, TileUI.Type.CustWhite },
+        { Color.Red, TileUI.Type.CustRed },
+        { Color.Blue, TileUI.Type.CustBlue },
+        { Color.Green, TileUI.Type.CustGreen },
+        { Color.Yellow, TileUI.Type.CustYellow },
+    };
 
     public Shell Shell { get; set; }
 
@@ -32,9 +42,9 @@ public class Program : GridObject, ILootable
     public Rarity Rarity => rarity;
     [SerializeField] Rarity rarity = Rarity.Common;
 
-    public TileUI.Type tileType;
+    public TileUI.Type TileType => tileTypes[color];
 
-    public Program.Color colors;
+    public Program.Color color;
     public Attributes attributes;
     public Pattern shape;
 
@@ -45,7 +55,7 @@ public class Program : GridObject, ILootable
         uiEntries.Clear();
         foreach (var shiftPos in shape.OffsetsShifted(pos))
         {
-            uiEntries.Add(grid.SpawnTileUI(shiftPos, tileType));
+            uiEntries.Add(grid.SpawnTileUI(shiftPos, TileType));
         }
         if (attributes.HasFlag(Attributes.Fixed))
         {

@@ -17,7 +17,7 @@ MonoBehaviour:
     max: 2147483647
     constant: 1
     modifier: 0
-    multiplier: 1
+    multiplier: 2
     type: 1
     attributes: 2
     color: 2

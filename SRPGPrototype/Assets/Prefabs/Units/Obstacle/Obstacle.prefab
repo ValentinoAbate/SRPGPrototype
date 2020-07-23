@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
-  maxHP: 3
+  maxHP: 5
   displayName: Obstacle
   unitUI: {fileID: 3639768143138655526}
 --- !u!1 &8683891458397964560

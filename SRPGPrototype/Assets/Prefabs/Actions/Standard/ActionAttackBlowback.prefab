@@ -15,7 +15,7 @@ MonoBehaviour:
   damage:
     min: -2147483648
     max: 2147483647
-    constant: 3
+    constant: 5
     modifier: 0
     multiplier: 1
     type: 0

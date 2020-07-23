@@ -51,7 +51,7 @@ public class ProgramNumber
         }
         else if(type == Type.NumberOfInstallsColor)
         {
-            number = p.Shell.Programs.Count((p2) => p2.program.colors == color);
+            number = p.Shell.Programs.Count((p2) => p2.program.color == color);
         }
         else if(type == Type.NumberOfInstallsRarity)
         {

@@ -88,6 +88,7 @@ public class PhaseManager : MonoBehaviour, IPausable
         var inv = PersistantData.main.inventory;
         inv.EquippedShell.Stats.DoRepair();
         inv.AddProgram(loot.programLoot.GetDropStandard(Loot<Program>.LootQuality.Standard), true);
+        inv.AddProgram(loot.programLoot.GetDropStandard(Loot<Program>.LootQuality.High), true);
         SceneTransitionManager.main.TransitionToScene("Cust");
     }
 

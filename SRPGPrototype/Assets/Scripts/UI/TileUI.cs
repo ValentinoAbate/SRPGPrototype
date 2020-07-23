@@ -12,8 +12,9 @@ public class TileUI : MonoBehaviour
         CustWhite,
         CustGreen,
         CustBlue,
-        CustPink,
+        CustRed,
         CustBlocked,
+        CustYellow,
     }
 
     public ObjDict tilePrefabs;

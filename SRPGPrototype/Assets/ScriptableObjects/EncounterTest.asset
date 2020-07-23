@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: EncounterTest
   m_EditorClassIdentifier: 
-  dimensions: {x: 8, y: 8}
+  dimensions: {x: 6, y: 6}
   budget: 7
   enemies:
   - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
@@ -25,6 +25,6 @@ MonoBehaviour:
   - {fileID: 0}
   seed:
     units:
-    - pos: {x: 3, y: 5}
+    - pos: {x: 3, y: 3}
       unit: {fileID: 493724828840264545, guid: d9eca834aabc2ae4b834ab9ed8985602, type: 3}
     reinforcements: []

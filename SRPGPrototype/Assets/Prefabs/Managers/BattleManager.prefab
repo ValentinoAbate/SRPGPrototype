@@ -695,7 +695,7 @@ MonoBehaviour:
   gridLinePrefab: {fileID: 7115104980351253505, guid: e159eea8336ea71448acca5c0e24e0ac,
     type: 3}
   tileUIManager: {fileID: 1130085307957486614}
-  dimensions: {x: 8, y: 8}
+  dimensions: {x: 6, y: 6}
 --- !u!114 &1130085307957486614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-    _keys: 010000000200000003000000040000000500000000000000
+    _keys: 01000000020000000300000004000000050000000000000006000000
     _values:
     - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
     - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
@@ -717,14 +717,16 @@ MonoBehaviour:
     - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
     - {fileID: 3889325369411212626, guid: 7a57fc64e6c46144dbcaaa12319ffd3d, type: 3}
     - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
+    - {fileID: 1589014949002309244, guid: e0cea48775c58654bae61c27b8f7f7e9, type: 3}
   colors:
-    _keys: 0000000001000000020000000300000004000000
+    _keys: 000000000100000002000000030000000400000006000000
     _values:
     - {r: 0, g: 0, b: 0, a: 0}
     - {r: 1, g: 1, b: 1, a: 0.8}
     - {r: 0, g: 1, b: 0.13333344, a: 0.8}
     - {r: 0, g: 0.2166667, b: 1, a: 0.8}
-    - {r: 1, g: 0, b: 0.8999996, a: 0.8}
+    - {r: 1, g: 0.00000011523565, b: 0, a: 0.8}
+    - {r: 0.98333335, g: 1, b: 0, a: 0.8}
 --- !u!1 &1130085308153283655
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTeams: 02000000
   moveAction: {fileID: 7964955809226106576}
   standardAction: {fileID: 2034959167970517371}
 --- !u!1001 &2411909252838232693
@@ -106,6 +107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: maxHP
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}

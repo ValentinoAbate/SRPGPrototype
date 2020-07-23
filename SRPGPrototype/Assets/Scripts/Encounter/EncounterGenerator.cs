@@ -33,6 +33,7 @@ public class EncounterGenerator : MonoBehaviour
             budget -= (nextUnit.unit as EnemyUnit).EncounterData.cost;
             // Remoave all units that are now too expensive
             availableUnits.RemoveAll((unit) => unit.EncounterData.cost > budget);
+            positions.Remove(nextUnit.pos);
         }
         return encounter;
     }

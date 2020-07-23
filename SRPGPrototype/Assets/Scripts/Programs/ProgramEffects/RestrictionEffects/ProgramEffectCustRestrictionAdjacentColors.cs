@@ -30,10 +30,10 @@ public class ProgramEffectCustRestrictionAdjacentColors : ProgramEffectCustRestr
                     var adjProgram = map[adj.x, adj.y];
                     if (adjProgram == null)
                         continue;
-                    if (adjProgram != program && adjProgram.colors == program.colors)
+                    if (adjProgram != program && adjProgram.color == program.color)
                     {
                         errorMessage = "Compille Error: Programs " + program.DisplayName + " and " + adjProgram.DisplayName 
-                            + " are adjacent and are both " + program.colors.ToString();
+                            + " are adjacent and are both " + program.color.ToString();
                         return true;
                     }
                 }
