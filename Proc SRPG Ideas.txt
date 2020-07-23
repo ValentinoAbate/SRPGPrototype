@@ -182,7 +182,7 @@ Encounter Design:
 - Limit unit list by area?
 - Inputs to generation alg:
 	- Grid dimensions?
-	- Number of units?
 	- Unit list?
+	- Optional: Number of units?
 	- Optional: "Theme" heur
 	- Optional: partially-constructed encounter to add to (like a seed encounter)

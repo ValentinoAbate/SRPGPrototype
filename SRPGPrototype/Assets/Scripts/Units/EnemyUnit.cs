@@ -27,6 +27,9 @@ public class EnemyUnit : Unit
     public override List<Action> Actions => ai.Actions;
 
     public UnitUI unitUI;
+    public EncounterUnitData EncounterData => encounterData;
+    [SerializeField]
+    private EncounterUnitData encounterData;
 
     private AIComponent<Unit> ai;
 
