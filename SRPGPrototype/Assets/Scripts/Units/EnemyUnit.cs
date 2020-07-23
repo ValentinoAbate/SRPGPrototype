@@ -29,7 +29,7 @@ public class EnemyUnit : Unit
     public UnitUI unitUI;
     public EncounterUnitData EncounterData => encounterData;
     [SerializeField]
-    private EncounterUnitData encounterData;
+    private EncounterUnitData encounterData = null;
 
     private AIComponent<Unit> ai;
 
