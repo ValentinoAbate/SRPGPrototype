@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Action : MonoBehaviour, IEnumerable<SubAction>
 {
@@ -11,23 +13,47 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         Hybrid,
     }
 
-    public bool Usable => TimesUsedThisBattle < maxUsesPerBattle && TimesUsedThisTurn < maxUsesPerTurn;
+    public enum Trigger
+    { 
+        Never,
+        TurnStart,
+        EncounterStart,
+    }
+
+
+    public bool Usable => true;
 
     public Program Program { get; set; }
 
     public Type ActionType => type;
     [SerializeField] Type type = Type.Standard;
 
-    public int APCost => apCost;
-    [SerializeField] private int apCost = 1;
+    public int APCost 
+    {
+        get
+        {
+            int usage = TimesUsed;
+            if (SlowdownReset == Trigger.TurnStart)
+                usage = TimesUsedThisTurn;
+            else if (SlowdownReset == Trigger.EncounterStart)
+                usage = TimesUsedThisBattle;
+            return baseAp + Slowdown * (usage / SlowdownInterval);
+        }
+    }
+    [SerializeField] private int baseAp = 1;
 
-    public int MaxUsesPerBattle => maxUsesPerBattle;
-    [SerializeField] private int maxUsesPerBattle = 10;
+    public int Slowdown => slowdown;
+    [SerializeField] private int slowdown = 1;
+
+    public int SlowdownInterval => slowdownInterval;
+    [SerializeField] private int slowdownInterval = 1;
+
+    public Trigger SlowdownReset => slowdownReset;
+    [SerializeField] private Trigger slowdownReset = Trigger.TurnStart;
+
+    public int TimesUsed { get; set; } = 0;
 
     public int TimesUsedThisBattle { get; set; } = 0;
-
-    public int MaxUsesPerTurn => maxUsesPerTurn;
-    [SerializeField] private int maxUsesPerTurn = 3;
 
     public int TimesUsedThisTurn { get; set; } = 0;
 
@@ -52,6 +78,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public void Use(Unit user)
     {
         user.AP -= APCost;
+        ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
         if (Program == null)
@@ -66,6 +93,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     {
         TimesUsedThisTurn = other.TimesUsedThisTurn;
         TimesUsedThisBattle = other.TimesUsedThisBattle;
+        TimesUsed = other.TimesUsed;
     }
 
     public IEnumerator<SubAction> GetEnumerator()

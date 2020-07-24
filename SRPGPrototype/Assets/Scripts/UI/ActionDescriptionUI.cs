@@ -20,10 +20,10 @@ public class ActionDescriptionUI : MonoBehaviour
         descText.text = string.Empty; // add description later
         attributesText.text = string.Empty; // this is also for later
         apCostNumberText.text = action.APCost.ToString();
-        int usesThisTurn = action.MaxUsesPerTurn - action.TimesUsedThisTurn;
-        usesPerTurnNumberText.text = usesThisTurn + " / " + action.MaxUsesPerTurn;
-        int usesThisBattle = action.MaxUsesPerBattle - action.TimesUsedThisBattle;
-        usesPerBattleNumberText.text = usesThisBattle + " / " + action.MaxUsesPerBattle;
+        //int usesThisTurn = action.MaxUsesPerTurn - action.TimesUsedThisTurn;
+        //usesPerTurnNumberText.text = usesThisTurn + " / " + action.MaxUsesPerTurn;
+        //int usesThisBattle = action.MaxUsesPerBattle - action.TimesUsedThisBattle;
+        //usesPerBattleNumberText.text = usesThisBattle + " / " + action.MaxUsesPerBattle;
     }
 
     public void Hide()

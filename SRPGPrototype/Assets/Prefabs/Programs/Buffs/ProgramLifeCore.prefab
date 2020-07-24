@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAPModifier: 0
-  maxHpModifier: 10
+  maxHpModifier: 9
   repairModifier: 0
 --- !u!1001 &6785089121717232676
 PrefabInstance:

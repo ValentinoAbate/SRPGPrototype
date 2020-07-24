@@ -6,4 +6,5 @@
     Boss,
     Unique,
     PreInstall,
+    Debug,
 }

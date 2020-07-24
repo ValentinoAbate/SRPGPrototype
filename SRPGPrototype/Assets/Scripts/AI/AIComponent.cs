@@ -58,8 +58,8 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
             // If any of the target positions targeting this square contain a player unit
             if (sub.targetPattern.Target(grid, self, pos).Any((p) => targets.Any((target) => p == target.Pos)))
             {
-                moveAction.Use(self);
                 sub.Use(grid, moveAction, self, pos);
+                moveAction.Use(self);
                 yield return new WaitForSeconds(moveDelay);
                 yield break;
             }
@@ -67,8 +67,8 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos))));
         // Else find the position that can be moved to that brings us closest to a player unit
         var closestPos = posByPathDist.OrderBy((t) => t.value).First().pos;
-        moveAction.Use(self);
         sub.Use(grid, moveAction, self, closestPos);
+        moveAction.Use(self);
         yield return new WaitForSeconds(moveDelay);
     }
 

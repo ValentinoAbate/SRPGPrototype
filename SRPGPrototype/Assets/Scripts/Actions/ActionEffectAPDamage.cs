@@ -9,7 +9,8 @@ public class ActionEffectAPDamage : ActionEffect
 
     public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
-        damageNumber = damage.Value(action.Program);
+        damageNumber = 0;
+        damageNumber += damage.Value(action.Program);
     }
 
     public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)

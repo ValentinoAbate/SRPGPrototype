@@ -8,7 +8,7 @@ using UnityEngine;
 public class ProgramNumber
 {
     public enum Type
-    {
+    { 
         Constant,
         NumberOfInstallsAtrribute,
         NumberOfInstallsRarity,

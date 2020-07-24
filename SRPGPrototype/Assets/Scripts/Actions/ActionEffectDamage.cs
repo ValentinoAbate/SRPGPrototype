@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectDamage : ActionEffect
+public abstract class ActionEffectDamage : ActionEffect
 {
-    public ProgramNumber damage = new ProgramNumber();
-    private int damageNumber;
+    private int baseDamage;
 
     public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
-        damageNumber = damage.Value(action.Program);
+        baseDamage = BaseDamage(grid, action, user, targetPositions);
     }
 
     public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
@@ -17,7 +16,12 @@ public class ActionEffectDamage : ActionEffect
         var target = grid.Get(targetData.targetPos);
         if (target == null)
             return;
-        target.Damage(damageNumber);
-        Debug.Log(target.DisplayName + " takes " + damageNumber.ToString() + " damage and is now at " + target.HP + " hp");
+        int damage = baseDamage + TargetModifier(grid, action, user, target, targetData);
+        target.Damage(damage);
+        Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + target.HP + " hp");
     }
+
+    public abstract int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions);
+
+    public abstract int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData);
 }

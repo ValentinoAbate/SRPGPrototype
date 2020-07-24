@@ -49,7 +49,9 @@ Special Effects:
 - Pattern is adjacent area / negative space
 
 Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always have a min/max
+-> Basic numbers
 + Constant
+-> Program / Shell numbers
 + Number of [attribute] programs installed (- action type)
 - Number of [attribute] squares installed
 - Highest/lowest adjacent programs/square of [attribute]
@@ -58,6 +60,12 @@ Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always h
 - Target/user value of [stat]
 + Dimensions of the shell
 + Coordinate of install position
+-> Action numbers
+- Ap cost
+- Number of targets hit
+- Number of Uses this turn
+- Number of Uses this battle
+- Number of Uses
 
 Stats: quantities availible to the player. 
 + MaxAP (min: 0, max: none)
@@ -105,6 +113,8 @@ Attributes: Attributes of a program, common attributes are the program colors
 - Unstable ([trigger]) - Destroy when triggered
 - Transforms ([trigger]) - Permanently Change to Unknown program when triggered
 - Promotes ([trigger], [time]) - Changes to promoted program effects when triggered (until time has passed)
+- Quickdraw - Can only use a the beginning of the turn
+- Ambush - Can only be used at the beginning of the battle
 
 Time: An amount of time
 - [x] encounters
@@ -159,17 +169,13 @@ Cust resrictions:
 - Can't use more/less than [x] colors
 - Can't use more/less than [x] programs
 - Can't use more/less than [x] of [type] of program
--
 
 Recurring enemies that build shells and have the same macro mechanics as you do:
 - Maybe simulate them playing the game, or use other players' data?
 - Based on "Rivals" from pokemon
 - Procedurally generate / select their goals, and have them be helpful or antagonistic depending on if what the player is doing helps or hinders those goals
 
-
 Passive:
-
-
 
 - Promotion mechanics (Shogi? Look into mini-shogi), maybe macro level upgrades with specific conditions? Maybe micro mid-encounter.
 - Maybe look into battleship?

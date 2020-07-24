@@ -48,4 +48,13 @@ public class EnemyUnit : Unit
     {
         yield return StartCoroutine(ai.DoTurn(grid, this));
     }
+
+    public override IEnumerator OnPhaseStart()
+    {
+        foreach(var action in Actions)
+        {
+            action.TimesUsedThisTurn = 0;
+        }
+        yield break;
+    }
 }

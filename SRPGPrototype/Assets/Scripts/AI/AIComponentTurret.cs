@@ -25,8 +25,8 @@ public class AIComponentTurret : AIComponent<Unit>
         {
             while(self.AP >= standardAction.APCost)
             {
-                self.AP -= standardAction.APCost;
                 subAction.Use(grid, standardAction, self, self.Pos);
+                standardAction.Use(self);
             }
             yield break;
         }
@@ -38,8 +38,8 @@ public class AIComponentTurret : AIComponent<Unit>
             // Use standard action if target is found
             if (tPos != BattleGrid.OutOfBounds)
             {
-                standardAction.Use(self);
                 subAction.Use(grid, standardAction, self, tPos);
+                standardAction.Use(self);
                 yield return new WaitForSeconds(attackDelay);
                 Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
             }

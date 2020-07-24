@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EncounterTest
   m_EditorClassIdentifier: 
   dimensions: {x: 6, y: 6}
-  budget: 7
+  budget: 8
   enemies:
   - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
   - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}

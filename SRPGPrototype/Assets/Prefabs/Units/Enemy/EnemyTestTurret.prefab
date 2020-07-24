@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b293ebde5f8dccd4e991dc6915da4526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTeams: 
+  targetTeams: 02000000
   standardAction: {fileID: 557204853145740273}
 --- !u!1001 &4114761651338947040
 PrefabInstance:
