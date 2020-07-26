@@ -66,6 +66,8 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         }
         var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos))));
         // Else find the position that can be moved to that brings us closest to a player unit
+        if (posByPathDist.Count() <= 0)
+            yield break;
         var closestPos = posByPathDist.OrderBy((t) => t.value).First().pos;
         sub.Use(grid, moveAction, self, closestPos);
         moveAction.Use(self);

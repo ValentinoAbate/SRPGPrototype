@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,6 +21,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         EncounterStart,
     }
 
+    public bool UsesPower => subActions.Any((s) => s.UsesPower);
 
     public bool Usable => true;
 
@@ -81,6 +83,10 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
+        if (UsesPower)
+        {
+            user.Power.Use();
+        }
         if (Program == null)
             return;
         if(Program.attributes.HasFlag(Program.Attributes.Transient))

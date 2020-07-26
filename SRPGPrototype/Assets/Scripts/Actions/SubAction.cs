@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SubAction : MonoBehaviour
 {
+    public bool UsesPower => effects.Any((e) => e.UsesPower);
     public bool hasRange = false;
     public bool hasPattern = false;
     public Pattern range;
@@ -30,5 +32,6 @@ public class SubAction : MonoBehaviour
                 effect.ApplyEffect(grid, action, user, new ActionEffect.PositionData(position, selectedPos));
             }
         }
+        user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targetPositions);
     }
 }

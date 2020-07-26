@@ -23,6 +23,11 @@ public class Shell : MonoBehaviour, ILootable
     public IEnumerable<Action> Actions => actions;
     private List<Action> actions = new List<Action>();
 
+    public Unit.OnAfterSubAction AbilityOnAfterSubAction { get; private set; }
+
+    public IEnumerable<Unit.AbilityOnBattleStart> BattleStartAbilities => battleStartAbilities;
+    private List<Unit.AbilityOnBattleStart> battleStartAbilities = new List<Unit.AbilityOnBattleStart>();
+
     public Stats Stats { get; set; } = new Stats();
 
     [HideInInspector] public Program[,] installMap;
@@ -98,7 +103,7 @@ public class Shell : MonoBehaviour, ILootable
             }
         }
         // Check Max Hp
-        if(compileData.stats.MaxHp <= 0)
+        if(compileData.stats.MaxHP <= 0)
         {
             Debug.LogWarning("Compile Error: Max Hp <= 0");
             newActions.ForEach((a) => Destroy(a.gameObject));
@@ -116,6 +121,8 @@ public class Shell : MonoBehaviour, ILootable
                 return false;
             }
         }
+        // Apply abilities
+        AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
         // Apply compile changes to actions and stats
         Stats.SetShellValues(compileData.stats);
         // Copy Temporary values of already instantiated actions to their newly generated copies
@@ -137,11 +144,13 @@ public class Shell : MonoBehaviour, ILootable
         public Stats stats;
         public List<Action> actions;
         public List<Restriction> restrictions;
+        public Unit.OnAfterSubAction abilityOnAfterSubAction;
         public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
         {
             this.stats = stats;
             this.actions = actions;
             this.restrictions = restrictions;
+            abilityOnAfterSubAction = null;
         }
     }
 

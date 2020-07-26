@@ -7,17 +7,25 @@ public class PlayerUnit : Unit
 {
     public override Team UnitTeam => Team.Player;
 
-    public override int MaxHP => Stats.MaxHp;
+    public override int MaxHP { get => Stats.MaxHP; set => Stats.MaxHP = value; }
 
-    public override int HP { get => Stats.Hp; protected set { Stats.Hp = value; unitUI.Hp = value; } }
+    public override int HP { get => Stats.HP; protected set { Stats.HP = value; unitUI.Hp = value; } }
 
-    public override int MaxAP => Stats.MaxAP;
+    public override int MaxAP { get => Stats.MaxAP; set => Stats.MaxAP = value; }
 
     public override int AP { get => ap; set { ap = value; unitUI.AP = value; } }
     private int ap = 0;
 
-    [SerializeField] private string displayName = string.Empty;
+    public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
+
+    public override CenterStat Power => Stats.Power;
+    public override CenterStat Speed => Stats.Speed;
+    public override CenterStat Defense => Stats.Defense;
+
+    public override OnAfterSubAction OnAfterSubActionFn => Shell.AbilityOnAfterSubAction;
+
     public override string DisplayName => displayName;
+    [SerializeField] private string displayName = string.Empty;
 
     public override Shell Shell => PersistantData.main.inventory.EquippedShell;
 

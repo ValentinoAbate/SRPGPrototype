@@ -5,6 +5,10 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public abstract class Unit : GridObject
 {
+    public delegate void AbilityOnBattleStart(BattleGrid grid, Unit unit);
+
+    public delegate void OnAfterSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Vector2Int> targetPositions);
+
     public enum Team
     { 
         None,
@@ -13,11 +17,16 @@ public abstract class Unit : GridObject
     }
 
     public abstract Team UnitTeam { get; }
-    public abstract int MaxHP { get; }
+    public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }
     public bool Dead => HP <= 0;
-    public abstract int MaxAP { get; }
+    public abstract int MaxAP { get; set; }
     public abstract int AP { get; set; }
+    public abstract int Repair { get; set; }
+    public abstract CenterStat Power { get; }
+    public abstract CenterStat Speed { get; }
+    public abstract CenterStat Defense { get; }
+    public abstract OnAfterSubAction OnAfterSubActionFn { get; } 
     public abstract string DisplayName { get; }
 
     public abstract Shell Shell { get; }
@@ -46,6 +55,12 @@ public abstract class Unit : GridObject
     public bool CanUseAction(Action action)
     {
         return AP >= action.APCost;
+    }
+
+    public void UseAction(Action action)
+    {
+
+
     }
 
 

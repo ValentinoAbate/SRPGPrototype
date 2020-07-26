@@ -11,7 +11,7 @@ public class ProgramEffectModifyStat : ProgramEffect
     public override void ApplyEffect(Program program, ref Shell.CompileData data)
     {
         data.stats.MaxAP += maxAPModifier;
-        data.stats.MaxHp += maxHpModifier;
+        data.stats.MaxHP += maxHpModifier;
         data.stats.Repair += repairModifier;
     }
 }
