@@ -58,8 +58,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
             // If any of the target positions targeting this square contain a player unit
             if (sub.targetPattern.Target(grid, self, pos).Any((p) => targets.Any((target) => p == target.Pos)))
             {
+                moveAction.StartAction(self);
                 sub.Use(grid, moveAction, self, pos);
-                moveAction.Use(self);
+                moveAction.FinishAction(self);
                 yield return new WaitForSeconds(moveDelay);
                 yield break;
             }
@@ -69,8 +70,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         if (posByPathDist.Count() <= 0)
             yield break;
         var closestPos = posByPathDist.OrderBy((t) => t.value).First().pos;
+        moveAction.StartAction(self);
         sub.Use(grid, moveAction, self, closestPos);
-        moveAction.Use(self);
+        moveAction.FinishAction(self);
         yield return new WaitForSeconds(moveDelay);
     }
 

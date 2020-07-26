@@ -77,13 +77,20 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
             new List<SubAction>(GetComponentsInChildren<SubAction>());
     }
 
-    public void Use(Unit user)
+    private bool zeroPower = false;
+
+    public void StartAction(Unit user)
+    {
+        zeroPower = user.Power.Zero;
+    }
+
+    public void FinishAction(Unit user)
     {
         user.AP -= APCost;
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
-        if (UsesPower)
+        if (UsesPower && !zeroPower)
         {
             user.Power.Use();
         }

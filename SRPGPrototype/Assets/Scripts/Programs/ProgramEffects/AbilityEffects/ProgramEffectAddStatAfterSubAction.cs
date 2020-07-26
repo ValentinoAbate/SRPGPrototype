@@ -28,7 +28,7 @@ public class ProgramEffectAddStatAfterSubAction : ProgramEffectAddOnAfterSubActi
                 user.Repair += value;
                 break;
             case Stats.StatName.Power:
-                user.Power.Value += action.UsesPower ? value + 1 : value;
+                user.Power.Value += value;
                 break;
             case Stats.StatName.Speed:
                 user.Speed.Value += value;

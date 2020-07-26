@@ -68,6 +68,7 @@ public class BattleUI : MonoBehaviour
     {
         actionDescription.Hide();
         int currAction = 0;
+        action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();
         var targetPatternEntires = new List<TileUI.Entry>();
         targetRangeEntries = ShowPattern(action.subActions[currAction].range, unit.Pos, TileUI.Type.CustGreen);
@@ -108,7 +109,7 @@ public class BattleUI : MonoBehaviour
         cursor.OnUnHighlight?.Invoke(pos);
         if (++currAction >= action.subActions.Count)
         {
-            action.Use(unit);
+            action.FinishAction(unit);
             EnterUnitSelection();
         }
         else

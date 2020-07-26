@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CenterStat
 {
+    public bool Zero => Value == 0;
     public int Value { get => value; set => this.value = value; }
     [SerializeField] private int value;
 
