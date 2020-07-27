@@ -38,7 +38,7 @@ public class Stats
 
     public void DoRepair()
     {
-        MaxHP += Repair;
+        HP += Repair;
         Repair = baseRepair;
     }
 
