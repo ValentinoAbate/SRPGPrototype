@@ -1,15 +1,16 @@
 General Ideas:
-- Make the basic attack transient - not really working, find some other downside
+- Make the basic attack transient - (not really working, find some other downside)
 - Basic move along path is additive with adjacents.
 - Negative space - scales / shapes with biggest adjacent empty space or number of empty spaces
 - Heal to full when installed - cannot be uninstalled
 - Cannot switch shells while uninstalled
-- Moves should cost low AP compared to standard actions?
+- Moves should cost low AP compared to standard actions? (maybe move base 1, standard base 2)?
 - program fusion
-- AP goes up after each usage instead of uses per turn?
+- AP goes up after each usage instead of uses per turn - implemented, seems better)
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
+- Matryoshka enemies that unpack when killed (for area chains)
 
-Color Mapping (action type to color not really working right now):
+Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions
 - Red (triangle): Attack actions
 - Green (square): Support actions
@@ -18,19 +19,24 @@ Color Mapping (action type to color not really working right now):
 - Non-action programs may be any color
 - Shapes added for addional mapping and colorblind accesibility
 
-Shell concepts:
-- Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
-- Concentric circles (Uncommon): any program installed in "s" counts as adjacent to all other programs
- 	- o o o o o
-	- o i x i o
-	- o x s x o
-	- o i x i o
-	- o o o o o
-- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 5x max hp, 2x AP, no adjacency 
-- Big Shell: A bigass shell that can only have certain number of programs installed and takes a penalty for any empty squares
-- Limit colors to low numbers
-- No common programs
-- Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
+Shell Capacity:
+- Each shell has 3 capacity levels. 
+	- When the sum total of the "capacity" values of installed programs reaches 2, the shell capacity upgrades to level 2.
+	- When the sum total of the "capacity" values of installed programs reaches 5, the shell capacity upgrades to level 3.
+	- "Small" shells start at level 0. They reach level 1 at 1 capacity upgrade, and level 2 at 3
+	- "Large" shells start at level 2. They reach level 3 at 3 capacity upgrades, and level 4 at 7
+	- "Full progression" shells start at level 0. They reach a level at 2 x the level (ex: level 3 at 6 capacity)
+	- Programs that give capacity cannot be uninstalled while uninstalling them would be any currently installed programs illegal
+- Level 0: Shells are 4 x 4, with and average of 8-12 squares open
+	- A shell cannot actually be at this level
+	- Small level 1 shells have this pattern
+- Level 1: Shells are 5 x 5, with an average of 14-18 squares open
+	- The default level of all shells
+- Level 2: Shells are 6 x 6, with an average of 24-28 sqaures open
+	- shells either into one corner
+- Level 3: Shells are 7 x 7, with an average of 34-38 squares open
+	- shells expand into the opposite corner 
+- Level 4: Shells are 8 x 8, with an average of 44-48 
 
 Themes: Themes for a player to build a deck around
 - DOT
@@ -61,11 +67,13 @@ Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always h
 + Dimensions of the shell
 + Coordinate of install position
 -> Action numbers
-- Ap cost
-- Number of targets hit
-- Number of Uses this turn
-- Number of Uses this battle
-- Number of Uses
++ Ap cost
++ Number of targets hit
++ Number of Uses this turn
++ Number of Uses this battle
++ Number of Uses
+- Slowdown
+- Slowdown rate
 
 Stats: quantities availible to the player. 
 + MaxAP (min: 0, max: none)
@@ -73,7 +81,7 @@ Stats: quantities availible to the player.
 + MaxHP (min: 0, max: none) - Recharges to shell level at end of encounter. 0 means you die.
 + HP (min: 0, max: MaxHP)
 + Repair (min: 0, max: none) - Added to your hp and then resets to shell level after repairing
-- Power (min: none, max: none) - Added to the damage of any effect. gets one closer to zero after being used. resets to shell level after an encounter
++ Power (min: none, max: none) - Added to the damage of any effect. gets one closer to zero after being used. resets to shell level after an encounter
 - Speed (min: none, max: none) - Subtracted from the AP cost of any action. Get one closer to zero after being applied. resets to shell level after an encounter
 - Defense (min: none, max: none) - Subtracted from any damage taken. Get closer to zero after being applied. resets to shell level after an encounter.
 
@@ -83,7 +91,7 @@ Effects: Apply to a pattern
 - Steal [x] hp
 - Steal [x] hp as [stat]
 - Steal [stat] as [stat]
-- Deal [x] [stat] damage
++ Deal [x] [stat] damage
 	- Deal AP damage equal to enemy speed
 + Reduce [x] AP
 - Move to end of [path]
@@ -115,6 +123,7 @@ Attributes: Attributes of a program, common attributes are the program colors
 - Promotes ([trigger], [time]) - Changes to promoted program effects when triggered (until time has passed)
 - Quickdraw - Can only use a the beginning of the turn
 - Ambush - Can only be used at the beginning of the battle
+- Shatter - destroy after hit for [x] or more damage (pair with defense)
 
 Time: An amount of time
 - [x] encounters
@@ -133,14 +142,18 @@ Modifiers: These effects modify other programs in a certain scope (see scope)
 - [scope] transient programs have [x] more uses. (pair with fixed, unstable - any/all modified programs are destroyed)
 - Add [attribute] to [scope] (Fixed, transient, color, etc. pair with fixed)
 - Apply cost to [scope] programs
+- [scope] blocked cust squares become open. Gains Fixed when a program is installed in any opened slot that isn't also opened from another source
+	- [scope] = adjacent
 
 Abilities: These effects give the player special passive abilities
 - AP carries over to next turn (pair with -AP gain)
 - AP doesn't recharge at the end of the turn (pair with + MaxAP)
-- HP fully recharges at the end of the battle (Pair with -MaxHP)
+- HP fully recharges at the end of the battle (Pair with -MaxHP or maybe half max hp)
+	- Your base repair is always equal to your max hp (more interesting)
 - Any AP left at the end of the turn is dealt as damage (Pair with positive effect)
 - You can go into [x] repair debt (damages you at repair)
-- You can go into [x] AP dept (damages you when AP rechanges)
+- You can go into [x] AP dept (damages you when AP rechanges, maybe subtracts from your next turn)
+	- Pair with actions / abilities that get worse with positive AP
 - Using the same action more than once in a turn [scales] it
 - Actions can be lowered to 0 AP (pair with -uses per turn / battle modifiers)
 - MaxHP + [x], Unstable HP <= [y]
@@ -163,7 +176,7 @@ Action conditions:
 - Can't use any other action this turn
 
 Cust resrictions:
-+ Can't/must put same colors next to each other (Only can't rn)
++/- Can't/must put same colors next to each other (Only can't rn)
 - Can't have a program that is adjacent to two or more programs of different colors
 - Can't/must use [color] color
 - Can't use more/less than [x] colors
@@ -182,7 +195,7 @@ Passive:
 - Maybe have inventory be a limited grid
 
 Encounter Design:
-- Grid gets bigger after every boss -> 6 x 6 -> 7 x 7 -> 8 x 8
+- Grid gets bigger after every boss -> 6 x 6 -> 7 x 7 -> 8 x 8 (maybe 5 -> 6 -> 7 to match shells?)
 - Base off of Dnd CR?
 - Each unit has a CR rating, and assemble an ecnounter based off a CR budget
 - Possibly give units a "Theme" tag too (heavy, ranged, diagonal, AOE, etc)?
@@ -195,3 +208,13 @@ Encounter Design:
 	- Optional: Number of units?
 	- Optional: "Theme" heur
 	- Optional: partially-constructed encounter to add to (like a seed encounter)
+
+Map Design:
+- All events are on a combat grid (even if they do not contain enemies) - most will
+	- Think FE rekka no ken
+- Loot is visible as battle mystery data (think mmbn6)
+- Special Events (merchant, etc) are NPCs or locations in the map
+- Branching map, or maybe just choose next from three (possibly with the ability to scout forward)
+- 4 levels of info - unknown, hint, field view, field view with details
+- Have some be ambushes where extra reinforcements spawn or another NPC shows up, etc
+- Some squares might be corrupted and unviewable 

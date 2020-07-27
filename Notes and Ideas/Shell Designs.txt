@@ -1,0 +1,327 @@
+Shell Concepts:
+- Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
+- Spacial Nexus (Uncommon): any program installed in "s" counts as adjacent to all other programs
+ 	- o o o o o
+	- o i x i o
+	- o x s x o
+	- o i x i o
+	- o o o o o
+
+ 	- o o o o o o 
+	- o i x i o x
+	- o x s x o x
+	- o i x i o x
+	- o o o o o o
+	- o x x x o o
+
+	- o o x x x o o
+	- o o o o o o o 
+	- x o i x i o x
+	- x o x s x o x
+	- x o i x i o x
+	- o o o o o o o
+	- o o x x x o o
+- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: low maxhp, maxap, and repair, no adjacency 
+- Big Shell: A [Large] shell that can only have certain number of programs installed and takes a penalty for any empty squares
+- Limit colors to low numbers
+- Treaure Hunter: No common programs can be installed. Higher chance at uncommmon and rare loot
+	- Show when the effect activates on loot screen
+- Hidden potential: A [Full progression] shell that can't have capacity upgrades installed, but unlocks pre-installed capacity ugrades under certain conditions
+- Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
+- A shell where the pre-installs have to connect a path between all preinstalls for a bonus
+- A shell with blokus rules, but is fairly open otherwise (maybe large)?
+- Snake Shell - Give it some sort of buff
+	- o o o o o
+	- o i x x i
+	- o o o o o
+	- i x x i o
+	- o o o o o
+
+	(programs may not be installed in squares marked r and open squares at the same time
+	- o o o o o r
+	- o i x x i x
+	- o o o o o r
+	- i x x i o r
+	- o o o o o r
+	- x r r r r x
+
+	- x r r r r r x
+	- r o o o o o r
+	- r o i x x i x
+	- r o o o o o r
+	- x i x x i o r
+	- r o o o o o r
+	- x r r r r r x
+- Gamble Shell (Unique/Gamble/Shop)? - Boosts luck-based effects. Installed Programs with Capacity gain Fixed. Random restriction and starting stats.
+ 	- (? = has a 33% chance of being blocked)
+	- i ? ? ? i
+	- ? o o o ?
+	- ? o o o ?
+	- ? o o o ?
+	- i ? ? ? i
+	(u = determed by previous level)
+ 	- i u u u i ?
+	- u o o o u ?
+	- u o o o u ?
+	- u o o o u ?
+	- i u u u i ?
+	- ? ? ? ? ? o
+	(u = determed by previous level)
+	- o ? ? ? ? ? o
+ 	- ? i u u u i u
+	- ? u o o o u u
+	- ? u o o o u u
+	- ? u o o o u u
+	- ? i u u u i u
+	- o u u u u u o
+- Big Gamble Shell (Unique/Gamble/Shop)? - Strongly boost luck-based effects. Installed Programs with Capacity gain Fixed. Widely random starting stats and restriction
+ 	- (? = has a 25% chance of being blocked)
+	- i ? ? ? i
+	- ? ? ? ? ?
+	- ? ? ? ? ?
+	- ? ? ? ? ?
+	- i ? ? ? i
+
+ 	- i u u u i ?
+	- u u u u u ?
+	- u u u u u ?
+	- u u u u u ?
+	- i u u u i ?
+	- ? ? ? ? ? ?
+
+	- ? ? ? ? ? ? ?
+ 	- ? i u u u i u
+	- ? u u u u u u
+	- ? u u u u u u
+	- ? u u u u u u
+	- ? i u u u i u
+	- ? u u u u u u
+All In (Unique/Gamble/Shop)? - Large. Strongly boost luck-based effects. Winning a gamble has greater rewards, but losing a gamble has greater penalties. Installed Programs with Capacity gain Fixed. Widely random starting stats and restriction
+ 	- (? = has a 40% chance of being blocked)
+	- i ? ? ? ? i
+	- ? ? ? ? ? ?
+	- ? ? ? ? ? ?
+	- ? ? ? ? ? ?
+	- ? ? ? ? ? ?
+	- i ? ? ? ? i
+
+	- (u = determed by previous level)
+	- i u u u u i ?
+	- u u u u u u ?
+	- u u u u u u ?
+	- u u u u u u ?
+	- u u u u u u ?
+	- i u u u u i ?
+	- ? ? ? ? ? ? ?
+
+	- (u = determed by previous level)
+	- ? ? ? ? ? ? ? ?
+	- ? i u u u u i u
+	- ? u u u u u u u
+	- ? u u u u u u u
+	- ? u u u u u u u
+	- ? u u u u u u u
+	- ? i u u u u i u
+	- ? u u u u u u u
+- Growth: The player chooses [q] squares out of the ones marked ? to close (all others become open). All programs with Capacity installed gain Fixed.
+	- (not final, core could be anything)
+	- i o o o i
+	- o x o x o
+	- o o x o o
+	- o x o x o
+	- i o o o i
+
+	- [q = 3]
+	- i o o o i ?
+	- o x o x o ?
+	- o o x o o ?
+	- o x o x o ?
+	- i o o o i ?
+	- ? ? ? ? ? ?
+
+	- [q = 5] (u is determined by Level 2 choices)
+	- ? ? ? ? ? ? ?
+	- ? i o o o i u
+	- ? o x o x o u
+	- ? o o x o o u
+	- ? o x o x o u
+	- ? i o o o i u
+	- ? u u u u u u
+
+Basic Shell Shapes (Could be applied to multiple concepts)
+
+- X Shell: No adjacent same colors
+	- i o o o i
+	- o x o x o
+	- o o x o o
+	- o x o x o
+	- i o o o i
+	
+	- i o o o i o
+	- o x o x o o
+	- o o x o o o
+	- o x o x o o
+	- i o o o i o
+	- o o o o o x
+
+	- x o o o o o x
+	- o i o o o i o
+	- o o x o x o o
+	- o o o x o o o
+	- o o x o x o o
+	- o i o o o i o
+	- x o o o o o x
+- Stripe Shell (H) - Boosts actions with (H) in their title
+	- o o o o o
+	- i x x x i
+	- o o o o o
+	- i x x x i
+	- o o o o o
+
+	- o o o o o o
+	- i x x x i x
+	- o o o o o o
+	- i x x x i x
+	- o o o o o o
+	- o o o o o o
+
+	- o o o o o o o
+	- o o o o o o o
+	- x i x x x i x
+	- o o o o o o o
+	- x i x x x i x
+	- o o o o o o o
+	- o o o o o o o
+
+- Stripe Shell (V) - Boosts actions with (V) in their title
+	- o i o i o
+	- o x o x o
+	- o x o x o
+	- o x o x o
+	- o i o i o
+
+	- o i o i o o
+	- o x o x o o
+	- o x o x o o
+	- o x o x o o
+	- o i o i o o
+	- o x o x o o
+
+	- o o x o x o o
+	- o o i o i o o
+	- o o x o x o o
+	- o o x o x o o
+	- o o x o x o o
+	- o o i o i o o
+	- o o x o x o o
+
+- S Shell
+	- o o o o o
+	- o i x x i
+	- o o o o o
+	- i x x i o
+	- o o o o o
+
+	- o o o o o o
+	- o i x x i x
+	- o o o o o o
+	- i x x i o o
+	- o o o o o o
+	- x o o o o x
+
+	- x o o o o o x
+	- o o o o o o o
+	- o o i x x i x
+	- o o o o o o o
+	- x i x x i o o
+	- o o o o o o o
+	- x o o o o o x
+- Cross Shell: Bonus Against vampires
+	- o o i o o
+	- x i i i x
+	- o o i o o
+	- o o i o o
+	- o o x o o
+
+	- o o i o o o
+	- x i i i x x
+	- o o i o o o
+	- o o i o o o
+	- o o x o o o
+	- o o x o o o
+
+	- o o o x o o o
+	- o o o i o o o
+	- x x i i i x x
+	- o o o i o o o
+	- o o o i o o o
+	- o o o x o o o
+	- o o o x o o o
+- + Shell:
+	- o o i o o
+	- o o x o o
+	- i x x x i
+	- o o x o o
+	- o o i o o
+	
+	- o o i o o o
+	- o o x o o o
+	- i x x x i x
+	- o o x o o o
+	- o o i o o o
+	- o o x o o o
+
+	- o o o x o o o
+	- o o o i o o o
+	- o o o x o o o
+	- x i x x x i x
+	- o o o x o o o
+	- o o o i o o o
+	- o o o x o o o
+
+- Large + Shell: Large
+	- o o o o o o
+	- o o i i o o
+	- o i x x i o
+	- o i x x i o
+	- o o i i o o
+	- o o o o o o
+	
+	- o o o o o o o
+	- o o i i o o o
+	- o i x x i o x
+	- o i x x i o x
+	- o o i i o o o
+	- o o o o o o o
+	- o o x x o o o
+
+	- o o o x x o o o
+	- o o o o o o o o
+	- o o o i i o o o
+	- x o i x x i o x
+	- x o i x x i o x
+	- o o o i i o o o
+	- o o o o o o o o
+	- o o o x x o o o
+
+- Capsule Shell:
+	- o o o o o
+	- o x i x o
+	- i o x o i
+	- o x i x o
+	- o o o o o
+	
+	- o o o o o o
+	- o x i x o x
+	- i o x o i o
+	- o x i x o x
+	- o o o o o o
+	- o o x o o o
+
+	- o o o x o o o
+	- o o o o o o o
+	- x o x i x o x
+	- o i o x o i o
+	- x o x i x o x
+	- o o o o o o o
+	- o o o x o o o
