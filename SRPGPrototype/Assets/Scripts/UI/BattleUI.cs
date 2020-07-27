@@ -126,9 +126,9 @@ public class BattleUI : MonoBehaviour
         }
         else
         {
-            HideManyTiles(entries);
-            var subAction = action.subActions[--currAction];
-            entries = ShowPattern(subAction.range, unit.Pos, TileUI.Type.CustGreen);
+            //HideManyTiles(entries);
+            //var subAction = action.subActions[--currAction];
+            //entries = ShowPattern(subAction.range, unit.Pos, TileUI.Type.CustGreen);
         }
     }
 
