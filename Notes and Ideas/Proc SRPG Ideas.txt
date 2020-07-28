@@ -9,6 +9,7 @@ General Ideas:
 - AP goes up after each usage instead of uses per turn - implemented, seems better)
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
 - Matryoshka enemies that unpack when killed (for area chains)
+- Turrets should be neutral (encounter can end without defeating them, can attack both teams)
 
 Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions

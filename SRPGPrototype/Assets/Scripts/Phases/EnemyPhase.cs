@@ -22,9 +22,11 @@ public class EnemyPhase : Phase
             yield break;
         foreach (var unit in units)
             yield return StartCoroutine(unit.OnPhaseStart());
-        units.RemoveAll((u) => u.AP <= 0);
         foreach (var unit in units)
         {
+            // Skip enemies that have been reduced to 0 AP
+            if (unit.AP <= 0)
+                continue;
             yield return StartCoroutine(unit.DoTurn(grid));
             if (CheckEndPhase())
                 yield break;

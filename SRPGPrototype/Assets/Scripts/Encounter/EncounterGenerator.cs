@@ -9,22 +9,20 @@ public class EncounterGenerator : MonoBehaviour
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter, Vector2Int dimensions);
     public delegate float NextUnitWeighting(Unit u, Encounter encounter, Vector2Int dimensions);
 
-    public Encounter Generate(EncounterData data) => Generate(data.dimensions, data.budget, data.enemies, data.obstacles, data.seed);
-
-    public Encounter Generate(Vector2Int dimensions, int budget, List<EnemyUnit> enemies, 
-        List<ObstacleUnit> obstacles, Encounter seed = null)
+    public Encounter Generate(EncounterData data)
     {
-        var positions = EnumerateDimensions(dimensions);
+        var positions = EnumerateDimensions(data.dimensions);
         var encounter = new Encounter();
+        int budget = data.budget;
         // Initialize encounter values from seed if applicable
-        if(seed != null)
+        if(data.seed != null)
         {
-            encounter.units.AddRange(seed.units);
-            encounter.reinforcements.AddRange(seed.reinforcements);
-            positions = positions.Where((pos) => seed.units.All((unit) => unit.pos != pos)).ToList();
+            encounter.units.AddRange(data.seed.units);
+            encounter.reinforcements.AddRange(data.seed.reinforcements);
+            positions = positions.Where((pos) => data.seed.units.All((unit) => unit.pos != pos)).ToList();
         }
         // Populate with enemies
-        var availableUnits = new List<EnemyUnit>(enemies);
+        var availableUnits = new List<EnemyUnit>(data.enemies);
         availableUnits.RemoveAll((unit) => unit.EncounterData.cost > budget);
         while (budget > 0 && availableUnits.Count > 0)
         {
