@@ -24,7 +24,7 @@ public class TargetPattern
         if (patternType == Type.Self)
             return new List<Vector2Int> { user.Pos };
         if (patternType == Type.Pattern)
-            return new List<Vector2Int>(pattern.OffsetsShifted(targetPos - pattern.Center));
+            return new List<Vector2Int>(pattern.OffsetsShifted(targetPos));
         return generator.Generate(grid, user, targetPos); 
 
     }

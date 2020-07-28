@@ -92,7 +92,7 @@ public class BattleUI : MonoBehaviour
     private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
-        if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
+        if (!subAction.range.OffsetsShifted(unit.Pos).Contains(pos))
             return;
         entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustWhite);
 
@@ -102,7 +102,7 @@ public class BattleUI : MonoBehaviour
     private void SelectActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
-        if (!subAction.range.OffsetsShifted(unit.Pos - subAction.range.Center).Contains(pos))
+        if (!subAction.range.OffsetsShifted(unit.Pos).Contains(pos))
             return;
         subAction.Use(grid, action, unit, pos);
         HideManyTiles(entries);
@@ -137,7 +137,7 @@ public class BattleUI : MonoBehaviour
     public List<TileUI.Entry> ShowPattern(Pattern p, Vector2Int center, TileUI.Type type)
     {
         var ret = new List<TileUI.Entry>();
-        foreach (var pos in p.OffsetsShifted(center - p.Center))
+        foreach (var pos in p.OffsetsShifted(center))
         {
             ret.Add(grid.SpawnTileUI(pos, type));
         }

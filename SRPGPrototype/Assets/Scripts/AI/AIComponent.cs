@@ -50,7 +50,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
     protected IEnumerator MoveToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, List<Target> targets) where Target : Unit
     {
         var sub = moveAction.subActions[0];
-        var movePositions = sub.range.OffsetsShifted(self.Pos - sub.range.Center)
+        var movePositions = sub.range.OffsetsShifted(self.Pos)
             .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
         // Move into a viable attack position if possible
         foreach (var pos in movePositions)
@@ -79,7 +79,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
     protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> playerUnits) where Target : Unit
     {
         var subAction = standardAction.subActions[0];
-        foreach (var pos in subAction.range.OffsetsShifted(self.Pos - subAction.range.Center))
+        foreach (var pos in subAction.range.OffsetsShifted(self.Pos))
         {
             var targetPositions = subAction.targetPattern.Target(grid, self, pos);
             foreach (var tPos in targetPositions)

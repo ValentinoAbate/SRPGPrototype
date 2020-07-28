@@ -53,7 +53,7 @@ public class Program : GridObject, ILootable
     public void Show(Vector2Int pos, CustGrid grid)
     {
         uiEntries.Clear();
-        foreach (var shiftPos in shape.OffsetsShifted(pos))
+        foreach (var shiftPos in shape.OffsetsShifted(pos, false))
         {
             uiEntries.Add(grid.SpawnTileUI(shiftPos, TileType));
         }

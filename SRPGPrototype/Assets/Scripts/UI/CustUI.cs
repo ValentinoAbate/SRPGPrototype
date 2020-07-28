@@ -215,7 +215,12 @@ public class CustUI : MonoBehaviour
 
     public void Compile()
     {
+        int level = grid.Shell.Level;
         grid.Shell.Compile();
+        if(grid.Shell.Level != level)
+        {
+            grid.ResetShell();
+        }
     }
 
     #endregion

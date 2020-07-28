@@ -22,22 +22,19 @@ Color Mapping (action type to color not really working right now, may work with 
 
 Shell Capacity:
 - Each shell has 3 capacity levels. 
-	- When the sum total of the "capacity" values of installed programs reaches 2, the shell capacity upgrades to level 2.
-	- When the sum total of the "capacity" values of installed programs reaches 5, the shell capacity upgrades to level 3.
-	- "Small" shells start at level 0. They reach level 1 at 1 capacity upgrade, and level 2 at 3
-	- "Large" shells start at level 2. They reach level 3 at 3 capacity upgrades, and level 4 at 7
-	- "Full progression" shells start at level 0. They reach a level at 2 x the level (ex: level 3 at 6 capacity)
+	- When the sum total of the "capacity" values of installed programs reaches reaches certain thresholds, the shell levels up and increases in size by 1 number.
+	- There are several different progression paths:
+	- Standard: start at size 1. Level 2: 2, Level 3: 5
+	- Small: start at size 0. Level 2: 1, Level 3: 4
+	- Large: start at size 2. Level 2: 3, Level 3: 6
+	- Full: start at size 0. Level 2: 2, Level 3: 4, Level 4: 6, Level 5: 8 
 	- Programs that give capacity cannot be uninstalled while uninstalling them would be any currently installed programs illegal
-- Level 0: Shells are 4 x 4, with and average of 8-12 squares open
-	- A shell cannot actually be at this level
-	- Small level 1 shells have this pattern
-- Level 1: Shells are 5 x 5, with an average of 14-18 squares open
-	- The default level of all shells
-- Level 2: Shells are 6 x 6, with an average of 24-28 sqaures open
-	- shells either into one corner
-- Level 3: Shells are 7 x 7, with an average of 34-38 squares open
-	- shells expand into the opposite corner 
-- Level 4: Shells are 8 x 8, with an average of 44-48 
+	- Shells expand into the bottom right corner, and then the top left, every other level
+- Size 0 shells are 4 x 4, with an average of 08-12 squares open
+- Size 1 Shells are 5 x 5, with an average of 14-18 squares open
+- Size 2 Shells are 6 x 6, with an average of 24-28 sqaures open
+- Size 3 Shells are 7 x 7, with an average of 34-38 squares open
+- Size 4 Shells are 8 x 8, with an average of 44-48 squares open
 
 Themes: Themes for a player to build a deck around
 - DOT

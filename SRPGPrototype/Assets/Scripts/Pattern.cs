@@ -6,7 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class Pattern
 {
-    public ISet<Vector2Int> OffsetsSet => new HashSet<Vector2Int>(patternOffsets);
+    private static readonly Vector2Int autoCenter = new Vector2Int(-1, 1);
+    public ISet<Vector2Int> OffsetsSet => new HashSet<Vector2Int>(Offsets);
     public IEnumerable<Vector2Int> Offsets => patternOffsets;
     [SerializeField]
     private List<Vector2Int> patternOffsets = new List<Vector2Int>();
@@ -16,8 +17,9 @@ public class Pattern
 
     public Vector2Int Center => new Vector2Int(dimensions.x / 2, dimensions.y / 2);
 
-    public IEnumerable<Vector2Int> OffsetsShifted(Vector2Int shift)
+    public IEnumerable<Vector2Int> OffsetsShifted(Vector2Int shift, bool center = true)
     {
-        return patternOffsets.Select((o) => o + shift);
+        var modShift = center ? shift - Center : shift;
+        return Offsets.Select((o) => o + modShift);
     }
 }

@@ -67,11 +67,11 @@ public class ProgramNumber
         }
         else if(type == Type.ShellCols)
         {
-            number = p.Shell.custArea.Dimensions.x;
+            number = p.Shell.CustArea.Dimensions.x;
         }
         else if (type == Type.ShellRows)
         {
-            number = p.Shell.custArea.Dimensions.y;
+            number = p.Shell.CustArea.Dimensions.y;
         }
         int modNumber = (number + modifier) * multiplier;
         return Mathf.Clamp(modNumber, min, max);

@@ -7,13 +7,16 @@ using UnityEditor;
 public class PatternDrawer : PropertyDrawer
 {
     const float labelWidth = 100;
-    const float maxCheckWidth = 20;
-    const int numFields = 1;
+    const float maxCheckWidth = 25;
+    const int numFields = 2;
     const int numControlRows = 2;
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         var dimensionsProp = property.FindPropertyRelative("dimensions");
-        return (EditorGUIUtility.singleLineHeight + 1) * (numFields + numControlRows + (dimensionsProp.vector2IntValue.y) + 1);
+        float lineHeight = EditorGUIUtility.singleLineHeight + 1;
+        int gridRows = numControlRows + (dimensionsProp.vector2IntValue.y);
+        float gridHeight = ((lineHeight + 5) * (gridRows - 1));
+        return (lineHeight * (numFields + 1)) + gridHeight;
     }
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -35,8 +38,7 @@ public class PatternDrawer : PropertyDrawer
         EditorGUI.PrefixLabel(new Rect(UIRect) { width = labelWidth }, new GUIContent("Dimensions"));
         EditorGUI.PropertyField(new Rect(UIRect) { x = UIRect.x + labelWidth, width = UIRect.width - labelWidth }, dimensionsProp, GUIContent.none);
         UIRect.y += lineHeight;
-
-        if(GUI.Button(UIRect, new GUIContent("Fill Pattern")))
+        if (GUI.Button(UIRect, new GUIContent("Fill Pattern")))
         {
             var dim = dimensionsProp.vector2IntValue;
             var vals = new bool[dim.x, dim.y];
@@ -67,7 +69,7 @@ public class PatternDrawer : PropertyDrawer
                 values[x, y] = EditorGUI.Toggle(checkRect, values[x, y]);
                 checkRect.x += checkWidth;
             }
-            checkRect.y += lineHeight;
+            checkRect.y += lineHeight + 5;
         }
         UIRect.y = checkRect.y + lineHeight;
         if (GUI.changed)

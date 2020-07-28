@@ -6,7 +6,34 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, ILootable
 {
+    public enum Progression
+    { 
+        Small,
+        Standard,
+        Large,
+        Full,
+    }
+
     public delegate bool Restriction(Shell shell, out string errorMessage);
+
+    private static readonly Dictionary<Progression, List<int>> levelThresholds = new Dictionary<Progression, List<int>>()
+    {
+        { Progression.Small, new List<int>{ 0, 1, 4} },
+        { Progression.Standard, new List<int>{ 0, 2, 5} },
+        { Progression.Large, new List<int>{ 0, 3, 6} },
+        { Progression.Full, new List<int>{ 0, 2, 4, 6, 8} },
+    };
+
+    public int MaxLevel => CapacityThresholds.Count - 1;
+
+    public List<int> CapacityThresholds => levelThresholds[Type];
+
+    public int DisplayLevel => Level + 1;
+
+    public int Level { get; private set; } = 0;
+
+    public int Capacity { get; private set; } = 0;
+
     public bool Compiled { get; private set; } = false;
 
     public string DisplayName => displayName;
@@ -15,7 +42,12 @@ public class Shell : MonoBehaviour, ILootable
     public Rarity Rarity => rarity;
     [SerializeField] private Rarity rarity = Rarity.PreInstall;
 
-    public Pattern custArea = null;
+    public Progression Type => type;
+    [SerializeField] private Progression type = Progression.Standard;
+
+    public Pattern CustArea => patterns[Level];
+    [SerializeField] private List<Pattern> patterns = new List<Pattern>(3);
+
     public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
     public IEnumerable<InstalledProgram> Programs => programs;
     private List<InstalledProgram> programs = new List<InstalledProgram>();
@@ -34,7 +66,7 @@ public class Shell : MonoBehaviour, ILootable
 
     private void Awake()
     {
-        installMap = new Program[custArea.Dimensions.x, custArea.Dimensions.y];
+        installMap = new Program[CustArea.Dimensions.x, CustArea.Dimensions.y];
         foreach (var iProg in preInstalledPrograms)
         {
             Install(iProg.program, iProg.location, true);
@@ -55,7 +87,7 @@ public class Shell : MonoBehaviour, ILootable
             programs.Add(new InstalledProgram(program, location));
             program.Shell = this;
         }
-        var positions = program.shape.OffsetsShifted(location);
+        var positions = program.shape.OffsetsShifted(location, false);
         foreach (var pos in positions)
             installMap[pos.x, pos.y] = program;
     }
@@ -68,13 +100,80 @@ public class Shell : MonoBehaviour, ILootable
         var ind = programs.FindIndex((iProg) => iProg.program.DisplayName == program.DisplayName && iProg.location == location);
         if (ind >= 0)
         {
-            var positions = program.shape.OffsetsShifted(location);
+            var positions = program.shape.OffsetsShifted(location, false);
             foreach (var pos in positions)
                 installMap[pos.x, pos.y] = null;
             if (destroy)
                 Destroy(programs[ind].program.gameObject);
             programs.RemoveAt(ind);
         }
+    }
+
+    public void LevelUp()
+    {
+        if (Level >= MaxLevel)
+            return;
+        var newInstallMap = new Program[CustArea.Dimensions.x + 1, CustArea.Dimensions.y + 1];
+        // Level is even, expand into bottom right
+        if (Level % 2 == 0)
+        {
+            for(int x = 0; x < CustArea.Dimensions.x; ++x)
+                for(int y = 0; y < CustArea.Dimensions.y; ++y)
+                    newInstallMap[x, y + 1] = installMap[x, y];
+            for(int i = 0; i < programs.Count; ++i)
+            {
+                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, 1));
+                programs[i].program.Pos += new Vector2Int(0,1);
+            }
+        }
+        else // Level is odd, expand into top left
+        {
+            for (int x = 0; x < CustArea.Dimensions.x; ++x)
+                for (int y = 0; y < CustArea.Dimensions.y; ++y)
+                    newInstallMap[x + 1, y] = installMap[x, y];
+            for (int i = 0; i < programs.Count; ++i)
+            {
+                var install = programs[i];
+                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(1, 0));
+                programs[i].program.Pos += new Vector2Int(1, 0);
+            }
+        }
+        installMap = newInstallMap;
+        ++Level;
+    }
+
+    public void LevelDown()
+    {
+        if (Level <= 0)
+            return;
+        var newInstallMap = new Program[CustArea.Dimensions.x - 1, CustArea.Dimensions.y - 1];
+        // Level is odd, contract from bottom right
+        if (Level % 2 == 1)
+        {
+            for (int x = 0; x < CustArea.Dimensions.x - 1; ++x)
+                for (int y = 1; y < CustArea.Dimensions.y; ++y)
+                    newInstallMap[x, y - 1] = installMap[x, y];
+            for (int i = 0; i < programs.Count; ++i)
+            {
+                var install = programs[i];
+                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, -1));
+                programs[i].program.Pos += new Vector2Int(0, -1);
+            }
+        }
+        else // Level is even, contract from top left
+        {
+            for (int x = 1; x < CustArea.Dimensions.x; ++x)
+                for (int y = 0; y < CustArea.Dimensions.y - 1; ++y)
+                    newInstallMap[x - 1, y] = installMap[x, y];
+            for (int i = 0; i < programs.Count; ++i)
+            {
+                var install = programs[i];
+                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(-1, 0));
+                programs[i].program.Pos += new Vector2Int(-1, 0);
+            }
+        }
+        installMap = newInstallMap;
+        --Level;
     }
 
     /// <summary>
@@ -121,6 +220,16 @@ public class Shell : MonoBehaviour, ILootable
                 return false;
             }
         }
+        Capacity = compileData.capacity;
+        // Level up or down if necessary
+        while(Level < MaxLevel && Capacity >= CapacityThresholds[Level + 1])
+        {
+            LevelUp();
+        }
+        while(Level > 0 && Capacity < CapacityThresholds[Level])
+        {
+            LevelDown();
+        }
         // Apply abilities
         AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
         // Apply compile changes to actions and stats
@@ -145,12 +254,14 @@ public class Shell : MonoBehaviour, ILootable
         public List<Action> actions;
         public List<Restriction> restrictions;
         public Unit.OnAfterSubAction abilityOnAfterSubAction;
+        public int capacity;
         public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
         {
             this.stats = stats;
             this.actions = actions;
             this.restrictions = restrictions;
             abilityOnAfterSubAction = null;
+            capacity = 0;
         }
     }
 

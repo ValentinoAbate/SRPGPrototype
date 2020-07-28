@@ -17,11 +17,13 @@ public class CustGrid : Grid<Program>
                 foreach (var program in FindAll<Program>())
                 {
                     program.Hide(this);
-                    Remove(program);
                 }
                 blockedUI.ForEach((e) => RemoveTileUI(e));
                 blockedUI.Clear();
             }
+            // Don't try to reinitialize if null
+            if (value == null)
+                return;
             // Set the shell value
             shell = value;
             // Reinitialize the grid
@@ -34,7 +36,7 @@ public class CustGrid : Grid<Program>
             }
 
             // Spawn blocked tile UI in blocked tiles
-            var offsetsSet = shell.custArea.OffsetsSet;
+            var offsetsSet = shell.CustArea.OffsetsSet;
             for (int x = 0; x < Dimensions.x; ++x)
             {
                 for (int y = 0; y < Dimensions.y; ++y)
@@ -49,7 +51,7 @@ public class CustGrid : Grid<Program>
 
     private List<TileUI.Entry> blockedUI = new List<TileUI.Entry>();
     private Shell shell = null;
-    public override Vector2Int Dimensions => Shell.custArea.Dimensions;
+    public override Vector2Int Dimensions => Shell.CustArea.Dimensions;
 
     protected override void OnDrawGizmos()
     {
@@ -57,7 +59,7 @@ public class CustGrid : Grid<Program>
             return;
         shell = PersistantData.main.inventory.EquippedShell;
         base.OnDrawGizmos();
-        var offsetsSet = shell.custArea.OffsetsSet;
+        var offsetsSet = shell.CustArea.OffsetsSet;
         for (int x = 0; x < Dimensions.x; ++x)
         {
             for (int y = 0; y < Dimensions.y; ++y)
@@ -77,8 +79,8 @@ public class CustGrid : Grid<Program>
 
     public override bool Add(Vector2Int addPos, Program obj)
     {
-        var positions = obj.shape.OffsetsShifted(addPos);
-        var shellPositions = shell.custArea.OffsetsSet;
+        var positions = obj.shape.OffsetsShifted(addPos, false);
+        var shellPositions = shell.CustArea.OffsetsSet;
         foreach(var pos in positions)
         {
             if(!IsLegal(pos) || !shellPositions.Contains(pos))
@@ -103,7 +105,7 @@ public class CustGrid : Grid<Program>
 
     public override void Remove(Program obj)
     {
-        foreach (var pos in obj.shape.OffsetsShifted(obj.Pos))
+        foreach (var pos in obj.shape.OffsetsShifted(obj.Pos, false))
         {
             Set(pos, null);
         }
@@ -111,4 +113,38 @@ public class CustGrid : Grid<Program>
         obj.Pos = OutOfBounds;
     }
 
+    public void ResetShell()
+    {
+        if (shell == null)
+            return;
+
+        // Clear UI
+        foreach (var program in FindAll<Program>())
+        {
+            program.Hide(this);
+        }
+        blockedUI.ForEach((e) => RemoveTileUI(e));
+        blockedUI.Clear();
+
+        // Reinitialize the grid
+        Initialize();
+
+        // Add already installed programs
+        foreach (var program in shell.Programs)
+        {
+            Add(program.location, program.program);
+        }
+
+        // Spawn blocked tile UI in blocked tiles
+        var offsetsSet = shell.CustArea.OffsetsSet;
+        for (int x = 0; x < Dimensions.x; ++x)
+        {
+            for (int y = 0; y < Dimensions.y; ++y)
+            {
+                var pos = new Vector2Int(x, y);
+                if (!offsetsSet.Contains(pos))
+                    blockedUI.Add(SpawnTileUI(pos, TileUI.Type.CustBlocked));
+            }
+        }
+    }
 }
