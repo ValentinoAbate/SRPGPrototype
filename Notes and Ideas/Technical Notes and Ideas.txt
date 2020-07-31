@@ -1,0 +1,1 @@
+Make a menu extensions that allows creating variants of specific prefabs in a cleaner menu like SOs?

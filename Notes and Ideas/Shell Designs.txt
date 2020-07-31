@@ -96,7 +96,7 @@ Shell Concepts:
 	- ? u u u u u u
 	- ? i u u u i u
 	- ? u u u u u u
-All In (Unique/Gamble/Shop)? - Large. Strongly boost luck-based effects. Winning a gamble has greater rewards, but losing a gamble has greater penalties. Installed Programs with Capacity gain Fixed. Widely random starting stats and restriction
+- All In (Unique/Gamble/Shop)? - Large. Strongly boost luck-based effects. Winning a gamble has greater rewards, but losing a gamble has greater penalties. Installed Programs with Capacity gain Fixed. Widely random starting stats and restriction
  	- (? = has a 40% chance of being blocked)
 	- i ? ? ? ? i
 	- ? ? ? ? ? ?
@@ -150,7 +150,8 @@ All In (Unique/Gamble/Shop)? - Large. Strongly boost luck-based effects. Winning
 
 Basic Shell Shapes (Could be applied to multiple concepts)
 
-- X Shell: No adjacent same colors
++ X Shell: (Maybe something with 'X' cost abilities or multiplication effects)
+	(Maybe: all effects with multipliers recieve +1 (before multiplication)
 	- i o o o i
 	- o x o x o
 	- o o x o o
@@ -171,7 +172,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o x o x o o
 	- o i o o o i o
 	- x o o o o o x
-- Stripe Shell (H) - Boosts actions with (H) in their title
++/- Stripe Shell (H) - Boosts actions with (H) in their title (-effect)
 	- o o o o o
 	- i x x x i
 	- o o o o o
@@ -193,7 +194,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o o o o o
 	- o o o o o o o
 
-- Stripe Shell (V) - Boosts actions with (V) in their title
++/- Stripe Shell (V) - Boosts actions with (V) in their title (-effect)
 	- o i o i o
 	- o x o x o
 	- o x o x o
@@ -215,7 +216,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o i o i o o
 	- o o x o x o o
 
-- S Shell
++ S Shell: (maybe something with the letter S)
 	- o o o o o
 	- o i x x i
 	- o o o o o
@@ -236,6 +237,29 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- x i x x i o o
 	- o o o o o o o
 	- x o o o o o x
+
++ / - 5 Shell: (any number that is equal to 5 doubles (or maybe recieves a bonus of like +2)) (-effect)
+	- o o o o x
+	- o i x x i
+	- o o o o o
+	- i x x i o
+	- o o o o o
+
+	- o o o o o x
+	- o i x x i x
+	- o o o o o o
+	- i x x i o o
+	- o o o o o o
+	- x o o o o x
+
+	- o o o o o o x
+	- o o o o o o x
+	- o o i x x i x
+	- o o o o o o o
+	- x i x x i o o
+	- o o o o o o o
+	- x o o o o o x
+
 - Cross Shell: Bonus Against vampires
 	- o o i o o
 	- x i i i x
@@ -257,7 +281,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o i o o o
 	- o o o x o o o
 	- o o o x o o o
-- + Shell:
++ + Shell: (Maybe: all numbers (except multipliers) recieve + 1 (after multipliers). multipliers recieve -1. Ignore 0 multipliers)
 	- o o i o o
 	- o o x o o
 	- i x x x i
@@ -279,7 +303,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o i o o o
 	- o o o x o o o
 
-- Large + Shell: Large
++ Large + Shell: Large
 	- o o o o o o
 	- o o i i o o
 	- o i x x i o
