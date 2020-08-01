@@ -85,6 +85,14 @@ public class Loot<T> where T : ILootable
         return GetDropCustom(standardLootRarities[quality], filter);
     }
 
+    public List<T> GetDropsStandard(int number, LootQuality quality, System.Predicate<T> filter = null)
+    {
+        var ret = new List<T>(number);
+        for (int i = 0; i < number; ++i)
+            ret.Add(GetDropCustom(standardLootRarities[quality], filter));
+        return ret;
+    }
+
     public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter = null)
     {
         var rarity = RandomU.instance.Choice(rarities);

@@ -161,6 +161,8 @@ Abilities: These effects give the player special passive abilities
 - Any transient action that hits more than [x] targets doesn't use a degrade
 	- [x] is 2
 	- Add Transient 3 + number of fixed transient programs installed
+- Apply [effect] when any target is moved
+	- Apply def - 1 on any target that is moved
 
 Trigger: Trigger an effect on this condition
 - When any/all [scope] programs transform / promote / destroy

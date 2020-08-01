@@ -87,9 +87,18 @@ public class PhaseManager : MonoBehaviour, IPausable
     {
         var inv = PersistantData.main.inventory;
         inv.EquippedShell.Stats.DoRepair();
-        inv.AddProgram(loot.programLoot.GetDropStandard(Loot<Program>.LootQuality.Standard), true);
-        inv.AddProgram(loot.programLoot.GetDropStandard(Loot<Program>.LootQuality.High), true);
-        SceneTransitionManager.main.TransitionToScene("Cust");
+        // Generate loot (Generate how loot is generated from encounter / map later)
+        var progDraw1 = new List<Program>(loot.ProgramLoot.GetDropsStandard(3, Loot<Program>.LootQuality.Standard));
+        var progDraw2 = new List<Program>()
+        {
+            loot.ProgramLoot.GetDropStandard(Loot<Program>.LootQuality.Standard),
+            loot.ProgramLoot.GetDropStandard(Loot<Program>.LootQuality.High),
+            loot.ProgramLoot.GetDropStandard(Loot<Program>.LootQuality.Standard),
+        };
+        var progDraws = new LootData<Program>(progDraw1, progDraw2);
+        var shellDraws = new LootData<Shell>();
+        loot.UI.ShowUI(inv, progDraws, shellDraws, () => SceneTransitionManager.main.TransitionToScene("Cust"));
+   ;
     }
 
     /// <summary>

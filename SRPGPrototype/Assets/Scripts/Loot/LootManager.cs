@@ -9,12 +9,16 @@ public class LootManager : MonoBehaviour
     [SerializeField]
     private List<Shell> shells = new List<Shell>();
 
-    public Loot<Shell> shellLoot;
-    public Loot<Program> programLoot;
+    public Loot<Shell> ShellLoot => shellLoot;
+    private Loot<Shell> shellLoot;
+    public Loot<Program> ProgramLoot => programLoot;
+    private Loot<Program> programLoot;
+    public LootUI UI => lootUI;
+    [SerializeField] private LootUI lootUI;
 
     private void Awake()
     {
         shellLoot = new Loot<Shell>(shells);
         programLoot = new Loot<Program>(programs);
-    } 
+    }
 }
