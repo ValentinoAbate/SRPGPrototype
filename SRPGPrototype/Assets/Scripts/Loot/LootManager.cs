@@ -14,7 +14,7 @@ public class LootManager : MonoBehaviour
     public Loot<Program> ProgramLoot => programLoot;
     private Loot<Program> programLoot;
     public LootUI UI => lootUI;
-    [SerializeField] private LootUI lootUI;
+    [SerializeField] private LootUI lootUI = null;
 
     private void Awake()
     {
