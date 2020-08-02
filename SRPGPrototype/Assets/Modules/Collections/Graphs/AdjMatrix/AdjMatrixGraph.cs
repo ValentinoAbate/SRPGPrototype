@@ -18,7 +18,9 @@ namespace Collections.Graphs.AdjMatrix
         public AdjMatrixGraph(IEnumerable<T> vertices)
         {
             int numVertices = vertices.Count();
-            adjMatrix = new List<List<int>>(Enumerable.Repeat(Enumerable.Repeat(noEdge, numVertices).ToList(), numVertices));
+            adjMatrix = new List<List<int>>();
+            foreach(int i in Enumerable.Range(0, numVertices))
+                adjMatrix.Add(Enumerable.Repeat(noEdge, numVertices).ToList());
             this.vertices = new List<Vertex<T>>();
             var vertArr = vertices.ToArray();
             foreach (int i in Enumerable.Range(0, vertices.Count()))
@@ -33,7 +35,7 @@ namespace Collections.Graphs.AdjMatrix
         {
             adjMatrix.ForEach((l) => l.Add(noEdge));
             adjMatrix.Add(new List<int>(Enumerable.Repeat(noEdge, vertices.Count + 1)));
-            var newVertex = new Vertex<T>(vertices.Count - 1, value);
+            var newVertex = new Vertex<T>(vertices.Count, value);
             vertices.Add(newVertex);
             return newVertex;
         }

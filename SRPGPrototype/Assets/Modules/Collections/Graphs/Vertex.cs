@@ -2,7 +2,7 @@
 
 namespace Collections.Graphs
 {
-    public struct Vertex<T> : IEquatable<Vertex<T>>
+    public class Vertex<T> : IEquatable<Vertex<T>>
     {
         public int index;
         public T value;

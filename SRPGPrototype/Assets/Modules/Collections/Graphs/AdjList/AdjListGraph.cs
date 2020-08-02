@@ -23,7 +23,7 @@ namespace Collections.Graphs.AdjList
 
         public Vertex<T> AddVertex(T value)
         {
-            vertices.Add(new Vertex<T>(adjList.Count - 1, value));
+            vertices.Add(new Vertex<T>(adjList.Count, value));
             adjList.Add(new List<Vertex<T>>());
             return vertices[vertices.Count - 1];
         }
