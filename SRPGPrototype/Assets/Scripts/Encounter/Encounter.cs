@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Encounter
 {
+    public string name = "Encounter";
     public List<UnitEntry> units = new List<UnitEntry>();
     public List<UnitEntry> reinforcements = new List<UnitEntry>();
 

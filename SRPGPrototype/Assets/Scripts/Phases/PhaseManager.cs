@@ -14,7 +14,6 @@ public class PhaseManager : MonoBehaviour, IPausable
     public int Turn { get; private set; }
     public Phase ActivePhase { get => phases[currPhase]; }
 
-    public EncounterGenerator encounterGenerator;
     public BattleGrid grid;
     public LootManager loot;
 
@@ -64,7 +63,7 @@ public class PhaseManager : MonoBehaviour, IPausable
     /// </summary>
     private IEnumerator StartBattle()
     {
-        var encounter = encounterGenerator.Generate(PersistantData.main.combatData.encounterData);
+        var encounter = PersistantData.main.mapManager.Encounter;
         var units = InitializeUnits(encounter.units);
         phases.ForEach((p) => p.Initialize(units));
         yield break;
