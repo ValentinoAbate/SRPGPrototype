@@ -16,6 +16,7 @@ public abstract class Unit : GridObject
         Player,
     }
 
+    public virtual bool Movable => true;
     public abstract Team UnitTeam { get; }
     public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }
