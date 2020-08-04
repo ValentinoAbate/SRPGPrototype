@@ -10,6 +10,7 @@ General Ideas:
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
 - Matryoshka enemies that unpack when killed (for area chains)
 - Turrets should be neutral (encounter can end without defeating them, can attack both teams)
+- Allow certain multi-actions to be cancellable (multiple part target selection, etc)
 
 Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions
@@ -94,10 +95,11 @@ Effects: Apply to a pattern
 + Reduce [x] AP
 - Move to end of [path]
 + Jump / Teleport target
-- Push target
-- Pull Target
++ Push target
++ Pull Target
 - Swap with target
-- Reposition / throw target
+- Reposition / throw target (requires two-part cancellable actions)
++ Move target towards position (for charge, etc)
 - Add [x] [stat]
 - Give free move action - good
 
