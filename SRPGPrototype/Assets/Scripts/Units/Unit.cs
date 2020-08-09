@@ -75,4 +75,9 @@ public abstract class Unit : GridObject
         AP = MaxAP;
         yield break;
     }
+
+    public virtual IEnumerator OnBattleEnd()
+    {
+        yield break;
+    }
 }

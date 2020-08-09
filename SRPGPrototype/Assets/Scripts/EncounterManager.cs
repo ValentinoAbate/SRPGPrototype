@@ -39,15 +39,24 @@ public class EncounterManager : MonoBehaviour
 
     public void EndEncounter()
     {
-        var inv = PersistantData.main.inventory;
-        // Do repair
-        inv.EquippedShell.Stats.DoRepair();
 
-        #region Generate Loot
+        StartCoroutine(EndEncounterCr());
+    }
+
+    private IEnumerator EndEncounterCr()
+    {
+        foreach(var unit in grid.FindAll<Unit>())
+            yield return StartCoroutine(unit.OnBattleEnd());
+        GenerateAndShowLoot();
+    }
+
+    private void GenerateAndShowLoot()
+    {
+        var inv = PersistantData.main.inventory;
 
         // Generate Shell Loot
         var shellDraws = new LootData<Shell>();
-        if(GenerateShellLoot != null)
+        if (GenerateShellLoot != null)
         {
             foreach (LootManager.GenerateShellLootFn shellLoot in GenerateShellLoot.GetInvocationList())
                 shellDraws.Add(shellLoot());
@@ -59,8 +68,6 @@ public class EncounterManager : MonoBehaviour
             foreach (LootManager.GenerateProgramLootFn progLoot in GenerateProgramLoot.GetInvocationList())
                 progDraws.Add(progLoot());
         }
-
-        #endregion
 
         loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);
     }

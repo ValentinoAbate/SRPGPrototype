@@ -52,4 +52,10 @@ public class PlayerUnit : Unit
             action.TimesUsedThisTurn = 0;
         yield break;
     }
+
+    public override IEnumerator OnBattleEnd()
+    {
+        Shell.Stats.DoRepair();
+        yield break;
+    }
 }
