@@ -18,7 +18,7 @@ public class PauseHandle
     /// Is the PauseHandle Paused from any source
     /// </summary>
     public bool Paused => PauseSources != PauseSource.None;
-    private System.Action<bool> onPause;
+    private readonly System.Action<bool> onPause;
     public List<IPausable> Dependents { get; }
     /// <summary>
     /// Consturct a new PauseHandle with the spefied action to call on pause.

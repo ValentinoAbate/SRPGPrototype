@@ -525,6 +525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130085307575049263}
+  - component: {fileID: 1052570043710556164}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -550,6 +551,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052570043710556164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130085307575049256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b9aae628bd7384799fb5648337dd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseManager: {fileID: 1130085308880680659}
+  grid: {fileID: 1130085307957486608}
+  loot: {fileID: 2007023211584606495}
 --- !u!1 &1130085307932702806
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,8 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb11a3bfb8b27f24487d1229f8773273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 1130085307957486608}
-  loot: {fileID: 2007023211584606495}
 --- !u!1 &1130085309517156897
 GameObject:
   m_ObjectHideFlags: 0

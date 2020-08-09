@@ -26,7 +26,7 @@ public abstract class Phase : MonoBehaviour, IPausable
 
     protected void EndBattle()
     {
-        manager.EndBattle();
+        manager.EndActiveEncounter();
     }
     protected IEnumerator PlayTransition()
     {

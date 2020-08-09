@@ -403,7 +403,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1130085309512730844}
-        m_MethodName: EndBattle
+        m_MethodName: EndActiveEncounter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -14,11 +14,12 @@ public class PhaseManager : MonoBehaviour, IPausable
     public int Turn { get; private set; }
     public Phase ActivePhase { get => phases[currPhase]; }
 
-    public BattleGrid grid;
-    public LootManager loot;
+    private System.Action OnActiveEncounterEnd { get; set; }
 
     private List<Phase> phases;
     private int currPhase;
+
+    public bool EncounterActive { get; set; } = false;
     public bool Transitioning { get; private set; } = true;
 
     private void Awake()
@@ -38,20 +39,25 @@ public class PhaseManager : MonoBehaviour, IPausable
     }
 
     /// <summary>
-    /// Start is called before the first frame update
     /// Initialize the turn count, run the battle start coroutine, and start the first phase
     /// </summary>
-    IEnumerator Start()
+    public IEnumerator StartActiveEncounter(List<Unit> units, System.Action onEnd)
     {
         Turn = 1;
-        yield return StartCoroutine(StartBattle());
+        EncounterActive = true;
+        phases.ForEach((p) => p.Initialize(units));
+        OnActiveEncounterEnd += onEnd;
+        yield return StartCoroutine(ShowEncounterStartUI());
         yield return StartCoroutine(ActivePhase.OnPhaseStart());
         Transitioning = false;
     }
 
+    /// <summary>
+    /// Go to the next phase. Doesn't work if we are already transitioning to the next phase or if the encounter has ended
+    /// </summary>
     public void NextPhase()
     {
-        if (Transitioning)
+        if (Transitioning || !EncounterActive)
             return;
         Transitioning = true;
         StartCoroutine(NextPhaseCr());
@@ -61,43 +67,16 @@ public class PhaseManager : MonoBehaviour, IPausable
     /// Do any logic and display any graphics needed to start the battle
     /// Currently placeholder
     /// </summary>
-    private IEnumerator StartBattle()
+    private IEnumerator ShowEncounterStartUI()
     {
-        var encounter = PersistantData.main.mapManager.Encounter;
-        var units = InitializeUnits(encounter.units);
-        phases.ForEach((p) => p.Initialize(units));
         yield break;
     }
 
-    private List<Unit> InitializeUnits(IEnumerable<Encounter.UnitEntry> entries)
+    public void EndActiveEncounter()
     {
-        var units = new List<Unit>();
-        foreach(var entry in entries)
-        {
-            var unit = Instantiate(entry.unit).GetComponent<Unit>();
-            grid.Add(entry.pos, unit);
-            unit.transform.position = grid.GetSpace(unit.Pos);
-            units.Add(unit);
-        }
-        return units;
-    }
-
-    public void EndBattle()
-    {
-        var inv = PersistantData.main.inventory;
-        inv.EquippedShell.Stats.DoRepair();
-        // Generate loot (Generate how loot is generated from encounter / map later)
-        var progDraw1 = new List<Program>(loot.ProgramLoot.GetDropsStandard(3, Loot<Program>.LootQuality.Standard));
-        var progDraw2 = new List<Program>()
-        {
-            loot.ProgramLoot.GetDropStandard(Loot<Program>.LootQuality.Standard),
-            loot.ProgramLoot.GetDropStandard(Loot<Program>.LootQuality.High),
-            loot.ProgramLoot.GetDropStandard(Loot<Program>.LootQuality.Standard),
-        };
-        var progDraws = new LootData<Program>(progDraw1, progDraw2);
-        var shellDraws = new LootData<Shell>();
-        loot.UI.ShowUI(inv, progDraws, shellDraws, () => SceneTransitionManager.main.TransitionToScene("Cust"));
-   ;
+        EncounterActive = false;
+        OnActiveEncounterEnd.Invoke();
+        OnActiveEncounterEnd = null;
     }
 
     /// <summary>
