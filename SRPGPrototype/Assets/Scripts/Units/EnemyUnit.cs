@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUnit : Unit
+public class EnemyUnit : Unit, IEncounterUnit
 {
     public override Team UnitTeam => Team.Enemy;
 
@@ -31,14 +31,19 @@ public class EnemyUnit : Unit
     public override List<Action> Actions => ai.Actions;
 
     public UnitUI unitUI;
+
+    #region IEncounterUnit implementation
+
     public EncounterUnitData EncounterData => encounterData;
+    [SerializeField] private EncounterUnitData encounterData = null;
+
+    #endregion
 
     public override CenterStat Power { get; } = new CenterStat();
     public override CenterStat Speed { get; } = new CenterStat();
     public override CenterStat Defense { get; } = new CenterStat();
 
-    [SerializeField]
-    private EncounterUnitData encounterData = null;
+
 
     private AIComponent<Unit> ai;
 

@@ -13,7 +13,8 @@ public class EncounterGenerator : MonoBehaviour
     {
         var positions = EnumerateDimensions(data.dimensions);
         var encounter = new Encounter();
-        int budget = data.budget;
+        int enemyBudget = data.enemyBudget;
+        int lootBudget = data.lootBudget;
         // Initialize encounter values from seed if applicable
         if(data.seed != null)
         {
@@ -21,19 +22,30 @@ public class EncounterGenerator : MonoBehaviour
             encounter.reinforcements.AddRange(data.seed.reinforcements);
             positions = positions.Where((pos) => data.seed.units.All((unit) => unit.pos != pos)).ToList();
         }
-        // Populate with enemies
-        var availableUnits = new List<EnemyUnit>(data.enemies);
+        // Generate loot placement
+        encounter.units.AddRange(SpendBudgetAtRandom(data.lootBudget, data.data, ref positions));
+        // Generate enemies
+        encounter.units.AddRange(SpendBudgetAtRandom(data.enemyBudget, data.enemies, ref positions));
+
+        return encounter;
+    }
+
+    private List<Encounter.UnitEntry> SpendBudgetAtRandom<T>(int budget, List<T> units, ref List<Vector2Int> validPositions) where T : Unit, IEncounterUnit
+    {
+        var availableUnits = new List<T>(units);
         availableUnits.RemoveAll((unit) => unit.EncounterData.cost > budget);
+        var entries = new List<Encounter.UnitEntry>();
         while (budget > 0 && availableUnits.Count > 0)
         {
-            var nextUnit = NextUnit(encounter, positions, availableUnits);
-            encounter.units.Add(nextUnit);
-            budget -= (nextUnit.unit as EnemyUnit).EncounterData.cost;
+            var unit = RandomU.instance.Choice(availableUnits);
+            var pos = RandomU.instance.Choice(validPositions);
+            budget -= unit.EncounterData.cost;
             // Remoave all units that are now too expensive
-            availableUnits.RemoveAll((unit) => unit.EncounterData.cost > budget);
-            positions.Remove(nextUnit.pos);
+            availableUnits.RemoveAll((u) => u.EncounterData.cost > budget);
+            validPositions.Remove(pos);
+            entries.Add(new Encounter.UnitEntry() { pos = pos, unit = unit });
         }
-        return encounter;
+        return entries;
     }
 
     public Encounter.UnitEntry NextUnit(Encounter currEncounter, List<Vector2Int> validPositions, List<EnemyUnit> enemies)

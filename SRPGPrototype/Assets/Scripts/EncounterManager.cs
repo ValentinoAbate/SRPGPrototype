@@ -46,7 +46,7 @@ public class EncounterManager : MonoBehaviour
     private IEnumerator EndEncounterCr()
     {
         foreach(var unit in grid.FindAll<Unit>())
-            yield return StartCoroutine(unit.OnBattleEnd());
+            yield return StartCoroutine(unit.OnBattleEnd(this));
         GenerateAndShowLoot();
     }
 
@@ -59,14 +59,14 @@ public class EncounterManager : MonoBehaviour
         if (GenerateShellLoot != null)
         {
             foreach (LootManager.GenerateShellLootFn shellLoot in GenerateShellLoot.GetInvocationList())
-                shellDraws.Add(shellLoot());
+                shellDraws.Add(shellLoot(loot));
         }
         // Generate Program loot
         var progDraws = new LootData<Program>();
         if (GenerateProgramLoot != null)
         {
             foreach (LootManager.GenerateProgramLootFn progLoot in GenerateProgramLoot.GetInvocationList())
-                progDraws.Add(progLoot());
+                progDraws.Add(progLoot(loot));
         }
 
         loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);

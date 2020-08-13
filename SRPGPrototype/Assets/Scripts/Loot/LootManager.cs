@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LootManager : MonoBehaviour
 {
-    public delegate List<Shell> GenerateShellLootFn();
-    public delegate List<Program> GenerateProgramLootFn();
+    public delegate List<Shell> GenerateShellLootFn(LootManager manager);
+    public delegate List<Program> GenerateProgramLootFn(LootManager manager);
     [SerializeField]
     private List<Program> programs = new List<Program>();
     [SerializeField]

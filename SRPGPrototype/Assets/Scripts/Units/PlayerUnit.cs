@@ -53,7 +53,7 @@ public class PlayerUnit : Unit
         yield break;
     }
 
-    public override IEnumerator OnBattleEnd()
+    public override IEnumerator OnBattleEnd(EncounterManager manager)
     {
         Shell.Stats.DoRepair();
         yield break;

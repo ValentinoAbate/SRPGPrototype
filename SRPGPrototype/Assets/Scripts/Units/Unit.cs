@@ -76,7 +76,7 @@ public abstract class Unit : GridObject
         yield break;
     }
 
-    public virtual IEnumerator OnBattleEnd()
+    public virtual IEnumerator OnBattleEnd(EncounterManager manager)
     {
         yield break;
     }

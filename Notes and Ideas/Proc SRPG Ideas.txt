@@ -11,6 +11,7 @@ General Ideas:
 - Matryoshka enemies that unpack when killed (for area chains)
 - Turrets should be neutral (encounter can end without defeating them, can attack both teams)
 - Allow certain multi-actions to be cancellable (multiple part target selection, etc)
+- Add enemy-only programs as a specific rarity?
 
 Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions
@@ -210,13 +211,31 @@ Encounter Design:
 	- Optional: Number of units?
 	- Optional: "Theme" heur
 	- Optional: partially-constructed encounter to add to (like a seed encounter)
+- Make high HP enemies change as turns pass (get stronger / charge up abilities and actions)
 
 Map Design:
 - All events are on a combat grid (even if they do not contain enemies) - most will
 	- Think FE rekka no ken
 - Loot is visible as battle mystery data (think mmbn6)
+	- Mystery data should have two kinds of info: Rarity (frame) and color (type of loot)
+	- Like just support / buffs, actions, abilities, or generic
 - Special Events (merchant, etc) are NPCs or locations in the map
 - Branching map, or maybe just choose next from three (possibly with the ability to scout forward)
 - 4 levels of info - unknown, hint, field view, field view with details
 - Have some be ambushes where extra reinforcements spawn or another NPC shows up, etc
 - Some squares might be corrupted and unviewable 
+
+Player characters:
+- Break (tyring to end the cycle)
+	- Can end the run / cycle at multple points during the run, at which point they go to their true path
+- Continue (trying to protect the cycle)
+	- Can continue to a next playthrough after beating a run
+
+NPCS:
+- Make all NPCs have an Other half / missing piece?
+- Your other half (break if playing as continue or continue if playing as break)
+- Merchant
+- Repairperson / Fixer
+- Really want a gambler (could be a sub-trait)
+- Hunter (Treasure Hunter? Bounty Hunter? Maybe different between runs)
+- Defender / Keeper (maybe opposite of Hunter)
