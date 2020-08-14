@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depth: 10
   encounterData:
-  - data: []
-    weights: []
+  - data:
+    - {fileID: 0}
+    weights:
+    - 0
   - data: []
     weights: []
   - data: []

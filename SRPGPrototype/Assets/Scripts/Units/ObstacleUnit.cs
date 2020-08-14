@@ -19,6 +19,7 @@ public class ObstacleUnit : Unit
     public override CenterStat Defense { get; } = new CenterStat();
 
     public override OnAfterSubAction OnAfterSubActionFn { get; }
+    public override OnDeath OnDeathFn { get; }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

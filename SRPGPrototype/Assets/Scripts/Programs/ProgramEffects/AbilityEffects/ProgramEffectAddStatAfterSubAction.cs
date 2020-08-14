@@ -12,8 +12,10 @@ public class ProgramEffectAddStatAfterSubAction : ProgramEffectAddOnAfterSubActi
         switch (stat)
         {
             case Stats.StatName.HP:
-                if(value > 0)
-                    user.Damage(value);
+                if (value > 0)
+                    user.Heal(value, user);
+                else if (value < 0)
+                    user.Damage(grid, value, user);
                 break;
             case Stats.StatName.MaxHP:
                 user.MaxHP += value;

@@ -22,6 +22,7 @@ public class EnemyUnit : Unit, IEncounterUnit
     public override int Repair { get; set; }
 
     public override OnAfterSubAction OnAfterSubActionFn { get; }
+    public override OnDeath OnDeathFn { get; }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

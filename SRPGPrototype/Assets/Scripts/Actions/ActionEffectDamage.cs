@@ -31,7 +31,7 @@ public abstract class ActionEffectDamage : ActionEffect
         if(targetStat == TargetStat.HP)
         {
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + (target.HP - damage) + " HP");
-            target.Damage(damage);
+            target.Damage(grid, damage, user);
         }
         else // Target stat is AP
         {

@@ -81,7 +81,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
 
     public void StartAction(Unit user)
     {
-        zeroPower = user.Power.Zero;
+        zeroPower = user.Power.IsZero;
     }
 
     public void FinishAction(Unit user)
