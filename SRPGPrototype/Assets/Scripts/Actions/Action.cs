@@ -79,14 +79,25 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
 
     private bool zeroPower = false;
 
+    public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
+    {
+        StartAction(user);
+        foreach (var sub in subActions)
+        {
+            sub.Use(grid, this, user, targetPos);
+        }
+        FinishAction(user, applyAPCost);
+    }
+
     public void StartAction(Unit user)
     {
         zeroPower = user.Power.IsZero;
     }
 
-    public void FinishAction(Unit user)
+    public void FinishAction(Unit user, bool applyAPCost = true)
     {
-        user.AP -= APCost;
+        if(applyAPCost)
+            user.AP -= APCost;
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;

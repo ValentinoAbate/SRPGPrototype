@@ -23,7 +23,7 @@ public class PlayerUnit : Unit
     public override CenterStat Defense => Stats.Defense;
 
     public override OnAfterSubAction OnAfterSubActionFn => Shell.AbilityOnAfterSubAction;
-    public override OnDeath OnDeathFn { get; }
+    public override OnDeath OnDeathFn => Shell.AbilityOnDeath;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

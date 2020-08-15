@@ -9,7 +9,7 @@ public abstract class Unit : GridObject
 
     public delegate void OnAfterSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Vector2Int> targetPositions);
 
-    public delegate void OnDeath(BattleGrid grid, Unit unit, Unit deathCause);
+    public delegate void OnDeath(BattleGrid grid, Unit unit, Unit killedBy);
 
     public enum Team
     { 
@@ -39,13 +39,15 @@ public abstract class Unit : GridObject
 
     public virtual void Heal(int amount, Unit source)
     {
-        if (Dead || amount < 0)
+        if (Dead || amount <= 0)
             return;
         HP = Mathf.Min(HP + amount, MaxHP);
     }
 
     public virtual void Damage(BattleGrid grid, int damage, Unit source)
     {
+        if(Dead || damage <= 0)
+            return;
         if (damage >= HP)
             Kill(grid, source);
         else
@@ -55,9 +57,13 @@ public abstract class Unit : GridObject
     public void Kill(BattleGrid grid, Unit killedBy)
     {
         HP = 0;
-        grid.Remove(this);
-        gameObject.SetActive(false);
         OnDeathFn?.Invoke(grid, this, killedBy);
+        // On Death call may prevent death somehow
+        if(Dead)
+        {
+            grid.Remove(this);
+            gameObject.SetActive(false);
+        }
     }
 
     public virtual void ResetStats()

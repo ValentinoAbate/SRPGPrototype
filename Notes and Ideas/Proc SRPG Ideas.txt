@@ -12,6 +12,7 @@ General Ideas:
 - Turrets should be neutral (encounter can end without defeating them, can attack both teams)
 - Allow certain multi-actions to be cancellable (multiple part target selection, etc)
 - Add enemy-only programs as a specific rarity?
+- Have a program that evolves if you finish an encounter in one turn
 
 Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions
@@ -171,7 +172,9 @@ Trigger: Trigger an effect on this condition
 - When any/all [scope] programs transform / promote / destroy
 - After [x] uses
 - When stat is less/greater/equal to [x]
-- After an [attribute] progarm is used
+- After an [attribute] program is used
+- When an enemy unit is destroyed
+- When a unit is destroyed by friendly fire
 
 Action conditions:
 - Can only use if moved more/less than [x] tiles
@@ -243,6 +246,8 @@ Enemy Designs
 	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
 - Walking Nest+: HP: 5, AP:2, Move: Basic, Attack: Basic
 	- When destroyed, spawns 2 / 3 Swarm (spawn logic tbd)
+- Nest Nest:
+	- When destroyed, spawn other nests
 - Bomb: HP: 3, AP 2, Move: Basic (maybe slow), Attack: Explosion 1
 	- Explosion 1 (1AP): Hit every adjacent (Horizontal) (to target) square for 4 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 1. Anything that is destroyed by this effect is considered to be destroyed by the unit that destroyed this one

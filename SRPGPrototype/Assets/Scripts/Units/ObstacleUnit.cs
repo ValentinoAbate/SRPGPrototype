@@ -19,7 +19,8 @@ public class ObstacleUnit : Unit
     public override CenterStat Defense { get; } = new CenterStat();
 
     public override OnAfterSubAction OnAfterSubActionFn { get; }
-    public override OnDeath OnDeathFn { get; }
+    public override OnDeath OnDeathFn { get => onDeathFn; }
+    private OnDeath onDeathFn = null;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -36,5 +37,10 @@ public class ObstacleUnit : Unit
     void Start()
     {
         ResetStats();
+        var onDeathEffects = GetComponents<ProgramEffectAddOnDeathAbility>();
+        foreach (var effect in onDeathEffects)
+        {
+            onDeathFn += effect.Ability;
+        }
     }
 }

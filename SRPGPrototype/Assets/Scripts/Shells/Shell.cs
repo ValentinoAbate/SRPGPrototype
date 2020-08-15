@@ -56,6 +56,7 @@ public class Shell : MonoBehaviour, ILootable
     private List<Action> actions = new List<Action>();
 
     public Unit.OnAfterSubAction AbilityOnAfterSubAction { get; private set; }
+    public Unit.OnDeath AbilityOnDeath { get; private set; }
 
     public IEnumerable<Unit.AbilityOnBattleStart> BattleStartAbilities => battleStartAbilities;
     private List<Unit.AbilityOnBattleStart> battleStartAbilities = new List<Unit.AbilityOnBattleStart>();
@@ -232,6 +233,7 @@ public class Shell : MonoBehaviour, ILootable
         }
         // Apply abilities
         AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
+        AbilityOnDeath = compileData.abilityOnDeath;
         // Apply compile changes to actions and stats
         Stats.SetShellValues(compileData.stats);
         // Copy Temporary values of already instantiated actions to their newly generated copies
@@ -254,6 +256,7 @@ public class Shell : MonoBehaviour, ILootable
         public List<Action> actions;
         public List<Restriction> restrictions;
         public Unit.OnAfterSubAction abilityOnAfterSubAction;
+        public Unit.OnDeath abilityOnDeath;
         public int capacity;
         public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
         {
@@ -261,6 +264,7 @@ public class Shell : MonoBehaviour, ILootable
             this.actions = actions;
             this.restrictions = restrictions;
             abilityOnAfterSubAction = null;
+            abilityOnDeath = null;
             capacity = 0;
         }
     }
