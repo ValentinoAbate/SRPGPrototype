@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyPhase : Phase
+public class AIPhase : Phase
 {
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
     public BattleGrid grid;
 
-    private List<EnemyUnit> units = new List<EnemyUnit>();
+    [SerializeField] private Unit.Team team = Unit.Team.None;
 
-    public override void Initialize(IEnumerable<Unit> allUnits)
-    {
-        units = new List<EnemyUnit>(allUnits.Where((u) => u is EnemyUnit).Select((u) => u as EnemyUnit));
-    }
+    private List<AIUnit> units = new List<AIUnit>();
 
-    public override IEnumerator OnPhaseStart()
+    public override IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits)
     {
+        units.Clear();
+        units.AddRange(allUnits.Where((u) => u is AIUnit && UnitPredicate(u as AIUnit)).Select((u) => u as AIUnit));
         RemoveAllDead();
         if (CheckEndBattle())
             yield break;
@@ -24,14 +23,19 @@ public class EnemyPhase : Phase
             yield return StartCoroutine(unit.OnPhaseStart());
         foreach (var unit in units)
         {
-            // Skip enemies that have been reduced to 0 AP
-            if (unit.AP <= 0)
+            // Skip units that have been reduced to 0 AP or have no AI
+            if (unit.AP <= 0 || unit.AI == null)
                 continue;
             yield return StartCoroutine(unit.DoTurn(grid));
             if (CheckEndPhase())
                 yield break;
         }
         EndPhase();
+    }
+
+    private bool UnitPredicate(AIUnit unit)
+    {
+        return unit.UnitTeam == team;
     }
 
     public override IEnumerator OnPhaseEnd()

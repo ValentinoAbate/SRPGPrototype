@@ -17,6 +17,7 @@ public class PhaseManager : MonoBehaviour, IPausable
     private System.Action OnActiveEncounterEnd { get; set; }
 
     private List<Phase> phases;
+    private List<Unit> units;
     private int currPhase;
 
     public bool EncounterActive { get; set; } = false;
@@ -38,17 +39,23 @@ public class PhaseManager : MonoBehaviour, IPausable
         phases.RemoveAll((p) => !p.enabled);
     }
 
+    public void AddUnit(Unit u)
+    {
+        units.Add(u);
+    }
+
     /// <summary>
     /// Initialize the turn count, run the battle start coroutine, and start the first phase
     /// </summary>
-    public IEnumerator StartActiveEncounter(List<Unit> units, System.Action onEnd)
+    public IEnumerator StartActiveEncounter(List<Unit> encounterUnits, System.Action onEnd)
     {
         Turn = 1;
+        units = encounterUnits;
         EncounterActive = true;
-        phases.ForEach((p) => p.Initialize(units));
+        phases.ForEach((p) => p.InitializePhase(units));
         OnActiveEncounterEnd += onEnd;
         yield return StartCoroutine(ShowEncounterStartUI());
-        yield return StartCoroutine(ActivePhase.OnPhaseStart());
+        yield return StartCoroutine(ActivePhase.OnPhaseStart(units));
         Transitioning = false;
     }
 
@@ -101,7 +108,7 @@ public class PhaseManager : MonoBehaviour, IPausable
         yield return new WaitWhile(() => PauseHandle.Paused);
         Debug.Log("Starting Phase: " + ActivePhase.displayName);
         Transitioning = false;
-        yield return StartCoroutine(ActivePhase.OnPhaseStart());
+        yield return StartCoroutine(ActivePhase.OnPhaseStart(units));
         yield return new WaitWhile(() => PauseHandle.Paused);
     }
 }

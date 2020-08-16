@@ -248,6 +248,8 @@ Enemy Designs
 	- When destroyed, spawns 2 / 3 Swarm (spawn logic tbd)
 - Nest Nest:
 	- When destroyed, spawn other nests
+- Bomb Nest:
+	- When destroyed, spawn bombs
 - Bomb: HP: 3, AP 2, Move: Basic (maybe slow), Attack: Explosion 1
 	- Explosion 1 (1AP): Hit every adjacent (Horizontal) (to target) square for 4 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 1. Anything that is destroyed by this effect is considered to be destroyed by the unit that destroyed this one

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System;
-using SerializableCollections.Utilities;
 
 public abstract class AIComponent<T> : MonoBehaviour where T : Unit
 {
@@ -76,7 +74,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         yield return new WaitForSeconds(moveDelay);
     }
 
-    protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> playerUnits) where Target : Unit
+    protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> targetUnits) where Target : Unit
     {
         var subAction = standardAction.subActions[0];
         foreach (var pos in subAction.range.OffsetsShifted(self.Pos))
@@ -84,7 +82,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
             var targetPositions = subAction.targetPattern.Target(grid, self, pos);
             foreach (var tPos in targetPositions)
             {
-                if (playerUnits.Any((u) => u.Pos == tPos))
+                if (targetUnits.Any((u) => u.Pos == tPos))
                 {
                     return pos;
                 }
@@ -108,5 +106,4 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
             this.value = value;
         }
     }
-
 }

@@ -11,12 +11,11 @@ public abstract class Phase : MonoBehaviour, IPausable
     public PhaseManager manager;
     public GameObject phaseTransitionPrefab;
 
-    public virtual void Initialize(IEnumerable<Unit> allUnits)
+    public virtual void InitializePhase(IEnumerable<Unit> allUnits)
     {
-
     }
 
-    public abstract IEnumerator OnPhaseStart();
+    public abstract IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits);
     public abstract IEnumerator OnPhaseEnd();
 
     protected void EndPhase()

@@ -17,10 +17,14 @@ public class EncounterManager : MonoBehaviour
 
     public void StartEncounter()
     {
+        // Get the encounter from the map
         var encounter = PersistantData.main.mapManager.Map.Current.value;
         // Instantiate and add units to the grid
         var units = InitializeUnits(encounter.units);
+        // Log the grid's on add event to the phaseManager's add Unit function
+        grid.OnAddUnit = phaseManager.AddUnit;
         // Put any like location choosing, etc in here
+        // Start the active encounter
         StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }
 
@@ -39,7 +43,6 @@ public class EncounterManager : MonoBehaviour
 
     public void EndEncounter()
     {
-
         StartCoroutine(EndEncounterCr());
     }
 

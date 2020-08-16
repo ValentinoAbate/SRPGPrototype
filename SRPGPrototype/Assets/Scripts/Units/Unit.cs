@@ -61,7 +61,8 @@ public abstract class Unit : GridObject
         // On Death call may prevent death somehow
         if(Dead)
         {
-            grid.Remove(this);
+            if(Pos != BattleGrid.OutOfBounds)
+                grid.Remove(this);
             gameObject.SetActive(false);
         }
     }

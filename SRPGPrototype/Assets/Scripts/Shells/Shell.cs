@@ -50,16 +50,13 @@ public class Shell : MonoBehaviour, ILootable
 
     public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
     public IEnumerable<InstalledProgram> Programs => programs;
-    private List<InstalledProgram> programs = new List<InstalledProgram>();
+    private readonly List<InstalledProgram> programs = new List<InstalledProgram>();
 
     public IEnumerable<Action> Actions => actions;
-    private List<Action> actions = new List<Action>();
+    private readonly List<Action> actions = new List<Action>();
 
     public Unit.OnAfterSubAction AbilityOnAfterSubAction { get; private set; }
     public Unit.OnDeath AbilityOnDeath { get; private set; }
-
-    public IEnumerable<Unit.AbilityOnBattleStart> BattleStartAbilities => battleStartAbilities;
-    private List<Unit.AbilityOnBattleStart> battleStartAbilities = new List<Unit.AbilityOnBattleStart>();
 
     public Stats Stats { get; set; } = new Stats();
 
@@ -134,7 +131,6 @@ public class Shell : MonoBehaviour, ILootable
                     newInstallMap[x + 1, y] = installMap[x, y];
             for (int i = 0; i < programs.Count; ++i)
             {
-                var install = programs[i];
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(1, 0));
                 programs[i].program.Pos += new Vector2Int(1, 0);
             }
@@ -156,7 +152,6 @@ public class Shell : MonoBehaviour, ILootable
                     newInstallMap[x, y - 1] = installMap[x, y];
             for (int i = 0; i < programs.Count; ++i)
             {
-                var install = programs[i];
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, -1));
                 programs[i].program.Pos += new Vector2Int(0, -1);
             }
@@ -168,7 +163,6 @@ public class Shell : MonoBehaviour, ILootable
                     newInstallMap[x - 1, y] = installMap[x, y];
             for (int i = 0; i < programs.Count; ++i)
             {
-                var install = programs[i];
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(-1, 0));
                 programs[i].program.Pos += new Vector2Int(-1, 0);
             }
