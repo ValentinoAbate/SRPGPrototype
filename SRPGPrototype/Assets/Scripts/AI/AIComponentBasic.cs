@@ -60,6 +60,12 @@ public class AIComponentBasic : AIComponent<Unit>
             }
             else // AP must be enough to use the move action
             {
+                // Get move positions
+                var movePositions = moveAction.subActions[0].range.OffsetsShifted(self.Pos)
+                    .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
+                // Break if nowhere to move
+                if (movePositions.Count() <= 0)
+                    yield break;
                 yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, targetUnits));
             }
         }

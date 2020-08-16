@@ -33,7 +33,7 @@ namespace RandomUtils
         public WeightedSet(IEnumerable<T> items, float weight = 0)
         {
             foreach (var item in items)
-                this.items.Add(item, weight);
+                Add(item, weight);
         }
         public WeightedSet(IEnumerable<T> items, IEnumerable<float> weights)
         {
@@ -41,14 +41,22 @@ namespace RandomUtils
             e.MoveNext();
             foreach (T item in items)
             {
-                this.items.Add(item, e.Current);
+                Add(item, e.Current);
                 e.MoveNext();
             }
         }
         public WeightedSet(IEnumerable<KeyValuePair<T, float>> pairs)
         {
             foreach (var kvp in pairs)
-                this.items.Add(kvp.Key, kvp.Value);
+                Add(kvp.Key, kvp.Value);
+        }
+        /// <summary>
+        /// Creates a weighted set where the weight of each value given is the value of the metric function evaluated with the item
+        /// </summary>
+        public  WeightedSet(IEnumerable<T> items, Metric weight)
+        {
+            foreach (var item in items)
+                Add(item, weight(item));
         }
         #endregion
 

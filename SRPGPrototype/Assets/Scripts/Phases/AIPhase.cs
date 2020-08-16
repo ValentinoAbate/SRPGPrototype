@@ -49,8 +49,7 @@ public class AIPhase : Phase
 
     public bool CheckEndPhase()
     {
-        RemoveAllDead();
-        if (units.Any((u) => u.AP > 0))
+        if (units.Any((u) => !u.Dead && u.AP > 0))
             return false;
         EndPhase();
         return true;

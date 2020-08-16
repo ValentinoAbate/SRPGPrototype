@@ -17,4 +17,15 @@ public static class Vector2IntExtensions
         direction.Clamp(-Vector2Int.one, Vector2Int.one);
         return direction;
     }
+
+    public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos)
+    {
+        return new List<Vector2Int>()
+        {
+            pos + Vector2Int.up,
+            pos + Vector2Int.down,
+            pos + Vector2Int.left,
+            pos + Vector2Int.right,
+        };
+    }
 }

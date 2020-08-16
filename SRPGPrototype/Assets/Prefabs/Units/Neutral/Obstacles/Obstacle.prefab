@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2671863499721434950}
   - component: {fileID: 2227870287527632981}
+  - component: {fileID: 4261383732389681203}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -46,9 +47,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  team: 0
   maxHP: 5
+  maxAP: 0
   displayName: Obstacle
   unitUI: {fileID: 3639768143138655526}
+  encounterData: {fileID: 4261383732389681203}
+--- !u!114 &4261383732389681203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068486978419434115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8530accac396c2a43b227dc557cd9022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
 --- !u!1 &8683891458397964560
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +112,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -211,6 +229,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000552615799475719, guid: b7d7983af2328a6478dc927fa02f7511,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000552615799475719, guid: b7d7983af2328a6478dc927fa02f7511,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000552615799475719, guid: b7d7983af2328a6478dc927fa02f7511,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000552615799475719, guid: b7d7983af2328a6478dc927fa02f7511,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 9186734363589274897, guid: b7d7983af2328a6478dc927fa02f7511,
         type: 3}
