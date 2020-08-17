@@ -231,6 +231,8 @@ Enemy Designs:
 - Nest Queen / The Hive (Boss)
 - Nestmaker: HP: 8, AP 2, Move Basic, Action: Make nest
 	- Makes nests in empty tiles
+- NestHatcher: 
+	- Goes around hatching nests
 - Switch: HP: 5, AP:2, Attack: Basic
 	- Has Move: Diagonal 1 tile (1 AP, 1/1 slowdown?) if in diagonal mode
 	- Has Move: Basic if in horizontal mode
