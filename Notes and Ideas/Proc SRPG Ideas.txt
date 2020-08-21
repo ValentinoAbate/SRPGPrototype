@@ -13,6 +13,8 @@ General Ideas:
 - Allow certain multi-actions to be cancellable (multiple part target selection, etc)
 - Add enemy-only programs as a specific rarity?
 - Have a program that evolves if you finish an encounter in one turn
+- Allow the player to run, but only if there are other encounters they could go to, and add penalties. They can't return to the same encounter.
+- Add uninstall all option
 
 Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions
@@ -223,9 +225,9 @@ Environment Designs:
 - Nest Nest:
 	- When destroyed, spawn other nests
 Enemy Designs:
-- Soldier: HP: 4, AP: 2, Move: Basic, Attack: Basic
-- Seeker: HP: 5, AP: 3, Move: Basic (Fast), Attack: Basic
-- Swarm: HP: 2, AP: 1, Move: Basic, Attack: Basic, Cost (1 / 0.5)
++ Soldier: HP: 4, AP: 2, Move: Basic, Attack: Basic
++ Seeker: HP: 5, AP: 3, Move: Basic (Fast), Attack: Basic
++ Swarm: HP: 2, AP: 1, Move: Basic, Attack: Basic, Cost (1 / 0.5)
 	- Potentially give more AP but do less damage?
 - Swarm+: HP: 2, AP: 2, Move: Basic, Attack: Basic
 - Nest Queen / The Hive (Boss)

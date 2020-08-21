@@ -28,7 +28,7 @@ PrefabInstance:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: displayName
-      value: Mystery Data (U)
+      value: Mystery Data (R)
       objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
@@ -98,7 +98,7 @@ PrefabInstance:
     - target: {fileID: 3161273769774995320, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: cost
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0094300eefbb09549b66fbb049403897, type: 3}

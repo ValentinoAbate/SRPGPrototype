@@ -3,6 +3,7 @@
     Common,
     Uncommon,
     Rare,
+    Elite,
     Boss,
     Unique,
     PreInstall,

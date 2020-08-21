@@ -18,9 +18,9 @@ public class MapData : ScriptableObject
     {
         if (depth >= Depth)
             return null;
-        //var entry = encounterData[depth];
-        //return new WeightedSet<EncounterData>(entry.data, entry.weights);
-        return new WeightedSet<EncounterData>(testData, 1);
+        var entry = encounterData[depth];
+        return new WeightedSet<EncounterData>(entry.data, entry.weights);
+        //return new WeightedSet<EncounterData>(testData, 1);
     }
     [Serializable]
     public class Entry

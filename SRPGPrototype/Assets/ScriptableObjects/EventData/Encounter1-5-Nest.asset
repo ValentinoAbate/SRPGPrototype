@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
-  m_Name: EncounterTestNest
+  m_Name: Encounter1-5-Nest
   m_EditorClassIdentifier: 
   dimensions: {x: 6, y: 6}
   enemyBudget: 8
   enemies:
   - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
+  - {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d, type: 3}
   - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
   - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
   obstacleBudget: 10
@@ -31,15 +31,15 @@ MonoBehaviour:
   - {fileID: 2057450463593074828, guid: c6787ea82df0c2b44aa642fea36029bd, type: 3}
   - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
   - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
-  lootBudget: 2
+  lootBudget: 1
   data:
-  - {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 4524468774668430702, guid: 748e21fc225cd334989a2524eb9758ec, type: 3}
-  - {fileID: 4524468774668430702, guid: 748e21fc225cd334989a2524eb9758ec, type: 3}
+  - {fileID: 1443466573746710886, guid: c21a492318cf85f4185711ef57bb24d9, type: 3}
   seed:
     name: Encounter
     units:
     - pos: {x: 3, y: 3}
       unit: {fileID: 493724828840264545, guid: d9eca834aabc2ae4b834ab9ed8985602, type: 3}
+    - pos: {x: 2, y: 2}
+      unit: {fileID: 7594287889711242676, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
+        type: 3}
     reinforcements: []

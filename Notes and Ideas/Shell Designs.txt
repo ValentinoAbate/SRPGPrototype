@@ -1,4 +1,69 @@
 Shell Concepts:
+- Starting Shell:
+	- o o o o o
+	- x i o i x
+	- o o x o o
+	- o i o i o
+	- o x o x o
+
+	- o o o o o o
+	- x i o i x x
+	- o o x o o o
+	- o i o i o x
+	- o x o x o x
+	- o x o x o o
+
+	- o x x o x x o
+	- o o o o o o o
+	- x x i o i x x
+	- o o o x o o o
+	- x o i o i o x
+	- x o x o x o x
+	- o o x o x o o
+- Continue's Shell
+	- o o o o o 
+	- o o i i x
+	- o i x x x
+	- o o i i x
+	- o o o o o
+
+	- o o o o o x
+	- o o i i x x
+	- o i x x x x
+	- o o i i x x
+	- o o o o o x
+	- x o o o o x
+
+	- x x o o o o x
+	- x o o o o o x
+	- o o o i i x x
+	- o o i x x x x
+	- o o o i i x x
+	- x o o o o o x
+	- x x o o o o x
+
+- Break's shell
+	- o o o o i
+	- o x x o i
+	- o o o o i
+	- o i x x o
+	- o o o o o
+
+	- o o o o i x
+	- o x x o i x
+	- o o o o i x
+	- o i x x o x
+	- o o o o o o
+	- x o o o o x
+
+	- x o o o o x x
+	- x o o o o i x
+	- o o x x o i x
+	- o o o o o i x
+	- o o i x x o x
+	- x o o o o o o
+	- x x o o o o x
+
 - Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
 - Spacial Nexus (Uncommon): any program installed in "s" counts as adjacent to all other programs
  	- o o o o o
@@ -21,7 +86,7 @@ Shell Concepts:
 	- x o i x i o x
 	- o o o o o o o
 	- o o x x x o o
-- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: low maxhp, maxap, and repair, no adjacency 
+- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 1 max Hp
 - Big Shell: A [Large] shell that can only have certain number of programs installed and takes a penalty for any empty squares
 - Limit colors to low numbers
 - Treaure Hunter: No common programs can be installed. Higher chance at uncommmon and rare loot

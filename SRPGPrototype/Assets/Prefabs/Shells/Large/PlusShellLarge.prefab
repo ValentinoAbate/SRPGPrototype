@@ -1086,6 +1086,11 @@ PrefabInstance:
       propertyPath: patterns.Array.data[2].patternOffsets.Array.data[26].x
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: e43a58370bf5dcf40ba2febacf61e524,
+        type: 3}
+      propertyPath: rarity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6665655161741394638, guid: e43a58370bf5dcf40ba2febacf61e524,
         type: 3}
       propertyPath: m_Name
