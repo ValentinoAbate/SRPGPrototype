@@ -25,10 +25,14 @@ public class MapGenerator : MonoBehaviour
                 events[depth].Add(encounterGenerator.Generate(encounterData));
             }
         }
-        // Create the event graph and initial vertices
+        // Create the event graph and initial vertices to all depth 0 encounters
         Digraph<Encounter> eventGraph = new Digraph<Encounter>(events[0]);
+        // Get the current vertices from those currently in the graph
         var currVertices = new List<Vertex<Encounter>>(eventGraph.Vertices);
-        var startVertex = RandomU.instance.Choice(currVertices);
+        // Create the start vertex
+        var startVertex = eventGraph.AddVertex(null);
+        // Connect the starting vertex to all nodes at depth 0
+        currVertices.ForEach((v) => eventGraph.AddEdge(startVertex, v));
         // Generate Graph
         foreach (int depth in Enumerable.Range(0, data.Depth - 1))
         {
