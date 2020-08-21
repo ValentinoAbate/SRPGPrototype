@@ -12,15 +12,20 @@ public class MapData : ScriptableObject
     public int Depth => depth;
     [SerializeField] private int depth = defaultDepth;
     [SerializeField] private List<Entry> encounterData = new List<Entry>(defaultDepth);
+    [Header("Test Data")]
+    [SerializeField] private bool testMode = false;
     [SerializeField] private List<EncounterData> testData = new List<EncounterData>(defaultDepth);
 
     public WeightedSet<EncounterData> GetEncounterData(int depth)
     {
         if (depth >= Depth)
             return null;
+        // Just return the test data if in testing mode
+        if (testMode)
+            return new WeightedSet<EncounterData>(testData, 1);
+        // Actual ecnounter data logic
         var entry = encounterData[depth];
         return new WeightedSet<EncounterData>(entry.data, entry.weights);
-        //return new WeightedSet<EncounterData>(testData, 1);
     }
     [Serializable]
     public class Entry
