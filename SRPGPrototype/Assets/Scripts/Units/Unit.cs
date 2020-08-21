@@ -37,6 +37,14 @@ public abstract class Unit : GridObject
 
     public abstract List<Action> Actions { get; }
 
+    public void ModifyHp(BattleGrid grid, int amount, Unit source)
+    {
+        if (amount > 0)
+            Heal(amount, source);
+        else if (amount < 0)
+            Damage(grid, -amount, source);
+    }
+
     public virtual void Heal(int amount, Unit source)
     {
         if (Dead || amount <= 0)
@@ -71,11 +79,45 @@ public abstract class Unit : GridObject
     {
         HP = MaxHP;
         AP = MaxAP;
+        Power.Value = 0;
+        Speed.Value = 0;
+        Defense.Value = 0;
+    }
+
+    public void ModifyStat(BattleGrid grid, Stats.StatName stat, int value, Unit source)
+    {
+        switch (stat)
+        {
+            case Stats.StatName.HP:
+                ModifyHp(grid, value, source);
+                break;
+            case Stats.StatName.MaxHP:
+                MaxHP += value;
+                break;
+            case Stats.StatName.AP:
+                AP += value;
+                break;
+            case Stats.StatName.MaxAP:
+                MaxAP += value;
+                break;
+            case Stats.StatName.Repair:
+                Repair += value;
+                break;
+            case Stats.StatName.Power:
+                Power.Value += value;
+                break;
+            case Stats.StatName.Speed:
+                Speed.Value += value;
+                break;
+            case Stats.StatName.Defense:
+                Defense.Value += value;
+                break;
+        }
     }
 
     public bool CanUseAction(Action action)
     {
-        return AP >= action.APCost;
+        return AP >= (action.APCost - Speed.Value);
     }
 
     public virtual IEnumerator OnPhaseStart()

@@ -36,14 +36,23 @@ public class PlayerUnit : Unit
 
     public UnitUI unitUI;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void ResetStats()
     {
         AP = MaxAP;
         if (HP <= 0)
             HP = MaxHP;
         // Make sure UI gets updated
         HP = HP;
+        // Reset center stats
+        Power.Value = 0;
+        Speed.Value = 0;
+        Defense.Value = 0;
+    }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        ResetStats();
     }
 
     // Reset uses per turn

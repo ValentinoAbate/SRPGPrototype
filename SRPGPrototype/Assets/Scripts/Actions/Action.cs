@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Action : MonoBehaviour, IEnumerable<SubAction>
 {
@@ -78,6 +76,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     }
 
     private bool zeroPower = false;
+    private bool zeroSpeed = false;
 
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
     {
@@ -92,12 +91,21 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public void StartAction(Unit user)
     {
         zeroPower = user.Power.IsZero;
+        zeroSpeed = user.Speed.IsZero;
     }
 
     public void FinishAction(Unit user, bool applyAPCost = true)
     {
         if(applyAPCost)
-            user.AP -= APCost;
+        {
+            int cost = APCost;
+            if(!zeroSpeed)
+            {
+                cost -= user.Speed.Value;
+                user.Speed.Use();
+            }
+            user.AP -= Mathf.Max(cost, 0);
+        }
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;

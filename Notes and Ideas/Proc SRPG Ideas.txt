@@ -85,7 +85,7 @@ Stats: quantities availible to the player.
 + HP (min: 0, max: MaxHP)
 + Repair (min: 0, max: none) - Added to your hp and then resets to shell level after repairing
 + Power (min: none, max: none) - Added to the damage of any effect. gets one closer to zero after being used. resets to shell level after an encounter
-- Speed (min: none, max: none) - Subtracted from the AP cost of any action. Get one closer to zero after being applied. resets to shell level after an encounter
++ Speed (min: none, max: none) - Subtracted from the AP cost of any action. Get one closer to zero after being applied. resets to shell level after an encounter
 - Defense (min: none, max: none) - Subtracted from any damage taken. Get closer to zero after being applied. resets to shell level after an encounter.
 
 

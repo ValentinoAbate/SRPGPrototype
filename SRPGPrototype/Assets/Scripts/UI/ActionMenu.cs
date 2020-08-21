@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -33,7 +32,7 @@ public class ActionMenu : MonoBehaviour
             button.Initialize(action);
             // Add show action description trigger
             var showActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            showActionDesc.callback.AddListener((data) => ui.actionDescription.Show(action));
+            showActionDesc.callback.AddListener((data) => ui.actionDescription.Show(action, unit));
             button.trigger.triggers.Add(showActionDesc);
             // Add hide action description trigger
             var hideActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
