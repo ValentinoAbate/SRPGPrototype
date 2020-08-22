@@ -1,16 +1,36 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System;
 
 public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 {
     public static readonly Vector2Int OutOfBounds = new Vector2Int(-100, -100);
     public abstract Vector2Int Dimensions { get; }
+
     public int Rows => field.GetLength(1);
     public int Cols => field.GetLength(0);
 
+    /// <summary>
+    /// Return all the currently empty positions in the grid
+    /// O(x*y)
+    /// </summary>
+    public List<Vector2Int> EmptyPositions
+    {
+        get
+        {
+            var ret = new List<Vector2Int>();
+            for (int x = 0; x < Dimensions.x; ++x)
+            {
+                for (int y = 0; y < Dimensions.y; ++y)
+                {
+                    var pos = new Vector2Int(x, y);
+                    if (IsEmpty(pos))
+                        ret.Add(pos);
+                }
+            }
+            return ret;
+        }
+    }
     public Vector2 CenterToVextexOffset => new Vector2((cellSize.x + skewXOffset) * 0.5f, cellSize.y * 0.5f);
 
     [Header("Grid")]
@@ -320,7 +340,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// <summary>
     /// Swap two Field Objects' grid positions.
     /// Preconditdion: both objs' Vector2Intition are legal (see IsLegal()).
-    /// Does not update the objects' world positions. Use SwapAndSetWorldVector2Int() to swap and set world position.
+    /// Does not update the objects' world positions. Use SwapAndSetWorldPOs() to swap and set world position.
     /// </summary>
     public void Swap(Obj obj1, Obj obj2)
     {
@@ -443,5 +463,3 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 
     #endregion
 }
-
-

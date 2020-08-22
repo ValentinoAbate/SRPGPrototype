@@ -6,7 +6,7 @@ General Ideas:
 - Cannot switch shells while uninstalled
 - Moves should cost low AP compared to standard actions? (maybe move base 1, standard base 2)?
 - program fusion
-- AP goes up after each usage instead of uses per turn - implemented, seems better)
+- AP goes up after each usage instead of uses per turn - (implemented, seems better)
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
 - Matryoshka enemies that unpack when killed (for area chains)
 - Turrets should be neutral (encounter can end without defeating them, can attack both teams)
@@ -160,7 +160,6 @@ Abilities: These effects give the player special passive abilities
 - You can go into [x] AP dept (damages you when AP rechanges, maybe subtracts from your next turn)
 	- Pair with actions / abilities that get worse with positive AP
 - Using the same action more than once in a turn [scales] it
-- Actions can be lowered to 0 AP (pair with -uses per turn / battle modifiers)
 - MaxHP + [x], Unstable HP <= [y]
 - When [trigger] gain [ability]/[stat] for [time]
 	- When a program is destroyed, gain "All attacks do +1 damage" for 1 encounter
