@@ -7,7 +7,7 @@ public abstract class ActionEffect : MonoBehaviour
 {
     public virtual bool UsesPower => false;
     public virtual void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions) { }
-    public abstract void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData);
+    public abstract void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData);
 
     public struct PositionData
     {

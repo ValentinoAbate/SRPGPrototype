@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ActionEffectMovePush : ActionEffectMove
 {
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
-        var target = grid.Get(targetData.targetPos);
         if (target == null)
             return;
         Move(grid, target, user.Pos.DirectionTo(targetData.targetPos));

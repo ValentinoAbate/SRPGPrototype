@@ -12,14 +12,13 @@ public class ActionEffectModifyStat : ActionEffect
 
     public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
-        actionValue = number.ActionValue(grid, action, user, targetPositions);
+        actionValue = number.ActionValue(grid, action, user, GetTargetList(grid, targetPositions).Count);
         if (UsesPower)
             actionValue += user.Power.Value;
     }
 
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
-        var target = grid.Get(targetData.targetPos);
         if (target == null)
             return;
         var value = actionValue + number.TargetValue(grid, action, user, target, targetData);

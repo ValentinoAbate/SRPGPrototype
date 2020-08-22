@@ -6,24 +6,23 @@ public class ActionEffectSpawnUnit : ActionEffect
 {
     public const int spawnDamage = 2;
     public Unit unitPrefab;
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
-        var unitInSpace = grid.Get(targetData.targetPos);
-        if (unitInSpace == null)
+        if (target == null)
         {
             SpawnUnit(grid, targetData.targetPos);
         }
-        else if (unitInSpace.Dead)
+        else if (target.Dead)
         {
-            grid.Remove(unitInSpace);
+            grid.Remove(target);
             SpawnUnit(grid, targetData.targetPos);
         }
         else
         {
-            unitInSpace.Damage(grid, spawnDamage, user);
-            if (unitInSpace.Dead)
+            target.Damage(grid, spawnDamage, user);
+            if (target.Dead)
             {
-                grid.Remove(unitInSpace);
+                grid.Remove(target);
                 SpawnUnit(grid, targetData.targetPos);
             }
         }

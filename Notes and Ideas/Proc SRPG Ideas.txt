@@ -15,6 +15,7 @@ General Ideas:
 - Have a program that evolves if you finish an encounter in one turn
 - Allow the player to run, but only if there are other encounters they could go to, and add penalties. They can't return to the same encounter.
 - Add uninstall all option
+- Use free move action as a stat like speed?
 
 Color Mapping (action type to color not really working right now, may work with hybrid actions):
 - Blue (circle): Move actions

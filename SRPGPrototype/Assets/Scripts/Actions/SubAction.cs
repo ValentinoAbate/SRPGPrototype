@@ -23,15 +23,18 @@ public class SubAction : MonoBehaviour
         var targetPositions = hasPattern ? targetPattern.Target(grid, user, selectedPos) : new List<Vector2Int>();
         // Remove all illegal target positions
         targetPositions.RemoveAll((p) => !grid.IsLegal(p));
-
+        var targets = new List<Unit>();
         foreach (var effect in effects)
         {
             effect.Initialize(grid, action, user, targetPositions);
             foreach(var position in targetPositions)
             {
-                effect.ApplyEffect(grid, action, user, new ActionEffect.PositionData(position, selectedPos));
+                var target = grid.Get(position);
+                if (target != null)
+                    targets.Add(target);
+                effect.ApplyEffect(grid, action, user, target, new ActionEffect.PositionData(position, selectedPos));
             }
         }
-        user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targetPositions);
+        user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
     }
 }

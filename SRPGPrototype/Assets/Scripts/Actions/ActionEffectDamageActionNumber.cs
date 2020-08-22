@@ -8,7 +8,7 @@ public class ActionEffectDamageActionNumber : ActionEffectDamage
 
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
-        return damage.ActionValue(grid, action, user, targetPositions);
+        return damage.ActionValue(grid, action, user, GetTargetList(grid, targetPositions).Count);
     }
 
     public override int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)

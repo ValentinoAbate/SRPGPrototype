@@ -6,9 +6,8 @@ public class ActionEffectMoveDirection : ActionEffectMove
 {
     public Vector2Int direction;
 
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
-        var target = grid.Get(targetData.targetPos);
         if (target == null)
             return;
         Move(grid, target, direction);

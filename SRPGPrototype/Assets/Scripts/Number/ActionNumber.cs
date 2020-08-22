@@ -33,7 +33,7 @@ public class ActionNumber
     [SerializeField]
     private Type type = Type.Constant;
 
-    public int ActionValue(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public int ActionValue(BattleGrid grid, Action action, Unit user, int numTargets)
     {
         if(type == Type.Constant)
             return constant;
@@ -46,7 +46,7 @@ public class ActionNumber
         }
         else if(type == Type.NumberOfTargets)
         {
-            number = targetPositions.Where((pos) => grid.Get(pos) != null).Count();
+            number = numTargets;
         }
         else if(type == Type.TimeUsed)
         {

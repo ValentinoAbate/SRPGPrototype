@@ -9,5 +9,5 @@ public abstract class ProgramEffectAddOnAfterSubActionAbility : ProgramEffect
         data.abilityOnAfterSubAction += Ability;
     }
 
-    public abstract void Ability(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Vector2Int> targetPositions);
+    public abstract void Ability(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
 }

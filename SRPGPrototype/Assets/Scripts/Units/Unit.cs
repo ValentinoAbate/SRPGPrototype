@@ -7,7 +7,7 @@ public abstract class Unit : GridObject
 {
     public delegate void AbilityOnBattleStart(BattleGrid grid, Unit unit);
 
-    public delegate void OnAfterSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Vector2Int> targetPositions);
+    public delegate void OnAfterSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
 
     public delegate void OnDeath(BattleGrid grid, Unit unit, Unit killedBy);
 

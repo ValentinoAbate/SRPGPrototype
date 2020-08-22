@@ -22,9 +22,8 @@ public abstract class ActionEffectDamage : ActionEffect
         baseDamage = BaseDamage(grid, action, user, targetPositions);
     }
 
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
-        var target = grid.Get(targetData.targetPos);
         if (target == null)
             return;
         int damage = Mathf.Max(baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power.Value, 0);
