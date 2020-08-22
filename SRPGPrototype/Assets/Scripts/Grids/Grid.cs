@@ -272,7 +272,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     }
 
     /// <summary>
-    /// Set's the object at the given grid position to the given Obj reference (if pos is a legal Grid Vector2Intition)
+    /// Set's the object at the given grid position to the given Obj reference (if pos is a legal Grid Position)
     /// </summary>
     public void Set(Vector2Int pos, Obj obj)
     {
@@ -297,7 +297,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// <summary>
     /// Moves a field object to a new grid space and updates the objects world position if the object successfully moved.
     /// See Move(obj, dest) for success and failure conditions.
-    /// Preconditdion: obj's Vector2Intition is legal (see IsLegal())
+    /// Preconditdion: obj's Position is legal (see IsLegal())
     /// </summary>
     public bool MoveAndSetWorldPos(Obj obj, Vector2Int dest)
     {
@@ -310,8 +310,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// <summary>
     /// Move a Obj to a new grid space.
     /// Move fails if destination is illegal or occupied.
-    /// Preconditdion: obj's Vector2Intition is legal (see IsLegal())
-    /// Does not update the object's world position. Use MoveAndSetWorldVector2Int() to move and set world position.
+    /// Preconditdion: obj's Position is legal (see IsLegal())
+    /// Does not update the object's world position. Use MoveAndSetWorldPos() to move and set world position.
     /// </summary>
     public bool Move(Obj obj, Vector2Int dest)
     {
@@ -327,7 +327,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 
     /// <summary>
     /// Swap two Field Objects' grid positions and then update their world positions based on the new values.
-    /// Preconditdion: both objs' Vector2Intition are legal (see IsLegal()).
+    /// Preconditdion: both objs' Position are legal (see IsLegal()).
     /// </summary>
     public void SwapAndSetWorldPos(Obj obj1, Obj obj2)
     {
@@ -339,7 +339,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 
     /// <summary>
     /// Swap two Field Objects' grid positions.
-    /// Preconditdion: both objs' Vector2Intition are legal (see IsLegal()).
+    /// Preconditdion: both objs' Position are legal (see IsLegal()).
     /// Does not update the objects' world positions. Use SwapAndSetWorldPOs() to swap and set world position.
     /// </summary>
     public void Swap(Obj obj1, Obj obj2)
@@ -365,7 +365,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// <returns> A dictionary of reachable grid positions to ints where the ints are the minimum distance to the position. </returns>
     public Dictionary<Vector2Int,int> Reachable(Vector2Int startVector2Int, int range, Predicate<Obj> canMoveThrough)
     {
-        // Initialize distances with the startVector2Intition
+        // Initialize distances with the startPosition
         var distances = new Dictionary<Vector2Int, int> { { startVector2Int, 0 } };
 
         // Inner recursive method
