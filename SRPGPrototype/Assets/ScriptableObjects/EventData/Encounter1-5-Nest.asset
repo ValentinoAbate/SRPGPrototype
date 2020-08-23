@@ -37,8 +37,6 @@ MonoBehaviour:
   seed:
     name: Encounter
     units:
-    - pos: {x: 3, y: 3}
-      unit: {fileID: 493724828840264545, guid: d9eca834aabc2ae4b834ab9ed8985602, type: 3}
     - pos: {x: 2, y: 2}
       unit: {fileID: 7594287889711242676, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
         type: 3}

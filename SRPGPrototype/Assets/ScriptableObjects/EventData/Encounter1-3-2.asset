@@ -46,7 +46,5 @@ MonoBehaviour:
   - {fileID: 4524468774668430702, guid: 748e21fc225cd334989a2524eb9758ec, type: 3}
   seed:
     name: Encounter
-    units:
-    - pos: {x: 3, y: 3}
-      unit: {fileID: 493724828840264545, guid: d9eca834aabc2ae4b834ab9ed8985602, type: 3}
+    units: []
     reinforcements: []

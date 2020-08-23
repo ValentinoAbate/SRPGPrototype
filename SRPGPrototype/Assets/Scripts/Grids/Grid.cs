@@ -199,6 +199,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         return pos.x >= 0 && pos.x < Dimensions.x && pos.y >= 0 && pos.y < Dimensions.y;
     }
 
+    public bool IsLegalAndEmpty(Vector2Int pos) => IsLegal(pos) && IsEmpty(pos);
+
     #endregion
 
     #region Field Object Methods

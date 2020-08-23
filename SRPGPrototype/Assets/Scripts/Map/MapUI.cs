@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using Collections.Graphs;
+using RandomUtils;
 using System.Collections.Generic;
-using Collections.Graphs;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +12,7 @@ public class MapUI : MonoBehaviour
     public GameObject choiceUI;
     public Transform eventButtonContainer;
     public GameObject eventButtonPrefab;
+    public Button gambleButton;
     [Header("Preview UI References")]
     public GameObject previewUI;
     public BattleGrid previewGrid;
@@ -33,10 +33,11 @@ public class MapUI : MonoBehaviour
         backToEncounterSelectionButton.onClick.AddListener(ShowChoiceUI);
         HideEncounterPreview();
         HideChoiceUI();
-        InitializeChoiceButtons(map.NextEncounters);
+        vertices = new List<Vertex<Encounter>>(map.NextEncounters);
+        InitializeChoiceButtons(vertices);
+        gambleButton.onClick.AddListener(GambleEncounterChoice);
         ShowChoiceUI();
     }
-
 
     private void InitializeChoiceButtons(IEnumerable<Vertex<Encounter>> vertices)
     {
@@ -49,7 +50,11 @@ public class MapUI : MonoBehaviour
             button.onClick.AddListener(HideChoiceUI);
             button.onClick.AddListener(() => ShowEncounterPreview(vertex));
         }
-        this.vertices = new List<Vertex<Encounter>>(vertices);
+    }
+
+    private void GambleEncounterChoice()
+    {
+        ConfirmEncounter(RandomU.instance.Choice(vertices));
     }
 
     private void ShowChoiceUI()

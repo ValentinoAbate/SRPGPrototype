@@ -1,29 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
     public PhaseManager phaseManager;
     public BattleGrid grid;
     public LootManager loot;
+    public BattleCursor cursor;
+    public GameObject playerPrefab;
+    public GameObject unitPlacementUI;
+    public Button confirmPlayerPlacementButton;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
+    private PlayerUnit player;
+
     private void Start()
     {
-        StartEncounter();
+        Initialize();
     }
 
-    public void StartEncounter()
+    private void Initialize()
     {
         // Get the encounter from the map
         var encounter = PersistantData.main.mapManager.Map.Current.value;
         // Instantiate and add units to the grid
         var units = InitializeUnits(encounter.units);
+        // Don't allow the encounter to start until the player has been placed
+        confirmPlayerPlacementButton.interactable = false;
+        confirmPlayerPlacementButton.onClick.AddListener(() => StartEncounter(units));
+        // Setup cursor for unit placement
+        cursor.OnClick += SetPlayerPosition;
+        cursor.OnCancel += CancelPlayerPlacement;
+    }
+
+    private void SetPlayerPosition(Vector2Int pos)
+    {
+        if(grid.IsLegalAndEmpty(pos))
+        {
+            if(player == null)
+            {
+                player = Instantiate(playerPrefab, grid.GetSpace(pos), Quaternion.identity).GetComponent<PlayerUnit>();
+                confirmPlayerPlacementButton.interactable = true;
+                grid.Add(pos, player);
+            }
+            else
+            {
+                grid.MoveAndSetWorldPos(player, pos);
+            }
+        }
+    }
+
+    private void CancelPlayerPlacement()
+    {
+        if(player != null)
+        {
+            grid.Remove(player);
+            Destroy(player.gameObject);
+            player = null;
+            confirmPlayerPlacementButton.interactable = false;
+        }
+    }
+
+    public void StartEncounter(List<Unit> units)
+    {
+        // Add the player to the list of units
+        units.Add(player);
+        // Disable the placement UI
+        unitPlacementUI.SetActive(false);
+        // Clear the cursor's events
+        cursor.NullAllActions();
         // Log the grid's on add event to the phaseManager's add Unit function
         grid.OnAddUnit = phaseManager.AddUnit;
-        // Put any like location choosing, etc in here
         // Start the active encounter
         StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }
