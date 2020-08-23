@@ -22,7 +22,8 @@ public class MapGenerator : MonoBehaviour
             foreach(var i in Enumerable.Range(0, width))
             {
                 var encounterData = RandomU.instance.Choice(encounterBank);
-                events[depth].Add(encounterGenerator.Generate(encounterData));
+                string encounterName = "Encounter " + i.ToString();
+                events[depth].Add(encounterGenerator.Generate(encounterData, encounterName));
             }
         }
         // Create the event graph and initial vertices to all depth 0 encounters

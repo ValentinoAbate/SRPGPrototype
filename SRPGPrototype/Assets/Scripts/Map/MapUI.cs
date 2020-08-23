@@ -17,8 +17,13 @@ public class MapUI : MonoBehaviour
     public GameObject previewUI;
     public BattleGrid previewGrid;
     public Transform unitContainer;
+    public TextMeshProUGUI encounterNameText;
     public Button confirmEncounterButton;
     public Button backToEncounterSelectionButton;
+    public Button nextEncounterButton;
+    public Button prevEncounterButton;
+
+    private List<Vertex<Encounter>> vertices = null;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +49,7 @@ public class MapUI : MonoBehaviour
             button.onClick.AddListener(HideChoiceUI);
             button.onClick.AddListener(() => ShowEncounterPreview(vertex));
         }
+        this.vertices = new List<Vertex<Encounter>>(vertices);
     }
 
     private void ShowChoiceUI()
@@ -61,8 +67,31 @@ public class MapUI : MonoBehaviour
         previewUI.SetActive(true);
         confirmEncounterButton.onClick.RemoveAllListeners();
         confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(vertex));
-        InitializeUnits(vertex.value.units);
+        nextEncounterButton.onClick.RemoveAllListeners();
+        nextEncounterButton.onClick.AddListener(() => NextEncounter(vertex));
+        prevEncounterButton.onClick.RemoveAllListeners();
+        prevEncounterButton.onClick.AddListener(() => NextEncounter(vertex, true));
+        var encounter = vertex.value;
+        InitializeUnits(encounter.units);
+        encounterNameText.text = encounter.name;
         // Add graph resizing when that's relvant
+    }
+
+    private void NextEncounter(Vertex<Encounter> current, bool backwards = false)
+    {
+        int index = vertices.IndexOf(current);
+        if (backwards)
+        {
+            if (--index < 0)
+                index = vertices.Count - 1;
+        }
+        else if (++index >= vertices.Count)
+        {
+            index = 0;
+        }
+
+        unitContainer.DestroyAllChildren();
+        ShowEncounterPreview(vertices[index]);
     }
 
     public void HideEncounterPreview()

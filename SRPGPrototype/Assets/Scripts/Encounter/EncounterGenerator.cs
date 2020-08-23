@@ -10,10 +10,10 @@ public class EncounterGenerator : MonoBehaviour
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter, Vector2Int dimensions);
     public delegate float NextUnitWeighting(Unit u, Encounter encounter, Vector2Int dimensions);
 
-    public Encounter Generate(EncounterData data)
+    public Encounter Generate(EncounterData data, string encounterName)
     {
         var positions = EnumerateDimensions(data.dimensions);
-        var encounter = new Encounter();
+        var encounter = new Encounter() { name = encounterName };
         int enemyBudget = data.enemyBudget;
         int lootBudget = data.lootBudget;
         // Initialize encounter values from seed if applicable
