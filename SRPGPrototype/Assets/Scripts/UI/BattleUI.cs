@@ -43,6 +43,7 @@ public class BattleUI : MonoBehaviour
     private void EnterUnitSelection()
     {
         playerPhase.CheckEndPhase();
+        endTurnButton.interactable = true;
         cursor.OnClick = SelectPlayer;
         cursor.OnCancel = null;
         cursor.OnUnHighlight = null;
@@ -60,6 +61,7 @@ public class BattleUI : MonoBehaviour
 
     private void EnterActionMenu(Unit unit)
     {
+        endTurnButton.interactable = false;
         menu.Show(this, unit);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;
