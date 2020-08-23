@@ -52,6 +52,12 @@ public class AIComponentBasic : AIComponent<Unit>
                 }
                 else // No target is found, use move action
                 {
+                    // Get move positions
+                    var movePositions = moveAction.subActions[0].range.OffsetsShifted(self.Pos)
+                        .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
+                    // Break if nowhere to move
+                    if (movePositions.Count() <= 0)
+                        yield break;
                     // Exit if no targets and don't have enough AP
                     if (moveAction.APCost > self.AP)
                         yield break;
