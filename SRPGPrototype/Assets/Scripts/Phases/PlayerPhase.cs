@@ -27,7 +27,7 @@ public class PlayerPhase : Phase
             yield break;
         foreach (var unit in units)
             yield return StartCoroutine(unit.OnPhaseStart());
-        ui.PlayerPhaseUIEnabled = true;
+        ui.BeginPlayerTurn();
     }
 
     public override IEnumerator OnPhaseEnd()
@@ -37,7 +37,7 @@ public class PlayerPhase : Phase
             yield break;
         foreach (var unit in units)
             yield return StartCoroutine(unit.OnPhaseEnd());
-        ui.PlayerPhaseUIEnabled = false;
+        ui.EndPlayerTurn();
     }
 
     public bool CheckEndPhase()

@@ -23,11 +23,21 @@ public class BattleUI : MonoBehaviour
         }
     }
 
+    public void BeginPlayerTurn()
+    {
+        EnterUnitSelection();
+        PlayerPhaseUIEnabled = true;
+    }
+
+    public void EndPlayerTurn()
+    {
+        menu.Hide();
+        PlayerPhaseUIEnabled = false;
+    }
 
     private void Start()
     {
         actionDescription.Hide();
-        EnterUnitSelection();
     }
 
     private void EnterUnitSelection()

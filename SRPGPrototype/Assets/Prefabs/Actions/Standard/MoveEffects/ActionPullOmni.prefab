@@ -69,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 3213334772041079701, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: m_Name
-      value: ActionTestPull
+      value: ActionPullOmni
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
@@ -130,6 +130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: displayName
       value: Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: baseAp
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}
