@@ -88,6 +88,7 @@ public class Shell : MonoBehaviour, ILootable
         var positions = program.shape.OffsetsShifted(location, false);
         foreach (var pos in positions)
             installMap[pos.x, pos.y] = program;
+        Compiled = false;
     }
 
     public void Uninstall(Program program, Vector2Int location, bool destroy = false)
@@ -104,6 +105,7 @@ public class Shell : MonoBehaviour, ILootable
             if (destroy)
                 Destroy(programs[ind].program.gameObject);
             programs.RemoveAt(ind);
+            Compiled = false;
         }
     }
 

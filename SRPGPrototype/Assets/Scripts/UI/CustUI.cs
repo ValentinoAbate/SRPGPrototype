@@ -92,9 +92,15 @@ public class CustUI : MonoBehaviour
 
     #region Cust UI
 
+    public void UpdateCompileButtonColor()
+    {
+        compileButton.image.color = grid.Shell.Compiled ? Color.green : Color.red;
+    }
+
     public void EnterCust(Shell s)
     {
         grid.Shell = s;
+        UpdateCompileButtonColor();
         programButtonContainer.transform.DestroyAllChildren();
         foreach (var program in inventory.Programs)
         {
@@ -154,6 +160,7 @@ public class CustUI : MonoBehaviour
                 grid.Shell.Uninstall(prog, prog.Pos);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
+                UpdateCompileButtonColor();
             }
         }
     }
@@ -168,6 +175,7 @@ public class CustUI : MonoBehaviour
             Destroy(pButton.gameObject);
             cursor.OnClick = null;
             cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
+            UpdateCompileButtonColor();
         }
     }
 
@@ -221,6 +229,7 @@ public class CustUI : MonoBehaviour
         {
             grid.ResetShell();
         }
+        UpdateCompileButtonColor();
     }
 
     #endregion

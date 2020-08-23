@@ -26,7 +26,7 @@ public class ProgramAttributeTransient : ProgramAttribute
         var shell = program.Shell;
         shell.Uninstall(program, program.Pos, true);
         if (!shell.Compile())
-            Debug.LogError("Destroyed program has cause shell compile error");
+            Debug.LogError("Destroyed program has caused shell compile error");
 
     }
 }
