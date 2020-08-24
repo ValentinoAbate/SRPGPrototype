@@ -1,0 +1,40 @@
+High-Priority:
+- Encounter Generation
+	- Loot / difficulty connection
+		- Loot / Mystery data weightings based on generated encounter.
+		- Instead of "cost" for enemies, use a difficulty rating. Encounters will have more varied difficulty, but rewards will be proportional
+			- Could have relative avg difficulties for parts of the game, or just scale based on sum difficulty
+	- Fixed spawn points
+		- Generate unit start positions as part of encounter generation instead of allowing any position to be selected
+- UI
+	- Pattern display
+		- Maybe base off of grid code?
+	- Action display (display an action in the desc window, consisely)
+		- Possibly be action / subaction to account for hybrid actions?
+		- Include a field for relevant info from program origin (at least for in-battle)
+	- Program display
+		- Utilize action display
+	- Unit display
+		- Utilize action display
+- Loot
+	- Design mystery data categories and map them appropriately to loot generation algoritm
+	- Different shape to differentiate between shell and prog loot?
+	- Categories (program)
+		- Random (basic)
+		- Capacity
+		- Color
+		- Ability
+		- Buff?
+		- Gamble
+	- Trim / quality (maybe indicate with border or shape, etc)
+		- common
+		- uncommon
+		- rare
+		- Gamble
+- Smart targeting
+	- Make certain actions on have certain valid tiles selectable
+Low-Priority
+-Balance
+	- Make charge more balanced (probably make it so you can't charge into an empty square)
+	- Make charge / charge bundle bigger
+	- Make jumps slowdown per encounter?
