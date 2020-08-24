@@ -16,14 +16,16 @@ General Ideas:
 - Allow the player to run, but only if there are other encounters they could go to, and add penalties. They can't return to the same encounter.
 - Add uninstall all option
 - Use free move action as a stat like speed?
+- Have basic attack and basic move be pre-installs in the starting shell?
 
-Color Mapping (action type to color not really working right now, may work with hybrid actions):
+Color Mapping:
 - Blue (circle): Move actions
 - Red (triangle): Attack actions
 - Green (square): Support actions
 - Yellow (star): Hybrid actions
-- White (hexagon): Programs whose colors are set by special means
+- White (hexagon): Oddballs / actions that have their color set by other means
 - Non-action programs may be any color
+- Programs that set their colors by external means are usually white regardless of effect
 - Shapes added for addional mapping and colorblind accesibility
 
 Shell Capacity:
