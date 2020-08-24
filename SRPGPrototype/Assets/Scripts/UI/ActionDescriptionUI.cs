@@ -9,8 +9,12 @@ public class ActionDescriptionUI : MonoBehaviour
     public TextMeshProUGUI descText;
     public TextMeshProUGUI attributesText;
     public TextMeshProUGUI apCostNumberText;
-    public TextMeshProUGUI usesPerTurnNumberText;
-    public TextMeshProUGUI usesPerBattleNumberText;
+    public TextMeshProUGUI slowdownAmountNumberText;
+    public TextMeshProUGUI slowdownUsesNumberText;
+    public TextMeshProUGUI slowdownResetText;
+
+    public Color textColor;
+    public Color modifiedTextColor;
 
     public void Show(Action action, Unit user)
     {
@@ -22,17 +26,30 @@ public class ActionDescriptionUI : MonoBehaviour
         if(user.Speed.IsZero)
         {
             apCostNumberText.text = action.APCost.ToString();
+            apCostNumberText.color = textColor;
         }
         else
         {
             int cost = Mathf.Max(0, action.APCost - user.Speed.Value);
-            apCostNumberText.text = cost.ToString() + " (Modified by Speed: " + user.Speed.Value + " )";
+            apCostNumberText.text = cost.ToString();
+            apCostNumberText.color = modifiedTextColor;
         }
-
-        //int usesThisTurn = action.MaxUsesPerTurn - action.TimesUsedThisTurn;
-        //usesPerTurnNumberText.text = usesThisTurn + " / " + action.MaxUsesPerTurn;
-        //int usesThisBattle = action.MaxUsesPerBattle - action.TimesUsedThisBattle;
-        //usesPerBattleNumberText.text = usesThisBattle + " / " + action.MaxUsesPerBattle;
+        slowdownAmountNumberText.text = action.Slowdown.ToString();
+        slowdownResetText.text = action.SlowdownReset.ToString();
+        int timesUsed = 0;
+        switch (action.SlowdownReset)
+        {
+            case Action.Trigger.Never:
+                timesUsed = action.TimesUsed;
+                break;
+            case Action.Trigger.TurnStart:
+                timesUsed = action.TimesUsedThisTurn;
+                break;
+            case Action.Trigger.EncounterStart:
+                timesUsed = action.TimesUsedThisBattle;
+                break;
+        }
+        slowdownUsesNumberText.text = (timesUsed % action.SlowdownInterval).ToString() + "/" + action.SlowdownInterval.ToString();
     }
 
     public void Hide()

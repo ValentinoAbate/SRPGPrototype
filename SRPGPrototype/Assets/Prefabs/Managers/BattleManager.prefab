@@ -865,54 +865,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1130085308880680659}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1232467836098037210}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ActionMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Hide
-      objectReference: {fileID: 0}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6908079100815895808, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7567826827178894955, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fdaa9b1d8c9b1245a6457d78c1fbb8d, type: 3}
 --- !u!114 &6197380475896117717 stripped
