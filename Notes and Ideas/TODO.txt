@@ -31,11 +31,11 @@ High-Priority:
 		- uncommon
 		- rare
 		- Gamble
+	- Ban duplicates from loot generation
 - Smart targeting
 	- Make certain actions on have certain valid tiles selectable
 - Add adjacency / modifier effects
 Mid-Priority
-
 - UI
 	- Add turn order indicators
 	- Make uninstalling a program in shell editing go back to picking it up so it can be placed again immediately
