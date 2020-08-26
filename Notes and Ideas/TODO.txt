@@ -1,9 +1,5 @@
 High-Priority:
 - Encounter Generation
-	- Loot / difficulty connection
-		- Loot / Mystery data weightings based on generated encounter.
-		- Instead of "cost" for enemies, use a difficulty rating. Encounters will have more varied difficulty, but rewards will be proportional
-			- Could have relative avg difficulties for parts of the game, or just scale based on sum difficulty
 	- Fixed spawn points
 		- Generate unit start positions as part of encounter generation instead of allowing any position to be selected
 - UI
@@ -19,19 +15,7 @@ High-Priority:
 - Loot
 	- Design mystery data categories and map them appropriately to loot generation algoritm
 	- Different shape to differentiate between shell and prog loot?
-	- Categories (program)
-		- Random (basic)
-		- Capacity
-		- Color
-		- Ability
-		- Buff?
-		- Gamble
-	- Trim / quality (maybe indicate with border or shape, etc)
-		- common
-		- uncommon
-		- rare
-		- Gamble
-	+ Ban duplicates from loot generation
+
 - Smart targeting
 	- Make certain actions on have certain valid tiles selectable
 - Add adjacency / modifier effects
@@ -40,10 +24,7 @@ High-Priority:
 Mid-Priority
 - UI
 	- Add turn order indicators
-	- Make uninstalling a program in shell editing go back to picking it up so it can be placed again immediately
-	- Fix shell equip confusion (equip last-edited shell? warning if going into battle with no actions - possibly compile error?)
+	- Add uninstall all button
 Low-Priority
 -Balance
 	- Make charge more balanced (probably make it so you can't charge into an empty square)
-	- Make charge / charge bundle bigger
-	+ Make jumps slowdown per encounter?
