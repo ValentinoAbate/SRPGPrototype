@@ -28,7 +28,15 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
 
     protected int GetPathDist(BattleGrid grid, Vector2Int start, Vector2Int goal)
     {
-        var path = grid.Path(start, goal, (p) => p == null || p.Pos == start || p.Pos == goal);
+        var path = grid.Path(start, goal, (u) => u == null || u.Pos == start || u.Pos == goal);
+        if (path == null)
+            return int.MaxValue;
+        return path.Count;
+    }
+
+    protected int GetPathDist(BattleGrid grid, Vector2Int start, Vector2Int goal, Unit.Team canMoveThrough)
+    {
+        var path = grid.Path(start, goal, (u) => u == null || u.UnitTeam == canMoveThrough || u.Pos == start || u.Pos == goal);
         if (path == null)
             return int.MaxValue;
         return path.Count;
@@ -49,7 +57,8 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
     {
         var sub = moveAction.subActions[0];
         var movePositions = sub.Range.GetPositions(grid, self)
-            .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
+            .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p)).ToList();
+        movePositions.Add(self.Pos);
         // Move into a viable attack position if possible
         foreach (var pos in movePositions)
         {
@@ -63,13 +72,21 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
                 yield break;
             }
         }
-        var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos))));
+        var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos, self.UnitTeam))));
         // Else find the position that can be moved to that brings us closest to a player unit
         if (posByPathDist.Count() <= 0)
             yield break;
-        var closestPos = posByPathDist.OrderBy((t) => t.value).First().pos;
+        var closest = posByPathDist.OrderBy((t) => t.value).First();
+        if(closest.value == int.MaxValue)
+        {
+            var posByDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => (int)Vector2Int.Distance(unit.Pos, self.Pos))));
+            if (posByDist.Count() <= 0)
+                yield break;
+            closest = posByDist.OrderBy((t) => t.value).First();
+        }
+
         moveAction.StartAction(self);
-        sub.Use(grid, moveAction, self, closestPos);
+        sub.Use(grid, moveAction, self, closest.pos);
         moveAction.FinishAction(self);
         yield return new WaitForSeconds(moveDelay);
     }
