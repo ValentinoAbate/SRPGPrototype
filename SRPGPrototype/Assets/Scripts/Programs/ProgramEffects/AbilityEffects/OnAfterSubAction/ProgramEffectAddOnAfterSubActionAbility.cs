@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProgramEffectAddOnAfterSubActionAbility : ProgramEffect
+public abstract class ProgramEffectAddOnAfterSubActionAbility : ProgramEffectAddAbility
 {
     public override void ApplyEffect(Program program, ref Shell.CompileData data)
     {

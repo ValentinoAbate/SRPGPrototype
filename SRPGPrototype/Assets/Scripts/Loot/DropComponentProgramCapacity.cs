@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class DropComponentProgramCapacity : DropComponent<Program>
 {
@@ -10,7 +7,7 @@ public class DropComponentProgramCapacity : DropComponent<Program>
     {
         // Filter out all programs that don't give capacity
         bool filter(Program p) => p.GetComponent<ProgramEffectModifyCapacity>() != null;
-        return lootQualities.Select((q) => manager.ProgramLoot.GetDropStandard(q, filter)).ToList();
+        return manager.ProgramLoot.GetDropsStandard(lootQualities, filter);
     }
 
 }

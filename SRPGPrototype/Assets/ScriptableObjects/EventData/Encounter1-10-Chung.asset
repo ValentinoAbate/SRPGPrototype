@@ -12,23 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-10-Chung
   m_EditorClassIdentifier: 
+  targetDifficulty: 30
   dimensions: {x: 6, y: 6}
-  enemyBudget: 21
+  numEnemies: 08000000
+  numEnemiesWeights:
+  - 1
   enemies:
   - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
-  obstacleBudget: 10
+  - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
+  baseEnemyWeights:
+  - 7
+  - 2
+  numObstacles: 06000000
+  numObstaclesWeights:
+  - 1
   obstacles:
   - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
   - {fileID: 1229754312500399323, guid: 70516652d2abaf64cbe177d56d86332b, type: 3}
-  - {fileID: 1229754312500399323, guid: 70516652d2abaf64cbe177d56d86332b, type: 3}
   - {fileID: 2057450463593074828, guid: 7dd1c1b5a40494f4b810791aea4d8c8d, type: 3}
   - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
-  lootBudget: 3
-  data:
-  - {fileID: 4524468774668430702, guid: 748e21fc225cd334989a2524eb9758ec, type: 3}
-  - {fileID: 1443466573746710886, guid: c21a492318cf85f4185711ef57bb24d9, type: 3}
-  - {fileID: 7594287889711242676, guid: 46900c4bca375c04b9dda3fb7ea11d5a, type: 3}
-  - {fileID: 7594287889711242676, guid: 46900c4bca375c04b9dda3fb7ea11d5a, type: 3}
+  baseObstacleWeights:
+  - 1
+  - 0.33
+  - 1
+  - 1
+  lootFlags: 2
   seed:
     name: Encounter
     units: []

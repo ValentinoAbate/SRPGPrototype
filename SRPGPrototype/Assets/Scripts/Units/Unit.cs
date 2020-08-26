@@ -62,6 +62,12 @@ public abstract class Unit : GridObject
             HP -= damage;
     }
 
+    public virtual void DoRepair()
+    {
+        HP += Repair;
+        Repair = 0;
+    }
+
     public void Kill(BattleGrid grid, Unit killedBy)
     {
         HP = 0;

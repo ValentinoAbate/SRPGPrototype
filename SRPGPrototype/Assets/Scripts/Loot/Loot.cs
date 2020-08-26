@@ -7,6 +7,7 @@ using System.Linq;
 
 public class Loot<T> where T : ILootable
 {
+    public const int standardDraws = 3;
     /// <summary>
     /// A link to the 
     /// </summary>
@@ -17,7 +18,6 @@ public class Loot<T> where T : ILootable
         Max,
         Boss,
         Even,
-        Elite,
     }
 
     private readonly Dictionary<Rarity, List<T>> dropTables = new Dictionary<Rarity, List<T>>();
@@ -45,21 +45,20 @@ public class Loot<T> where T : ILootable
     {
         var standardWeights = new WeightedSet<Rarity>
         {
-            {Rarity.Common, 2},
-            {Rarity.Uncommon, 0.5f },
-            {Rarity.Rare, 0.125f },
+            {Rarity.Common, 77 },
+            {Rarity.Uncommon, 20 },
+            {Rarity.Rare, 3 },
         };
         var highWeights = new WeightedSet<Rarity>
         {
-            {Rarity.Common, 0.5f},
-            {Rarity.Uncommon, 2 },
-            {Rarity.Rare, 0.25f },
+            {Rarity.Common, 18},
+            {Rarity.Uncommon, 75 },
+            {Rarity.Rare, 7 },
         };
         var maxWeights = new WeightedSet<Rarity>
         {
-            {Rarity.Common, 0.25f},
-            {Rarity.Uncommon, 1 },
-            {Rarity.Rare, 2 },
+            {Rarity.Uncommon, 25 },
+            {Rarity.Rare, 75 },
         };
         var evenWeights = new WeightedSet<Rarity>
         {
@@ -71,10 +70,6 @@ public class Loot<T> where T : ILootable
         {
             {Rarity.Boss, 1 },
         };
-        var eliteWeights = new WeightedSet<Rarity>
-        {
-            {Rarity.Elite, 1 },
-        };
         standardLootRarities = new Dictionary<LootQuality, WeightedSet<Rarity>>()
         {
             { LootQuality.Standard, standardWeights },
@@ -82,7 +77,6 @@ public class Loot<T> where T : ILootable
             { LootQuality.Max, maxWeights },
             { LootQuality.Even, evenWeights },
             { LootQuality.Boss, bossWeights },
-            { LootQuality.Elite, eliteWeights },
         };
     }
 
@@ -91,11 +85,40 @@ public class Loot<T> where T : ILootable
         return GetDropCustom(standardLootRarities[quality], filter);
     }
 
-    public List<T> GetDropsStandard(int number, LootQuality quality, System.Predicate<T> filter = null)
+    public List<T> GetDropsStandard(LootQuality quality, int drops = standardDraws, System.Predicate<T> filter = null)
     {
-        var ret = new List<T>(number);
-        for (int i = 0; i < number; ++i)
+        return GetDropsStandard(Enumerable.Repeat(quality, drops), filter);
+    }
+
+    public List<T> GetDropsStandard(IEnumerable<LootQuality> qualities, System.Predicate<T> filter = null)
+    {
+        var ret = new List<T>(qualities.Count());
+        foreach (var quality in qualities)
+        {
             ret.Add(GetDropCustom(standardLootRarities[quality], filter));
+        }
+        return ret;
+    }
+
+    public List<T> GetDropsStandardNoDuplicates(LootQuality quality, int drops = standardDraws, System.Predicate<T> filter = null)
+    {
+        return GetDropsStandardNoDuplicates(Enumerable.Repeat(quality, drops), filter);
+    }
+
+    public List<T> GetDropsStandardNoDuplicates(IEnumerable<LootQuality> qualities, System.Predicate<T> filter = null)
+    { 
+        var ret = new List<T>(qualities.Count());
+        // Local filter function to call input filter and  assure no duplicates
+        bool NoDupeFilter(T item)
+        {
+            if (filter != null && !filter(item))
+                return false;
+            return !ret.Contains(item);
+        }
+        foreach (var quality in qualities)
+        {
+            ret.Add(GetDropCustom(standardLootRarities[quality], NoDupeFilter));
+        }
         return ret;
     }
 

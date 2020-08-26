@@ -25,6 +25,8 @@ public class ActionNumber
     [SerializeField]
     private int constant = 1;
     [SerializeField]
+    private int baseAmount = 0;
+    [SerializeField]
     private int modifier = 0;
     [SerializeField]
     private int multiplier = 1;
@@ -64,7 +66,7 @@ public class ActionNumber
         {
             number = unitNumber.Value(user);
         }
-        int modNumber = (number + modifier) * multiplier;
+        int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);
     }
 
@@ -74,7 +76,7 @@ public class ActionNumber
             return 0;
         // Type is targetStat
         int number = unitNumber.Value(target);
-        int modNumber = (number + modifier) * multiplier;
+        int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);
     }
 }

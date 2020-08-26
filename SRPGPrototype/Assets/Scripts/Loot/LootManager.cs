@@ -6,10 +6,9 @@ public class LootManager : MonoBehaviour
 {
     public delegate List<Shell> GenerateShellLootFn(LootManager manager);
     public delegate List<Program> GenerateProgramLootFn(LootManager manager);
-    [SerializeField]
-    private List<Program> programs = new List<Program>();
-    [SerializeField]
-    private List<Shell> shells = new List<Shell>();
+
+    public List<Program> programs = new List<Program>();
+    public List<Shell> shells = new List<Shell>();
 
     public Loot<Shell> ShellLoot => shellLoot;
     private Loot<Shell> shellLoot;

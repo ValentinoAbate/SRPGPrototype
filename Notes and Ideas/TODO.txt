@@ -31,10 +31,12 @@ High-Priority:
 		- uncommon
 		- rare
 		- Gamble
-	- Ban duplicates from loot generation
+	+ Ban duplicates from loot generation
 - Smart targeting
 	- Make certain actions on have certain valid tiles selectable
 - Add adjacency / modifier effects
+- Range generation
+	- Generate range for bishop-like movement
 Mid-Priority
 - UI
 	- Add turn order indicators
@@ -44,4 +46,4 @@ Low-Priority
 -Balance
 	- Make charge more balanced (probably make it so you can't charge into an empty square)
 	- Make charge / charge bundle bigger
-	- Make jumps slowdown per encounter?
+	+ Make jumps slowdown per encounter?

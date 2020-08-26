@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SubAction : MonoBehaviour
 {
+    public bool DealsDamage => effects.Any((e) => e is ActionEffectDamage);
     public bool UsesPower => effects.Any((e) => e.UsesPower);
     public bool hasRange = false;
     public bool hasPattern = false;

@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using System;
 
 namespace RandomUtils
 {
@@ -30,6 +29,7 @@ namespace RandomUtils
 
         #region Constructors
         public WeightedSet() { }
+        public WeightedSet(WeightedSet<T> toCopy) : this(toCopy.items) { }
         public WeightedSet(IEnumerable<T> items, float weight = 0)
         {
             foreach (var item in items)
@@ -37,6 +37,8 @@ namespace RandomUtils
         }
         public WeightedSet(IEnumerable<T> items, IEnumerable<float> weights)
         {
+            if (items.Count() != weights.Count())
+                throw new Exception("Weighted Set Construction Exception: Items and weights are not the same length");
             IEnumerator<float> e = weights.GetEnumerator();
             e.MoveNext();
             foreach (T item in items)
@@ -68,9 +70,25 @@ namespace RandomUtils
         public void Add(T item, float weight = 1)
         {
             if (items.ContainsKey(item))
-                items[item] += weight;
+            {
+                if (items[item] + weight < 0)
+                {
+                    Remove(item);
+                }
+                else
+                {
+                    items[item] += weight;
+                }
+
+            }  
+            else if(weight < 0)
+            {
+                return;
+            }
             else
+            {
                 items.Add(item, weight);
+            }
         }
         public void Remove(T item)
         {
@@ -82,6 +100,7 @@ namespace RandomUtils
                 if (predicate(key))
                     items.Remove(key);
         }
+
         public bool Contains(T item)
         {
             return items.ContainsKey(item);
@@ -97,8 +116,9 @@ namespace RandomUtils
         }
         public void ApplyMetric(Metric m)
         {
-            foreach (var key in items.Keys)
-                items[key] += m(key);
+            var keys = new List<T>(Items);
+            foreach (var key in keys)
+                Add(key, m(key));
         }
 
         public override string ToString()

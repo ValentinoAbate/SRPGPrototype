@@ -55,6 +55,11 @@ public class PlayerUnit : Unit
         ResetStats();
     }
 
+    public override void DoRepair()
+    {
+        Shell.Stats.DoRepair();
+    }
+
     // Reset uses per turn
     public override IEnumerator OnPhaseStart()
     {
@@ -65,7 +70,7 @@ public class PlayerUnit : Unit
 
     public override IEnumerator OnBattleEnd(EncounterManager manager)
     {
-        Shell.Stats.DoRepair();
+        DoRepair();
         yield break;
     }
 }

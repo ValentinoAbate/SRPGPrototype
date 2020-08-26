@@ -27,6 +27,8 @@ public class ProgramNumber
     [SerializeField]
     private int constant = 1;
     [SerializeField]
+    private int baseAmount = 0;
+    [SerializeField]
     private int modifier = 0;
     [SerializeField]
     private int multiplier = 1;
@@ -73,7 +75,7 @@ public class ProgramNumber
         {
             number = p.Shell.CustArea.Dimensions.y;
         }
-        int modNumber = (number + modifier) * multiplier;
+        int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);
     }
 }

@@ -47,79 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 55494175348055542}
   mapManager: {fileID: 4416795397682610206}
---- !u!1 &2991277008348175566
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5609253866071122330}
-  - component: {fileID: 4416795397682610206}
-  - component: {fileID: 4008176479088063536}
-  - component: {fileID: 8496666394164519872}
-  m_Layer: 0
-  m_Name: MapManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5609253866071122330
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991277008348175566}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1966410172860045962}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4416795397682610206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991277008348175566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58392b6fd341a214b97f515283033afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data:
-  - {fileID: 11400000, guid: 0e44c36f83f65ab4aa5492b50068ca98, type: 2}
-  generator: {fileID: 4008176479088063536}
---- !u!114 &4008176479088063536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991277008348175566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb56805ec847cf0499e2d6b52555b771, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounterGenerator: {fileID: 8496666394164519872}
---- !u!114 &8496666394164519872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991277008348175566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa69da3b7a6a6fa45a6fd1a8a3361f4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4248664083197221016
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +248,93 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2825defd5bd0a44da17293ad3c7977d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &4130096590044761156
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1966410172860045962}
+    m_Modifications:
+    - target: {fileID: 1212077843044454538, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_Name
+      value: MapManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31f4745f433d95147aac9b4a1059fce4, type: 3}
+--- !u!4 &5609253866071122330 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8397276358137114078, guid: 31f4745f433d95147aac9b4a1059fce4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4130096590044761156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4416795397682610206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 295708104230194266, guid: 31f4745f433d95147aac9b4a1059fce4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4130096590044761156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58392b6fd341a214b97f515283033afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4596523116687536766

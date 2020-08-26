@@ -15,7 +15,7 @@ public class MapManager : MonoBehaviour
     private List<Map> maps = new List<Map>();
     private int currMap = 0;
 
-    private void Awake()
+    private void Start()
     {
         foreach(var d in data)
         {

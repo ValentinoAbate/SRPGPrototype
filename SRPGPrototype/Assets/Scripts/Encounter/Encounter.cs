@@ -14,5 +14,10 @@ public class Encounter
     {
         public Vector2Int pos;
         public Unit unit;
+        public UnitEntry(Unit unit, Vector2Int pos)
+        {
+            this.unit = unit;
+            this.pos = pos;
+        }
     }
 }

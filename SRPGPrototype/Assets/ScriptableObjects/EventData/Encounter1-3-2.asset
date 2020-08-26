@@ -12,38 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-3-2
   m_EditorClassIdentifier: 
+  targetDifficulty: 10
   dimensions: {x: 6, y: 6}
-  enemyBudget: 6
+  numEnemies: 05000000
+  numEnemiesWeights:
+  - 1
   enemies:
   - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
   - {fileID: 4568531750757968395, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}
-  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
   - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
   - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
   - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
-  obstacleBudget: 8
+  baseEnemyWeights:
+  - 3
+  - 1
+  - 2
+  - 0.25
+  - 3
+  numObstacles: 050000000600000007000000
+  numObstaclesWeights:
+  - 1
+  - 3
+  - 1
   obstacles:
-  - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
-  - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
-  - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
   - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
   - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
   - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
-  lootBudget: 2
-  data:
-  - {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1, type: 3}
-  - {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1, type: 3}
-  - {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 1184012089328148833, guid: fcace0de9c0067e4192526a3a283fbef, type: 3}
-  - {fileID: 4524468774668430702, guid: 748e21fc225cd334989a2524eb9758ec, type: 3}
+  baseObstacleWeights:
+  - 4
+  - 2
+  - 1
+  lootFlags: 4
   seed:
     name: Encounter
     units: []

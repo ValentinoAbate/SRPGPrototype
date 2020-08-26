@@ -2,14 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MysteryDataUnit : AIUnit, IEncounterUnit
+public class MysteryDataUnit : AIUnit
 {
-    #region IEncounterUnit implementation
+    public enum Category
+    {
+        Standard,
+        Color,
+        Ability,
+        Capacity,
+        Shell,
+        Gamble,
+        Boss,
+        Unique,
+    }
 
-    public EncounterUnitData EncounterData => encounterData;
-    [SerializeField] private EncounterUnitData encounterData = null;
+    public enum Quality
+    {
+        None = -1,
+        Common,
+        Uncommon,
+        Rare,
+    }
 
-    #endregion
+    public Category LootCategory { get => category; }
+    [SerializeField] private Category category = Category.Standard;
+    public Quality LootQuality { get => quality; }
+    [SerializeField] private Quality quality = Quality.None;
+
+    [SerializeField] private SpriteRenderer frameSprite = null;
+    [SerializeField] private Color commonColor = Color.white;
+    [SerializeField] private Color uncommonColor = Color.white;
+    [SerializeField] private Color rareColor = Color.white;
+    [SerializeField] private Color gambleColor = Color.white;
 
     public override AIComponent<Unit> AI => ai;
 
@@ -18,6 +42,18 @@ public class MysteryDataUnit : AIUnit, IEncounterUnit
     private void Awake()
     {
         ai = GetComponent<AIComponent<Unit>>();
+        switch (LootQuality)
+        {
+            case Quality.Common:
+                frameSprite.color = commonColor;
+                break;
+            case Quality.Uncommon:
+                frameSprite.color = uncommonColor;
+                break;
+            case Quality.Rare:
+                frameSprite.color = rareColor;
+                break;
+        }
     }
 
     public override IEnumerator OnBattleEnd(EncounterManager manager)

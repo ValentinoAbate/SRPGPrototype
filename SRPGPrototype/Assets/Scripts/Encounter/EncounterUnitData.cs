@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EncounterUnitData : MonoBehaviour
 {
-    public int cost = 2;
+    public float challengeRating = 0;
 }

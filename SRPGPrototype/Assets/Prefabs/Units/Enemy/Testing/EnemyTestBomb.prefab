@@ -328,6 +328,11 @@ PrefabInstance:
       propertyPath: cost
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: challengeRating
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
 --- !u!1 &5174817585663237361 stripped

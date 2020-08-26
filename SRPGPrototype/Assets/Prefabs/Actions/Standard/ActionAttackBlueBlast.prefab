@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetStat: 0
   damage:
     min: -2147483648
     max: 2147483647
     constant: 1
+    baseAmount: 0
     modifier: 0
     multiplier: 1
     type: 3

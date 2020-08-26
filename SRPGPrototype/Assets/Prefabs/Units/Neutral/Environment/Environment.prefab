@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8530accac396c2a43b227dc557cd9022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  challengeRating: 0
 --- !u!1 &7772752596363803310
 GameObject:
   m_ObjectHideFlags: 0

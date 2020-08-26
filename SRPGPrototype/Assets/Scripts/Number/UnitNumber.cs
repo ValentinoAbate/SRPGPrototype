@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class UnitNumber
@@ -12,6 +10,7 @@ public class UnitNumber
         MaxHP,
         AP,
         MaxAP,
+        Repair,
     }
 
     [SerializeField]
@@ -20,6 +19,8 @@ public class UnitNumber
     private int max = int.MaxValue;
     [SerializeField]
     private int constant = 1;
+    [SerializeField]
+    private int baseAmount = 0;
     [SerializeField]
     private int modifier = 0;
     [SerializeField]
@@ -48,7 +49,11 @@ public class UnitNumber
         {
             number = unit.MaxHP;
         }
-        int modNumber = (number + modifier) * multiplier;
+        else if(type == Type.Repair)
+        {
+            number = unit.Repair;
+        }
+        int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);
     }
 }

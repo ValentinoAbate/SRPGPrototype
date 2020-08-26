@@ -21,7 +21,7 @@ public class ActionNumberDrawer : PropertyDrawer
         }
         else
         {
-            numAdditionalControls += 4;
+            numAdditionalControls += 5;
         }
         return (EditorGUIUtility.singleLineHeight + 1) * (2 + numAdditionalControls) + addedHeight;
     }
@@ -60,6 +60,8 @@ public class ActionNumberDrawer : PropertyDrawer
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("min"));
             UIRect.y += lineHeight;
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("max"));
+            UIRect.y += lineHeight;
+            EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("baseAmount"));
             UIRect.y += lineHeight;
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("modifier"));
             UIRect.y += lineHeight;

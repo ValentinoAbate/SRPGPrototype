@@ -17,6 +17,7 @@ General Ideas:
 - Add uninstall all option
 - Use free move action as a stat like speed?
 - Have basic attack and basic move be pre-installs in the starting shell?
+- Compile error suppression programs that turn compile errors into compile warnings
 
 Color Mapping:
 - Blue (circle): Move actions
@@ -277,6 +278,7 @@ Map Design:
 - 4 levels of info - unknown, hint, field view, field view with details
 - Have some be ambushes where extra reinforcements spawn or another NPC shows up, etc
 - Some squares might be corrupted and unviewable 
+- Gambler ability, rolling a dud on the game mystery data table rolls again, but 3 duds in a row causes consequences
 
 Player characters:
 - Break (tyring to end the cycle)
@@ -285,6 +287,7 @@ Player characters:
 	- Can continue to a next playthrough after beating a run
 
 NPCS:
+- All NPCs should be merchants in some capacity
 - Make all NPCs have an Other half / missing piece?
 - Your other half (break if playing as continue or continue if playing as break)
 - Merchant
