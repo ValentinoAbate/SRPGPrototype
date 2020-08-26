@@ -28,8 +28,6 @@ public class Shell : MonoBehaviour, ILootable
 
     public List<int> CapacityThresholds => levelThresholds[Type];
 
-    public int DisplayLevel => Level + 1;
-
     public int Level { get; private set; } = 0;
 
     public int Capacity { get; private set; } = 0;
@@ -203,6 +201,13 @@ public class Shell : MonoBehaviour, ILootable
         {
             Debug.LogWarning("Compile Error: Max Hp <= 0");
             newActions.ForEach((a) => Destroy(a.gameObject));
+            Compiled = false;
+            return false;
+        }
+        // Check number of actions
+        if(newActions.Count <= 0)
+        {
+            Debug.LogWarning("Compile Error: No Actions");
             Compiled = false;
             return false;
         }
