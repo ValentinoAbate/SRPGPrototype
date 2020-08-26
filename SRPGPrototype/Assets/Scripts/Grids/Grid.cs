@@ -42,7 +42,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     public TileUI tileUIManager;
 
     private Obj[,] field;
-    private List<LineRenderer> lines = new List<LineRenderer>();
+    private readonly List<LineRenderer> lines = new List<LineRenderer>();
 
     /// <summary>
     /// Display grid lines in-editor when gizmos are drawn

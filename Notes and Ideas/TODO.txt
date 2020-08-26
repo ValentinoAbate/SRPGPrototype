@@ -25,3 +25,5 @@ Mid-Priority
 Low-Priority
 -Balance
 	- Make charge more balanced (probably make it so you can't charge into an empty square)
+-Bugs
+	- Disable end battle button during unit placement

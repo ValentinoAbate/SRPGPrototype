@@ -15,6 +15,8 @@ public class TileUI : MonoBehaviour
         CustRed,
         CustBlocked,
         CustYellow,
+        RangePattern,
+        TargetPattern,
     }
 
     public ObjDict tilePrefabs;

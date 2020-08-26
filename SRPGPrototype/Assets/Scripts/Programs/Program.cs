@@ -30,6 +30,19 @@ public class Program : GridObject, ILootable
         { Color.Yellow, TileUI.Type.CustYellow },
     };
 
+    public static readonly Dictionary<Color, UnityEngine.Color> colorValues = new Dictionary<Color, UnityEngine.Color>()
+    {
+        { Color.White, UnityEngine.Color.white },
+        { Color.Red, UnityEngine.Color.red },
+        //{ Color.Blue, new UnityEngine.Color(0, 0x37, 0xFF, 0xFF) },
+        { Color.Blue, UnityEngine.Color.blue },
+        //{ Color.Green, new UnityEngine.Color(0, 0xFF, 0x22, 0xFF) },
+        { Color.Green, UnityEngine.Color.green },
+        { Color.Yellow, new UnityEngine.Color(0xFB, 0xFF, 0, 0xFF) },
+    };
+
+    public UnityEngine.Color ColorValue => colorValues[color];
+
     public Shell Shell { get; set; }
 
     public ProgramEffect[] Effects => GetComponents<ProgramEffect>();

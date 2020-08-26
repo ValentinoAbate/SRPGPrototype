@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LootUI : MonoBehaviour
@@ -18,6 +19,7 @@ public class LootUI : MonoBehaviour
     public Transform programDrawButtonContainer;
     public Transform shellDrawButtonContainer;
     public Button exitButton;
+    public ProgramDescriptionUI programDesc;
 
     private void Start()
     {
@@ -61,6 +63,7 @@ public class LootUI : MonoBehaviour
     {
         menuUI.SetActive(true);
         programDrawUI.SetActive(false);
+        programDesc.Hide();
         shellDrawUI.SetActive(false);
     }
 
@@ -94,6 +97,13 @@ public class LootUI : MonoBehaviour
             lootButtonUI.nameText.text = prog.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog, true));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
+            lootButtonUI.trigger.triggers.Clear();
+            var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
+            hover.callback.AddListener((d) => programDesc.Show(prog));
+            var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
+            hoverExit.callback.AddListener((d) => programDesc.Hide());
+            lootButtonUI.trigger.triggers.Add(hover);
+            lootButtonUI.trigger.triggers.Add(hoverExit);
         }
         programDrawUI.SetActive(true);
     }

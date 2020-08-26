@@ -19,6 +19,7 @@ public class CustUI : MonoBehaviour
 
     public GameObject shellMenuUI;
     public GameObject custUI;
+    public Canvas uiCanvas;
     public CustCursor cursor;
 
     [Header("Shell Menu UI")]
@@ -29,15 +30,16 @@ public class CustUI : MonoBehaviour
 
     [Header("Cust UI")]
     public CustGrid grid;
+    public PatternDisplayUI heldProgramUI;
+    public GameObject programPatternIconPrefab;
+
     [Header("Program Button UI")]
     public GameObject programButtonPrefab;
     public GameObject programButtonContainer;
 
+
     [Header("Program Description UI")]
-    public GameObject programDescWindow;
-    public TextMeshProUGUI programNameText;
-    public TextMeshProUGUI programDescText;
-    public TextMeshProUGUI programAttrText;
+    public ProgramDescriptionUI programDesc;
 
     [Header("Compile UI")]
     public Button compileButton;
@@ -52,6 +54,18 @@ public class CustUI : MonoBehaviour
         HideProgramDescriptionWindow(descEnabledFromGrid);
         inventory = PersistantData.main.inventory;
         EnterShellMenu();
+    }
+
+    private void LateUpdate()
+    {
+        if (heldProgramUI.isActiveAndEnabled)
+        {
+            Vector2 viewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            var rectTransform = heldProgramUI.GetComponent<RectTransform>();
+            var offset = Vector2.right * 0.0005f;
+            rectTransform.anchorMin = viewportPos + offset;
+            rectTransform.anchorMax = viewportPos + offset;
+        }
     }
 
     #region Shell Menu UI
@@ -134,6 +148,8 @@ public class CustUI : MonoBehaviour
         if (pButton != null)
             pButton.Cancel();
         pButton = button;
+        heldProgramUI.Show(p.shape, programPatternIconPrefab, p.ColorValue);
+        heldProgramUI.gameObject.SetActive(true);
         selectedProgram = p;
         cursor.OnCancel = () => CancelProgramPlacement(p, button);
         cursor.OnClick = (pos) => PlaceProgam(button, p, pos);
@@ -142,6 +158,8 @@ public class CustUI : MonoBehaviour
     public void CancelProgramPlacement(Program p , ProgramButton b)
     {
         b.Cancel();
+        heldProgramUI.Hide();
+        heldProgramUI.gameObject.SetActive(false);
         // Set cursor properties
         cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
         cursor.OnClick = null;
@@ -176,6 +194,8 @@ public class CustUI : MonoBehaviour
             Destroy(pButton.gameObject);
             cursor.OnClick = null;
             cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
+            heldProgramUI.Hide();
+            heldProgramUI.gameObject.SetActive(false);
             UpdateCompileButtonColor();
         }
     }
@@ -189,37 +209,15 @@ public class CustUI : MonoBehaviour
     public void ShowProgramDescriptionWindow(Program p, bool fromGrid)
     {
         descEnabledFromGrid = fromGrid;
-        programNameText.text = p.DisplayName;
-        programDescText.text = p.Description;
-        programAttrText.text = GetAttributesText(p);
-        programDescWindow.SetActive(true);
-    }
-
-    private string GetAttributesText(Program p)
-    {
-        var attTexts = new List<string>();
-        if (p.attributes.HasFlag(Program.Attributes.Fixed))
-        {
-            attTexts.Add("Fixed");
-        }
-        if(p.attributes.HasFlag(Program.Attributes.Transient))
-        {
-            var transientAttr = p.GetComponent<ProgramAttributeTransient>();
-            string errorText = "Error: No Attribute Component found";
-            attTexts.Add("Transient " + (transientAttr == null ? errorText : transientAttr.UsesLeft.ToString()));
-        }
-        if (attTexts.Count <= 0)
-            return string.Empty;
-        if (attTexts.Count == 1)
-            return attTexts[0];
-        return attTexts.Aggregate((s1, s2) => s1 + ", " + s2);
+        programDesc.Show(p);
+        programDesc.gameObject.SetActive(true);
     }
 
     public void HideProgramDescriptionWindow(bool fromGrid)
     {
         if (fromGrid != descEnabledFromGrid)
             return;
-        programDescWindow.SetActive(false);
+        programDesc.gameObject.SetActive(false);
     }
 
     public void Compile()

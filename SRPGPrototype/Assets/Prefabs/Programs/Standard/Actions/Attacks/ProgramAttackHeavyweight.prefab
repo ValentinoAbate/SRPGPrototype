@@ -54,7 +54,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Action (Standard): Attack a diagonally adjacent unit for damage equal
-        the equipped shell''s max health -9. AP Cost: 1.'
+        to the equipped shell''s max health -9. AP Cost: 1.'
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
