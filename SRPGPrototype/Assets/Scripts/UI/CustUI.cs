@@ -154,13 +154,14 @@ public class CustUI : MonoBehaviour
             var prog = grid.Get(pos);
             if (prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
             {
-                var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
-                var progButtonComponent = pButton.GetComponent<ProgramButton>();
+                var button = Instantiate(programButtonPrefab, programButtonContainer.transform);
+                var progButtonComponent = button.GetComponent<ProgramButton>();
                 progButtonComponent.Initialize(prog, this);
                 grid.Shell.Uninstall(prog, prog.Pos);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
                 UpdateCompileButtonColor();
+                progButtonComponent.button.onClick.Invoke();
             }
         }
     }
