@@ -13,14 +13,11 @@ High-Priority:
 	- Unit display
 		- Utilize action display
 - Loot
-	- Design mystery data categories and map them appropriately to loot generation algoritm
 	- Different shape to differentiate between shell and prog loot?
 
 - Smart targeting
 	- Make certain actions on have certain valid tiles selectable
 - Add adjacency / modifier effects
-- Range generation
-	- Generate range for bishop-like movement
 Mid-Priority
 - UI
 	- Add turn order indicators
