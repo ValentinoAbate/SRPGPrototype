@@ -16,6 +16,7 @@ public class Stats
 
     public enum StatName
     { 
+        None = -1,
         HP,
         MaxHP,
         AP,

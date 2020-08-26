@@ -18,6 +18,7 @@ General Ideas:
 - Use free move action as a stat like speed?
 - Have basic attack and basic move be pre-installs in the starting shell?
 - Compile error suppression programs that turn compile errors into compile warnings
+- Move that targets all units with HP equal to current power
 
 Color Mapping:
 - Blue (circle): Move actions

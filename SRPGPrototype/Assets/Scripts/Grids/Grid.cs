@@ -246,6 +246,19 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         return null;
     }
 
+    public List<Obj> FindAll(Predicate<Obj> pred = null)
+    {
+        var objects = new List<Obj>();
+        //brute force foreach of field; might optimize later
+        foreach (var obj in field)
+        {
+            //if there is no predicate or object matches the predicate, add it to the list
+            if (pred == null || pred(obj))
+                objects.Add(obj);
+        }
+        return objects;
+    }
+
     public List<T> FindAll<T>(Predicate<T> pred = null) where T : Obj
     {
         var objects = new List<T>();
