@@ -53,7 +53,7 @@ public class AIComponentBasic : AIComponent<Unit>
                 else // No target is found, use move action
                 {
                     // Get move positions
-                    var movePositions = moveAction.subActions[0].range.OffsetsShifted(self.Pos)
+                    var movePositions = moveAction.subActions[0].Range.GetPositions(grid, self)
                         .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
                     // Break if nowhere to move
                     if (movePositions.Count() <= 0)
@@ -67,7 +67,7 @@ public class AIComponentBasic : AIComponent<Unit>
             else // AP must be enough to use the move action
             {
                 // Get move positions
-                var movePositions = moveAction.subActions[0].range.OffsetsShifted(self.Pos)
+                var movePositions = moveAction.subActions[0].Range.GetPositions(grid, self)
                     .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
                 // Break if nowhere to move
                 if (movePositions.Count() <= 0)

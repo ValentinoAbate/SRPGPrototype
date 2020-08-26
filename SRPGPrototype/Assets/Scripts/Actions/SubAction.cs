@@ -7,9 +7,8 @@ public class SubAction : MonoBehaviour
 {
     public bool DealsDamage => effects.Any((e) => e is ActionEffectDamage);
     public bool UsesPower => effects.Any((e) => e.UsesPower);
-    public bool hasRange = false;
-    public bool hasPattern = false;
-    public Pattern range;
+    public RangePattern Range => rangePattern;
+    [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern targetPattern;
     private ActionEffect[] effects;
 
@@ -21,7 +20,7 @@ public class SubAction : MonoBehaviour
     public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos)
     {
         // Get target positions
-        var targetPositions = hasPattern ? targetPattern.Target(grid, user, selectedPos) : new List<Vector2Int>();
+        var targetPositions = targetPattern.Target(grid, user, selectedPos);
         // Remove all illegal target positions
         targetPositions.RemoveAll((p) => !grid.IsLegal(p));
         var targets = new List<Unit>();

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasRange: 1
-  hasPattern: 1
   range:
     patternOffsets:
     - {x: 2, y: 2}
@@ -21,6 +19,12 @@ MonoBehaviour:
     - {x: 0, y: 2}
     - {x: 0, y: 0}
     dimensions: {x: 3, y: 3}
+  rangePattern:
+    patternType: 5
+    pattern:
+      patternOffsets: []
+      dimensions: {x: 1, y: 1}
+    generator: {fileID: 0}
   targetPattern:
     patternType: 1
     pattern:

@@ -48,6 +48,12 @@ MonoBehaviour:
   range:
     patternOffsets: []
     dimensions: {x: 1, y: 1}
+  rangePattern:
+    patternType: 1
+    pattern:
+      patternOffsets: []
+      dimensions: {x: 1, y: 1}
+    generator: {fileID: 0}
   targetPattern:
     patternType: 1
     pattern:
@@ -102,6 +108,12 @@ MonoBehaviour:
   range:
     patternOffsets: []
     dimensions: {x: 1, y: 1}
+  rangePattern:
+    patternType: 1
+    pattern:
+      patternOffsets: []
+      dimensions: {x: 1, y: 1}
+    generator: {fileID: 0}
   targetPattern:
     patternType: 1
     pattern:

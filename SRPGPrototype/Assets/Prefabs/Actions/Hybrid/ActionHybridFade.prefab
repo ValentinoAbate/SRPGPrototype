@@ -40,6 +40,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
       propertyPath: range.dimensions.x
       value: 5
       objectReference: {fileID: 0}
@@ -107,6 +112,66 @@ PrefabInstance:
         type: 3}
       propertyPath: targetPattern.patternType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.patternType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.dimensions.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.dimensions.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[0].x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

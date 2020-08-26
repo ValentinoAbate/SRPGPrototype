@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: range.patternOffsets.Array.data[3].y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.patternType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.size
@@ -137,6 +142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: targetPattern.patternType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.patternType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

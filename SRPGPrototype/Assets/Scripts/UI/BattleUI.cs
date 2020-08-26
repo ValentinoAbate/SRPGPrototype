@@ -83,7 +83,7 @@ public class BattleUI : MonoBehaviour
         action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();
         var targetPatternEntires = new List<TileUI.Entry>();
-        targetRangeEntries = ShowPattern(action.subActions[currAction].range, unit.Pos, TileUI.Type.CustGreen);
+        targetRangeEntries = ShowRangePattern(action.subActions[currAction].Range, unit, TileUI.Type.CustGreen);
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction, ref targetPatternEntires);
@@ -104,7 +104,7 @@ public class BattleUI : MonoBehaviour
     private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
-        if (!subAction.range.OffsetsShifted(unit.Pos).Contains(pos))
+        if (!subAction.Range.GetPositions(grid, unit).Contains(pos))
             return;
         entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustWhite);
 
@@ -114,7 +114,7 @@ public class BattleUI : MonoBehaviour
     private void SelectActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
-        if (!subAction.range.OffsetsShifted(unit.Pos).Contains(pos))
+        if (!subAction.Range.GetPositions(grid, unit).Contains(pos))
             return;
         subAction.Use(grid, action, unit, pos);
         HideManyTiles(entries);
@@ -126,7 +126,7 @@ public class BattleUI : MonoBehaviour
         }
         else
         {
-            entries = ShowPattern(action.subActions[currAction].range, unit.Pos, TileUI.Type.CustGreen);
+            entries = ShowRangePattern(action.subActions[currAction].Range, unit, TileUI.Type.CustGreen);
         }
     }
 
@@ -160,6 +160,16 @@ public class BattleUI : MonoBehaviour
     {
         var ret = new List<TileUI.Entry>();
         foreach (var pos in p.Target(grid, user, target))
+        {
+            ret.Add(grid.SpawnTileUI(pos, type));
+        }
+        return ret;
+    }
+
+    public List<TileUI.Entry> ShowRangePattern(RangePattern p, Unit user, TileUI.Type type)
+    {
+        var ret = new List<TileUI.Entry>();
+        foreach (var pos in p.GetPositions(grid, user))
         {
             ret.Add(grid.SpawnTileUI(pos, type));
         }
