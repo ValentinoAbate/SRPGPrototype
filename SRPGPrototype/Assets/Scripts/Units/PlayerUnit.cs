@@ -55,6 +55,17 @@ public class PlayerUnit : Unit
         ResetStats();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Power: " + Power.Value.ToString());
+            Debug.Log("Speed: " + Speed.Value.ToString());
+            Debug.Log("Defense: " + Defense.Value.ToString());
+            Debug.Log("Repair: " + Repair.ToString());
+        }
+    }
+
     public override void DoRepair()
     {
         Shell.Stats.DoRepair();

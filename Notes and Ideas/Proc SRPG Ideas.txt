@@ -268,8 +268,8 @@ Enemy Designs:
 - Walking Nest+: HP: 5, AP:2, Move: Basic, Attack: Basic
 	- When destroyed, spawns 2 / 3 Swarm (spawn logic tbd)
 + Knight: HP: 9, AP: 2, Move: Knight, Attack: Heavy
-- Cavalier (Knight+): HP: 12: AP: 2 Move:, Knight, Attack: Heavy
-- Paladin (Knight Boss): HP: 16, AP: 4, Move: Knight, Attack: Heavy
++ Cavalier (Knight+): HP: 12: AP: 2 Move:, Knight, Attack: Heavy
++ Paladin (Knight Boss): HP: 16, AP: 4, Move: Knight, Attack: Heavy
 + Bomb Nest:
 	- When destroyed, spawn bombs
 + Bomb: HP: 3, AP 2, Move: Basic, Attack: Basic
