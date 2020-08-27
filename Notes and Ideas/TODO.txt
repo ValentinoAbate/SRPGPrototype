@@ -1,29 +1,41 @@
-High-Priority:
-- Encounter Generation
-	- Fixed spawn points
-		- Generate unit start positions as part of encounter generation instead of allowing any position to be selected
-- UI
-	- Pattern display
-		- Maybe base off of grid code?
-	- Action display (display an action in the desc window, consisely)
-		- Possibly be action / subaction to account for hybrid actions?
-		- Include a field for relevant info from program origin (at least for in-battle)
-	- Program display
-		- Utilize action display
-	- Unit display
-		- Utilize action display
-- Loot
-	- Different shape to differentiate between shell and prog loot?
-
-- Smart targeting
-	- Make certain actions on have certain valid tiles selectable
+// High-Priority ---------------------------------------------------------------------------------
+UI
+- Action display (display an action in the desc window, consisely)
+	- Possibly be action / subaction to account for hybrid actions?
+	- Include a field for relevant info from program origin (at least for in-battle)
+- Program display
+	- Utilize action display
+- Unit display
+	- Utilize action display
+- Shell Display
+	- Show Shell HP, capcacity thresholds
+	- Show Shell description and pattern
+Loot 
+- Extra repair loot / extra hp loot - Gives you extra healing at the end of a batter
+	- Make one for bosses that restores all shells 
+Customization
+- Save / load shell preset layouts
+Smart targeting
+- Make certain actions on have certain valid tiles selectable
+Program Effects
 - Add adjacency / modifier effects
-Mid-Priority
-- UI
-	- Add turn order indicators
-	- Add uninstall all button
-Low-Priority
--Balance
-	- Make charge more balanced (probably make it so you can't charge into an empty square)
--Bugs
-	- Disable end battle button during unit placement
+Balance
+Map revamp
+- Visualization
+NPCs
+- Possibly dependent on map revamp, needs more design
+// Mid-Priority ----------------------------------------------------------------------------------
+UI
+- Add turn order indicators
+- Add uninstall all button
+- Add data type info to drop buttons
+Loot
+- Different shape to differentiate between shell and prog loot? (Generally better loot view)
+- Rebalance color mystery data or add rare versions
+// Low-Priority ----------------------------------------------------------------------------------
+Balance
+- Make charge more balanced (probably make it so you can't charge into an empty square)
+- Until some sort of upgrading - make multi target attacks less rare
+Bugs
+- Disable end battle button during unit placement
+- Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)

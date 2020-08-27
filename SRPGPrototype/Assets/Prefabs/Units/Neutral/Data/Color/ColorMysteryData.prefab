@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
-  lootQualities: 000000000100000000000000
+  lootQualities: 000000000100000004000000
 --- !u!1001 &1819396087416313162
 PrefabInstance:
   m_ObjectHideFlags: 0

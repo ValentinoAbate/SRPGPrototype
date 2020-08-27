@@ -86,15 +86,6 @@ Shell Concepts:
 	- x o i x i o x
 	- o o o o o o o
 	- o o x x x o o
-- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 1 max Hp
-- Big Shell: A [Large] shell that can only have certain number of programs installed and takes a penalty for any empty squares
-- Limit colors to low numbers
-- Treaure Hunter: No common programs can be installed. Higher chance at uncommmon and rare loot
-	- Show when the effect activates on loot screen
-- Hidden potential: A [Full progression] shell that can't have capacity upgrades installed, but unlocks pre-installed capacity ugrades under certain conditions
-- Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
-- A shell where the pre-installs have to connect a path between all preinstalls for a bonus
-- A shell with blokus rules, but is fairly open otherwise (maybe large)?
 - Snake Shell - Give it some sort of buff
 	- o o o o o
 	- o i x x i
@@ -414,3 +405,15 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- x o x i x o x
 	- o o o o o o o
 	- o o o x o o o
+Shell Concepts:
+- Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 1 max Hp
+- Big Shell: A [Large] shell that can only have certain number of programs installed and takes a penalty for any empty squares
+- Limit colors to low numbers
+- Treaure Hunter: No common programs can be installed. Higher chance at uncommmon and rare loot
+	- Show when the effect activates on loot screen
+- Hidden potential: A [Full progression] shell that can't have capacity upgrades installed, but unlocks pre-installed capacity ugrades under certain conditions
+- Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
+- A shell where the pre-installs have to connect a path between all preinstalls for a bonus
+- A shell with blokus rules, but is fairly open otherwise (maybe large)?
+- A shell with High repair, low max HP
+- A shell with extra AP, but is small

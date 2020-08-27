@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7439d90c7021704595ab4d8fd710980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: 0
+  stat: 4
   number:
     min: -2147483648
     max: 2147483647

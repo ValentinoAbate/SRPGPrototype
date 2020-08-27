@@ -1,19 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2536850600167629781
+--- !u!114 &236188973183069821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
+  m_GameObject: {fileID: 7202993979176963460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
+  m_Script: {fileID: 11500000, guid: d7439d90c7021704595ab4d8fd710980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 1
---- !u!1001 &6724310523622875936
+  stat: 0
+  number:
+    min: -2147483648
+    max: 2147483647
+    constant: 1
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    type: 0
+    attributes: 0
+    color: 0
+    rarity: 0
+--- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -23,12 +34,12 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -37,53 +48,73 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
       propertyPath: shape.patternOffsets.Array.data[0].y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: displayName
-      value: +1 Capacity (Med)
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: pos.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: pos.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: description
-      value: +1 Capacity
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: rarity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: shape.patternOffsets.Array.data[1].x
-      value: 0
+      propertyPath: shape.patternOffsets.Array.data[0].x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[1].y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[1].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[2].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[2].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[3].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: rarity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: displayName
+      value: Feedback
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: description
+      value: After resolving an action that dealt damage to yourself, Gain 1 HP.
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[3].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[4].y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramCapacityUpgradeStandardMedV
+      value: ProgramAbilityGainHPOnSelfHit
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -142,9 +173,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3be8752a4b0e247a6d0bd5d67ae765, type: 3}
---- !u!1 &2935504127033964142 stripped
+--- !u!1 &7202993979176963460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
     type: 3}
-  m_PrefabInstance: {fileID: 6724310523622875936}
+  m_PrefabInstance: {fileID: 1592762870832421066}
   m_PrefabAsset: {fileID: 0}

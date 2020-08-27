@@ -8,7 +8,7 @@ public class DropComponentProgramColor: DropComponent<Program>
     {
         // Filter out all programs that don't give capacity
         bool filter(Program p) => p.color == color;
-        return manager.ProgramLoot.GetDropsStandard(lootQualities, filter);
+        return manager.ProgramLoot.GetDropsStandardNoDuplicates(lootQualities, filter);
     }
 
 }

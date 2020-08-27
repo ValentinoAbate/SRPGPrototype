@@ -1,0 +1,64 @@
++ Soldier: HP: 3, AP: 2, Move: Basic, Attack: Basic
++ Rook: HP: 5, AP: 2, Move: Rook, Attack: Basic
++ Sidewinder: HP: 4, AP: 2, Move: Basic (Diag) (Fast), Attack: Basic
++ Bishop: HP: 6, AP: 2, Move: Bishop, Attack: Basic
++ Seeker: HP: 5, AP: 3, Move: Basic (Fast), Attack: Basic
++ Seeker+: HP: 7, AP: 4, Move: Basic (Fast), Attack: Basic
++ Brute: HP: 7, AP: 2, Move: Basic, Attack: Basic
++ Brute+: HP: 12, AP: 3, Move: Basic, Attack: Basic
++ Brute++: HP: 18, AP: 3, Move: Basic, Attack: Heavy
++ Swarm: HP: 2, AP: 1, Move: Basic, Attack: Basic, Cost (1 / 0.5)
+	- Potentially give more AP but do less damage?
++ Swarm+: HP: 2, AP: 2, Move: Basic, Attack: Basic
+- Nest Queen / The Hive (Boss)
+- Nestmaker: HP: 8, AP 2, Move Basic, Action: Make nest
+	- Makes nests in empty tiles
+- NestHatcher: 
+	- Goes around hatching nests
+- Switch: HP: 5, AP:2, Attack: Basic
+	- Has Move: Diagonal 1 tile (1 AP, 1/1 slowdown?) if in diagonal mode
+	- Has Move: Basic if in horizontal mode
+	- Switches modes at the end of the phase. Chooses a random mode at spawn
+- Switch+: HP: 6/7, AP:2, Attack: Basic
+	- Has Move: Diagonal any number of tile (1 AP, 1/1 slowdown?) if in diagonal mode
+	- Has Move: Horizontal any number of tile (1 AP, 1/1 slowdown?) if in horizontal mode
+	- Switches modes at the end of the phase. Chooses a random mode at spawn
+- Toggle: HP: 6, AP:2, Attack: Basic
+	- Has Move: Diagonal 1 tile (1 AP, 1/1 slowdown?) if in diagonal mode
+	- Has Move: Basic if in horizontal mode
+	- Switches modes when damaged. Chooses a random mode at spawn
+- Toggle+: HP: 8, AP:2, Attack: Basic
+	- Has Move: Diagonal 1 tile (1 AP, 1/1 slowdown?) if in diagonal mode
+	- Has Move: Basic if in horizontal mode
+	- Switches modes when damaged. Chooses a random mode at spawn
++ Walking Nest: HP: 3, AP:2, Move: Basic, Attack: Basic
+	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
+- Walking Nest+: HP: 5, AP:2, Move: Basic, Attack: Basic
+	- When destroyed, spawns 2 / 3 Swarm (spawn logic tbd)
++ Knight: HP: 9, AP: 2, Move: Knight, Attack: Heavy
++ Cavalier (Knight+): HP: 12: AP: 2 Move:, Knight, Attack: Heavy
++ Paladin (Knight Boss): HP: 16, AP: 4, Move: Knight, Attack: Heavy
++ Bomb Nest:
+	- When destroyed, spawn bombs
++ Bomb: HP: 3, AP 2, Move: Basic, Attack: Basic
+	- Explosion 1 (1AP): Hit every adjacent (Horizontal) (to target) square for 4 damage. Destroy target. Targets self
+	- Trigger: Destroyed (except by self) use Explosion 1.
+- Bomb+: HP: 5, AP 2, Move: Basic, Attack: Basic
+	- Explosion 2 (1AP): Hit every adjacent (Horizontal + Diag) (to target) square for 5 damage. Destroy target. Targets self
+	- Trigger: Destroyed (except by self) use Explosion 2.
++ Fuse: HP: 2, AP 2, Move: Basic, Attack: Explosion 1
+	- Explosion 1 (1AP): Hit every adjacent (Horizontal) (to target) square for 4 damage. Destroy target. Targets self
+	- Trigger: Destroyed (except by self) use Explosion 1.
++ Fuse+: HP: 4, AP 2, Move: Basic, Attack: Explosion 2
+- Explosion 2 (1AP): Hit every adjacent (Horizontal + Diag) (to target) square for 5 damage. Destroy target. Targets self
+	- Trigger: Destroyed (except by self) use Explosion 2.
+Environment Designs:
+- Nest: HP: 3, AP:1, Move: None, Attack: Damage self (1)
+	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
+- Nest+: HP: 3, AP:1, Move: None, Attack: Damage self (1)
+	- When destroyed, spawns 2 / 3 Swarm+ (spawn logic tbd)
+- Nest Nest:
+	- When destroyed, spawn other nests
+- Battery: Destroying this grants the unit that destroyed it 1 speed
+- Armor: Destroying this grants the unit that destroyed it 1 def
+- Power Cell: Destroying this grants the unit that destroyed it 1 power
