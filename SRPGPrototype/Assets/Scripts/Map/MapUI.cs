@@ -16,12 +16,13 @@ public class MapUI : MonoBehaviour
     [Header("Preview UI References")]
     public GameObject previewUI;
     public BattleGrid previewGrid;
-    public Transform unitContainer;
+    public Transform previewObjContainer;
     public TextMeshProUGUI encounterNameText;
     public Button confirmEncounterButton;
     public Button backToEncounterSelectionButton;
     public Button nextEncounterButton;
     public Button prevEncounterButton;
+    public GameObject spawnPointPrefab;
 
     private List<Vertex<Encounter>> vertices = null;
 
@@ -77,7 +78,7 @@ public class MapUI : MonoBehaviour
         prevEncounterButton.onClick.RemoveAllListeners();
         prevEncounterButton.onClick.AddListener(() => NextEncounter(vertex, true));
         var encounter = vertex.value;
-        InitializeUnits(encounter.units);
+        InitializePreviewObjects(encounter);
         encounterNameText.text = encounter.name;
         // Add graph resizing when that's relvant
     }
@@ -95,27 +96,29 @@ public class MapUI : MonoBehaviour
             index = 0;
         }
 
-        unitContainer.DestroyAllChildren();
+        previewObjContainer.DestroyAllChildren();
         ShowEncounterPreview(vertices[index]);
     }
 
     public void HideEncounterPreview()
     {
-        unitContainer.DestroyAllChildren();
+        previewObjContainer.DestroyAllChildren();
         previewUI.SetActive(false);
     }
 
-    private List<Unit> InitializeUnits(IEnumerable<Encounter.UnitEntry> entries)
+    private void InitializePreviewObjects(Encounter e)
     {
-        var units = new List<Unit>();
-        foreach (var entry in entries)
+        foreach (var entry in e.units)
         {
-            var unit = Instantiate(entry.unit, unitContainer).GetComponent<Unit>();
+            var unit = Instantiate(entry.unit, previewObjContainer).GetComponent<Unit>();
             previewGrid.Add(entry.pos, unit);
             unit.transform.position = previewGrid.GetSpace(unit.Pos);
-            units.Add(unit);
         }
-        return units;
+        foreach (var pos in e.spawnPositions)
+        {
+            var spawnPoint = Instantiate(spawnPointPrefab, previewObjContainer);
+            spawnPoint.transform.position = previewGrid.GetSpace(pos);
+        }
     }
 
     private void ConfirmEncounter(Vertex<Encounter> vertex)

@@ -7,13 +7,13 @@ public class Encounter
 {
     public string name = "Encounter";
     public List<UnitEntry> units = new List<UnitEntry>();
-    public List<UnitEntry> reinforcements = new List<UnitEntry>();
+    public List<Vector2Int> spawnPositions = new List<Vector2Int>();
 
     [System.Serializable]
-    public struct UnitEntry
+    public readonly struct UnitEntry
     {
-        public Vector2Int pos;
-        public Unit unit;
+        public readonly Vector2Int pos;
+        public readonly Unit unit;
         public UnitEntry(Unit unit, Vector2Int pos)
         {
             this.unit = unit;

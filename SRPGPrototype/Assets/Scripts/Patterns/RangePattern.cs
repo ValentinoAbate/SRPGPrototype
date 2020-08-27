@@ -31,17 +31,17 @@ public class RangePattern
             case Type.Self:
                 return new List<Vector2Int> { user.Pos };
             case Type.Adjacent:
-                return new List<Vector2Int>(user.Pos.Adjacent());
+                return user.Pos.Adjacent().ToList();
             case Type.AdjacentDiagonal:
-                return new List<Vector2Int>(user.Pos.AdjacentDiagonal());
+                return user.Pos.AdjacentDiagonal().ToList();
             case Type.AdjacentBoth:
-                return new List<Vector2Int>(user.Pos.AdjacentDiagonal().Concat(user.Pos.Adjacent()));
+                return user.Pos.AdjacentDiagonal().Concat(user.Pos.Adjacent()).ToList();
             case Type.Ranged:
-                return user.Pos.Adjacent().Select((p) => p * 2).ToList();
+                return user.Pos.Adjacent(2).ToList();
             case Type.RangedDiagonal:
-                return user.Pos.AdjacentDiagonal().Select((p) => p * 2).ToList();
+                return user.Pos.AdjacentDiagonal(2).ToList();
             case Type.Pattern:
-                return new List<Vector2Int>(pattern.OffsetsShifted(user.Pos)); ;
+                return pattern.OffsetsShifted(user.Pos).ToList(); ;
             case Type.Generated:
                 return generator.Generate(grid, user);
             case Type.Horizontal:

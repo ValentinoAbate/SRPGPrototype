@@ -11,10 +11,12 @@ public class EncounterData : ScriptableObject
         Midboss = 1,
         Boss = 2,
         Bonus = 4,
+        NoNormalLoot = 8,
     }
     [Header("General")]
     public float targetDifficulty;
     public Vector2Int dimensions = new Vector2Int(8, 8);
+    public int numSpawnPositions = 3;
     [Header("Enemies")]
     public List<int> numEnemies = new List<int>{ 5 };
     public List<float> numEnemiesWeights = new List<float>{ 1 };

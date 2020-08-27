@@ -102,6 +102,8 @@ MonoBehaviour:
     type: 3}
   unitPlacementUI: {fileID: 6771082056562637596}
   confirmPlayerPlacementButton: {fileID: 8345950362579963109}
+  spawnPositionPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
+    type: 3}
 --- !u!1 &1130085307932702806
 GameObject:
   m_ObjectHideFlags: 0

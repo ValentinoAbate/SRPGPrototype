@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EncounterGenerator : MonoBehaviour
 {
-    private const float difficultyScale = -100;
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter, Vector2Int dimensions);
     public delegate float NextUnitWeighting(Unit u, Encounter encounter, Vector2Int dimensions);
+
+    #region Weightings
 
     private readonly WeightedSet<MysteryDataUnit.Category> lootCategoryWeights = new WeightedSet<MysteryDataUnit.Category>
     {
@@ -59,10 +61,8 @@ public class EncounterGenerator : MonoBehaviour
     {
         { MysteryDataUnit.Category.Boss, 100 }
     };
-    private readonly WeightedSet<MysteryDataUnit.Quality> bossLootQualityWeights = new WeightedSet<MysteryDataUnit.Quality>
-    {
-        { MysteryDataUnit.Quality.None, 100 }
-    };
+
+    #endregion
 
     private readonly Dictionary<MysteryDataUnit.Category, Dictionary<MysteryDataUnit.Quality, List<MysteryDataUnit>>> lootUnitTable 
         = new Dictionary<MysteryDataUnit.Category, Dictionary<MysteryDataUnit.Quality, List<MysteryDataUnit>>>();
@@ -92,19 +92,43 @@ public class EncounterGenerator : MonoBehaviour
     {
         var positions = EnumerateDimensions(data.dimensions);
         var encounter = new Encounter() { name = encounterName };
+        int numSpawnPositions = data.numSpawnPositions;
         int numEnemies = RandomU.instance.Choice(data.numEnemies, data.numEnemiesWeights);
         int numObstacles = RandomU.instance.Choice(data.numObstacles, data.numObstaclesWeights);
         var enemies = new WeightedSet<EnemyUnit>(data.enemies, data.baseEnemyWeights);
         var obstacles = new WeightedSet<ObstacleUnit>(data.obstacles, data.baseObstacleWeights);
         var lootFlags = data.lootFlags;
-        //var lootUnits = new WeightedSet<MysteryDataUnit>(data.data, 1);
+
         // Initialize encounter values from seed if applicable
         if (data.seed != null)
         {
-            encounter.units.AddRange(data.seed.units);
-            encounter.reinforcements.AddRange(data.seed.reinforcements);
-            positions = positions.Where((pos) => data.seed.units.All((unit) => unit.pos != pos)).ToList();
+            List<Encounter.UnitEntry> outOfBoundsUnits = new List<Encounter.UnitEntry>();
+            foreach(var entry in data.seed.units)
+            {
+                // Position is invalid, generated a proper position later
+                if(!positions.Contains(entry.pos))
+                {
+                    outOfBoundsUnits.Add(entry);
+                    continue;
+                }
+                encounter.units.Add(entry);
+                positions.Remove(entry.pos);
+            }
+            // Remove all seed spawn positions from valid positions choices
+            positions.RemoveAll((p) => data.seed.spawnPositions.Contains(p));
+            // Add all seed spawn positions to the encounter
+            encounter.spawnPositions.AddRange(data.seed.spawnPositions);
+            // Generate positions for any unit entries that had negative positions
+            foreach(var entry in outOfBoundsUnits)
+            {
+                if (positions.Count <= 0)
+                    break;
+                Vector2Int pos = RandomU.instance.Choice(positions);
+                encounter.units.Add(new Encounter.UnitEntry(entry.unit, pos));
+                positions.Remove(pos);
+            }
         }
+
         // Generate enemies
         PlaceUnitsRandom(numEnemies / 2 + numEnemies % 2, enemies, ref encounter, ref positions);
         PlaceUnitsWeighted(numEnemies / 2, enemies, ClumpWeight, PassThrough, data.dimensions, encounter, ref positions);
@@ -117,12 +141,13 @@ public class EncounterGenerator : MonoBehaviour
         float difficulty = encounter.units.Where((e) => e.unit is IEncounterUnit)
                                                .Select((e) => e.unit as IEncounterUnit)
                                                .Sum((u) => u.EncounterData.challengeRating);
+        // Calculate difficulty mod
         float difficultyMod = difficulty - data.targetDifficulty;
 
         // Generate Loot category weights
-        // Start with standard loot category weights
         var categoryWeights = new WeightedSet<MysteryDataUnit.Category>();
         var qualityWeights = new WeightedSet<MysteryDataUnit.Quality>();
+        // Choose weights to use based on difficulty mod
         if(difficultyMod == 0)
         {
             categoryWeights.Add(lootCategoryWeights);
@@ -138,22 +163,29 @@ public class EncounterGenerator : MonoBehaviour
             categoryWeights.Add(lootCategoryWeightsEasy);
             qualityWeights.Add(lootQualityWeightsEasy);
         }
-
-
-        PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
-
+        // Place the default loot unless there shouldn't be normal loot 
+        if(!lootFlags.HasFlag(EncounterData.LootModifiers.NoNormalLoot))
+        {
+            // Actually place the loot
+            PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
+        }
+        // Place the bonus loot (if applicable)
         if(lootFlags.HasFlag(EncounterData.LootModifiers.Bonus))
         {
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
         }
+        // Place the midboss loot (if applicable)
         if(lootFlags.HasFlag(EncounterData.LootModifiers.Midboss))
         {
             PlaceLoot(midbossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
+        // Place the boss loot (if applicable)
         if(lootFlags.HasFlag(EncounterData.LootModifiers.Boss))
         {
             PlaceLoot(bossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
+        // Set additional spawn positions
+        SetSpawnPositions(numSpawnPositions, data.dimensions, encounter, ref positions);
 
         return encounter;
     }
@@ -199,6 +231,20 @@ public class EncounterGenerator : MonoBehaviour
         return weight;
     }
 
+    private float SpreadWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
+    {
+        float weight = 1;
+        foreach (var p in pos.Adjacent())
+        {
+            if (p.x > 0 && p.y > 0 && p.x < dimensions.x && p.y < dimensions.y
+                && encounter.units.FindIndex((e) => e.pos == p) == -1)
+            {
+                weight *= 2;
+            }
+        }
+        return weight;
+    }
+
     private float PassThrough(Unit u, Encounter encounter, Vector2Int dimensions) => 0;
     private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
 
@@ -217,6 +263,7 @@ public class EncounterGenerator : MonoBehaviour
         var unit = RandomU.instance.Choice(lootUnitTable[category][quality]);
         var pos = RandomU.instance.Choice(validPositions);
         encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+        validPositions.Remove(pos);
     }
 
     private List<Vector2Int> EnumerateDimensions(Vector2Int dimensions)
@@ -226,5 +273,23 @@ public class EncounterGenerator : MonoBehaviour
             for (int y = 0; y < dimensions.y; ++y)
                 ret.Add(new Vector2Int(x, y));
         return ret;
+    }
+
+    private void SetSpawnPositions(int num, Vector2Int dimensions, Encounter encounter, ref List<Vector2Int> validPositions)
+    {
+        if(num > 0 && validPositions.Count > 0)
+        {
+            var weights = new WeightedSet<Vector2Int>(validPositions, (pos) => SpreadWeight(pos, encounter, dimensions));
+            Vector2Int spawnPos = RandomU.instance.Choice(weights);
+            encounter.spawnPositions.Add(spawnPos);
+            validPositions.Remove(spawnPos);
+        }
+        for (int i = 1; i < num && validPositions.Count > 0; ++i)
+        {
+            var weights = new WeightedSet<Vector2Int>(validPositions, (pos) => ClumpWeight(pos,encounter, dimensions));//(pos) => SpreadWeight(pos, encounter, dimensions));
+            Vector2Int spawnPos = RandomU.instance.Choice(weights);
+            encounter.spawnPositions.Add(spawnPos);
+            validPositions.Remove(spawnPos);
+        }
     }
 }

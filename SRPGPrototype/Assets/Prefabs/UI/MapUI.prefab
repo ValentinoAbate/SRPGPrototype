@@ -1167,7 +1167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6257891029050319591}
   m_Layer: 0
-  m_Name: UnitContainer
+  m_Name: PreviewObjectContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,12 +1240,14 @@ MonoBehaviour:
   gambleButton: {fileID: 3368462913106898822}
   previewUI: {fileID: 6257891029365555177}
   previewGrid: {fileID: 1658297324759720663}
-  unitContainer: {fileID: 6257891029050319591}
+  previewObjContainer: {fileID: 6257891029050319591}
   encounterNameText: {fileID: 492517071525015169}
   confirmEncounterButton: {fileID: 6257891029715398344}
   backToEncounterSelectionButton: {fileID: 330596455242060795}
   nextEncounterButton: {fileID: 7500120047758409669}
   prevEncounterButton: {fileID: 3348858626209122630}
+  spawnPointPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
+    type: 3}
 --- !u!1 &6257891029223179886
 GameObject:
   m_ObjectHideFlags: 0

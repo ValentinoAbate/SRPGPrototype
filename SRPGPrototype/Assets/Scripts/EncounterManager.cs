@@ -12,10 +12,12 @@ public class EncounterManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject unitPlacementUI;
     public Button confirmPlayerPlacementButton;
+    public GameObject spawnPositionPrefab;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
     private PlayerUnit player;
+    private readonly List<GameObject> spawnPositionObjects = new List<GameObject>();
 
     private void Start()
     {
@@ -28,17 +30,24 @@ public class EncounterManager : MonoBehaviour
         var encounter = PersistantData.main.mapManager.Map.Current.value;
         // Instantiate and add units to the grid
         var units = InitializeUnits(encounter.units);
+        // Instantiate spawn position objects
+        foreach(var pos in encounter.spawnPositions)
+        {
+            var spawnPosObj = Instantiate(spawnPositionPrefab);
+            spawnPosObj.transform.position = grid.GetSpace(pos);
+            spawnPositionObjects.Add(spawnPosObj);
+        }
         // Don't allow the encounter to start until the player has been placed
         confirmPlayerPlacementButton.interactable = false;
         confirmPlayerPlacementButton.onClick.AddListener(() => StartEncounter(units));
         // Setup cursor for unit placement
-        cursor.OnClick += SetPlayerPosition;
+        cursor.OnClick += (pos) => SetPlayerPosition(pos, encounter.spawnPositions);
         cursor.OnCancel += CancelPlayerPlacement;
     }
 
-    private void SetPlayerPosition(Vector2Int pos)
+    private void SetPlayerPosition(Vector2Int pos, List<Vector2Int> spawnPositions)
     {
-        if(grid.IsLegalAndEmpty(pos))
+        if(grid.IsLegalAndEmpty(pos) && (spawnPositions.Count <= 0 || spawnPositions.Contains(pos)))
         {
             if(player == null)
             {
@@ -74,6 +83,9 @@ public class EncounterManager : MonoBehaviour
         cursor.NullAllActions();
         // Log the grid's on add event to the phaseManager's add Unit function
         grid.OnAddUnit = phaseManager.AddUnit;
+        // Destroy the spawn position objects
+        spawnPositionObjects.ForEach((obj) => Destroy(obj));
+        spawnPositionObjects.Clear();
         // Start the active encounter
         StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }
