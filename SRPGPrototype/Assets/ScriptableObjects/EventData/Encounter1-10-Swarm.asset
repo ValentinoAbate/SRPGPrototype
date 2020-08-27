@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDifficulty: 22
   dimensions: {x: 6, y: 6}
+  numSpawnPositions: 5
   numEnemies: 0d000000
   numEnemiesWeights:
   - 1
@@ -42,4 +43,4 @@ MonoBehaviour:
   seed:
     name: Encounter
     units: []
-    reinforcements: []
+    spawnPositions: []

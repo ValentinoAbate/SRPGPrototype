@@ -10,10 +10,10 @@ public class Encounter
     public List<Vector2Int> spawnPositions = new List<Vector2Int>();
 
     [System.Serializable]
-    public readonly struct UnitEntry
+    public struct UnitEntry
     {
         public readonly Vector2Int pos;
-        public readonly Unit unit;
+        public Unit unit;
         public UnitEntry(Unit unit, Vector2Int pos)
         {
             this.unit = unit;

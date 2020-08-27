@@ -29,6 +29,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   action: {fileID: 5597248024022581365, guid: 4cd52a64bcf9372429854ef0859b939e, type: 3}
+  triggerOnSelfDestruct: 1
 --- !u!1001 &1346563792081888222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,6 +312,12 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdca845d1ed8d944fa396e41349a2858,
+        type: 3}
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: cost

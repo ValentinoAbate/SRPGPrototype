@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: TestMapData
   m_EditorClassIdentifier: 
-  depth: 10
+  depth: 20
   encounterData:
   - data:
     - {fileID: 11400000, guid: 8c8ab936391bef54bb629b1521ceafc2, type: 2}
@@ -59,6 +59,50 @@ MonoBehaviour:
     - {fileID: 11400000, guid: df71670c2b9ee6b439f0bf54047c15b4, type: 2}
     weights:
     - 1
+    - 1
+  - data:
+    - {fileID: 11400000, guid: 1fd0e697dbc70ee40a209d6ddb03297d, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: e657606999581334fa6f9e22dc806524, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: 3ce25e01cadcb334386a561e13da04ae, type: 2}
+    - {fileID: 11400000, guid: b43c55dda390aca4aa7aff4520710dbf, type: 2}
+    weights:
+    - 4
+    - 1
+  - data:
+    - {fileID: 11400000, guid: fdb4e217a47e30446857dffc26b22145, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: b1c5dfe39d4103a4497697e9a9923316, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: 99092e569ba56b24ca4c98e6e2ccf658, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: dba6493bcb3b8c64d93fc61f8b46874b, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: de32459f4309e2b4783fb6da847ed9c9, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: dc60f3ebc0448f64e98b4ad1bab2411c, type: 2}
+    weights:
+    - 1
+  - data:
+    - {fileID: 11400000, guid: 363360d2ff42eb6458e4a5e5992efd3c, type: 2}
+    - {fileID: 11400000, guid: b7c439e71446ef3478337755b979be74, type: 2}
+    weights:
+    - 2
     - 1
   testMode: 0
   testData:

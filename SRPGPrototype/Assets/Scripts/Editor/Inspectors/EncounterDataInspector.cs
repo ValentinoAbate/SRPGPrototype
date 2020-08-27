@@ -1,6 +1,7 @@
 ﻿using RandomUtils;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ public class EncounterDataInspector : Editor
             float sum = 0;
             for(int i = 0; i < targetDifficultyGenerationIterations; ++i)
             {
+                if(data.seed != null)
+                {
+                    sum += data.seed.units.Where((u) => u.unit is IEncounterUnit)
+                                          .Sum((u) => (u.unit as IEncounterUnit).EncounterData.challengeRating);
+                }
                 int numEnemies = RandomU.instance.Choice(data.numEnemies, data.numEnemiesWeights);
                 for (int j = 0; j < numEnemies; ++j)
                     sum += RandomU.instance.Choice(data.enemies, data.baseEnemyWeights).EncounterData.challengeRating;

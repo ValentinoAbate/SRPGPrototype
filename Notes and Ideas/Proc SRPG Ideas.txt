@@ -267,8 +267,9 @@ Enemy Designs:
 	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
 - Walking Nest+: HP: 5, AP:2, Move: Basic, Attack: Basic
 	- When destroyed, spawns 2 / 3 Swarm (spawn logic tbd)
-- Knight: HP: 9, AP: 2, Move: Knight, Attack: Heavy
-- Paladin (Knight+): HP: 15, AP: 3, Move: Knight, Attack: Heavy
++ Knight: HP: 9, AP: 2, Move: Knight, Attack: Heavy
+- Cavalier (Knight+): HP: 12: AP: 2 Move:, Knight, Attack: Heavy
+- Paladin (Knight Boss): HP: 16, AP: 4, Move: Knight, Attack: Heavy
 + Bomb Nest:
 	- When destroyed, spawn bombs
 + Bomb: HP: 3, AP 2, Move: Basic, Attack: Basic
@@ -277,10 +278,10 @@ Enemy Designs:
 - Bomb+: HP: 5, AP 2, Move: Basic, Attack: Basic
 	- Explosion 2 (1AP): Hit every adjacent (Horizontal + Diag) (to target) square for 5 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 2.
-- Fuse: HP: 2, AP 2, Move: Basic, Attack: Explosion 1
++ Fuse: HP: 2, AP 2, Move: Basic, Attack: Explosion 1
 	- Explosion 1 (1AP): Hit every adjacent (Horizontal) (to target) square for 4 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 1.
-- Fuse+: HP: 4, AP 2, Move: Basic, Attack: Explosion 2
++ Fuse+: HP: 4, AP 2, Move: Basic, Attack: Explosion 2
 - Explosion 2 (1AP): Hit every adjacent (Horizontal + Diag) (to target) square for 5 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 2.
 Map Design:

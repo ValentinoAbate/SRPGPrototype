@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDifficulty: 11
   dimensions: {x: 6, y: 6}
-  numSpawnPositions: 0
+  numSpawnPositions: 5
   numEnemies: 040000000500000006000000
   numEnemiesWeights:
   - 1

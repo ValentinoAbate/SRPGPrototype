@@ -10,26 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
-  m_Name: Encounter1-3-2
+  m_Name: Encounter2-10-Bomb
   m_EditorClassIdentifier: 
-  targetDifficulty: 10
+  targetDifficulty: 49
   dimensions: {x: 6, y: 6}
   numSpawnPositions: 0
-  numEnemies: 05000000
+  numEnemies: 08000000090000000a000000
   numEnemiesWeights:
   - 1
-  enemies:
-  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 4568531750757968395, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}
-  - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
-  - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
-  - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
-  baseEnemyWeights:
   - 3
   - 1
-  - 2
-  - 0.25
-  - 3
+  enemies:
+  - {fileID: 4568531750757968395, guid: b3165f0cc7f603f4a92787664e892e2f, type: 3}
+  - {fileID: 5064112337391898495, guid: b733a468635e1b9449b4b8cd148158a6, type: 3}
+  - {fileID: 3896841673119514508, guid: 689a150d0a5da804aae7a0c31e614041, type: 3}
+  baseEnemyWeights:
+  - 1
+  - 4
+  - 4
   numObstacles: 050000000600000007000000
   numObstaclesWeights:
   - 1
@@ -38,12 +36,10 @@ MonoBehaviour:
   obstacles:
   - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
   - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
-  - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
   baseObstacleWeights:
-  - 4
-  - 2
+  - 9
   - 1
-  lootFlags: 4
+  lootFlags: 6
   seed:
     name: Encounter
     units: []
