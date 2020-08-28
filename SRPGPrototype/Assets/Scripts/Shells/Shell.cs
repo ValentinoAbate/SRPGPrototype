@@ -58,11 +58,11 @@ public class Shell : MonoBehaviour, ILootable
 
     public Stats Stats { get; set; } = new Stats();
 
-    [HideInInspector] public Program[,] installMap;
+    public Program[,] InstallMap { get; private set; }
 
     private void Awake()
     {
-        installMap = new Program[CustArea.Dimensions.x, CustArea.Dimensions.y];
+        InstallMap = new Program[CustArea.Dimensions.x, CustArea.Dimensions.y];
         foreach (var iProg in preInstalledPrograms)
         {
             Install(iProg.program, iProg.location, true);
@@ -85,7 +85,7 @@ public class Shell : MonoBehaviour, ILootable
         }
         var positions = program.shape.OffsetsShifted(location, false);
         foreach (var pos in positions)
-            installMap[pos.x, pos.y] = program;
+            InstallMap[pos.x, pos.y] = program;
         Compiled = false;
     }
 
@@ -99,7 +99,7 @@ public class Shell : MonoBehaviour, ILootable
         {
             var positions = program.shape.OffsetsShifted(location, false);
             foreach (var pos in positions)
-                installMap[pos.x, pos.y] = null;
+                InstallMap[pos.x, pos.y] = null;
             if (destroy)
                 Destroy(programs[ind].program.gameObject);
             programs.RemoveAt(ind);
@@ -117,7 +117,7 @@ public class Shell : MonoBehaviour, ILootable
         {
             for(int x = 0; x < CustArea.Dimensions.x; ++x)
                 for(int y = 0; y < CustArea.Dimensions.y; ++y)
-                    newInstallMap[x, y + 1] = installMap[x, y];
+                    newInstallMap[x, y + 1] = InstallMap[x, y];
             for(int i = 0; i < programs.Count; ++i)
             {
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, 1));
@@ -128,14 +128,14 @@ public class Shell : MonoBehaviour, ILootable
         {
             for (int x = 0; x < CustArea.Dimensions.x; ++x)
                 for (int y = 0; y < CustArea.Dimensions.y; ++y)
-                    newInstallMap[x + 1, y] = installMap[x, y];
+                    newInstallMap[x + 1, y] = InstallMap[x, y];
             for (int i = 0; i < programs.Count; ++i)
             {
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(1, 0));
                 programs[i].program.Pos += new Vector2Int(1, 0);
             }
         }
-        installMap = newInstallMap;
+        InstallMap = newInstallMap;
         ++Level;
     }
 
@@ -149,7 +149,7 @@ public class Shell : MonoBehaviour, ILootable
         {
             for (int x = 0; x < CustArea.Dimensions.x - 1; ++x)
                 for (int y = 1; y < CustArea.Dimensions.y; ++y)
-                    newInstallMap[x, y - 1] = installMap[x, y];
+                    newInstallMap[x, y - 1] = InstallMap[x, y];
             for (int i = 0; i < programs.Count; ++i)
             {
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, -1));
@@ -160,14 +160,14 @@ public class Shell : MonoBehaviour, ILootable
         {
             for (int x = 1; x < CustArea.Dimensions.x; ++x)
                 for (int y = 0; y < CustArea.Dimensions.y - 1; ++y)
-                    newInstallMap[x - 1, y] = installMap[x, y];
+                    newInstallMap[x - 1, y] = InstallMap[x, y];
             for (int i = 0; i < programs.Count; ++i)
             {
                 programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(-1, 0));
                 programs[i].program.Pos += new Vector2Int(-1, 0);
             }
         }
-        installMap = newInstallMap;
+        InstallMap = newInstallMap;
         --Level;
     }
 

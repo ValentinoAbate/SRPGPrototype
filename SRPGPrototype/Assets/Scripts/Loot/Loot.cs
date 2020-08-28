@@ -45,15 +45,15 @@ public class Loot<T> where T : ILootable
     {
         var standardWeights = new WeightedSet<Rarity>
         {
-            {Rarity.Common, 77 },
-            {Rarity.Uncommon, 20 },
+            {Rarity.Common, 75 },
+            {Rarity.Uncommon, 22 },
             {Rarity.Rare, 3 },
         };
         var highWeights = new WeightedSet<Rarity>
         {
-            {Rarity.Common, 18},
+            {Rarity.Common, 15},
             {Rarity.Uncommon, 75 },
-            {Rarity.Rare, 7 },
+            {Rarity.Rare, 10 },
         };
         var maxWeights = new WeightedSet<Rarity>
         {

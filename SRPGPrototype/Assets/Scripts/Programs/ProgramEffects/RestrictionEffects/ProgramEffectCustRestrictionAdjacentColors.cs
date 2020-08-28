@@ -7,7 +7,7 @@ public class ProgramEffectCustRestrictionAdjacentColors : ProgramEffectCustRestr
     protected override bool Restriction(Shell shell, out string errorMessage)
     {
         errorMessage = noErrorMessage;
-        var map = shell.installMap;
+        var map = shell.InstallMap;
         for(int x = 0; x < map.GetLength(0); ++x)
         {
             for(int y = 0; y < map.GetLength(1); ++y)

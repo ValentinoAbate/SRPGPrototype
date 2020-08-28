@@ -18,6 +18,7 @@ public class ProgramNumber
         ShellCols,
         InstallX,
         InstallY,
+        NumberOfEmptySpaces,
     }
 
     [SerializeField]
@@ -74,6 +75,10 @@ public class ProgramNumber
         else if (type == Type.ShellRows)
         {
             number = p.Shell.CustArea.Dimensions.y;
+        }
+        else if(type == Type.NumberOfEmptySpaces)
+        {
+            number = p.Shell.CustArea.Offsets.Count((pos) => p.Shell.InstallMap[pos.x, pos.y] == null);
         }
         int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);

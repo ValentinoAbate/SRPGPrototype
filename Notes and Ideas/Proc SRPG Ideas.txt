@@ -70,9 +70,8 @@ Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always h
 + Number of [attribute] programs installed (- action type)
 - Number of [attribute] squares installed
 - Highest/lowest adjacent programs/square of [attribute]
-- Number of empty spaces left
++ Number of empty spaces left
 - Highest/lowest adjacent empty spaces
-- Target/user value of [stat]
 + Dimensions of the shell
 + Coordinate of install position
 -> Action numbers
@@ -81,6 +80,7 @@ Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always h
 + Number of Uses this turn
 + Number of Uses this battle
 + Number of Uses
++ Target/user value of [stat]
 - Slowdown
 - Slowdown rate
 
@@ -110,7 +110,7 @@ Effects: Apply to a pattern
 - Swap with target
 - Reposition / throw target (requires two-part cancellable actions)
 + Move target towards position (for charge, etc)
-- Add [x] [stat]
++ Add [x] [stat]
 - Give free move action - good
 
 Patterns:
