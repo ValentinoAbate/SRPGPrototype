@@ -53,7 +53,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: 'Action (Hybrid): Jump over a sqaure, then use a ranged attack. '
+      value: 'Action (Hybrid): Jump over a tile, then use a ranged attack for 3 damage. '
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

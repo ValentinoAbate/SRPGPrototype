@@ -66,8 +66,8 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: 'Action (Standard): Attack a unit a tile away for 1 damage * the number
-        of transient programs installed + 1. AP Cost: 2.'
+      value: 'Action (Standard): Attack an adjacent or diagonally adjacent unit for
+        1 damage * the number of transient programs installed + 1. AP Cost: 2.'
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

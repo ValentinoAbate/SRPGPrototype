@@ -476,6 +476,8 @@ Shell Concepts:
 	- Show when the effect activates on loot screen
 - Hidden potential: A [Full progression] shell that can't have capacity upgrades installed, but unlocks pre-installed capacity ugrades under certain conditions
 - Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
+- Shell with restrictions on blue programs, but installed moves don't slow down.
+- Shell with restrictions on Red programs, but installed attacks don't slow down.
 - A shell where the pre-installs have to connect a path between all preinstalls for a bonus
 - A shell with blokus rules, but is fairly open otherwise (maybe large)?
 - A shell with extra AP, but is small

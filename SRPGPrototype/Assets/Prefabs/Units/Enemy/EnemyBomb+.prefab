@@ -29,7 +29,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   action: {fileID: 5597248024022581365, guid: 4cd52a64bcf9372429854ef0859b939e, type: 3}
-  triggerOnSelfDestruct: 1
+  triggerOnSelfDestruct: 0
 --- !u!1001 &1346563792081888222
 PrefabInstance:
   m_ObjectHideFlags: 0

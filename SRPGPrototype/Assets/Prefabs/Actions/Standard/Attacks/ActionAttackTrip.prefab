@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetStat: 0
   damage:
     min: -2147483648
     max: 2147483647
     constant: 1
+    baseAmount: 0
     modifier: 0
     multiplier: 1
     unitNumber:
       min: -2147483648
       max: 2147483647
       constant: 1
+      baseAmount: 0
       modifier: 0
       multiplier: 1
       type: 3
@@ -105,7 +108,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: slowdown
+      propertyPath: description
+      value: Attack an adjacent unit for damage equal to the target's current AP.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: slowdownReset
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

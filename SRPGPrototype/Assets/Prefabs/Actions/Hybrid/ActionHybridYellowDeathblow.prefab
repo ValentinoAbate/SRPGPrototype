@@ -12,18 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76227cf6650a36a4fbd0382c3bb2a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7388528556349263688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7259150925442294505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76227cf6650a36a4fbd0382c3bb2a7a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5278302723006278059
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,17 +56,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range:
-    patternOffsets:
-    - {x: 4, y: 4}
-    - {x: 4, y: 2}
-    - {x: 4, y: 0}
-    - {x: 2, y: 4}
-    - {x: 2, y: 0}
-    - {x: 0, y: 4}
-    - {x: 0, y: 2}
-    - {x: 0, y: 0}
-    dimensions: {x: 5, y: 5}
   rangePattern:
     patternType: 6
     pattern:
@@ -123,6 +100,18 @@ MonoBehaviour:
     attributes: 0
     color: 4
     rarity: 0
+--- !u!114 &7388528556349263688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259150925442294505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76227cf6650a36a4fbd0382c3bb2a7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2904919418585103857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259,6 +248,13 @@ PrefabInstance:
         type: 3}
       propertyPath: slowdownReset
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: description
+      value: Move to an adacent tile, then move to a diagonally adjacent tile, then
+        use a ranged attack on a target you've already hit this turn for damage equal
+        to the number of yellow programs installed + 3.
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370085, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

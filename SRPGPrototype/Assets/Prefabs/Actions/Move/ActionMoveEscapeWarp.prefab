@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range:
-    patternOffsets:
-    - {x: 0, y: 0}
-    dimensions: {x: 1, y: 1}
   rangePattern:
     patternType: 0
     pattern:
@@ -119,13 +115,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
-      propertyPath: slowdown
-      value: 3
+      propertyPath: slowdownReset
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
-      propertyPath: slowdownReset
-      value: 2
+      propertyPath: description
+      value: Move to a random empty tile.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}

@@ -163,6 +163,11 @@ PrefabInstance:
       propertyPath: slowdownReset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: description
+      value: 'Jump over a tile, then use a ranged attack for 3 damage. '
+      objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370085, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: m_Name

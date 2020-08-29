@@ -53,7 +53,8 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: 'Action (Hybrid): Move horizontally, then use a diagonal ranged attack. '
+      value: 'Action (Hybrid): Move to an adjacent tile, then use a diagonal ranged
+        attack for 3 damage. '
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

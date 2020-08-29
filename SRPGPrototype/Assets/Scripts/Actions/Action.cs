@@ -60,6 +60,9 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
 
+    public string Description => description;
+    [SerializeField] [TextArea(1, 3)] private string description = string.Empty;
+
     [HideInInspector]
     public List<SubAction> subActions;
 

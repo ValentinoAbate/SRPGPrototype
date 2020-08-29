@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.data[0].y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -61,27 +61,32 @@ PrefabInstance:
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.data[1].y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: range.patternOffsets.Array.data[1].x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: range.patternOffsets.Array.data[2].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
+      propertyPath: range.patternOffsets.Array.data[1].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: range.patternOffsets.Array.data[2].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
       propertyPath: range.patternOffsets.Array.data[2].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.data[3].y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.patternType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -106,47 +111,58 @@ PrefabInstance:
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.data[0].y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: range.patternOffsets.Array.data[1].y
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: range.patternOffsets.Array.data[1].x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: range.patternOffsets.Array.data[2].y
+      propertyPath: range.patternOffsets.Array.data[1].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
+      propertyPath: range.patternOffsets.Array.data[1].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: range.patternOffsets.Array.data[2].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
       propertyPath: range.patternOffsets.Array.data[2].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.data[3].y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: targetPattern.patternType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: rangePattern.patternType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: displayName
-      value: Advance
+      value: Lance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: description
+      value: 'Move to a diagonally adjacent tile, then attack a diagonally adjacent
+        unit for 2 damage. '
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370085, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: m_Name
-      value: ActionBasicMoveAttack
+      value: ActionHybridLance
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

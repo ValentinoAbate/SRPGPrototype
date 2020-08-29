@@ -53,8 +53,8 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: 'Action (Standard): Attack a unit a tile away for 3 damage and lose
-        1 repair. AP Cost: 1.'
+      value: 'Action (Standard): Ranged attack for 3 damage, then lose 1 Repair.
+        AP Cost: 1.'
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

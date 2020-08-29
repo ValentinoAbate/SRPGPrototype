@@ -67,7 +67,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Action (Standard): Attack everything around you for 5 damage. AP Cost:
-        2'
+        1'
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

@@ -12,13 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range:
-    patternOffsets:
-    - {x: 4, y: 4}
-    - {x: 4, y: 0}
-    - {x: 0, y: 4}
-    - {x: 0, y: 0}
-    dimensions: {x: 5, y: 5}
   rangePattern:
     patternType: 5
     pattern:
@@ -113,12 +106,17 @@ PrefabInstance:
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: displayName
-      value: Pull
+      value: Pull (Diag)
       objectReference: {fileID: 0}
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: baseAp
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: description
+      value: Diagonally ranged pull a unit closer to you.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}

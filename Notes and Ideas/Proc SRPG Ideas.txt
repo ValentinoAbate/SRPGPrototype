@@ -20,6 +20,13 @@ General Ideas:
 - Compile error suppression programs that turn compile errors into compile warnings
 + Move that targets all units with HP equal to current power
 - Program whose abilities change based on the colors of the programs adjacent to it. if there is a tie, all are applied. If there are none, grant a special effect
+- Program that never reset slowdown but evolves when used for 10 or more AP (maybe a lower cost)
+- Action that takes 0 AP and doesn't slowdown quickly, but doesn't use speed and gives you -1 speed
+- Action descriptions generally of the form: Range for effects. Possibly remove range from descrption
+- Link electricity to AP damage? Have grounded ability that lessens it
+- Maybe link explosions to fire damage? Or maybe just have it be a damage element
+- Action UI should have uses power / uses speed
+- Make differentiation between standard and buff actions
 
 Color Mapping:
 - Blue (circle): Move actions

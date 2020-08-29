@@ -131,6 +131,11 @@ PrefabInstance:
       propertyPath: maxUsesPerTurn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: description
+      value: Spawn a Swarm in the tile you are in.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}
 --- !u!1 &5639408088848563140 stripped
