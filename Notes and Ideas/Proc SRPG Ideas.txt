@@ -27,6 +27,7 @@ General Ideas:
 - Maybe link explosions to fire damage? Or maybe just have it be a damage element
 - Action UI should have uses power / uses speed
 - Make differentiation between standard and buff actions
+- Boss capacity upgrade that gives +AP but start with -3 power / speed
 
 Color Mapping:
 - Blue (circle): Move actions
