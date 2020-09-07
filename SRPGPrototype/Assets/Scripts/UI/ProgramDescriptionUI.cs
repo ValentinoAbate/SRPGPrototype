@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -10,37 +9,31 @@ public class ProgramDescriptionUI : MonoBehaviour
     public TextMeshProUGUI programAttrText;
     public PatternDisplayUI patternDisplay;
     public GameObject patternIconPrefab;
+    public ActionDescriptionUI actionDisplay;
 
     public void Show(Program p)
     {
         programNameText.text = p.DisplayName;
-        programDescText.text = p.Description;
-        programAttrText.text = GetAttributesText(p);
+        programAttrText.text = p.AttributesText;
         patternDisplay.Show(p.shape, patternIconPrefab, p.ColorValue);
         gameObject.SetActive(true);
+        var actions = p.Effects.Where((e) => e is ProgramEffectAddAction).Select((e) => e as ProgramEffectAddAction).ToList();
+        if(actions.Count == 1)
+        {
+            actionDisplay.gameObject.SetActive(true);
+            actionDisplay.Show(actions[0].action);
+            programNameText.text += (" - " + p.Description);
+            programDescText.text = string.Empty;
+        }
+        else
+        {
+            actionDisplay.gameObject.SetActive(false);
+            programDescText.text = p.Description;
+        }
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
-    }
-    private string GetAttributesText(Program p)
-    {
-        var attTexts = new List<string>();
-        if (p.attributes.HasFlag(Program.Attributes.Fixed))
-        {
-            attTexts.Add("Fixed");
-        }
-        if (p.attributes.HasFlag(Program.Attributes.Transient))
-        {
-            var transientAttr = p.GetComponent<ProgramAttributeTransient>();
-            string errorText = "Error: No Attribute Component found";
-            attTexts.Add("Transient " + (transientAttr == null ? errorText : transientAttr.UsesLeft.ToString()));
-        }
-        if (attTexts.Count <= 0)
-            return string.Empty;
-        if (attTexts.Count == 1)
-            return attTexts[0];
-        return attTexts.Aggregate((s1, s2) => s1 + ", " + s2);
     }
 }

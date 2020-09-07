@@ -1,10 +1,5 @@
 // High-Priority ---------------------------------------------------------------------------------
 UI
-- Action display (display an action in the desc window, consisely)
-	- Possibly be action / subaction to account for hybrid actions?
-	- Include a field for relevant info from program origin (at least for in-battle)
-- Program display
-	- Utilize action display
 - Unit display
 	- Utilize action display
 - Shell Display

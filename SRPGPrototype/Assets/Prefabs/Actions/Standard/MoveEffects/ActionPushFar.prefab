@@ -116,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: description
-      value: Push an adjacent unit away from you.
+      value: Ranged push a unit away from you.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}

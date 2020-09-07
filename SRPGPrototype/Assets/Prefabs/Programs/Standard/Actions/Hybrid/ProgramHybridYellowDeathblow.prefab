@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 308391873856083614, guid: 6f4e1b235412c0d47936121e880aaf72, type: 3}
+  action: {fileID: 308391873856083614, guid: 90141f3f528b4fd44a7621ee8dd2e562, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,9 +53,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: 'Action (Hybrid): Move to an adacent tile, then move to a diagonally
-        adjacent tile, then use a ranged attack on a target you''ve already hit this
-        turn for damage equal to the number of yellow programs installed + 3.'
+      value: Action
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

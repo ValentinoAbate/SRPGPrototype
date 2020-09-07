@@ -16,14 +16,15 @@ public class ActionDescriptionUI : MonoBehaviour
     public Color textColor;
     public Color modifiedTextColor;
 
-    public void Show(Action action, Unit user)
+    public void Show(Action action, Unit user = null)
     {
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = action.DisplayName + " (" + action.ActionType.ToString() + ")";
-        descText.text = string.Empty; // add description later
-        attributesText.text = string.Empty; // this is also for later
-        if(user.Speed.IsZero)
+        descText.text = action.Description; // add description later
+        if(action.Program != null)
+            attributesText.text = action.Program.AttributesText; // this is also for later
+        if(user == null || user.Speed.IsZero)
         {
             apCostNumberText.text = action.APCost.ToString();
             apCostNumberText.color = textColor;

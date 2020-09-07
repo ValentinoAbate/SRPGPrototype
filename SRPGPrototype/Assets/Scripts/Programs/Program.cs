@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
 
 public class Program : GridObject, ILootable
@@ -56,6 +57,29 @@ public class Program : GridObject, ILootable
     [SerializeField] Rarity rarity = Rarity.Common;
 
     public TileUI.Type TileType => tileTypes[color];
+
+    public string AttributesText
+    {
+        get
+        {
+            var attTexts = new List<string>();
+            if (attributes.HasFlag(Attributes.Fixed))
+            {
+                attTexts.Add("Fixed");
+            }
+            if (attributes.HasFlag(Attributes.Transient))
+            {
+                var transientAttr = GetComponent<ProgramAttributeTransient>();
+                string errorText = "Error: No Attribute Component found";
+                attTexts.Add("Transient " + (transientAttr == null ? errorText : transientAttr.UsesLeft.ToString()));
+            }
+            if (attTexts.Count <= 0)
+                return string.Empty;
+            if (attTexts.Count == 1)
+                return attTexts[0];
+            return attTexts.Aggregate((s1, s2) => s1 + ", " + s2);
+        }
+    }
 
     public Program.Color color;
     public Attributes attributes;
