@@ -11,6 +11,7 @@ public class PersistantData : MonoBehaviour
     public static PersistantData main;
     public Inventory inventory;
     public MapManager mapManager;
+    public PresetManager presetManager;
 
     private void Awake()
     {

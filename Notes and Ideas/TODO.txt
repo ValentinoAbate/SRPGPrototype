@@ -8,8 +8,7 @@ UI
 Loot 
 - Extra repair loot / extra hp loot - Gives you extra healing at the end of a battle
 	- Make one for bosses that restores all shells 
-Customization
-- Save / load shell preset layouts
+Cust
 Smart targeting
 - Make certain actions on have certain valid tiles selectable
 Program Effects
@@ -20,9 +19,11 @@ Map revamp
 NPCs
 - Possibly dependent on map revamp, needs more design
 // Mid-Priority ----------------------------------------------------------------------------------
+Cust
+- Make Preset behaivior stable with capacity upgrades
+- Make adding / removing capacity upgrades stable
 UI
 - Add turn order indicators
-- Add uninstall all button
 - Add data type info to drop buttons
 Loot
 - Different shape to differentiate between shell and prog loot? (Generally better loot view)
@@ -31,6 +32,8 @@ Loot
 Balance
 - Make charge more balanced (probably make it so you can't charge into an empty square)
 - Until some sort of upgrading - make multi target attacks less rare
+UI
+- Make highlighting s program in the cust UI Outline all program squares
 Bugs
 - Disable end battle button during unit placement
 - Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)

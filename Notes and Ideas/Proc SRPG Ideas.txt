@@ -14,7 +14,7 @@ General Ideas:
 - Add enemy-only programs as a specific rarity?
 - Have a program that evolves if you finish an encounter in one turn
 - Allow the player to run, but only if there are other encounters they could go to, and add penalties. They can't return to the same encounter.
-- Add uninstall all option
++ Add uninstall all option
 - Use free move action as a stat like speed?
 - Have basic attack and basic move be pre-installs in the starting shell?
 - Compile error suppression programs that turn compile errors into compile warnings

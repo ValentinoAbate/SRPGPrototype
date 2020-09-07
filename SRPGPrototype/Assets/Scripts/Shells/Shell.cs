@@ -110,6 +110,19 @@ public class Shell : MonoBehaviour, ILootable
         }
     }
 
+    public void SetLevel(int targetLevel)
+    {
+        if (targetLevel < 0 || targetLevel > MaxLevel)
+            return;
+        while (Level != targetLevel)
+        {
+            if (Level > targetLevel)
+                LevelDown();
+            else
+                LevelUp();
+        }
+    }
+
     public void LevelUp()
     {
         if (Level >= MaxLevel)
@@ -296,4 +309,11 @@ public class Shell : MonoBehaviour, ILootable
         }
     }
 
+    public class Preset
+    {
+        public const string defaultName = "Empty";
+        public string DisplayName { get; set; } = defaultName;
+        public List<InstalledProgram> Programs { get; set; } = new List<InstalledProgram>(); 
+        public int Level { get; set; }
+    }
 }
