@@ -11,7 +11,7 @@ UI
 	- Show Shell HP, capcacity thresholds
 	- Show Shell description and pattern
 Loot 
-- Extra repair loot / extra hp loot - Gives you extra healing at the end of a batter
+- Extra repair loot / extra hp loot - Gives you extra healing at the end of a battle
 	- Make one for bosses that restores all shells 
 Customization
 - Save / load shell preset layouts

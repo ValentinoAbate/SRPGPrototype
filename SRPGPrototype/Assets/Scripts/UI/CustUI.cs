@@ -27,6 +27,10 @@ public class CustUI : MonoBehaviour
     public GameObject shellButtonPrefab;
     public GameObject shellButtonContainer;
     public Button exitToBattleButton;
+    public TextMeshProUGUI shellHpNumberText;
+    public TextMeshProUGUI shellLvNumberText;
+    public TextMeshProUGUI shellCapNumberText;
+    public TextMeshProUGUI shellNextNumberText;
 
     [Header("Cust UI")]
     public CustGrid grid;
@@ -111,6 +115,16 @@ public class CustUI : MonoBehaviour
         compileButton.image.color = grid.Shell.Compiled ? Color.green : Color.red;
     }
 
+    public void UpdateShellPropertyUI()
+    {
+        var shell = grid.Shell;
+        int level = shell.Level;
+        shellHpNumberText.text = shell.Stats.HP.ToString() + "/" + shell.Stats.MaxHP;
+        shellLvNumberText.text = level.ToString();
+        shellCapNumberText.text = shell.Capacity.ToString();
+        shellNextNumberText.text = level == shell.MaxLevel ? "N/A" : shell.CapacityThresholds[level + 1].ToString();
+    }
+
     public void EnterCust(Shell s)
     {
         grid.Shell = s;
@@ -124,6 +138,8 @@ public class CustUI : MonoBehaviour
         }
         shellMenuUI.SetActive(false);
         custUI.SetActive(true);
+        // Set shell property display values
+        UpdateShellPropertyUI();
         // Set cursor properties
         cursor.NullAllActions();
         cursor.OnHighlight = (pos) => HighlightProgram(pos);
@@ -229,6 +245,7 @@ public class CustUI : MonoBehaviour
             grid.ResetShell();
         }
         UpdateCompileButtonColor();
+        UpdateShellPropertyUI();
     }
 
     #endregion

@@ -60,6 +60,8 @@ public class Shell : MonoBehaviour, ILootable
 
     public Program[,] InstallMap { get; private set; }
 
+    private bool firstCompile = true;
+
     private void Awake()
     {
         InstallMap = new Program[CustArea.Dimensions.x, CustArea.Dimensions.y];
@@ -237,6 +239,12 @@ public class Shell : MonoBehaviour, ILootable
         AbilityOnDeath = compileData.abilityOnDeath;
         // Apply compile changes to actions and stats
         Stats.SetShellValues(compileData.stats);
+        // Restore all HP if first compile
+        if(firstCompile)
+        {
+            Stats.RestoreHpToMax();
+            firstCompile = false;
+        }
         // Copy Temporary values of already instantiated actions to their newly generated copies
         foreach(var action in actions)
         {
