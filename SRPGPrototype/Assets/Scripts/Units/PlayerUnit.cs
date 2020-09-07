@@ -7,23 +7,23 @@ public class PlayerUnit : Unit
 {
     public override Team UnitTeam => Team.Player;
 
+    #region Stats
+
     public override int MaxHP { get => Stats.MaxHP; set => Stats.MaxHP = value; }
-
     public override int HP { get => Stats.HP; protected set { Stats.HP = value; unitUI.Hp = value; } }
-
     public override int MaxAP { get => Stats.MaxAP; set => Stats.MaxAP = value; }
-
     public override int AP { get => ap; set { ap = value; unitUI.AP = value; } }
     private int ap = 0;
-
     public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
-
     public override CenterStat Power => Stats.Power;
     public override CenterStat Speed => Stats.Speed;
     public override CenterStat Defense => Stats.Defense;
 
+    #endregion
+
     public override OnAfterSubAction OnAfterSubActionFn => Shell.AbilityOnAfterSubAction;
     public override OnDeath OnDeathFn => Shell.AbilityOnDeath;
+    public override OnBattleStartDel OnBattleStartFn => Shell.AbilityOnBattleStart;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

@@ -86,6 +86,8 @@ public class EncounterManager : MonoBehaviour
         // Destroy the spawn position objects
         spawnPositionObjects.ForEach((obj) => Destroy(obj));
         spawnPositionObjects.Clear();
+        // Apply the units' on start abilities
+        units.ForEach((u) => StartCoroutine(u.OnBattleStart(this)));
         // Start the active encounter
         StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }

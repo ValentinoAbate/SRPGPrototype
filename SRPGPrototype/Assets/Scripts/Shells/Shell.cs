@@ -55,6 +55,7 @@ public class Shell : MonoBehaviour, ILootable
 
     public Unit.OnAfterSubAction AbilityOnAfterSubAction { get; private set; }
     public Unit.OnDeath AbilityOnDeath { get; private set; }
+    public Unit.OnBattleStartDel AbilityOnBattleStart { get; private set; }
 
     public Stats Stats { get; set; } = new Stats();
 
@@ -237,6 +238,7 @@ public class Shell : MonoBehaviour, ILootable
         // Apply abilities
         AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
         AbilityOnDeath = compileData.abilityOnDeath;
+        AbilityOnBattleStart = compileData.abilityOnBattleStart;
         // Apply compile changes to actions and stats
         Stats.SetShellValues(compileData.stats);
         // Restore all HP if first compile
@@ -259,13 +261,14 @@ public class Shell : MonoBehaviour, ILootable
         return true;
     }
 
-    public struct CompileData
+    public ref struct CompileData
     {
         public Stats stats;
         public List<Action> actions;
         public List<Restriction> restrictions;
         public Unit.OnAfterSubAction abilityOnAfterSubAction;
         public Unit.OnDeath abilityOnDeath;
+        public Unit.OnBattleStartDel abilityOnBattleStart;
         public int capacity;
         public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
         {
@@ -274,6 +277,7 @@ public class Shell : MonoBehaviour, ILootable
             this.restrictions = restrictions;
             abilityOnAfterSubAction = null;
             abilityOnDeath = null;
+            abilityOnBattleStart = null;
             capacity = 0;
         }
     }

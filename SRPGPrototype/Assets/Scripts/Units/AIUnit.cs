@@ -24,6 +24,7 @@ public abstract class AIUnit : Unit
     public override OnAfterSubAction OnAfterSubActionFn { get; }
     public override OnDeath OnDeathFn { get => onDeathFn; }
     private OnDeath onDeathFn = null;
+    public override OnBattleStartDel OnBattleStartFn { get; }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

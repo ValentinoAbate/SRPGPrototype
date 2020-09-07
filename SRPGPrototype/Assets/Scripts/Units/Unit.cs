@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public abstract class Unit : GridObject
 {
-    public delegate void AbilityOnBattleStart(BattleGrid grid, Unit unit);
+    public delegate void OnBattleStartDel(BattleGrid grid, Unit unit);
 
     public delegate void OnAfterSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
 
@@ -31,6 +31,7 @@ public abstract class Unit : GridObject
     public abstract CenterStat Defense { get; }
     public abstract OnAfterSubAction OnAfterSubActionFn { get; }
     public abstract OnDeath OnDeathFn { get; }
+    public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract string DisplayName { get; }
 
     public abstract Shell Shell { get; }
@@ -158,6 +159,12 @@ public abstract class Unit : GridObject
     public virtual IEnumerator OnPhaseEnd()
     {
         AP = MaxAP;
+        yield break;
+    }
+
+    public virtual IEnumerator OnBattleStart(EncounterManager manager)
+    {
+        OnBattleStartFn?.Invoke(manager.grid, this);
         yield break;
     }
 

@@ -17,12 +17,14 @@ MonoBehaviour:
     min: 0
     max: 2147483647
     constant: 1
+    baseAmount: 0
     modifier: -1
     multiplier: 1
     unitNumber:
       min: -2147483648
       max: 2147483647
       constant: 1
+      baseAmount: 0
       modifier: 0
       multiplier: 1
       type: 0
@@ -97,7 +99,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: WidePower
+      value: Wide Power
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
