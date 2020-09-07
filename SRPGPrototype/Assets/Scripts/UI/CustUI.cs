@@ -248,5 +248,24 @@ public class CustUI : MonoBehaviour
         UpdateShellPropertyUI();
     }
 
+    public void UninstallAll()
+    {
+        var installs = new List<Shell.InstalledProgram>(grid.Shell.Programs);
+        foreach(var install in installs)
+        {
+            var prog = install.program;
+            if(!prog.attributes.HasFlag(Program.Attributes.Fixed))
+            {
+                var button = Instantiate(programButtonPrefab, programButtonContainer.transform);
+                var progButtonComponent = button.GetComponent<ProgramButton>();
+                progButtonComponent.Initialize(prog, this);
+                grid.Shell.Uninstall(prog, prog.Pos);
+                grid.Remove(prog);
+                inventory.AddProgram(prog);
+            }
+        }
+        UpdateCompileButtonColor();
+    }
+
     #endregion
 }
