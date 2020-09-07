@@ -1,8 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using System;
 
 namespace RandomUtils
 {
@@ -10,14 +8,14 @@ namespace RandomUtils
     public class RandomU
     {
         public static RandomU instance = new RandomU();
-        private System.Random rand;
+        private readonly Random rand;
         public RandomU()
         {
-            rand = new System.Random();
+            rand = new Random();
         }
         public RandomU(string seed)
         {
-            rand = new System.Random(seed.GetHashCode());
+            rand = new Random(seed.GetHashCode());
         }
 
         #region General Random Functions
