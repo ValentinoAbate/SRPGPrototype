@@ -155,6 +155,36 @@ public class Shell : MonoBehaviour, ILootable
         ++Level;
     }
 
+    public bool CanLevelDown()
+    {
+        if (Level <= 0)
+            return false;
+        // Level is odd, check bottom row and right column
+        if (Level % 2 == 1)
+        {
+            // Bottom Row
+            for (int x = 0; x < CustArea.Dimensions.x; ++x)
+                if (InstallMap[x, 0] != null)
+                    return false;
+            // Left Column
+            for (int y = 0; y < CustArea.Dimensions.y; ++y)
+                    if (InstallMap[CustArea.Dimensions.x - 1, y] != null)
+                        return false;
+        }
+        else // Level is even, check top row and left column
+        {
+            // Top Row
+            for (int x = 0; x < CustArea.Dimensions.x; ++x)
+                if (InstallMap[x, CustArea.Dimensions.y - 1] != null)
+                    return false;
+            // Left Column
+            for (int y = 0; y < CustArea.Dimensions.y; ++y)
+                if (InstallMap[0, y] != null)
+                    return false;
+        }
+        return true;
+    }
+
     public void LevelDown()
     {
         if (Level <= 0)

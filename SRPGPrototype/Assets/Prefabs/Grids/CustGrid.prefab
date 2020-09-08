@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d64181b81963b4fbce08793764e6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellSize: {x: 1, y: 1}
+  cellSize: {x: 0.9, y: 0.9}
   skewAngle: 0
   gridLinePrefab: {fileID: 7115104980351253505, guid: e159eea8336ea71448acca5c0e24e0ac,
     type: 3}

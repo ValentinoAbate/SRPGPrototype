@@ -155,9 +155,16 @@ public class CustUI : MonoBehaviour
     {
         if (Shell.Level > 0)
         {
-            Shell.LevelDown();
-            grid.ResetShell();
-            UpdateShellPropertyUI();
+            if(Shell.CanLevelDown())
+            {
+                Shell.LevelDown();
+                grid.ResetShell();
+                UpdateShellPropertyUI();
+            }
+            else
+            {
+                Debug.LogWarning("Can't Level Down: Programs in level-down area");
+            }
         }
     }
 

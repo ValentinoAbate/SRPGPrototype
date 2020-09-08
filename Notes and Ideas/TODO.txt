@@ -20,12 +20,10 @@ NPCs
 - Possibly dependent on map revamp, needs more design
 // Mid-Priority ----------------------------------------------------------------------------------
 Cust
-- Make Preset behaivior stable with capacity upgrades
-	- Possibly do by making not enough capacity a compile error and allowing the user to switch levels with a button
-- Make adding / removing capacity upgrades stable
 UI
 - Add turn order indicators
 - Add data type info to drop buttons
+- Add compile errors and level-down errors as actual UI
 Loot
 - Different shape to differentiate between shell and prog loot? (Generally better loot view)
 - Rebalance color mystery data or add rare versions
