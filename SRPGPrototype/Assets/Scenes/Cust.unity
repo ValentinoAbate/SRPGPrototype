@@ -722,6 +722,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4718290618856326702, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718290618856326702, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718290618856326702, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4802009735852244963, guid: a6204c6feb1719c4390bb600dda5ae9a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -817,6 +832,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4814861587031687837, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5488126213053499627, guid: a6204c6feb1719c4390bb600dda5ae9a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -872,6 +892,21 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5816389390934913888, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816389390934913888, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816389390934913888, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6179858129366588048, guid: a6204c6feb1719c4390bb600dda5ae9a,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -921,6 +956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901610834499099124, guid: a6204c6feb1719c4390bb600dda5ae9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8994041709226633091, guid: a6204c6feb1719c4390bb600dda5ae9a,
         type: 3}

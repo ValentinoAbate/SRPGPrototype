@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class CustUI : MonoBehaviour
 {
+    private const float buttonContentSize = 70;
     public bool EquippedShellCompiled
     {
         get => exitToBattleButton.interactable;
@@ -40,7 +41,8 @@ public class CustUI : MonoBehaviour
 
     [Header("Program Button UI")]
     public GameObject programButtonPrefab;
-    public GameObject programButtonContainer;
+    public Transform programButtonContainer;
+    public RectTransform programButtonRect;
 
 
     [Header("Program Description UI")]
@@ -155,13 +157,20 @@ public class CustUI : MonoBehaviour
 
     private void InitializeProgramButtons()
     {
-        programButtonContainer.transform.DestroyAllChildren();
+        programButtonContainer.DestroyAllChildren();
         foreach (var program in inventory.Programs)
         {
-            var pButton = Instantiate(programButtonPrefab, programButtonContainer.transform);
-            var progButtonComponent = pButton.GetComponent<ProgramButton>();
-            progButtonComponent.Initialize(program, this);
+            AddProgramButton(program);
         }
+    }
+
+    private ProgramButton AddProgramButton(Program p)
+    {
+        var pButton = Instantiate(programButtonPrefab, programButtonContainer);
+        var progButtonComponent = pButton.GetComponent<ProgramButton>();
+        progButtonComponent.Initialize(p, this);
+        programButtonRect.sizeDelta = new Vector2(programButtonRect.sizeDelta.x, programButtonContainer.childCount * buttonContentSize);
+        return progButtonComponent;
     }
 
     public void HighlightProgram(Vector2Int pos)
@@ -206,13 +215,11 @@ public class CustUI : MonoBehaviour
             var prog = grid.Get(pos);
             if (prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
             {
-                var button = Instantiate(programButtonPrefab, programButtonContainer.transform);
-                var progButtonComponent = button.GetComponent<ProgramButton>();
-                progButtonComponent.Initialize(prog, this);
                 Shell.Uninstall(prog, prog.Pos);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
                 UpdateCompileButtonColor();
+                var progButtonComponent = AddProgramButton(prog);
                 progButtonComponent.button.onClick.Invoke();
             }
         }
@@ -226,6 +233,7 @@ public class CustUI : MonoBehaviour
             Shell.Install(selectedProgram, pos);
             selectedProgram = null;
             Destroy(pButton.gameObject);
+            programButtonRect.sizeDelta = new Vector2(programButtonRect.sizeDelta.x, programButtonContainer.childCount * buttonContentSize);
             cursor.OnClick = null;
             cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
             heldProgramUI.Hide();
@@ -274,9 +282,7 @@ public class CustUI : MonoBehaviour
             var prog = install.program;
             if(!prog.attributes.HasFlag(Program.Attributes.Fixed))
             {
-                var button = Instantiate(programButtonPrefab, programButtonContainer.transform);
-                var progButtonComponent = button.GetComponent<ProgramButton>();
-                progButtonComponent.Initialize(prog, this);
+                AddProgramButton(prog);
                 Shell.Uninstall(prog, prog.Pos);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
