@@ -28,6 +28,30 @@ General Ideas:
 - Action UI should have uses power / uses speed
 - Make differentiation between standard and buff actions
 - Boss capacity upgrade that gives +AP but start with -3 power / speed
+- Unique programs: Eggs / seeds (unique programs with mysterious upgrade conditions)
+	- When eggs hatch, they give a shell too? (Egg shell)
+	- Egg (white) Could hatch into many things -> Egg Shell
+	- Golden Egg (Yellow) Sells for a lot, hatches when you have loooots of money -> Golden Shell
+	- Silk Egg (Spider egg) -> Silk Shell
+	- Flame Egg (Dragon egg) -> Flame Shell
+	- Stone Egg (Golem Egg) -> Stone Shell
+	- Tortoise Egg (Tortoise Egg) -> Tortoise Shell
+	- Sea Egg (Flying Fish Egg) -> Sea Shell
+- Roots (Like deities or something)
+	- Spider (white) Hidden deity
+	- Dragon (red) (related to bombs, fuses)
+	- Stone Golem (Blue) (related to stone knights, bishops, etc)
+	- Tortoise (Green) (related to to buff / tank enemies)
+	- Flying Fish (yellow) (Related to fast enemies)
+- Run bosses are the champions of the roots
+	- Spider doesn't have a champion
+	- Dragon: Rider
+	- Golem: King and Queen
+	- Tortoise: Bulwark?
+	- Flying Fish: Swift Birdman Joe?
+- Special boss / miniboss:
+	- Egg Keeper
+	- Snake (Egg thief) Steals and eats eggs. Comes after you if you have an egg
 
 Color Mapping:
 - Blue (circle): Move actions
