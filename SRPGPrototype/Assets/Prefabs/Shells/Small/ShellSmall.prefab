@@ -772,5 +772,10 @@ PrefabInstance:
       propertyPath: patterns.Array.data[2].center.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8851555753812936844, guid: 544e2912c79cd85468e40cd50074932f,
+        type: 3}
+      propertyPath: rarity
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544e2912c79cd85468e40cd50074932f, type: 3}

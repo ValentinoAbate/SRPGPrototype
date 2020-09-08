@@ -20,6 +20,7 @@ NPCs
 - Possibly dependent on map revamp, needs more design
 // Mid-Priority ----------------------------------------------------------------------------------
 Cust
+- Possibly: Make level-down auto-remove blocking programs
 UI
 - Add turn order indicators
 - Add data type info to drop buttons
