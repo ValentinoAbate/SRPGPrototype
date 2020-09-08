@@ -227,8 +227,15 @@ public class Shell : MonoBehaviour, ILootable
             Compiled = false;
             return false;
         }
+        // Check capacity
+        if (compileData.capacity < CapacityThresholds[Level])
+        {
+            Debug.LogWarning("Compile Error: Not enough capacity");
+            Compiled = false;
+            return false;
+        }
         // Check restirctions
-        foreach(var restriction in compileData.restrictions)
+        foreach (var restriction in compileData.restrictions)
         {
             if(restriction(this, out string errorMessage))
             {
@@ -237,16 +244,6 @@ public class Shell : MonoBehaviour, ILootable
                 Compiled = false;
                 return false;
             }
-        }
-        Capacity = compileData.capacity;
-        // Level up or down if necessary
-        while(Level < MaxLevel && Capacity >= CapacityThresholds[Level + 1])
-        {
-            LevelUp();
-        }
-        while(Level > 0 && Capacity < CapacityThresholds[Level])
-        {
-            LevelDown();
         }
         // Apply abilities
         AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;

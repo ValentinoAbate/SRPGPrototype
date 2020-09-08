@@ -29,15 +29,18 @@ public class CustUI : MonoBehaviour
     public GameObject shellButtonPrefab;
     public GameObject shellButtonContainer;
     public Button exitToBattleButton;
-    public TextMeshProUGUI shellHpNumberText;
-    public TextMeshProUGUI shellLvNumberText;
-    public TextMeshProUGUI shellCapNumberText;
-    public TextMeshProUGUI shellNextNumberText;
 
     [Header("Cust UI")]
     public CustGrid grid;
     public PatternDisplayUI heldProgramUI;
     public GameObject programPatternIconPrefab;
+
+    [Header("Shell Level Info Panel")]
+    public TextMeshProUGUI shellHpNumberText;
+    public TextMeshProUGUI shellLvNumberText;
+    public TextMeshProUGUI shellCapNumberText;
+    public Button levelUpButton;
+    public Button levelDownButton;
 
     [Header("Program Button UI")]
     public GameObject programButtonPrefab;
@@ -132,9 +135,30 @@ public class CustUI : MonoBehaviour
     {
         int level = Shell.Level;
         shellHpNumberText.text = Shell.Stats.HP.ToString() + "/" + Shell.Stats.MaxHP;
-        shellLvNumberText.text = level.ToString();
-        shellCapNumberText.text = Shell.Capacity.ToString();
-        shellNextNumberText.text = level == Shell.MaxLevel ? "N/A" : Shell.CapacityThresholds[level + 1].ToString();
+        shellLvNumberText.text = level == Shell.MaxLevel ? "Max" : level.ToString();
+        shellCapNumberText.text = Shell.Capacity.ToString() + "/" + Shell.CapacityThresholds[level].ToString();
+        levelDownButton.interactable = level > 0;
+        levelUpButton.interactable = level < Shell.MaxLevel;
+    }
+
+    public void LevelUp()
+    {
+        if(Shell.Level < Shell.MaxLevel)
+        {
+            Shell.LevelUp();
+            grid.ResetShell();
+            UpdateShellPropertyUI();
+        }
+    }
+
+    public void LevelDown()
+    {
+        if (Shell.Level > 0)
+        {
+            Shell.LevelDown();
+            grid.ResetShell();
+            UpdateShellPropertyUI();
+        }
     }
 
     public void EnterCust(Shell s)
@@ -264,12 +288,7 @@ public class CustUI : MonoBehaviour
 
     public void Compile()
     {
-        int level = Shell.Level;
         Shell.Compile();
-        if(Shell.Level != level)
-        {
-            grid.ResetShell();
-        }
         UpdateCompileButtonColor();
         UpdateShellPropertyUI();
     }

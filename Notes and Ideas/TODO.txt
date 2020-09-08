@@ -21,6 +21,7 @@ NPCs
 // Mid-Priority ----------------------------------------------------------------------------------
 Cust
 - Make Preset behaivior stable with capacity upgrades
+	- Possibly do by making not enough capacity a compile error and allowing the user to switch levels with a button
 - Make adding / removing capacity upgrades stable
 UI
 - Add turn order indicators
