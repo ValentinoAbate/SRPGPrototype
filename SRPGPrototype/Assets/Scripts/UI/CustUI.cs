@@ -92,7 +92,18 @@ public class CustUI : MonoBehaviour
 
     public void EnterShellMenu()
     {
-        EquippedShellCompiled = inventory.EquippedShell.Compiled;
+        if(inventory.EquippedShell == null)
+        {
+            EquippedShellCompiled = false;
+        }
+        else if (inventory.EquippedShell.HasSoulCore)
+        {
+            inventory.EquippedShell = null;
+        }
+        else
+        {
+            EquippedShellCompiled = inventory.EquippedShell.Compiled;
+        }
         cursor.NullAllActions();
         GenerateShellButtons();
         shellMenuUI.SetActive(true);
@@ -111,7 +122,7 @@ public class CustUI : MonoBehaviour
         shellButtonContainer.transform.DestroyAllChildren();
         foreach (var shell in inventory.Shells)
         {
-            if (shell == inventory.EquippedShell)
+            if (shell == inventory.EquippedShell && shell != null)
             {
                 equippedShellButton.Initialize(shell, this, true);
                 continue;
@@ -120,6 +131,7 @@ public class CustUI : MonoBehaviour
             var progButtonComponent = sButton.GetComponent<ShellButton>();
             progButtonComponent.Initialize(shell, this);
         }
+        equippedShellButton.gameObject.SetActive(inventory.EquippedShell != null);
     }
 
     #endregion
@@ -148,6 +160,7 @@ public class CustUI : MonoBehaviour
             Shell.LevelUp();
             grid.ResetShell();
             UpdateShellPropertyUI();
+            UpdateCompileButtonColor();
         }
     }
 
@@ -160,6 +173,7 @@ public class CustUI : MonoBehaviour
                 Shell.LevelDown();
                 grid.ResetShell();
                 UpdateShellPropertyUI();
+                UpdateCompileButtonColor();
             }
             else
             {

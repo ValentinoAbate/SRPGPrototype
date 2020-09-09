@@ -57,18 +57,19 @@ public class CustGrid : Grid<Program>
     {
         if (PersistantData.main == null)
             return;
-        shell = PersistantData.main.inventory.EquippedShell;
+
         base.OnDrawGizmos();
-        var offsetsSet = shell.CustArea.OffsetsSet;
-        for (int x = 0; x < Dimensions.x; ++x)
-        {
-            for (int y = 0; y < Dimensions.y; ++y)
-            {
-                var pos = new Vector2Int(x, y);
-                if (!offsetsSet.Contains(pos))
-                    Gizmos.DrawIcon(GetSpace(pos),"CollabError", true);
-            }
-        }
+        //shell = PersistantData.main.inventory.EquippedShell;
+        //var offsetsSet = shell.CustArea.OffsetsSet;
+        //for (int x = 0; x < Dimensions.x; ++x)
+        //{
+        //    for (int y = 0; y < Dimensions.y; ++y)
+        //    {
+        //        var pos = new Vector2Int(x, y);
+        //        if (!offsetsSet.Contains(pos))
+        //            Gizmos.DrawIcon(GetSpace(pos), "CollabError", true);
+        //    }
+        //}
     }
 
     private void Start()

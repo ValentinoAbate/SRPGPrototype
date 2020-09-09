@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,11 +14,13 @@ public class EncounterManager : MonoBehaviour
     public GameObject unitPlacementUI;
     public Button confirmPlayerPlacementButton;
     public GameObject spawnPositionPrefab;
+    public Transform outOfBoundsPos;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
-    private PlayerUnit player;
     private readonly List<GameObject> spawnPositionObjects = new List<GameObject>();
+    private readonly Stack<PlayerUnit> spawnedUnits = new Stack<PlayerUnit>();
+    private readonly Stack<PlayerUnit> unitsToSpawn = new Stack<PlayerUnit>();
 
     private void Start()
     {
@@ -37,46 +40,66 @@ public class EncounterManager : MonoBehaviour
             spawnPosObj.transform.position = grid.GetSpace(pos);
             spawnPositionObjects.Add(spawnPosObj);
         }
+
+        // Add player units to spawn stack
+        unitsToSpawn.Clear();
+        spawnedUnits.Clear();
+        // Add drones (if applicable) to the spawn stack
+        foreach (var droneShell in PersistantData.main.inventory.DroneShells)
+        {
+            var droneUnit = Instantiate(droneShell.SoulCoreUnitPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerDroneUnit>();
+            droneUnit.SetShell(droneShell);
+            unitsToSpawn.Push(droneUnit);
+        }
+        // Add the player to the spawn stack
+        unitsToSpawn.Push(Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>());
+
         // Don't allow the encounter to start until the player has been placed
         confirmPlayerPlacementButton.interactable = false;
         confirmPlayerPlacementButton.onClick.AddListener(() => StartEncounter(units));
         // Setup cursor for unit placement
-        cursor.OnClick += (pos) => SetPlayerPosition(pos, encounter.spawnPositions);
-        cursor.OnCancel += CancelPlayerPlacement;
+        cursor.OnClick += (pos) => PlaceUnit(pos, encounter.spawnPositions);
+        cursor.OnCancel += CancelUnitPlacement;
     }
 
-    private void SetPlayerPosition(Vector2Int pos, List<Vector2Int> spawnPositions)
+    private void PlaceUnit(Vector2Int pos, List<Vector2Int> spawnPositions)
     {
-        if(grid.IsLegalAndEmpty(pos) && (spawnPositions.Count <= 0 || spawnPositions.Contains(pos)))
+        if (grid.IsLegalAndEmpty(pos) && (spawnPositions.Count <= 0 || spawnPositions.Contains(pos)))
         {
-            if(player == null)
+            if(unitsToSpawn.Count >= 1)
             {
-                player = Instantiate(playerPrefab, grid.GetSpace(pos), Quaternion.identity).GetComponent<PlayerUnit>();
-                confirmPlayerPlacementButton.interactable = true;
-                grid.Add(pos, player);
+                var unit = unitsToSpawn.Pop();
+                grid.Add(pos, unit);
+                unit.transform.position = grid.GetSpace(pos);
+                spawnedUnits.Push(unit);
+                if (unitsToSpawn.Count <= 0)
+                {
+                    confirmPlayerPlacementButton.interactable = true;
+                }
             }
             else
             {
-                grid.MoveAndSetWorldPos(player, pos);
+                grid.MoveAndSetWorldPos(spawnedUnits.Peek(), pos);
             }
         }
     }
 
-    private void CancelPlayerPlacement()
+    private void CancelUnitPlacement()
     {
-        if(player != null)
+        if(spawnedUnits.Count >= 1)
         {
-            grid.Remove(player);
-            Destroy(player.gameObject);
-            player = null;
+            var unit = spawnedUnits.Pop();
+            unit.transform.position = outOfBoundsPos.position;
+            grid.Remove(unit);
+            unitsToSpawn.Push(unit);
             confirmPlayerPlacementButton.interactable = false;
         }
     }
 
     public void StartEncounter(List<Unit> units)
     {
-        // Add the player to the list of units
-        units.Add(player);
+        // Add the player units to the list of units
+        units.AddRange(spawnedUnits);
         // Disable the placement UI
         unitPlacementUI.SetActive(false);
         // Clear the cursor's events

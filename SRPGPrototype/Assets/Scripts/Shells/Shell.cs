@@ -61,6 +61,9 @@ public class Shell : MonoBehaviour, ILootable
 
     public Program[,] InstallMap { get; private set; }
 
+    public bool HasSoulCore => SoulCoreUnitPrefab != null;
+    public GameObject SoulCoreUnitPrefab { get; private set; }
+
     private bool firstCompile = true;
 
     private void Awake()
@@ -110,6 +113,8 @@ public class Shell : MonoBehaviour, ILootable
         }
     }
 
+    #region Leveling Code
+
     public void SetLevel(int targetLevel)
     {
         if (targetLevel < 0 || targetLevel > MaxLevel)
@@ -153,6 +158,7 @@ public class Shell : MonoBehaviour, ILootable
         }
         InstallMap = newInstallMap;
         ++Level;
+        Compiled = false;
     }
 
     public bool CanLevelDown()
@@ -215,7 +221,10 @@ public class Shell : MonoBehaviour, ILootable
         }
         InstallMap = newInstallMap;
         --Level;
+        Compiled = false;
     }
+
+    #endregion
 
     /// <summary>
     /// Compiles the stats and abilities from the programs in the shell, and outputs them.
@@ -275,6 +284,15 @@ public class Shell : MonoBehaviour, ILootable
                 return false;
             }
         }
+        // Check num soul cores
+        if(programs.Count((p) => p.program.attributes.HasFlag(Program.Attributes.SoulCore)) > 1)
+        {
+            Debug.LogWarning("Compile Error: More than one soul core installed");
+            Compiled = false;
+            return false;
+        }
+        // Apply Soul Cores
+        SoulCoreUnitPrefab = compileData.soulCoreUnitPrefab;
         // Apply abilities
         AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
         AbilityOnDeath = compileData.abilityOnDeath;
@@ -309,6 +327,7 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnAfterSubAction abilityOnAfterSubAction;
         public Unit.OnDeath abilityOnDeath;
         public Unit.OnBattleStartDel abilityOnBattleStart;
+        public GameObject soulCoreUnitPrefab;
         public int capacity;
         public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
         {
@@ -318,6 +337,7 @@ public class Shell : MonoBehaviour, ILootable
             abilityOnAfterSubAction = null;
             abilityOnDeath = null;
             abilityOnBattleStart = null;
+            soulCoreUnitPrefab = null;
             capacity = 0;
         }
     }

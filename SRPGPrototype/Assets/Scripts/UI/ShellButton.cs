@@ -21,6 +21,6 @@ public class ShellButton : MonoBehaviour
         equipButton.onClick.AddListener(() => uiManager.EquipShell(s));
         custButton.onClick.AddListener(() => uiManager.EnterCust(s));
         shellImage.color = s.Compiled ? compiledColor : unCompiledColor;
-        equipButton.gameObject.SetActive(!equippedShell && s.Compiled);
+        equipButton.interactable = !equippedShell && s.Compiled && !s.HasSoulCore;
     }
 }

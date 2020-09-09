@@ -20,6 +20,7 @@ public class Program : GridObject, ILootable
         None = 0,
         Fixed = 1,
         Transient = 2,
+        SoulCore = 4,
     }
 
     private static readonly Dictionary<Color, TileUI.Type> tileTypes = new Dictionary<Color, TileUI.Type>()
@@ -66,6 +67,10 @@ public class Program : GridObject, ILootable
             if (attributes.HasFlag(Attributes.Fixed))
             {
                 attTexts.Add("Fixed");
+            }
+            if (attributes.HasFlag(Attributes.SoulCore))
+            {
+                attTexts.Add("Soul Core");
             }
             if (attributes.HasFlag(Attributes.Transient))
             {
