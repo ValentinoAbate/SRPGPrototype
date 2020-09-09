@@ -15,7 +15,7 @@ MonoBehaviour:
   targetDifficulty: 22
   dimensions: {x: 6, y: 6}
   numSpawnPositions: 5
-  numEnemies: 0d000000
+  numEnemies: 0c000000
   numEnemiesWeights:
   - 1
   enemies:

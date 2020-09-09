@@ -58,7 +58,7 @@ public class CustGrid : Grid<Program>
         if (PersistantData.main == null)
             return;
 
-        base.OnDrawGizmos();
+        //base.OnDrawGizmos();
         //shell = PersistantData.main.inventory.EquippedShell;
         //var offsetsSet = shell.CustArea.OffsetsSet;
         //for (int x = 0; x < Dimensions.x; ++x)

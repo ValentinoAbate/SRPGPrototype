@@ -37,5 +37,8 @@ MonoBehaviour:
     units:
     - unit: {fileID: 1278278986212401478, guid: 999e48b4f705e2f49a342d02444fd7a4,
         type: 3}
+    - unit: {fileID: 6344873143029282054, guid: f8e1c054325b82b439cf4096d8dc2ce7,
+        type: 3}
     spawnPositions:
+    - {x: -1, y: -1}
     - {x: -1, y: -1}

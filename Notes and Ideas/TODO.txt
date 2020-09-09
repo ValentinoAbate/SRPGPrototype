@@ -13,6 +13,8 @@ Smart targeting
 - Make certain actions on have certain valid tiles selectable
 Program Effects
 - Add adjacency / modifier effects
+- UPGRADES / Promotions
+	- Triggers, and effect switches, some temporary?
 Balance
 Map revamp
 - Visualization
@@ -27,13 +29,19 @@ UI
 - Add compile errors and level-down errors as actual UI
 Loot
 - Different shape to differentiate between shell and prog loot? (Generally better loot view)
-- Rebalance color mystery data or add rare versions
+Encounter
+- Make it so that an encounter ends only when the main player unit is killed
+- Properly handle party units dying (Destroy AI core? Shell? Programs?)
 // Low-Priority ----------------------------------------------------------------------------------
 Balance
 - Make charge more balanced (probably make it so you can't charge into an empty square)
 - Until some sort of upgrading - make multi target attacks less rare
 UI
-- Make highlighting s program in the cust UI Outline all program squares
+- Make highlighting programs in the cust UI Outline all program squares
 Bugs
 - Disable end battle button during unit placement
 - Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
+- 5 shell has pre-installs at blocked positions (life core and color adj)
+- Capacity isn't showing properly in level UI panel
+- Lugwrench should have more uses
+- Transient overlaps on action window

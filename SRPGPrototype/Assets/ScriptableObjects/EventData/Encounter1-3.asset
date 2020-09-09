@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-3
   m_EditorClassIdentifier: 
-  targetDifficulty: 10
+  targetDifficulty: 9
   dimensions: {x: 6, y: 6}
+  numSpawnPositions: 3
   numEnemies: 040000000500000006000000
   numEnemiesWeights:
   - 1
@@ -30,7 +31,7 @@ MonoBehaviour:
   - 1
   - 2
   - 0.25
-  - 3
+  - 2
   numObstacles: 04000000
   numObstaclesWeights:
   - 1
@@ -44,4 +45,4 @@ MonoBehaviour:
   seed:
     name: Encounter
     units: []
-    reinforcements: []
+    spawnPositions: []

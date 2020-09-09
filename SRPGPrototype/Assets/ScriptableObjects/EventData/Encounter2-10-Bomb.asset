@@ -42,5 +42,8 @@ MonoBehaviour:
   lootFlags: 6
   seed:
     name: Encounter
-    units: []
-    spawnPositions: []
+    units:
+    - unit: {fileID: 6344873143029282054, guid: f8e1c054325b82b439cf4096d8dc2ce7,
+        type: 3}
+    spawnPositions:
+    - {x: -1, y: -1}

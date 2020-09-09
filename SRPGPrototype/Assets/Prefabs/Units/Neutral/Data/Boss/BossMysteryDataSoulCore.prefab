@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2596861445514896548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764646451675230786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e5040c6b7555942839b88df02b7a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: 4
+  lootQualities: 030000000300000003000000
+--- !u!1001 &2147300373272971273
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4624181192462875211, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_Name
+      value: BossMysteryDataSoulCore
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026363331897916687, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: displayName
+      value: Boss Mystery Data (Capacity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7f0db1b586a6d844affda46ba457a79, type: 3}
+--- !u!1 &6764646451675230786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4624181192462875211, guid: a7f0db1b586a6d844affda46ba457a79,
+    type: 3}
+  m_PrefabInstance: {fileID: 2147300373272971273}
+  m_PrefabAsset: {fileID: 0}

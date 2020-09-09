@@ -1006,6 +1006,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LootManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7226524408786965477, guid: 6fa08a1c6e5f4704894465e29bbca851,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7226524408786965483, guid: 6fa08a1c6e5f4704894465e29bbca851,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,6 +1133,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014812663518074332, guid: b5e9364f40bff21469d14913c7ae1252,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014812663518074332, guid: b5e9364f40bff21469d14913c7ae1252,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 395
       objectReference: {fileID: 0}
     - target: {fileID: 5453962881107837577, guid: b5e9364f40bff21469d14913c7ae1252,
         type: 3}
