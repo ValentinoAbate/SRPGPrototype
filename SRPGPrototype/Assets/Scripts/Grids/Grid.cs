@@ -363,6 +363,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         Vector2Int temp = obj1.Pos;
         obj1.Pos = obj2.Pos;
         obj2.Pos = temp;
+        Set(obj1.Pos, obj1);
+        Set(obj2.Pos, obj2);
     }
 
     #endregion

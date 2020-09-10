@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangePattern:
-    patternType: 2
+    patternType: 1
     pattern:
       patternOffsets: []
       dimensions: {x: 1, y: 1}
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 3213334772041079701, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: m_Name
-      value: ActionChargeDiag
+      value: ActionCharge
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
@@ -106,13 +106,17 @@ PrefabInstance:
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: displayName
-      value: Charge (Diag)
+      value: Charge
       objectReference: {fileID: 0}
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: description
-      value: Move into a diagonally adjacent unit's tile, pushing the unit out of
-        the way.
+      value: Move into an adjacent unit's tile, pushing the unit out of the way.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}

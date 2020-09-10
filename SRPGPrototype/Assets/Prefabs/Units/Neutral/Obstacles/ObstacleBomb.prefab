@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  action: {fileID: 8440232327866383202}
+  action: {fileID: 5597248024022581365, guid: 8639fc35a179b4840aa525189b135fc1, type: 3}
   triggerOnSelfDestruct: 1
 --- !u!1001 &4199561890093148515
 PrefabInstance:
@@ -25,14 +25,13 @@ PrefabInstance:
     - target: {fileID: 1068486978419434115, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_Name
-      value: ObstacleBombEgg
+      value: ObstacleBomb
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7cd41cd2b2e2cbf42a077e5268039edd,
-        type: 3}
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_Color.r
@@ -61,7 +60,7 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: displayName
-      value: Bomb Egg
+      value: Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -126,12 +125,12 @@ PrefabInstance:
     - target: {fileID: 7478816405458400791, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7478816405458400791, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8959495723498715618, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -236,15 +235,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ae594e09db25664daea7d249ccd8843, type: 3}
---- !u!114 &8440232327866383202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4415060608083833614, guid: 0ae594e09db25664daea7d249ccd8843,
-    type: 3}
-  m_PrefabInstance: {fileID: 5216514919571540076}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c73ebf9fb2e1e34399867267c73284a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
