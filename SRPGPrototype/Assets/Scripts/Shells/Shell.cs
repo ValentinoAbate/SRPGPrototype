@@ -293,6 +293,8 @@ public class Shell : MonoBehaviour, ILootable
         }
         // Apply Soul Cores
         SoulCoreUnitPrefab = compileData.soulCoreUnitPrefab;
+        // Apply capacity
+        Capacity = compileData.capacity;
         // Apply abilities
         AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
         AbilityOnDeath = compileData.abilityOnDeath;

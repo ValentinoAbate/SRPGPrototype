@@ -246,7 +246,7 @@ public class EncounterGenerator : MonoBehaviour
     }
 
     private float PassThrough(Unit u, Encounter encounter, Vector2Int dimensions) => 0;
-    private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
+    //private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
 
     private void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
         ref Encounter encounter, ref List<Vector2Int> validPositions)

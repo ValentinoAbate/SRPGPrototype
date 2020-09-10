@@ -38,10 +38,7 @@ Balance
 - Until some sort of upgrading - make multi target attacks less rare
 UI
 - Make highlighting programs in the cust UI Outline all program squares
+- Make Shell cust capacity change during customization and not just after compiling
 Bugs
 - Disable end battle button during unit placement
-- Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
-- 5 shell has pre-installs at blocked positions (life core and color adj)
-- Capacity isn't showing properly in level UI panel
-- Lugwrench should have more uses
-- Transient overlaps on action window
+- Transient overlaps on action window- Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
