@@ -41,4 +41,5 @@ UI
 - Make Shell cust capacity change during customization and not just after compiling
 Bugs
 - Disable end battle button during unit placement
-- Transient overlaps on action window- Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
+- Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
+- Transient not appearing in correct position in action desc window
