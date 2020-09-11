@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   action: {fileID: 7794917540423808656}
+  triggerOnSelfDestruct: 1
 --- !u!1001 &4199561890093148515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,6 +47,11 @@ PrefabInstance:
         type: 3}
       propertyPath: displayName
       value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: description
+      value: Spawns a Swarm when destroyed.
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}

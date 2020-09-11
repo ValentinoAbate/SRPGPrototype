@@ -33,6 +33,7 @@ public abstract class Unit : GridObject
     public abstract OnDeath OnDeathFn { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract string DisplayName { get; }
+    public abstract string Description { get; }
 
     public abstract Shell Shell { get; }
 

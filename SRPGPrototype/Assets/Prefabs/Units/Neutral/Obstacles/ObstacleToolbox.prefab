@@ -53,6 +53,11 @@ PrefabInstance:
       propertyPath: displayName
       value: Toolbox
       objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: description
+      value: Any unit that destroys this gains 2 Repair.
+      objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_LocalPosition.x

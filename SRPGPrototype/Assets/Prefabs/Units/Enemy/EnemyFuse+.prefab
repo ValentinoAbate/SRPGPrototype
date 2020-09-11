@@ -113,6 +113,12 @@ PrefabInstance:
       propertyPath: displayName
       value: Fuse+
       objectReference: {fileID: 0}
+    - target: {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Adjacent. Attack: Explosion+. Uses Explosion+ when destroyed.
+        Explosion+: deals 5 damage to adjacent and diagonally adjacent units.'
+      objectReference: {fileID: 0}
     - target: {fileID: 5174817585663237361, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
       propertyPath: m_Name

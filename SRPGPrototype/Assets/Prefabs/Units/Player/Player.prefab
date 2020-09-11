@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   displayName: Player
+  description: The player. Click to use an action!
   unitUI: {fileID: 5059411519126010243}
 --- !u!1 &8683891458397964560
 GameObject:
@@ -125,6 +126,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

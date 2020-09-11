@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: displayName
       value: Cavalier
       objectReference: {fileID: 0}
+    - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Knight. Attack: Adjacent (3 damage).'
+      objectReference: {fileID: 0}
     - target: {fileID: 8704909182585032594, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: challengeRating

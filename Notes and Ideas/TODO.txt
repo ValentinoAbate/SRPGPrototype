@@ -1,13 +1,9 @@
 // High-Priority ---------------------------------------------------------------------------------
 UI
-- Unit display
-	- Utilize action display
 - Shell Display
 	- Show Shell HP, capcacity thresholds
 	- Show Shell description and pattern
-Loot 
-- Extra repair loot / extra hp loot - Gives you extra healing at the end of a battle
-	- Make one for bosses that restores all shells 
+Loot
 Cust
 Smart targeting
 - Make certain actions on have certain valid tiles selectable
@@ -33,6 +29,8 @@ Encounter
 - Make it so that an encounter ends only when the main player unit is killed
 - Properly handle party units dying (Destroy AI core? Shell? Programs?)
 // Low-Priority ----------------------------------------------------------------------------------
+Misc
+Remove debug unit inspect code
 Balance
 - Make charge more balanced (probably make it so you can't charge into an empty square)
 - Until some sort of upgrading - make multi target attacks less rare

@@ -28,6 +28,8 @@ public abstract class AIUnit : Unit
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
+    public override string Description => description;
+    [SerializeField] [TextArea(1, 2)] private string description = string.Empty;
 
     public override Shell Shell => throw new System.NotImplementedException();
 

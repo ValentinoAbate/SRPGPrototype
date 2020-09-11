@@ -28,7 +28,12 @@ PrefabInstance:
     - target: {fileID: 5026363331897916687, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
       propertyPath: displayName
-      value: Boss Mystery Data (Capacity
+      value: Boss Mystery Data (Capacity)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026363331897916687, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: description
+      value: Drops a Boss-Rarity Capacity Program at the end of the encounter.
       objectReference: {fileID: 0}
     - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}

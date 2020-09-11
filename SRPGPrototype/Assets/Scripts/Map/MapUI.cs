@@ -23,6 +23,8 @@ public class MapUI : MonoBehaviour
     public Button nextEncounterButton;
     public Button prevEncounterButton;
     public GameObject spawnPointPrefab;
+    public UnitDescriptionUI unitDescriptionUI;
+    public BattleCursor cursor;
 
     private List<Vertex<Encounter>> vertices = null;
 
@@ -38,6 +40,7 @@ public class MapUI : MonoBehaviour
         InitializeChoiceButtons(vertices);
         gambleButton.onClick.AddListener(GambleEncounterChoice);
         ShowChoiceUI();
+        unitDescriptionUI.Hide();
     }
 
     private void InitializeChoiceButtons(IEnumerable<Vertex<Encounter>> vertices)
@@ -61,6 +64,8 @@ public class MapUI : MonoBehaviour
     private void ShowChoiceUI()
     {
         choiceUI.SetActive(true);
+        unitDescriptionUI.Hide();
+        cursor.NullAllActions();
     }
 
     private void HideChoiceUI()
@@ -80,6 +85,16 @@ public class MapUI : MonoBehaviour
         var encounter = vertex.value;
         InitializePreviewObjects(encounter);
         encounterNameText.text = encounter.name;
+
+        // Enable unit descriptions
+        void ShowUnitDescription(Vector2Int pos)
+        {
+            var unit = previewGrid.Get(pos);
+            if (unit != null)
+                unitDescriptionUI.Show(unit);
+        }
+        cursor.OnHighlight = ShowUnitDescription;
+        cursor.OnUnHighlight = (pos) => unitDescriptionUI.Hide();
         // Add graph resizing when that's relvant
     }
 

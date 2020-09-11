@@ -29,6 +29,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   action: {fileID: 2483994179339578242}
+  triggerOnSelfDestruct: 1
 --- !u!1001 &932368499352854308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,6 +56,11 @@ PrefabInstance:
         type: 3}
       propertyPath: displayName
       value: Walking Nest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Adjacent. Attack: Adjacent (2 damage). Spawns a Swarm when destroyed.'
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}

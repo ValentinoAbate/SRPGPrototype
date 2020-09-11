@@ -30,6 +30,11 @@ PrefabInstance:
       propertyPath: category
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
+      propertyPath: description
+      value: Drops a Shell at the end of the encounter.
+      objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: m_Name

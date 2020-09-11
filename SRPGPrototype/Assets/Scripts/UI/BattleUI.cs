@@ -13,6 +13,7 @@ public class BattleUI : MonoBehaviour
     public BattleCursor cursor;
     public Button endTurnButton;
     public ActionDescriptionUI actionDescription;
+    public UnitDescriptionUI unitDescription;
 
     public bool PlayerPhaseUIEnabled
     {
@@ -38,6 +39,7 @@ public class BattleUI : MonoBehaviour
     private void Start()
     {
         actionDescription.Hide();
+        unitDescription.Hide();
     }
 
     private void EnterUnitSelection()
@@ -46,8 +48,20 @@ public class BattleUI : MonoBehaviour
         endTurnButton.interactable = true;
         cursor.OnClick = SelectPlayer;
         cursor.OnCancel = null;
-        cursor.OnUnHighlight = null;
-        cursor.OnHighlight = null;
+        cursor.OnUnHighlight = HideUnitDescription;
+        cursor.OnHighlight = ShowUnitDescription;
+    }
+
+    private void ShowUnitDescription(Vector2Int pos)
+    {
+        var unit = grid.Get(pos);
+        if (unit != null)
+            unitDescription.Show(unit);
+    }
+
+    private void HideUnitDescription(Vector2Int pos)
+    {
+        unitDescription.Hide();
     }
 
     private void SelectPlayer(Vector2Int pos)
@@ -61,6 +75,7 @@ public class BattleUI : MonoBehaviour
 
     private void EnterActionMenu(Unit unit)
     {
+        unitDescription.Hide();
         endTurnButton.interactable = false;
         menu.Show(this, unit);
         cursor.OnClick = null;

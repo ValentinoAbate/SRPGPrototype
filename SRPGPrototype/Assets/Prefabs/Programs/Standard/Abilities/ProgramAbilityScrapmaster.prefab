@@ -102,9 +102,9 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: After destroying an enemy unit, gain 1 repair. If you repair with more
+      value: After destroying an enemy unit, gain 1 Repair. If you repair with more
         than your base repair, take damage equal to the extra repair you had instead
-        of repairing.
+        of gaining HP.
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

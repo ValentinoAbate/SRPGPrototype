@@ -28,6 +28,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   action: {fileID: 4838826280730621736}
+  triggerOnSelfDestruct: 1
 --- !u!1001 &6440527850137137016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,6 +152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: displayName
       value: Egg (Hatching)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: description
+      value: Spawns a Swarm when destroyed. Attacks self for 1 damage every turn.
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}

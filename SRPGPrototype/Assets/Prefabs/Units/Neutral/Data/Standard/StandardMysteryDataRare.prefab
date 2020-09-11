@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}
       propertyPath: displayName
-      value: Mystery Data (R)
+      value: Mystery Data (Rare)
       objectReference: {fileID: 0}
     - target: {fileID: 1550129024380200485, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}

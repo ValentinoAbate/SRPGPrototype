@@ -27,6 +27,11 @@ PrefabInstance:
       propertyPath: displayName
       value: Green Mystery Data
       objectReference: {fileID: 0}
+    - target: {fileID: 1298886888759046285, guid: 04d9b7364542e004d912bddfc88cadca,
+        type: 3}
+      propertyPath: description
+      value: Drops a Green Program at the end of the encounter.
+      objectReference: {fileID: 0}
     - target: {fileID: 1723695741483710409, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
       propertyPath: m_Name

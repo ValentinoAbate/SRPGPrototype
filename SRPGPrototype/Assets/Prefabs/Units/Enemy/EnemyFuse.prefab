@@ -259,6 +259,12 @@ PrefabInstance:
       propertyPath: maxHP
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Adjacent. Attack: Explosion. Uses Explosion when destroyed. Explosion:
+        deals 4 damage to adjacent units.'
+      objectReference: {fileID: 0}
     - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_TextStyleHashCode

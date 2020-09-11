@@ -118,6 +118,11 @@ PrefabInstance:
       propertyPath: displayName
       value: Rook
       objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Rook. Attack: Adjacent (2 damage).'
+      objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_LocalPosition.x

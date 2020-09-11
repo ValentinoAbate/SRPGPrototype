@@ -61,6 +61,12 @@ PrefabInstance:
       propertyPath: maxHP
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: description
+      value: Attacks a unit diagonally adjacent or at range for 2 damage. Targets
+        units on the Enemy Team.
+      objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: m_LocalPosition.x

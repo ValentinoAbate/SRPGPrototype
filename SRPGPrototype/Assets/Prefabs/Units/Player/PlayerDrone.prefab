@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   displayName: Drone
+  description: A shell with a soul. Click to use an action!
   unitUI: {fileID: 5059411519126010243}
 --- !u!1 &8683891458397964560
 GameObject:
