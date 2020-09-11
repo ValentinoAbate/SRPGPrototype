@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1068486978419434115, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_Name
-      value: Obstacle
+      value: ObstacleWall
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -66,6 +66,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478816405458400791, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478816405458400791, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d28da550a5fdc0458224d2b3be8ad66, type: 3}

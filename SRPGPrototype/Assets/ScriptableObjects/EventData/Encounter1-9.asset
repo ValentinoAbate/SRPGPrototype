@@ -36,9 +36,11 @@ MonoBehaviour:
   obstacles:
   - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
   - {fileID: 1229754312500399323, guid: 70516652d2abaf64cbe177d56d86332b, type: 3}
+  - {fileID: 5593980168300560687, guid: 623976d1319491145960d75a348b3c5a, type: 3}
   baseObstacleWeights:
   - 3
   - 1
+  - 0.33
   lootFlags: 4
   seed:
     name: Encounter
