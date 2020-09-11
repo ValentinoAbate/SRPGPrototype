@@ -28,6 +28,7 @@ Loot
 Encounter
 - Make it so that an encounter ends only when the main player unit is killed
 - Properly handle party units dying (Destroy AI core? Shell? Programs?)
+- Make AI properly path with weird movement patterns. Use move pattern as adjacency function
 // Low-Priority ----------------------------------------------------------------------------------
 Misc
 Remove debug unit inspect code
