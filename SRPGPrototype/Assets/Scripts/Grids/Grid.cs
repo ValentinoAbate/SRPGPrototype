@@ -293,7 +293,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     {
         if(IsLegal(pos))
         {
-            // ?? operator not used to to Unity Object wrapper
+            // ?? operator not used due to Unity Object wrapper
             field[pos.x, pos.y] = (obj == null ? null : obj);
         }
 

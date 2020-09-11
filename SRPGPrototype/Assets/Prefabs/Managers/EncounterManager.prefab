@@ -280,6 +280,7 @@ MonoBehaviour:
   phaseTransitionPrefab: {fileID: 0}
   grid: {fileID: 1130085307957486608}
   team: 1
+  canEndBattle: 1
 --- !u!1 &1130085308880680669
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +312,7 @@ Transform:
   - {fileID: 1130085307429848436}
   - {fileID: 1130085308153283654}
   - {fileID: 273360376185052428}
+  - {fileID: 6488333839459759523}
   m_Father: {fileID: 1130085307575049263}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -379,6 +381,55 @@ MonoBehaviour:
   cursor: {fileID: 1130085307932702795}
   endTurnButton: {fileID: 6197380475896117717}
   actionDescription: {fileID: 5003881088719589437}
+--- !u!1 &1229335412148432966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6488333839459759523}
+  - component: {fileID: 9192069140174466522}
+  m_Layer: 0
+  m_Name: AllyPhase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6488333839459759523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229335412148432966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1130085308880680668}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9192069140174466522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229335412148432966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Ally Phase
+  manager: {fileID: 1130085308880680659}
+  phaseTransitionPrefab: {fileID: 0}
+  grid: {fileID: 1130085307957486608}
+  team: 2
+  canEndBattle: 0
 --- !u!1 &3971887575359019765
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +732,7 @@ MonoBehaviour:
   phaseTransitionPrefab: {fileID: 0}
   grid: {fileID: 1130085307957486608}
   team: 0
+  canEndBattle: 0
 --- !u!1 &6771082056562637596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1343,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e9364f40bff21469d14913c7ae1252, type: 3}
+--- !u!4 &593299840254055812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 546357868745650186, guid: b5e9364f40bff21469d14913c7ae1252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1130085307668063630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1232467836098037210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2212468556699181140, guid: b5e9364f40bff21469d14913c7ae1252,
@@ -1303,12 +1361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950f805a0a300c4459d79aa56551155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &593299840254055812 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 546357868745650186, guid: b5e9364f40bff21469d14913c7ae1252,
-    type: 3}
-  m_PrefabInstance: {fileID: 1130085307668063630}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5653658574179703731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1378,6 +1430,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d84c255f4dc4d0a42ba7f943ade12110, type: 3}
+--- !u!4 &1130085307957486615 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4745397753945997220, guid: d84c255f4dc4d0a42ba7f943ade12110,
+    type: 3}
+  m_PrefabInstance: {fileID: 5653658574179703731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1130085307957486608 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4745397753945997219, guid: d84c255f4dc4d0a42ba7f943ade12110,
@@ -1390,9 +1448,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54605455fbc83c4b89f6cb2ef718016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1130085307957486615 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4745397753945997220, guid: d84c255f4dc4d0a42ba7f943ade12110,
-    type: 3}
-  m_PrefabInstance: {fileID: 5653658574179703731}
-  m_PrefabAsset: {fileID: 0}

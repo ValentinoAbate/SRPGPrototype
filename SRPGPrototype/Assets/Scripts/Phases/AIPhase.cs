@@ -9,6 +9,7 @@ public class AIPhase : Phase
     public BattleGrid grid;
 
     [SerializeField] private Unit.Team team = Unit.Team.None;
+    [SerializeField] private bool canEndBattle = false;
 
     private List<AIUnit> units = new List<AIUnit>();
 
@@ -57,6 +58,8 @@ public class AIPhase : Phase
 
     public bool CheckEndBattle()
     {
+        if (!canEndBattle)
+            return false;
         if (units.Count <= 0)
         {
             EndBattle();

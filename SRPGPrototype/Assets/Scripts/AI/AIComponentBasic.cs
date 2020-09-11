@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -61,7 +59,7 @@ public class AIComponentBasic : AIComponent<Unit>
                     // Exit if no targets and don't have enough AP
                     if (moveAction.APCost > self.AP)
                         yield break;
-                    yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, targetUnits));
+                    yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, standardAction, targetUnits));
                 }
             }
             else // AP must be enough to use the move action
@@ -72,7 +70,7 @@ public class AIComponentBasic : AIComponent<Unit>
                 // Break if nowhere to move
                 if (movePositions.Count() <= 0)
                     yield break;
-                yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, targetUnits));
+                yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, standardAction, targetUnits));
             }
         }
     }

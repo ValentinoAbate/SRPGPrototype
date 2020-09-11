@@ -42,4 +42,3 @@ UI
 Bugs
 - Disable end battle button during unit placement
 - Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
-- Transient not appearing in correct position in action desc window

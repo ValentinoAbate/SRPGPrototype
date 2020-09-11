@@ -42,11 +42,12 @@ public class PlayerPhase : Phase
 
     public bool CheckEndPhase()
     {
-        RemoveAllDead();
-        if (units.Any((u) => u.AP > 0))
-            return false;
-        EndPhase();
-        return true;
+        return false;
+        //RemoveAllDead();
+        //if (units.Any((u) => u.AP > 0))
+        //    return false;
+        //EndPhase();
+        //return true;
     }
 
     public bool CheckEndBattle()

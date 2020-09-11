@@ -6,7 +6,7 @@ using System.Linq;
 public abstract class AIComponent<T> : MonoBehaviour where T : Unit
 {
     // amount of time to pause for each square moved
-    public const float moveDelay = 0.3f;
+    public const float moveDelay = 0.25f;
     public const float attackDelay = 0.5f;
 
     public abstract List<Action> Actions { get; }
@@ -53,7 +53,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         }
     }
 
-    protected IEnumerator MoveToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, List<Target> targets) where Target : Unit
+    protected IEnumerator MoveToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, Action standardAction, List<Target> targets) where Target : Unit
     {
         var sub = moveAction.subActions[0];
         var movePositions = sub.Range.GetPositions(grid, self)
@@ -62,8 +62,8 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
         // Move into a viable attack position if possible
         foreach (var pos in movePositions)
         {
-            // If any of the target positions targeting this square contain a player unit
-            if (sub.targetPattern.Target(grid, self, pos).Any((p) => targets.Any((target) => p == target.Pos)))
+            // If our standard action could hit a target form the potential location
+            if (CheckforTargets(grid, self, standardAction, targets) != BattleGrid.OutOfBounds)
             {
                 moveAction.StartAction(self);
                 sub.Use(grid, moveAction, self, pos);
@@ -72,14 +72,22 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
                 yield break;
             }
         }
-        var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos, self.UnitTeam))));
+        var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos))));
         // Else find the position that can be moved to that brings us closest to a player unit
         if (posByPathDist.Count() <= 0)
             yield break;
         var closest = posByPathDist.OrderBy((t) => t.value).First();
-        if(closest.value == int.MaxValue)
+        if (closest.value == int.MaxValue)
         {
-            var posByDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => (int)Vector2Int.Distance(unit.Pos, self.Pos))));
+            posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos, unit.UnitTeam))));
+            // Else find the position that can be moved to that brings us closest to a player unit
+            if (posByPathDist.Count() <= 0)
+                yield break;
+            closest = posByPathDist.OrderBy((t) => t.value).First();
+        }
+        if (closest.value == int.MaxValue)
+        {
+            var posByDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => (int)Vector2Int.Distance(unit.Pos, p))));
             if (posByDist.Count() <= 0)
                 yield break;
             closest = posByDist.OrderBy((t) => t.value).First();
