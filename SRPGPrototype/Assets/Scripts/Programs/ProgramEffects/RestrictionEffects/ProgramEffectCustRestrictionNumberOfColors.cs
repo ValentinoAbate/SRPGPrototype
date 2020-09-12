@@ -3,6 +3,9 @@
 public class ProgramEffectCustRestrictionNumberOfColors : ProgramEffectCustRestriction
 {
     public int number = 4;
+
+    protected override string RestrictionName => "No More Than " + number.ToString() + " Different Colors";
+
     protected override bool Restriction(Shell shell, out string errorMessage)
     {
         var colors = new HashSet<Program.Color>();

@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProgramEffectCustRestrictionAdjacentColors : ProgramEffectCustRestriction
 {
+    protected override string RestrictionName => "No Adjacent Same Colors";
+
     protected override bool Restriction(Shell shell, out string errorMessage)
     {
         var map = shell.InstallMap;

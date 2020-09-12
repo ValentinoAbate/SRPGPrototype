@@ -231,7 +231,7 @@ public class Shell : MonoBehaviour, ILootable
     public CompileData GetCompileData(out List<Action> newActions)
     {
         newActions = new List<Action>();
-        var compileData = new CompileData(new Stats(), new List<Action>(), new List<Restriction>());
+        var compileData = new CompileData(new Stats());
         // Look through programs and apply program effects
         foreach (var install in programs)
         {
@@ -334,17 +334,21 @@ public class Shell : MonoBehaviour, ILootable
     {
         public Stats stats;
         public List<Action> actions;
+        public List<string> restrictionNames;
         public List<Restriction> restrictions;
+        public List<string> abilityNames;
         public Unit.OnAfterSubAction abilityOnAfterSubAction;
         public Unit.OnDeath abilityOnDeath;
         public Unit.OnBattleStartDel abilityOnBattleStart;
         public GameObject soulCoreUnitPrefab;
         public int capacity;
-        public CompileData(Stats stats, List<Action> actions, List<Restriction> restrictions)
+        public CompileData(Stats stats)
         {
             this.stats = stats;
-            this.actions = actions;
-            this.restrictions = restrictions;
+            actions = new List<Action>();
+            restrictionNames = new List<string>();
+            restrictions = new List<Restriction>();
+            abilityNames = new List<string>();
             abilityOnAfterSubAction = null;
             abilityOnDeath = null;
             abilityOnBattleStart = null;

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public abstract class ProgramEffectAddAbility : ProgramEffect
+﻿public abstract class ProgramEffectAddAbility : ProgramEffect
 {
 
 }

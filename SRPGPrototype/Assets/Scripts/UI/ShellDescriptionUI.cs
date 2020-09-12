@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Data;
 
 public class ShellDescriptionUI : MonoBehaviour
 {
+    public const string separator = ", ";
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI actionsText;
@@ -25,6 +27,7 @@ public class ShellDescriptionUI : MonoBehaviour
         descriptionText.text = s.Description;
         // If the shell is an asset (the Install Map is uninitialized), generate compile data from pre-installs
         var compileData = s.InstallMap != null ? s.GetCompileData(out List<Action> newActions) : GenerateCompileData(s, out newActions);
+        // Actions text
         if (newActions.Count <= 0)
         {
             actionsText.text = "None";
@@ -35,10 +38,22 @@ public class ShellDescriptionUI : MonoBehaviour
         }
         else
         {
-            actionsText.text = newActions.Select((action) => action.DisplayName).Aggregate((s1, s2) => s1 + ", " + s2);
+            actionsText.text = newActions.Select((action) => action.DisplayName).Aggregate((s1, s2) => s1 + separator + s2);
         }
         abilitiesText.text = "Coming Soon";
-        restrictionsText.text = "Coming Soon";
+        // Restricions text
+        if (compileData.restrictionNames.Count <= 0)
+        {
+            restrictionsText.text = "None";
+        }
+        else if (compileData.restrictionNames.Count == 1)
+        {
+            restrictionsText.text = compileData.restrictionNames[0];
+        }
+        else
+        {
+            restrictionsText.text = compileData.restrictionNames.Aggregate((s1, s2) => s1 + separator + s2);
+        }
         // Stats
         levelNumberText.text = s.Level.ToString();
         capacityNumberText.text = compileData.capacity.ToString() + "/" + s.CapacityThresholds[s.Level];
@@ -50,6 +65,7 @@ public class ShellDescriptionUI : MonoBehaviour
         // Show shell graphics
         shellPatternDisplay.Show(s);
         gameObject.SetActive(true);
+        // Clean up action objects
         newActions.ForEach((a) => Destroy(a.gameObject));
     }
 
@@ -61,7 +77,7 @@ public class ShellDescriptionUI : MonoBehaviour
     public Shell.CompileData GenerateCompileData(Shell s, out List<Action> newActions)
     {
         newActions = new List<Action>();
-        var compileData = new Shell.CompileData(new Stats(), new List<Action>(), new List<Shell.Restriction>());
+        var compileData = new Shell.CompileData(new Stats());
         // Look through programs and apply program effects
         foreach (var install in s.preInstalledPrograms)
         {
