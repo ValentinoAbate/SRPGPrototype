@@ -26,7 +26,7 @@ public class ShellDescriptionUI : MonoBehaviour
         // If the shell is an asset (the Install Map is uninitialized), generate compile data from pre-installs
         var compileData = s.InstallMap != null ? s.GetCompileData(out List<Action> newActions) : GenerateCompileData(s, out newActions);
         // Actions text
-        actionsText.text = AggregateText(newActions.Select((a) => a.DisplayName).ToList());
+        actionsText.text = AggregateText(newActions.Select((a) => a.DisplayName));
         // Abilities Text
         abilitiesText.text = AggregateText(compileData.abilityNames);
         // Restricions text
@@ -74,21 +74,35 @@ public class ShellDescriptionUI : MonoBehaviour
         return compileData;
     }
 
-    private string AggregateText(List<string> text)
+    private string AggregateText(IEnumerable<string> text)
     {
         const string separator = ", ";
         const string empty = "None";
-        if (text.Count <= 0)
+        var modText = HandleDuplicateText(text).ToArray();
+        if (modText.Length <= 0)
         {
             return empty;
         }
-        else if (text.Count == 1)
+        else if (modText.Length == 1)
         {
-            return text[0];
+            return modText[0];
         }
         else
         {
-            return text.Aggregate((s1, s2) => s1 + separator + s2);
+            return modText.Aggregate((s1, s2) => s1 + separator + s2);
         }
+    }
+
+    private IEnumerable<string> HandleDuplicateText(IEnumerable<string> text)
+    {
+        var counts = new Dictionary<string, int>();
+        foreach(var s in text)
+        {
+            if (counts.ContainsKey(s))
+                ++counts[s];
+            else
+                counts.Add(s, 1);
+        }
+        return text.Distinct().Select((s) => counts[s] > 1 ? s + " (x" + counts[s].ToString() + ")" : s);
     }
 }
