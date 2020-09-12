@@ -36,6 +36,8 @@ public class Shell : MonoBehaviour, ILootable
 
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
+    public string Description => description;
+    [SerializeField] [TextArea(1, 2)] private string description = string.Empty;
 
     public Rarity Rarity => rarity;
     [SerializeField] private Rarity rarity = Rarity.PreInstall;
@@ -226,24 +228,19 @@ public class Shell : MonoBehaviour, ILootable
 
     #endregion
 
-    /// <summary>
-    /// Compiles the stats and abilities from the programs in the shell, and outputs them.
-    /// Will become more complicated, with adjacency, etc. later
-    /// Returns false if the compile in considered invalid (either because of a compile rule or MaxHp <= 0)
-    /// </summary>
-    public bool Compile()
+    public CompileData GetCompileData(out List<Action> newActions)
     {
-        var newActions = new List<Action>();
+        newActions = new List<Action>();
         var compileData = new CompileData(new Stats(), new List<Action>(), new List<Restriction>());
         // Look through programs and apply program effects
-        foreach(var install in programs)
+        foreach (var install in programs)
         {
-            foreach(var effect in install.program.Effects)
+            foreach (var effect in install.program.Effects)
             {
                 compileData.actions.Clear();
                 effect.ApplyEffect(install.program, ref compileData);
                 // Instantiate new actions
-                foreach(var action in compileData.actions)
+                foreach (var action in compileData.actions)
                 {
                     var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
                     actionInstance.Program = install.program;
@@ -251,8 +248,20 @@ public class Shell : MonoBehaviour, ILootable
                 }
             }
         }
+        return compileData;
+    }
+
+    /// <summary>
+    /// Compiles the stats and abilities from the programs in the shell, and outputs them.
+    /// Will become more complicated, with adjacency, etc. later
+    /// Returns false if the compile in considered invalid (either because of a compile rule or MaxHp <= 0)
+    /// </summary>
+    public bool Compile()
+    {
+        // Generate the compile data
+        var compileData = GetCompileData(out List<Action> newActions);
         // Check Max Hp
-        if(compileData.stats.MaxHP <= 0)
+        if (compileData.stats.MaxHP <= 0)
         {
             Debug.LogWarning("Compile Error: Max Hp <= 0");
             newActions.ForEach((a) => Destroy(a.gameObject));

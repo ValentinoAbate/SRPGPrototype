@@ -104,6 +104,6 @@ MonoBehaviour:
     weights:
     - 2
     - 1
-  testMode: 0
+  testMode: 1
   testData:
   - {fileID: 11400000, guid: 751383b8a655ce2489bcab5a5ed8f8ab, type: 2}

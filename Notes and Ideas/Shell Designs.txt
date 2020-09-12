@@ -524,4 +524,5 @@ Shell Concepts:
 - A shell where the pre-installs have to connect a path between all preinstalls for a bonus
 - A shell with blokus rules, but is fairly open otherwise (maybe large)?
 - A Shell with less AP but great HP and repair (Turtle shell)
+- A Shell that starts with 1 capacity but has lower stats
 - Sea Shell

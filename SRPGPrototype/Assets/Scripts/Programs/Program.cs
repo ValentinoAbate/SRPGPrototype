@@ -90,7 +90,7 @@ public class Program : GridObject, ILootable
     public Attributes attributes;
     public Pattern shape;
 
-    private List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
+    private readonly List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
 
     public void Show(Vector2Int pos, CustGrid grid)
     {

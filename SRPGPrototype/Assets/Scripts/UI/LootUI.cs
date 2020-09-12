@@ -20,6 +20,7 @@ public class LootUI : MonoBehaviour
     public Transform shellDrawButtonContainer;
     public Button exitButton;
     public ProgramDescriptionUI programDesc;
+    public ShellDescriptionUI shellDesc;
 
     private void Start()
     {
@@ -83,6 +84,13 @@ public class LootUI : MonoBehaviour
             lootButtonUI.nameText.text = shell.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddShell(shell, true));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
+            lootButtonUI.trigger.triggers.Clear();
+            var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
+            hover.callback.AddListener((d) => shellDesc.Show(shell));
+            var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
+            hoverExit.callback.AddListener((d) => shellDesc.Hide());
+            lootButtonUI.trigger.triggers.Add(hover);
+            lootButtonUI.trigger.triggers.Add(hoverExit);
         }
         shellDrawUI.SetActive(true);
     }

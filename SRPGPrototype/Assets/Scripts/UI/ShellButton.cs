@@ -12,6 +12,7 @@ public class ShellButton : MonoBehaviour
     public Image shellImage;
     public Button equipButton;
     public Button custButton;
+    public EventTrigger[] triggers;
     public Color compiledColor = Color.green;
     public Color unCompiledColor = Color.red;
 
@@ -22,5 +23,15 @@ public class ShellButton : MonoBehaviour
         custButton.onClick.AddListener(() => uiManager.EnterCust(s));
         shellImage.color = s.Compiled ? compiledColor : unCompiledColor;
         equipButton.interactable = !equippedShell && s.Compiled && !s.HasSoulCore;
+        foreach(var trigger in triggers)
+        {
+            trigger.triggers.Clear();
+            var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
+            hover.callback.AddListener((data) => uiManager.shellDescriptionUI.Show(s));
+            var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
+            hoverExit.callback.AddListener((data) => uiManager.shellDescriptionUI.Hide());
+            trigger.triggers.Add(hover);
+            trigger.triggers.Add(hoverExit);
+        }
     }
 }

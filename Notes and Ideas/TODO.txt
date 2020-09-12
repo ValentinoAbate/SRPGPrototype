@@ -1,8 +1,5 @@
 // High-Priority ---------------------------------------------------------------------------------
 UI
-- Shell Display
-	- Show Shell HP, capcacity thresholds
-	- Show Shell description and pattern
 Loot
 Cust
 Smart targeting
@@ -23,6 +20,12 @@ UI
 - Add turn order indicators
 - Add data type info to drop buttons
 - Add compile errors and level-down errors as actual UI
+- Ensure Shell display pattern UI can fit max-level large shells
+- Add abilities to shell description window
+- Add restrictions to shell description window
+- Make it so that fixed programs appear differently in the shell view
+- Write shell descriptions
+- Generate number of bugs in shell
 Loot
 - Different shape to differentiate between shell and prog loot? (Generally better loot view)
 Encounter

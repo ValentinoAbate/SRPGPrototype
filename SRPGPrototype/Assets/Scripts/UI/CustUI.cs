@@ -29,6 +29,7 @@ public class CustUI : MonoBehaviour
     public GameObject shellButtonPrefab;
     public GameObject shellButtonContainer;
     public Button exitToBattleButton;
+    public ShellDescriptionUI shellDescriptionUI;
 
     [Header("Cust UI")]
     public CustGrid grid;
@@ -108,6 +109,7 @@ public class CustUI : MonoBehaviour
         GenerateShellButtons();
         shellMenuUI.SetActive(true);
         custUI.SetActive(false);
+        shellDescriptionUI.Hide();
     }
 
     public void EquipShell(Shell s)

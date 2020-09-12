@@ -39,7 +39,7 @@ MonoBehaviour:
   - {fileID: 5593980168300560687, guid: 623976d1319491145960d75a348b3c5a, type: 3}
   baseObstacleWeights:
   - 1
-  lootFlags: 0
+  lootFlags: 1
   seed:
     name: Encounter
     units: []
