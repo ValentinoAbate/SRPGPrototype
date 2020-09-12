@@ -23,10 +23,9 @@ public class ShellDescriptionUI : MonoBehaviour
     {
         nameText.text = s.DisplayName;
         descriptionText.text = s.Description;
-        List<Action> newActions;
         // If the shell is an asset (the Install Map is uninitialized), generate compile data from pre-installs
-        var compileData = s.InstallMap != null ? s.GetCompileData(out newActions) : GenerateCompileData(s, out newActions);
-        if(newActions.Count <= 0)
+        var compileData = s.InstallMap != null ? s.GetCompileData(out List<Action> newActions) : GenerateCompileData(s, out newActions);
+        if (newActions.Count <= 0)
         {
             actionsText.text = "None";
         }
@@ -51,6 +50,7 @@ public class ShellDescriptionUI : MonoBehaviour
         // Show shell graphics
         shellPatternDisplay.Show(s);
         gameObject.SetActive(true);
+        newActions.ForEach((a) => Destroy(a.gameObject));
     }
 
     public void Hide()
