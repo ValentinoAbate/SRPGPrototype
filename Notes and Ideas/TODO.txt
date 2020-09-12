@@ -21,8 +21,6 @@ UI
 - Add data type info to drop buttons
 - Add compile errors and level-down errors as actual UI
 - Ensure Shell display pattern UI can fit max-level large shells
-- Add abilities to shell description window
-- Add restrictions to shell description window
 - Write shell descriptions
 - Generate number of bugs in shell
 Loot

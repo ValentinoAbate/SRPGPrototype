@@ -15,6 +15,8 @@ public class ProgramEffectUseActionOnDeath : ProgramEffectAddOnDeathAbility
     public Action action;
     public bool triggerOnSelfDestruct = true;
 
+    protected override string AbilityName => "Use " + action.DisplayName + "when destroyed";
+
     public override void Ability(BattleGrid grid, Unit self, Unit killedBy)
     {
         if (!triggerOnSelfDestruct && killedBy == self)

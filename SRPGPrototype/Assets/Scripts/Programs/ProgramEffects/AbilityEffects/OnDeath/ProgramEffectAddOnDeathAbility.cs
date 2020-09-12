@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ProgramEffectAddOnDeathAbility : ProgramEffectAddAbility
 {
-    public override void ApplyEffect(Program program, ref Shell.CompileData data)
+    protected override void AddAbility(Program program, ref Shell.CompileData data)
     {
         data.abilityOnDeath += Ability;
     }

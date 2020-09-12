@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities: 2
+  abilityName: Excess Repair Damages
 --- !u!114 &575417401348393725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +28,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: 4
   teams: 01000000
+  abilityName: Gain Repair on Destroy Enemy
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0

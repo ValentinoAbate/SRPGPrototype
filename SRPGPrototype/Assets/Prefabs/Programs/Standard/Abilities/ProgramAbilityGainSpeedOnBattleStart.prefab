@@ -21,6 +21,7 @@ MonoBehaviour:
     modifier: 0
     multiplier: 1
     type: 0
+  abilityName: Gain 2 Speed on battle start
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0

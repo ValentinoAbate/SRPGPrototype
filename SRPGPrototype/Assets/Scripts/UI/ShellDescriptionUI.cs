@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using System.Data;
 
 public class ShellDescriptionUI : MonoBehaviour
 {
-    public const string separator = ", ";
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI actionsText;
@@ -28,32 +26,11 @@ public class ShellDescriptionUI : MonoBehaviour
         // If the shell is an asset (the Install Map is uninitialized), generate compile data from pre-installs
         var compileData = s.InstallMap != null ? s.GetCompileData(out List<Action> newActions) : GenerateCompileData(s, out newActions);
         // Actions text
-        if (newActions.Count <= 0)
-        {
-            actionsText.text = "None";
-        }
-        else if(newActions.Count == 1)
-        {
-            actionsText.text = newActions[0].DisplayName;
-        }
-        else
-        {
-            actionsText.text = newActions.Select((action) => action.DisplayName).Aggregate((s1, s2) => s1 + separator + s2);
-        }
-        abilitiesText.text = "Coming Soon";
+        actionsText.text = AggregateText(newActions.Select((a) => a.DisplayName).ToList());
+        // Abilities Text
+        abilitiesText.text = AggregateText(compileData.abilityNames);
         // Restricions text
-        if (compileData.restrictionNames.Count <= 0)
-        {
-            restrictionsText.text = "None";
-        }
-        else if (compileData.restrictionNames.Count == 1)
-        {
-            restrictionsText.text = compileData.restrictionNames[0];
-        }
-        else
-        {
-            restrictionsText.text = compileData.restrictionNames.Aggregate((s1, s2) => s1 + separator + s2);
-        }
+        restrictionsText.text = AggregateText(compileData.restrictionNames);
         // Stats
         levelNumberText.text = s.Level.ToString();
         capacityNumberText.text = compileData.capacity.ToString() + "/" + s.CapacityThresholds[s.Level];
@@ -95,5 +72,23 @@ public class ShellDescriptionUI : MonoBehaviour
             }
         }
         return compileData;
+    }
+
+    private string AggregateText(List<string> text)
+    {
+        const string separator = ", ";
+        const string empty = "None";
+        if (text.Count <= 0)
+        {
+            return empty;
+        }
+        else if (text.Count == 1)
+        {
+            return text[0];
+        }
+        else
+        {
+            return text.Aggregate((s1, s2) => s1 + separator + s2);
+        }
     }
 }

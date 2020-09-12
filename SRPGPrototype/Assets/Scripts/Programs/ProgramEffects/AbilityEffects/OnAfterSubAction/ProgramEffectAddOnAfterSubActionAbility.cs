@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ProgramEffectAddOnAfterSubActionAbility : ProgramEffectAddAbility
 {
-    public override void ApplyEffect(Program program, ref Shell.CompileData data)
+    protected override void AddAbility(Program program, ref Shell.CompileData data)
     {
         data.abilityOnAfterSubAction += Ability;
     }

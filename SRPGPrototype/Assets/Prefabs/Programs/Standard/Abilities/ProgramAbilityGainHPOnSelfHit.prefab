@@ -24,6 +24,7 @@ MonoBehaviour:
     attributes: 0
     color: 0
     rarity: 0
+  abilityName: Gain 1 HP on self-hit
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0

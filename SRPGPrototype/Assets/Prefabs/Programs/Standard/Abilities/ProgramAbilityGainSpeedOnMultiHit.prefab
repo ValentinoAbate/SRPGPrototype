@@ -29,6 +29,7 @@ MonoBehaviour:
       multiplier: 1
       type: 0
     type: 2
+  abilityName: Gain Speed on multi-hit
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0
