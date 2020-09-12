@@ -95,7 +95,9 @@ MonoBehaviour:
     type: 3}
   emptyIconPrefab: {fileID: 9147903971502331611, guid: ed73d1efedfa4d24395447545b97e362,
     type: 3}
-  programPrefab: {fileID: 9147903971502331611, guid: 5abc8e63ac51fc6499ed95d1db859d2c,
+  programIconPrefab: {fileID: 9147903971502331611, guid: 5abc8e63ac51fc6499ed95d1db859d2c,
+    type: 3}
+  programIconPrefabFixed: {fileID: 9147903971502331611, guid: afd69b87f67472f41b0723a261a739c6,
     type: 3}
 --- !u!1 &6164411189104383601
 GameObject:

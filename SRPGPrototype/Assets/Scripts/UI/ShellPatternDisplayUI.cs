@@ -7,7 +7,8 @@ public class ShellPatternDisplayUI : MonoBehaviour
     public RectTransform rectTransform;
     public GameObject blockedIconPrefab;
     public GameObject emptyIconPrefab;
-    public GameObject programPrefab;
+    public GameObject programIconPrefab;
+    public GameObject programIconPrefabFixed;
     public void Show(Shell s)
     {
         var p = s.CustArea;
@@ -27,7 +28,8 @@ public class ShellPatternDisplayUI : MonoBehaviour
                 else if (installMap[x, y] != null)
                 {
                     var prog = installMap[x, y];
-                    var img = Instantiate(programPrefab, layout.transform).GetComponent<Image>();
+                    var prefab = prog.attributes.HasFlag(Program.Attributes.Fixed) ? programIconPrefabFixed : programIconPrefab;
+                    var img = Instantiate(prefab, layout.transform).GetComponent<Image>();
                     if (img != null)
                         img.color = prog.ColorValue;
                 }
