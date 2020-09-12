@@ -148,9 +148,10 @@ public class CustUI : MonoBehaviour
     public void UpdateShellPropertyUI()
     {
         int level = Shell.Level;
-        shellHpNumberText.text = Shell.Stats.HP.ToString() + "/" + Shell.Stats.MaxHP;
+        var compileData = Shell.GetCompileData(out _);
+        shellHpNumberText.text = Mathf.Clamp(Shell.Stats.HP, 0, compileData.stats.MaxHP).ToString() + "/" + compileData.stats.MaxHP;
         shellLvNumberText.text = level == Shell.MaxLevel ? "Max" : level.ToString();
-        shellCapNumberText.text = Shell.Capacity.ToString() + "/" + Shell.CapacityThresholds[level].ToString();
+        shellCapNumberText.text = compileData.capacity.ToString() + "/" + Shell.CapacityThresholds[level].ToString();
         levelDownButton.interactable = level > 0;
         levelUpButton.interactable = level < Shell.MaxLevel;
     }
@@ -265,6 +266,7 @@ public class CustUI : MonoBehaviour
                 Shell.Uninstall(prog, prog.Pos);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
+                UpdateShellPropertyUI();
                 UpdateCompileButtonColor();
                 var progButtonComponent = AddProgramButton(prog);
                 progButtonComponent.button.onClick.Invoke();
@@ -285,6 +287,7 @@ public class CustUI : MonoBehaviour
             cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
             heldProgramUI.Hide();
             heldProgramUI.gameObject.SetActive(false);
+            UpdateShellPropertyUI();
             UpdateCompileButtonColor();
         }
     }
@@ -331,6 +334,7 @@ public class CustUI : MonoBehaviour
             }
         }
         UpdateCompileButtonColor();
+        UpdateShellPropertyUI();
     }
 
     #region Preset UI
