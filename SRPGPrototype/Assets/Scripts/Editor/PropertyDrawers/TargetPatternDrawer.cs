@@ -17,7 +17,7 @@ public class TargetPatternDrawer : PropertyDrawer
             return lineHeight * 2;
         if (type == TargetPattern.Type.Generated)
             return lineHeight * 3;
-        // Type is pattern
+        // Type is pattern or pattern directional
         return lineHeight * 2 + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("pattern"));
     }
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -48,7 +48,7 @@ public class TargetPatternDrawer : PropertyDrawer
             EditorGUI.PropertyField(UIRect, generatorProp);
             UIRect.y += lineHeight;
         }
-        else if(type == TargetPattern.Type.Pattern)
+        else if(type == TargetPattern.Type.Pattern || type == TargetPattern.Type.DirectionalPattern)
         {
             var patternProp = property.FindPropertyRelative("pattern");
             EditorGUI.PropertyField(UIRect, patternProp);

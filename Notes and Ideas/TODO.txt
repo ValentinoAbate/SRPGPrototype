@@ -3,7 +3,8 @@ UI
 Loot
 Cust
 Smart targeting
-- Make certain actions on have certain valid tiles selectable
+- Make certain actions only have certain valid tiles selectable
+- Make a hybrid action unusable if any of its actions would not have valid targets
 Program Effects
 - Add adjacency / modifier effects
 - UPGRADES / Promotions
@@ -21,7 +22,6 @@ UI
 - Add data type info to drop buttons
 - Add compile errors and level-down errors as actual UI
 - Ensure Shell display pattern UI can fit max-level large shells
-- Write shell descriptions
 - Generate number of bugs in shell
 Loot
 - Different shape to differentiate between shell and prog loot? (Generally better loot view)
@@ -37,6 +37,8 @@ Balance
 - Until some sort of upgrading - make multi target attacks less rare
 UI
 - Make highlighting programs in the cust UI Outline all program squares
+- Sort shell display lists lexicographically
 Bugs
 - Disable end battle button during unit placement
 - Spawn points appearing outside of the battle arena (seems to happen on levels with knights?)
+Make multi-sub actions whose target pattern depends on the last subaction used

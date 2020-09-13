@@ -171,7 +171,6 @@ MonoBehaviour:
   programContainer: {fileID: 4756452953647923653}
   startingShells:
   - {fileID: 5521947192405593796, guid: 966fea88898ceed46909c1dd4cad76d3, type: 3}
-  - {fileID: 6569766888404266529, guid: 87e130a9ac28c334cbd1a4d1016a9b8c, type: 3}
   startingPrograms:
   - {fileID: 4551076113953349650, guid: a2914311ef38d644b9a9a1195ceca40a, type: 3}
   - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
