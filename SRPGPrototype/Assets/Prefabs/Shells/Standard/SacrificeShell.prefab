@@ -861,6 +861,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2357944613507835519, guid: 018f7405765a5ae4caaea8d4c2a8821d,
         type: 3}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
+      propertyPath: description
+      value: Shell with high Max AP, high Base Repair, and extra space but can either
+        have Blue OR Red Programs installed.
+      objectReference: {fileID: 0}
     - target: {fileID: 6665655161741394638, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: m_Name

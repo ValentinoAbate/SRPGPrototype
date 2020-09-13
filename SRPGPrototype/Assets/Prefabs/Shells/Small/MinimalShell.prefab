@@ -521,6 +521,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3074455946635918319, guid: ae0ecc9c03c8355459db329695df60e9,
         type: 3}
+    - target: {fileID: 6033324569408216844, guid: dc28f7de967c99d409af82f066a70094,
+        type: 3}
+      propertyPath: description
+      value: A small Shell that has high Max AP, but lower Max HP and Base Repair.
+        Small Shells take less Capacity to compile at higher levels.
+      objectReference: {fileID: 0}
     - target: {fileID: 6665655161741394638, guid: dc28f7de967c99d409af82f066a70094,
         type: 3}
       propertyPath: m_Name

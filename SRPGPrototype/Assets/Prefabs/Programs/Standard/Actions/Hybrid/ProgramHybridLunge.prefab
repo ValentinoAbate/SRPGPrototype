@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 308391873856083614, guid: 6f4e1b235412c0d47936121e880aaf72, type: 3}
+  action: {fileID: 308391873856083614, guid: 86dbf5115cd702f4f8716769e4dd4100, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: Step Shot
+      value: Lunge
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -43,12 +43,12 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -68,27 +68,32 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: shape.patternOffsets.Array.data[0].y
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: shape.patternOffsets.Array.data[1].y
-      value: 0
+      propertyPath: shape.patternOffsets.Array.data[0].y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[2].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[1].y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramHybridStepShot
+      value: ProgramHybridLunge
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

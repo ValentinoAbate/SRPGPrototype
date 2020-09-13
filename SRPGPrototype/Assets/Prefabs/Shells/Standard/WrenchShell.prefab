@@ -931,6 +931,11 @@ PrefabInstance:
       propertyPath: rarity
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
+      propertyPath: description
+      value: A Shell that has higher Base Repair but lower Max HP.
+      objectReference: {fileID: 0}
     - target: {fileID: 6665655161741394638, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: m_Name

@@ -65,7 +65,7 @@ Shell Designs:
 	- x x o o o o x
 
 - Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
-- Spacial Nexus (Uncommon): any program installed in "s" counts as adjacent to all other programs
+- Spacial Nexus (Uncommon): any program installed in "s" counts as adjacent to all other programs. All programs must be adjacent to a program of the same color.
  	- o o o o o
 	- o i x i o
 	- o x s x o
@@ -203,6 +203,114 @@ Shell Designs:
 	- ? o x o x o u
 	- ? i o o o i u
 	- ? u u u u u u
++ Wrench Shell - Max HP: 6, AP: 3, Repair 4
+	- x o o o x 
+	- o i o i o 
+	- o o x o o 
+	- o o i o o 
+	- x o i o x 
+
+	- x o o o x o
+	- o i o i o o
+	- o o x o o o
+	- o o i o o o
+	- x o i o x x
+	- o o x o o o
+
+	- o x o o o x o
+	- o x o o o x o 
+	- o o i o i o o
+	- o o o x o o o
+	- o o o i o o o
+	- x x o i o x x
+	- o o o x o o o
+
++ Minimalist Shell: Small shell, +1 AP - 1 repair, -2 max HP
+	- i o o i
+	- o o o o
+	- o o o o
+	- i o o i
+
+	- i o o i x
+	- o o o o o
+	- o o o o o
+	- i o o i x
+	- x o o x o
+
+	- o x o o x o
+	- x i o o i x
+	- o o o o o o
+	- o o o o o o
+	- x i o o i x
+	- o x o o x o
+
++ Surgical Shell: All pre-installs are white, can only have 4 colors, colors are allowed to be adjacent, +1 repair, +2 maxHP
+	- o o o o o
+	- o o i o o
+	- o i x i o
+	- o o i o o
+	- o o o o o
+
+	- o o o o o x
+	- o o i o o o
+	- o i x i o o
+	- o o i o o o
+	- o o o o o x
+	- x o o o x x
+
+	- x x o o o x x
+	- x o o o o o x
+	- o o o i o o o
+	- o o i x i o o
+	- o o o i o o o
+	- x o o o o o x
+	- x x o o o x x
+
++ Sacrifice Shell: Has yellow, green, and white pre-installs, can only have 4 colors, colors are allowed to be adjacent, +1 AP, +1 repair
+	- o o x o o
+	- o o x o o
+	- o o x o o
+	- o i i i o
+	- o o i o o
+
+	- o o x o o x
+	- o o x o o o
+	- o o x o o o
+	- o i i i o o
+	- o o i o o x
+	- x o o o x o
+
+	- o x o o o x o
+	- x o o x o o x
+	- o o o x o o o
+	- o o o x o o o
+	- o o i i i o o
+	- x o o i o o x
+	- o x o o o x o
+
++ Data (Diamond) Shell: Max AP: 3, Max HP: 8, Base Repair 1, Starts with 1 capacity
+	- o o x o o
+	- o r o g o
+	- x o w o x
+	- o y o b o
+	- o o x o o
+
+	- o o x o o o
+	- o r o g o x
+	- x o w o x o
+	- o y o b o o
+	- o o x o o o
+	- o o o x o o
+
+	- o o x o o o o
+	- o o o x o o o
+	- o o r o g o x
+	- o x o w o x o
+	- x o y o b o o
+	- o o o x o o o
+	- o o o o x o o
+
+
 
 Basic Shell Shapes (Could be applied to multiple concepts)
 
@@ -427,90 +535,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o x o i o x o
 	- o x o x o x o
 
-+ Wrench Shell - Max HP: 6, AP: 3, Repair 4
-	- x o o o x 
-	- o i o i o 
-	- o o x o o 
-	- o o i o o 
-	- x o i o x 
 
-	- x o o o x o
-	- o i o i o o
-	- o o x o o o
-	- o o i o o o
-	- x o i o x x
-	- o o x o o o
-
-	- o x o o o x o
-	- o x o o o x o 
-	- o o i o i o o
-	- o o o x o o o
-	- o o o i o o o
-	- x x o i o x x
-	- o o o x o o o
-
-+ Minimalist Shell: Small shell, +1 AP - 1 repair, -2 max HP
-	- i o o i
-	- o o o o
-	- o o o o
-	- i o o i
-
-	- i o o i x
-	- o o o o o
-	- o o o o o
-	- i o o i x
-	- x o o x o
-
-	- o x o o x o
-	- x i o o i x
-	- o o o o o o
-	- o o o o o o
-	- x i o o i x
-	- o x o o x o
-
-+ Surgical Shell: All pre-installs are white, can only have 4 colors, colors are allowed to be adjacent, +1 repair, +2 maxHP
-	- o o o o o
-	- o o i o o
-	- o i x i o
-	- o o i o o
-	- o o o o o
-
-	- o o o o o x
-	- o o i o o o
-	- o i x i o o
-	- o o i o o o
-	- o o o o o x
-	- x o o o x x
-
-	- x x o o o x x
-	- x o o o o o x
-	- o o o i o o o
-	- o o i x i o o
-	- o o o i o o o
-	- x o o o o o x
-	- x x o o o x x
-
-+ Sacrifice Shell: Has yellow, green, and white pre-installs, can only have 4 colors, colors are allowed to be adjacent, +1 AP, +1 repair
-	- o o x o o
-	- o o x o o
-	- o o x o o
-	- o i i i o
-	- o o i o o
-
-	- o o x o o x
-	- o o x o o o
-	- o o x o o o
-	- o i i i o o
-	- o o i o o x
-	- x o o o x o
-
-	- o x o o o x o
-	- x o o x o o x
-	- o o o x o o o
-	- o o o x o o o
-	- o o i i i o o
-	- x o o i o o x
-	- o x o o o x o
 Shell Concepts:
 - Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 1 max Hp
 - Big Shell: A [Large] shell that can only have certain number of programs installed and takes a penalty for any empty squares

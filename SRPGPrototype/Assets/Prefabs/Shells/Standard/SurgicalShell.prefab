@@ -876,6 +876,12 @@ PrefabInstance:
       propertyPath: patterns.Array.data[2].patternOffsets.Array.data[35].x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
+      propertyPath: description
+      value: Shell with extra space and high stats, but can only have programs of
+        4 different colors installed.
+      objectReference: {fileID: 0}
     - target: {fileID: 6665655161741394638, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: m_Name
