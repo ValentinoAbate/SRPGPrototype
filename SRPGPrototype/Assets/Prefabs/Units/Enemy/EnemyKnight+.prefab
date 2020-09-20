@@ -82,10 +82,15 @@ PrefabInstance:
       propertyPath: description
       value: 'Move: Knight. Attack: Adjacent (3 damage).'
       objectReference: {fileID: 0}
+    - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
+      propertyPath: maxAP
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8704909182585032594, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: challengeRating
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d345da8490b83a84c81da463ce895bdc, type: 3}

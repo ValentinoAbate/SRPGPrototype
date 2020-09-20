@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ac9a53a4e276e4488a803d930e9299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitPrefab: {fileID: 266703525309771305, guid: 65a97ed9cd6badc408ee9ab11456a290,
+  unitPrefab: {fileID: 266703525309771305, guid: d6b6801492ee7b74991e8fae425950fb,
     type: 3}
 --- !u!1001 &8135780589257601915
 PrefabInstance:
@@ -119,12 +119,12 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionHatch
+      value: ActionHatch+
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Hatch
+      value: Hatch+
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Spawn a Swarm in the tile you are in.
+      value: Spawn a Swarm+ in the tile you are in.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

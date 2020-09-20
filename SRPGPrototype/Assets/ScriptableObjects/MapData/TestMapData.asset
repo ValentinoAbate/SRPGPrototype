@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: TestMapData
   m_EditorClassIdentifier: 
-  depth: 20
+  depth: 25
   encounterData:
   - data:
     - {fileID: 11400000, guid: 8c8ab936391bef54bb629b1521ceafc2, type: 2}
@@ -104,6 +104,26 @@ MonoBehaviour:
     weights:
     - 2
     - 1
+  - data:
+    - {fileID: 11400000, guid: 315c1cfc8b1318a42851882d78357833, type: 2}
+    weights:
+    - 2
+  - data:
+    - {fileID: 11400000, guid: 61daf6d5c320a6947ac6ac3132ec5878, type: 2}
+    weights:
+    - 2
+  - data:
+    - {fileID: 11400000, guid: bd8a75fe065a7f64481a30cf6eecd89b, type: 2}
+    weights:
+    - 2
+  - data:
+    - {fileID: 11400000, guid: 5bb3311d402a8d74e8b4d0b850c54fdc, type: 2}
+    weights:
+    - 2
+  - data:
+    - {fileID: 11400000, guid: 14d88ab9a74cc8b42b8e02574519a234, type: 2}
+    weights:
+    - 2
   testMode: 1
   testData:
   - {fileID: 11400000, guid: 751383b8a655ce2489bcab5a5ed8f8ab, type: 2}
