@@ -58,7 +58,7 @@ Color Mapping:
 - Red (triangle): Attack actions
 - Green (square): Support actions
 - Yellow (star): Hybrid actions
-- White (hexagon): Oddballs / actions that have their color set by other means
+- White (hexagon / pentagon): Oddballs / actions that have their color set by other means
 - Non-action programs may be any color
 - Programs that set their colors by external means are usually white regardless of effect
 - Shapes added for addional mapping and colorblind accesibility
