@@ -231,9 +231,11 @@ public class Shell : MonoBehaviour, ILootable
     public CompileData GetCompileData(out List<Action> newActions)
     {
         newActions = new List<Action>();
-        var compileData = new CompileData(new Stats());
+        var compileData = new CompileData();
+        // If the shell is an asset, generate compile data from pre-installs
+        var programList = InstallMap == null ? preInstalledPrograms : programs;
         // Look through programs and apply program effects
-        foreach (var install in programs)
+        foreach (var install in programList)
         {
             foreach (var effect in install.program.Effects)
             {
@@ -330,31 +332,18 @@ public class Shell : MonoBehaviour, ILootable
         return true;
     }
 
-    public ref struct CompileData
+    public class CompileData
     {
-        public Stats stats;
-        public List<Action> actions;
-        public List<string> restrictionNames;
-        public List<Restriction> restrictions;
-        public List<string> abilityNames;
-        public Unit.OnAfterSubAction abilityOnAfterSubAction;
-        public Unit.OnDeath abilityOnDeath;
-        public Unit.OnBattleStartDel abilityOnBattleStart;
-        public GameObject soulCoreUnitPrefab;
-        public int capacity;
-        public CompileData(Stats stats)
-        {
-            this.stats = stats;
-            actions = new List<Action>();
-            restrictionNames = new List<string>();
-            restrictions = new List<Restriction>();
-            abilityNames = new List<string>();
-            abilityOnAfterSubAction = null;
-            abilityOnDeath = null;
-            abilityOnBattleStart = null;
-            soulCoreUnitPrefab = null;
-            capacity = 0;
-        }
+        public Stats stats = new Stats();
+        public List<Action> actions = new List<Action>();
+        public List<string> restrictionNames = new List<string>();
+        public List<Restriction> restrictions = new List<Restriction>();
+        public List<string> abilityNames = new List<string>();
+        public Unit.OnAfterSubAction abilityOnAfterSubAction = null;
+        public Unit.OnDeath abilityOnDeath = null;
+        public Unit.OnBattleStartDel abilityOnBattleStart = null;
+        public GameObject soulCoreUnitPrefab = null;
+        public int capacity = 0;
     }
 
 

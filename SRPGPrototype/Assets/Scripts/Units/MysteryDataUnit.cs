@@ -35,13 +35,13 @@ public class MysteryDataUnit : AIUnit
     [SerializeField] private Color rareColor = Color.white;
     [SerializeField] private Color gambleColor = Color.white;
 
-    public override AIComponent<Unit> AI => ai;
+    public override AIComponent<AIUnit> AI => ai;
 
-    private AIComponent<Unit> ai;
+    private AIComponent<AIUnit> ai;
 
     private void Awake()
     {
-        ai = GetComponent<AIComponent<Unit>>();
+        ai = GetComponent<AIComponent<AIUnit>>();
         switch (LootQuality)
         {
             case Quality.Common:

@@ -78,6 +78,13 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
             new List<SubAction>(GetComponentsInChildren<SubAction>());
     }
 
+    public Action Validate(Transform parent)
+    {
+        if (transform.IsChildOf(parent))
+            return this;
+        return Instantiate(gameObject, parent).GetComponent<Action>();
+    }
+
     private bool zeroPower = false;
     private bool zeroSpeed = false;
 

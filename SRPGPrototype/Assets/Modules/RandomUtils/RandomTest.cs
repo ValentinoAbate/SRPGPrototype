@@ -15,11 +15,5 @@ namespace RandomUtils
             arr.Shuffle();
             list.Shuffle();
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

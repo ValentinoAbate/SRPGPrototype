@@ -28,6 +28,7 @@ General Ideas:
 - Make differentiation between standard and buff actions
 - Boss capacity upgrade that gives +AP but start with -3 power / speed
 - Ability that makes chaining hybrid actions free
+- Feedback abilities activate after of number of times hit (maybe better with hitting yourself)
 - Unique programs: Eggs / seeds (unique programs with mysterious upgrade conditions)
 	- When eggs hatch, they give a shell too? (Egg shell)
 	- Egg (white) Could hatch into many things -> Egg Shell

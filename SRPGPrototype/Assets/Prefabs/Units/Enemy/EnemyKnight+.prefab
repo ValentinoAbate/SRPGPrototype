@@ -87,6 +87,12 @@ PrefabInstance:
       propertyPath: maxAP
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6464810328418194555, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
+      propertyPath: standardAction
+      value: 
+      objectReference: {fileID: 4415060608083833614, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
     - target: {fileID: 8704909182585032594, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: challengeRating

@@ -9,12 +9,12 @@ public class EnemyUnit : AIUnit, IEncounterUnit
 
     #endregion
 
-    public override AIComponent<Unit> AI => ai;
+    public override AIComponent<AIUnit> AI => ai;
 
-    private AIComponent<Unit> ai;
+    private AIComponent<AIUnit> ai;
 
     private void Awake()
     {
-        ai = GetComponent<AIComponent<Unit>>();
+        ai = GetComponent<AIComponent<AIUnit>>();
     }
 }

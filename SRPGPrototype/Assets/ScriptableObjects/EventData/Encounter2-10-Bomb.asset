@@ -43,7 +43,7 @@ MonoBehaviour:
   seed:
     name: Encounter
     units:
-    - unit: {fileID: 6344873143029282054, guid: f8e1c054325b82b439cf4096d8dc2ce7,
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 6344873143029282054, guid: f8e1c054325b82b439cf4096d8dc2ce7,
         type: 3}
-    spawnPositions:
-    - {x: -1, y: -1}
+    spawnPositions: []

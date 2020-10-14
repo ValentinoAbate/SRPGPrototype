@@ -52,6 +52,8 @@ MonoBehaviour:
   maxHP: 4
   maxAP: 2
   displayName: Enemy
+  description: 
+  actionTransform: {fileID: 3827073035875608505}
   unitUI: {fileID: 5273064424718646244}
   encounterData: {fileID: 5254388976346715284}
 --- !u!114 &5254388976346715284
@@ -66,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8530accac396c2a43b227dc557cd9022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 2
+  challengeRating: 0
 --- !u!1 &5858750580904143430
 GameObject:
   m_ObjectHideFlags: 0

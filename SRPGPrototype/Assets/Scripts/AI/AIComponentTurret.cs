@@ -9,14 +9,20 @@ using UnityEngine;
 /// Only works with single-action actions currently.
 /// Assumes that the unit will move to any tile targeted by a move action
 /// </summary>
-public class AIComponentTurret : AIComponent<Unit>
+public class AIComponentTurret : AIComponent<AIUnit>
 {
     public List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
-    public Action standardAction;
+    [SerializeField]
+    private Action standardAction;
 
     public override List<Action> Actions => new List<Action> { standardAction };
 
-    public override IEnumerator DoTurn(BattleGrid grid, Unit self)
+    public override void Initialize(AIUnit self)
+    {
+        standardAction = standardAction.Validate(self.ActionTransform);
+    }
+
+    public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
         var subAction = standardAction.subActions[0];
         var targetUnits = FindTargetsOnTeams(grid, targetTeams);
@@ -25,9 +31,7 @@ public class AIComponentTurret : AIComponent<Unit>
         {
             while(self.AP >= standardAction.APCost)
             {
-                standardAction.StartAction(self);
-                subAction.Use(grid, standardAction, self, self.Pos);
-                standardAction.FinishAction(self);
+                standardAction.UseAll(grid, self, self.Pos);
             }
             yield break;
         }
@@ -39,9 +43,7 @@ public class AIComponentTurret : AIComponent<Unit>
             // Use standard action if target is found
             if (tPos != BattleGrid.OutOfBounds)
             {
-                standardAction.StartAction(self);
-                subAction.Use(grid, standardAction, self, tPos);
-                standardAction.FinishAction(self);
+                standardAction.UseAll(grid, self, tPos);
                 yield return new WaitForSeconds(attackDelay);
                 Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
             }

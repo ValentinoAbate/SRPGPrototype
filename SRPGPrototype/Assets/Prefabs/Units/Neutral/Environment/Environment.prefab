@@ -52,6 +52,8 @@ MonoBehaviour:
   maxHP: 5
   maxAP: 0
   displayName: Environment
+  description: 
+  actionTransform: {fileID: 3422832966320313134}
   unitUI: {fileID: 3299968412709591264}
   encounterData: {fileID: 4261383732389681203}
 --- !u!114 &4261383732389681203

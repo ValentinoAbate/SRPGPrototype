@@ -54,6 +54,8 @@
 + Fuse+: HP: 4, AP 2, Move: Basic, Attack: Explosion 2
 	- Explosion 2 (1AP): Hit every adjacent (Horizontal + Diag) (to target) square for 5 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 2.
+- Sapper
+	- Reduces Power or speed of the thing that kills it
 Environment Designs:
 - Nest: HP: 3, AP:1, Move: None, Attack: Damage self (1)
 	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)

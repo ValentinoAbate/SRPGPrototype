@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEngine;
-
-public class ProgramEffectUseActionOnDeath : ProgramEffectAddOnDeathAbility
+﻿public class ProgramEffectUseActionOnDeath : ProgramEffectAddOnDeathAbility
 {
     public enum Target
     { 
@@ -22,6 +17,8 @@ public class ProgramEffectUseActionOnDeath : ProgramEffectAddOnDeathAbility
         if (!triggerOnSelfDestruct && killedBy == self)
             return;
         var targetPos = target == Target.Self ? self.Pos : killedBy.Pos;
-        action.UseAll(grid, self, targetPos, false);
+        var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
+        actionInstance.UseAll(grid, self, targetPos, false);
+        Destroy(actionInstance);
     }
 }

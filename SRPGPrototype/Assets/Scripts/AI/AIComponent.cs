@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public abstract class AIComponent<T> : MonoBehaviour where T : Unit
+public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 {
     // amount of time to pause for each square moved
     public const float moveDelay = 0.25f;
     public const float attackDelay = 0.5f;
 
     public abstract List<Action> Actions { get; }
+
+    public abstract void Initialize(T self);
 
     public abstract IEnumerator DoTurn(BattleGrid grid, T self);
 
@@ -65,9 +67,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
             // If our standard action could hit a target form the potential location
             if (CheckforTargets(grid, self, standardAction, targets) != BattleGrid.OutOfBounds)
             {
-                moveAction.StartAction(self);
-                sub.Use(grid, moveAction, self, pos);
-                moveAction.FinishAction(self);
+                moveAction.UseAll(grid, self, pos);
                 yield return new WaitForSeconds(moveDelay);
                 yield break;
             }
@@ -93,9 +93,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : Unit
             closest = posByDist.OrderBy((t) => t.value).First();
         }
 
-        moveAction.StartAction(self);
-        sub.Use(grid, moveAction, self, closest.pos);
-        moveAction.FinishAction(self);
+        moveAction.UseAll(grid, self, closest.pos);
         yield return new WaitForSeconds(moveDelay);
     }
 

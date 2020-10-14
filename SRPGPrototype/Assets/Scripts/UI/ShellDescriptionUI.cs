@@ -23,8 +23,8 @@ public class ShellDescriptionUI : MonoBehaviour
     {
         nameText.text = s.DisplayName;
         descriptionText.text = s.Description;
-        // If the shell is an asset (the Install Map is uninitialized), generate compile data from pre-installs
-        var compileData = s.InstallMap != null ? s.GetCompileData(out List<Action> newActions) : GenerateCompileData(s, out newActions);
+        // If the shell is an asset, compile data will generate from pre-installs
+        var compileData = s.GetCompileData(out List<Action> newActions);
         // Actions text
         actionsText.text = AggregateText(newActions.Select((a) => a.DisplayName));
         // Abilities Text
@@ -49,29 +49,6 @@ public class ShellDescriptionUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-    }
-
-    public Shell.CompileData GenerateCompileData(Shell s, out List<Action> newActions)
-    {
-        newActions = new List<Action>();
-        var compileData = new Shell.CompileData(new Stats());
-        // Look through programs and apply program effects
-        foreach (var install in s.preInstalledPrograms)
-        {
-            foreach (var effect in install.program.Effects)
-            {
-                compileData.actions.Clear();
-                effect.ApplyEffect(install.program, ref compileData);
-                // Instantiate new actions
-                foreach (var action in compileData.actions)
-                {
-                    var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
-                    actionInstance.Program = install.program;
-                    newActions.Add(actionInstance);
-                }
-            }
-        }
-        return compileData;
     }
 
     private string AggregateText(IEnumerable<string> text)

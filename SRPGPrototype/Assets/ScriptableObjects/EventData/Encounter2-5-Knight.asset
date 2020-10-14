@@ -35,10 +35,10 @@ MonoBehaviour:
   seed:
     name: Encounter
     units:
-    - unit: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
-    - unit: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
-    spawnPositions:
-    - {x: -1, y: -1}
-    - {x: -1, y: -1}
+    spawnPositions: []

@@ -19,18 +19,10 @@ MonoBehaviour:
   numEnemiesWeights:
   - 1
   enemies:
-  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
-  - {fileID: 4568531750757968395, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}
-  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
-  - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
-  - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
+  - {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c, type: 3}
+  - {fileID: 1278278986212401478, guid: 999e48b4f705e2f49a342d02444fd7a4, type: 3}
   baseEnemyWeights:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2
   - 1
   numObstacles: 03000000
   numObstaclesWeights:
@@ -39,7 +31,7 @@ MonoBehaviour:
   - {fileID: 5593980168300560687, guid: 623976d1319491145960d75a348b3c5a, type: 3}
   baseObstacleWeights:
   - 1
-  lootFlags: 1
+  lootFlags: 2
   seed:
     name: Encounter
     units: []

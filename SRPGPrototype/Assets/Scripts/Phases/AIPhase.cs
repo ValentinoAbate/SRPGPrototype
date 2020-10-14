@@ -11,7 +11,7 @@ public class AIPhase : Phase
     [SerializeField] private Unit.Team team = Unit.Team.None;
     [SerializeField] private bool canEndBattle = false;
 
-    private List<AIUnit> units = new List<AIUnit>();
+    private readonly List<AIUnit> units = new List<AIUnit>();
 
     public override IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits)
     {
@@ -24,8 +24,8 @@ public class AIPhase : Phase
             yield return StartCoroutine(unit.OnPhaseStart());
         foreach (var unit in units)
         {
-            // Skip units that have been reduced to 0 AP or have no AI
-            if (unit.AP <= 0 || unit.AI == null)
+            // Skip units that are dead or have been reduced to 0 AP or have no AI
+            if (unit == null || unit.Dead || unit.AP <= 0 || unit.AI == null)
                 continue;
             yield return StartCoroutine(unit.DoTurn(grid));
             if (CheckEndPhase())
@@ -50,7 +50,7 @@ public class AIPhase : Phase
 
     public bool CheckEndPhase()
     {
-        if (units.Any((u) => !u.Dead && u.AP > 0))
+        if (units.Any((u) => u != null && !u.Dead && u.AP > 0))
             return false;
         EndPhase();
         return true;

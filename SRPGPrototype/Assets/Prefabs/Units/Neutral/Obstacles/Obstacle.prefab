@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7478816405458400791}
   - {fileID: 275297900232212230}
+  - {fileID: 3581669419784891709}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,6 +52,8 @@ MonoBehaviour:
   maxHP: 5
   maxAP: 0
   displayName: Obstacle
+  description: 
+  actionTransform: {fileID: 3581669419784891709}
   unitUI: {fileID: 3639768143138655526}
   encounterData: {fileID: 4261383732389681203}
 --- !u!114 &4261383732389681203
@@ -66,6 +69,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   challengeRating: 0
+--- !u!1 &3479873466389852241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3581669419784891709}
+  m_Layer: 0
+  m_Name: Actions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3581669419784891709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3479873466389852241}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.53, y: 0.39000005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2671863499721434950}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8683891458397964560
 GameObject:
   m_ObjectHideFlags: 0

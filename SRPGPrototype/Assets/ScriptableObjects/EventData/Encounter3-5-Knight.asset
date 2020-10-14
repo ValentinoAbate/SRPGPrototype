@@ -33,13 +33,13 @@ MonoBehaviour:
   seed:
     name: Encounter
     units:
-    - unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
         type: 3}
-    - unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
         type: 3}
-    - unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
         type: 3}
-    spawnPositions:
-    - {x: -1, y: -1}
-    - {x: -1, y: -1}
-    - {x: -1, y: -1}
+    spawnPositions: []

@@ -34,6 +34,8 @@ public abstract class AIUnit : Unit
     public override Shell Shell => throw new System.NotImplementedException();
 
     public override List<Action> Actions => AI == null ? new List<Action>() : AI.Actions;
+    public Transform ActionTransform => actionTransform;
+    [SerializeField] private Transform actionTransform = null;
 
     public UnitUI unitUI;
 
@@ -41,11 +43,20 @@ public abstract class AIUnit : Unit
     public override CenterStat Speed { get; } = new CenterStat();
     public override CenterStat Defense { get; } = new CenterStat();
 
-    public abstract AIComponent<Unit> AI { get; }
+    public abstract AIComponent<AIUnit> AI { get; }
 
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
+    }
+
+    protected void Initialize()
+    {
+        if (AI != null)
+        {
+            AI.Initialize(this);
+        }
         ResetStats();
         var onDeathEffects = GetComponents<ProgramEffectAddOnDeathAbility>();
         foreach (var effect in onDeathEffects)
