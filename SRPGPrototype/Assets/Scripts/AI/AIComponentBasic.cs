@@ -28,8 +28,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
         var subAction = standardAction.subActions[0];
-        var targetUnits = FindTargetsOnTeams(grid, targetTeams);
-
+        // If action targets self, end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {
             while(self.AP >= standardAction.APCost)
@@ -38,6 +37,9 @@ public class AIComponentBasic : AIComponent<AIUnit>
             }
             yield break;
         }
+        // Find all targets
+        var targetUnits = FindTargetsOnTeams(grid, targetTeams);
+        // Exit early if there are no targets
         if (targetUnits.Count <= 0)
             yield break;
         while (self.AP >= standardAction.APCost || self.AP >= moveAction.APCost)
@@ -54,27 +56,25 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 }
                 else // No target is found, use move action
                 {
-                    // Get move positions
-                    var movePositions = moveAction.subActions[0].Range.GetPositions(grid, self)
-                        .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
-                    // Break if nowhere to move
-                    if (movePositions.Count() <= 0)
-                        yield break;
                     // Exit if no targets and don't have enough AP
                     if (moveAction.APCost > self.AP)
                         yield break;
-                    yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, standardAction, targetUnits));
+                    // Log the original position
+                    Vector2Int oldPos = self.Pos;
+                    yield return StartCoroutine(PathToTargetRange(grid, self, moveAction, standardAction, targetUnits));
+                    // If we didn't actually move anywhere, end the turn
+                    if (self.Pos == oldPos)
+                        yield break;
                 }
             }
             else // AP must be enough to use the move action
             {
-                // Get move positions
-                var movePositions = moveAction.subActions[0].Range.GetPositions(grid, self)
-                    .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p));
-                // Break if nowhere to move
-                if (movePositions.Count() <= 0)
+                // Log the original position
+                Vector2Int oldPos = self.Pos;
+                yield return StartCoroutine(PathToTargetRange(grid, self, moveAction, standardAction, targetUnits));
+                // If we didn't actually move anywhere, end the turn
+                if (self.Pos == oldPos)
                     yield break;
-                yield return StartCoroutine(MoveToTargetRange(grid, self, moveAction, standardAction, targetUnits));
             }
         }
     }

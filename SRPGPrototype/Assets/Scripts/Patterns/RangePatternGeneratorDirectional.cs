@@ -13,22 +13,22 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
         Both = Horizontal | Diagonal
     }
     public Directions directions;
-    public override List<Vector2Int> Generate(BattleGrid grid, Unit user)
+    public override List<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
     {
         var ret = new List<Vector2Int>();
         if(directions.HasFlag(Directions.Horizontal))
         {
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.up));
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.down));
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.left));
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.right));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.up));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.down));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.left));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.right));
         }
         if (directions.HasFlag(Directions.Diagonal))
         {
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.up + Vector2Int.right));
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.down + Vector2Int.right));
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.down + Vector2Int.left));
-            ret.AddRange(PositionsUntilObstacle(grid, user.Pos, Vector2Int.up + Vector2Int.left));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.up + Vector2Int.right));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.down + Vector2Int.right));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.down + Vector2Int.left));
+            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.up + Vector2Int.left));
         }
         return ret;
     }
@@ -43,5 +43,14 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
             pos += direction;
         }
         return ret;
+    }
+
+    public override int MaxDistance(BattleGrid grid)
+    {
+        if(directions.HasFlag(Directions.Diagonal))
+            return grid.Rows + grid.Cols - 2;
+        if (directions.HasFlag(Directions.Horizontal))
+            return Mathf.Max(grid.Rows, grid.Cols) - 1;
+        return 0;
     }
 }

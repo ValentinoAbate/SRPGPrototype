@@ -119,7 +119,7 @@ public class BattleUI : MonoBehaviour
     private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
-        if (!subAction.Range.GetPositions(grid, unit).Contains(pos))
+        if (!subAction.Range.GetPositions(grid, unit.Pos).Contains(pos))
             return;
         entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustWhite);
 
@@ -129,7 +129,7 @@ public class BattleUI : MonoBehaviour
     private void SelectActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.subActions[currAction];
-        if (!subAction.Range.GetPositions(grid, unit).Contains(pos))
+        if (!subAction.Range.GetPositions(grid, unit.Pos).Contains(pos))
             return;
         subAction.Use(grid, action, unit, pos);
         HideManyTiles(entries);
@@ -184,7 +184,7 @@ public class BattleUI : MonoBehaviour
     public List<TileUI.Entry> ShowRangePattern(RangePattern p, Unit user, TileUI.Type type)
     {
         var ret = new List<TileUI.Entry>();
-        foreach (var pos in p.GetPositions(grid, user))
+        foreach (var pos in p.GetPositions(grid, user.Pos))
         {
             ret.Add(grid.SpawnTileUI(pos, type));
         }

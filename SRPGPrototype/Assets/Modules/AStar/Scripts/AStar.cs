@@ -14,7 +14,7 @@ namespace Pathfinding
         /// Heur should return an estimation of the distance between two nodes. heur is admissable if it is always <= actual cost
         /// </summary>
         /// <returns> A list representing a path from start to goal if one is found. If not path is found, returns null </returns>
-        public static List<T> Pathfind<T>(T start, T goal, Func<T, List<T>> adj, Func<T, T, float> cost, Func<T, T, float> heur) where T : IEquatable<T>
+        public static List<T> Pathfind<T>(T start, T goal, Func<T, IEnumerable<T>> adj, Func<T, T, float> cost, Func<T, T, float> heur) where T : IEquatable<T>
         {
             var dist = new Dictionary<T, float>();
             var visited = new HashSet<T>();

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class RangePatternGeneratorAllEmptyTiles : RangePatternGenerator
 { 
-    public override List<Vector2Int> Generate(BattleGrid grid, Unit user)
+    public override List<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
     {
         return grid.EmptyPositions;
+    }
+
+    public override int MaxDistance(BattleGrid grid)
+    {
+        return grid.Rows + grid.Cols - 2;
     }
 }

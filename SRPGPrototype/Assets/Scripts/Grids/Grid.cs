@@ -238,7 +238,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
             if (obj is T)
             {
                 var objT = obj as T;
-                //if object matches the predicate, add it to the list
+                //if object matches the predicate, return it
                 if (pred(objT))
                     return objT;
             }
@@ -252,6 +252,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         //brute force foreach of field; might optimize later
         foreach (var obj in field)
         {
+            if (obj == null)
+                continue;
             //if there is no predicate or object matches the predicate, add it to the list
             if (pred == null || pred(obj))
                 objects.Add(obj);

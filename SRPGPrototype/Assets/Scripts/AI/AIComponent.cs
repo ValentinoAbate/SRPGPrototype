@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Net.WebSockets;
 
 public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 {
@@ -55,11 +56,14 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         }
     }
 
+    protected IEnumerable<Vector2Int> MovePositions(BattleGrid grid, Vector2Int pos, RangePattern pattern)
+    {
+        return pattern.GetPositions(grid, pos).Where((p) => grid.IsLegalAndEmpty(p));
+    }
+
     protected IEnumerator MoveToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, Action standardAction, List<Target> targets) where Target : Unit
     {
-        var sub = moveAction.subActions[0];
-        var movePositions = sub.Range.GetPositions(grid, self)
-            .Where((p) => grid.IsLegal(p) && grid.IsEmpty(p)).ToList();
+        var movePositions = MovePositions(grid, self.Pos, moveAction.subActions[0].Range).ToList();
         movePositions.Add(self.Pos);
         // Move into a viable attack position if possible
         foreach (var pos in movePositions)
@@ -67,6 +71,11 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             // If our standard action could hit a target form the potential location
             if (CheckforTargets(grid, self, standardAction, targets) != BattleGrid.OutOfBounds)
             {
+                // Don't need to move anywhere
+                if(pos == self.Pos)
+                {
+                    yield break;
+                }
                 moveAction.UseAll(grid, self, pos);
                 yield return new WaitForSeconds(moveDelay);
                 yield break;
@@ -92,15 +101,65 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
                 yield break;
             closest = posByDist.OrderBy((t) => t.value).First();
         }
-
+        // Don't need to move anywhere
+        if (closest.pos == self.Pos)
+        {
+            yield break;
+        }
         moveAction.UseAll(grid, self, closest.pos);
         yield return new WaitForSeconds(moveDelay);
+    }
+
+    protected IEnumerator PathToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, Action standardAction, List<Target> targets) where Target : Unit
+    {
+        var positions = new List<Vector2Int>();
+        var moveRange = moveAction.subActions[0].Range;
+        var targetRange = standardAction.subActions[0].Range;
+        // Calculate possible target positions
+        foreach (var target in targets)
+        {
+            // For now, just add the empty/self legal positions where a target would be in range
+            positions.AddRange(targetRange.GetPositions(grid, target.Pos).Where((p) => grid.IsLegal(p) && (grid.IsEmpty(p) || p == self.Pos)));
+        }
+        // Throw out duplicate positions
+        positions = positions.Distinct().ToList();
+        // Set up for pathfinding
+        // Use the move range and a legality / emptiness check for the adjacency function
+        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveRange);
+        // Calculate the maximum manhattan distance of the move action
+        int maxMoveDist = moveRange.MaxDistance(grid);
+        // Use the manhattan distance to the goal / the maximum manhattan distance of the move action as the heuristic
+        float Heur(Vector2Int pos, Vector2Int goal) => Vector2Int.Distance(pos, goal) / maxMoveDist;
+        // Find all shortests paths to target positions
+        var paths = new List<List<Vector2Int>>();
+        foreach(var position in positions)
+        {
+            var path = Pathfinding.AStar.Pathfind(self.Pos, position, NodeAdj, (p, pAdj) => 1, Heur);
+            if(path != null)
+            {
+                // Remove the starting position from the path
+                path.RemoveAt(0);
+                paths.Add(path);
+            }
+ 
+        }
+        if (paths.Count <= 0)
+            yield break;
+        // Move towards the target position with the shortest path
+        paths.Sort((p1, p2) => p1.Count.CompareTo(p2.Count));
+        foreach(var pos in paths[0])
+        {
+            if (self.AP < moveAction.APCost)
+                yield break;
+            moveAction.UseAll(grid, self, pos);
+            yield return new WaitForSeconds(moveDelay);
+        }
     }
 
     protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> targetUnits) where Target : Unit
     {
         var subAction = standardAction.subActions[0];
-        foreach (var pos in subAction.Range.GetPositions(grid, self))
+        foreach (var pos in subAction.Range.GetPositions(grid, self.Pos))
         {
             var targetPositions = subAction.targetPattern.Target(grid, self, pos);
             foreach (var tPos in targetPositions)
@@ -116,7 +175,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected List<Unit> FindTargetsOnTeams(BattleGrid grid, List<Unit.Team> teams)
     {
-        return grid.FindAll<Unit>((c) => teams.Any((team) => c.UnitTeam == team));
+        return grid.FindAll((c) => teams.Any((team) => c.UnitTeam == team));
     }
 
     private struct PosValuePair

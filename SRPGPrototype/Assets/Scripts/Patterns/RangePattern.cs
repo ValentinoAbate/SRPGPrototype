@@ -24,30 +24,58 @@ public class RangePattern
     public Pattern pattern;
     public RangePatternGenerator generator = null;
 
-    public List<Vector2Int> GetPositions(BattleGrid grid, Unit user)
+    public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int userPos)
     {
         switch (patternType)
         {
             case Type.Self:
-                return new List<Vector2Int> { user.Pos };
+                return new List<Vector2Int> { userPos };
             case Type.Adjacent:
-                return user.Pos.Adjacent().ToList();
+                return userPos.Adjacent();
             case Type.AdjacentDiagonal:
-                return user.Pos.AdjacentDiagonal().ToList();
+                return userPos.AdjacentDiagonal();
             case Type.AdjacentBoth:
-                return user.Pos.AdjacentDiagonal().Concat(user.Pos.Adjacent()).ToList();
+                return userPos.AdjacentDiagonal().Concat(userPos.Adjacent());
             case Type.Ranged:
-                return user.Pos.Adjacent(2).ToList();
+                return userPos.Adjacent(2);
             case Type.RangedDiagonal:
-                return user.Pos.AdjacentDiagonal(2).ToList();
+                return userPos.AdjacentDiagonal(2);
             case Type.Pattern:
-                return pattern.OffsetsShifted(user.Pos).ToList(); ;
+                return pattern.OffsetsShifted(userPos);
             case Type.Generated:
-                return generator.Generate(grid, user);
+                return generator.Generate(grid, userPos);
             case Type.Horizontal:
-                return new List<Vector2Int>() { user.Pos + Vector2Int.left, user.Pos + Vector2Int.right };
+                return new List<Vector2Int>() { userPos + Vector2Int.left, userPos + Vector2Int.right };
             case Type.Vertical:
-                return new List<Vector2Int>() { user.Pos + Vector2Int.up, user.Pos + Vector2Int.down };
+                return new List<Vector2Int>() { userPos + Vector2Int.up, userPos + Vector2Int.down };
+        }
+        throw new System.Exception("Range Pattern Error: Invalid pattern type");
+    }
+
+    public int MaxDistance(BattleGrid grid)
+    {
+        switch (patternType)
+        {
+            case Type.Self:
+                return 0;
+            case Type.Adjacent:
+                return 1;
+            case Type.AdjacentDiagonal:
+                return 2;
+            case Type.AdjacentBoth:
+                return 2;
+            case Type.Ranged:
+                return 2;
+            case Type.RangedDiagonal:
+                return 4;
+            case Type.Pattern:
+                return Mathf.Max(pattern.Dimensions.x, pattern.Dimensions.y);
+            case Type.Generated:
+                return generator.MaxDistance(grid);
+            case Type.Horizontal:
+                return 1;
+            case Type.Vertical:
+                return 1;
         }
         throw new System.Exception("Range Pattern Error: Invalid pattern type");
     }
