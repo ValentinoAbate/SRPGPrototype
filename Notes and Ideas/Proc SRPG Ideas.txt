@@ -29,6 +29,25 @@ General Ideas:
 - Boss capacity upgrade that gives +AP but start with -3 power / speed
 - Ability that makes chaining hybrid actions free
 - Feedback abilities activate after of number of times hit (maybe better with hitting yourself)
+- Possibly make each segment 8 long (or just shorter in general)
+- Soul core w/ basic move and/or basic attack
+- Capacity upgrade w/ basic move and/or basic attack
+- Game mode with more units but smaller shells?
+- Should give full capacity before soul core likely
+- Encounters have varied map size / shape
+- Possibly have less enemies at the start of encounters, with some spawning in later
+- Most player obstacles should decay
+- Checkers move (keep jumping)
+- Ability that triggers when you jump over a unit
+- AI could have max moves, max attacks instead of slowdown?
+- Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
+	- Stars on a shell for beating the different bosses
+- Hand mode:
+	- Programs give multiple copies of actions
+	- uses discard / deck hand just like a card game
+- Duel puzzles? - Scenarios where you are given a certain program / shell setup and have to clear a board
+	- Could involve ice sliding
+	- Could involve single-turn clears
 - Unique programs: Eggs / seeds (unique programs with mysterious upgrade conditions)
 	- When eggs hatch, they give a shell too? (Egg shell)
 	- Egg (white) Could hatch into many things -> Egg Shell

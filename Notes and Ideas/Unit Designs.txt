@@ -57,7 +57,7 @@
 - Sapper
 	- Reduces Power or speed of the thing that kills it
 Environment Designs:
-- Nest: HP: 3, AP:1, Move: None, Attack: Damage self (1)
++ Nest: HP: 3, AP:1, Move: None, Attack: Damage self (1)
 	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
 - Nest+: HP: 3, AP:1, Move: None, Attack: Damage self (1)
 	- When destroyed, spawns 2 / 3 Swarm+ (spawn logic tbd)
@@ -66,3 +66,4 @@ Environment Designs:
 - Battery: Destroying this grants the unit that destroyed it 1 speed
 - Armor: Destroying this grants the unit that destroyed it 1 def
 - Power Cell: Destroying this grants the unit that destroyed it 1 power
+- Rooted: Immovable wall w/ 6 or 7 HP

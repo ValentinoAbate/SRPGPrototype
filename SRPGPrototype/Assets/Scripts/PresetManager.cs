@@ -31,9 +31,16 @@ public class PresetManager : MonoBehaviour
         string key = s.DisplayName;
         if (loadedPresets.ContainsKey(key))
         {
-            loadedPresets[key] = index;
+            if (index == noLoadedPreset)
+            {
+                loadedPresets.Remove(key);
+            }
+            else
+            {
+                loadedPresets[key] = index;
+            }
         }
-        else
+        else if(index != noLoadedPreset)
         {
             loadedPresets.Add(key, index);
         }

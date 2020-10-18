@@ -331,8 +331,10 @@ public class CustUI : MonoBehaviour
                 inventory.AddProgram(prog);
             }
         }
+        
         UpdateCompileButtonColor();
         UpdateShellPropertyUI();
+        SetLoadedPresetIndex(PresetManager.noLoadedPreset);
     }
 
     #region Preset UI
@@ -346,15 +348,19 @@ public class CustUI : MonoBehaviour
     private void InitializePresetUI()
     {
         var presetManager = PersistantData.main.presetManager;
-
         presets = presetManager.GetPresets(Shell);
-        SetLoadedPresetIndex(presetManager.GetLoadedPreset(Shell));
+        SetLoadedPresetIndex(presetManager.GetLoadedPreset(Shell), false);
         InitializePresetButtons();
     }
 
-    private void SetLoadedPresetIndex(int index)
+    private void SetLoadedPresetIndex(int index, bool updatePresetManager = true)
     {
         loadedPresetIndex = index;
+        if(updatePresetManager)
+        {
+            var presetManager = PersistantData.main.presetManager;
+            presetManager.SetLoadedPreset(Shell, index);
+        }
         if (loadedPresetIndex == PresetManager.noLoadedPreset)
         {
             presetNameText.text = "Preset: None";
@@ -422,9 +428,7 @@ public class CustUI : MonoBehaviour
 
     public void LoadPreset(int index)
     {
-        var presetManager = PersistantData.main.presetManager;
         var preset = presets[index];
-        presetManager.SetLoadedPreset(Shell, index);
         if(index == PresetManager.noLoadedPreset)
         {
             savePresetButton.interactable = false;
