@@ -2,15 +2,12 @@
 
 namespace Pathfinding.Collections
 {
-
     /// <summary>
-    /// A c# priority queue implementation for pathfinding
-    /// Currently based on inefficient backend for testing purposes
-    /// Will implement using a binary heap later
+    /// A c# priority queue implementation for pathfinding, based on a binary min heap
     /// </summary>
     public class PriorityQueue<T>
     {
-        private BinaryMinHeap<Item> items;
+        private readonly BinaryMinHeap<Item> items;
 
         public bool Empty { get => items.Empty; }
 
@@ -37,13 +34,19 @@ namespace Pathfinding.Collections
 
         public void Enqueue(T item, float priority)
         {
-            items.Insert(new Item() { item = item, priority = priority });
+            items.Insert(new Item(priority, item));
         }
 
-        private struct Item : IComparable<Item>
+        private readonly struct Item : IComparable<Item>
         {
-            public float priority;
-            public T item;
+            public readonly float priority;
+            public readonly T item;
+
+            public Item(float priority, T item)
+            {
+                this.priority = priority;
+                this.item = item;
+            }
 
             public int CompareTo(Item other)
             {

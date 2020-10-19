@@ -2,8 +2,6 @@
 UI
 Loot
 Cust
-AI
-- AI Units target obstacles if they can't reach you, and get closer if all else fails
 Smart targeting
 - Make certain actions only have certain valid tiles selectable
 - Make a hybrid action unusable if any of its actions would not have valid targets
@@ -30,6 +28,8 @@ Cust
 	- Add ability to rotate to cust UI
 	- Add reflection to cust UI
 	- Add attributes to programs
+AI
+- Lower priority of attacking mystery data when targeting obstacles
 UI
 - Add turn order indicators
 - Add data type info to drop buttons
@@ -45,7 +45,8 @@ Encounter
 - Properly handle party units dying (Destroy AI core? Shell? Programs?)
 // Low-Priority ----------------------------------------------------------------------------------
 Misc
-Remove debug unit inspect code
+- Test enemy speed-awareness
+- Remove debug unit inspect code
 Balance
 - Make charge more balanced (probably make it so you can't charge into an empty square)
 - Until some sort of upgrading - make multi target attacks less rare

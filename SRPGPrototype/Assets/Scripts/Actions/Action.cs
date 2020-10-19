@@ -85,6 +85,16 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         return Instantiate(gameObject, parent).GetComponent<Action>();
     }
 
+    public int APCostAfterXUses(int uses)
+    {
+        int baseUsage = TimesUsed;
+        if (SlowdownReset == Trigger.TurnStart)
+            baseUsage = TimesUsedThisTurn;
+        else if (SlowdownReset == Trigger.EncounterStart)
+            baseUsage = TimesUsedThisBattle;
+        return baseAp + Slowdown * ((baseUsage + uses) / SlowdownInterval);
+    }
+
     private bool zeroPower = false;
     private bool zeroSpeed = false;
 

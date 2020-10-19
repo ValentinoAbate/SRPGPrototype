@@ -6,7 +6,7 @@ namespace Pathfinding.Collections
     public class BinaryMinHeap<T> where T : IComparable<T>
     {
         public bool Empty { get => items.Count == 0; }
-        private List<T> items;
+        private readonly List<T> items;
         public BinaryMinHeap()
         {
             items = new List<T>();

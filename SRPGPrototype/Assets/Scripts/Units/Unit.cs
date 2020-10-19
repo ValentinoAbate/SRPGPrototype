@@ -152,6 +152,18 @@ public abstract class Unit : GridObject
         return AP >= (action.APCost - Speed.Value);
     }
 
+    public int ActionUsesUntilNoAP(Action action)
+    {
+        int uses = 0;
+        int cost = action.APCost - Speed.Value;
+        while(cost < AP)
+        {
+            ++uses;
+            cost += action.APCostAfterXUses(uses) - Speed.ValueAfterXUses(uses);
+        }
+        return uses;
+    }
+
     public virtual IEnumerator OnPhaseStart()
     {
         yield break;

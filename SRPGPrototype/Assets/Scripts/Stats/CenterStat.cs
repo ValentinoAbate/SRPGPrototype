@@ -19,4 +19,13 @@ public class CenterStat
         else if (value > 0)
             --value;
     }
+
+    public int ValueAfterXUses(int uses)
+    {
+        if (IsZero)
+            return 0;
+        if (value > 0)
+            return Mathf.Max(0, value - uses);
+        return Mathf.Min(0, value + uses);
+    }
 }

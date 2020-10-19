@@ -16,44 +16,41 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     public abstract IEnumerator DoTurn(BattleGrid grid, T self);
 
-    public int CompareTargetPriority(Unit obj1, int pathDist1, Unit obj2, int pathDist2)
+    protected IEnumerator MoveAlongPath(BattleGrid grid, T self, Action moveAction, List<Vector2Int> path)
     {
-        // First compare grid distance
-        int distCmp = pathDist1.CompareTo(pathDist2);
-        if (distCmp != 0)
-            return distCmp;
-        // If grid distance is the same, compare hp
-        if (obj1.HP != obj2.HP)
-            return obj1.HP.CompareTo(obj2.HP);
-        // Later will compare based on explicit sorting order (names)
-        return 0;
-    }
-
-    protected int GetPathDist(BattleGrid grid, Vector2Int start, Vector2Int goal)
-    {
-        var path = grid.Path(start, goal, (u) => u == null || u.Pos == start || u.Pos == goal);
-        if (path == null)
-            return int.MaxValue;
-        return path.Count;
-    }
-
-    protected int GetPathDist(BattleGrid grid, Vector2Int start, Vector2Int goal, Unit.Team canMoveThrough)
-    {
-        var path = grid.Path(start, goal, (u) => u == null || u.UnitTeam == canMoveThrough || u.Pos == start || u.Pos == goal);
-        if (path == null)
-            return int.MaxValue;
-        return path.Count;
-    }
-
-    protected IEnumerator MoveAlongPath(BattleGrid grid, T self, List<Vector2Int> path, int maxDistance = int.MaxValue)
-    {
-        // Move along the path until within range
-        for (int i = 0; i < maxDistance && i < path.Count; ++i)
+        // Move along the path
+        foreach (var pos in path)
         {
-            //yield return new WaitWhile(() => self.PauseHandle.Paused);
-            grid.MoveAndSetWorldPos(self, path[i]);
+            // If we can't move any further, end the turn
+            if (!self.CanUseAction(moveAction))
+                yield break;
+            moveAction.UseAll(grid, self, pos);
             yield return new WaitForSeconds(moveDelay);
         }
+    }
+
+    protected IEnumerator AttackUntilExhausted(BattleGrid grid, AIUnit self, Action standardAction, Vector2Int tPos)
+    {
+        while (self.CanUseAction(standardAction))
+        {
+            standardAction.UseAll(grid, self, tPos);
+            yield return new WaitForSeconds(attackDelay);
+            Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
+        }
+    }
+
+    protected IEnumerator PathThenAttackIfAble(BattleGrid grid, T self, Action moveAction, Action standardAction, TargetPath tPath)
+    {
+        // Move along the path
+        foreach (var pos in tPath.path)
+        {
+            // If we can't move any further, end the turn
+            if (!self.CanUseAction(moveAction))
+                yield break;
+            moveAction.UseAll(grid, self, pos);
+            yield return new WaitForSeconds(moveDelay);
+        }
+        yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPath.targetPos));
     }
 
     protected IEnumerable<Vector2Int> MovePositions(BattleGrid grid, Vector2Int pos, RangePattern pattern)
@@ -61,101 +58,139 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return pattern.GetPositions(grid, pos).Where((p) => grid.IsLegalAndEmpty(p));
     }
 
-    protected IEnumerator MoveToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, Action standardAction, List<Target> targets) where Target : Unit
+    protected Unit TargetPriority(Unit u1, Unit u2)
     {
-        var movePositions = MovePositions(grid, self.Pos, moveAction.subActions[0].Range).ToList();
-        movePositions.Add(self.Pos);
-        // Move into a viable attack position if possible
-        foreach (var pos in movePositions)
-        {
-            // If our standard action could hit a target form the potential location
-            if (CheckforTargets(grid, self, standardAction, targets) != BattleGrid.OutOfBounds)
-            {
-                // Don't need to move anywhere
-                if(pos == self.Pos)
-                {
-                    yield break;
-                }
-                moveAction.UseAll(grid, self, pos);
-                yield return new WaitForSeconds(moveDelay);
-                yield break;
-            }
-        }
-        var posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos))));
-        // Else find the position that can be moved to that brings us closest to a player unit
-        if (posByPathDist.Count() <= 0)
-            yield break;
-        var closest = posByPathDist.OrderBy((t) => t.value).First();
-        if (closest.value == int.MaxValue)
-        {
-            posByPathDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => GetPathDist(grid, p, unit.Pos, unit.UnitTeam))));
-            // Else find the position that can be moved to that brings us closest to a player unit
-            if (posByPathDist.Count() <= 0)
-                yield break;
-            closest = posByPathDist.OrderBy((t) => t.value).First();
-        }
-        if (closest.value == int.MaxValue)
-        {
-            var posByDist = movePositions.Select((p) => new PosValuePair(p, targets.Min((unit) => (int)Vector2Int.Distance(unit.Pos, p))));
-            if (posByDist.Count() <= 0)
-                yield break;
-            closest = posByDist.OrderBy((t) => t.value).First();
-        }
-        // Don't need to move anywhere
-        if (closest.pos == self.Pos)
-        {
-            yield break;
-        }
-        moveAction.UseAll(grid, self, closest.pos);
-        yield return new WaitForSeconds(moveDelay);
+        return u1.HP.CompareTo(u2.HP) <= 0 ? u1 : u2;
     }
 
-    protected IEnumerator PathToTargetRange<Target>(BattleGrid grid, T self, Action moveAction, Action standardAction, List<Target> targets) where Target : Unit
+    protected List<Vector2Int> Path(BattleGrid grid, T self, Action moveAction, Vector2Int goal, System.Predicate<Unit> canMoveThroughTarget = null)
     {
-        var positions = new List<Vector2Int>();
         var moveRange = moveAction.subActions[0].Range;
-        var targetRange = standardAction.subActions[0].Range;
-        // Calculate possible target positions
-        foreach (var target in targets)
-        {
-            // For now, just add the empty/self legal positions where a target would be in range
-            positions.AddRange(targetRange.GetPositions(grid, target.Pos).Where((p) => grid.IsLegal(p) && (grid.IsEmpty(p) || p == self.Pos)));
-        }
-        // Throw out duplicate positions
-        positions = positions.Distinct().ToList();
-        // Set up for pathfinding
-        // Use the move range and a legality / emptiness check for the adjacency function
-        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveRange);
         // Calculate the maximum manhattan distance of the move action
         int maxMoveDist = moveRange.MaxDistance(grid);
         // Use the manhattan distance to the goal / the maximum manhattan distance of the move action as the heuristic
-        float Heur(Vector2Int pos, Vector2Int goal) => Vector2Int.Distance(pos, goal) / maxMoveDist;
-        // Find all shortests paths to target positions
-        var paths = new List<List<Vector2Int>>();
-        foreach(var position in positions)
+        float Heur(Vector2Int pos, Vector2Int goalPos) => ((int)Vector2Int.Distance(pos, goalPos)) / maxMoveDist;
+        // No predicate, use basic adjacency
+        if (canMoveThroughTarget == null)
         {
-            var path = Pathfinding.AStar.Pathfind(self.Pos, position, NodeAdj, (p, pAdj) => 1, Heur);
-            if(path != null)
+            // Use the move range and a legality / emptiness check for the adjacency function
+            IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveRange);
+            var path = Pathfinding.AStar.Pathfind(self.Pos, goal, NodeAdj, (p, pAdj) => 1, Heur);
+            if (path != null)
             {
                 // Remove the starting position from the path
                 path.RemoveAt(0);
-                paths.Add(path);
+                return path;
             }
- 
         }
-        if (paths.Count <= 0)
-            yield break;
-        // Move towards the target position with the shortest path
-        paths.Sort((p1, p2) => p1.Count.CompareTo(p2.Count));
-        foreach(var pos in paths[0])
+        else // Predicate, use advanced adjacency
         {
-            if (self.AP < moveAction.APCost)
-                yield break;
-            moveAction.UseAll(grid, self, pos);
-            yield return new WaitForSeconds(moveDelay);
+            // Use the move range, a legality check, and an emptiness / predicate check for the adjacency function
+            IEnumerable<Vector2Int> NodeAdj(Vector2Int p)
+            {
+                return moveRange.GetPositions(grid, p).Where((p2) => grid.IsLegal(p2) && (grid.IsEmpty(p2) || canMoveThroughTarget(grid.Get(p2))));
+            }
+            // Use 1 as the cost if the pos is empty, else use the number of grid positions (so paths will always prefer going through less things)
+            int numGridPositions = grid.Rows * grid.Cols;
+            float Cost(Vector2Int p, Vector2Int pAdj) => grid.IsEmpty(pAdj) ? 1 : numGridPositions;
+            var path = Pathfinding.AStar.Pathfind(self.Pos, goal, NodeAdj, Cost, Heur);
+            if (path != null)
+            {
+                // Remove the starting position from the path
+                path.RemoveAt(0);
+                return path;
+            }
         }
+        return null;
     }
 
+    protected List<TargetPath> PathsToTargetRange(BattleGrid grid, T self, Action moveAction, Action standardAction, IEnumerable<Unit> targets, System.Predicate<Unit> canMoveThroughTarget = null)
+    {
+        var positions = new Dictionary<Vector2Int, Unit>();
+        // Get relevant ranges
+        var moveRange = moveAction.subActions[0].Range;
+        var targetRange = standardAction.subActions[0].Range;
+        // Target position is valid if is legal and is empty, self or passes the canMoveThrough pred
+        bool ValidPos(Vector2Int p) => grid.IsLegal(p) && (grid.IsEmpty(p) || p == self.Pos
+            || (canMoveThroughTarget != null && canMoveThroughTarget(grid.Get(p))));
+        // Calculate possible target positions
+        foreach (var target in targets)
+        {
+            var targetPositions = targetRange.GetPositions(grid, target.Pos).Where(ValidPos);
+            // For now, just add the empty/self legal positions where a target would be in range
+            foreach(var position in targetPositions)
+            {
+                if(!positions.ContainsKey(position))
+                {
+                    positions.Add(position, target);
+                }
+                else
+                {
+                    positions[position] = TargetPriority(positions[position], target);
+                }
+            }
+        }
+        // Find all shortests paths to target positions
+        var paths = new List<TargetPath>();
+        foreach (var posTargetPair in positions)
+        {
+            var path = Path(grid, self, moveAction, posTargetPair.Key, canMoveThroughTarget);
+            if (path != null)
+            {
+                paths.Add(new TargetPath(path, posTargetPair.Value.Pos));
+            }
+        }
+        // Move towards the target position with the shortest path
+        paths.Sort((p1, p2) => p1.path.Count.CompareTo(p2.path.Count));
+        return paths;
+    }
+
+    public List<Vector2Int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos)
+    {
+        int range = self.ActionUsesUntilNoAP(moveAction);
+        // Use the move range and a legality / emptiness check for the adjacency function
+        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction.subActions[0].Range);
+        // Initialize distances with the startPosition
+        var distances = new Dictionary<Vector2Int, int> { { startPos, 0 } };
+
+        // Inner recursive method
+        void ReachableRecursive(Vector2Int p, int currDepth)
+        {
+            // Inner Traversability method
+            bool Traversable(Vector2Int pos)
+            {
+                return (!distances.ContainsKey(pos) || currDepth + 1 < distances[pos]) && grid.IsLegalAndEmpty(pos);
+            };
+
+            // Log discovery and distance
+            if (distances.ContainsKey(p))
+            {
+                if (distances[p] > currDepth)
+                    distances[p] = currDepth;
+            }
+            else
+            {
+                distances.Add(p, currDepth);
+            }
+            // If depth is greater than range, end recursion
+            if (currDepth >= range)
+                return;
+            // Get adjacent nodes (traversability function inverted as the Adj function takes a function for non-traversability)
+            var nodes = NodeAdj(p).Where(Traversable);
+            // Recur
+            foreach (var node in nodes)
+                ReachableRecursive(node, currDepth + 1);
+        }
+
+        // Start Recursion
+        ReachableRecursive(startPos, 0);
+        return distances.Keys.ToList();
+    }
+
+    /// <summary>
+    /// Checks for tagets in range of the given standard action. Takes target pattern into account
+    /// returns the first viable target position found, else BattleGrid.OutOfBounds
+    /// </summary>
     protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> targetUnits) where Target : Unit
     {
         var subAction = standardAction.subActions[0];
@@ -173,19 +208,15 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return BattleGrid.OutOfBounds;
     }
 
-    protected List<Unit> FindTargetsOnTeams(BattleGrid grid, List<Unit.Team> teams)
+    public readonly struct TargetPath
     {
-        return grid.FindAll((c) => teams.Any((team) => c.UnitTeam == team));
-    }
+        public readonly List<Vector2Int> path;
+        public readonly Vector2Int targetPos;
 
-    private struct PosValuePair
-    {
-        public Vector2Int pos;
-        public int value;
-        public PosValuePair(Vector2Int pos, int value)
+        public TargetPath(List<Vector2Int> path, Vector2Int targetPos)
         {
-            this.pos = pos;
-            this.value = value;
+            this.path = path;
+            this.targetPos = targetPos;
         }
     }
 }

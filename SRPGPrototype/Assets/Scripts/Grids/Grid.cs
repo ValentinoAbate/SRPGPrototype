@@ -207,6 +207,8 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 
     public bool IsEmpty(Vector2Int pos) => field[pos.x, pos.y] == null;
 
+    public bool NotEmpty(Vector2Int pos) => field[pos.x, pos.y] != null;
+
     /// <summary>
     /// Return the object of type T at the given grid position, or null if the position is empty or filled with an object that is not of type T
     /// </summary>
@@ -378,14 +380,14 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     /// Takes into account obstacles, but spaces with objects considered to be traversable will still be returned in the dictionary,
     /// even if some mechanics that utilize this method (such as movement) should exclude those spaces later.
     /// </summary>
-    /// <param name="startVector2Int"> The grid position to start looking from </param>
+    /// <param name="startPos"> The grid position to start looking from </param>
     /// <param name="range"> The movement range to serach </param>
     /// <param name="canMoveThrough"> A predicate function determining if a given object is traversable </param>
     /// <returns> A dictionary of reachable grid positions to ints where the ints are the minimum distance to the position. </returns>
-    public Dictionary<Vector2Int,int> Reachable(Vector2Int startVector2Int, int range, Predicate<Obj> canMoveThrough)
+    public Dictionary<Vector2Int,int> Reachable(Vector2Int startPos, int range, Predicate<Obj> canMoveThrough)
     {
         // Initialize distances with the startPosition
-        var distances = new Dictionary<Vector2Int, int> { { startVector2Int, 0 } };
+        var distances = new Dictionary<Vector2Int, int> { { startPos, 0 } };
 
         // Inner recursive method
         void ReachableRecursive(Vector2Int p, int currDepth)
@@ -417,7 +419,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         }
 
         // Start Recursion
-        ReachableRecursive(startVector2Int, 0);
+        ReachableRecursive(startPos, 0);
         return distances;
     }
 

@@ -25,32 +25,24 @@ public class AIComponentTurret : AIComponent<AIUnit>
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
         var subAction = standardAction.subActions[0];
-        var targetUnits = FindTargetsOnTeams(grid, targetTeams);
-
+        // If action targets self, end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {
-            while(self.AP >= standardAction.APCost)
-            {
-                standardAction.UseAll(grid, self, self.Pos);
-            }
+            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
             yield break;
         }
+        bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
+        // Find all targets
+        var targetUnits = grid.FindAll(IsUnitTarget);
+        // Exit early if there are no targets
         if (targetUnits.Count <= 0)
             yield break;
-        while (self.AP >= standardAction.APCost)
+        // Check for target in range
+        var tPos = CheckforTargets(grid, self, standardAction, targetUnits);
+        // Use standard action until exhausted if target is found, then end turn
+        if (tPos != BattleGrid.OutOfBounds)
         {
-            var tPos = CheckforTargets(grid, self, standardAction, targetUnits);
-            // Use standard action if target is found
-            if (tPos != BattleGrid.OutOfBounds)
-            {
-                standardAction.UseAll(grid, self, tPos);
-                yield return new WaitForSeconds(attackDelay);
-                Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
-            }
-            else
-            {
-                yield break;
-            }
+            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPos));
         }
     }
 }
