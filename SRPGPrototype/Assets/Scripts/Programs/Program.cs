@@ -46,12 +46,18 @@ public class Program : GridObject, ILootable
     public UnityEngine.Color ColorValue => colorValues[color];
 
     public Shell Shell { get; set; }
-
+    // TODO: Switch to calculating at awake when all programs are instantiated
     public ProgramEffect[] Effects => GetComponents<ProgramEffect>();
-    public string DisplayName => displayName;
+    public ProgramUpgrade Upgrade { get; set; }
+
+    public bool IsUpgraded => Upgrade != null;
+    // TODO: Switch to calculating at awake when all programs are instantiated
+    public ProgramUpgrade[] Upgrades => IsUpgraded ? Upgrade.Upgrades : GetComponentsInChildren<ProgramUpgrade>();
+        
+    public string DisplayName => IsUpgraded ? Upgrade.DisplayName : displayName;
     [SerializeField] private string displayName = string.Empty;
 
-    public string Description => description;
+    public string Description => IsUpgraded ? Upgrade.Description : description;
     [SerializeField] [TextArea(2,4)] private string description = string.Empty;
 
     public Rarity Rarity => rarity;
