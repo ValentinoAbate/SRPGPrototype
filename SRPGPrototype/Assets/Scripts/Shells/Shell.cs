@@ -228,9 +228,8 @@ public class Shell : MonoBehaviour, ILootable
 
     #endregion
 
-    public CompileData GetCompileData(out List<Action> newActions)
+    public CompileData GetCompileData()
     {
-        newActions = new List<Action>();
         var compileData = new CompileData();
         // If the shell is an asset, generate compile data from pre-installs
         var programList = InstallMap == null ? preInstalledPrograms : programs;
@@ -239,15 +238,7 @@ public class Shell : MonoBehaviour, ILootable
         {
             foreach (var effect in install.program.Effects)
             {
-                compileData.actions.Clear();
                 effect.ApplyEffect(install.program, ref compileData);
-                // Instantiate new actions
-                foreach (var action in compileData.actions)
-                {
-                    var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
-                    actionInstance.Program = install.program;
-                    newActions.Add(actionInstance);
-                }
             }
         }
         return compileData;
@@ -261,17 +252,16 @@ public class Shell : MonoBehaviour, ILootable
     public bool Compile()
     {
         // Generate the compile data
-        var compileData = GetCompileData(out List<Action> newActions);
+        var compileData = GetCompileData();
         // Check Max Hp
         if (compileData.stats.MaxHP <= 0)
         {
             Debug.LogWarning("Compile Error: Max Hp <= 0");
-            newActions.ForEach((a) => Destroy(a.gameObject));
             Compiled = false;
             return false;
         }
         // Check number of actions
-        if(newActions.Count <= 0)
+        if(compileData.actions.Count <= 0)
         {
             Debug.LogWarning("Compile Error: No Actions");
             Compiled = false;
@@ -290,7 +280,7 @@ public class Shell : MonoBehaviour, ILootable
             if(restriction(this, out string errorMessage))
             {
                 Debug.LogWarning(errorMessage);
-                newActions.ForEach((a) => Destroy(a.gameObject));
+                compileData.actions.ForEach((a) => Destroy(a.gameObject));
                 Compiled = false;
                 return false;
             }
@@ -318,16 +308,8 @@ public class Shell : MonoBehaviour, ILootable
             Stats.RestoreHpToMax();
             firstCompile = false;
         }
-        // Copy Temporary values of already instantiated actions to their newly generated copies
-        foreach(var action in actions)
-        {
-            var sameAction = newActions.Find((a) => action.DisplayName == a.DisplayName && action.Program == a.Program);
-            if (sameAction != null)
-                sameAction.CopyTemporaryValues(action);
-            Destroy(action.gameObject);
-        }
         actions.Clear();
-        actions.AddRange(newActions);
+        actions.AddRange(compileData.actions);
         Compiled = true;
         return true;
     }

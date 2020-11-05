@@ -24,9 +24,9 @@ public class ShellDescriptionUI : MonoBehaviour
         nameText.text = s.DisplayName;
         descriptionText.text = s.Description;
         // If the shell is an asset, compile data will generate from pre-installs
-        var compileData = s.GetCompileData(out List<Action> newActions);
+        var compileData = s.GetCompileData();
         // Actions text
-        actionsText.text = AggregateText(newActions.Select((a) => a.DisplayName));
+        actionsText.text = AggregateText(compileData.actions.Select((a) => a.DisplayName));
         // Abilities Text
         abilitiesText.text = AggregateText(compileData.abilityNames);
         // Restricions text
@@ -42,8 +42,6 @@ public class ShellDescriptionUI : MonoBehaviour
         // Show shell graphics
         shellPatternDisplay.Show(s);
         gameObject.SetActive(true);
-        // Clean up action objects
-        newActions.ForEach((a) => Destroy(a.gameObject));
     }
 
     public void Hide()

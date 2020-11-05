@@ -141,13 +141,6 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         }
     }
 
-    public void CopyTemporaryValues(Action other)
-    {
-        TimesUsedThisTurn = other.TimesUsedThisTurn;
-        TimesUsedThisBattle = other.TimesUsedThisBattle;
-        TimesUsed = other.TimesUsed;
-    }
-
     public IEnumerator<SubAction> GetEnumerator()
     {
         return subActions.GetEnumerator();

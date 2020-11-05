@@ -145,13 +145,12 @@ public class CustUI : MonoBehaviour
     public void UpdateShellPropertyUI()
     {
         int level = Shell.Level;
-        var compileData = Shell.GetCompileData(out List<Action> newActions);
+        var compileData = Shell.GetCompileData();
         shellHpNumberText.text = Mathf.Clamp(Shell.Stats.HP, 0, compileData.stats.MaxHP).ToString() + "/" + compileData.stats.MaxHP;
         shellLvNumberText.text = level == Shell.MaxLevel ? "Max" : level.ToString();
         shellCapNumberText.text = compileData.capacity.ToString() + "/" + Shell.CapacityThresholds[level].ToString();
         levelDownButton.interactable = level > 0;
         levelUpButton.interactable = level < Shell.MaxLevel;
-        newActions.ForEach((a) => Destroy(a.gameObject));
     }
 
     public void LevelUp()
