@@ -236,9 +236,14 @@ public class Shell : MonoBehaviour, ILootable
         // Look through programs and apply program effects
         foreach (var install in programList)
         {
-            foreach (var effect in install.program.Effects)
+            var program = install.program;
+            foreach (var effect in program.Effects)
             {
-                effect.ApplyEffect(install.program, ref compileData);
+                effect.ApplyEffect(program, ref compileData);
+            }
+            foreach (var trigger in program.Triggers)
+            {
+                trigger.Condition.LinkEffect(program, ref compileData);
             }
         }
         return compileData;

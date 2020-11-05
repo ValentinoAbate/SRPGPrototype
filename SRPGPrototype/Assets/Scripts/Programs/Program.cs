@@ -52,7 +52,7 @@ public class Program : GridObject, ILootable
 
     public bool IsUpgraded => Upgrade != null;
     // TODO: Switch to calculating at awake when all programs are instantiated
-    public ProgramUpgrade[] Upgrades => IsUpgraded ? Upgrade.Upgrades : GetComponentsInChildren<ProgramUpgrade>();
+    public ProgramTrigger[] Triggers => IsUpgraded ? Upgrade.Upgrades : GetComponentsInChildren<ProgramTrigger>();
         
     public string DisplayName => IsUpgraded ? Upgrade.DisplayName : displayName;
     [SerializeField] private string displayName = string.Empty;
