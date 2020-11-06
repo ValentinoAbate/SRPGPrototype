@@ -49,7 +49,6 @@ public class Program : GridObject, ILootable
     // TODO: Switch to calculating at awake when all programs are instantiated
     public ProgramEffect[] Effects => GetComponents<ProgramEffect>();
     public ProgramUpgrade Upgrade { get; set; }
-
     public bool IsUpgraded => Upgrade != null;
     // TODO: Switch to calculating at awake when all programs are instantiated
     public ProgramTrigger[] Triggers => IsUpgraded ? Upgrade.Upgrades : GetComponentsInChildren<ProgramTrigger>();

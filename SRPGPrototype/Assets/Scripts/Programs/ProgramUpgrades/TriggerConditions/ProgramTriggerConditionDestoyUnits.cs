@@ -15,7 +15,7 @@ public class ProgramTriggerConditionDestoyUnits : ProgramTriggerCondition
 
     private readonly List<Action> actions = new List<Action>();
 
-    public override string RevealedConditionText => "Destroy " + number + " " + string.Join("/",teams) + " units using actions from this program (" + progress + "/" + number + ")";
+    public override string RevealedConditionText => "Destroy " + number + " " + string.Join("/",teams) + " units with this program (" + progress + "/" + number + ")";
     public override void LinkEffect(Program program, ref Shell.CompileData data)
     {
         actions.Clear();
