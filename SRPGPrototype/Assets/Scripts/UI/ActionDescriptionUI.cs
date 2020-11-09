@@ -22,8 +22,7 @@ public class ActionDescriptionUI : MonoBehaviour
         // Name and action type
         nameText.text = action.DisplayName + " (" + action.ActionType.ToString() + ")";
         descText.text = action.Description; // add description later
-        if(action.Program != null)
-            attributesText.text = action.Program.AttributesText; // this is also for later
+        attributesText.text = action.Program != null ? action.Program.AttributesText : string.Empty; // this is also for later
         if(user == null || user.Speed.IsZero)
         {
             apCostNumberText.text = action.APCost.ToString();

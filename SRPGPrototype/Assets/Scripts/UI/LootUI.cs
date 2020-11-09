@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -29,13 +30,16 @@ public class LootUI : MonoBehaviour
 
     public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, System.Action onLootClose)
     {
+        // Create loot objects
+        var programDrawsInstantiated = programDraws.Select((list) => list.Select((prog) => Instantiate(prog.gameObject, transform).GetComponent<Program>()));
+        var shellDrawsInstantiated = shellDraws.Select((list) => list.Select((shell) => Instantiate(shell.gameObject, transform).GetComponent<Shell>()));
         // Setup main menu
-        foreach(var draw in programDraws)
+        foreach (var draw in programDrawsInstantiated)
         {
             var button = Instantiate(programDrawButtonPrefab, menuButtonContainer).GetComponent<Button>();
             button.onClick.AddListener(() => ShowProgDraw(inv, button, draw));
         }
-        foreach (var draw in shellDraws)
+        foreach (var draw in shellDrawsInstantiated)
         {
             var button = Instantiate(shellDrawButtonPrefab, menuButtonContainer).GetComponent<Button>();
             button.onClick.AddListener(() => ShowShellDraw(inv, button, draw));
@@ -74,7 +78,7 @@ public class LootUI : MonoBehaviour
         ReturnToMainMenu();
     }
 
-    public void ShowShellDraw(Inventory inv, Button menuButton, List<Shell> data)
+    public void ShowShellDraw(Inventory inv, Button menuButton, IEnumerable<Shell> data)
     {
         menuUI.SetActive(false);
         shellDrawButtonContainer.DestroyAllChildren();
@@ -82,7 +86,7 @@ public class LootUI : MonoBehaviour
         {
             var lootButtonUI = Instantiate(shellButtonPrefab, shellDrawButtonContainer).GetComponent<LootButtonUI>();
             lootButtonUI.nameText.text = shell.DisplayName;
-            lootButtonUI.button.onClick.AddListener(() => inv.AddShell(shell, true));
+            lootButtonUI.button.onClick.AddListener(() => inv.AddShell(shell));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
             lootButtonUI.trigger.triggers.Clear();
             var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
@@ -95,7 +99,7 @@ public class LootUI : MonoBehaviour
         shellDrawUI.SetActive(true);
     }
 
-    public void ShowProgDraw(Inventory inv, Button menuButton, List<Program> data)
+    public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> data)
     {
         menuUI.SetActive(false);
         programDrawButtonContainer.DestroyAllChildren();
@@ -103,7 +107,7 @@ public class LootUI : MonoBehaviour
         {
             var lootButtonUI = Instantiate(programButtonPrefab, programDrawButtonContainer).GetComponent<LootButtonUI>();
             lootButtonUI.nameText.text = prog.DisplayName;
-            lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog, true));
+            lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
             lootButtonUI.trigger.triggers.Clear();
             var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };

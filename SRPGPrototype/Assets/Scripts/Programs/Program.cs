@@ -46,12 +46,12 @@ public class Program : GridObject, ILootable
     public UnityEngine.Color ColorValue => colorValues[color];
 
     public Shell Shell { get; set; }
-    // TODO: Switch to calculating at awake when all programs are instantiated
-    public ProgramEffect[] Effects => GetComponents<ProgramEffect>();
+    public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;
+    private ProgramEffect[] effects;
     public ProgramUpgrade Upgrade { get; set; }
     public bool IsUpgraded => Upgrade != null;
-    // TODO: Switch to calculating at awake when all programs are instantiated
-    public ProgramTrigger[] Triggers => IsUpgraded ? Upgrade.Upgrades : GetComponentsInChildren<ProgramTrigger>();
+    public ProgramTrigger[] Triggers => IsUpgraded ? Upgrade.Upgrades : triggers;
+    private ProgramTrigger[] triggers;
         
     public string DisplayName => IsUpgraded ? Upgrade.DisplayName : displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -96,6 +96,12 @@ public class Program : GridObject, ILootable
     public Pattern shape;
 
     private readonly List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
+
+    private void Awake()
+    {
+        triggers = GetComponentsInChildren<ProgramTrigger>();
+        effects = GetComponents<ProgramEffect>();
+    }
 
     public void Show(Vector2Int pos, CustGrid grid)
     {

@@ -56,6 +56,11 @@ MonoBehaviour:
   patternIconPrefab: {fileID: 9147903971502331611, guid: 5abc8e63ac51fc6499ed95d1db859d2c,
     type: 3}
   actionDisplay: {fileID: 2300430548854247035}
+  upgradeTexts:
+  - {fileID: 1380436209962504174}
+  - {fileID: 5696671836625191457}
+  - {fileID: 4900703350056327035}
+  - {fileID: 4838121382369152619}
 --- !u!1 &1350581138573261014
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 77.100006}
+  m_AnchoredPosition: {x: -20, y: 77}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4429679891916518777
@@ -1074,7 +1079,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1351.7955, w: -38.51245}
+  m_margin: {x: 0, y: 0, z: -1032.0112, w: -69.82004}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

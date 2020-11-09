@@ -10,6 +10,7 @@ public class ProgramDescriptionUI : MonoBehaviour
     public PatternDisplayUI patternDisplay;
     public GameObject patternIconPrefab;
     public ActionDescriptionUI actionDisplay;
+    public TextMeshProUGUI[] upgradeTexts = new TextMeshProUGUI[4];
 
     public void Show(Program p)
     {
@@ -29,6 +30,19 @@ public class ProgramDescriptionUI : MonoBehaviour
         {
             actionDisplay.gameObject.SetActive(false);
             programDescText.text = p.Description;
+        }
+        for (int i = 0; i < upgradeTexts.Length; ++i)
+        {
+            if(i >= p.Triggers.Length)
+            {
+                upgradeTexts[i].text = string.Empty;
+                continue;
+            }
+            upgradeTexts[i].text = p.Triggers[i].DisplayName + " - " + p.Triggers[i].Condition.ConditionText;
+            if(p.Triggers[i] is ProgramHatch)
+            {
+                upgradeTexts[i].text += "(Hatch)";
+            }
         }
     }
 
