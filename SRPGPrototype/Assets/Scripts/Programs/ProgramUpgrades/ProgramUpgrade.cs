@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ProgramUpgrade : ProgramTrigger
@@ -11,7 +12,8 @@ public class ProgramUpgrade : ProgramTrigger
 
     private void Awake()
     {
-        Upgrades = GetComponentsInChildren<ProgramTrigger>();
+        // Upgrades shouldn't include self
+        Upgrades = GetComponentsInChildren<ProgramTrigger>().Where((t) => t != this).ToArray();
         ProgramEffects = GetComponents<ProgramEffect>();
     }
 }

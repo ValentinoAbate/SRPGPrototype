@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ProgramTriggerCondition : MonoBehaviour
 {
-    public const string hiddenText = ProgramUpgrade.hiddenText;
+    public const string hiddenText = "???????????";
     public bool Hidden { get => hidden; }
     [SerializeField] private bool hidden = false;
     public string ConditionText { get => Hidden ? hiddenText : RevealedConditionText; }

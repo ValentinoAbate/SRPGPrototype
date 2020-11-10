@@ -7,13 +7,14 @@ Smart targeting
 - Make a hybrid action unusable if any of its actions would not have valid targets
 Program Effects
 - Add adjacency / modifier effects
-- UPGRADES / Promotions
-	- Triggers, and effect switches, some temporary?
+UPGRADES
+- Hatch functionality
+- Upgrade display UI
+- Upgrade confirmation prompt
 Program / Shell Variants
-- Instantiate loot in the loot buttons, and allow for variation
-	- Color program variants
-	- Shape program variants
-	- Shell pre-install placement shuffle variants
+- Color program variants
+- Shape program variants
+- Shell pre-install placement shuffle variants
 Saving
 - Implement saving
 Balance
