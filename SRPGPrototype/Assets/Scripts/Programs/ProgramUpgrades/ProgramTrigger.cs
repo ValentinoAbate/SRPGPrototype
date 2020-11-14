@@ -9,6 +9,6 @@ public abstract class ProgramTrigger : MonoBehaviour
 
     public bool Hidden { get => hidden; }
     [SerializeField] private bool hidden = false;
-    public string DisplayName { get => Hidden ? hiddenText : displayName; }
-    [SerializeField] private string displayName = string.Empty;
+    public string TriggerName { get => Hidden ? hiddenText : displayName; }
+    [SerializeField] protected string displayName = string.Empty;
 }

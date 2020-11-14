@@ -9,7 +9,7 @@ public class ProgramUpgrade : ProgramTrigger
     public ProgramEffect[] ProgramEffects { get; private set; }
     public string Description => description;
     [SerializeField] [TextArea(2, 4)] private string description = string.Empty;
-
+    public string DisplayName { get => displayName; }
     private void Awake()
     {
         // Upgrades shouldn't include self

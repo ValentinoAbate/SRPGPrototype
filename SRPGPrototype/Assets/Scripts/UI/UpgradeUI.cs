@@ -19,6 +19,8 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private GameObject upgradeUI;
     [SerializeField] private Transform upgradeButtonContainer;
     [SerializeField] private GameObject upgradeButtonPrefab;
+    [SerializeField] private ProgramDescriptionUI previewOldProgramUI;
+    [SerializeField] private ProgramDescriptionUI previewNewProgramUI;
 
     private void Start()
     {
@@ -110,11 +112,11 @@ public class UpgradeUI : MonoBehaviour
             var buttonText = upgradeButton.GetComponentInChildren<TextMeshProUGUI>();
             if(!trigger.Condition.Completed)
             {
-                buttonText.text = trigger.DisplayName;
+                buttonText.text = trigger.TriggerName;
                 upgradeButton.interactable = false;
                 continue;
             }
-            buttonText.text = trigger.DisplayName + " (Ready)";
+            buttonText.text = trigger.TriggerName + " (Ready)";
             if(trigger is ProgramUpgrade)
             {
                 var upgrade = trigger as ProgramUpgrade;
@@ -125,8 +127,40 @@ public class UpgradeUI : MonoBehaviour
                 {
                     upgradeButton.onClick.AddListener(() => p.Shell.Compile());
                 }
+                // Add preview
+                var eventTrigger = upgradeButton.GetComponent<EventTrigger>();
+                // Set up event triggers
+                eventTrigger.triggers.Clear();
+                var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
+                hover.callback.AddListener((data) => ShowUpgradePreview(p, upgrade));
+                var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
+                hoverExit.callback.AddListener((data) => HideUpgradePreview());
+                eventTrigger.triggers.Add(hover);
+                eventTrigger.triggers.Add(hoverExit);
             }
         }
+    }
+
+    private void ShowUpgradePreview(Program p, ProgramUpgrade upgrade)
+    {
+        previewOldProgramUI.Show(p);
+        var oldUpgrade = p.Upgrade;
+        p.Upgrade = upgrade;
+        if(upgrade.Hidden)
+        {
+            previewNewProgramUI.ShowHidden(p);
+        }
+        else
+        {
+            previewNewProgramUI.Show(p);
+        }
+        p.Upgrade = oldUpgrade;
+    }
+
+    private void HideUpgradePreview()
+    {
+        previewOldProgramUI.Hide();
+        previewNewProgramUI.Hide();
     }
 
     public void ExitProgramUpgradeUI()
