@@ -9,12 +9,11 @@ Program Effects
 - Add adjacency / modifier effects
 UPGRADES
 - Hatch functionality
-- Upgrade display UI
 - Upgrade confirmation prompt
 Program / Shell Variants
-- Color program variants
-- Shape program variants
+- Upgrades available program variants
 - Shell pre-install placement shuffle variants
+- Make loot weightings to compensate for variants when necessary
 Saving
 - Implement saving
 Balance
