@@ -7,9 +7,6 @@ Smart targeting
 - Make a hybrid action unusable if any of its actions would not have valid targets
 Program Effects
 - Add adjacency / modifier effects
-UPGRADES
-- Hatch functionality
-- Upgrade confirmation prompt
 Program / Shell Variants
 - Upgrades available program variants
 - Shell pre-install placement shuffle variants
@@ -22,6 +19,9 @@ Map revamp
 NPCs
 - Possibly dependent on map revamp, needs more design
 // Mid-Priority ----------------------------------------------------------------------------------
+Upgrades
+- Hatch functionality
+- Upgrade confirmation prompt
 Cust
 - Possibly: Make level-down auto-remove blocking programs
 - Program rotation / reflection
