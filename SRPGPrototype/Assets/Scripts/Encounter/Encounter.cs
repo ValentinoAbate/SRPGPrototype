@@ -6,6 +6,7 @@ using UnityEngine;
 public class Encounter
 {
     public string name = "Encounter";
+    public Vector2Int dimensions;
     public List<UnitEntry> units = new List<UnitEntry>();
     public List<Vector2Int> spawnPositions = new List<Vector2Int>();
 

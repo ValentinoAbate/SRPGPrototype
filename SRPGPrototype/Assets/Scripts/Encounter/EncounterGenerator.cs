@@ -90,7 +90,7 @@ public class EncounterGenerator : MonoBehaviour
     public Encounter Generate(EncounterData data, string encounterName)
     {
         var positions = EnumerateDimensions(data.dimensions);
-        var encounter = new Encounter() { name = encounterName };
+        var encounter = new Encounter() { name = encounterName, dimensions = data.dimensions };
         int numSpawnPositions = data.numSpawnPositions;
         int numEnemies = RandomU.instance.Choice(data.numEnemies, data.numEnemiesWeights);
         int numObstacles = RandomU.instance.Choice(data.numObstacles, data.numObstaclesWeights);

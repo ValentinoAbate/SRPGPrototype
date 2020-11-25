@@ -15,6 +15,12 @@ public class BattleGrid : Grid<Unit>
         Initialize();
     }
 
+    public void SetDimensions(int x, int y)
+    {
+        dimensions = new Vector2Int(x, y);
+        Initialize();
+    }
+
     public override bool Add(Vector2Int pos, Unit obj)
     {
         if(base.Add(pos, obj))

@@ -15,6 +15,7 @@ public class EncounterManager : MonoBehaviour
     public Button confirmPlayerPlacementButton;
     public GameObject spawnPositionPrefab;
     public Transform outOfBoundsPos;
+    public Transform battleGridCenter;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
@@ -31,6 +32,9 @@ public class EncounterManager : MonoBehaviour
     {
         // Get the encounter from the map
         var encounter = PersistantData.main.mapManager.Map.Current.value;
+        // Initialize Grid
+        grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
+        grid.CenterAtPosition(battleGridCenter.position);
         // Instantiate and add units to the grid
         var units = InitializeUnits(encounter.units);
         // Instantiate spawn position objects

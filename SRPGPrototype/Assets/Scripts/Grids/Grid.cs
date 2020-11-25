@@ -93,6 +93,22 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 
     #region Rendering
 
+    public void CenterAtPosition(Vector2 worldPos)
+    {
+        var centerPos = GetSpace(new Vector2Int(Dimensions.x / 2, Dimensions.y / 2));
+        if(Dimensions.x % 2 == 0)
+        {
+            centerPos.x -= CenterToVextexOffset.x;
+        }
+        if(Dimensions.y % 2 == 0)
+        {
+            centerPos.y -= CenterToVextexOffset.y;
+        }
+        var centerOffset = centerPos - new Vector2(transform.position.x, transform.position.y);
+        transform.position = worldPos - centerOffset;
+        InitializeGridLines();
+    }
+
     /// <summary>
     /// Create and display the grid line objects
     /// Precondition: InitializeSkew has been called
