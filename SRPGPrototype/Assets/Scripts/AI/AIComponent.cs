@@ -90,7 +90,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
                 return moveRange.GetPositions(grid, p).Where((p2) => grid.IsLegal(p2) && (grid.IsEmpty(p2) || canMoveThroughTarget(grid.Get(p2))));
             }
             // Use 1 as the cost if the pos is empty, else use the number of grid positions (so paths will always prefer going through less things)
-            int numGridPositions = grid.Rows * grid.Cols;
+            int numGridPositions = grid.Dimensions.x * grid.Dimensions.y;
             float Cost(Vector2Int p, Vector2Int pAdj) => grid.IsEmpty(pAdj) ? 1 : numGridPositions;
             var path = Pathfinding.AStar.Pathfind(self.Pos, goal, NodeAdj, Cost, Heur);
             if (path != null)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Extensions.VectorIntDimensionUtils;
 
 public class EncounterGenerator : MonoBehaviour
 {
@@ -89,7 +90,7 @@ public class EncounterGenerator : MonoBehaviour
 
     public Encounter Generate(EncounterData data, string encounterName)
     {
-        var positions = EnumerateDimensions(data.dimensions);
+        var positions = data.dimensions.Enumerate();
         var encounter = new Encounter() { name = encounterName, dimensions = data.dimensions };
         int numSpawnPositions = data.numSpawnPositions;
         int numEnemies = RandomU.instance.Choice(data.numEnemies, data.numEnemiesWeights);
@@ -221,8 +222,7 @@ public class EncounterGenerator : MonoBehaviour
         float weight = 1;
         foreach(var p in pos.Adjacent())
         {
-            if(p.x > 0 && p.y > 0 && p.x < dimensions.x && p.y < dimensions.y 
-                && encounter.units.FindIndex((e) => e.pos == p) != -1)
+            if(p.IsBoundedBy(dimensions) && encounter.units.FindIndex((e) => e.pos == p) != -1)
             {
                 weight *= 2;
             }
@@ -235,8 +235,7 @@ public class EncounterGenerator : MonoBehaviour
         float weight = 1;
         foreach (var p in pos.Adjacent())
         {
-            if (p.x > 0 && p.y > 0 && p.x < dimensions.x && p.y < dimensions.y
-                && encounter.units.FindIndex((e) => e.pos == p) == -1)
+            if (p.IsBoundedBy(dimensions) && encounter.units.FindIndex((e) => e.pos == p) == -1)
             {
                 weight *= 2;
             }
@@ -263,15 +262,6 @@ public class EncounterGenerator : MonoBehaviour
         var pos = RandomU.instance.Choice(validPositions);
         encounter.units.Add(new Encounter.UnitEntry(unit, pos));
         validPositions.Remove(pos);
-    }
-
-    private List<Vector2Int> EnumerateDimensions(Vector2Int dimensions)
-    {
-        var ret = new List<Vector2Int>();
-        for (int x = 0; x < dimensions.x; ++x)
-            for (int y = 0; y < dimensions.y; ++y)
-                ret.Add(new Vector2Int(x, y));
-        return ret;
     }
 
     private void SetSpawnPositions(int num, Vector2Int dimensions, Encounter encounter, ref List<Vector2Int> validPositions)

@@ -48,9 +48,9 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
     public override int MaxDistance(BattleGrid grid)
     {
         if(directions.HasFlag(Directions.Diagonal))
-            return grid.Rows + grid.Cols - 2;
+            return grid.Dimensions.x + grid.Dimensions.y - 2;
         if (directions.HasFlag(Directions.Horizontal))
-            return Mathf.Max(grid.Rows, grid.Cols) - 1;
+            return Mathf.Max(grid.Dimensions.x, grid.Dimensions.y) - 1;
         return 0;
     }
 }

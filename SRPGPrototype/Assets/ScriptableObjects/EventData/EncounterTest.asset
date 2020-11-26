@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EncounterTest
   m_EditorClassIdentifier: 
   targetDifficulty: 11
-  dimensions: {x: 8, y: 8}
+  dimensions: {x: 8, y: 7}
   numSpawnPositions: 3
   numEnemies: 05000000
   numEnemiesWeights:

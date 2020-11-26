@@ -7,9 +7,6 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
     public static readonly Vector2Int OutOfBounds = new Vector2Int(-100, -100);
     public abstract Vector2Int Dimensions { get; }
 
-    public int Rows => field.GetLength(1);
-    public int Cols => field.GetLength(0);
-
     /// <summary>
     /// Return all the currently empty positions in the grid
     /// O(x*y)
@@ -56,16 +53,16 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         InitializeSkew();
         Gizmos.color = Color.black;
         Vector2 offset = CenterToVextexOffset;
-        for(int row = 0; row <= Rows; ++row)
+        for(int y = 0; y <= Dimensions.y; ++y)
         {
-            Vector2 point1 = GetSpace(new Vector2Int(row, 0)) - offset;
-            Vector2 point2 = GetSpace(new Vector2Int(row, Cols)) - offset;
+            Vector2 point1 = GetSpace(new Vector2Int(0, y)) - offset;
+            Vector2 point2 = GetSpace(new Vector2Int(Dimensions.x, y)) - offset;
             Gizmos.DrawLine(point1, point2);
         }
-        for (int col = 0; col <= Cols; ++col)
+        for (int x = 0; x <= Dimensions.x; ++x)
         {
-            Vector2 point1 = GetSpace(new Vector2Int(0, col)) - offset;
-            Vector2 point2 = GetSpace(new Vector2Int(Rows, col)) - offset;
+            Vector2 point1 = GetSpace(new Vector2Int(x, 0)) - offset;
+            Vector2 point2 = GetSpace(new Vector2Int(x, Dimensions.y)) - offset;
             Gizmos.DrawLine(point1, point2);
         }
     }
@@ -79,7 +76,7 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
 
     private void InitializeField()
     {
-        field = new Obj[Dimensions.y, Dimensions.x];
+        field = new Obj[Dimensions.x, Dimensions.y];
     }
 
     /// <summary>
@@ -119,20 +116,20 @@ public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
         lines.Clear();
         Vector2 offset = CenterToVextexOffset;
         // Draw row lines
-        for (int y = 0; y <= Rows; ++y)
+        for (int y = 0; y <= Dimensions.y; ++y)
         {
             var line = Instantiate(gridLinePrefab, transform).GetComponent<LineRenderer>();
-            Vector2 point1 = GetSpace(new Vector2Int(y, 0)) - offset;
-            Vector2 point2 = GetSpace(new Vector2Int(y, Cols)) - offset;
+            Vector2 point1 = GetSpace(new Vector2Int(0, y)) - offset;
+            Vector2 point2 = GetSpace(new Vector2Int(Dimensions.x, y)) - offset;
             line.SetPositions(new Vector3[] { point1, point2 });
             lines.Add(line);
         }
         // Drawn column lines
-        for (int x = 0; x <= Cols; ++x)
+        for (int x = 0; x <= Dimensions.x; ++x)
         {
             var line = Instantiate(gridLinePrefab, transform).GetComponent<LineRenderer>();
-            Vector2 point1 = GetSpace(new Vector2Int(0, x)) - offset;
-            Vector2 point2 = GetSpace(new Vector2Int(Rows, x)) - offset;
+            Vector2 point1 = GetSpace(new Vector2Int(x, 0)) - offset;
+            Vector2 point2 = GetSpace(new Vector2Int(x, Dimensions.y)) - offset;
             line.SetPositions(new Vector3[] { point1, point2 });
             lines.Add(line);
         }

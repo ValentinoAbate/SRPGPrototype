@@ -60,5 +60,4 @@ Bugs
 - Disable end battle button during unit placement
 - Program scroll window doesn't scroll up
 - Combo slash isn't working properly with widepower
-- Non-square encounters don't work with preview and likely battle (probably improper generation)
 Make multi-sub actions whose target pattern depends on the last subaction used
