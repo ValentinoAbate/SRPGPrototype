@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Encounter3-5-Knight
   m_EditorClassIdentifier: 
   targetDifficulty: 48
-  dimensions: {x: 6, y: 6}
+  dimensions: {x: 8, y: 6}
   numSpawnPositions: 3
   numEnemies: 03000000
   numEnemiesWeights:
@@ -32,6 +32,7 @@ MonoBehaviour:
   lootFlags: 1
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units:
     - pos: {x: -1, y: -1}
       unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,

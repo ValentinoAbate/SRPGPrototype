@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Encounter1-5-Nest
   m_EditorClassIdentifier: 
   targetDifficulty: 8
-  dimensions: {x: 6, y: 6}
+  dimensions: {x: 8, y: 6}
+  numSpawnPositions: 3
   numEnemies: 0400000005000000
   numEnemiesWeights:
   - 4
@@ -44,5 +45,6 @@ MonoBehaviour:
   lootFlags: 1
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units: []
-    reinforcements: []
+    spawnPositions: []
