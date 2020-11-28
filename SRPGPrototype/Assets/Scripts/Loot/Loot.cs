@@ -20,7 +20,7 @@ public class Loot<T> where T : ILootable
         Even,
     }
 
-    private readonly Dictionary<Rarity, List<T>> dropTables = new Dictionary<Rarity, List<T>>();
+    private readonly Dictionary<Rarity, WeightedSet<T>> dropTables = new Dictionary<Rarity, WeightedSet<T>>();
 
     private Dictionary<LootQuality, WeightedSet<Rarity>> standardLootRarities;
 
@@ -36,8 +36,8 @@ public class Loot<T> where T : ILootable
         foreach (var item in loot)
         {
             if (!dropTables.ContainsKey(item.Rarity))
-                dropTables.Add(item.Rarity, new List<T>());
-            dropTables[item.Rarity].Add(item);
+                dropTables.Add(item.Rarity, new WeightedSet<T>());
+            dropTables[item.Rarity].Add(item, item.LootWeight);
         }
     }
 
@@ -127,6 +127,6 @@ public class Loot<T> where T : ILootable
         var rarity = RandomU.instance.Choice(rarities);
         if(filter == null)
             return RandomU.instance.Choice(dropTables[rarity]);
-        return RandomU.instance.Choice(dropTables[rarity].Where((p) => filter(p)));
+        return RandomU.instance.Choice(new WeightedSet<T>(dropTables[rarity].Where((p) => filter(p.Key))));
     }
 }

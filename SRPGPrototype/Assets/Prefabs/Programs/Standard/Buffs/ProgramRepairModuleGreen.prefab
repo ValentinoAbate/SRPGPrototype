@@ -92,6 +92,11 @@ PrefabInstance:
       propertyPath: shape.patternOffsets.Array.data[2].y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: lootWeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name

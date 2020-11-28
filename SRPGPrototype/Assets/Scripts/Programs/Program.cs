@@ -62,6 +62,9 @@ public class Program : GridObject, ILootable
     public Rarity Rarity => rarity;
     [SerializeField] Rarity rarity = Rarity.Common;
 
+    public float LootWeight => lootWeight;
+    [SerializeField] float lootWeight = 1;
+
     public TileUI.Type TileType => tileTypes[color];
 
     public string AttributesText

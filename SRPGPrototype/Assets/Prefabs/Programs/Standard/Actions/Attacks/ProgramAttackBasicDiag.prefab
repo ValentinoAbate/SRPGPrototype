@@ -13,6 +13,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 4415060608083833614, guid: 93e37f3380a714f46a3325f994b9b1d3, type: 3}
+--- !u!114 &7878287120194899093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.33
+  patterns:
+  - patternOffsets:
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    dimensions: {x: 2, y: 2}
+  useWeights: 0
+  weights: []
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0

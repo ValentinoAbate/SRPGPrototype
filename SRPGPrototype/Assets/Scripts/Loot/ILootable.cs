@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ILootable
 {
     Rarity Rarity { get; }
+    float LootWeight { get; }
 }

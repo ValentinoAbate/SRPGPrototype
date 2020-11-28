@@ -44,6 +44,8 @@ public class Shell : MonoBehaviour, ILootable
 
     public Progression Type => type;
     [SerializeField] private Progression type = Progression.Standard;
+    public float LootWeight => lootWeight;
+    [SerializeField] float lootWeight = 1;
 
     public Pattern CustArea => patterns[Level];
     [SerializeField] private List<Pattern> patterns = new List<Pattern>(3);

@@ -66,6 +66,11 @@ PrefabInstance:
       propertyPath: color
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: lootWeight
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name

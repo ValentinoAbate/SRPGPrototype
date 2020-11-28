@@ -10,7 +10,6 @@ Program Effects
 Program / Shell Variants
 - Upgrades available program variants
 - Shell pre-install placement shuffle variants
-- Make loot weightings to compensate for variants when necessary
 Saving
 - Implement saving
 Balance
@@ -56,6 +55,7 @@ UI
 - Make team more clear on Unit UI (especially for mystery data)
 - Make end turn button only necessary if usable actions
 - Confirmation prompt on uninstall all button
+- Mark some variants as (Var) in their names so that the player can tell they are non-standard
 Bugs
 - Disable end battle button during unit placement
 - Program scroll window doesn't scroll up
