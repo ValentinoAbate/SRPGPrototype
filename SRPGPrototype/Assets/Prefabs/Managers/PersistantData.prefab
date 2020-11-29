@@ -172,11 +172,8 @@ MonoBehaviour:
   startingShells:
   - {fileID: 5521947192405593796, guid: 966fea88898ceed46909c1dd4cad76d3, type: 3}
   startingPrograms:
-  - {fileID: 4551076113953349650, guid: a2914311ef38d644b9a9a1195ceca40a, type: 3}
+  - {fileID: 4551076113953349650, guid: 4299af35ec051f04690d12af66c6e682, type: 3}
   - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
-  - {fileID: 4551076113953349650, guid: 3fc5ae0d554b2644194aa25e197393da, type: 3}
-  - {fileID: 4551076113953349650, guid: e197f27aa0b7f2d4a95cfbee27550b3d, type: 3}
-  - {fileID: 4551076113953349650, guid: 4709ea17232a13445a299c3367561185, type: 3}
 --- !u!1 &5686376207347549347
 GameObject:
   m_ObjectHideFlags: 0
