@@ -13,6 +13,4 @@ public class ProgramEffectAddStatAfterSubAction : ProgramEffectAddOnAfterSubActi
         int value = number.ActionValue(grid, action, user, targets.Count);
         user.ModifyStat(grid, stat, value, user);
     }
-
-
 }

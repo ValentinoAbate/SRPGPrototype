@@ -28,7 +28,6 @@ public class ProgramTriggerConditionDestoyUnits : ProgramTriggerCondition
     {
         if (!actions.Contains(action))
             return;
-        // This will work for any action, need to make sure the action is one of the ones added by this program
         progress += targets.Where((t) => t.Dead && teams.Contains(t.UnitTeam)).Count();
     }
 }
