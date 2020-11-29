@@ -5,7 +5,7 @@ public abstract class ProgramEffectAddOnAfterSubActionAbility : ProgramEffectAdd
 {
     protected override void AddAbility(Program program, ref Shell.CompileData data)
     {
-        data.abilityOnAfterSubAction += Ability;
+        data.onAfterSubAction += Ability;
     }
 
     public abstract void Ability(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);

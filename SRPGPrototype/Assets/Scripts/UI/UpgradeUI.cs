@@ -8,19 +8,19 @@ using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
-    [SerializeField] private Button showButton;
-    [SerializeField] private TextMeshProUGUI showButtonText;
+    [SerializeField] private Button showButton = null;
+    [SerializeField] private TextMeshProUGUI showButtonText = null;
     [Header("Program Selection UI")]
-    [SerializeField] private Transform readyProgramContainer;
-    [SerializeField] private Transform notReadyProgramContainer;
-    [SerializeField] private GameObject programSelectButtonPrefab;
-    [SerializeField] private ProgramDescriptionUI programDescriptionUI;
+    [SerializeField] private Transform readyProgramContainer = null;
+    [SerializeField] private Transform notReadyProgramContainer = null;
+    [SerializeField] private GameObject programSelectButtonPrefab = null;
+    [SerializeField] private ProgramDescriptionUI programDescriptionUI = null;
     [Header("Upgrade UI")]
-    [SerializeField] private GameObject upgradeUI;
-    [SerializeField] private Transform upgradeButtonContainer;
-    [SerializeField] private GameObject upgradeButtonPrefab;
-    [SerializeField] private ProgramDescriptionUI previewOldProgramUI;
-    [SerializeField] private ProgramDescriptionUI previewNewProgramUI;
+    [SerializeField] private GameObject upgradeUI = null;
+    [SerializeField] private Transform upgradeButtonContainer = null;
+    [SerializeField] private GameObject upgradeButtonPrefab = null;
+    [SerializeField] private ProgramDescriptionUI previewOldProgramUI = null;
+    [SerializeField] private ProgramDescriptionUI previewNewProgramUI = null;
 
     private void Start()
     {

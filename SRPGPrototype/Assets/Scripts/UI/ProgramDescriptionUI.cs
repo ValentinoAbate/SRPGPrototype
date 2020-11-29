@@ -5,14 +5,17 @@ using System.Text.RegularExpressions;
 
 public class ProgramDescriptionUI : MonoBehaviour
 {
-    private const string noUpgradeText = "None";
     public TextMeshProUGUI programNameText;
     public TextMeshProUGUI programDescText;
     public TextMeshProUGUI programAttrText;
     public PatternDisplayUI patternDisplay;
     public GameObject patternIconPrefab;
     public ActionDescriptionUI actionDisplay;
-    public TextMeshProUGUI[] upgradeTexts = new TextMeshProUGUI[4];
+    public UpgradeDisplayUI upgradeDisplay;
+
+    const string hiddenChar = "?";
+    const string hiddenPattern = @"[^\s]";
+    public static string Hide(string input) => Regex.Replace(input, hiddenPattern, hiddenChar);
 
     public void Show(Program p)
     {
@@ -33,20 +36,7 @@ public class ProgramDescriptionUI : MonoBehaviour
             actionDisplay.gameObject.SetActive(false);
             programDescText.text = p.Description;
         }
-
-        for (int i = 0; i < upgradeTexts.Length; ++i)
-        {
-            if (i >= p.Triggers.Length)
-            {
-                upgradeTexts[i].text = i == 0 ? noUpgradeText : string.Empty;
-                continue;
-            }
-            upgradeTexts[i].text = p.Triggers[i].TriggerName + " - " + p.Triggers[i].Condition.ConditionText;
-            if (p.Triggers[i] is ProgramHatch)
-            {
-                upgradeTexts[i].text += "(Hatch)";
-            }
-        }
+        upgradeDisplay.Show(p);
     }
 
     /// <summary>
@@ -54,9 +44,6 @@ public class ProgramDescriptionUI : MonoBehaviour
     /// </summary>
     public void ShowHidden(Program p)
     {
-        const string hiddenChar = "?";
-        const string hiddenPattern = @"[^\s]";
-        string Hide(string input) => Regex.Replace(input, hiddenPattern, hiddenChar);
         programNameText.text = Hide(p.DisplayName);
         programAttrText.text = Hide(p.AttributesText);
         patternDisplay.Show(p.shape, patternIconPrefab, p.ColorValue);
@@ -74,19 +61,7 @@ public class ProgramDescriptionUI : MonoBehaviour
             actionDisplay.gameObject.SetActive(false);
             programDescText.text = Hide(p.Description);
         }
-        for (int i = 0; i < upgradeTexts.Length; ++i)
-        {
-            if (i >= p.Triggers.Length)
-            {
-                upgradeTexts[i].text = i == 0 ? noUpgradeText : string.Empty;
-                continue;
-            }
-            upgradeTexts[i].text = Hide(p.Triggers[i].TriggerName) + " - " + Hide(p.Triggers[i].Condition.ConditionText);
-            if (p.Triggers[i] is ProgramHatch)
-            {
-                upgradeTexts[i].text += "(Hatch)";
-            }
-        }
+        upgradeDisplay.ShowHidden(p);
     }
 
     public void Hide()

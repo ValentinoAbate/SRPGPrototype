@@ -21,9 +21,10 @@ public class PlayerUnit : Unit
 
     #endregion
 
-    public override OnAfterSubAction OnAfterSubActionFn => Shell.AbilityOnAfterSubAction;
-    public override OnDeath OnDeathFn => Shell.AbilityOnDeath;
-    public override OnBattleStartDel OnBattleStartFn => Shell.AbilityOnBattleStart;
+    public override OnAfterSubAction OnAfterSubActionFn => Shell.OnAfterSubAction;
+    public override OnAfterAction OnAfterActionFn => Shell.OnAfterAction;
+    public override OnDeath OnDeathFn => Shell.OnDeath;
+    public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

@@ -22,7 +22,7 @@ public class ProgramTriggerConditionDestoyUnits : ProgramTriggerCondition
         // Log actions from the program
         actions.AddRange(program.Effects.Where((e) => e is ProgramEffectAddAction).Select((e) => (e as ProgramEffectAddAction).action));
         // Add the check
-        data.abilityOnAfterSubAction += Check;
+        data.onAfterSubAction += Check;
     }
     private void Check(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {

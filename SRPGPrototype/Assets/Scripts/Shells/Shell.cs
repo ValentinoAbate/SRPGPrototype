@@ -57,9 +57,10 @@ public class Shell : MonoBehaviour, ILootable
     public IEnumerable<Action> Actions => actions;
     private readonly List<Action> actions = new List<Action>();
 
-    public Unit.OnAfterSubAction AbilityOnAfterSubAction { get; private set; }
-    public Unit.OnDeath AbilityOnDeath { get; private set; }
-    public Unit.OnBattleStartDel AbilityOnBattleStart { get; private set; }
+    public Unit.OnAfterSubAction OnAfterSubAction { get; private set; }
+    public Unit.OnAfterAction OnAfterAction { get; private set; }
+    public Unit.OnDeath OnDeath { get; private set; }
+    public Unit.OnBattleStartDel OnBattleStart { get; private set; }
 
     public Stats Stats { get; set; } = new Stats();
 
@@ -304,9 +305,10 @@ public class Shell : MonoBehaviour, ILootable
         // Apply capacity
         Capacity = compileData.capacity;
         // Apply abilities
-        AbilityOnAfterSubAction = compileData.abilityOnAfterSubAction;
-        AbilityOnDeath = compileData.abilityOnDeath;
-        AbilityOnBattleStart = compileData.abilityOnBattleStart;
+        OnAfterSubAction = compileData.onAfterSubAction;
+        OnAfterAction = compileData.onAfterAction;
+        OnDeath = compileData.onDeath;
+        OnBattleStart = compileData.onBattleStart;
         // Apply compile changes to actions and stats
         Stats.SetShellValues(compileData.stats);
         // Restore all HP if first compile
@@ -328,9 +330,10 @@ public class Shell : MonoBehaviour, ILootable
         public List<string> restrictionNames = new List<string>();
         public List<Restriction> restrictions = new List<Restriction>();
         public List<string> abilityNames = new List<string>();
-        public Unit.OnAfterSubAction abilityOnAfterSubAction = null;
-        public Unit.OnDeath abilityOnDeath = null;
-        public Unit.OnBattleStartDel abilityOnBattleStart = null;
+        public Unit.OnAfterSubAction onAfterSubAction = null;
+        public Unit.OnAfterAction onAfterAction = null;
+        public Unit.OnDeath onDeath = null;
+        public Unit.OnBattleStartDel onBattleStart = null;
         public GameObject soulCoreUnitPrefab = null;
         public int capacity = 0;
     }

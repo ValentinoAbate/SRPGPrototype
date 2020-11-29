@@ -13,6 +13,7 @@ public class ActionDescriptionUI : MonoBehaviour
     public TextMeshProUGUI slowdownAmountNumberText;
     public TextMeshProUGUI slowdownUsesNumberText;
     public TextMeshProUGUI slowdownResetText;
+    public UpgradeDisplayUI upgradeDisplay;
 
     public Color textColor;
     public Color modifiedTextColor;
@@ -22,8 +23,18 @@ public class ActionDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = action.DisplayName + " (" + action.ActionType.ToString() + ")";
-        descText.text = action.Description; // add description later
-        attributesText.text = action.Program != null ? action.Program.AttributesText : string.Empty; // this is also for later
+        descText.text = action.Description;
+        // Program attributes
+        if(action.Program != null)
+        {
+            attributesText.text = action.Program.AttributesText;
+            upgradeDisplay.Show(action.Program);
+        }
+        else
+        {
+            attributesText.text = string.Empty;
+            upgradeDisplay.ShowNone();
+        }
         if(user == null || user.Speed.IsZero)
         {
             apCostNumberText.text = action.APCost.ToString();

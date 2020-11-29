@@ -133,12 +133,11 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         {
             user.Power.Use();
         }
-        if (Program == null)
-            return;
-        if(Program.attributes.HasFlag(Program.Attributes.Transient))
+        if(Program != null && Program.attributes.HasFlag(Program.Attributes.Transient))
         {
             Program.GetComponent<ProgramAttributeTransient>().Uses++;
         }
+        user.OnAfterActionFn?.Invoke(this);
     }
 
     public IEnumerator<SubAction> GetEnumerator()

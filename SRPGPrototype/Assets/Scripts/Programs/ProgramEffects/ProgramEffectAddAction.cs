@@ -14,5 +14,6 @@ public class ProgramEffectAddAction : ProgramEffect
     public override void ApplyEffect(Program program, ref Shell.CompileData data)
     {
         data.actions.Add(action);
+        action.Program = program;
     }
 }

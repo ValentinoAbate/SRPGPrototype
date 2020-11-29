@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ProgramTriggerConditionUses: ProgramTriggerCondition
 {
-    public override bool Completed => Progress >= number;
+    public override bool Completed => completed;
+    private bool completed = false;
 
     [SerializeField] private int number = 5;
     [SerializeField] private Action.Trigger resetCount;
@@ -35,16 +36,17 @@ public class ProgramTriggerConditionUses: ProgramTriggerCondition
     {
         get
         {
+            string progressText = "(" + (completed ? "Done" : Progress + "/" + number) + ")";
             switch (resetCount)
             {
 
                 case Action.Trigger.TurnStart:
-                    return "Use " + number + " times this turn (" + Progress + "/" + number + ")";
+                    return "Use " + number + " times this turn " + progressText;
                 case Action.Trigger.EncounterStart:
-                    return "Use " + number + " times this encounter (" + Progress + "/" + number + ")";
+                    return "Use " + number + " times this encounter " + progressText;
                 case Action.Trigger.Never:
                 default:
-                    return "Use " + number + " times (" + Progress + "/" + number + ")";
+                    return "Use " + number + " times " + progressText;
             }
 
         }
@@ -56,5 +58,13 @@ public class ProgramTriggerConditionUses: ProgramTriggerCondition
         actions.Clear();
         // Log actions from the program
         actions.AddRange(program.Effects.Where((e) => e is ProgramEffectAddAction).Select((e) => (e as ProgramEffectAddAction).action));
+        data.onAfterAction += Check;
+    }
+
+    private void Check(Action action)
+    {
+        if (completed || !actions.Contains(action))
+            return;
+        completed = Progress >= number;
     }
 }
