@@ -34,14 +34,24 @@ General Ideas:
 - Capacity upgrade w/ basic move and/or basic attack
 - Game mode with more units but smaller shells?
 - Should give full capacity before soul core likely
-- Encounters have varied map size / shape
++ Encounters have varied map size / shape
 - Possibly have less enemies at the start of encounters, with some spawning in later
-- Most player obstacles should decay
 - Checkers move (keep jumping)
 - Ability that triggers when you jump over a unit
 - AI could have max moves, max attacks instead of slowdown?
 - Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
 	- Stars on a shell for beating the different bosses
+- Upgrade Ideas
+	- Panic Button:
+		- C: Teleport next to many enemies, U: SafePanicButton: More likely to teleport to sqaures far away from enemies
+		- C: Teleport very far away from your starting square, U: More likely to teleport far away
+		- C: Teleport right next to yourself, U: more likely to teleport close
+	- Knight's / Rook's / Bishop's Challenge:
+		- Find the NPC aqnd it unlocks upgrade to fast move version
+	- Ground Pound:
+		- 
+- Pawn move / attack that can promote to queen movement
+	- Pawn enemy promoted to queen boss
 - Hand mode:
 	- Programs give multiple copies of actions
 	- uses discard / deck hand just like a card game
@@ -62,7 +72,7 @@ General Ideas:
 	- Dragon (red) (related to bombs, fuses)
 	- Stone Golem (Blue) (related to stone knights, bishops, etc)
 	- Tortoise (Green) (related to to buff / tank enemies)
-	- Flying Fish (yellow) (Related to fast enemies)
+	- Flying Fish (yellow) (Related to fast enemies) (flying salmon to relate to hybrids?)
 - Run bosses are the champions of the roots
 	- Spider doesn't have a champion
 	- Dragon: Rider
