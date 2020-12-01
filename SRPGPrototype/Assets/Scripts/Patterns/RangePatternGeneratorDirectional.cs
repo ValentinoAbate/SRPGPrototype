@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class RangePatternGeneratorDirectional : RangePatternGenerator
@@ -13,7 +12,7 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
         Both = Horizontal | Diagonal
     }
     public Directions directions;
-    public override List<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
+    public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
     {
         var ret = new List<Vector2Int>();
         if(directions.HasFlag(Directions.Horizontal))

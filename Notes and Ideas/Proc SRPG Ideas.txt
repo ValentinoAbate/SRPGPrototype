@@ -49,7 +49,8 @@ General Ideas:
 	- Knight's / Rook's / Bishop's Challenge:
 		- Find the NPC aqnd it unlocks upgrade to fast move version
 	- Ground Pound:
-		- 
+		- Ground Pound+ (+1 damage): Hit 3 targets 3 times
+		- Megaton Punch (+1 range): Hit 15 damage with one attack two times ? Hit 4 targets 2 times?
 - Pawn move / attack that can promote to queen movement
 	- Pawn enemy promoted to queen boss
 - Hand mode:

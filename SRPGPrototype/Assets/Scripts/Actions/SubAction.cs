@@ -20,9 +20,7 @@ public class SubAction : MonoBehaviour
     public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos)
     {
         // Get target positions
-        var targetPositions = targetPattern.Target(grid, user, selectedPos);
-        // Remove all illegal target positions
-        targetPositions.RemoveAll((p) => !grid.IsLegal(p));
+        var targetPositions = targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal).ToList();
         var targets = new List<Unit>();
         foreach (var effect in effects)
         {

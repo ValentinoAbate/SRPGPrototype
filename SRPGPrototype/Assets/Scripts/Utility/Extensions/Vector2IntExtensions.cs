@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using System.Linq;
 
 public static class Vector2IntExtensions
 {
@@ -50,9 +51,19 @@ public static class Vector2IntExtensions
         return direction;
     }
 
+    public static IEnumerable<Vector2Int> AdjacentBoth(this Vector2Int pos)
+    {
+        return Adjacent(pos).Concat(AdjacentDiagonal(pos));
+    }
+
+    public static IEnumerable<Vector2Int> AdjacentBoth(this Vector2Int pos, int distance)
+    {
+        return Adjacent(pos, distance).Concat(AdjacentDiagonal(pos, distance));
+    }
+
     public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos)
     {
-        return new List<Vector2Int>()
+        return new Vector2Int[]
         {
             pos + Vector2Int.up,
             pos + Vector2Int.down,
@@ -63,7 +74,7 @@ public static class Vector2IntExtensions
 
     public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos, int distance)
     {
-        return new List<Vector2Int>()
+        return new Vector2Int[]
         {
             pos + (Vector2Int.up * distance),
             pos + (Vector2Int.down * distance),
@@ -74,7 +85,7 @@ public static class Vector2IntExtensions
 
     public static IEnumerable<Vector2Int> AdjacentDiagonal(this Vector2Int pos)
     {
-        return new List<Vector2Int>()
+        return new Vector2Int[]
         {
             pos + Vector2Int.up + Vector2Int.right,
             pos + Vector2Int.down + Vector2Int.right,
@@ -85,7 +96,7 @@ public static class Vector2IntExtensions
 
     public static IEnumerable<Vector2Int> AdjacentDiagonal(this Vector2Int pos, int distance)
     {
-        return new List<Vector2Int>()
+        return new Vector2Int[]
         {
             pos + ((Vector2Int.up + Vector2Int.right) * distance),
             pos + ((Vector2Int.down + Vector2Int.right) * distance),

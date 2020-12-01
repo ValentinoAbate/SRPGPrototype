@@ -29,13 +29,13 @@ public class RangePattern
         switch (patternType)
         {
             case Type.Self:
-                return new List<Vector2Int> { userPos };
+                return new Vector2Int[] { userPos };
             case Type.Adjacent:
                 return userPos.Adjacent();
             case Type.AdjacentDiagonal:
                 return userPos.AdjacentDiagonal();
             case Type.AdjacentBoth:
-                return userPos.AdjacentDiagonal().Concat(userPos.Adjacent());
+                return userPos.AdjacentBoth();
             case Type.Ranged:
                 return userPos.Adjacent(2);
             case Type.RangedDiagonal:
@@ -45,9 +45,9 @@ public class RangePattern
             case Type.Generated:
                 return generator.Generate(grid, userPos);
             case Type.Horizontal:
-                return new List<Vector2Int>() { userPos + Vector2Int.left, userPos + Vector2Int.right };
+                return new Vector2Int[] { userPos + Vector2Int.left, userPos + Vector2Int.right };
             case Type.Vertical:
-                return new List<Vector2Int>() { userPos + Vector2Int.up, userPos + Vector2Int.down };
+                return new Vector2Int[] { userPos + Vector2Int.up, userPos + Vector2Int.down };
         }
         throw new System.Exception("Range Pattern Error: Invalid pattern type");
     }

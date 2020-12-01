@@ -29,7 +29,7 @@ MonoBehaviour:
   stat: 0
   userStat: 5
   constant: 1
-  comparisons: 1
+  comparison: 1
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
