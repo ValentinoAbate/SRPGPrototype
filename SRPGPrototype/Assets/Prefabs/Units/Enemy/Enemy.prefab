@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   team: 1
+  interferenceLevel: 1
   maxHP: 4
   maxAP: 2
   displayName: Enemy

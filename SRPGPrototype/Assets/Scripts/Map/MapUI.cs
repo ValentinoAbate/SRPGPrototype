@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MapUI : MonoBehaviour
 {
-    public string battleSceneName = "Battle";
+    public string encounterSceneName = "Encounter";
     [Header("Choice UI References")]
     public GameObject choiceUI;
     public Transform eventButtonContainer;
@@ -142,6 +142,6 @@ public class MapUI : MonoBehaviour
     private void ConfirmEncounter(Vertex<Encounter> vertex)
     {
         PersistantData.main.mapManager.Map.Current = vertex;
-        SceneTransitionManager.main.TransitionToScene(battleSceneName);
+        SceneTransitionManager.main.TransitionToScene(encounterSceneName);
     }
 }

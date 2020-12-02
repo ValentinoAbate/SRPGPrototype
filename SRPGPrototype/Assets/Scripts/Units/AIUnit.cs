@@ -6,6 +6,8 @@ public abstract class AIUnit : Unit
 {
     public override Team UnitTeam => team;
     [SerializeField] private Team team = Team.None;
+    public override Interference InterferenceLevel => interferenceLevel;
+    [SerializeField] private Interference interferenceLevel = Interference.None;
 
     public override int MaxHP { get => maxHP; set { maxHP = value; HP = Mathf.Min(HP, value); } }
     [SerializeField] private int maxHP = 3;

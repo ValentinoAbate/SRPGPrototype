@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 480, y: 395}
+  m_AnchoredPosition: {x: 360, y: 427}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4783127420124620195
@@ -210,5 +210,7 @@ MonoBehaviour:
   actionButtonMovePrefab: {fileID: 3970063363860568234, guid: 997ac8566c2d6f741b129d0c129a8d8a,
     type: 3}
   actionButtonHybridPrefab: {fileID: 3970063363860568234, guid: 1541311ee5f272042a7b18b020a47fbc,
+    type: 3}
+  linkoutButtonPrefab: {fileID: 3074257871435298261, guid: fd1be97f66f799849a9001b6ad945a28,
     type: 3}
   actionButtonContainer: {fileID: 1014812663518074332}

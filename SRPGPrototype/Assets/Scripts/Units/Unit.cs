@@ -20,8 +20,16 @@ public abstract class Unit : GridObject
         Player,
     }
 
+    public enum Interference
+    { 
+        None,
+        Low,
+        Jamming
+    }
+
     public virtual bool Movable => true;
     public abstract Team UnitTeam { get; }
+    public abstract Interference InterferenceLevel { get; }
     public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }
     public bool Dead => HP <= 0;

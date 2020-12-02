@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class BattleUI : MonoBehaviour
 {
     public BattleGrid grid;
+    public PhaseManager phaseManager;
     public PlayerPhase playerPhase;
     public ActionMenu menu;
     public BattleCursor cursor;
@@ -77,7 +78,7 @@ public class BattleUI : MonoBehaviour
     {
         unitDescription.Hide();
         endTurnButton.interactable = false;
-        menu.Show(this, unit);
+        menu.Show(grid, this, unit, phaseManager.EndActiveEncounter);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;
         cursor.OnUnHighlight = null;

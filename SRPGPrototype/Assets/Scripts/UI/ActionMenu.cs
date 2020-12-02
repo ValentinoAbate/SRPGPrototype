@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Linq;
 
 public class ActionMenu : MonoBehaviour
 {
     public GameObject actionButtonPrefab;
     public GameObject actionButtonMovePrefab;
     public GameObject actionButtonHybridPrefab;
+    public GameObject linkoutButtonPrefab;
 
     public Transform actionButtonContainer;
     private Dictionary<Action.Type, GameObject> buttonPrefabs;
@@ -21,8 +24,9 @@ public class ActionMenu : MonoBehaviour
         };
     }
 
-    public void Show(BattleUI ui, Unit unit)
+    public void Show(BattleGrid grid, BattleUI ui, Unit unit, System.Action OnLinkout)
     {
+        // Action Buttons
         var actions = new List<Action>(unit.Actions);
         actions.Sort((a1, a2) => a1.ActionType.CompareTo(a2.ActionType));
         foreach(var action in actions)
@@ -38,8 +42,8 @@ public class ActionMenu : MonoBehaviour
             var hideActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
             hideActionDesc.callback.AddListener((data) => ui.actionDescription.Hide());
             button.trigger.triggers.Add(hideActionDesc);
-            // Continue if the use doesn't have enough AP or uses
-            if (!action.Usable || !unit.CanUseAction(action))
+            // Continue if the unit doesn't have enough AP
+            if (!unit.CanUseAction(action))
             {
                 button.button.interactable = false;
                 continue;
@@ -48,13 +52,24 @@ public class ActionMenu : MonoBehaviour
             button.button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
             button.button.onClick.AddListener(Hide);
         }
+        // Link Out Button
+        var linkoutButton = Instantiate(linkoutButtonPrefab, actionButtonContainer).GetComponent<Button>();
+        var units = grid.FindAll();
+        if(units.Any((u) => u.InterferenceLevel == Unit.Interference.Jamming)
+            || units.Count((u) => u.InterferenceLevel == Unit.Interference.Low) > 2)
+        {
+            linkoutButton.interactable = false;
+        }
+        else
+        {
+            linkoutButton.interactable = true;
+            linkoutButton.onClick.AddListener(() => OnLinkout());
+        }
+
     }
 
     public void Hide()
     {
-        foreach(Transform t in actionButtonContainer)
-        {
-            Destroy(t.gameObject);
-        }
+        actionButtonContainer.DestroyAllChildren();
     }
 }

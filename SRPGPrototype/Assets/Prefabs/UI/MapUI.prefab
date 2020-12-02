@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf4d16a7d49da4e8cab313c594ef6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleSceneName: Battle
+  encounterSceneName: Encounter
   choiceUI: {fileID: 6257891028699659339}
   eventButtonContainer: {fileID: 6257891028480539443}
   eventButtonPrefab: {fileID: 7055661582928041816, guid: 5ac0ba13a3c7ed645bfe61c5ea855a86,
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go To Battle
+  m_text: Link In
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

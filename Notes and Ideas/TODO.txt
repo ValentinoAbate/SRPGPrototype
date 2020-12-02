@@ -37,6 +37,7 @@ UI
 - Generate number of bugs in shell
 - Make it so you can start a battle without any soul core units
 - Map says what encounter you are on / maybe how far away from a boss you are
+- Added general interference level encounter UI
 Loot
 - Different shape to differentiate between shell and prog loot? (Generally better loot view)
 Encounter
@@ -48,16 +49,14 @@ Misc
 - Remove debug unit inspect code
 Balance
 - Make charge more balanced (probably make it so you can't charge into an empty square)
-- Until some sort of upgrading - make multi target attacks less rare
 UI
 - Make highlighting programs in the cust UI Outline all program squares
 - Sort shell display lists lexicographically
 - Make team more clear on Unit UI (especially for mystery data)
-- Make end turn button only necessary if usable actions
+- Make end turn button only necessary if usable actions?
 - Confirmation prompt on uninstall all button
 - Mark some variants as (Var) in their names so that the player can tell they are non-standard
 Bugs
-- Disable end battle button during unit placement
 - Program scroll window doesn't scroll up
 - Combo slash isn't working properly with widepower
 Make multi-sub actions whose target pattern depends on the last subaction used

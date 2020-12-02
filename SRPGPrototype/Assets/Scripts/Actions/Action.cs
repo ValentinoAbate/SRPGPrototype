@@ -21,8 +21,6 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
 
     public bool UsesPower => subActions.Any((s) => s.UsesPower);
 
-    public bool Usable => true;
-
     public Program Program { get; set; }
 
     public Type ActionType => type;
