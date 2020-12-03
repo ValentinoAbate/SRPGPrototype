@@ -6,6 +6,8 @@ using System.Linq;
 
 public static class Vector2IntExtensions
 {
+    private const float sqrt2 = 1.4142135623746f;
+    private const float negSqrt2 = -sqrt2;
     /// <summary>
     /// Rotates a point around another point another point.
     /// startDirection and goalDirection should either be Vector2Int.up, Vector2Int.down, Vector2Int.left, or Vector2Int.right
@@ -15,26 +17,18 @@ public static class Vector2IntExtensions
         // Already in the proper direction
         if (startDirection == goalDirection)
             return point;
-        Vector2Int difference = point - center;
-        Vector2Int sumDirection = startDirection + goalDirection;
-        // Directions are colinear
-        if (sumDirection == Vector2Int.zero)
-            return center - difference;
-        // Directions are perpendicular
-        return center + PointwiseProduct(difference.AxesSwapped(), sumDirection);
-    }
-    /// <summary>
-    /// Return the Pointwise product of two Vector2Int (considering them as 2D int vectors).
-    /// Returns new Vector2Int(p1.row * p2.row, p1.col * p2.col);
-    /// </summary>
-    public static Vector2Int PointwiseProduct(this Vector2Int p1, Vector2Int p2)
-    {
-        return new Vector2Int(p1.x * p2.x, p1.y * p2.y);
-    }
-
-    public static Vector2Int AxesSwapped(this Vector2Int point)
-    {
-        return new Vector2Int(point.y, point.x);
+        // Do basic vector rotation
+        Vector2Int vec = point - center;
+        float angle = Vector2.SignedAngle(startDirection, goalDirection) * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(angle);
+        float sin = Mathf.Sin(angle);
+        Vector2 rotated = new Vector2(cos * vec.x - sin * vec.y, sin * vec.x + cos * vec.y);
+        // Account for the distorted grid dimensions
+        if(startDirection.sqrMagnitude != goalDirection.sqrMagnitude)
+        {
+            return center + Vector2Int.RoundToInt(rotated * (startDirection.sqrMagnitude == 1 ? sqrt2 : negSqrt2));
+        }
+        return center + Vector2Int.RoundToInt(rotated);
     }
 
     public static Vector2Int DirectionTo(this Vector2Int from, Vector2Int to)
