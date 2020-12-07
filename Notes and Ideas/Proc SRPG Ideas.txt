@@ -54,6 +54,8 @@ General Ideas:
 - Adjacency Ideas
 	- Have some weirder effects be applied as modifiers that apply to certain programs
 		- For example: instead of being it's own program, "blue blaster" can be applied to weapons of the "Gun" type by being adjacent
+		- Weapon Categories (flags, so can be multi like gunblade)?:
+			- Sword, Gun, Spear, Explosive, Umbrella, Hammer, Axe, Martial Art, Magic?
 	- Can be applied to move effects to to have like leaving behind tile effects, etc
 - Pawn move / attack that can promote to queen movement
 	- Pawn enemy promoted to queen boss
