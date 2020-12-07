@@ -16,6 +16,8 @@ Program Effects
 		- fix sub-action code for multi-subaction actions where some applies to
 		- fix modifier code for programs with multiple actions where some applies to
 		- add better support for fallback / multiple mod effects for different categories
+		- Figure out how damage modifiers apply to AP damage
+		- Figure out how damage modifiers apply to healing (maybe just make healing a damage type?)
 Actions
 - Add weapon category to action
 	- Integrate with modifier effects
