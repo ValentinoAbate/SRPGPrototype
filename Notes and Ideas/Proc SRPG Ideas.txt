@@ -51,6 +51,10 @@ General Ideas:
 	- Ground Pound:
 		- Ground Pound+ (+1 damage): Hit 3 targets 3 times
 		- Megaton Punch (+1 range): Hit 15 damage with one attack two times ? Hit 4 targets 2 times?
+- Adjacency Ideas
+	- Have some weirder effects be applied as modifiers that apply to certain programs
+		- For example: instead of being it's own program, "blue blaster" can be applied to weapons of the "Gun" type by being adjacent
+	- Can be applied to move effects to to have like leaving behind tile effects, etc
 - Pawn move / attack that can promote to queen movement
 	- Pawn enemy promoted to queen boss
 - Hand mode:
@@ -89,7 +93,7 @@ Color Mapping:
 - Red (triangle): Attack actions
 - Green (square): Support actions
 - Yellow (star): Hybrid actions
-- White (hexagon / pentagon): Oddballs / actions that have their color set by other means
+- White (hexagon / pentagon): Capacity upgrades / actions that have their color set by other means
 - Non-action programs may be any color
 - Programs that set their colors by external means are usually white regardless of effect
 - Shapes added for addional mapping and colorblind accesibility
@@ -155,7 +159,7 @@ Stats: quantities availible to the player.
 + Repair (min: 0, max: none) - Added to your hp and then resets to shell level after repairing
 + Power (min: none, max: none) - Added to the damage of any effect. gets one closer to zero after being used. resets to shell level after an encounter
 + Speed (min: none, max: none) - Subtracted from the AP cost of any action. Get one closer to zero after being applied. resets to shell level after an encounter
-- Defense (min: none, max: none) - Subtracted from any damage taken. Get closer to zero after being applied. resets to shell level after an encounter.
++ Defense (min: none, max: none) - Subtracted from any damage taken. Get closer to zero after being applied. resets to shell level after an encounter.
 
 
 Effects: Apply to a pattern
@@ -170,7 +174,7 @@ Effects: Apply to a pattern
 + Jump / Teleport target
 + Push target
 + Pull Target
-- Swap with target
++ Swap with target
 - Reposition / throw target (requires two-part cancellable actions)
 + Move target towards position (for charge, etc)
 + Add [x] [stat]
@@ -288,7 +292,7 @@ Map Design:
 - 3 levels of info: Obscured (too far away), Field view (close), Field view plus hidden info (scouted) 
 - Have some be ambushes where extra reinforcements spawn or another NPC shows up, etc
 - Some squares might be corrupted and unviewable 
-- Gambler ability, rolling a dud on the game mystery data table rolls again, but 3 duds in a row causes consequences
+- Gambler ability, rolling a dud on the gamble mystery data table rolls again, but 3 duds in a row causes consequences
 
 Player characters:
 - Break (tyring to end the cycle)

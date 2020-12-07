@@ -65,14 +65,26 @@ public abstract class Unit : GridObject
         HP = Mathf.Min(HP + amount, MaxHP);
     }
 
-    public virtual void Damage(BattleGrid grid, int damage, Unit source)
+    public virtual void Damage(BattleGrid grid, int amount, Unit source)
     {
-        if(Dead || damage <= 0)
+        if (Dead)
+            return;
+        int damage = amount;
+        if(!Defense.IsZero)
+        {
+            damage -= Defense.Value;
+            Defense.Use();
+        }
+        if (damage <= 0)
             return;
         if (damage >= HP)
+        {
             Kill(grid, source);
+        }
         else
+        {
             HP -= damage;
+        }
     }
 
     public virtual void DoRepair()
