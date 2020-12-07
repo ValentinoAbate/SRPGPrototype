@@ -39,13 +39,15 @@ public class Shell : MonoBehaviour, ILootable
     public string Description => description;
     [SerializeField] [TextArea(1, 2)] private string description = string.Empty;
 
+    // Loot Properties
+
     public Rarity Rarity => rarity;
     [SerializeField] private Rarity rarity = Rarity.PreInstall;
+    public float LootWeight => lootWeight;
+    [SerializeField] float lootWeight = 1;
 
     public Progression Type => type;
     [SerializeField] private Progression type = Progression.Standard;
-    public float LootWeight => lootWeight;
-    [SerializeField] float lootWeight = 1;
 
     public Pattern CustArea => patterns[Level];
     [SerializeField] private List<Pattern> patterns = new List<Pattern>(3);
@@ -62,14 +64,14 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnDeath OnDeath { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
 
-    public Stats Stats { get; set; } = new Stats();
+    public Stats Stats { get; } = new Stats();
+    public Dictionary<Program, List<ProgramModifier>> ModifierMap { get; private set; }
 
     public Program[,] InstallMap { get; private set; }
+    public Dictionary<Program, IEnumerable<Vector2Int>> InstallPositions { get; } = new Dictionary<Program, IEnumerable<Vector2Int>>();
 
     public bool HasSoulCore => SoulCoreUnitPrefab != null;
     public GameObject SoulCoreUnitPrefab { get; private set; }
-
-    private bool firstCompile = true;
 
     private void Awake()
     {
@@ -78,25 +80,30 @@ public class Shell : MonoBehaviour, ILootable
         {
             Install(iProg.program, iProg.location, true);
         }
+        // Set initial stats
+        var compileData = GetCompileData();
+        Stats.SetShellValues(compileData.stats);
+        Stats.RestoreHpToMax();
     }
 
     public void Install(Program program, Vector2Int location, bool fromAsset = false)
     {
+        Program prog;
         if(fromAsset)
         {
-            var prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
-            programs.Add(new InstalledProgram(prog, location));
-            prog.Shell = this;
+            prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
         }
         else
         {
+            prog = program;
             program.transform.SetParent(transform);
-            programs.Add(new InstalledProgram(program, location));
-            program.Shell = this;
         }
-        var positions = program.shape.OffsetsShifted(location, false);
+        programs.Add(new InstalledProgram(prog, location));
+        prog.Shell = this;
+        var positions = prog.shape.OffsetsShifted(location, false);
         foreach (var pos in positions)
-            InstallMap[pos.x, pos.y] = program;
+            InstallMap[pos.x, pos.y] = prog;
+        InstallPositions.Add(prog, positions);
         Compiled = false;
     }
 
@@ -111,6 +118,7 @@ public class Shell : MonoBehaviour, ILootable
             var positions = program.shape.OffsetsShifted(location, false);
             foreach (var pos in positions)
                 InstallMap[pos.x, pos.y] = null;
+            InstallPositions.Remove(program);
             if (destroy)
                 Destroy(programs[ind].program.gameObject);
             programs.RemoveAt(ind);
@@ -255,7 +263,7 @@ public class Shell : MonoBehaviour, ILootable
     /// <summary>
     /// Compiles the stats and abilities from the programs in the shell, and outputs them.
     /// Will become more complicated, with adjacency, etc. later
-    /// Returns false if the compile in considered invalid (either because of a compile rule or MaxHp <= 0)
+    /// Returns false if the compile in considered invalid (compile error)
     /// </summary>
     public bool Compile()
     {
@@ -288,7 +296,6 @@ public class Shell : MonoBehaviour, ILootable
             if(restriction(this, out string errorMessage))
             {
                 Debug.LogWarning(errorMessage);
-                compileData.actions.ForEach((a) => Destroy(a.gameObject));
                 Compiled = false;
                 return false;
             }
@@ -300,6 +307,8 @@ public class Shell : MonoBehaviour, ILootable
             Compiled = false;
             return false;
         }
+        // Apply modification map
+        ModifierMap = compileData.modifierMap;
         // Apply Soul Cores
         SoulCoreUnitPrefab = compileData.soulCoreUnitPrefab;
         // Apply capacity
@@ -309,14 +318,8 @@ public class Shell : MonoBehaviour, ILootable
         OnAfterAction = compileData.onAfterAction;
         OnDeath = compileData.onDeath;
         OnBattleStart = compileData.onBattleStart;
-        // Apply compile changes to actions and stats
+        // Apply compiled changes to actions and stats
         Stats.SetShellValues(compileData.stats);
-        // Restore all HP if first compile
-        if(firstCompile)
-        {
-            Stats.RestoreHpToMax();
-            firstCompile = false;
-        }
         actions.Clear();
         actions.AddRange(compileData.actions);
         Compiled = true;
@@ -335,6 +338,7 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnDeath onDeath = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public GameObject soulCoreUnitPrefab = null;
+        public Dictionary<Program, List<ProgramModifier>> modifierMap = new Dictionary<Program, List<ProgramModifier>>();
         public int capacity = 0;
     }
 

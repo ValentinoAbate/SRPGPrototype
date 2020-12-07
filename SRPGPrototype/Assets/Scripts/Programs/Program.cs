@@ -46,6 +46,7 @@ public class Program : GridObject, ILootable
     public UnityEngine.Color ColorValue => colorValues[color];
 
     public Shell Shell { get; set; }
+    public List<ProgramModifier> Modifiers => Shell.ModifierMap.ContainsKey(this) ? Shell.ModifierMap[this] : new List<ProgramModifier>();
     public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;
     private ProgramEffect[] effects;
     public ProgramUpgrade Upgrade { get; set; }

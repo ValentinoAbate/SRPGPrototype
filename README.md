@@ -3,7 +3,7 @@ Repository for prototyping a roguelite SPRG. Still thinking of a name!
 
 # Version Info
 
-Current version: v0.2.0 (Any code before 10/3/2020 is considered to be unversioned)
+Current version: v0.3.0 (Any code before 10/3/2020 is considered to be unversioned)
 
 Version Convention:
 

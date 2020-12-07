@@ -1,7 +1,6 @@
-﻿using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public abstract class ActionEffectDamage : ActionEffect
 {
@@ -17,17 +16,43 @@ public abstract class ActionEffectDamage : ActionEffect
     public TargetStat DamageTarget => targetStat;
     [SerializeField] private TargetStat targetStat = TargetStat.HP;
 
+    private readonly List<ProgramModifierActionDamage> modifiers = new List<ProgramModifierActionDamage>();
+
     public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
+        modifiers.Clear();
+        if(action.Program != null)
+        {
+            modifiers.AddRange(action.Program.Modifiers.Where((mod) => mod is ProgramModifierActionDamage)
+                                                       .Select((mod) => mod as ProgramModifierActionDamage));
+        }
         baseDamage = BaseDamage(grid, action, user, targetPositions);
+        // Apply modifier base damage
+        foreach(var modifier in modifiers)
+        {
+            baseDamage += modifier.DamageModifiers.Sum((mod) => mod.BaseDamage(grid, action, user, targetPositions));
+        }
     }
 
     public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;
-        int damage = Mathf.Max(baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power.Value, 0);
-        if(targetStat == TargetStat.HP)
+
+        // Calculate final damage
+
+        int damage = baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power.Value;
+        // Apply modifier target values
+        foreach (var modifier in modifiers)
+        {
+            damage += modifier.DamageModifiers.Sum((mod) => mod.TargetModifier(grid, action, user, target, targetData));
+        }
+        // Make sure damage is non-negative
+        damage = Mathf.Max(damage, 0);
+
+        // Apply damage
+
+        if (targetStat == TargetStat.HP)
         {
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + (target.HP - damage) + " HP");
             target.Damage(grid, damage, user);

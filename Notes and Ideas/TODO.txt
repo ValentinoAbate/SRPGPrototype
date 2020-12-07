@@ -4,9 +4,22 @@ Loot
 Cust
 Smart targeting
 - Make certain actions only have certain valid tiles selectable
+	- Implement as range restriction on sub-action?
+		- Empty tile
+		- Non-empty tile
+		- Hits at least one target
 - Make a hybrid action unusable if any of its actions would not have valid targets
 Program Effects
-- Add adjacency / modifier effects
+- Refine modifier effects
+	- Show modifier effect in modified action descriptions
+	- Cleanup modifier effect code
+		- fix sub-action code for multi-subaction actions where some applies to
+		- fix modifier code for programs with multiple actions where some applies to
+		- add better support for fallback / multiple mod effects for different categories
+Actions
+- Add weapon category to action
+	- Integrate with modifier effects
+		
 Program / Shell Variants
 - Upgrades available program variants
 - Shell pre-install placement shuffle variants

@@ -151,7 +151,7 @@ Numbers: written, as [x], [y], or etc. Can be any numeric quantity. may always h
 - Slowdown
 - Slowdown rate
 
-Stats: quantities availible to the player. 
+Stats: quantities availible to the any Unit. 
 + MaxAP (min: 0, max: none)
 + AP (min: 0, max: MaxAP) - Recharges to MaxAP at end of turn and end of battle
 + MaxHP (min: 0, max: none) - Recharges to shell level at end of encounter. 0 means you die.
@@ -214,9 +214,10 @@ Scopes: a group of programs to which something is applied
 - Modified programs
 
 Modifiers: These effects modify other programs in a certain scope (see scope)
-- [scope] programs have [x] less/more uses per turn/battle (min/max [y])
+- [scope] programs have [x] less/more slowdown/slowdown interval (min/max [y])
 - [scope] programs do [x] more/less damage
 - [scope] transient programs have [x] more uses. (pair with fixed, unstable - any/all modified programs are destroyed)
+	- problably [scope] transient programs use uses from this program instead
 - Add [attribute] to [scope] (Fixed, transient, color, etc. pair with fixed)
 - Apply cost to [scope] programs
 - [scope] blocked cust squares become open. Gains Fixed when a program is installed in any opened slot that isn't also opened from another source
@@ -231,7 +232,7 @@ Abilities: These effects give the player special passive abilities
 - You can go into [x] repair debt (damages you at repair)
 - You can go into [x] AP dept (damages you when AP rechanges, maybe subtracts from your next turn)
 	- Pair with actions / abilities that get worse with positive AP
-- Using the same action more than once in a turn [scales] it
+- Using the same action more than once in a turn applies [modifier] it
 - MaxHP + [x], Unstable HP <= [y]
 - When [trigger] gain [ability]/[stat] for [time]
 	- When a program is destroyed, gain "All attacks do +1 damage" for 1 encounter
