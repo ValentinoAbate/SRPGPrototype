@@ -6,12 +6,12 @@ public abstract class ActionEffectHeal : ActionEffect
     public override bool UsesPower => true;
     private int baseDamage;
 
-    public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
     {
         baseDamage = BaseDamage(grid, action, user, targetPositions);
     }
 
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;

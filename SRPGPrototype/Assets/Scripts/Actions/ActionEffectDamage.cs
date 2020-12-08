@@ -8,6 +8,7 @@ public abstract class ActionEffectDamage : ActionEffect
     { 
         HP,
         AP,
+        HealHP,
     }
 
     public override bool UsesPower => true;
@@ -18,13 +19,14 @@ public abstract class ActionEffectDamage : ActionEffect
 
     private readonly List<ModifierActionDamage> modifiers = new List<ModifierActionDamage>();
 
-    public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
     {
         modifiers.Clear();
         if(action.Program != null)
         {
             modifiers.AddRange(action.Program.ModifiedBy.Where((mod) => mod is ModifierActionDamage)
-                                                       .Select((mod) => mod as ModifierActionDamage));
+                                                       .Select((mod) => mod as ModifierActionDamage)
+                                                       .Where((mod) => mod.AppliesTo(sub)));
         }
         baseDamage = BaseDamage(grid, action, user, targetPositions);
         // Apply modifier base damage
@@ -34,7 +36,7 @@ public abstract class ActionEffectDamage : ActionEffect
         }
     }
 
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;
@@ -57,10 +59,15 @@ public abstract class ActionEffectDamage : ActionEffect
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + (target.HP - damage) + " HP");
             target.Damage(grid, damage, user);
         }
-        else // Target stat is AP
+        else if(targetStat == TargetStat.AP) // Target stat is AP
         {
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " AP damage and is now at " + (target.AP - damage) + " AP");
             target.AP -= damage;
+        }
+        else
+        {
+            Debug.Log(target.DisplayName + " heals " + damage.ToString() + " damage and is now at " + (target.HP + damage) + " HP");
+            target.Heal(damage, user);
         }
     }
 

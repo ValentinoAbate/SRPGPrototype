@@ -2,7 +2,7 @@
 
 public class ActionEffectSetPositionRandom : ActionEffect
 {
-    public override void ApplyEffect(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;
