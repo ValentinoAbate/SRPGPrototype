@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3074257871435298261, guid: 2c11a2e9a307c5e459afff92a274a560,
         type: 3}
       propertyPath: m_Name
-      value: ActionButtonUIMove
+      value: ActionButtonUISkill
       objectReference: {fileID: 0}
     - target: {fileID: 3074257871435298262, guid: 2c11a2e9a307c5e459afff92a274a560,
         type: 3}
@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 3074257871435298280, guid: 2c11a2e9a307c5e459afff92a274a560,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.11395097
       objectReference: {fileID: 0}
     - target: {fileID: 3074257871435298280, guid: 2c11a2e9a307c5e459afff92a274a560,
         type: 3}
@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 3074257871435298280, guid: 2c11a2e9a307c5e459afff92a274a560,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c11a2e9a307c5e459afff92a274a560, type: 3}

@@ -6,9 +6,10 @@ using System.Linq;
 
 public class ActionMenu : MonoBehaviour
 {
-    public GameObject actionButtonPrefab;
+    public GameObject actionButtonWeaponPrefab;
     public GameObject actionButtonMovePrefab;
     public GameObject actionButtonHybridPrefab;
+    public GameObject actionButtonSkillPrefab;
     public GameObject linkoutButtonPrefab;
 
     public Transform actionButtonContainer;
@@ -18,9 +19,10 @@ public class ActionMenu : MonoBehaviour
     {
         buttonPrefabs = new Dictionary<Action.Type, GameObject>()
         {
-            {Action.Type.Standard, actionButtonPrefab },
+            {Action.Type.Weapon, actionButtonWeaponPrefab },
             {Action.Type.Move, actionButtonMovePrefab },
             {Action.Type.Hybrid, actionButtonHybridPrefab },
+            {Action.Type.Skill, actionButtonSkillPrefab },
         };
     }
 

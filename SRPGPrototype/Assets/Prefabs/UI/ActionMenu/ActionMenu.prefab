@@ -205,11 +205,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950f805a0a300c4459d79aa56551155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionButtonPrefab: {fileID: 3970063363860568234, guid: 564211cd3549cb8468558c816c030461,
+  actionButtonWeaponPrefab: {fileID: 3970063363860568234, guid: 564211cd3549cb8468558c816c030461,
     type: 3}
   actionButtonMovePrefab: {fileID: 3970063363860568234, guid: 997ac8566c2d6f741b129d0c129a8d8a,
     type: 3}
   actionButtonHybridPrefab: {fileID: 3970063363860568234, guid: 1541311ee5f272042a7b18b020a47fbc,
+    type: 3}
+  actionButtonSkillPrefab: {fileID: 3970063363860568234, guid: 900de70988d54cd4b825c3b5d6ad0a4b,
     type: 3}
   linkoutButtonPrefab: {fileID: 3074257871435298261, guid: fd1be97f66f799849a9001b6ad945a28,
     type: 3}

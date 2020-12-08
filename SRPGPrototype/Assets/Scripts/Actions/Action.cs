@@ -8,8 +8,9 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public enum Type
     { 
         Move,
-        Standard,
+        Weapon,
         Hybrid,
+        Skill,
     }
 
     public enum Trigger
@@ -24,7 +25,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public Program Program { get; set; }
 
     public Type ActionType => type;
-    [SerializeField] Type type = Type.Standard;
+    [SerializeField] Type type = Type.Weapon;
 
     public int APCost 
     {

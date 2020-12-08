@@ -18,8 +18,10 @@ Program Effects
 		+ add better support for fallback / multiple mod effects for different categories
 		- Figure out how damage modifiers apply to AP damage
 		- Figure out how damage modifiers apply to healing (maybe just make healing a damage type?)
-Actions
-- Add weapon category to action
+Action Type refinement
++ Add skill type to action
++ Add weapon type to action (remove standard)
+- Add action sub-typing / sub-action typing
 	- Integrate with modifier effects
 		
 Program / Shell Variants
