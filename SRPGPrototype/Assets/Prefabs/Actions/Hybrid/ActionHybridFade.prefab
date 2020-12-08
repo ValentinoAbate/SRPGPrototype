@@ -173,6 +173,11 @@ PrefabInstance:
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: subtype
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: range.patternOffsets.Array.size
@@ -263,6 +268,11 @@ PrefabInstance:
       propertyPath: range.patternOffsets.Array.data[7].y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: subtype
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: displayName
@@ -276,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: description
-      value: 'Attack an adjacent unit for 2 damage, then yeet out of there. '
+      value: 'Attack an adjacent unit for 2 damage, then warp out of there. '
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370085, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

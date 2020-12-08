@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subtype: 13
   rangePattern:
     patternType: 0
     pattern:

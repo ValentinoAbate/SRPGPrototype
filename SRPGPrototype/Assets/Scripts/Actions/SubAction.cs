@@ -5,8 +5,35 @@ using UnityEngine;
 
 public class SubAction : MonoBehaviour
 {
+    public enum Type
+    { 
+        None,
+        Special,
+        // Move subtypes
+        Move,
+        Jump,
+        Warp,
+        // Skill subtypes
+        Buff,
+        Summon,
+        Reposition,
+        // Weapon subtypes
+        Umbrella,
+        Sword,
+        Spear,
+        Hammer,
+        Gun,
+        Explosive,
+        Spell,
+    }
+
+    // Sub-action Metadata
     public bool DealsDamage => effects.Any((e) => e is ActionEffectDamage);
     public bool UsesPower => effects.Any((e) => e.UsesPower);
+
+    // Sub-action data
+    public Type Subtype => subtype;
+    [SerializeField] private Type subtype = Type.None;
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern targetPattern;

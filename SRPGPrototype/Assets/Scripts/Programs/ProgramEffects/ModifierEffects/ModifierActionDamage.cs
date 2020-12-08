@@ -5,6 +5,8 @@ public class ModifierActionDamage : ModifierAction
     public ActionEffectDamage[] DamageModifiers { get; private set; }
     [SerializeField] private GameObject actionEffectContainer;
 
+
+
     private void Awake()
     {
         if(actionEffectContainer != null)
