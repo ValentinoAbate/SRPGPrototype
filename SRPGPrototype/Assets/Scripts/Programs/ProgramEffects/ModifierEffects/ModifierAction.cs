@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-public abstract class ProgramModifierAction : ProgramModifier
+public abstract class ModifierAction : Modifier
 {
     public override bool AppliesTo(Program p)
     {

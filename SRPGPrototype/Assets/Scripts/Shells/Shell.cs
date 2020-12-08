@@ -65,7 +65,7 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
 
     public Stats Stats { get; } = new Stats();
-    public Dictionary<Program, List<ProgramModifier>> ModifierMap { get; private set; }
+    public Dictionary<Program, List<Modifier>> ModifierMap { get; private set; }
 
     public Program[,] InstallMap { get; private set; }
     public Dictionary<Program, IEnumerable<Vector2Int>> InstallPositions { get; } = new Dictionary<Program, IEnumerable<Vector2Int>>();
@@ -239,9 +239,29 @@ public class Shell : MonoBehaviour, ILootable
 
     #endregion
 
+    public Dictionary<Program, List<Modifier>> GetModifierMap()
+    {
+        var modMap = new Dictionary<Program, List<Modifier>>();
+        // If the shell is an asset, generate compile data from pre-installs
+        var programList = InstallMap == null ? preInstalledPrograms : programs;
+        // Look through programs and apply program effects
+        foreach (var install in programList)
+        {
+            var program = install.program;
+            foreach (var mod in program.ModifierEffects)
+            {
+                mod.LinkModifiers(program, ref modMap);
+            }
+        }
+        return modMap;
+    }
+
     public CompileData GetCompileData()
     {
-        var compileData = new CompileData();
+        var compileData = new CompileData
+        {
+            modifierMap = GetModifierMap()
+        };
         // If the shell is an asset, generate compile data from pre-installs
         var programList = InstallMap == null ? preInstalledPrograms : programs;
         // Look through programs and apply program effects
@@ -338,7 +358,7 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnDeath onDeath = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public GameObject soulCoreUnitPrefab = null;
-        public Dictionary<Program, List<ProgramModifier>> modifierMap = new Dictionary<Program, List<ProgramModifier>>();
+        public Dictionary<Program, List<Modifier>> modifierMap = new Dictionary<Program, List<Modifier>>();
         public int capacity = 0;
     }
 

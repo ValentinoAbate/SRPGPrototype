@@ -46,9 +46,13 @@ public class Program : GridObject, ILootable
     public UnityEngine.Color ColorValue => colorValues[color];
 
     public Shell Shell { get; set; }
-    public List<ProgramModifier> Modifiers => Shell.ModifierMap.ContainsKey(this) ? Shell.ModifierMap[this] : new List<ProgramModifier>();
+    // Modifier properties
+    public List<Modifier> ModifiedBy => Shell.ModifierMap.ContainsKey(this) ? Shell.ModifierMap[this] : new List<Modifier>();
+    public ProgramModifier[] ModifierEffects { get; private set; }
+    // Effect Properties
     public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;
     private ProgramEffect[] effects;
+    // Trigger / upgrade properties
     public ProgramUpgrade Upgrade { get; set; }
     public bool IsUpgraded => Upgrade != null;
     public ProgramTrigger[] Triggers => IsUpgraded ? Upgrade.Upgrades : triggers;
@@ -103,7 +107,8 @@ public class Program : GridObject, ILootable
 
     private void Awake()
     {
-        triggers = GetComponentsInChildren<ProgramTrigger>();
+        triggers = GetComponentsInChildren<ProgramTrigger>(true);
+        ModifierEffects = GetComponentsInChildren<ProgramModifier>(true);
         effects = GetComponents<ProgramEffect>();
     }
 

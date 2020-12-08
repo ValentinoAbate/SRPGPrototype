@@ -60,10 +60,10 @@ public class MysteryDataUnit : AIUnit
     {
         if(Dead)
             yield break;
-        var progDrops = GetComponentsInChildren<DropComponent<Program>>();
+        var progDrops = GetComponentsInChildren<DropComponent<Program>>(true);
         foreach (var drop in progDrops)
             manager.GenerateProgramLoot += drop.GenerateDrop;
-        var shellDrops = GetComponentsInChildren<DropComponent<Shell>>();
+        var shellDrops = GetComponentsInChildren<DropComponent<Shell>>(true);
         foreach (var drop in shellDrops)
             manager.GenerateShellLoot += drop.GenerateDrop;
     }

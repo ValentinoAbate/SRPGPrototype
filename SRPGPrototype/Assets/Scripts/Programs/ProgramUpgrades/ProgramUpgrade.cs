@@ -13,7 +13,7 @@ public class ProgramUpgrade : ProgramTrigger
     private void Awake()
     {
         // Upgrades shouldn't include self
-        Upgrades = GetComponentsInChildren<ProgramTrigger>().Where((t) => t != this).ToArray();
+        Upgrades = GetComponentsInChildren<ProgramTrigger>(true).Where((t) => t != this).ToArray();
         ProgramEffects = GetComponents<ProgramEffect>();
     }
 }

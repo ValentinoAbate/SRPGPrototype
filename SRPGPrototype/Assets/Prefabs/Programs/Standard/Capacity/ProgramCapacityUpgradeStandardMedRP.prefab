@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAPModifier: 0
-  maxHpModifier: 1
-  repairModifier: 0
+  maxHpModifier: 0
+  repairModifier: 1
 --- !u!114 &2536850600167629781
 MonoBehaviour:
   m_ObjectHideFlags: 0

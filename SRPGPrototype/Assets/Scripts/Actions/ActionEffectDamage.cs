@@ -16,15 +16,15 @@ public abstract class ActionEffectDamage : ActionEffect
     public TargetStat DamageTarget => targetStat;
     [SerializeField] private TargetStat targetStat = TargetStat.HP;
 
-    private readonly List<ProgramModifierActionDamage> modifiers = new List<ProgramModifierActionDamage>();
+    private readonly List<ModifierActionDamage> modifiers = new List<ModifierActionDamage>();
 
     public override void Initialize(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
     {
         modifiers.Clear();
         if(action.Program != null)
         {
-            modifiers.AddRange(action.Program.Modifiers.Where((mod) => mod is ProgramModifierActionDamage)
-                                                       .Select((mod) => mod as ProgramModifierActionDamage));
+            modifiers.AddRange(action.Program.ModifiedBy.Where((mod) => mod is ModifierActionDamage)
+                                                       .Select((mod) => mod as ModifierActionDamage));
         }
         baseDamage = BaseDamage(grid, action, user, targetPositions);
         // Apply modifier base damage

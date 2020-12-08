@@ -73,7 +73,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     {
         var singleAction = GetComponent<SubAction>();
         subActions = singleAction != null ? new List<SubAction> { singleAction } :
-            new List<SubAction>(GetComponentsInChildren<SubAction>());
+            new List<SubAction>(GetComponentsInChildren<SubAction>(true));
     }
 
     public Action Validate(Transform parent)
