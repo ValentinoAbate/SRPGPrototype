@@ -13,17 +13,11 @@ Program Effects
 - Refine modifier effects
 	- Show modifier effect in modified action descriptions
 	- Cleanup modifier effect code
-		- fix sub-action code for multi-subaction actions where some applies to
+		+ fix sub-action code for multi-subaction actions where some applies to
 		- fix modifier code for programs with multiple actions where some applies to
 		+ add better support for fallback / multiple mod effects for different categories
 		- Figure out how damage modifiers apply to AP damage
-		- Figure out how damage modifiers apply to healing (maybe just make healing a damage type?)
-Action Type refinement
-+ Add skill type to action
-+ Add weapon type to action (remove standard)
-- Add action sub-typing / sub-action typing
-	- Integrate with modifier effects
-		
+		- Figure out how damage modifiers apply to healing (maybe just make healing a damage type?)	
 Program / Shell Variants
 - Upgrades available program variants
 - Shell pre-install placement shuffle variants

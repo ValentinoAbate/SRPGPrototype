@@ -19,6 +19,8 @@ public abstract class ActionEffectDamage : ActionEffect
 
     private readonly List<ModifierActionDamage> modifiers = new List<ModifierActionDamage>();
 
+    private bool SameDmgTarget(ActionEffectDamage other) => targetStat == other.targetStat;
+
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
     {
         modifiers.Clear();
@@ -32,7 +34,7 @@ public abstract class ActionEffectDamage : ActionEffect
         // Apply modifier base damage
         foreach(var modifier in modifiers)
         {
-            baseDamage += modifier.DamageModifiers.Sum((mod) => mod.BaseDamage(grid, action, user, targetPositions));
+            baseDamage += modifier.DamageModifiers.Where(SameDmgTarget).Sum((mod) => mod.BaseDamage(grid, action, user, targetPositions));
         }
     }
 
@@ -47,7 +49,7 @@ public abstract class ActionEffectDamage : ActionEffect
         // Apply modifier target values
         foreach (var modifier in modifiers)
         {
-            damage += modifier.DamageModifiers.Sum((mod) => mod.TargetModifier(grid, action, user, target, targetData));
+            damage += modifier.DamageModifiers.Where(SameDmgTarget).Sum((mod) => mod.TargetModifier(grid, action, user, target, targetData));
         }
         // Make sure damage is non-negative
         damage = Mathf.Max(damage, 0);

@@ -70,8 +70,8 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds damage equal to the number of blue programs installed to adjacent
-        guns and explosives at the cost of 2 base damage.
+      value: Adds damage equal to the number of blue programs installed minus 2 to
+        adjacent guns and explosives.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

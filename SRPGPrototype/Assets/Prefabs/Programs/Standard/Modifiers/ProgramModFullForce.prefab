@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3162252921570040327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953123168284495401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetStat: 0
+  damage:
+    min: -2147483648
+    max: 2147483647
+    constant: 1
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    type: 6
+    attributes: 0
+    color: 0
+    rarity: 0
 --- !u!114 &3797450329308082281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,30 +55,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 0
   modifierContainer: {fileID: 0}
---- !u!114 &-3162252921570040327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953123168284495401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetStat: 0
-  damage:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 1
-    type: 6
-    attributes: 0
-    color: 0
-    rarity: 0
 --- !u!114 &6621627548271045498
 MonoBehaviour:
   m_ObjectHideFlags: 0

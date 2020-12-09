@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 public class ActionDescriptionUI : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class ActionDescriptionUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         // Name and action type
-        nameText.text = action.DisplayName + " (" + action.ActionType.ToString() + ")";
+        nameText.text = action.DisplayName + " (" + action.ActionType.ToString() 
+            + "-" + string.Join("/", action.subActions.Select((s) => s.Subtype.ToString())) + ")";
         descText.text = action.Description;
         // Program attributes
         if(action.Program != null)

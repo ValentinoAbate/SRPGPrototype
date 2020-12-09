@@ -39,6 +39,7 @@ General Ideas:
 - Checkers move (keep jumping)
 - Ability that triggers when you jump over a unit
 - AI could have max moves, max attacks instead of slowdown?
+- Shotgun: Attack the get pushed back
 - Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
 	- Stars on a shell for beating the different bosses
 - Upgrade Ideas
@@ -51,6 +52,8 @@ General Ideas:
 	- Ground Pound:
 		- Ground Pound+ (+1 damage): Hit 3 targets 3 times
 		- Megaton Punch (+1 range): Hit 15 damage with one attack two times ? Hit 4 targets 2 times?
+	- Fade:
+		- Fadeout: Use while adjacent to at least 3 enemies (extra range)
 	- Upgrade Currency? Some weapons cost stuff to upgrade?
 - Adjacency Ideas
 	- Have some weirder effects be applied as modifiers that apply to certain programs
