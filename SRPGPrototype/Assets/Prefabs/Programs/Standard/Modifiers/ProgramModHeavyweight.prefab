@@ -1,34 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9153818726080825543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953123168284495401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetStat: 0
-  damage:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 1
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      constant: 1
-      baseAmount: 0
-      modifier: -10
-      multiplier: 1
-      type: 2
-    type: 6
 --- !u!114 &3797450329308082281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +31,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 0
   modifierContainer: {fileID: 0}
+--- !u!114 &-9153818726080825543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953123168284495401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetStat: 0
+  damage:
+    min: -2147483648
+    max: 2147483647
+    constant: 1
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    unitNumber:
+      min: -2147483648
+      max: 2147483647
+      constant: 1
+      baseAmount: 0
+      modifier: -10
+      multiplier: 1
+      type: 2
+    type: 6
 --- !u!1001 &6707852538196646759
 PrefabInstance:
   m_ObjectHideFlags: 0
