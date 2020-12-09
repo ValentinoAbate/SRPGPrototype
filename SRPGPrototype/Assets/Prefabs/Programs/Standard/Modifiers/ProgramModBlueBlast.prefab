@@ -15,7 +15,7 @@ MonoBehaviour:
   filterByActionType: 1
   actionTypes: 01000000
   filterBySubType: 1
-  subTypes: 0c000000
+  subTypes: 0c0000000d000000
   actionEffectContainer: {fileID: 0}
 --- !u!114 &3810536140382234709
 MonoBehaviour:
@@ -70,8 +70,8 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds damage equal to the number of blue programs installed to guns at
-        the cost of 2 base damage.
+      value: Adds damage equal to the number of blue programs installed to adjacent
+        guns and explosives at the cost of 2 base damage.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

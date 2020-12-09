@@ -51,6 +51,7 @@ General Ideas:
 	- Ground Pound:
 		- Ground Pound+ (+1 damage): Hit 3 targets 3 times
 		- Megaton Punch (+1 range): Hit 15 damage with one attack two times ? Hit 4 targets 2 times?
+	- Upgrade Currency? Some weapons cost stuff to upgrade?
 - Adjacency Ideas
 	- Have some weirder effects be applied as modifiers that apply to certain programs
 		- For example: instead of being it's own program, "blue blaster" can be applied to weapons of the "Gun" type by being adjacent
@@ -218,12 +219,15 @@ Scopes: a group of programs to which something is applied
 Modifiers: These effects modify other programs in a certain scope (see scope)
 - [scope] programs have [x] less/more slowdown/slowdown interval (min/max [y])
 - [scope] programs do [x] more/less damage
+	- all spells do +1/2(upgrade) base damage, all other weapons deal -1
 - [scope] transient programs have [x] more uses. (pair with fixed, unstable - any/all modified programs are destroyed)
 	- problably [scope] transient programs use uses from this program instead
 - Add [attribute] to [scope] (Fixed, transient, color, etc. pair with fixed)
 - Apply cost to [scope] programs
 - [scope] blocked cust squares become open. Gains Fixed when a program is installed in any opened slot that isn't also opened from another source
 	- [scope] = adjacent
+- apply [scope] modifiers to [scope]
+	- apply all adajacent modifer effects to adjacent spell weapons
 
 Abilities: These effects give the player special passive abilities
 - AP carries over to next turn (pair with -AP gain)
@@ -239,6 +243,7 @@ Abilities: These effects give the player special passive abilities
 - When [trigger] gain [ability]/[stat] for [time]
 	- When a program is destroyed, gain "All attacks do +1 damage" for 1 encounter
 	- Using a hybrid action gives you +1 speed. You cannot install non-hybrid actions
+	- Going below [x] hp gives [y] power
 - Any transient action that hits more than [x] targets doesn't use a degrade
 	- [x] is 2
 	- Add Transient 3 + number of fixed transient programs installed
