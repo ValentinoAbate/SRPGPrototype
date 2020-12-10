@@ -15,11 +15,11 @@ MonoBehaviour:
   targetDifficulty: 16
   dimensions: {x: 6, y: 6}
   numSpawnPositions: 3
-  numEnemies: 040000000500000006000000
+  numEnemies: 050000000600000007000000
   numEnemiesWeights:
   - 1
   - 3
-  - 1
+  - 0.25
   enemies:
   - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
   - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
@@ -46,5 +46,6 @@ MonoBehaviour:
   lootFlags: 0
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []

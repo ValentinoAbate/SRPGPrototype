@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-5-Nest
   m_EditorClassIdentifier: 
-  targetDifficulty: 8
+  targetDifficulty: 11
   dimensions: {x: 8, y: 6}
   numSpawnPositions: 3
-  numEnemies: 0400000005000000
+  numEnemies: 0500000006000000
   numEnemiesWeights:
   - 4
   - 1

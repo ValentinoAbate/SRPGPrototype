@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-8
   m_EditorClassIdentifier: 
-  targetDifficulty: 16
+  targetDifficulty: 7
   dimensions: {x: 6, y: 6}
-  numEnemies: 060000000700000008000000
+  numSpawnPositions: 3
+  numEnemies: 070000000800000009000000
   numEnemiesWeights:
   - 3
   - 2
@@ -38,5 +39,6 @@ MonoBehaviour:
   lootFlags: 0
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units: []
-    reinforcements: []
+    spawnPositions: []
