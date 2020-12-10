@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filterByActionType: 1
-  actionTypes: 01000000
+  actionTypes: 0100000002000000
   filterBySubType: 0
   subTypes: 
   actionEffectContainer: {fileID: 0}

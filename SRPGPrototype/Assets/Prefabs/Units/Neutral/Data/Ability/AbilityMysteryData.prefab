@@ -28,12 +28,12 @@ PrefabInstance:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: displayName
-      value: Ability Mystery Data
+      value: Ability/Mod Mystery Data
       objectReference: {fileID: 0}
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: description
-      value: Drops an ability Program at the end of the encounter.
+      value: Drops an ability or modifier Program at the end of the encounter.
       objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}

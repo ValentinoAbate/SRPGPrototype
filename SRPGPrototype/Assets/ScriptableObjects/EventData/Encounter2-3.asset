@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Encounter2-3
   m_EditorClassIdentifier: 
   targetDifficulty: 23
-  dimensions: {x: 6, y: 6}
+  dimensions: {x: 7, y: 6}
   numSpawnPositions: 3
   numEnemies: 050000000600000007000000
   numEnemiesWeights:
@@ -40,5 +40,6 @@ MonoBehaviour:
   lootFlags: 0
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []

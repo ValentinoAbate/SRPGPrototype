@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: TestMapData
   m_EditorClassIdentifier: 
-  depth: 25
+  depth: 21
   encounterData:
   - data:
     - {fileID: 11400000, guid: 8c8ab936391bef54bb629b1521ceafc2, type: 2}
@@ -29,10 +29,6 @@ MonoBehaviour:
     - 5
     - 1
   - data:
-    - {fileID: 11400000, guid: 5d1cc1a778a696c4c84ef118d92d2ac4, type: 2}
-    weights:
-    - 1
-  - data:
     - {fileID: 11400000, guid: 2705306c31b861f49b1ddd963610b2b4, type: 2}
     - {fileID: 11400000, guid: 6638181f5af0ccf4ab7a04532cc8d1a9, type: 2}
     weights:
@@ -44,10 +40,6 @@ MonoBehaviour:
     - 1
   - data:
     - {fileID: 11400000, guid: 22dcf5a757ae2e14a81868b6d8edbac1, type: 2}
-    weights:
-    - 1
-  - data:
-    - {fileID: 11400000, guid: 97ecd26d6468c3241835319686f051dc, type: 2}
     weights:
     - 1
   - data:
@@ -75,10 +67,6 @@ MonoBehaviour:
     - 4
     - 1
   - data:
-    - {fileID: 11400000, guid: fdb4e217a47e30446857dffc26b22145, type: 2}
-    weights:
-    - 1
-  - data:
     - {fileID: 11400000, guid: b1c5dfe39d4103a4497697e9a9923316, type: 2}
     weights:
     - 1
@@ -88,10 +76,6 @@ MonoBehaviour:
     - 1
   - data:
     - {fileID: 11400000, guid: dba6493bcb3b8c64d93fc61f8b46874b, type: 2}
-    weights:
-    - 1
-  - data:
-    - {fileID: 11400000, guid: de32459f4309e2b4783fb6da847ed9c9, type: 2}
     weights:
     - 1
   - data:

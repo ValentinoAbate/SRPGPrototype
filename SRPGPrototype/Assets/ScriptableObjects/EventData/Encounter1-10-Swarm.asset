@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-10-Swarm
   m_EditorClassIdentifier: 
-  targetDifficulty: 22
+  targetDifficulty: 17
   dimensions: {x: 8, y: 6}
   numSpawnPositions: 5
-  numEnemies: 0c000000
+  numEnemies: 0b000000
   numEnemiesWeights:
   - 1
   enemies:
@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d, type: 3}
   - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
   baseEnemyWeights:
-  - 1
+  - 2
   - 4
   - 1
   numObstacles: 08000000

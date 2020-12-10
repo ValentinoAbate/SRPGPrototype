@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter2-10-Bomb
   m_EditorClassIdentifier: 
-  targetDifficulty: 49
-  dimensions: {x: 6, y: 6}
+  targetDifficulty: 50
+  dimensions: {x: 8, y: 6}
   numSpawnPositions: 0
   numEnemies: 08000000090000000a000000
   numEnemiesWeights:
@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 5064112337391898495, guid: b733a468635e1b9449b4b8cd148158a6, type: 3}
   - {fileID: 3896841673119514508, guid: 689a150d0a5da804aae7a0c31e614041, type: 3}
   baseEnemyWeights:
-  - 1
+  - 2
   - 4
   - 4
   numObstacles: 050000000600000007000000
@@ -42,6 +42,7 @@ MonoBehaviour:
   lootFlags: 6
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units:
     - pos: {x: -1, y: -1}
       unit: {fileID: 6344873143029282054, guid: f8e1c054325b82b439cf4096d8dc2ce7,

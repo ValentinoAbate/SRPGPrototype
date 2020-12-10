@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter1-10-Chung
   m_EditorClassIdentifier: 
-  targetDifficulty: 30
+  targetDifficulty: 25
   dimensions: {x: 6, y: 6}
   numSpawnPositions: 4
   numEnemies: 07000000
@@ -22,8 +22,8 @@ MonoBehaviour:
   - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
   - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
   baseEnemyWeights:
-  - 7
-  - 2
+  - 6
+  - 3
   numObstacles: 06000000
   numObstaclesWeights:
   - 1
@@ -40,5 +40,6 @@ MonoBehaviour:
   lootFlags: 2
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []

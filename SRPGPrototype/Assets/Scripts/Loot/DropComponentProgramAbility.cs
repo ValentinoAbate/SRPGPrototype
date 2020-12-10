@@ -6,8 +6,8 @@ public class DropComponentProgramAbility : DropComponent<Program>
     public override List<Program> GenerateDrop(LootManager manager)
     {
         // Filter out all programs that don't give capacity
-        bool filter(Program p) => p.GetComponent<ProgramEffectAddAbility>() != null;
-        return manager.ProgramLoot.GetDropsStandard(lootQualities, filter);
+        bool filter(Program p) => p.GetComponent<ProgramEffectAddAbility>() != null || p.GetComponent<ProgramModifier>() != null;
+        return manager.ProgramLoot.GetDropsStandardNoDuplicates(lootQualities, filter);
     }
 
 }

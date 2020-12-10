@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter2-5-Knight
   m_EditorClassIdentifier: 
-  targetDifficulty: 28
-  dimensions: {x: 6, y: 6}
+  targetDifficulty: 32
+  dimensions: {x: 7, y: 6}
   numSpawnPositions: 3
-  numEnemies: 04000000
+  numEnemies: 05000000
   numEnemiesWeights:
   - 1
   enemies:
@@ -34,6 +34,7 @@ MonoBehaviour:
   lootFlags: 1
   seed:
     name: Encounter
+    dimensions: {x: 0, y: 0}
     units:
     - pos: {x: -1, y: -1}
       unit: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
