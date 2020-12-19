@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7242219554803436180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953123168284495401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAPModifier: 0
-  maxHpModifier: 1
-  repairModifier: 0
 --- !u!114 &3810536140382234709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,7 +26,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf52fe5297fbfb44a81708c0307461d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifier: {fileID: -7242219554803436180}
+  maxAPModifier: 0
+  maxHpModifier: 2
+  repairModifier: 0
 --- !u!1001 &6707852538196646759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +44,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds 1 extra MaxHP up to all adjacent programs that give MaxHP.
+      value: Adds 2 extra MaxHP up to all adjacent programs that give MaxHP.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

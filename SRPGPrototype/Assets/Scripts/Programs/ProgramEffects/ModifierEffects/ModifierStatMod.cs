@@ -1,6 +1,8 @@
 ﻿public class ModifierStatMod : Modifier
 {
-    public ProgramEffectModifyStat modifier;
+    public int maxAPModifier;
+    public int maxHpModifier;
+    public int repairModifier;
     public override bool AppliesTo(Program p)
     {
         foreach(var effect in p.Effects)
@@ -16,22 +18,22 @@
 
     private bool AppliesTo(ProgramEffectModifyStat statMod)
     {
-        if (modifier.maxAPModifier != 0 && statMod.maxAPModifier != 0)
+        if (maxAPModifier != 0 && statMod.maxAPModifier != 0)
             return true;
-        if (modifier.maxHpModifier != 0 && statMod.maxHpModifier != 0)
+        if (maxHpModifier != 0 && statMod.maxHpModifier != 0)
             return true;
-        if (modifier.repairModifier != 0 && statMod.repairModifier != 0)
+        if (repairModifier != 0 && statMod.repairModifier != 0)
             return true;
         return false;
     }
 
     public void Apply(ProgramEffectModifyStat statMod, ref Shell.CompileData data)
     {
-        if (modifier.maxAPModifier != 0 && statMod.maxAPModifier != 0)
-            data.stats.MaxAP += modifier.maxAPModifier; ;
-        if (modifier.maxHpModifier != 0 && statMod.maxHpModifier != 0)
-            data.stats.MaxHP += modifier.maxHpModifier;
-        if (modifier.repairModifier != 0 && statMod.repairModifier != 0)
-            data.stats.Repair += modifier.repairModifier;
+        if (maxAPModifier != 0 && maxAPModifier != 0)
+            data.stats.MaxAP += maxAPModifier; ;
+        if (maxHpModifier != 0 && statMod.maxHpModifier != 0)
+            data.stats.MaxHP += maxHpModifier;
+        if (repairModifier != 0 && statMod.repairModifier != 0)
+            data.stats.Repair += repairModifier;
     }
 }
