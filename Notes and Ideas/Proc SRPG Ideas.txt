@@ -9,14 +9,13 @@ General Ideas:
 - AP goes up after each usage instead of uses per turn - (implemented, seems better)
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
 - Matryoshka enemies that unpack when killed (for area chains)
-- Turrets should be neutral (encounter can end without defeating them, can attack both teams)
++ Turrets should be neutral (encounter can end without defeating them, can attack both teams)
 - Allow certain multi-actions to be cancellable (multiple part target selection, etc)
 - Add enemy-only programs as a specific rarity?
 - Have a program that evolves if you finish an encounter in one turn
 - Allow the player to run, but only if there are other encounters they could go to, and add penalties. They can't return to the same encounter.
 + Add uninstall all option
 - Use free move action as a stat like speed?
-- Have basic attack and basic move be pre-installs in the starting shell?
 - Compile error suppression programs that turn compile errors into compile warnings
 + Move that targets all units with HP equal to current power
 - Program whose abilities change based on the colors of the programs adjacent to it. if there is a tie, all are applied. If there are none, grant a special effect
@@ -25,7 +24,7 @@ General Ideas:
 - Link electricity to AP damage? Have grounded ability that lessens it
 - Maybe link explosions to fire damage? Or maybe just have it be a damage element
 - Action UI should have uses power / uses speed
-- Make differentiation between standard and buff actions
++ Make differentiation between standard and buff actions
 - Boss capacity upgrade that gives +AP but start with -3 power / speed
 - Ability that makes chaining hybrid actions free
 - Feedback abilities activate after of number of times hit (maybe better with hitting yourself)
@@ -56,10 +55,7 @@ General Ideas:
 		- Fadeout: Use while adjacent to at least 3 enemies (extra range)
 	- Upgrade Currency? Some weapons cost stuff to upgrade?
 - Adjacency Ideas
-	- Have some weirder effects be applied as modifiers that apply to certain programs
-		- For example: instead of being it's own program, "blue blaster" can be applied to weapons of the "Gun" type by being adjacent
-		- Weapon Categories (flags, so can be multi like gunblade)?:
-			- Sword, Gun, Spear, Explosive, Umbrella, Hammer, Axe, Martial Art, Magic?
+	- Ricochet (gun/spell) another target within range of the target square is chosen randomly
 	- Can be applied to move effects to to have like leaving behind tile effects, etc
 - Pawn move / attack that can promote to queen movement
 	- Pawn enemy promoted to queen boss
@@ -252,6 +248,7 @@ Abilities: These effects give the player special passive abilities
 	- Add Transient 3 + number of fixed transient programs installed
 - Apply [effect] when any target is moved
 	- Apply def - 1 on any target that is moved
+- Gain double/triple repair from repair boxes (maybe just stat gains from stat destroys)
 
 Trigger: Trigger an effect on this condition
 - When any/all [scope] programs transform / promote / destroy

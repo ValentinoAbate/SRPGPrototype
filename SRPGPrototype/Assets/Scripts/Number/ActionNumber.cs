@@ -44,7 +44,7 @@ public class ActionNumber
         int number = 0;
         if(type == Type.APCost)
         {
-            number = action.APCost;
+            number = action.APCost - user.Speed.Value;
         }
         else if(type == Type.NumberOfTargets)
         {

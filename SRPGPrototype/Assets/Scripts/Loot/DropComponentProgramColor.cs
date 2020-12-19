@@ -7,7 +7,7 @@ public class DropComponentProgramColor: DropComponent<Program>
     public override List<Program> GenerateDrop(LootManager manager)
     {
         // Filter out all programs that don't give capacity
-        bool filter(Program p) => p.color == color;
+        bool filter(Program p) => p.color == color && p.GetComponent<ProgramVariantColor>() == null;
         return manager.ProgramLoot.GetDropsStandard(lootQualities, filter);
     }
 

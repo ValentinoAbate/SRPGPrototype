@@ -71,4 +71,5 @@ Bugs
 - Program scroll window doesn't scroll up
 - Combo slash isn't working properly with widepower
 - Programs with color variants show up improperly in colored mystery data
+	- Partially fixed by removing them from the drop pool
 Make multi-sub actions whose target pattern depends on the last subaction used

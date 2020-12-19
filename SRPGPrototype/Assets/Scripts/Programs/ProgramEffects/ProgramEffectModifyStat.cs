@@ -13,5 +13,12 @@ public class ProgramEffectModifyStat : ProgramEffect
         data.stats.MaxAP += maxAPModifier;
         data.stats.MaxHP += maxHpModifier;
         data.stats.Repair += repairModifier;
+        foreach(var modifier in data.modifierMap[program])
+        {
+            var statMod = modifier as ModifierStatMod;
+            if (statMod == null)
+                continue;
+            statMod.Apply(this, ref data);
+        }
     }
 }

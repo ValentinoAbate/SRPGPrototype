@@ -37,20 +37,9 @@ public class ProgramTriggerConditionUses: ProgramTriggerCondition
         get
         {
             string progressText = "(" + (completed ? "Done" : Progress + "/" + number) + ")";
-            switch (resetCount)
-            {
-
-                case Action.Trigger.TurnStart:
-                    return "Use " + number + " times this turn " + progressText;
-                case Action.Trigger.EncounterStart:
-                    return "Use " + number + " times this encounter " + progressText;
-                case Action.Trigger.Never:
-                default:
-                    return "Use " + number + " times " + progressText;
-            }
-
+            string conditionText = "Use " + number;
+            return conditionText + UsesText(resetCount) + progressText;
         }
-
     }
 
     public override void LinkEffect(Program program, ref Shell.CompileData data)
