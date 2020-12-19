@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 308391873856083614, guid: 680e83f3990229d4f8f45a22c2ea3a01,
+        type: 3}
+      propertyPath: description
+      value: Move to an adjacent tile, then attack diagonally with a two-target stab
+        that deals 2 damage.
+      objectReference: {fileID: 0}
     - target: {fileID: 3260306664766020353, guid: 680e83f3990229d4f8f45a22c2ea3a01,
         type: 3}
       propertyPath: targetPattern.pattern.patternOffsets.Array.size

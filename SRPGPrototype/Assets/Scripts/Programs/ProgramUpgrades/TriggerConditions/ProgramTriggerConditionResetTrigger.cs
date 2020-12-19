@@ -22,6 +22,7 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
     {
         get
         {
+            CheckResetUses();
             string progressText = "(" + (completed ? "Done" : progress + "/" + number) + ")";
             return ProgressConditionText + number + UsesText(resetTrigger) + progressText;
         }
@@ -39,26 +40,29 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
     protected abstract int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
     private void Check(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
-        if (!actions.Contains(action))
+        if (completed || !actions.Contains(action))
             return;
-        if(resetTrigger == Action.Trigger.TurnStart && actions.Sum((a) => a.TimesUsedThisTurn) != turnUses)
-        {
-            turnUses = 0;
-            progress = ProgressChange(grid, action, subAction, user, targets, targetPositions);
-        }
-        else if(resetTrigger == Action.Trigger.EncounterStart && actions.Sum((a) => a.TimesUsedThisBattle) != encounterUses)
-        {
-            encounterUses = 0;
-            progress = ProgressChange(grid, action, subAction, user, targets, targetPositions); ;
-        }
-        else
-        {
-            progress += ProgressChange(grid, action, subAction, user, targets, targetPositions);
-        }
+        CheckResetUses();
+        progress += ProgressChange(grid, action, subAction, user, targets, targetPositions);
         completed = progress >= number;
     }
-    private void UpdateUses(Action a)
+    private void CheckResetUses()
     {
+        if (resetTrigger == Action.Trigger.TurnStart && actions.Sum((a) => a.TimesUsedThisTurn) != turnUses)
+        {
+            turnUses = 0;
+            progress = 0;
+        }
+        else if (resetTrigger == Action.Trigger.EncounterStart && actions.Sum((a) => a.TimesUsedThisBattle) != encounterUses)
+        {
+            encounterUses = 0;
+            progress = 0;
+        }
+    }
+    private void UpdateUses(Action action)
+    {
+        if (completed || !actions.Contains(action))
+            return;
         ++turnUses;
         ++encounterUses;
     }

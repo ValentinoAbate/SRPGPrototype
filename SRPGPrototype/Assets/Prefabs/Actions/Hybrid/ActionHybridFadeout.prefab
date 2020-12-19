@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: displayName
       value: Fadeout
       objectReference: {fileID: 0}
+    - target: {fileID: 308391873856083614, guid: ca07a8ccc942b9f499a71ce75ee4625d,
+        type: 3}
+      propertyPath: description
+      value: 'Attack an adjacent unit for 2 damage, then warp out of there (better
+        warp range). '
+      objectReference: {fileID: 0}
     - target: {fileID: 3260306664766020353, guid: ca07a8ccc942b9f499a71ce75ee4625d,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.size
