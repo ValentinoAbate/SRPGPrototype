@@ -7,7 +7,7 @@ public abstract class ModifierAction : Modifier
     [SerializeField] private Action.Type[] actionTypes = new Action.Type[] { Action.Type.Weapon };
     [SerializeField] private bool filterBySubType = false;
     [SerializeField] private SubAction.Type[] subTypes = new SubAction.Type[0];
-    public override bool AppliesTo(Program p)
+    protected override bool ModFilter(Program p)
     {
         foreach(var effect in p.Effects)
         {

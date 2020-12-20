@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProgramTriggerNumberOfTargets : ProgramTriggerCondition
+public class ProgramTriggerConditionNumberOfTargets : ProgramTriggerCondition
 {
     public override bool Completed => progress >= times;
 

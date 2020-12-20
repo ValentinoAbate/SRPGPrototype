@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &743274938542886251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3524512449939655893}
+  - component: {fileID: 5072008915743055694}
+  - component: {fileID: 3107076512963170479}
+  - component: {fileID: 2014841991055017677}
+  m_Layer: 0
+  m_Name: UpgradeAntiMaterial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3524512449939655893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743274938542886251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3770716430420670214}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5072008915743055694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743274938542886251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  displayName: Anti-Material Rifle
+  description: Action
+--- !u!114 &3107076512963170479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743274938542886251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c647892837b56d45a01385e3f904daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  number: 12
+  resetTrigger: 0
+  teams: 01000000
+--- !u!114 &2014841991055017677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743274938542886251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 7744142312778473981, guid: faf83a77776506647994d884f4540937, type: 3}
 --- !u!114 &-8259015192429777070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,9 +120,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6250375303314197875}
   - component: {fileID: 138276596736152792}
-  - component: {fileID: 8770565639066921094}
+  - component: {fileID: 2844631981823459306}
+  - component: {fileID: 6193370369644856829}
   m_Layer: 0
-  m_Name: UpgradeRifle
+  m_Name: UpgradeScout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,9 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  displayName: Rifle
+  displayName: Scout Rifle
   description: Action
---- !u!114 &8770565639066921094
+--- !u!114 &2844631981823459306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,12 +167,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 7909150954318340020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f94abe9b57cdb4b8cf70a0fbe83b85, type: 3}
+  m_Script: {fileID: 11500000, guid: dd19d7a2e96392c4fbdfdf94adcc8384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 10
-  resetCount: 0
+  number: 5
+  resetTrigger: 0
+  teams: 01000000
+--- !u!114 &6193370369644856829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909150954318340020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4316681248910746232, guid: 383181b672d248e45b876a3128cb7174, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0

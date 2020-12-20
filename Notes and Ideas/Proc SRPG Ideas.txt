@@ -38,7 +38,9 @@ General Ideas:
 - Checkers move (keep jumping)
 - Ability that triggers when you jump over a unit
 - AI could have max moves, max attacks instead of slowdown?
-- Shotgun: Attack the get pushed back
+- Shotgun: Attack then get pushed back
+- Broken Sword Hilt: does 0 damage but upgrades into cool swords
+- Reload: lowers the uses of all guns by 1 (maybe 2)
 - Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
 	- Stars on a shell for beating the different bosses
 - Upgrade Ideas
@@ -57,6 +59,8 @@ General Ideas:
 - Adjacency Ideas
 	- Ricochet (gun/spell) another target within range of the target square is chosen randomly
 	- Can be applied to move effects to to have like leaving behind tile effects, etc
+	- adjacent chess moves have their slowdown interval set to 1 and their slowdown reset to be per turn
+	- adjacent transient moves deal double damage on their last use
 - Pawn move / attack that can promote to queen movement
 	- Pawn enemy promoted to queen boss
 - Hand mode:

@@ -9,13 +9,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: description
-      value: Long ranged attack for 3 damage.
+      propertyPath: displayName
+      value: Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: displayName
-      value: Rifle
+      propertyPath: description
+      value: Long ranged attack for 2 damage.
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
@@ -77,15 +77,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6214208280559739530, guid: fb70e556c1d7cbd4cb482deade03cc58,
-        type: 3}
-      propertyPath: damage
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
@@ -115,17 +110,17 @@ PrefabInstance:
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].y
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
@@ -135,6 +130,46 @@ PrefabInstance:
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[7].y
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

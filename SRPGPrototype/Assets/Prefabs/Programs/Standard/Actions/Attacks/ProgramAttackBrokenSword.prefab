@@ -1,18 +1,159 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6381850980951612126
+--- !u!1 &2177159701187045182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3290558041197503885}
+  - component: {fileID: 2226536422719278753}
+  - component: {fileID: 1529702658918472401}
+  - component: {fileID: 252147442662890443}
+  m_Layer: 0
+  m_Name: UpgradeGreatsword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3290558041197503885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177159701187045182}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3770716430420670214}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2226536422719278753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
+  m_GameObject: {fileID: 2177159701187045182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae26d699b04fb9442a32fd90e4562b6d, type: 3}
+  m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxUses: 15
+  hidden: 1
+  displayName: Greatsword
+  description: Action
+--- !u!114 &1529702658918472401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177159701187045182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd19d7a2e96392c4fbdfdf94adcc8384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  number: 8
+  resetTrigger: 0
+  teams: 01000000
+--- !u!114 &252147442662890443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177159701187045182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4415060608083833614, guid: 02360bfce17064044a431bab4a00bea0, type: 3}
+--- !u!1 &4399094606756125904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7289597125716281164}
+  - component: {fileID: 1916989078863405942}
+  - component: {fileID: 3510960080092537771}
+  - component: {fileID: 338157303895350517}
+  m_Layer: 0
+  m_Name: UpgradeShortsword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7289597125716281164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399094606756125904}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3770716430420670214}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916989078863405942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399094606756125904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 1
+  displayName: Shortsword
+  description: Action
+--- !u!114 &3510960080092537771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399094606756125904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd19d7a2e96392c4fbdfdf94adcc8384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  number: 2
+  resetTrigger: 0
+  teams: 01000000
+--- !u!114 &338157303895350517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399094606756125904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4415060608083833614, guid: 24322ea9c014e954487dc11a1931d72e, type: 3}
 --- !u!114 &2535450298112284130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 5597248024022581365, guid: c01bcd11a9d77c140bc514af0c666a21, type: 3}
+  action: {fileID: 4415060608083833614, guid: 8708bea13b8f8c842a5ef134319c5713, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: Pull (Omni - Corrupt)
+      value: Sword Hilt (Broken)
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -66,27 +207,22 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Action
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: rarity
-      value: 2
+      value: Action (Make Unique)
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: attributes
-      value: 2
+      propertyPath: rarity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramPullOmniCorrupt
+      value: ProgramAttackBrokenSword
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -148,6 +284,12 @@ PrefabInstance:
 --- !u!1 &3770716430420670215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+    type: 3}
+  m_PrefabInstance: {fileID: 4735758370244977225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3770716430420670214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}

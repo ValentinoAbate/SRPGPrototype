@@ -3,7 +3,7 @@
     public int maxAPModifier;
     public int maxHpModifier;
     public int repairModifier;
-    public override bool AppliesTo(Program p)
+    protected override bool ModFilter(Program p)
     {
         foreach(var effect in p.Effects)
         {
