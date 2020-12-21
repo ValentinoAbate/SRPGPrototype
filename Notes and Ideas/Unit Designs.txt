@@ -12,6 +12,11 @@
 + Swarm+: HP: 2, AP: 2, Move: Basic, Attack: Basic
 - Data Eater: HP: 3, AP 2, Move: Basic, Attack: Basic
 	- Targets mystery data units, can drop data when destroyed. Runs if there is no data left
+- Corrupted Data:
+	- skills and stats depend on data type
+	- turns into extra loot if left alive when linking out
+- Patcher/Armorer/Accelerator
+	- Give other units power/defense/AP/HP
 - Nest Queen / The Hive (Boss)
 - Nestmaker: HP: 8, AP 2, Move Basic, Action: Make nest
 	- Makes nests in empty tiles

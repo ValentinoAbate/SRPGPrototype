@@ -39,7 +39,6 @@ General Ideas:
 - Ability that triggers when you jump over a unit
 - AI could have max moves, max attacks instead of slowdown?
 - Shotgun: Attack then get pushed back
-- Broken Sword Hilt: does 0 damage but upgrades into cool swords
 - Reload: lowers the uses of all guns by 1 (maybe 2)
 - Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
 	- Stars on a shell for beating the different bosses
