@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4014091352555039751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3711790161480926474}
+  - component: {fileID: 8588022825536991540}
+  - component: {fileID: 853943022434922691}
+  - component: {fileID: 1138738410230284753}
+  m_Layer: 0
+  m_Name: Upgrade+
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3711790161480926474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4014091352555039751}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3770716430420670214}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8588022825536991540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4014091352555039751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  displayName: Widesword+
+  description: Action
+--- !u!114 &853943022434922691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4014091352555039751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eda1bea01ad9394cb2f399cd5d7858c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  times: 3
+  comparison: 5
+  threshold: 3
+--- !u!114 &1138738410230284753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4014091352555039751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 3592341114791700484, guid: cc37415ad88850f48bb9f03a5cc63519, type: 3}
 --- !u!114 &-9063251546732236144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,6 +111,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 4415060608083833614, guid: a25cbf8e5eef8f747855b2a9cc0f88a5, type: 3}
+--- !u!1 &8765265681727890457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9162578396329351125}
+  - component: {fileID: 5893696721472592701}
+  - component: {fileID: 1617107381897788476}
+  - component: {fileID: 1156825239736267938}
+  m_Layer: 0
+  m_Name: Upgrade+
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9162578396329351125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765265681727890457}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3770716430420670214}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5893696721472592701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765265681727890457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  displayName: Widesword+
+  description: Action
+--- !u!114 &1617107381897788476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765265681727890457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eda1bea01ad9394cb2f399cd5d7858c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  times: 6
+  comparison: 5
+  threshold: 2
+--- !u!114 &1156825239736267938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765265681727890457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 3592341114791700484, guid: cc37415ad88850f48bb9f03a5cc63519, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +310,12 @@ PrefabInstance:
 --- !u!1 &3770716430420670215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+    type: 3}
+  m_PrefabInstance: {fileID: 4735758370244977225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3770716430420670214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}

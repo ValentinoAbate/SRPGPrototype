@@ -44,8 +44,8 @@ public class UpgradeUI : MonoBehaviour
         readyProgramContainer.DestroyAllChildren();
         notReadyProgramContainer.DestroyAllChildren();
         var inv = PersistantData.main.inventory;
-        var readyPrograms = new List<System.Tuple<Program, int>>();
-        var notReadyPrograms = new List<System.Tuple<Program, int>>();
+        var readyPrograms = new List<System.Tuple<Program, int>>(inv.Programs.Count());
+        var notReadyPrograms = new List<System.Tuple<Program, int>>(inv.Programs.Count());
         // Start with programs in inventories
         var programs = new List<Program>(inv.Programs);
         // Add programs installed in shells
@@ -146,7 +146,7 @@ public class UpgradeUI : MonoBehaviour
         previewOldProgramUI.Show(p);
         var oldUpgrade = p.Upgrade;
         p.Upgrade = upgrade;
-        if(upgrade.Hidden)
+        if(upgrade.Hidden)// && !upgrade.Condition.Completed)
         {
             previewNewProgramUI.ShowHidden(p);
         }

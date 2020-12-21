@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3794053973490202649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2412045098538523135}
+  - component: {fileID: 6758026035794552143}
+  m_Layer: 0
+  m_Name: FailureEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2412045098538523135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794053973490202649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5614253256996181514}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6758026035794552143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794053973490202649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectUser: 1
+  stat: 7
+  number:
+    min: -2147483648
+    max: 2147483647
+    constant: -3
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    unitNumber:
+      min: -2147483648
+      max: 2147483647
+      constant: 1
+      baseAmount: 0
+      modifier: 0
+      multiplier: 1
+      type: 0
+    type: 0
+  usesPower: 0
+--- !u!1001 &264276760787299789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1712857086706031764, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: damage
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415060608083833614, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: description
+      value: 'Attack adjacent unit with Gamble: Success (30%) deal 13 damage / Failure
+        lose 3 Defense. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451953465001285454, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: failureEffect
+      value: 
+      objectReference: {fileID: 6758026035794552143}
+    - target: {fileID: 5451953465001285454, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: successChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563140, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_Name
+      value: ActionAttackLuckyPickaxeCursed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc0cb8b22c923e24b87f84d48aeeaf4b, type: 3}
+--- !u!4 &5614253256996181514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 264276760787299789}
+  m_PrefabAsset: {fileID: 0}

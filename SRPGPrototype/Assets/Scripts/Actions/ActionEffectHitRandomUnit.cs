@@ -9,6 +9,11 @@ public class ActionEffectHitRandomUnit : ActionEffect
 
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
 
+    public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
+    {
+        effectToApply.Initialize(grid, action, sub, user, targetPositions);
+    }
+
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         var targets = grid.FindAll((u) => teams.Contains(u.UnitTeam));
