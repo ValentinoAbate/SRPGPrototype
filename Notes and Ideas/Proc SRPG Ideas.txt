@@ -42,6 +42,7 @@ General Ideas:
 - Reload: lowers the uses of all guns by 1 (maybe 2)
 - Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
 	- Stars on a shell for beating the different bosses
+- Status: bleeding (does 1 damage for each tile moved) (possibly just by move effects)
 - Upgrade Ideas
 	- Panic Button:
 		- C: Teleport next to many enemies, U: SafePanicButton: More likely to teleport to sqaures far away from enemies
@@ -54,6 +55,10 @@ General Ideas:
 		- Megaton Punch (+1 range): Hit 15 damage with one attack two times ? Hit 4 targets 2 times?
 	- Fade:
 		- Fadeout: Use while adjacent to at least 3 enemies (extra range)
+	- Harpoon
+		- Inflict bleeding
+	- Nail Bat
+		- Inflict bleeding
 	- Upgrade Currency? Some weapons cost stuff to upgrade?
 - Adjacency Ideas
 	- Ricochet (gun/spell) another target within range of the target square is chosen randomly

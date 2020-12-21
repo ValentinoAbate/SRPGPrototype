@@ -6,6 +6,10 @@ using UnityEngine;
 public abstract class ActionEffect : MonoBehaviour
 {
     public virtual bool UsesPower => false;
+
+    public bool AffectUser => affectUser;
+    [SerializeField] private bool affectUser = false;
+
     public virtual void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions) { }
     public abstract void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData);
 

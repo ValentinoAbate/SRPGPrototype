@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 8
+  number: 6
   resetTrigger: 0
   teams: 01000000
 --- !u!114 &252147442662890443

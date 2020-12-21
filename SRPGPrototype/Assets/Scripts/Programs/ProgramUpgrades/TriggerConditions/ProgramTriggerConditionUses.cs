@@ -9,7 +9,7 @@ public class ProgramTriggerConditionUses: ProgramTriggerCondition
     private bool completed = false;
 
     [SerializeField] private int number = 5;
-    [SerializeField] private Action.Trigger resetCount;
+    [SerializeField] private Action.Trigger resetCount = Action.Trigger.Never;
 
     private int Progress
     {

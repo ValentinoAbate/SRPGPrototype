@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectUser: 0
   targetStat: 0
   damage:
     min: -2147483648
     max: 2147483647
     constant: 1
     baseAmount: 0
-    modifier: 1
+    modifier: 2
     multiplier: 1
     type: 1
     attributes: 2
@@ -220,7 +221,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Attack an adjacent or diagonally adjacent unit for damage equal to the
-        number of transient programs installed + 1.
+        number of transient programs installed + 2.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

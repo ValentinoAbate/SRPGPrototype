@@ -52,12 +52,19 @@ public class SubAction : MonoBehaviour
         foreach (var effect in effects)
         {
             effect.Initialize(grid, action, this, user, targetPositions);
-            foreach(var position in targetPositions)
+            if(effect.AffectUser)
             {
-                var target = grid.Get(position);
-                if (target != null)
-                    targets.Add(target);
-                effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(position, selectedPos));
+                effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
+            }
+            else
+            {
+                foreach (var position in targetPositions)
+                {
+                    var target = grid.Get(position);
+                    if (target != null)
+                        targets.Add(target);
+                    effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(position, selectedPos));
+                }
             }
         }
         user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);

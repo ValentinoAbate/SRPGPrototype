@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2879870648682323302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8384646067987460246}
+  - component: {fileID: 5545653171073091960}
+  - component: {fileID: 9151461296679518613}
+  - component: {fileID: 5776805480233769422}
+  m_Layer: 0
+  m_Name: UpgradeNail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8384646067987460246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879870648682323302}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3770716430420670214}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5545653171073091960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879870648682323302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  displayName: Nail Bat
+  description: Action
+--- !u!114 &9151461296679518613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879870648682323302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd19d7a2e96392c4fbdfdf94adcc8384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  number: 5
+  resetTrigger: 0
+  teams: 01000000
+--- !u!114 &5776805480233769422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879870648682323302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4561745151760611575, guid: 2723ace50e4137b4fb0ea3da54749ced, type: 3}
+--- !u!114 &-1291547343294800973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.5
+  patterns:
+  - patternOffsets:
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 1}
+  useWeights: 0
+  weights: []
 --- !u!114 &2535450298112284130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 308391873856083614, guid: 86dbf5115cd702f4f8716769e4dd4100, type: 3}
+  action: {fileID: 4415060608083833614, guid: 1a0db9599ed40b74e907acd14e1ed668, type: 3}
 --- !u!1 &7397476745957789870
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,10 +120,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5001846372245255563}
   - component: {fileID: 6965142169567955197}
-  - component: {fileID: 8055104982005016146}
+  - component: {fileID: 3413283479869876486}
   - component: {fileID: 98220195974837385}
   m_Layer: 0
-  m_Name: UpgradeAmbush
+  m_Name: UpgradeGrandSlam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,9 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  displayName: Duelist's Feint
+  displayName: Grand Slam
   description: Action
---- !u!114 &8055104982005016146
+--- !u!114 &3413283479869876486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,11 +167,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7397476745957789870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd19d7a2e96392c4fbdfdf94adcc8384, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c647892837b56d45a01385e3f904daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 2
+  number: 3
   resetTrigger: 1
   teams: 01000000
 --- !u!114 &98220195974837385
@@ -89,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 4685294171977244971, guid: 30960992c03f7184589956ef2fed1e42, type: 3}
+  action: {fileID: 7675589924038772660, guid: 9cd56ce14576bf048b26e5778007cf8a, type: 3}
 --- !u!1 &8403519611383768867
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,10 +197,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4124873618710916448}
   - component: {fileID: 3229589355081401134}
-  - component: {fileID: 4893823249667001601}
+  - component: {fileID: 8898072172279978900}
   - component: {fileID: 2686882861101761997}
   m_Layer: 0
-  m_Name: UpgradeLunge+
+  m_Name: UpgradeCorked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,9 +233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  displayName: Duelist's Lunge+
+  displayName: Corked Bat
   description: Action
---- !u!114 &4893823249667001601
+--- !u!114 &8898072172279978900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 12
+  number: 10
   resetTrigger: 0
   teams: 01000000
 --- !u!114 &2686882861101761997
@@ -166,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 8980817157489422147, guid: ba8099ca58b456040b65b67095f236dd, type: 3}
+  action: {fileID: 8082897736369346046, guid: 09bd45f912ebcda4a83138555106cce3, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,7 +279,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: Duelist's Lunge
+      value: Homerun Bat
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -212,7 +309,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -247,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramHybridLunge
+      value: ProgramHybridHomerunBat
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

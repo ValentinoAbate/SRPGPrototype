@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3498084401969222590
+--- !u!114 &1884827043973909256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8165979782698729836}
+  m_GameObject: {fileID: 5639408088848563140}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
@@ -14,39 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectUser: 0
   targetStat: 0
-  damage: 3
---- !u!114 &-4957744806072086510
+  damage: 2
+--- !u!114 &861424065456487617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8165979782698729836}
+  m_GameObject: {fileID: 5639408088848563140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b19ad8ce5adf34b8c210eb34e7ad20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   affectUser: 1
-  stat: 4
-  number:
-    min: -2147483648
-    max: 2147483647
-    constant: -1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 1
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      constant: 1
-      baseAmount: 0
-      modifier: 0
-      multiplier: 1
-      type: 0
-    type: 0
-  usesPower: 0
---- !u!1001 &5762436849796139475
+--- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -55,18 +37,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.size
+      propertyPath: range.patternOffsets.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: subtype
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: rangePattern.patternType
-      value: 4
+      propertyPath: targetPattern.pattern.patternOffsets.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -75,12 +52,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: targetPattern.pattern.dimensions.x
+      propertyPath: range.patternOffsets.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: range.patternOffsets.Array.data[0].y
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
+      propertyPath: range.patternOffsets.Array.data[1].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: targetPattern.pattern.dimensions.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
       propertyPath: targetPattern.pattern.patternOffsets.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.patternType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: subtype
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: targetPattern.pattern.dimensions.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[0].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[1].y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
@@ -141,12 +163,18 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackScrapCannon
+      value: ActionAttackShotgun
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: slowdownInterval
-      value: 4
+      propertyPath: displayName
+      value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: description
+      value: 'Attack an adjacent tile with a three-target wide shot that deals 2
+        damage and pushes you back one tile. '
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -155,19 +183,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: displayName
-      value: Scrap Cannon
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: description
-      value: Ranged attack for 3 damage, then lose 1 Repair.
+      propertyPath: slowdownInterval
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}
---- !u!1 &8165979782698729836 stripped
+--- !u!1 &5639408088848563140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
     type: 3}
-  m_PrefabInstance: {fileID: 5762436849796139475}
+  m_PrefabInstance: {fileID: 8135780589257601915}
   m_PrefabAsset: {fileID: 0}

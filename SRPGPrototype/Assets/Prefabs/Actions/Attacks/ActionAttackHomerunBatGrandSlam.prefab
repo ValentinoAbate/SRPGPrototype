@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-944590374182944633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838433617295331198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210b91bd3081c7644aa5e1a88dcb2411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectUser: 0
+--- !u!1001 &6323157665942746298
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4415060608083833614, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415060608083833614, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: description
+      value: Attack an adajcent unit for 4 damage and then push them back two tiles.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415060608083833614, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: displayName
+      value: Grand Slam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563140, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_Name
+      value: ActionAttackHomerunBatGrandSlam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928888354316552521, guid: 1a0db9599ed40b74e907acd14e1ed668,
+        type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a0db9599ed40b74e907acd14e1ed668, type: 3}
+--- !u!1 &1838433617295331198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5639408088848563140, guid: 1a0db9599ed40b74e907acd14e1ed668,
+    type: 3}
+  m_PrefabInstance: {fileID: 6323157665942746298}
+  m_PrefabAsset: {fileID: 0}

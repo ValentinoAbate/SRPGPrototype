@@ -170,6 +170,37 @@ public abstract class Unit : GridObject
         throw new System.Exception("Attempt to get invalid stat: " + stat.ToString());
     }
 
+    public void SetStat(Stats.StatName stat, int value)
+    {
+        switch (stat)
+        {
+            case Stats.StatName.HP:
+                HP = Mathf.Min(value, MaxHP);
+                break;
+            case Stats.StatName.MaxHP:
+                MaxHP = value;
+                break;
+            case Stats.StatName.AP:
+                AP = value;
+                break;
+            case Stats.StatName.MaxAP:
+                MaxAP = value;
+                break;
+            case Stats.StatName.Repair:
+                Repair = value;
+                break;
+            case Stats.StatName.Power:
+                Power.Value = value;
+                break;
+            case Stats.StatName.Speed:
+                Speed.Value = value;
+                break;
+            case Stats.StatName.Defense:
+                Defense.Value = value;
+                break;
+        }
+    }
+
     public bool CanUseAction(Action action)
     {
         return AP >= (action.APCost - Speed.Value);
