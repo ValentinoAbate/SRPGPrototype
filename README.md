@@ -13,4 +13,4 @@ Version Convention:
 4th number (optional): patch
 
 # Technical Info
-Unity Version: 2020.1.2
+Unity Version: 2020.2.0f1

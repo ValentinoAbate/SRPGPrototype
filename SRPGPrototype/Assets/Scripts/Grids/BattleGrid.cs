@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleGrid : Grid<Unit>
+public class BattleGrid : Grid.Grid<Unit>
 {
     [SerializeField] private Vector2Int dimensions = new Vector2Int(8, 8);
     public override Vector2Int Dimensions => dimensions;

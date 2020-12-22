@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustGrid : Grid<Program>
+public class CustGrid : Grid.Grid<Program>
 {
     public Shell Shell
     {
