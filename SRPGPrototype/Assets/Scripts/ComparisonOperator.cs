@@ -19,9 +19,9 @@ public static class ComparisonOperatorExtensions
     {
         if (op.HasFlag(ComparisonOperator.EqualTo) && threshold == value)
             return true;
-        if (op.HasFlag(ComparisonOperator.GreaterThan) && threshold > value)
+        if (op.HasFlag(ComparisonOperator.GreaterThan) && value > threshold)
             return true;
-        if (op.HasFlag(ComparisonOperator.LessThan) && threshold < value)
+        if (op.HasFlag(ComparisonOperator.LessThan) && value < threshold)
             return true;
         return false;
     }

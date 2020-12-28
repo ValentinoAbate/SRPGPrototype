@@ -38,7 +38,7 @@ public abstract class ActionEffectDamage : ActionEffect
         }
     }
 
-    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    sealed public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;

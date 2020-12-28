@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
+  number: 1
+  resetTrigger: 0
   times: 1
   comparison: 5
   threshold: 8
@@ -202,6 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
+  number: 5
+  resetTrigger: 0
   times: 5
   comparison: 5
   threshold: 4

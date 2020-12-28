@@ -3,55 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProgramTriggerConditionNumberOfTargets : ProgramTriggerCondition
+public class ProgramTriggerConditionNumberOfTargets : ProgramTriggerConditionResetTrigger
 {
-    public override bool Completed => progress >= times;
-
-    [SerializeField] private int times = 5;
     [SerializeField] private ComparisonOperator comparison = ComparisonOperator.GreaterThanOrEqualTo;
     [SerializeField] private int threshold = 3;
 
-    private int progress = 0;
-
-    private readonly List<Action> actions = new List<Action>();
-
-    public override string RevealedConditionText
+    protected override string ProgressConditionText
     {
         get
         {
             string ret = "hit ";
             if (comparison.HasFlag(ComparisonOperator.GreaterThan))
             {
-                ret += " more than " + (comparison.HasFlag(ComparisonOperator.EqualTo) ? (threshold - 1) : threshold);
+                ret += (comparison.HasFlag(ComparisonOperator.EqualTo) ? threshold : threshold + 1) + " or more ";
             }
             else if (comparison.HasFlag(ComparisonOperator.LessThan))
             {
-                ret += " less than " + (comparison.HasFlag(ComparisonOperator.EqualTo) ? (threshold + 1) : threshold);
+                ret += (comparison.HasFlag(ComparisonOperator.EqualTo) ? threshold : threshold - 1) + " or fewer ";
             }
             else
             {
-                ret += threshold;
+                ret += threshold + " ";
             }
-            ret += " targets " + times + (times > 1 ? " times" : " time") + "(" + progress + "/" + times + ")";
-            return ret;
+            return ret + "targets ";
         }
     }
 
-    public override void LinkEffect(Program program, ref Shell.CompileData data)
+    protected override int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
-        actions.Clear();
-        // Log actions from the program
-        actions.AddRange(program.Effects.Where((e) => e is ProgramEffectAddAction).Select((e) => (e as ProgramEffectAddAction).action));
-        // Add the check
-        data.onAfterSubAction += Check;
-    }
-    private void Check(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
-    {
-        if (!actions.Contains(action))
-            return;
-        if(comparison.Evaluate(threshold, targets.Count))
-        {
-            ++progress;
-        }
+        return comparison.Evaluate(threshold, targets.Count) ? 1 : 0;
     }
 }

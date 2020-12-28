@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondition
 {
-    public override bool Completed => completed;
+    sealed public override bool Completed => completed;
     private bool completed = false;
 
     [SerializeField] private int number = 5;
@@ -18,17 +18,21 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
 
     protected abstract string ProgressConditionText { get; }
 
-    public override string RevealedConditionText
+    sealed public override string RevealedConditionText
     {
         get
         {
             CheckResetUses();
+            if(number <= 1)
+            {
+                return completed ? ProgressConditionText + " (Done)" : ProgressConditionText;
+            }
             string progressText = "(" + (completed ? "Done" : progress + "/" + number) + ")";
             return ProgressConditionText + number + UsesText(resetTrigger) + progressText;
         }
     }
 
-    public override void LinkEffect(Program program, ref Shell.CompileData data)
+    sealed public override void LinkEffect(Program program, ref Shell.CompileData data)
     {
         actions.Clear();
         // Log actions from the program
