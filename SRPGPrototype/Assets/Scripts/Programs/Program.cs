@@ -107,8 +107,13 @@ public class Program : GridObject, ILootable
 
     private void Awake()
     {
-        triggers = GetComponentsInChildren<ProgramTrigger>(true);
-        ModifierEffects = GetComponentsInChildren<ProgramModifier>(true);
+        var trigList = new List<ProgramTrigger>();
+        foreach(Transform t in transform)
+        {
+            trigList.AddRange(t.GetComponents<ProgramTrigger>());
+        }
+        triggers = trigList.ToArray();
+        ModifierEffects = GetComponents<ProgramModifier>();
         effects = GetComponents<ProgramEffect>();
     }
 

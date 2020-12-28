@@ -174,8 +174,6 @@ MonoBehaviour:
   startingPrograms:
   - {fileID: 4551076113953349650, guid: 4299af35ec051f04690d12af66c6e682, type: 3}
   - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
-  - {fileID: 4551076113953349650, guid: 88603f8349860e046b7a3a60782cd9f3, type: 3}
-  - {fileID: 4551076113953349650, guid: 6fe1338a793446f468f36a316b398679, type: 3}
 --- !u!1 &5686376207347549347
 GameObject:
   m_ObjectHideFlags: 0
