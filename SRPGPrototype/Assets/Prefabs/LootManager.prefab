@@ -196,8 +196,11 @@ MonoBehaviour:
   - {fileID: 2560143424604166460, guid: 87e880e49c745644a874262d5f90d96d, type: 3}
   - {fileID: 2560143424604166460, guid: db79fcef04d8fe74faa7b19ed9ef6ef7, type: 3}
   - {fileID: 2560143424604166460, guid: 75790633885064c4db0be0e2c2c37a18, type: 3}
+  - {fileID: 2560143424604166460, guid: bfbfcd8c12e6e6b4a9090e674fc035f1, type: 3}
   - {fileID: 2560143424604166460, guid: d024e083ff4472645b98ec827f86eb0e, type: 3}
+  - {fileID: 2560143424604166460, guid: 6d221491fbbfaa942a3d301fdf1a11e5, type: 3}
   - {fileID: 2560143424604166460, guid: a8971fc6692bab643a501457da69efee, type: 3}
+  - {fileID: 2560143424604166460, guid: c40e0e649cb74464eb6e07586bcaa854, type: 3}
   - {fileID: 6013885685804664415, guid: 65b9326761eb379448bbf4a7430b324d, type: 3}
   - {fileID: 6013885685804664415, guid: d74c24c61bf6b5c4c8f7fd591fccdc2f, type: 3}
   - {fileID: 6013885685804664415, guid: f19c78b90ffb6154cacde9dc5b9ff20c, type: 3}
@@ -242,13 +245,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1897346209456326444, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 1897346209456326444, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 1897346209456326444, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
@@ -257,8 +260,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1897346209456326444, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2888812502118235197, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
@@ -267,13 +270,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3990855828535531902, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 3990855828535531902, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 3990855828535531902, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
@@ -281,6 +284,11 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 3990855828535531902, guid: 6e1c235e80bf6374f90c8ba053ada635,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354876071586884750, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
       propertyPath: m_textAlignment
       value: 65535
@@ -292,18 +300,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5354876071586884750, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5354876071586884750, guid: 6e1c235e80bf6374f90c8ba053ada635,
-        type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 5354876071586884750, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
@@ -322,6 +330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -333,16 +346,6 @@ PrefabInstance:
     - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6407117253158540340, guid: 6e1c235e80bf6374f90c8ba053ada635,
@@ -362,13 +365,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788089145123821851, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 7788089145123821851, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 7788089145123821851, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
@@ -377,8 +380,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788089145123821851, guid: 6e1c235e80bf6374f90c8ba053ada635,
         type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1c235e80bf6374f90c8ba053ada635, type: 3}

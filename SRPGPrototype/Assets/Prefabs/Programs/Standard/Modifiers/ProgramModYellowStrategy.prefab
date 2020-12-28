@@ -15,9 +15,9 @@ MonoBehaviour:
   attributeFilterMode: 0
   attributes: 0
   filterByActionType: 1
-  actionTypes: 0100000002000000
-  filterBySubType: 1
-  subTypes: 090000000a0000000b000000
+  actionTypes: 02000000
+  filterBySubType: 0
+  subTypes: 
   actionEffectContainer: {fileID: 0}
 --- !u!114 &3810536140382234709
 MonoBehaviour:
@@ -33,7 +33,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 0
   modifierContainer: {fileID: 0}
---- !u!114 &6621627548271045498
+--- !u!114 &5566001014454626489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,22 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2953123168284495401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
+  m_Script: {fileID: 11500000, guid: 170f108b7599e604bafb2df503a4c814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   affectUser: 0
   targetStat: 0
-  damage:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 4
-    modifier: 0
-    multiplier: -1
-    type: 3
-    attributes: 0
-    color: 2
-    rarity: 0
+  mod: {fileID: 3797450329308082281}
 --- !u!1001 &6707852538196646759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,18 +63,18 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds damage equal to 4 minus the number of blue programs installed to
-        adjacent swords, spears, and hammers.
+      value: Adds damage equal to the number of modified programs to adjacent hybrid
+        programs.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: +Red Rage
+      value: +Yellow Strategy
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramModRedRage
+      value: ProgramModYellowStrategy
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

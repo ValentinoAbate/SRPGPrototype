@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6863444909045323667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953123168284495401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13217768717a6140b15b4ba3fe1efb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectUser: 0
+  targetStat: 0
+  directions: 1
+  teams: 01000000
 --- !u!114 &3797450329308082281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,7 +33,7 @@ MonoBehaviour:
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1
-  subTypes: 090000000a0000000b000000
+  subTypes: 0c0000000d000000
   actionEffectContainer: {fileID: 0}
 --- !u!114 &3810536140382234709
 MonoBehaviour:
@@ -33,31 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 0
   modifierContainer: {fileID: 0}
---- !u!114 &6621627548271045498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953123168284495401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectUser: 0
-  targetStat: 0
-  damage:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 4
-    modifier: 0
-    multiplier: -1
-    type: 3
-    attributes: 0
-    color: 2
-    rarity: 0
 --- !u!1001 &6707852538196646759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,23 +59,23 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds damage equal to 4 minus the number of blue programs installed to
-        adjacent swords, spears, and hammers.
+      value: Adds damage equal to the number of adjacent enemy units to adjacent
+        guns and explosives.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: +Red Rage
+      value: +Risky Shot
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramModRedRage
+      value: ProgramModRiskyShot
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
