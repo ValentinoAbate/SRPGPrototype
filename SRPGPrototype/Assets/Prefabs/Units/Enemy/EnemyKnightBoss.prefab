@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -24,6 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -35,16 +45,6 @@ PrefabInstance:
     - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1527010110250024000, guid: d345da8490b83a84c81da463ce895bdc,
@@ -69,8 +69,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
-      propertyPath: displayName
-      value: Paladin
+      propertyPath: maxAP
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
@@ -79,19 +79,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
-      propertyPath: maxAP
-      value: 4
+      propertyPath: description
+      value: 'Move: Knight. Attack: Adjacent (3 damage).'
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
-      propertyPath: description
-      value: 'Move: Knight. Attack: Adjacent (3 damage).'
+      propertyPath: displayName
+      value: Paladin
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: interferenceLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6464810328418194555, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
+      propertyPath: moveAction
+      value: 
+      objectReference: {fileID: 3797766334593930996, guid: c9dc82ef3fa52f64aa764be2f7ef6bd7,
+        type: 3}
     - target: {fileID: 6464810328418194555, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: standardAction
