@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 2890889818937633901, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
       propertyPath: damage
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
       propertyPath: description
-      value: Throw a grenade that explodes for 3 damage in a plus pattern.
+      value: Throw a grenade that explodes for 4 damage in a plus pattern.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
@@ -26,6 +26,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionAttackGrenade+
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
@@ -44,6 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -55,16 +65,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,

@@ -63,7 +63,6 @@ MonoBehaviour:
   hidden: 1
   number: 1
   resetTrigger: 0
-  times: 1
   comparison: 5
   threshold: 5
 --- !u!114 &1678806333777579480
@@ -142,7 +141,6 @@ MonoBehaviour:
   hidden: 1
   number: 1
   resetTrigger: 0
-  times: 1
   comparison: 5
   threshold: 5
 --- !u!114 &8425378151079529640
@@ -203,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae26d699b04fb9442a32fd90e4562b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxUses: 6
+  maxUses: 7
 --- !u!1 &6240695064151524932
 GameObject:
   m_ObjectHideFlags: 0

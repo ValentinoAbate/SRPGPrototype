@@ -10,22 +10,27 @@ PrefabInstance:
     - target: {fileID: 2890889818937633901, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
       propertyPath: damage
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
+        type: 3}
+      propertyPath: description
+      value: Throw a grenade that explodes for 4 damage in a large X pattern.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
       propertyPath: displayName
       value: Atomic X
       objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
-        type: 3}
-      propertyPath: description
-      value: Throw a grenade that explodes for 3 damage in a large X pattern.
-      objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackAtomicX
+      value: ActionAttackChemXAtomic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
@@ -44,6 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -55,16 +65,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
@@ -84,11 +84,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
-        type: 3}
       propertyPath: targetPattern.pattern.dimensions.x
       value: 5
       objectReference: {fileID: 0}
@@ -96,6 +91,11 @@ PrefabInstance:
         type: 3}
       propertyPath: targetPattern.pattern.dimensions.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
@@ -129,13 +129,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.data[3].y
-      value: 1
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[3].x
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.data[3].x
-      value: 3
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[3].y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
