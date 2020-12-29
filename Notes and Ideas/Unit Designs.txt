@@ -12,9 +12,11 @@
 + Swarm+: HP: 2, AP: 2, Move: Basic, Attack: Basic
 - Data Eater: HP: 3, AP 2, Move: Basic, Attack: Basic
 	- Targets mystery data units, can drop data when destroyed. Runs if there is no data left
-- Corrupted Data:
-	- skills and stats depend on data type
++ Corrupted Data: HP: 3, AP 2, Move: Basic, Attack Basic, Interference: Low
 	- turns into extra loot if left alive when linking out
+- Corrupted gamble data (miniboss):
+	- Drops two gambles when left alive
+	- Great stats, and maybe a special ability
 - Patcher/Armorer/Accelerator
 	- Give other units power/defense/AP/HP
 - Nest Queen / The Hive (Boss)
@@ -40,7 +42,7 @@
 	- Switches modes when damaged. Chooses a random mode at spawn
 + Walking Nest: HP: 3, AP:2, Move: Basic, Attack: Basic
 	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
-- Walking Nest+: HP: 5, AP:2, Move: Basic, Attack: Basic
++ Walking Nest+: HP: 5, AP:2, Move: Basic, Attack: Basic
 	- When destroyed, spawns 2 / 3 Swarm (spawn logic tbd)
 + Knight: HP: 9, AP: 2, Move: Knight, Attack: Heavy
 + Cavalier (Knight+): HP: 12: AP: 2 Move:, Knight, Attack: Heavy
@@ -50,7 +52,7 @@
 + Bomb: HP: 3, AP 2, Move: Basic, Attack: Basic
 	- Explosion 1 (1AP): Hit every adjacent (Horizontal) (to target) square for 4 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 1.
-- Bomb+: HP: 5, AP 2, Move: Basic, Attack: Basic
++ Bomb+: HP: 5, AP 2, Move: Basic, Attack: Basic
 	- Explosion 2 (1AP): Hit every adjacent (Horizontal + Diag) (to target) square for 5 damage. Destroy target. Targets self
 	- Trigger: Destroyed (except by self) use Explosion 2.
 + Fuse: HP: 2, AP 2, Move: Basic, Attack: Explosion 1
@@ -64,7 +66,7 @@
 Environment Designs:
 + Nest: HP: 3, AP:1, Move: None, Attack: Damage self (1)
 	- When destroyed, spawns 1 / 2 Swarm (spawn logic tbd)
-- Nest+: HP: 3, AP:1, Move: None, Attack: Damage self (1)
++ Nest+: HP: 3, AP:1, Move: None, Attack: Damage self (1)
 	- When destroyed, spawns 2 / 3 Swarm+ (spawn logic tbd)
 - Nest Nest:
 	- When destroyed, spawn other nests

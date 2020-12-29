@@ -24,10 +24,12 @@ MonoBehaviour:
   - {fileID: 4568531750757968395, guid: b3165f0cc7f603f4a92787664e892e2f, type: 3}
   - {fileID: 5064112337391898495, guid: b733a468635e1b9449b4b8cd148158a6, type: 3}
   - {fileID: 3896841673119514508, guid: 689a150d0a5da804aae7a0c31e614041, type: 3}
+  - {fileID: 4568531750757968395, guid: 87b366d6c920b784aa3aeba5538f5d86, type: 3}
   baseEnemyWeights:
   - 2
   - 4
   - 4
+  - 1
   numObstacles: 050000000600000007000000
   numObstaclesWeights:
   - 1

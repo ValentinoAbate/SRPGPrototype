@@ -40,7 +40,9 @@ MonoBehaviour:
     - 1
   - data:
     - {fileID: 11400000, guid: 22dcf5a757ae2e14a81868b6d8edbac1, type: 2}
+    - {fileID: 11400000, guid: 63affa91c5c1e554db68717e948c86fc, type: 2}
     weights:
+    - 3
     - 1
   - data:
     - {fileID: 11400000, guid: 6bc84e9b8722a9641bf624f9730b2da7, type: 2}
@@ -76,7 +78,9 @@ MonoBehaviour:
     - 1
   - data:
     - {fileID: 11400000, guid: dba6493bcb3b8c64d93fc61f8b46874b, type: 2}
+    - {fileID: 11400000, guid: ba6e0cc024da8cc4ab809d8155046d20, type: 2}
     weights:
+    - 3
     - 1
   - data:
     - {fileID: 11400000, guid: dc60f3ebc0448f64e98b4ad1bab2411c, type: 2}
@@ -98,8 +102,10 @@ MonoBehaviour:
     - 2
   - data:
     - {fileID: 11400000, guid: bd8a75fe065a7f64481a30cf6eecd89b, type: 2}
+    - {fileID: 11400000, guid: 1066edb887aeb754bbb0c2047ab6205d, type: 2}
     weights:
     - 2
+    - 1
   - data:
     - {fileID: 11400000, guid: 5bb3311d402a8d74e8b4d0b850c54fdc, type: 2}
     weights:

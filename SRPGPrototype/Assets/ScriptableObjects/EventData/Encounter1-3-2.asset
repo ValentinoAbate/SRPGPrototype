@@ -15,7 +15,7 @@ MonoBehaviour:
   targetDifficulty: 10
   dimensions: {x: 6, y: 6}
   numSpawnPositions: 0
-  numEnemies: 06000000
+  numEnemies: 05000000
   numEnemiesWeights:
   - 1
   enemies:
@@ -47,5 +47,8 @@ MonoBehaviour:
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
-    units: []
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: 87b366d6c920b784aa3aeba5538f5d86,
+        type: 3}
     spawnPositions: []
