@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDifficulty: 11
   dimensions: {x: 8, y: 7}
-  numSpawnPositions: 3
-  numEnemies: 05000000
+  numSpawnPositions: 0
+  numEnemies: 03000000
   numEnemiesWeights:
   - 1
   enemies:
-  - {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c, type: 3}
-  - {fileID: 1278278986212401478, guid: 999e48b4f705e2f49a342d02444fd7a4, type: 3}
+  - {fileID: 3896841673119514508, guid: 689a150d0a5da804aae7a0c31e614041, type: 3}
   baseEnemyWeights:
   - 2
-  - 1
   numObstacles: 03000000
   numObstaclesWeights:
   - 1

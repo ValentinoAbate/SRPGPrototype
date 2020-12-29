@@ -7,7 +7,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 {
     // amount of time to pause for each square moved
     public const float moveDelay = 0.25f;
-    public const float attackDelay = 0.5f;
+    public const float attackDelay = 0.2f;
 
     public abstract List<Action> Actions { get; }
 
@@ -30,11 +30,11 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected IEnumerator AttackUntilExhausted(BattleGrid grid, AIUnit self, Action standardAction, Vector2Int tPos)
     {
-        while (self.CanUseAction(standardAction))
+        while (!self.Dead && self.CanUseAction(standardAction))
         {
-            standardAction.UseAll(grid, self, tPos);
-            yield return new WaitForSeconds(attackDelay);
             Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
+            yield return new WaitForSeconds(attackDelay);
+            standardAction.UseAll(grid, self, tPos);
         }
     }
 
@@ -105,27 +105,34 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected List<TargetPath> PathsToTargetRange(BattleGrid grid, T self, Action moveAction, Action standardAction, IEnumerable<Unit> targets, System.Predicate<Unit> canMoveThroughTarget = null)
     {
-        var positions = new Dictionary<Vector2Int, Unit>();
+        var positions = new Dictionary<TargetData, Unit>();
         // Get relevant ranges
         var moveRange = moveAction.subActions[0].Range;
         var targetRange = standardAction.subActions[0].Range;
+        var targetPattern = standardAction.subActions[0].targetPattern;
         // Target position is valid if is legal and is empty, self or passes the canMoveThrough pred
-        bool ValidPos(Vector2Int p) => grid.IsLegal(p) && (grid.IsEmpty(p) || p == self.Pos
-            || (canMoveThroughTarget != null && canMoveThroughTarget(grid.Get(p))));
+        bool ValidPos(Vector2Int p)
+        {
+            return grid.IsLegal(p) && (grid.IsEmpty(p) || p == self.Pos || (canMoveThroughTarget != null && canMoveThroughTarget(grid.Get(p))));
+        }
+
         // Calculate possible target positions
         foreach (var target in targets)
         {
-            var targetPositions = targetRange.GetPositions(grid, target.Pos).Where(ValidPos);
+            var targetablePositions = targetPattern.ReverseTarget(grid, target.Pos);
+            var targetData = targetPattern.ReverseTarget(grid, target.Pos)  
+                                          .SelectMany((p) => targetRange.GetPositions(grid, p).Select((rPos) => new TargetData(rPos, p))
+                                          .Where((data) => ValidPos(data.userPos)));
             // For now, just add the empty/self legal positions where a target would be in range
-            foreach(var position in targetPositions)
+            foreach(var posData in targetData)
             {
-                if(!positions.ContainsKey(position))
+                if(!positions.ContainsKey(posData))
                 {
-                    positions.Add(position, target);
+                    positions.Add(posData, target);
                 }
                 else
                 {
-                    positions[position] = TargetPriority(positions[position], target);
+                    positions[posData] = TargetPriority(positions[posData], target);
                 }
             }
         }
@@ -133,10 +140,10 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         var paths = new List<TargetPath>();
         foreach (var posTargetPair in positions)
         {
-            var path = Path(grid, self, moveAction, posTargetPair.Key, canMoveThroughTarget);
+            var path = Path(grid, self, moveAction, posTargetPair.Key.userPos, canMoveThroughTarget);
             if (path != null)
             {
-                paths.Add(new TargetPath(path, posTargetPair.Value.Pos));
+                paths.Add(new TargetPath(path, posTargetPair.Key.targetPos));
             }
         }
         // Move towards the target position with the shortest path
@@ -215,6 +222,18 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         public TargetPath(List<Vector2Int> path, Vector2Int targetPos)
         {
             this.path = path;
+            this.targetPos = targetPos;
+        }
+    }
+
+    public readonly struct TargetData
+    {
+        public readonly Vector2Int userPos;
+        public readonly Vector2Int targetPos;
+
+        public TargetData(Vector2Int userPos, Vector2Int targetPos)
+        {
+            this.userPos = userPos;
             this.targetPos = targetPos;
         }
     }

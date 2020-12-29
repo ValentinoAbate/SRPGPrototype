@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AIPhase : Phase
 {
+    public const float nextTurnDelay = 0.025f;
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
     public BattleGrid grid;
 
@@ -30,6 +31,7 @@ public class AIPhase : Phase
             yield return StartCoroutine(unit.DoTurn(grid));
             if (CheckEndPhase())
                 yield break;
+            yield return new WaitForSeconds(nextTurnDelay);
         }
         EndPhase();
     }

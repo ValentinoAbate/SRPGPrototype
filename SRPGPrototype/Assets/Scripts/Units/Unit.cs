@@ -102,7 +102,8 @@ public abstract class Unit : GridObject
         {
             if(Pos != BattleGrid.OutOfBounds)
                 grid.Remove(this);
-            gameObject.SetActive(false);
+            // Temporary: move to OOB
+            transform.position = grid.GetSpace(BattleGrid.OutOfBounds);
         }
     }
 
