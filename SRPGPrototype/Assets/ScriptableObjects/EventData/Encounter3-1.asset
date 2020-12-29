@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: Encounter3-1
   m_EditorClassIdentifier: 
-  targetDifficulty: 25
+  targetDifficulty: 29
   dimensions: {x: 8, y: 6}
   numSpawnPositions: 3
   numEnemies: 0700000008000000
@@ -22,9 +22,11 @@ MonoBehaviour:
   enemies:
   - {fileID: 4568531750757968395, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
   - {fileID: 4568531750757968395, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}
+  - {fileID: 4568531750757968395, guid: 496dee5284ab4a0489bbf8b72470321f, type: 3}
   baseEnemyWeights:
-  - 1
-  - 1
+  - 3
+  - 3
+  - 2
   numObstacles: 03000000
   numObstaclesWeights:
   - 1
