@@ -18,6 +18,8 @@ public abstract class Unit : GridObject
         None,
         Enemy,
         Player,
+        Obstacle,
+        Data,
     }
 
     public enum Interference

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectUser: 0
   stat: 4
   number:
     min: -2147483648
@@ -42,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectUser: 0
   targetStat: 0
   damage:
     min: -2147483648
@@ -68,8 +70,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: range.patternOffsets.Array.size
-      value: 1
+      propertyPath: rangePattern.patternType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -78,13 +80,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391451920999491312, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: rangePattern.patternType
-      value: 0
+      propertyPath: range.patternOffsets.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: range.patternOffsets.Array.size
-      value: 4
+      propertyPath: subtype
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -95,6 +97,11 @@ PrefabInstance:
         type: 3}
       propertyPath: range.dimensions.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: range.patternOffsets.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -118,28 +125,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: range.patternOffsets.Array.data[2].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
       propertyPath: range.patternOffsets.Array.data[2].x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: range.patternOffsets.Array.data[3].y
-      value: 1
+      propertyPath: range.patternOffsets.Array.data[2].y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 728197433529636537, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: subtype
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: displayName
-      value: Lugwrench
+      propertyPath: range.patternOffsets.Array.data[3].y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -148,8 +145,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: slowdownInterval
-      value: 6
+      propertyPath: description
+      value: Attack an adjacent unit for damage equal to your Repair, then lose 1
+        Repair.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: displayName
+      value: Lugwrench
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -158,14 +161,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
-      propertyPath: description
-      value: Attack an adjacent unit for damage equal to your Repair, then lose 1
-        Repair.
+      propertyPath: slowdownInterval
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370085, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: m_Name
       value: ActionAttackLugwrench
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
@@ -184,6 +191,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -195,16 +207,6 @@ PrefabInstance:
     - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370086, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
