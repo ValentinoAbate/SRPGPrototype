@@ -113,19 +113,25 @@ public class UpgradeUI : MonoBehaviour
             if(!trigger.Condition.Completed)
             {
                 buttonText.text = trigger.TriggerName;
-                upgradeButton.interactable = false;
-                continue;
+                upgradeButton.image.color = new Color(0.75f, 0.75f, 0.75f, 1);
             }
-            buttonText.text = trigger.TriggerName + " (Ready)";
+            else
+            {
+                buttonText.text = trigger.TriggerName + " (Ready)";
+                upgradeButton.image.color = Color.white;
+            }
             if(trigger is ProgramUpgrade)
             {
                 var upgrade = trigger as ProgramUpgrade;
-                // TODO: Pull up confirmation window later 
-                upgradeButton.onClick.AddListener(() => p.Upgrade = upgrade);
-                upgradeButton.onClick.AddListener(ExitProgramUpgradeUI);
-                if(p.Shell != null && p.Shell.Compiled)
+                if(upgrade.Condition.Completed)
                 {
-                    upgradeButton.onClick.AddListener(() => p.Shell.Compile());
+                    // TODO: Pull up confirmation window later 
+                    upgradeButton.onClick.AddListener(() => p.Upgrade = upgrade);
+                    upgradeButton.onClick.AddListener(ExitProgramUpgradeUI);
+                    if (p.Shell != null && p.Shell.Compiled)
+                    {
+                        upgradeButton.onClick.AddListener(() => p.Shell.Compile());
+                    }
                 }
                 // Add preview
                 var eventTrigger = upgradeButton.GetComponent<EventTrigger>();

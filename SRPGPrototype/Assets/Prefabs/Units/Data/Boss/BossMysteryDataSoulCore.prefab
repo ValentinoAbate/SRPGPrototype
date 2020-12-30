@@ -28,13 +28,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5026363331897916687, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
-      propertyPath: displayName
-      value: Boss Mystery Data (Soul Core)
+      propertyPath: description
+      value: Drops a Soul Core Program at the end of the encounter.
       objectReference: {fileID: 0}
     - target: {fileID: 5026363331897916687, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
-      propertyPath: description
-      value: Drops a Soul Core Program at the end of the encounter.
+      propertyPath: displayName
+      value: Boss Mystery Data - Soul Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
@@ -53,6 +58,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -64,16 +74,6 @@ PrefabInstance:
     - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
@@ -98,8 +98,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
@@ -108,8 +108,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8966727186198476402, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f0db1b586a6d844affda46ba457a79, type: 3}

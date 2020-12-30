@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -24,6 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -35,16 +45,6 @@ PrefabInstance:
     - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424040473858123708, guid: edec4a06881e32e46bf78f32a029e66a,
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 4462558509915415869, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}
       propertyPath: displayName
-      value: Ability Mystery Data (Uncommon)
+      value: Ability/Mod Mystery Data - Uncommon
       objectReference: {fileID: 0}
     - target: {fileID: 4925400928908998563, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}

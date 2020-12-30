@@ -22,23 +22,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
-      propertyPath: displayName
-      value: Mystery Data (Common)
+      propertyPath: description
+      value: Drops a Program at the end of the encounter.
       objectReference: {fileID: 0}
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
-      propertyPath: description
-      value: Drops a Program at the end of the encounter.
+      propertyPath: displayName
+      value: Mystery Data - Common
       objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: m_Name
       value: StandardMysteryDataCommon
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215119150226470895, guid: 0094300eefbb09549b66fbb049403897,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
@@ -49,6 +44,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.g
       value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215119150226470895, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
@@ -67,6 +72,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -78,16 +88,6 @@ PrefabInstance:
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
