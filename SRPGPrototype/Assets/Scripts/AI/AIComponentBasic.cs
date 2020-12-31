@@ -103,7 +103,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
             {
                 // Get target paths with number of obstacles they contain cached
                 var pathsByObjNum = paths.Select((tPath) => new TPathWithValue(tPath, tPath.path.Count(grid.NotEmpty))).ToList();
-                int PathCompare(TPathWithValue p1, TPathWithValue p2)
+                static int PathCompare(TPathWithValue p1, TPathWithValue p2)
                 {
                     int numObstaclesComp = p1.value.CompareTo(p2.value);
                     if (numObstaclesComp != 0)

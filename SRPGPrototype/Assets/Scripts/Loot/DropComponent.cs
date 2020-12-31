@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class DropComponent<T> : MonoBehaviour where T : ILootable
 {
-    public abstract List<T> GenerateDrop(LootManager manager);
+    public abstract List<T> GenerateDrop(Loot<T> loot);
 }

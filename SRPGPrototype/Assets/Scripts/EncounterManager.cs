@@ -153,14 +153,14 @@ public class EncounterManager : MonoBehaviour
         if (GenerateShellLoot != null)
         {
             foreach (LootManager.GenerateShellLootFn shellLoot in GenerateShellLoot.GetInvocationList())
-                shellDraws.Add(shellLoot(loot));
+                shellDraws.Add(shellLoot(loot.ShellLoot));
         }
         // Generate Program loot
         var progDraws = new LootData<Program>();
         if (GenerateProgramLoot != null)
         {
             foreach (LootManager.GenerateProgramLootFn progLoot in GenerateProgramLoot.GetInvocationList())
-                progDraws.Add(progLoot(loot));
+                progDraws.Add(progLoot(loot.ProgramLoot));
         }
 
         loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);

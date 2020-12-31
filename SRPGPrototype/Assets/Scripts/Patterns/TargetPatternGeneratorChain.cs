@@ -37,7 +37,7 @@ public class TargetPatternGeneratorChain : TargetPatternGenerator
         }
         else if(adjacency == Adjacency.HorizontalRange2)
         {
-            IEnumerable<Vector2Int> Adj(Vector2Int pos)
+            static IEnumerable<Vector2Int> Adj(Vector2Int pos)
             {
                 return pos.Adjacent().Concat(pos.Adjacent(1));
             }
@@ -45,7 +45,7 @@ public class TargetPatternGeneratorChain : TargetPatternGenerator
         }
         else if(adjacency == Adjacency.HorizontalRange2)
         {
-            IEnumerable<Vector2Int> Adj(Vector2Int pos)
+            static IEnumerable<Vector2Int> Adj(Vector2Int pos)
             {
                 return pos.AdjacentDiagonal().Concat(pos.AdjacentDiagonal(1));
             }

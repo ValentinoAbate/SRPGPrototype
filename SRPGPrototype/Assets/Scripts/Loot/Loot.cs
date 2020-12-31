@@ -117,16 +117,37 @@ public class Loot<T> where T : ILootable
         }
         foreach (var quality in qualities)
         {
-            ret.Add(GetDropCustom(standardLootRarities[quality], NoDupeFilter));
+            try
+            {
+                ret.Add(GetDropCustom(standardLootRarities[quality], NoDupeFilter));
+            }
+            catch 
+            {
+                
+            }
+        }
+        if(ret.Count <= 0)
+        {
+            ret.Add(GetDropStandard(LootQuality.Standard));
+            Debug.LogError("No applicable loot found");
         }
         return ret;
     }
 
-    public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter = null)
+    public T GetDropCustom(WeightedSet<Rarity> rarities)
     {
         var rarity = RandomU.instance.Choice(rarities);
-        if(filter == null)
-            return RandomU.instance.Choice(dropTables[rarity]);
-        return RandomU.instance.Choice(new WeightedSet<T>(dropTables[rarity].Where((p) => filter(p.Key))));
+        return RandomU.instance.Choice(dropTables[rarity]);
+    }
+
+    public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter)
+    {
+        if (filter == null)
+            return GetDropCustom(rarities);
+        var rarity = RandomU.instance.Choice(rarities);
+        var choices = new WeightedSet<T>(dropTables[rarity].Where((p) => filter(p.Key)));
+        if (choices.Count <= 0)
+            throw new System.Exception("No valid choices");
+        return RandomU.instance.Choice(choices);
     }
 }

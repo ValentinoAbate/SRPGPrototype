@@ -3,8 +3,8 @@
 public class DropComponentShellStandard : DropComponent<Shell>
 {
     public Loot<Shell>.LootQuality[] lootQualities = new Loot<Shell>.LootQuality[3];
-    public override List<Shell> GenerateDrop(LootManager manager)
+    public override List<Shell> GenerateDrop(Loot<Shell> loot)
     {
-        return manager.ShellLoot.GetDropsStandardNoDuplicates(lootQualities);
+        return loot.GetDropsStandardNoDuplicates(lootQualities);
     }
 }

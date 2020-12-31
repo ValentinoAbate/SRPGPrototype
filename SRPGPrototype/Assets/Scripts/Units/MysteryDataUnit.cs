@@ -33,7 +33,6 @@ public class MysteryDataUnit : AIUnit
     [SerializeField] private Color commonColor = Color.white;
     [SerializeField] private Color uncommonColor = Color.white;
     [SerializeField] private Color rareColor = Color.white;
-    [SerializeField] private Color gambleColor = Color.white;
 
     public override AIComponent<AIUnit> AI => ai;
 
