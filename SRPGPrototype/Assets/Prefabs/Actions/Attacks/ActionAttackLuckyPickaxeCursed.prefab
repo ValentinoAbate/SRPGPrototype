@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2412045098538523135}
   - component: {fileID: 6758026035794552143}
   m_Layer: 0
-  m_Name: FailureEffect
+  m_Name: FailureEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   number:
     min: -2147483648
     max: 2147483647
-    constant: -3
+    constant: -2
     baseAmount: 0
     modifier: 0
     multiplier: 1
@@ -78,7 +78,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Attack adjacent unit with Gamble: Success (30%) deal 13 damage / Failure
-        lose 3 Defense. '
+        lose 2 Defense. '
       objectReference: {fileID: 0}
     - target: {fileID: 5451953465001285454, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
@@ -90,10 +90,20 @@ PrefabInstance:
       propertyPath: successChance
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5451953465001285454, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: failureEffectsObj
+      value: 
+      objectReference: {fileID: 3794053973490202649}
     - target: {fileID: 5639408088848563140, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
       propertyPath: m_Name
       value: ActionAttackLuckyPickaxeCursed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
@@ -112,6 +122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -123,16 +138,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,

@@ -5,8 +5,9 @@ using System.Linq;
 
 public class ActionEffectHitRandomUnit : ActionEffect
 {
-    [SerializeField] private ActionEffect effectToApply;
+    public override bool UsesPower => effectToApply.UsesPower;
 
+    [SerializeField] private ActionEffect effectToApply;
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
 
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)

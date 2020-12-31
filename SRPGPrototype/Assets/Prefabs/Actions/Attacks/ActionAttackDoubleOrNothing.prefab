@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8916043604375117652}
-  - component: {fileID: 8443925619452982778}
+  - component: {fileID: 8923965433819812574}
+  - component: {fileID: 6168751995403024636}
+  - component: {fileID: 3581608782341245314}
   m_Layer: 0
   m_Name: SuccessEffects
   m_TagString: Untagged
@@ -31,7 +33,7 @@ Transform:
   m_Father: {fileID: 5639408088848563143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8443925619452982778
+--- !u!114 &8923965433819812574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,28 +42,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 4593714877553315412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   affectUser: 0
-  stat: 2
-  number:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 2
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      constant: 1
-      baseAmount: 0
-      modifier: 0
-      multiplier: 1
-      type: 0
-    type: 1
-  usesPower: 0
+  targetStat: 0
+  damage: 2
+--- !u!114 &6168751995403024636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593714877553315412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectUser: 0
+  targetStat: 0
+  damage: 2
+--- !u!114 &3581608782341245314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593714877553315412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectUser: 0
+  targetStat: 0
+  damage: 2
 --- !u!114 &5451953465001285454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +104,7 @@ PrefabInstance:
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: subtype
-      value: 5
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -103,17 +119,22 @@ PrefabInstance:
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: rangePattern.patternType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: targetPattern.patternType
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: range.patternOffsets.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.dimensions.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.dimensions.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -124,6 +145,86 @@ PrefabInstance:
         type: 3}
       propertyPath: range.patternOffsets.Array.data[0].y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[0].x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[0].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[7].y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -183,23 +284,18 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionBuffCoinToss
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: type
-      value: 3
+      value: ActionAttackDoubleOrNothing
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: 'Gamble: Success (50%) gain AP equal to twice this actions AP cost /
-        Failure no effect. '
+      value: 'Attack a diagonally adjacent unit or ranged with Gamble: Success (50%)
+        deal 2 damage (x2) / Failure no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Coin Toss
+      value: Double or Nothing
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -210,6 +306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxUsesPerTurn
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

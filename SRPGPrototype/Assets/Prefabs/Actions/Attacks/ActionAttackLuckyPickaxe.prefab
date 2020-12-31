@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8916043604375117652}
   - component: {fileID: 1712857086706031764}
   m_Layer: 0
-  m_Name: SuccessEffect
+  m_Name: SuccessEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,8 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectUser: 0
   successChance: 0.2
-  successEffect: {fileID: 1712857086706031764}
-  failureEffect: {fileID: 0}
+  successEffectsObj: {fileID: 4593714877553315412}
+  failureEffectsObj: {fileID: 0}
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,8 +71,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: range.patternOffsets.Array.size
-      value: 1
+      propertyPath: subtype
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -86,6 +86,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
+      propertyPath: range.patternOffsets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
       propertyPath: range.patternOffsets.Array.data[0].x
       value: 0
       objectReference: {fileID: 0}
@@ -94,10 +99,10 @@ PrefabInstance:
       propertyPath: range.patternOffsets.Array.data[0].y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+    - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: subtype
-      value: 10
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -116,6 +121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -127,16 +137,6 @@ PrefabInstance:
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
@@ -161,13 +161,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: displayName
-      value: Lucky Pickaxe
+      propertyPath: description
+      value: 'Attack adjacent unit with Gamble: Success (20%) deal 10 damage / Failure
+        no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: maxUsesPerTurn
-      value: 2
+      propertyPath: displayName
+      value: Lucky Pickaxe
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -176,9 +177,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: description
-      value: 'Attack adjacent unit with Gamble: Success (20%) deal 10 damage / Failure
-        no effect. '
+      propertyPath: maxUsesPerTurn
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

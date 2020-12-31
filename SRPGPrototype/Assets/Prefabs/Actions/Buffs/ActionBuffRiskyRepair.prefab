@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8916043604375117652}
-  - component: {fileID: 8443925619452982778}
+  - component: {fileID: 6228555703520121803}
   m_Layer: 0
   m_Name: SuccessEffects
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 5639408088848563143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8443925619452982778
+--- !u!114 &6228555703520121803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,28 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4593714877553315412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
+  m_Script: {fileID: 11500000, guid: 3041d4536af5bd34aaf8714a3e7d5254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   affectUser: 0
-  stat: 2
-  number:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 2
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      constant: 1
-      baseAmount: 0
-      modifier: 0
-      multiplier: 1
-      type: 0
-    type: 1
-  usesPower: 0
+  damage: 2
 --- !u!114 &5451953465001285454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +61,37 @@ MonoBehaviour:
   successChance: 0.5
   successEffectsObj: {fileID: 4593714877553315412}
   failureEffectsObj: {fileID: 0}
+--- !u!114 &8048655953966885315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639408088848563140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectUser: 0
+  stat: 4
+  number:
+    min: -2147483648
+    max: 2147483647
+    constant: -1
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    unitNumber:
+      min: -2147483648
+      max: 2147483647
+      constant: 1
+      baseAmount: 0
+      modifier: 0
+      multiplier: 1
+      type: 0
+    type: 0
+  usesPower: 0
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionBuffCoinToss
+      value: ActionBuffRiskyRepair
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -192,14 +206,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
+      propertyPath: baseAp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
       propertyPath: description
-      value: 'Gamble: Success (50%) gain AP equal to twice this actions AP cost /
-        Failure no effect. '
+      value: 'Lose 1 Repair, then Gamble: Success (50%) heal 2 HP / Failure no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Coin Toss
+      value: Risky Repair
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
