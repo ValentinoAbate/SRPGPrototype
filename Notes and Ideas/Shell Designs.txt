@@ -347,7 +347,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o x o x o o
 	- o i o o o i o
 	- x o o o o o x
-+/- Stripe Shell (H)
++ Stripe Shell (H)
 	- h: adjacent weapons do more damage if the target is in the same row as the user
 	- h+: adjacent weapons do more damage, but may only target spaces within their range that are in the same row as the user
 	- o o o o o
@@ -371,7 +371,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o o o o o
 	- o o o o o o o
 
-+/- Stripe Shell (V)
++ Stripe Shell (V)
 	- v: adjacent weapons do more damage if the target is in the same col as the user
 	- v+: adjacent weapons do more damage, but may only target spaces within their range that are in the same col as the user
 	- o i o i o
