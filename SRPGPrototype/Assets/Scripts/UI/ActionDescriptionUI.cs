@@ -54,13 +54,13 @@ public class ActionDescriptionUI : MonoBehaviour
         switch (action.SlowdownReset)
         {
             case Action.Trigger.Never:
-                timesUsed = action.TimesUsed;
+                timesUsed = action.TimesUsed - action.FreeUses;
                 break;
             case Action.Trigger.TurnStart:
-                timesUsed = action.TimesUsedThisTurn;
+                timesUsed = action.TimesUsedThisTurn - action.FreeUsesThisTurn;
                 break;
             case Action.Trigger.EncounterStart:
-                timesUsed = action.TimesUsedThisBattle;
+                timesUsed = action.TimesUsedThisBattle - action.FreeUsesThisBattle;
                 break;
         }
         slowdownUsesNumberText.text = (timesUsed % action.SlowdownInterval).ToString() + "/" + action.SlowdownInterval.ToString();

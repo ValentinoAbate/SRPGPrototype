@@ -52,13 +52,13 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     [SerializeField] private Trigger slowdownReset = Trigger.TurnStart;
 
     public int TimesUsed { get; private set; } = 0;
-    private int FreeUses { get; set; } = 0;
+    public int FreeUses { get; private set; } = 0;
 
     public int TimesUsedThisBattle { get; private set; } = 0;
-    private int FreeUsesThisBattle { get; set; } = 0;
+    public int FreeUsesThisBattle { get; private set; } = 0;
 
     public int TimesUsedThisTurn { get; private set; } = 0;
-    private int FreeUsesThisTurn { get; set; } = 0;
+    public int FreeUsesThisTurn { get; private set; } = 0;
 
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -152,24 +152,27 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
-        var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();
-        if(noSlowdownMods.Count() > 0 && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
-        {
-            ++FreeUses;
-            ++FreeUsesThisBattle;
-            ++FreeUsesThisTurn;
-        }
         if (UsesPower && !zeroPower)
         {
             user.Power.Use();
         }
-        if(Program != null && Program.attributes.HasFlag(Program.Attributes.Transient))
+        if(Program != null)
         {
-            var freeTransientMods = Program.ModifiedByType<ModifierActionFreeTransientChance>();
-            // Apply free transient chances if applicable
-            if(freeTransientMods.Count() <= 0 || RandomU.instance.RandomDouble() > freeTransientMods.Sum((m) => m.Chance))
+            var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();
+            if (noSlowdownMods.Count() > 0 && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
             {
-                Program.GetComponent<ProgramAttributeTransient>().Uses++;
+                ++FreeUses;
+                ++FreeUsesThisBattle;
+                ++FreeUsesThisTurn;
+            }
+            if(Program.attributes.HasFlag(Program.Attributes.Transient))
+            {
+                var freeTransientMods = Program.ModifiedByType<ModifierActionFreeTransientChance>();
+                // Apply free transient chances if applicable
+                if (freeTransientMods.Count() <= 0 || RandomU.instance.RandomDouble() > freeTransientMods.Sum((m) => m.Chance))
+                {
+                    Program.GetComponent<ProgramAttributeTransient>().Uses++;
+                }
             }
         }
         user.OnAfterActionFn?.Invoke(this);

@@ -127,7 +127,6 @@ MonoBehaviour:
   hidden: 0
   number: 1
   resetTrigger: 0
-  times: 1
   comparison: 5
   threshold: 8
 --- !u!114 &2906943777546507487
@@ -206,7 +205,6 @@ MonoBehaviour:
   hidden: 0
   number: 5
   resetTrigger: 0
-  times: 5
   comparison: 5
   threshold: 4
 --- !u!114 &3211404907031578792
