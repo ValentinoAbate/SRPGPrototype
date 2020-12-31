@@ -1,0 +1,40 @@
+Concepts:
+Summary + Format:
+This document is meant to help track concepts for consolidating them towards deck thyemes
+Format:
+
+Category
+- Concept (relations)
+
+General
+- Damage
+- Mobility
+- Adjacency
+
+Shell Stats
+- HP
+- Repair (HP)
+- AP
+- Capacity
+
+Stats
+- Power (HP, Damage)
+- Speed (AP, Damage, Mobility)
+- Defense (HP, Damage)
+
+Program Attributes
+- Shape
+- Transient
+- Gamble
+- Soul Core
+
+Action Effects
+- Move Other
+- Hit multiple
+- Jump over
+- Warp
+- Distance between units/attacker and target
+
+Misc
+- Weapon Category
+- Rarity

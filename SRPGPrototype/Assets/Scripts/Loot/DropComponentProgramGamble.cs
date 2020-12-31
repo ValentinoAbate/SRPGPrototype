@@ -18,19 +18,14 @@ public class DropComponentProgramGamble : DropComponent<Program>
     {
         int roll = RandomU.instance.RandomInt(0, 1000);
         // Give the player a gample program
-        if (roll < 300)
+        if (roll < 500)
         {
             // Filter out all programs that don't give capacity
-            static bool GambleFilter(Program p)
-            {
-                var actionComponents = p.GetComponents<ProgramEffectAddAction>();
-                return actionComponents.Length > 0 &&
-                       actionComponents.Any((a) => a.action.GetComponent<ActionEffectGamble>() != null);
-            }
+            static bool GambleFilter(Program p) => p.attributes.HasFlag(Program.Attributes.Gamble);
             return new List<Program>() { loot.GetDropStandard(Loot<Program>.LootQuality.Even, GambleFilter) };
         }
         // Dud: give the player one standard drop
-        if (roll < 550)
+        if (roll < 650)
             return new List<Program>() { loot.GetDropStandard(Loot<Program>.LootQuality.Standard) };
         // Give the player a weighted random amount of standard drops 
         if (roll < 750)

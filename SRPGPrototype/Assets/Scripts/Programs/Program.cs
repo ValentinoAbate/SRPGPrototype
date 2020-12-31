@@ -21,6 +21,7 @@ public class Program : GridObject, ILootable
         Fixed = 1,
         Transient = 2,
         SoulCore = 4,
+        Gamble = 8,
     }
 
     private static readonly Dictionary<Color, TileUI.Type> tileTypes = new Dictionary<Color, TileUI.Type>()
@@ -84,6 +85,10 @@ public class Program : GridObject, ILootable
             if (attributes.HasFlag(Attributes.SoulCore))
             {
                 attTexts.Add("Soul Core");
+            }
+            if (attributes.HasFlag(Attributes.Gamble))
+            {
+                attTexts.Add("Gamble");
             }
             if (attributes.HasFlag(Attributes.Transient))
             {

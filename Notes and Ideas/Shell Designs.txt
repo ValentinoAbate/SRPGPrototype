@@ -64,69 +64,77 @@ Shell Designs:
 	- x o o o o o o
 	- x x o o o o x
 
-- Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
-- Spacial Nexus (Uncommon): any program installed in "s" counts as adjacent to all other programs. All programs must be adjacent to a program of the same color.
- 	- o o o o o
-	- o i x i o
-	- o x s x o
+- Spacial Nexus (Uncommon): 
+ 	- s: adjacent mods have scope "all"
+	- o o x o o
+	- o i s i o
+	- o x o x o
 	- o i x i o
 	- o o o o o
 
- 	- o o o o o o 
-	- o i x i o x
-	- o x s x o x
+ 	- o o x o o o 
+	- o i s i o x
+	- o x o x o o
 	- o i x i o x
 	- o o o o o o
-	- o x x x o o
+	- o x o x o o
 
-	- o o x x x o o
-	- o o o o o o o 
-	- x o i x i o x
-	- x o x s x o x
+	- o o x o x o o
+	- o o o x o o o 
+	- x o i s i o x
+	- o o x o x o o
 	- x o i x i o x
 	- o o o o o o o
-	- o o x x x o o
-- Snake Shell - Give it some sort of buff
-	- o o o o o
-	- o i x x i
-	- o o o o o
-	- i x x i o
-	- o o o o o
+	- o o x o x o o
 
-	(programs may not be installed in squares marked r and open squares at the same time
-	- o o o o o r
-	- o i x x i x
-	- o o o o o r
-	- i x x i o r
-	- o o o o o r
-	- x r r r r x
+- Risky Shell - Programs that give actions must be transient or gamble
+	- w = essentials core (all base stats and restrictions)
+	- a = gamble buff mod (+chance to not slow down)
+	- b = transient buff mod (+chance to not use transient charge)
+	- m = move core (gives basic move)
+	- u = glass umbrella (transient fixed umbrella) 
+	- o x w x o
+	- o o o o o
+	- o a u b o
+	- x o o o x
+	- o o m o o
 
-	- x r r r r r x
-	- r o o o o o r
-	- r o i x x i x
-	- r o o o o o r
-	- x i x x i o r
-	- r o o o o o r
-	- x r r r r r x
+
+	- o x w x o x
+	- o o o o o o
+	- o a u b o o
+	- x o o o x o
+	- o o m o o o
+	- o o x o o o
+
+	- o o x o x o o
+	- x o x w x o x
+	- o o o o o o o
+	- o o a u b o o
+	- o x o o o x o
+	- o o o m o o o
+	- o o o x o o o
 - Gamble Shell (Unique/Gamble/Shop)? - Boosts luck-based effects. Installed Programs with Capacity gain Fixed. Random restriction and starting stats.
- 	- (? = has a 33% chance of being blocked)
+ 	- ?: has a 33% chance of being blocked
+	- u: determed by previous level
+	- g: adjacent gamble programs with a success chance have that chance boosted by 5%
 	- i ? ? ? i
 	- ? o o o ?
-	- ? o o o ?
+	- ? o g o ?
 	- ? o o o ?
 	- i ? ? ? i
-	(u = determed by previous level)
+
  	- i u u u i ?
 	- u o o o u ?
-	- u o o o u ?
+	- u o g o u ?
 	- u o o o u ?
 	- i u u u i ?
 	- ? ? ? ? ? o
-	(u = determed by previous level)
+
 	- o ? ? ? ? ? o
  	- ? i u u u i u
 	- ? u o o o u u
-	- ? u o o o u u
+	- ? u o g  o u u
 	- ? u o o o u u
 	- ? i u u u i u
 	- o u u u u u o
@@ -179,40 +187,41 @@ Shell Designs:
 	- ? u u u u u u u
 	- ? i u u u u i u
 	- ? u u u u u u u
-- Growth: The player chooses [q] squares out of the ones marked ? to close (all others become open). All programs with Capacity installed gain Fixed.
-	- (not final, core could be anything)
-	- i o o o i
-	- o x o x o
-	- o o x o o
-	- o x o x o
-	- i o o o i
 
-	- [q = 3]
-	- i o o o i ?
-	- o x o x o ?
-	- o o x o o ?
-	- o x o x o ?
-	- i o o o i ?
-	- ? ? ? ? ? ?
+- Z shell (Zoom)
+	- z: adjacent move recieve +1 to their slowdown interval
+	- i x o x i 
+	- o o o x o 
+	- o o z o o 
+	- o x o o o 
+	- i x o x i 
 
-	- [q = 5] (u is determined by Level 2 choices)
-	- ? ? ? ? ? ? ?
-	- ? i o o o i u
-	- ? o x o x o u
-	- ? o o x o o u
-	- ? o x o x o u
-	- ? i o o o i u
-	- ? u u u u u u
-+ Wrench Shell - Max HP: 6, AP: 3, Repair 4
+	- i x o x i o
+	- o o o x o o
+	- o o z o o o
+	- o x o o o o
+	- i x o x i o
+	- o o o o o x
+	
+	- x o o o o o x
+	- o i x o x i o
+	- o o o o x o o
+	- o o o z o o o
+	- o o x o o o o
+	- o i x o x i o
+	- x o o o o o x
+
++ Wrench Shell - Max HP: 8, AP: 3, Repair 2
+	- r: adjacent programs that give repair give twice the repair
 	- x o o o x 
 	- o i o i o 
-	- o o x o o 
+	- o o r o o 
 	- o o i o o 
 	- x o i o x 
 
 	- x o o o x o
 	- o i o i o o
-	- o o x o o o
+	- o o r o o o
 	- o o i o o o
 	- x o i o x x
 	- o o x o o o
@@ -220,7 +229,7 @@ Shell Designs:
 	- o x o o o x o
 	- o x o o o x o 
 	- o o i o i o o
-	- o o o x o o o
+	- o o o r o o o
 	- o o o i o o o
 	- x x o i o x x
 	- o o o x o o o
@@ -267,6 +276,7 @@ Shell Designs:
 	- x x o o o x x
 
 + Sacrifice Shell: Has yellow, green, and white pre-installs, can only have 4 colors, colors are allowed to be adjacent, +1 AP, +1 repair
+	- Maybe add a move core pale?
 	- o o x o o
 	- o o x o o
 	- o o x o o
@@ -288,7 +298,8 @@ Shell Designs:
 	- x o o i o o x
 	- o x o o o x o
 
-+ Data (Diamond) Shell: Max AP: 3, Max HP: 8, Base Repair 1, Starts with 1 capacity
++ Data (Diamond) Shell:
+	- w: +1 capacity
 	- o o x o o
 	- o r o g o
 	- x o w o x
@@ -314,17 +325,17 @@ Shell Designs:
 
 Basic Shell Shapes (Could be applied to multiple concepts)
 
-+ X Shell: (Maybe something with 'X' cost abilities or multiplication effects)
-	(Maybe: all effects with multipliers recieve +1 (before multiplication)
++ X Shell: 
+	- +: all adjacent weapons with X in their name recieve +2 damage, and all adjacent weapons that hit multiple times recieve +1 damage
 	- i o o o i
 	- o x o x o
-	- o o x o o
+	- o o + o o
 	- o x o x o
 	- i o o o i
 	
 	- i o o o i o
 	- o x o x o o
-	- o o x o o o
+	- o o + o o o
 	- o x o x o o
 	- i o o o i o
 	- o o o o o x
@@ -332,42 +343,46 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- x o o o o o x
 	- o i o o o i o
 	- o o x o x o o
-	- o o o x o o o
+	- o o o + o o o
 	- o o x o x o o
 	- o i o o o i o
 	- x o o o o o x
-+/- Stripe Shell (H) - Boosts actions with (H) in their title (-effect)
++/- Stripe Shell (H)
+	- h: adjacent weapons do more damage if the target is in the same row as the user
+	- h+: adjacent weapons do more damage, but may only target spaces within their range that are in the same row as the user
 	- o o o o o
-	- i x x x i
+	- i x o x i
 	- o o o o o
-	- i x x x i
+	- i x h x i
 	- o o o o o
 
 	- o o o o o o
-	- i x x x i x
+	- i x o x i x
 	- o o o o o o
-	- i x x x i x
+	- i x h x i x
 	- o o o o o o
 	- o o o o o o
 
 	- o o o o o o o
 	- o o o o o o o
-	- x i x x x i x
+	- x i x o x i x
 	- o o o o o o o
-	- x i x x x i x
+	- x i x h x i x
 	- o o o o o o o
 	- o o o o o o o
 
-+/- Stripe Shell (V) - Boosts actions with (V) in their title (-effect)
++/- Stripe Shell (V)
+	- v: adjacent weapons do more damage if the target is in the same col as the user
+	- v+: adjacent weapons do more damage, but may only target spaces within their range that are in the same col as the user
 	- o i o i o
 	- o x o x o
-	- o x o x o
+	- o o o v o
 	- o x o x o
 	- o i o i o
 
 	- o i o i o o
 	- o x o x o o
-	- o x o x o o
+	- o o o v o o
 	- o x o x o o
 	- o i o i o o
 	- o x o x o o
@@ -375,32 +390,151 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o x o x o o
 	- o o i o i o o
 	- o o x o x o o
-	- o o x o x o o
+	- o o o o v o o
 	- o o x o x o o
 	- o o i o i o o
 	- o o x o x o o
 
-+ S Shell: (maybe something with the letter S)
++ S Shell: Name: Snake shell
+	- s: any adjacent mod that would normally give additional damage instead gives inflict poison equal to the damage bonus / 2 (rounded up)
 	- o o o o o
-	- o i x x i
+	- o i x s i
 	- o o o o o
-	- i x x i o
+	- i s x i o
 	- o o o o o
 
 	- o o o o o o
-	- o i x x i x
+	- o i x s i x
 	- o o o o o o
-	- i x x i o o
+	- i s x i o o
 	- o o o o o o
 	- x o o o o x
 
 	- x o o o o o x
 	- o o o o o o o
-	- o o i x x i x
+	- o o i x s i x
 	- o o o o o o o
-	- x i x x i o o
+	- x i s x i o o
 	- o o o o o o o
 	- x o o o o o x
+
++/- Cross Shell:
+	- c: adjacent weapons deal +2 damage vs undead, adjacent holy weapons don't decay/lose transient charges when installed (-effect) 
+	- o o x o o
+	- c i i i c
+	- o o x o o
+	- o o i o o
+	- o o c o o
+
+	- o o x o o o
+	- c i i i c x
+	- o o x o o o
+	- o o i o o o
+	- o o c o o o
+	- o o x o o o
+
+	- o o o x o o o
+	- o o o x o o o
+	- x c i i i c x
+	- o o o x o o o
+	- o o o i o o o
+	- o o o c o o o
+	- o o o x o o o
++ + Shell:
+	- +: adjacent weapons with + in their name recieve +1 damage (maybe something for other things with +)
+	- o o i o o
+	- o o x o o
+	- i + x + i
+	- o o x o o
+	- o o i o o
+	
+	- o o i o o o
+	- o o x o o o
+	- i + x + i x
+	- o o x o o o
+	- o o i o o o
+	- o o x o o o
+
+	- o o o x o o o
+	- o o o i o o o
+	- o o o x o o o
+	- x i + x + i x
+	- o o o x o o o
+	- o o o i o o o
+	- o o o x o o o
+
++ Large + Shell: Large
+	- +: adjacent weapons with + in their name recieve +1 damage (maybe something for other things with +)
+	- o o o o o o
+	- o o + i o o
+	- o i x x i o
+	- o i x x i o
+	- o o i + o o
+	- o o o o o o
+	
+	- o o o o o o o
+	- o o + i o o o
+	- o i x x i o x
+	- o i x x i o x
+	- o o i + o o o
+	- o o o o o o o
+	- o o x x o o o
+
+	- o o o x x o o o
+	- o o o o o o o o
+	- o o o + i o o o
+	- x o i x x i o x
+	- x o i x x i o x
+	- o o o i + o o o
+	- o o o o o o o o
+	- o o o x x o o o
+
++ Capsule Shell:
+	- c: adjacent explosives deal +1 damage
+	- o o o o o
+	- o x i x o
+	- i o c o i
+	- o x i x o
+	- o o o o o
+	
+	- o o o o o o
+	- o x i x o x
+	- i o c o i o
+	- o x i x o x
+	- o o o o o o
+	- o o x o o o
+
+	- o o o x o o o
+	- o o o o o o o
+	- x o x i x o x
+	- o i o c o i o
+	- x o x i x o x
+	- o o o o o o o
+	- o o o x o o o
++ Y Shell
+	- s: adjacent spears do +1 damage
+	- x o o o x 
+	- o i o i o 
+	- o o x o o 
+	- o o i o o 
+	- s o i o s 
+
+	- x o o o x o
+	- o i o i o o
+	- o o x o o o
+	- o o i o o o
+	- s o i o s o
+	- x o x o x o
+
+	- x o o o o o x
+	- o x o o o x o 
+	- o o i o i o o
+	- o o o x o o o
+	- o o o i o o o
+	- o s o i o s o
+	- o x o x o x o
+
+Deprecated Shells:
 
 + / - 5 Shell: (any number that is equal to 5 doubles (or maybe recieves a bonus of like +2)) (-effect)
 	- o o o o x
@@ -424,117 +558,6 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o o o o o
 	- x o o o o o x
 
-+/- Cross Shell: Bonus Against vampires (-effect)
-	- o o i o o
-	- x i i i x
-	- o o i o o
-	- o o i o o
-	- o o x o o
-
-	- o o i o o o
-	- x i i i x x
-	- o o i o o o
-	- o o i o o o
-	- o o x o o o
-	- o o x o o o
-
-	- o o o x o o o
-	- o o o i o o o
-	- x x i i i x x
-	- o o o i o o o
-	- o o o i o o o
-	- o o o x o o o
-	- o o o x o o o
-+ + Shell: (Maybe: all numbers (except multipliers) recieve + 1 (after multipliers). multipliers recieve -1. Ignore 0 multipliers)
-	- o o i o o
-	- o o x o o
-	- i x x x i
-	- o o x o o
-	- o o i o o
-	
-	- o o i o o o
-	- o o x o o o
-	- i x x x i x
-	- o o x o o o
-	- o o i o o o
-	- o o x o o o
-
-	- o o o x o o o
-	- o o o i o o o
-	- o o o x o o o
-	- x i x x x i x
-	- o o o x o o o
-	- o o o i o o o
-	- o o o x o o o
-
-+ Large + Shell: Large
-	- o o o o o o
-	- o o i i o o
-	- o i x x i o
-	- o i x x i o
-	- o o i i o o
-	- o o o o o o
-	
-	- o o o o o o o
-	- o o i i o o o
-	- o i x x i o x
-	- o i x x i o x
-	- o o i i o o o
-	- o o o o o o o
-	- o o x x o o o
-
-	- o o o x x o o o
-	- o o o o o o o o
-	- o o o i i o o o
-	- x o i x x i o x
-	- x o i x x i o x
-	- o o o i i o o o
-	- o o o o o o o o
-	- o o o x x o o o
-
-+ Capsule Shell:
-	- o o o o o
-	- o x i x o
-	- i o x o i
-	- o x i x o
-	- o o o o o
-	
-	- o o o o o o
-	- o x i x o x
-	- i o x o i o
-	- o x i x o x
-	- o o o o o o
-	- o o x o o o
-
-	- o o o x o o o
-	- o o o o o o o
-	- x o x i x o x
-	- o i o x o i o
-	- x o x i x o x
-	- o o o o o o o
-	- o o o x o o o
-+ Y Shell 
-	- x o o o x 
-	- o i o i o 
-	- o o x o o 
-	- o o i o o 
-	- x o i o x 
-
-	- x o o o x o
-	- o i o i o o
-	- o o x o o o
-	- o o i o o o
-	- x o i o x o
-	- x o x o x o
-
-	- x o o o o o x
-	- o x o o o x o 
-	- o o i o i o o
-	- o o o x o o o
-	- o o o i o o o
-	- o x o i o x o
-	- o x o x o x o
-
 
 Shell Concepts:
 - Blank Slate (Rare): 5 x 5, 1 tile in the ceter: 1 max Hp
@@ -544,10 +567,20 @@ Shell Concepts:
 	- Shell with restrictions on Red programs, but installed attacks don't slow down.
 - Treaure Hunter: No common programs can be installed. Higher chance at uncommmon and rare loot
 	- Show when the effect activates on loot screen
+- (Possibly) All programs except white must be adjacent to a program of the same color.
 - Hidden potential: A [Full progression] shell that can't have capacity upgrades installed, but unlocks pre-installed capacity ugrades under certain conditions
-- Armaments (Rare): Contains indestructible basic move and basic attack programs, but no other actions can be added
 - A shell where the pre-installs have to connect a path between all preinstalls for a bonus
 - A shell with blokus rules, but is fairly open otherwise (maybe large)?
 - A Shell with less AP but great HP and repair (Turtle shell)
-- A Shell that starts with 1 capacity but has lower stats
+	- Maybe actually focus on Defense and lower mobility?
+	- Like, gain extra defense, moves have their slowdown interval halfed
+- Gun shell
+- Sword shell
+- Hammer shell
+- Spell shell (M shape?)
+- Armaments Shell (A shape?, has mods that do more damage when multiple weapon types are adjacent)
+- Sinkhole shell (lots of area, but has damage -1 for each adjacent weapon preinstalls)
+- Friend Shell (or maybe dog shell) Small shell with very limited area or no upgrades and low AP that comes with a soul core preinstalled)
+- Color Egg shells are color shells	
 - Sea Shell
+- Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0

@@ -18,7 +18,14 @@ public class ActionEffectGamble : ActionEffect
     private void Awake()
     {
         successEffects = successEffectsObj.GetComponents<ActionEffect>();
-        failureEffects = failureEffectsObj?.GetComponents<ActionEffect>() ?? new ActionEffect[0];
+        if(failureEffectsObj != null)
+        {
+            failureEffects = failureEffectsObj.GetComponents<ActionEffect>();
+        }
+        else
+        {
+            failureEffects = new ActionEffect[0];
+        }
     }
 
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
