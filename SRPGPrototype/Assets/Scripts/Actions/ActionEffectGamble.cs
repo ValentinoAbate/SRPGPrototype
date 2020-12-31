@@ -8,6 +8,7 @@ public class ActionEffectGamble : ActionEffect
 {
     public override bool UsesPower => usedPower;
     private bool usedPower = false;
+    public override bool DealsDamage => successEffects.Any((e) => e.DealsDamage) || failureEffects.Any((e) => e.DealsDamage);
     [Range(0, 1)]
     [SerializeField] private float successChance = 0.5f;
     [SerializeField] private GameObject successEffectsObj = null;

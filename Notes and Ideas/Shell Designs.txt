@@ -87,7 +87,7 @@ Shell Designs:
 	- o o o o o o o
 	- o o x o x o o
 
-- Risky Shell - Programs that give actions must be transient or gamble
++ Risky Shell - Programs that give actions must be fixed, transient, or gamble
 	- w = essentials core (all base stats and restrictions)
 	- a = gamble buff mod (+chance to not slow down)
 	- b = transient buff mod (+chance to not use transient charge)

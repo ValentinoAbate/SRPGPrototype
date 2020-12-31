@@ -11,7 +11,8 @@ public abstract class ActionEffectDamage : ActionEffect
         HealHP,
     }
 
-    public override bool UsesPower => true;
+    sealed public override bool UsesPower => true;
+    sealed public override bool DealsDamage => true;
     private int baseDamage;
 
     public TargetStat DamageTarget => targetStat;
@@ -26,9 +27,7 @@ public abstract class ActionEffectDamage : ActionEffect
         modifiers.Clear();
         if(action.Program != null)
         {
-            modifiers.AddRange(action.Program.ModifiedBy.Where((mod) => mod is ModifierActionDamage)
-                                                       .Select((mod) => mod as ModifierActionDamage)
-                                                       .Where((mod) => mod.AppliesTo(sub)));
+            modifiers.AddRange(action.Program.ModifiedByType<ModifierActionDamage>().Where((mod) => mod.AppliesTo(sub)));
         }
         baseDamage = BaseDamage(grid, action, user, targetPositions);
         // Apply modifier base damage

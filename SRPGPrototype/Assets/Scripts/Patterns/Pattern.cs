@@ -22,4 +22,9 @@ public class Pattern
         var modShift = center ? shift - Center : shift;
         return Offsets.Select((o) => o + modShift);
     }
+
+    public void AddOffset(Vector2Int offset)
+    {
+        patternOffsets.Add(offset);
+    }
 }

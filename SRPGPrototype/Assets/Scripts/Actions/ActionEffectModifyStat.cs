@@ -8,6 +8,7 @@ public class ActionEffectModifyStat : ActionEffect
     public ActionNumber number;
     public override bool UsesPower => usesPower;
     [SerializeField] private bool usesPower = true;
+    public override bool DealsDamage => stat == Stats.StatName.HP;
     private int actionValue = 0;
 
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)

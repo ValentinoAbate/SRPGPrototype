@@ -79,12 +79,14 @@ public class PlayerUnit : Unit
     public override IEnumerator OnPhaseStart()
     {
         foreach (var action in Actions)
-            action.TimesUsedThisTurn = 0;
+            action.ResetUses(Action.Trigger.TurnStart);
         yield break;
     }
 
     public override IEnumerator OnBattleEnd(EncounterManager manager)
     {
+        foreach (var action in Actions)
+            action.ResetUses(Action.Trigger.EncounterStart);
         DoRepair();
         yield break;
     }

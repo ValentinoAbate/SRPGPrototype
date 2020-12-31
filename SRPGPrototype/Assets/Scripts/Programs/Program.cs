@@ -49,6 +49,10 @@ public class Program : GridObject, ILootable
     public Shell Shell { get; set; }
     // Modifier properties
     public List<Modifier> ModifiedBy => Shell.ModifierMap.ContainsKey(this) ? Shell.ModifierMap[this] : new List<Modifier>();
+    public IEnumerable<T> ModifiedByType<T>() where T : Modifier
+    {
+        return ModifiedBy.Where((m) => m is T).Select((m) => m as T);
+    }
     public ProgramModifier[] ModifierEffects { get; private set; }
     // Effect Properties
     public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;

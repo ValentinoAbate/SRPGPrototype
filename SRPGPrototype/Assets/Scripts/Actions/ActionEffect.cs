@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class ActionEffect : MonoBehaviour
 {
     public virtual bool UsesPower => false;
+    public virtual bool DealsDamage => false;
 
     public bool AffectUser => affectUser;
     [SerializeField] private bool affectUser = false;

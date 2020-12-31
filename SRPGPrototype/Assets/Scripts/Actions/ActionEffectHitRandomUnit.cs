@@ -6,6 +6,7 @@ using System.Linq;
 public class ActionEffectHitRandomUnit : ActionEffect
 {
     public override bool UsesPower => effectToApply.UsesPower;
+    public override bool DealsDamage => effectToApply.DealsDamage;
 
     [SerializeField] private ActionEffect effectToApply;
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };

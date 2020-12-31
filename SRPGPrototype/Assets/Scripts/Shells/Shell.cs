@@ -76,9 +76,20 @@ public class Shell : MonoBehaviour, ILootable
     private void Awake()
     {
         InstallMap = new Program[CustArea.Dimensions.x, CustArea.Dimensions.y];
-        foreach (var iProg in preInstalledPrograms)
+        var positionsSet = CustArea.OffsetsSet;
+        foreach (var install in preInstalledPrograms)
         {
-            Install(iProg.program, iProg.location, true);
+            Install(install.program, install.location, true);
+            var positions = install.program.shape.OffsetsShifted(install.location, false);
+            foreach (var pos in positions)
+            {
+                if (!positionsSet.Contains(pos))
+                {
+                    patterns[0].AddOffset(pos);
+                    patterns[1].AddOffset(new Vector2Int(pos.x, pos.y + 1));
+                    patterns[2].AddOffset(new Vector2Int(pos.x + 1, pos.y + 1));
+                }
+            }
         }
         // Set initial stats
         var compileData = GetCompileData();
@@ -102,7 +113,9 @@ public class Shell : MonoBehaviour, ILootable
         prog.Shell = this;
         var positions = prog.shape.OffsetsShifted(location, false);
         foreach (var pos in positions)
+        {
             InstallMap[pos.x, pos.y] = prog;
+        }
         InstallPositions.Add(prog, positions);
         Compiled = false;
     }

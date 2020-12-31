@@ -14,7 +14,7 @@ public class PlayerPhase : Phase
     public override void InitializePhase(IEnumerable<Unit> allUnits)
     {
         units = new List<PlayerUnit>(allUnits.Where((u) => u is PlayerUnit).Select((u) => u as PlayerUnit));
-        units.ForEach((u) => u.Actions.ForEach((a) => a.TimesUsedThisBattle = 0));
+        units.ForEach((u) => u.Actions.ForEach((a) => a.ResetUses(Action.Trigger.EncounterStart)));
     }
 
 

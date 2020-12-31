@@ -79,7 +79,7 @@ public abstract class AIUnit : Unit
     {
         foreach (var action in Actions)
         {
-            action.TimesUsedThisTurn = 0;
+            action.ResetUses(Action.Trigger.TurnStart);
         }
         yield break;
     }

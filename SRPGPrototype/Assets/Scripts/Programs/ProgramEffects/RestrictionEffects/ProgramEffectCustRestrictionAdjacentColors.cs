@@ -15,14 +15,7 @@ public class ProgramEffectCustRestrictionAdjacentColors : ProgramEffectCustRestr
                 if (program == null)
                     continue;
                 var pos = new Vector2Int(x, y);
-                var adjacent = new Vector2Int[]
-                {
-                    pos + Vector2Int.up,    
-                    pos + Vector2Int.down,    
-                    pos + Vector2Int.left,    
-                    pos + Vector2Int.right,    
-                };
-                foreach(var adj in adjacent)
+                foreach(var adj in pos.Adjacent())
                 {
                     if (adj.x < 0 || adj.x >= map.GetLength(0) || adj.y < 0 || adj.y >= map.GetLength(1))
                         continue;

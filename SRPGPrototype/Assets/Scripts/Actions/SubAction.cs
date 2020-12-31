@@ -28,7 +28,7 @@ public class SubAction : MonoBehaviour
     }
 
     // Sub-action Metadata
-    public bool DealsDamage => effects.Any((e) => e is ActionEffectDamage);
+    public bool DealsDamage => effects.Any((e) => e.DealsDamage);
     public bool UsesPower => effects.Any((e) => e.UsesPower);
 
     // Sub-action data

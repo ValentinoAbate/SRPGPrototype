@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using RandomUtils;
 
 public class Action : MonoBehaviour, IEnumerable<SubAction>
 {
@@ -31,11 +32,11 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     {
         get
         {
-            int usage = TimesUsed;
+            int usage = TimesUsed - FreeUses;
             if (SlowdownReset == Trigger.TurnStart)
-                usage = TimesUsedThisTurn;
+                usage = TimesUsedThisTurn - FreeUsesThisTurn;
             else if (SlowdownReset == Trigger.EncounterStart)
-                usage = TimesUsedThisBattle;
+                usage = TimesUsedThisBattle - FreeUsesThisBattle;
             return baseAp + Slowdown * (usage / SlowdownInterval);
         }
     }
@@ -50,11 +51,14 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     public Trigger SlowdownReset => slowdownReset;
     [SerializeField] private Trigger slowdownReset = Trigger.TurnStart;
 
-    public int TimesUsed { get; set; } = 0;
+    public int TimesUsed { get; private set; } = 0;
+    private int FreeUses { get; set; } = 0;
 
-    public int TimesUsedThisBattle { get; set; } = 0;
+    public int TimesUsedThisBattle { get; private set; } = 0;
+    private int FreeUsesThisBattle { get; set; } = 0;
 
-    public int TimesUsedThisTurn { get; set; } = 0;
+    public int TimesUsedThisTurn { get; private set; } = 0;
+    private int FreeUsesThisTurn { get; set; } = 0;
 
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -82,6 +86,26 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         if (transform.IsChildOf(parent))
             return this;
         return Instantiate(gameObject, parent).GetComponent<Action>();
+    }
+
+    public void ResetUses(Trigger trigger)
+    {
+        switch (trigger)
+        {
+            case Trigger.Never:
+                TimesUsed = 0;
+                FreeUses = 0;
+                goto case Trigger.EncounterStart;
+            case Trigger.EncounterStart:
+                TimesUsedThisBattle = 0;
+                FreeUsesThisBattle = 0;
+                goto case Trigger.TurnStart;
+            case Trigger.TurnStart:
+                TimesUsedThisTurn = 0;
+                FreeUsesThisTurn = 0;
+                break;
+        }
+
     }
 
     public int APCostAfterXUses(int uses)
@@ -128,13 +152,25 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
+        var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();
+        if(noSlowdownMods.Count() > 0 && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
+        {
+            ++FreeUses;
+            ++FreeUsesThisBattle;
+            ++FreeUsesThisTurn;
+        }
         if (UsesPower && !zeroPower)
         {
             user.Power.Use();
         }
         if(Program != null && Program.attributes.HasFlag(Program.Attributes.Transient))
         {
-            Program.GetComponent<ProgramAttributeTransient>().Uses++;
+            var freeTransientMods = Program.ModifiedByType<ModifierActionFreeTransientChance>();
+            // Apply free transient chances if applicable
+            if(freeTransientMods.Count() <= 0 || RandomU.instance.RandomDouble() > freeTransientMods.Sum((m) => m.Chance))
+            {
+                Program.GetComponent<ProgramAttributeTransient>().Uses++;
+            }
         }
         user.OnAfterActionFn?.Invoke(this);
     }
