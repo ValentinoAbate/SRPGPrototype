@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
+      propertyPath: description
+      value: Contains built-in mods that increase the damage of adjacent spears.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
       propertyPath: displayName
       value: Y Shell
       objectReference: {fileID: 0}
@@ -106,12 +111,12 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[5].location.x
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[5].location.y
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
