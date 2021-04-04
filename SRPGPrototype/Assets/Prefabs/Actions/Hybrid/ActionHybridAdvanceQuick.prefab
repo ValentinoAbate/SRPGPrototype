@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 308391873856083614, guid: ca846346aba5d884a84799634e84668c,
         type: 3}
-      propertyPath: slowdownInterval
+      propertyPath: slowdown
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 308391873856083614, guid: ca846346aba5d884a84799634e84668c,
@@ -22,10 +22,20 @@ PrefabInstance:
       propertyPath: displayName
       value: Duelist's Ambush
       objectReference: {fileID: 0}
+    - target: {fileID: 308391873856083614, guid: ca846346aba5d884a84799634e84668c,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226132, guid: ca846346aba5d884a84799634e84668c,
         type: 3}
       propertyPath: m_Name
       value: ActionHybridAdvanceQuick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
         type: 3}
@@ -44,6 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -55,16 +70,6 @@ PrefabInstance:
     - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: ca846346aba5d884a84799634e84668c,
