@@ -43,7 +43,7 @@ public class TargetPatternGeneratorChain : TargetPatternGenerator
             }
             GetChainTargets(targetPos, grid, Adj, ref targets);
         }
-        else if(adjacency == Adjacency.HorizontalRange2)
+        else if(adjacency == Adjacency.DiagonalRange2)
         {
             static IEnumerable<Vector2Int> Adj(Vector2Int pos)
             {
