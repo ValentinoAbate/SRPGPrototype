@@ -196,7 +196,8 @@ public class CustUI : MonoBehaviour
         InitializePresetUI();
         // Set cursor properties
         cursor.NullAllActions();
-        cursor.OnHighlight = (pos) => HighlightProgram(pos);
+        cursor.OnHighlight = HighlightProgram;
+        cursor.OnUnHighlight = UnHighlightProgram;
         cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
     }
 
@@ -222,12 +223,21 @@ public class CustUI : MonoBehaviour
     {
         if (grid.IsLegal(pos) && !grid.IsEmpty(pos))
         {
-            ShowProgramDescriptionWindow(grid.Get(pos), true);
+            var prog = grid.Get(pos);
+            prog.Highlight();
+            ShowProgramDescriptionWindow(prog, true);
         }
         else
         {
             HideProgramDescriptionWindow(true);
+        }
+    }
 
+    public void UnHighlightProgram(Vector2Int pos)
+    {
+        if (grid.IsLegal(pos) && !grid.IsEmpty(pos))
+        {
+            grid.Get(pos).UnHighlight();
         }
     }
 

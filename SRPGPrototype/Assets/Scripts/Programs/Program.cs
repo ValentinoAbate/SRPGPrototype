@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Program : GridObject, ILootable
 {
+    private const string highlightTileUIProp = "BoolHighlight";
     public enum Color
     { 
         White,
@@ -124,6 +125,22 @@ public class Program : GridObject, ILootable
         triggers = trigList.ToArray();
         ModifierEffects = GetComponents<ProgramModifier>();
         effects = GetComponents<ProgramEffect>();
+    }
+
+    public void Highlight()
+    {
+        foreach (var entry in uiEntries)
+        {
+            entry.obj.GetComponent<MeshRenderer>().material.SetFloat(highlightTileUIProp, 1);
+        }
+    }
+
+    public void UnHighlight()
+    {
+        foreach (var entry in uiEntries)
+        {
+            entry.obj.GetComponent<MeshRenderer>().material.SetFloat(highlightTileUIProp, 0);
+        }
     }
 
     public void Show(Vector2Int pos, CustGrid grid)

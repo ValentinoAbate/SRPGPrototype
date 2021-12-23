@@ -49,9 +49,13 @@ public class TileUI : MonoBehaviour
             rend.SetColor("ColorMain", colors[t]);
         }
         if (tiles.ContainsKey(p))
+        {
             tiles[p].Add(obj);
+        }
         else
+        {
             tiles.Add(p, new List<GameObject> { obj });
+        }
         return new Entry { obj = obj, pos = p, type = t };
     }
 

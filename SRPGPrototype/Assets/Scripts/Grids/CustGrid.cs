@@ -43,7 +43,9 @@ public class CustGrid : Grid.Grid<Program>
                 {
                     var pos = new Vector2Int(x, y);
                     if (!offsetsSet.Contains(pos))
+                    {
                         blockedUI.Add(SpawnTileUI(pos, TileUI.Type.CustBlocked));
+                    }
                 }
             }
         }
