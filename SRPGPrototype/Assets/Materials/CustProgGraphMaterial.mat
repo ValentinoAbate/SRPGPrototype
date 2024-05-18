@@ -34,6 +34,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - BoolFixed: 0
+    - BoolHighlight: 0
     - Boolean_23622842e94e48a294acd9f1a6f631c1: 0
     - Vector1_370bd7db4efb41debe4478bab1472351: 2.5
     m_Colors:
