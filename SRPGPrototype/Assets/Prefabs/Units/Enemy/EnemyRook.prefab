@@ -29,6 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -44,6 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -56,16 +66,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 82ce0cdbb1892ac48bdd2414e4a3eb17,
         type: 3}
@@ -115,13 +115,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: displayName
-      value: Rook
+      propertyPath: description
+      value: 'Move: Rook. Attack: Adjacent (2 damage).'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: description
-      value: 'Move: Rook. Attack: Adjacent (2 damage).'
+      propertyPath: displayName
+      value: Rook
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -140,6 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -151,16 +161,6 @@ PrefabInstance:
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
@@ -178,6 +178,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8a154fb5066dad4791aae1ca3d1823e,
+        type: 3}
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: cost
@@ -216,6 +222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -231,6 +242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -243,16 +259,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: c3685029171bda84a98ac7bcb845e3c5,
         type: 3}
