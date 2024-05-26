@@ -41,13 +41,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 574270643526111008, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 574270643526111008, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 574270643526111008, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -56,18 +56,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574270643526111008, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Name
       value: EnemyFuse
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: displayName
-      value: Fuse
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -80,15 +75,20 @@ PrefabInstance:
       value: 'Move: Adjacent. Attack: Explosion. Uses Explosion when destroyed. Explosion:
         deals 4 damage to adjacent units.'
       objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: displayName
+      value: Fuse
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
     - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -97,8 +97,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -117,6 +122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -128,16 +138,6 @@ PrefabInstance:
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
@@ -162,13 +162,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0.355
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_Color.g
-      value: 0
+      propertyPath: m_Color.r
+      value: 0.355
       objectReference: {fileID: 0}
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}

@@ -24,6 +24,12 @@ PrefabInstance:
       propertyPath: challengeRating
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 895247138642935499, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 42a61651041cd2a46a682d37fc5fe3d3,
+        type: 3}
     - target: {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
       propertyPath: maxHP
@@ -31,19 +37,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
-      propertyPath: displayName
-      value: Fuse+
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
-        type: 3}
       propertyPath: description
       value: 'Move: Adjacent. Attack: Explosion+. Uses Explosion+ when destroyed.
         Explosion+: deals 5 damage to adjacent and diagonally adjacent units.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
+        type: 3}
+      propertyPath: displayName
+      value: Fuse+
       objectReference: {fileID: 0}
     - target: {fileID: 5174817585663237361, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
       propertyPath: m_Name
       value: EnemyFuse+
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
@@ -62,6 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -73,16 +89,6 @@ PrefabInstance:
     - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7787004826101913908, guid: 5c8cec4488c5d2a4a92050b11d114b5e,

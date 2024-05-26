@@ -14,11 +14,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
-      propertyPath: displayName
-      value: Walking Nest+
-      objectReference: {fileID: 0}
-    - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
-        type: 3}
       propertyPath: maxHP
       value: 5
       objectReference: {fileID: 0}
@@ -26,6 +21,16 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Move: Adjacent. Attack: Adjacent (2 damage). Spawns a Swarm+ when destroyed.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
+        type: 3}
+      propertyPath: displayName
+      value: Walking Nest+
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
@@ -44,6 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -55,16 +65,6 @@ PrefabInstance:
     - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3018587711151454306, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
@@ -87,6 +87,12 @@ PrefabInstance:
       propertyPath: challengeRating
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5303090412057730973, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 42a61651041cd2a46a682d37fc5fe3d3,
+        type: 3}
     - target: {fileID: 8708654031822163210, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
       propertyPath: action

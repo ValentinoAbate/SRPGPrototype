@@ -82,6 +82,12 @@ PrefabInstance:
       propertyPath: displayName
       value: Gunner+
       objectReference: {fileID: 0}
+    - target: {fileID: 8452542628105313215, guid: ab388bb81eb29454faece0ab8d644049,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 42a61651041cd2a46a682d37fc5fe3d3,
+        type: 3}
     - target: {fileID: 8704909182585032594, guid: ab388bb81eb29454faece0ab8d644049,
         type: 3}
       propertyPath: challengeRating

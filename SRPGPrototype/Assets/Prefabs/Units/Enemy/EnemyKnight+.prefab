@@ -99,6 +99,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4415060608083833614, guid: a4fa2ccb6fd5df3429b046c30ba25c33,
         type: 3}
+    - target: {fileID: 8452542628105313215, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 603c3ec79eb073441b86609985bc2e97,
+        type: 3}
     - target: {fileID: 8704909182585032594, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
       propertyPath: challengeRating
