@@ -48,22 +48,25 @@ public class SubAction : MonoBehaviour
     {
         // Get target positions
         var targetPositions = targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal).ToList();
-        var targets = new List<Unit>();
+        var targets = new List<Unit>(targetPositions.Count);
+        foreach (var position in targetPositions)
+        {
+            var target = grid.Get(position);
+            if (target != null)
+                targets.Add(target);
+        }
         foreach (var effect in effects)
         {
             effect.Initialize(grid, action, this, user, targetPositions);
-            if(effect.AffectUser)
+            if (effect.AffectUser)
             {
                 effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
             }
             else
             {
-                foreach (var position in targetPositions)
+                foreach(var target in targets)
                 {
-                    var target = grid.Get(position);
-                    if (target != null)
-                        targets.Add(target);
-                    effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(position, selectedPos));
+                    effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
                 }
             }
         }
