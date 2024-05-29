@@ -26,7 +26,7 @@ public class ActionMenu : MonoBehaviour
         };
     }
 
-    public void Show(BattleGrid grid, BattleUI ui, Unit unit, System.Action OnLinkout)
+    public void Show(BattleGrid grid, BattleUI ui, Unit unit)
     {
         // Action Buttons
         var actions = new List<Action>(unit.Actions);
@@ -54,20 +54,6 @@ public class ActionMenu : MonoBehaviour
             button.button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
             button.button.onClick.AddListener(Hide);
         }
-        // Link Out Button
-        var linkoutButton = Instantiate(linkoutButtonPrefab, actionButtonContainer).GetComponent<Button>();
-        var units = grid.FindAll();
-        if(units.Any((u) => u.InterferenceLevel == Unit.Interference.Jamming)
-            || units.Count((u) => u.InterferenceLevel == Unit.Interference.Low) > 2)
-        {
-            linkoutButton.interactable = false;
-        }
-        else
-        {
-            linkoutButton.interactable = true;
-            linkoutButton.onClick.AddListener(() => OnLinkout());
-        }
-
     }
 
     public void Hide()

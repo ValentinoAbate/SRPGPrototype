@@ -4,17 +4,23 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
-    public BattleGrid grid;
-    public PhaseManager phaseManager;
-    public PlayerPhase playerPhase;
     public ActionMenu menu;
     public BattleCursor cursor;
     public Button endTurnButton;
+    public Button linkOutButton;
+    public TextMeshProUGUI linkOutButtonText;
+    public TextMeshProUGUI linkOutInfoText;
     public ActionDescriptionUI actionDescription;
     public UnitDescriptionUI unitDescription;
+
+    [Header("Set in Parent Prefab")]
+    public BattleGrid grid;
+    public PhaseManager phaseManager;
+    public PlayerPhase playerPhase;
 
     public bool PlayerPhaseUIEnabled
     {
@@ -22,6 +28,36 @@ public class BattleUI : MonoBehaviour
         {
             cursor.gameObject.SetActive(value);
             endTurnButton.interactable = value;
+            if (value)
+            {
+                RefreshLinkoutButton();
+            }
+            else
+            {
+                linkOutButton.interactable = false;
+            }
+        }
+    }
+
+    public void RefreshLinkoutButton()
+    {
+        var canLinkout = grid.CanLinkOut(out var interferenceLevel, out int numInterferers);
+        if (canLinkout)
+        {
+            linkOutButton.interactable = true;
+            linkOutButtonText.text = "Link Out";
+            linkOutInfoText.text = "Link Out Ready";
+            return;
+        }
+        linkOutButton.interactable = false;
+        linkOutButtonText.text = "Link Out Blocked";
+        if (interferenceLevel == Unit.Interference.Jamming)
+        {
+            linkOutInfoText.text = $"Link Out Blocked - Defeat all Jamming Units ({numInterferers} left)";
+        }
+        else
+        {
+            linkOutInfoText.text = $"Link Out Blocked - Must less than 3 Low Interference Units ({numInterferers} left)";
         }
     }
 
@@ -35,6 +71,16 @@ public class BattleUI : MonoBehaviour
     {
         menu.Hide();
         PlayerPhaseUIEnabled = false;
+    }
+
+    public void OnLinkOutButton()
+    {
+        phaseManager.EndActiveEncounter();
+    }
+
+    public void OnEndTurnButton()
+    {
+        phaseManager.NextPhase();
     }
 
     private void Start()
@@ -51,6 +97,7 @@ public class BattleUI : MonoBehaviour
         cursor.OnCancel = null;
         cursor.OnUnHighlight = HideUnitDescription;
         cursor.OnHighlight = ShowUnitDescription;
+        RefreshLinkoutButton();
     }
 
     private void ShowUnitDescription(Vector2Int pos)
@@ -78,7 +125,7 @@ public class BattleUI : MonoBehaviour
     {
         unitDescription.Hide();
         endTurnButton.interactable = false;
-        menu.Show(grid, this, unit, phaseManager.EndActiveEncounter);
+        menu.Show(grid, this, unit);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;
         cursor.OnUnHighlight = null;

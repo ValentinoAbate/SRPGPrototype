@@ -30,4 +30,43 @@ public class BattleGrid : Grid.Grid<Unit>
         }
         return false;
     }
+
+    public bool CanLinkOut(out Unit.Interference interferenceLevel, out int numInterferers)
+    {
+        // Link Out Button
+        interferenceLevel = Unit.Interference.None;
+        numInterferers = 0;
+        foreach (var unit in this)
+        {
+            if (unit.InterferenceLevel == Unit.Interference.Jamming)
+            {
+                if (interferenceLevel != Unit.Interference.Jamming)
+                {
+                    numInterferers = 1;
+                    interferenceLevel = Unit.Interference.Jamming;
+                }
+                else
+                {
+                    ++numInterferers;
+                }
+                continue;
+            }
+
+            if (interferenceLevel == Unit.Interference.Jamming)
+                continue;
+            if (unit.InterferenceLevel == Unit.Interference.Low)
+            {
+                if (interferenceLevel != Unit.Interference.Low)
+                {
+                    numInterferers = 1;
+                    interferenceLevel = Unit.Interference.Low;
+                }
+                else
+                {
+                    ++numInterferers;
+                }
+            }
+        }
+        return interferenceLevel == Unit.Interference.None || (interferenceLevel == Unit.Interference.Low && numInterferers <= 2);
+    }
 }
