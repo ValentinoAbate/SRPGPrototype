@@ -12,7 +12,7 @@ public class TargetPatternGeneratorStatCompare : TargetPatternGenerator
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Unit user, Vector2Int targetPos)
     {
         int threshold = userStat == Stats.StatName.None ? constant : user.GetStat(userStat);
-        return grid.FindAll((u) => UnitPredicate(u, threshold)).Select((u) => u.Pos);
+        return grid.Where((u) => UnitPredicate(u, threshold)).Select((u) => u.Pos);
     }
 
     private bool UnitPredicate(Unit u, int threshold)

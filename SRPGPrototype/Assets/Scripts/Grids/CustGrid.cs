@@ -14,7 +14,7 @@ public class CustGrid : Grid.Grid<Program>
             // Clear previous shell if applicable
             if(shell != null)
             {
-                foreach (var program in FindAll())
+                foreach (var program in this)
                 {
                     program.Hide(this);
                 }
@@ -122,7 +122,7 @@ public class CustGrid : Grid.Grid<Program>
             return;
 
         // Clear UI
-        foreach (var program in FindAll())
+        foreach (var program in this)
         {
             program.Hide(this);
         }

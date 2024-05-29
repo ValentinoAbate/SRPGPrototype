@@ -139,7 +139,7 @@ public class EncounterManager : MonoBehaviour
 
     private IEnumerator EndEncounterCr()
     {
-        foreach(var unit in grid.FindAll())
+        foreach(var unit in grid)
             yield return StartCoroutine(unit.OnBattleEnd(this));
         GenerateAndShowLoot();
     }

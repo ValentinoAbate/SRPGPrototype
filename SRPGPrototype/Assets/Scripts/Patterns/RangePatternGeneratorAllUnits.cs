@@ -5,7 +5,7 @@ public class RangePatternGeneratorAllUnits : RangePatternGenerator
 { 
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
     {
-        return grid.FindAll().Select((u) => u.Pos);
+        return grid.Select((u) => u.Pos);
     }
 
     public override int MaxDistance(BattleGrid grid)

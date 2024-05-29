@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Grid
 {
-    public abstract class Grid<Obj> : MonoBehaviour where Obj : GridObject
+    public abstract class Grid<Obj> : MonoBehaviour, IEnumerable<Obj> where Obj : GridObject
     {
         public static readonly Vector2Int OutOfBounds = new Vector2Int(-100, -100);
         public abstract Vector2Int Dimensions { get; }
@@ -276,6 +277,25 @@ namespace Grid
                     objects.Add(obj);
             }
             return objects;
+        }
+
+        public IEnumerator<Obj> GetEnumerator()
+        {
+            return FieldObjects();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<Obj> FieldObjects()
+        {
+            foreach (var obj in field)
+            {
+                if (obj != null)
+                    yield return obj;
+            }
         }
 
         /// <summary>
