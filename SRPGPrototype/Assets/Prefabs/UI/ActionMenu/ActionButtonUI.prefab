@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -407,7 +407,7 @@ MonoBehaviour:
   nameText: {fileID: 3074257869897078592}
   button: {fileID: 3074257871435298263}
   trigger: {fileID: 1198711076821419431}
-  hotKeyUI: {fileID: 495076652963751829}
+  hotKeyUI: {fileID: 1073137587491766389}
   hotKeyText: {fileID: 5711358726914091651}
 --- !u!114 &1198711076821419431
 MonoBehaviour:

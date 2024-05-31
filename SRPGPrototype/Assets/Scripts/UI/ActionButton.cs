@@ -9,8 +9,19 @@ public class ActionButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private Button button;
     [SerializeField] private EventTrigger trigger;
-    [SerializeField] private Transform hotKeyUI;
+    [SerializeField] private Image hotKeyUI;
     [SerializeField] private TextMeshProUGUI hotKeyText;
+
+    private static readonly Color dimColor = new Color(0xC8, 0xC8, 0xC8, 0.5f);
+
+    public bool Interactable
+    {
+        set
+        {
+            button.interactable = value;
+            hotKeyUI.color = value ? Color.white : dimColor;
+        }
+    }
 
     public void Initialize(int index, Unit unit, Action action, BattleUI ui, UnityAction onHide)
     {
@@ -41,7 +52,7 @@ public class ActionButton : MonoBehaviour
         // Continue if the unit doesn't have enough AP
         if (!unit.CanUseAction(action))
         {
-            button.interactable = false;
+            Interactable = false;
             return;
         }
         button.onClick.RemoveAllListeners();
