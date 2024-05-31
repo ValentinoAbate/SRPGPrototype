@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectUser: 0
   targetStat: 0
-  damage: 4
+  damage: 5
 --- !u!1001 &5762436849796139475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Ranged attack for 4 damage, then lose 1 Repair.
+      value: Ranged attack for 5 damage, then lose 1 Repair.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

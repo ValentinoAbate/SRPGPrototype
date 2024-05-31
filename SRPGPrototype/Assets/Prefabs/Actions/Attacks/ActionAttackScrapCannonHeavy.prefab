@@ -15,22 +15,27 @@ PrefabInstance:
     - target: {fileID: -3498084401969222590, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
       propertyPath: damage
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 168078652610169254, guid: 111e7ce731c988c42a85f1c408f6d0e4,
+        type: 3}
+      propertyPath: description
+      value: Ranged attack for 7 damage, then lose 2 Repair.
       objectReference: {fileID: 0}
     - target: {fileID: 168078652610169254, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
       propertyPath: displayName
       value: Heavy Scrap Cannon
       objectReference: {fileID: 0}
-    - target: {fileID: 168078652610169254, guid: 111e7ce731c988c42a85f1c408f6d0e4,
-        type: 3}
-      propertyPath: description
-      value: Ranged attack for 5 damage, then lose 2 Repair.
-      objectReference: {fileID: 0}
     - target: {fileID: 8165979782698729836, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
       propertyPath: m_Name
       value: ActionAttackScrapCannonHeavy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
@@ -49,6 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -60,16 +70,6 @@ PrefabInstance:
     - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8165979782698729839, guid: 111e7ce731c988c42a85f1c408f6d0e4,
