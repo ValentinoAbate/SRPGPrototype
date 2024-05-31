@@ -49,14 +49,18 @@ public class EncounterManager : MonoBehaviour
         unitsToSpawn.Clear();
         spawnedUnits.Clear();
         // Add drones (if applicable) to the spawn stack
-        foreach (var droneShell in PersistantData.main.inventory.DroneShells)
+        for (int i = 0; i < PersistantData.main.inventory.DroneShells.Length; i++)
         {
+            Shell droneShell = PersistantData.main.inventory.DroneShells[i];
             var droneUnit = Instantiate(droneShell.SoulCoreUnitPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerDroneUnit>();
             droneUnit.SetShell(droneShell);
+            droneUnit.UnitIndex = PersistantData.main.inventory.DroneShells.Length - i;
             unitsToSpawn.Push(droneUnit);
         }
         // Add the player to the spawn stack
-        unitsToSpawn.Push(Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>());
+        var player = Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>();
+        player.UnitIndex = 0;
+        unitsToSpawn.Push(player);
 
         // Don't allow the encounter to start until the player has been placed
         confirmPlayerPlacementButton.interactable = false;

@@ -9,23 +9,28 @@ public class PlayerPhase : Phase
 
     public BattleUI ui;
 
-    private List<PlayerUnit> units = new List<PlayerUnit>();
+    public List<PlayerUnit> Units { get; } = new List<PlayerUnit>();
 
-    public override void InitializePhase(IEnumerable<Unit> allUnits)
+    private static int UnitComparer(PlayerUnit u1, PlayerUnit u2)
     {
-        units = new List<PlayerUnit>(allUnits.Where((u) => u is PlayerUnit).Select((u) => u as PlayerUnit));
-        units.ForEach((u) => u.Actions.ForEach((a) => a.ResetUses(Action.Trigger.EncounterStart)));
+        return u1.UnitIndex.CompareTo(u2.UnitIndex);
     }
 
 
     public override IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits)
     {
-        units.Clear();
-        units.AddRange(allUnits.Where((u) => u is PlayerUnit).Select((u) => u as PlayerUnit));
+        Units.Clear();
+        foreach (var unit in allUnits)
+        {
+            if (unit is PlayerUnit playerUnit)
+            {
+                Units.Add(playerUnit);
+            }
+        }
         RemoveAllDead();
         if (CheckEndBattle())
             yield break;
-        foreach (var unit in units)
+        foreach (var unit in Units)
             yield return StartCoroutine(unit.OnPhaseStart());
         ui.BeginPlayerTurn();
     }
@@ -35,7 +40,7 @@ public class PlayerPhase : Phase
         RemoveAllDead();
         if (CheckEndBattle())
             yield break;
-        foreach (var unit in units)
+        foreach (var unit in Units)
             yield return StartCoroutine(unit.OnPhaseEnd());
         ui.EndPlayerTurn();
     }
@@ -52,7 +57,7 @@ public class PlayerPhase : Phase
 
     public bool CheckEndBattle()
     {
-        if (units.Count <= 0)
+        if (Units.Count <= 0)
         {
             EndBattle();
             return true;
@@ -62,6 +67,20 @@ public class PlayerPhase : Phase
 
     public void RemoveAllDead()
     {
-        units.RemoveAll((u) => u == null || u.Dead);
+        Units.RemoveAll((u) => u == null || u.Dead);
+    }
+
+    public bool TryGetPlayer(int unitIndex, out PlayerUnit player)
+    {
+        foreach(var unit in Units)
+        {
+            if(unit.UnitIndex == unitIndex)
+            {
+                player = unit;
+                return true;
+            }
+        }
+        player = null;
+        return false;
     }
 }

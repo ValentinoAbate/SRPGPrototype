@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   displayName: Player
-  description: The player. Click to use an action!
+  description: The player. Click or use the hotkey to use an action!
   unitUI: {fileID: 5059411519126010243}
 --- !u!1 &8683891458397964560
 GameObject:
@@ -171,6 +171,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -186,6 +191,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -198,16 +208,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1189834482057283811, guid: 74bab895f502845478122e63b6026f5a,
         type: 3}

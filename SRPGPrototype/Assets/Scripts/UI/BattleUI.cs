@@ -27,7 +27,21 @@ public class BattleUI : MonoBehaviour
         set
         {
             cursor.gameObject.SetActive(value);
+            UnitSelectionUIEnabled = value;
+        }
+    }
+    private bool inUnitSelection;
+
+    private bool UnitSelectionUIEnabled
+    {
+        set
+        {
+            inUnitSelection = value;
             endTurnButton.interactable = value;
+            foreach (var unit in playerPhase.Units)
+            {
+                unit.unitUI.SetHotKeyActive(value);
+            }
             if (value)
             {
                 RefreshLinkoutButton();
@@ -89,15 +103,36 @@ public class BattleUI : MonoBehaviour
         unitDescription.Hide();
     }
 
+    private void Update()
+    {
+        if (!inUnitSelection)
+            return;
+        for (int i = 0; i < playerPhase.Units.Count && i < 9; ++i)
+        {
+            if (Input.GetKeyDown((i + 1).ToString()) && playerPhase.TryGetPlayer(i, out var player))
+            {
+                SelectPlayer(player.Pos);
+                return;
+            }
+        }
+        if (playerPhase.Units.Count >= 10 && Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if(playerPhase.TryGetPlayer(9, out var player))
+            {
+                SelectPlayer(player.Pos);
+                return;
+            }
+        }
+    }
+
     private void EnterUnitSelection()
     {
         playerPhase.CheckEndPhase();
-        endTurnButton.interactable = true;
+        UnitSelectionUIEnabled = true;
         cursor.OnClick = SelectPlayer;
         cursor.OnCancel = null;
         cursor.OnUnHighlight = HideUnitDescription;
         cursor.OnHighlight = ShowUnitDescription;
-        RefreshLinkoutButton();
     }
 
     private void ShowUnitDescription(Vector2Int pos)
@@ -124,7 +159,7 @@ public class BattleUI : MonoBehaviour
     private void EnterActionMenu(Unit unit)
     {
         unitDescription.Hide();
-        endTurnButton.interactable = false;
+        UnitSelectionUIEnabled = false;
         menu.Show(grid, this, unit);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;

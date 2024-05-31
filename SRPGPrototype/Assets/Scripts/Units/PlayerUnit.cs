@@ -38,6 +38,17 @@ public class PlayerUnit : Unit
 
     public override List<Action> Actions => Shell.Actions.ToList();
 
+    private int unitIndex = 0;
+    public int UnitIndex
+    { 
+        get => unitIndex;
+        set
+        {
+            unitIndex = value;
+            unitUI.SetHotKey((value + 1).ToString());
+        }
+    }
+
     public UnitUI unitUI;
 
     public override void ResetStats()
