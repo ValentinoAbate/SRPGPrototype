@@ -6,14 +6,15 @@ using System.Linq;
 
 public class ActionMenu : MonoBehaviour
 {
-    public GameObject actionButtonWeaponPrefab;
-    public GameObject actionButtonMovePrefab;
-    public GameObject actionButtonHybridPrefab;
-    public GameObject actionButtonSkillPrefab;
-    public GameObject linkoutButtonPrefab;
+    [SerializeField] private GameObject actionButtonWeaponPrefab;
+    [SerializeField] private GameObject actionButtonMovePrefab;
+    [SerializeField] private GameObject actionButtonHybridPrefab;
+    [SerializeField] private GameObject actionButtonSkillPrefab;
 
     public Transform actionButtonContainer;
     private Dictionary<Action.Type, GameObject> buttonPrefabs;
+    private bool showing = false;
+    private readonly List<ActionButton> buttons = new List<ActionButton>();
 
     private void Awake()
     {
@@ -26,38 +27,51 @@ public class ActionMenu : MonoBehaviour
         };
     }
 
+    private void Update()
+    {
+        if (!showing)
+            return;
+        CheckForKeyboardInput();
+    }
+
+    private void CheckForKeyboardInput()
+    {
+        for (int i = 0; i < buttons.Count && i < 9; ++i)
+        {
+            if (Input.GetKeyDown((i + 1).ToString()))
+            {
+                buttons[i].OnHotKey();
+                return;
+            }
+        }
+        if (buttons.Count >= 10 && Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            buttons[9].OnHotKey();
+            return;
+        }
+    }
+
     public void Show(BattleGrid grid, BattleUI ui, Unit unit)
     {
         // Action Buttons
         var actions = new List<Action>(unit.Actions);
-        actions.Sort((a1, a2) => a1.ActionType.CompareTo(a2.ActionType));
-        foreach(var action in actions)
+        actions.Sort();
+        buttons.Clear();
+        for (int i = 0; i < actions.Count; i++)
         {
+            Action action = actions[i];
             GameObject prefab = buttonPrefabs[action.ActionType];
             var button = Instantiate(prefab, actionButtonContainer).GetComponent<ActionButton>();
-            button.Initialize(action);
-            // Add show action description trigger
-            var showActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            showActionDesc.callback.AddListener((data) => ui.actionDescription.Show(action, unit));
-            button.trigger.triggers.Add(showActionDesc);
-            // Add hide action description trigger
-            var hideActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hideActionDesc.callback.AddListener((data) => ui.actionDescription.Hide());
-            button.trigger.triggers.Add(hideActionDesc);
-            // Continue if the unit doesn't have enough AP
-            if (!unit.CanUseAction(action))
-            {
-                button.button.interactable = false;
-                continue;
-            }
-            button.button.onClick.RemoveAllListeners();
-            button.button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
-            button.button.onClick.AddListener(Hide);
+            button.Initialize(i, unit, action, ui, Hide);
+            buttons.Add(button);
         }
+        showing = true;
     }
 
     public void Hide()
     {
+        showing = false;
+        buttons.Clear();
         actionButtonContainer.DestroyAllChildren();
     }
 }

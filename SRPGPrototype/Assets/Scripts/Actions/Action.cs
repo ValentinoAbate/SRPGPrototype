@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RandomUtils;
+using System;
 
-public class Action : MonoBehaviour, IEnumerable<SubAction>
+public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 {
     public enum Type
     { 
@@ -186,5 +187,14 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>
     IEnumerator IEnumerable.GetEnumerator()
     {
         return subActions.GetEnumerator();
+    }
+
+    public int CompareTo(Action other)
+    {
+        if (ActionType == other.ActionType)
+        {
+            return DisplayName.CompareTo(other.DisplayName);
+        }
+        return ActionType.CompareTo(other.ActionType);
     }
 }
