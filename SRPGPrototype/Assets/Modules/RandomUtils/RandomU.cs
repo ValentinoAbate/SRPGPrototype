@@ -38,23 +38,23 @@ namespace RandomUtils
 
         #region Random Choice from a collection (With options for weighting)
         /// <summary> Returns an unweighted random choice from the given array </summary> 
-        public T Choice<T>(T[] items)
+        public T Choice<T>(IReadOnlyList<T> items)
         {
-            return items[rand.Next(0, items.Length)];
+            return items[rand.Next(0, items.Count)];
         }
         /// <summary> Returns an unweighted random choice from the given IEnumerable </summary> 
         public T Choice<T>(IEnumerable<T> items)
         {
-            if (items.Count() <= 0)
+            if (!items.Any())
                 return default;
             return Choice(items.ToArray());
         }
         /// <summary> Returns a weighted random choice from the given items and float weights </summary> 
-        public T Choice<T>(T[] items, float[] weights)
+        public T Choice<T>(IReadOnlyList<T> items, IReadOnlyList<float> weights)
         {
             float totalWeight = weights.Aggregate((a, b) => a + b);
             float randomNumber = (float)rand.NextDouble() * totalWeight;
-            for (int i = 0; i < items.Length; ++i)
+            for (int i = 0; i < items.Count; ++i)
             {
                 if (randomNumber < weights[i])
                     return items[i];
@@ -78,7 +78,7 @@ namespace RandomUtils
             throw new Exception("No item chosen");
         }
         /// <summary> Returns a weighted random choice from the given items and int weights </summary> 
-        public T Choice<T>(T[] items, int[] weights, bool isAbsolute)
+        public T Choice<T>(IReadOnlyList<T> items, IReadOnlyList<int> weights, bool isAbsolute)
         {
             // totalWeight is the sum of all weights, or 1 if absolute
             int totalWeight = isAbsolute ? 100 : weights.Aggregate((a, b) => a + b);
@@ -87,7 +87,7 @@ namespace RandomUtils
                 throw new Exception("Absolute weights do not add up to 100%! Items: " + items.ToString() + " Weights: " + weights.ToString());
 #endif
             int randomNumber = rand.Next(totalWeight);
-            for (int i = 0; i < items.Length; ++i)
+            for (int i = 0; i < items.Count; ++i)
             {
                 if (randomNumber < weights[i])
                     return items[i];
