@@ -22,7 +22,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         EncounterStart,
     }
 
-    public bool UsesPower => subActions.Any((s) => s.UsesPower);
+    public bool UsesPower => SubActions.Any((s) => s.UsesPower);
 
     public Program Program { get; set; }
 
@@ -67,8 +67,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public string Description => description;
     [SerializeField] [TextArea(1, 3)] private string description = string.Empty;
 
-    [HideInInspector]
-    public List<SubAction> subActions;
+    public List<SubAction> SubActions { get; private set; }
 
     private void Awake()
     {
@@ -78,7 +77,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     private void Initialize()
     {
         var singleAction = GetComponent<SubAction>();
-        subActions = singleAction != null ? new List<SubAction> { singleAction } :
+        SubActions = singleAction != null ? new List<SubAction> { singleAction } :
             new List<SubAction>(GetComponentsInChildren<SubAction>(true));
     }
 
@@ -125,7 +124,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
     {
         StartAction(user);
-        foreach (var sub in subActions)
+        foreach (var sub in SubActions)
         {
             sub.Use(grid, this, user, targetPos);
         }
@@ -162,9 +161,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();
             if (noSlowdownMods.Count() > 0 && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
             {
-                ++FreeUses;
-                ++FreeUsesThisBattle;
-                ++FreeUsesThisTurn;
+                GrantFreeUse();
             }
             if(Program.attributes.HasFlag(Program.Attributes.Transient))
             {
@@ -179,14 +176,21 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         user.OnAfterActionFn?.Invoke(this);
     }
 
+    public void GrantFreeUse()
+    {
+        ++FreeUses;
+        ++FreeUsesThisBattle;
+        ++FreeUsesThisTurn;
+    }
+
     public IEnumerator<SubAction> GetEnumerator()
     {
-        return subActions.GetEnumerator();
+        return SubActions.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        return subActions.GetEnumerator();
+        return SubActions.GetEnumerator();
     }
 
     public int CompareTo(Action other)

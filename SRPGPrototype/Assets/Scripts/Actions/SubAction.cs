@@ -37,11 +37,14 @@ public class SubAction : MonoBehaviour
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern targetPattern;
-    private ActionEffect[] effects;
+    [SerializeField] private ActionEffect[] effects;
 
     private void Awake()
     {
-        effects = GetComponents<ActionEffect>();
+        if(effects == null || effects.Length <= 0)
+        {
+            effects = GetComponents<ActionEffect>();
+        }
     }
 
     public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos)

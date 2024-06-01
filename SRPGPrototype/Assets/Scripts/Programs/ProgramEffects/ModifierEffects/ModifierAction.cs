@@ -22,7 +22,7 @@ public abstract class ModifierAction : Modifier
 
     public bool AppliesTo(Action a)
     {
-        return (!filterByActionType || actionTypes.Contains(a.ActionType)) && a.subActions.Any(SubActionFilter);
+        return (!filterByActionType || actionTypes.Contains(a.ActionType)) && a.SubActions.Any(SubActionFilter);
     }
 
     private bool SubActionFilter(SubAction sub)

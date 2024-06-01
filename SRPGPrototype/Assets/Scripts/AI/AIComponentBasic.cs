@@ -27,7 +27,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
-        var subAction = standardAction.subActions[0];
+        var subAction = standardAction.SubActions[0];
         // If action targets self, use it on self end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {
@@ -53,7 +53,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (!self.CanUseAction(moveAction))
             yield break;
         // If there are no available moves (all moves are illegal or blocked), end early
-        if (MovePositions(grid, self.Pos, moveAction.subActions[0].Range).Count() <= 0)
+        if (MovePositions(grid, self.Pos, moveAction.SubActions[0].Range).Count() <= 0)
             yield break;
         // Find Paths to target range
         var paths = PathsToTargetRange(grid, self, moveAction, standardAction, targetUnits);

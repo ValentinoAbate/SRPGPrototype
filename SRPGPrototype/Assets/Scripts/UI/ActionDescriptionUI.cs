@@ -24,7 +24,7 @@ public class ActionDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = action.DisplayName + " - " + action.ActionType.ToString() 
-            + " (" + string.Join("/", action.subActions.Select((s) => s.Subtype.ToString())) + ")";
+            + " (" + string.Join("/", action.SubActions.Select((s) => s.Subtype.ToString())) + ")";
         descText.text = action.Description;
         // Program attributes
         if(action.Program != null)

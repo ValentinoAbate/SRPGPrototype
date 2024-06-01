@@ -64,7 +64,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected List<Vector2Int> Path(BattleGrid grid, T self, Action moveAction, Vector2Int goal, System.Predicate<Unit> canMoveThroughTarget = null)
     {
-        var moveRange = moveAction.subActions[0].Range;
+        var moveRange = moveAction.SubActions[0].Range;
         // Calculate the maximum manhattan distance of the move action
         int maxMoveDist = moveRange.MaxDistance(grid);
         // Use the manhattan distance to the goal / the maximum manhattan distance of the move action as the heuristic
@@ -107,9 +107,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     {
         var positions = new Dictionary<TargetData, Unit>();
         // Get relevant ranges
-        var moveRange = moveAction.subActions[0].Range;
-        var targetRange = standardAction.subActions[0].Range;
-        var targetPattern = standardAction.subActions[0].targetPattern;
+        var moveRange = moveAction.SubActions[0].Range;
+        var targetRange = standardAction.SubActions[0].Range;
+        var targetPattern = standardAction.SubActions[0].targetPattern;
         // Target position is valid if is legal and is empty, self or passes the canMoveThrough pred
         bool ValidPos(Vector2Int p)
         {
@@ -155,7 +155,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     {
         int range = self.ActionUsesUntilNoAP(moveAction);
         // Use the move range and a legality / emptiness check for the adjacency function
-        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction.subActions[0].Range);
+        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction.SubActions[0].Range);
         // Initialize distances with the startPosition
         var distances = new Dictionary<Vector2Int, int> { { startPos, 0 } };
 
@@ -199,7 +199,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     /// </summary>
     protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> targetUnits) where Target : Unit
     {
-        var subAction = standardAction.subActions[0];
+        var subAction = standardAction.SubActions[0];
         foreach (var pos in subAction.Range.GetPositions(grid, self.Pos))
         {
             var targetPositions = subAction.targetPattern.Target(grid, self, pos);

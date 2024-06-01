@@ -24,7 +24,7 @@ public class AIComponentTurret : AIComponent<AIUnit>
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
-        var subAction = standardAction.subActions[0];
+        var subAction = standardAction.SubActions[0];
         // If action targets self, end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {

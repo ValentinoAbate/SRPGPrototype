@@ -181,7 +181,7 @@ public class BattleUI : MonoBehaviour
         action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();
         var targetPatternEntires = new List<TileUI.Entry>();
-        targetRangeEntries = ShowRangePattern(action.subActions[currAction].Range, unit, TileUI.Type.CustGreen);
+        targetRangeEntries = ShowRangePattern(action.SubActions[currAction].Range, unit, TileUI.Type.CustGreen);
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction, ref targetPatternEntires);
@@ -201,7 +201,7 @@ public class BattleUI : MonoBehaviour
 
     private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
-        var subAction = action.subActions[currAction];
+        var subAction = action.SubActions[currAction];
         if (!subAction.Range.GetPositions(grid, unit.Pos).Contains(pos))
             return;
         entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustWhite);
@@ -211,20 +211,20 @@ public class BattleUI : MonoBehaviour
 
     private void SelectActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
-        var subAction = action.subActions[currAction];
+        var subAction = action.SubActions[currAction];
         if (!subAction.Range.GetPositions(grid, unit.Pos).Contains(pos))
             return;
         subAction.Use(grid, action, unit, pos);
         HideManyTiles(entries);
         cursor.OnUnHighlight?.Invoke(pos);
-        if (++currAction >= action.subActions.Count)
+        if (++currAction >= action.SubActions.Count)
         {
             action.FinishAction(unit);
             EnterUnitSelection();
         }
         else
         {
-            entries = ShowRangePattern(action.subActions[currAction].Range, unit, TileUI.Type.CustGreen);
+            entries = ShowRangePattern(action.SubActions[currAction].Range, unit, TileUI.Type.CustGreen);
         }
     }
 
