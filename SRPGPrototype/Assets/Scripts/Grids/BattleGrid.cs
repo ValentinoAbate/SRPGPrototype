@@ -9,6 +9,21 @@ public class BattleGrid : Grid.Grid<Unit>
 
     public System.Action<Unit> OnAddUnit { get; set; }
 
+    public bool MainPlayerDead
+    {
+        get
+        {
+            foreach (var unit in this)
+            {
+                if (unit is PlayerUnit playerUnit && playerUnit.IsMain)
+                {
+                    return playerUnit.Dead;
+                }
+            }
+            return true;
+        }
+    }
+
     // Start is called before the first frame update
     void Awake()
     {

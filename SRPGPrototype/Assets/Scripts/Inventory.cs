@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
     private readonly List<Program> programs = new List<Program>();
     private readonly List<Shell> shells = new List<Shell>();
 
-    private void Awake()
+    public void Initialize()
     {
         foreach (var prog in startingPrograms)
             AddProgram(prog, true);
@@ -78,14 +78,20 @@ public class Inventory : MonoBehaviour
 
     public void AddShell(Shell s, bool fromAsset = false)
     {
+        Shell addedShell;
         if (fromAsset)
         {
-            shells.Add(Instantiate(s.gameObject, shellContainer.transform).GetComponent<Shell>());
+            addedShell = Instantiate(s.gameObject, shellContainer.transform).GetComponent<Shell>();
         }
         else
         {
+            addedShell = s;
             s.transform.SetParent(shellContainer.transform);
-            shells.Add(s);
+        }
+        shells.Add(addedShell);
+        if(EquippedShell == null)
+        {
+            EquippedShell = addedShell;
         }
     }
 
@@ -96,5 +102,14 @@ public class Inventory : MonoBehaviour
         {
             Destroy(s.gameObject);
         }
+    }
+
+    public void Clear()
+    {
+        EquippedShell = null;
+        shells.Clear();
+        programs.Clear();
+        shellContainer.DestroyAllChildren();
+        programContainer.DestroyAllChildren();
     }
 }

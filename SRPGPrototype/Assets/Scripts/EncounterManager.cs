@@ -61,6 +61,7 @@ public class EncounterManager : MonoBehaviour
         // Add the player to the spawn stack
         var player = Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>();
         player.UnitIndex = 0;
+        player.IsMain = true;
         unitsToSpawn.Push(player);
 
         // Don't allow the encounter to start until the player has been placed
@@ -139,6 +140,11 @@ public class EncounterManager : MonoBehaviour
 
     public void EndEncounter()
     {
+        if (grid.MainPlayerDead)
+        {
+            GameOver();
+            return;
+        }
         StartCoroutine(EndEncounterCr());
     }
 
@@ -174,6 +180,12 @@ public class EncounterManager : MonoBehaviour
     public void EndScene()
     {
         SceneTransitionManager.main.TransitionToScene("Cust");
+    }
+
+    public void GameOver()
+    {
+        PersistantData.main.ResetRunData();
+        SceneTransitionManager.main.TransitionToScene("StartingShop");
     }
 
 }

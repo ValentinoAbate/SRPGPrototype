@@ -18,12 +18,24 @@ public class PersistantData : MonoBehaviour
         if(main == null)
         {
             main = this;
-            if(Application.isPlaying)
+            if (Application.isPlaying)
+            {
                 DontDestroyOnLoad(transform);
+            }
+            ResetRunData();
         }
         else if (Application.isPlaying)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ResetRunData()
+    {
+        presetManager.Clear();
+        inventory.Clear();
+        mapManager.Clear();
+        inventory.Initialize();
+        mapManager.Generate();
     }
 }

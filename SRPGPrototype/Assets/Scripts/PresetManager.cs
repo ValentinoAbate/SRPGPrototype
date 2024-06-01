@@ -45,4 +45,10 @@ public class PresetManager : MonoBehaviour
             loadedPresets.Add(key, index);
         }
     }
+
+    public void Clear()
+    {
+        presets.Clear();
+        loadedPresets.Clear();
+    }
 }

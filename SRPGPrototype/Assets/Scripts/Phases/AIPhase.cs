@@ -62,7 +62,7 @@ public class AIPhase : Phase
     {
         if (!canEndBattle)
             return false;
-        if (units.Count <= 0)
+        if (units.Count <= 0 || grid.MainPlayerDead)
         {
             EndBattle();
             return true;

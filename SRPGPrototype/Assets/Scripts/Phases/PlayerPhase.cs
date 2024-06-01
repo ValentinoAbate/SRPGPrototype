@@ -57,7 +57,7 @@ public class PlayerPhase : Phase
 
     public bool CheckEndBattle()
     {
-        if (Units.Count <= 0)
+        if (!Units.Any((u) => u.IsMain && !u.Dead))
         {
             EndBattle();
             return true;

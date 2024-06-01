@@ -32,6 +32,8 @@ public class PlayerUnit : Unit
     public override string Description => description;
     [SerializeField] [TextArea(1,2)] private string description = string.Empty;
 
+    public bool IsMain { get; set; } = false;
+
     public override Shell Shell => PersistantData.main.inventory.EquippedShell;
 
     private Stats Stats => Shell.Stats;

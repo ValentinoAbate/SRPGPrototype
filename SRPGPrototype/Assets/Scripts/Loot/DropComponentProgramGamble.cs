@@ -17,7 +17,7 @@ public class DropComponentProgramGamble : DropComponent<Program>
     public override List<Program> GenerateDrop(Loot<Program> loot)
     {
         int roll = RandomU.instance.RandomInt(0, 1000);
-        // Give the player a gample program
+        // Give the player a gamble program
         if (roll < 500)
         {
             // Filter out all programs that don't give capacity

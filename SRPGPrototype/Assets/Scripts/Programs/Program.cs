@@ -23,6 +23,7 @@ public class Program : GridObject, ILootable
         Transient = 2,
         SoulCore = 4,
         Gamble = 8,
+        Starter = 16,
     }
 
     private static readonly Dictionary<Color, TileUI.Type> tileTypes = new Dictionary<Color, TileUI.Type>()

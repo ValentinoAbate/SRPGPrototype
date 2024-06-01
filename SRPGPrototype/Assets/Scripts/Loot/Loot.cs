@@ -150,4 +150,21 @@ public class Loot<T> where T : ILootable
             throw new System.Exception("No valid choices");
         return RandomU.instance.Choice(choices);
     }
+
+    // Get a custom drop without any respect to rarity
+    public T GetDropCustom(System.Predicate<T> filter)
+    {
+        var choices = new List<T>();
+        foreach(var tableKvp in dropTables)
+        {
+            foreach(var kvp in tableKvp.Value)
+            {
+                if (filter(kvp.Key))
+                {
+                    choices.Add(kvp.Key);
+                }
+            }
+        }
+        return RandomU.instance.Choice(choices);
+    }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class MapManager : MonoBehaviour
 {
-    public Map Map => maps[currMap];
+    public Map Map => currMap < maps.Count ? maps[currMap] : null;
     public Encounter Encounter => Map.Current.value;
 
     [SerializeField] private MapData[] data = null;
@@ -15,11 +15,16 @@ public class MapManager : MonoBehaviour
     private List<Map> maps = new List<Map>();
     private int currMap = 0;
 
-    private void Start()
+    public void Generate()
     {
-        foreach(var d in data)
+        foreach (var d in data)
         {
             maps.Add(generator.Generate(d));
         }
+    }
+
+    public void Clear()
+    {
+        maps.Clear();
     }
 }

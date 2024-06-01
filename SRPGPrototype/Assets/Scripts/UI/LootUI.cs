@@ -23,10 +23,7 @@ public class LootUI : MonoBehaviour
     public ProgramDescriptionUI programDesc;
     public ShellDescriptionUI shellDesc;
 
-    private void Start()
-    {
-        HideUI();
-    }
+    [SerializeField] private bool allowLootSkipping = true;
 
     public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, System.Action onLootClose)
     {
@@ -51,6 +48,7 @@ public class LootUI : MonoBehaviour
         // Activate menu
         menuUI.SetActive(true);
         uiCanvas.gameObject.SetActive(true);
+        RefreshExitButton();
     }
 
     public void HideUI()
@@ -70,11 +68,12 @@ public class LootUI : MonoBehaviour
         programDrawUI.SetActive(false);
         programDesc.Hide();
         shellDrawUI.SetActive(false);
+        RefreshExitButton();
     }
 
     public void FinishLootDraw(Button menuButton)
     {
-        Destroy(menuButton.gameObject);
+        menuButton.gameObject.SetActive(false);
         ReturnToMainMenu();
     }
 
@@ -118,5 +117,23 @@ public class LootUI : MonoBehaviour
             lootButtonUI.trigger.triggers.Add(hoverExit);
         }
         programDrawUI.SetActive(true);
+    }
+
+    private void RefreshExitButton()
+    {
+        if (allowLootSkipping)
+        {
+            exitButton.interactable = true;
+            return;
+        }
+        foreach(Transform go in menuButtonContainer)
+        {
+            if (go.gameObject.activeSelf)
+            {
+                exitButton.interactable = false;
+                return;
+            }
+        }
+        exitButton.interactable = true;
     }
 }
