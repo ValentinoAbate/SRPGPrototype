@@ -21,8 +21,8 @@ public class PersistantData : MonoBehaviour
             if (Application.isPlaying)
             {
                 DontDestroyOnLoad(transform);
+                ResetRunData();
             }
-            ResetRunData();
         }
         else if (Application.isPlaying)
         {
