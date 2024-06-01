@@ -43,7 +43,7 @@ public abstract class Unit : GridObject
     public abstract CenterStat Defense { get; }
     public abstract OnAfterSubAction OnAfterSubActionFn { get; }
     public abstract OnAfterAction OnAfterActionFn { get; }
-    public abstract OnDeath OnDeathFn { get; protected set; }
+    public abstract OnDeath OnDeathFn { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }

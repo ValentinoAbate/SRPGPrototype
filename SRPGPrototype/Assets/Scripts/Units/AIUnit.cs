@@ -25,7 +25,8 @@ public abstract class AIUnit : Unit
 
     public override OnAfterSubAction OnAfterSubActionFn { get; }
     public override OnAfterAction OnAfterActionFn { get; }
-    public override OnDeath OnDeathFn { get; protected set; }
+    public override OnDeath OnDeathFn { get => onDeathFn; }
+    private OnDeath onDeathFn = null;
     public override OnBattleStartDel OnBattleStartFn { get; }
 
     public override string DisplayName => displayName;
@@ -63,7 +64,7 @@ public abstract class AIUnit : Unit
         var onDeathEffects = GetComponents<ProgramEffectAddOnDeathAbility>();
         foreach (var effect in onDeathEffects)
         {
-            OnDeathFn += effect.Ability;
+            onDeathFn += effect.Ability;
         }
     }
 
