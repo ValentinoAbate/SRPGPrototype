@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This class is a singleton that shouldn't be destroyed
 /// </summary>
-[ExecuteAlways]
+//[ExecuteAlways]
 public class PersistantData : MonoBehaviour
 {
     public static PersistantData main;

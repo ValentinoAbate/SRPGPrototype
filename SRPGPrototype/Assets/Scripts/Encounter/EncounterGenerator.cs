@@ -69,13 +69,18 @@ public class EncounterGenerator : MonoBehaviour
 
     [SerializeField] private List<MysteryDataUnit> lootUnits = new List<MysteryDataUnit>();
 
+    private bool initialized = false;
+
     private void Awake()
     {
-        BuildLootUnitTable();
+        Initialize();
     }
 
-    private void BuildLootUnitTable()
+    private void Initialize()
     {
+        if (initialized)
+            return;
+        initialized = true;
         lootUnitTable.Clear();
         foreach(var unit in lootUnits)
         {
@@ -90,6 +95,7 @@ public class EncounterGenerator : MonoBehaviour
 
     public Encounter Generate(EncounterData data, string encounterName)
     {
+        Initialize();
         var positions = data.dimensions.Enumerate();
         var encounter = new Encounter() { name = encounterName, dimensions = data.dimensions };
         int numSpawnPositions = data.numSpawnPositions;
