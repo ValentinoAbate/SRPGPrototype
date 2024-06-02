@@ -55,9 +55,9 @@ MonoBehaviour:
   - {fileID: 4507535958620543167}
   - {fileID: 5649885724498108751}
   startingShellDropWeights:
-  - 80
-  - 15
-  - 5
+  - 90
+  - 7
+  - 3
   startingProgramDrops:
   - {fileID: 3424048849655575801}
   - {fileID: 5160773069629858030}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec91f9a51f74ac41b641d15c010eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootQualities: 000000000000000000000000
+  lootQualities: 0000000000000000
 --- !u!114 &4507535958620543167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec91f9a51f74ac41b641d15c010eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootQualities: 000000000100000000000000
+  lootQualities: 0000000001000000
 --- !u!114 &5649885724498108751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec91f9a51f74ac41b641d15c010eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootQualities: 010000000200000001000000
+  lootQualities: 0100000002000000
 --- !u!114 &3424048849655575801
 MonoBehaviour:
   m_ObjectHideFlags: 0
