@@ -14,6 +14,7 @@ public class ActionMenu : MonoBehaviour
     public Transform actionButtonContainer;
     private Dictionary<Action.Type, GameObject> buttonPrefabs;
     private bool showing = false;
+    private bool skipInput = false;
     private readonly List<ActionButton> buttons = new List<ActionButton>();
 
     private void Awake()
@@ -29,6 +30,11 @@ public class ActionMenu : MonoBehaviour
 
     private void Update()
     {
+        if (skipInput)
+        {
+            skipInput = false;
+            return;
+        }
         if (!showing)
             return;
         CheckForKeyboardInput();
@@ -51,7 +57,7 @@ public class ActionMenu : MonoBehaviour
         }
     }
 
-    public void Show(BattleGrid grid, BattleUI ui, Unit unit)
+    public void Show(BattleGrid grid, BattleUI ui, Unit unit, bool fromHotKey)
     {
         // Action Buttons
         var actions = new List<Action>(unit.Actions);
@@ -66,6 +72,7 @@ public class ActionMenu : MonoBehaviour
             buttons.Add(button);
         }
         showing = true;
+        skipInput = fromHotKey;
     }
 
     public void Hide()

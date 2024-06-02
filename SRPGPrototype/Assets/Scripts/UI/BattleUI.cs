@@ -111,7 +111,7 @@ public class BattleUI : MonoBehaviour
         {
             if (Input.GetKeyDown((i + 1).ToString()) && playerPhase.TryGetPlayer(i, out var player))
             {
-                SelectPlayer(player.Pos);
+                SelectPlayer(player.Pos, true);
                 return;
             }
         }
@@ -119,7 +119,7 @@ public class BattleUI : MonoBehaviour
         {
             if(playerPhase.TryGetPlayer(9, out var player))
             {
-                SelectPlayer(player.Pos);
+                SelectPlayer(player.Pos, true);
                 return;
             }
         }
@@ -149,18 +149,23 @@ public class BattleUI : MonoBehaviour
 
     private void SelectPlayer(Vector2Int pos)
     {
+        SelectPlayer(pos, false);
+    }
+
+    private void SelectPlayer(Vector2Int pos, bool fromHotKey)
+    {
         var playerUnit = grid.Get<PlayerUnit>(pos);
         if (playerUnit != null)
         {
-            EnterActionMenu(playerUnit);
+            EnterActionMenu(playerUnit, fromHotKey);
         }
     }
 
-    private void EnterActionMenu(Unit unit)
+    private void EnterActionMenu(Unit unit, bool fromHotKey)
     {
         unitDescription.Hide();
         UnitSelectionUIEnabled = false;
-        menu.Show(grid, this, unit);
+        menu.Show(grid, this, unit, fromHotKey);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;
         cursor.OnUnHighlight = null;
@@ -196,7 +201,7 @@ public class BattleUI : MonoBehaviour
             cursor.OnUnHighlight?.Invoke(unit.Pos);
             entries.Clear();
         }
-        EnterActionMenu(unit);
+        EnterActionMenu(unit, false);
     }
 
     private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
