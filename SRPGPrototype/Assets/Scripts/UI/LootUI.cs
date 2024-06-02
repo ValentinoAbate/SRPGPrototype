@@ -46,9 +46,8 @@ public class LootUI : MonoBehaviour
         exitButton.onClick.AddListener(HideUI);
         exitButton.onClick.AddListener(() => onLootClose());
         // Activate menu
-        menuUI.SetActive(true);
+        ReturnToMainMenu();
         uiCanvas.gameObject.SetActive(true);
-        RefreshExitButton();
     }
 
     public void HideUI()
