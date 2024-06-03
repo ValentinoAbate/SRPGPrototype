@@ -39,6 +39,7 @@ public class PlayerUnit : Unit
     private Stats Stats => Shell.Stats;
 
     public override IReadOnlyList<Action> Actions => Shell.Actions;
+    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => Shell.IncomingDamageModifiers;
 
     private int unitIndex = 0;
     public int UnitIndex

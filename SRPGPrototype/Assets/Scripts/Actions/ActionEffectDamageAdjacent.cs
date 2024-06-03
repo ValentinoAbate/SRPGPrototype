@@ -7,7 +7,7 @@ public class ActionEffectDamageAdjacent : ActionEffectDamage
     [SerializeField] private RangePatternGeneratorDirectional.Directions directions = RangePatternGeneratorDirectional.Directions.Horizontal;
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
     [SerializeField] private int modifier = 1;
-    public override int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
         bool ValidPos(Vector2Int p) => grid.IsLegal(p) && !grid.IsEmpty(p) && teams.Contains(grid.Get(p).UnitTeam);
         if (directions.HasFlag(RangePatternGeneratorDirectional.Directions.Both))

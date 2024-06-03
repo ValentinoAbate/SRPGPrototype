@@ -15,7 +15,7 @@ public class ActionEffectDamageSameRowColumn : ActionEffectDamage
     [SerializeField] private int sameNumber;
     [SerializeField] private int differentNumber;
 
-    public override int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
         return 0;
     }

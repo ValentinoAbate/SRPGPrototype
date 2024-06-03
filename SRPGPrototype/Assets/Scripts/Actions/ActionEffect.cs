@@ -28,7 +28,7 @@ public abstract class ActionEffect : MonoBehaviour
         }
     }
 
-    protected List<Unit> GetTargetList(BattleGrid grid, List<Vector2Int> targetPositions)
+    protected List<Unit> GetTargetList(BattleGrid grid, IReadOnlyList<Vector2Int> targetPositions)
     {
         return targetPositions.Select((pos) => grid.Get(pos)).Where((c) => c != null).ToList();
     }

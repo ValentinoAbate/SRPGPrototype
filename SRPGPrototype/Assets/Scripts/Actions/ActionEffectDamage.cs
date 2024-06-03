@@ -33,7 +33,7 @@ public abstract class ActionEffectDamage : ActionEffect
         // Apply modifier base damage
         foreach(var modifier in modifiers)
         {
-            baseDamage += modifier.DamageModifiers.Where(SameDmgTarget).Sum((mod) => mod.BaseDamage(grid, action, user, targetPositions));
+            baseDamage += modifier.BaseDamageMod(targetStat, grid, action, user, targetPositions);
         }
     }
 
@@ -45,10 +45,15 @@ public abstract class ActionEffectDamage : ActionEffect
         // Calculate final damage
 
         int damage = baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power.Value;
-        // Apply modifier target values
+        // Apply effect modifier target values
         foreach (var modifier in modifiers)
         {
-            damage += modifier.DamageModifiers.Where(SameDmgTarget).Sum((mod) => mod.TargetModifier(grid, action, user, target, targetData));
+            damage += modifier.TargetDamageMod(targetStat, grid, action, user, target, targetData);
+        }
+        // Apply unit incoming damage modifier base values
+        foreach (var modifier in target.IncomingDamageModifiers)
+        {
+            damage += modifier.IncomingDamageMod(targetStat, grid, action, sub, target, System.Array.Empty<Vector2Int>());
         }
         // Make sure damage is non-negative
         damage = Mathf.Max(damage, 0);
@@ -72,7 +77,7 @@ public abstract class ActionEffectDamage : ActionEffect
         }
     }
 
-    public abstract int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions);
+    public abstract int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions);
 
     public abstract int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData);
 }

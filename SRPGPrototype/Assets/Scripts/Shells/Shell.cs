@@ -59,6 +59,7 @@ public class Shell : MonoBehaviour, ILootable
     public IReadOnlyList<Action> Actions => actions;
     private readonly List<Action> actions = new List<Action>();
 
+
     public Unit.OnAfterSubAction OnAfterSubAction { get; private set; }
     public Unit.OnAfterAction OnAfterAction { get; private set; }
     public Unit.OnDeath OnDeath { get; private set; }

@@ -6,7 +6,7 @@ public class ActionEffectDamageProgramNumber : ActionEffectDamage
 {
     public ProgramNumber damage;
 
-    public override int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
         return damage.Value(action.Program);
     }

@@ -6,7 +6,7 @@ using System.Linq;
 public class ActionEffectDamageModNumber : ActionEffectDamage
 {
     [SerializeField] private Modifier mod;
-    public override int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions)
+    public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
         if (action.Program == null || action.Program.Shell == null)
             return 0;

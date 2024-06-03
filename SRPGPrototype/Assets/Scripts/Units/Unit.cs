@@ -51,6 +51,7 @@ public abstract class Unit : GridObject
     public abstract Shell Shell { get; }
 
     public abstract IReadOnlyList<Action> Actions { get; }
+    public abstract IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers { get; }
 
     public void ModifyHp(BattleGrid grid, int amount, Unit source)
     {

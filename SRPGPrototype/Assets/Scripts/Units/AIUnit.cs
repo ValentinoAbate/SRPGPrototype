@@ -47,6 +47,9 @@ public abstract class AIUnit : Unit
             return AI.Actions;
         } 
     }
+
+    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => System.Array.Empty<ModifierActionDamage>();
+
     public Transform ActionTransform => actionTransform;
     [SerializeField] private Transform actionTransform = null;
 
