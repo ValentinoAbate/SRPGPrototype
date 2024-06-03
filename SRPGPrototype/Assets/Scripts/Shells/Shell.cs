@@ -56,7 +56,7 @@ public class Shell : MonoBehaviour, ILootable
     public IEnumerable<InstalledProgram> Programs => programs;
     private readonly List<InstalledProgram> programs = new List<InstalledProgram>();
 
-    public IEnumerable<Action> Actions => actions;
+    public IReadOnlyList<Action> Actions => actions;
     private readonly List<Action> actions = new List<Action>();
 
     public Unit.OnAfterSubAction OnAfterSubAction { get; private set; }

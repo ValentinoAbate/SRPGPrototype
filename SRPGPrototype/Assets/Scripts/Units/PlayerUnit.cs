@@ -38,7 +38,7 @@ public class PlayerUnit : Unit
 
     private Stats Stats => Shell.Stats;
 
-    public override List<Action> Actions => Shell.Actions.ToList();
+    public override IReadOnlyList<Action> Actions => Shell.Actions;
 
     private int unitIndex = 0;
     public int UnitIndex
