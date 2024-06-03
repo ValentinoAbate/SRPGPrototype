@@ -6,7 +6,6 @@ General Ideas:
 - Cannot switch shells while uninstalled
 - Moves should cost low AP compared to standard actions? (maybe move base 1, standard base 2)?
 - program fusion
-- AP goes up after each usage instead of uses per turn - (implemented, seems better)
 - Is most of the strategy based not on combining abilities, but situational usefulness? Maybe give the player previews of next encounters like bad north
 - Matryoshka enemies that unpack when killed (for area chains)
 + Turrets should be neutral (encounter can end without defeating them, can attack both teams)
@@ -38,7 +37,7 @@ General Ideas:
 - Checkers move (keep jumping)
 - Ability that triggers when you jump over a unit
 - AI could have max moves, max attacks instead of slowdown?
-- Shotgun: Attack then get pushed back
++ Shotgun: Attack then get pushed back
 - Reload: lowers the uses of all guns by 1 (maybe 2)
 - Ability to save a shell at the end of a run to be used against special challenge bosses outside of a run
 	- Stars on a shell for beating the different bosses

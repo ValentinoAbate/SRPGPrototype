@@ -1,3 +1,41 @@
+- Template Shell:
+	- o o o o o
+	- o o o o o
+	- o o o o o
+	- o o o o o
+	- o o o o o
+
+	- o o o o o o
+	- o o o o o o
+	- o o o o o o
+	- o o o o o o
+	- o o o o o o
+	- o o o o o o
+
+	- o o o o o o o
+	- o o o o o o o
+	- o o o o o o o
+	- o o o o o o o
+	- o o o o o o o
+	- o o o o o o o
+	- o o o o o o o
+
+Shell Capacity:
+- Each shell has 3 capacity levels. 
+	- When the sum total of the "capacity" values of installed programs reaches reaches certain thresholds, the shell levels up and increases in size by 1 number.
+	- There are several different progression paths:
+	- Standard: start at size 1. Level 2: 2, Level 3: 5
+	- Small: start at size 0. Level 2: 1, Level 3: 4
+	- Large: start at size 2. Level 2: 3, Level 3: 6
+	- Full: start at size 0. Level 2: 2, Level 3: 4, Level 4: 6, Level 5: 8 
+	- Programs that give capacity cannot be uninstalled while uninstalling them would be any currently installed programs illegal
+	- Shells expand into the bottom right corner, and then the top left, every other level
+- Size 0 shells are 4 x 4, with an average of 08-12 squares open
+- Size 1 Shells are 5 x 5, with an average of 14-18 squares open
+- Size 2 Shells are 6 x 6, with an average of 24-28 sqaures open
+- Size 3 Shells are 7 x 7, with an average of 34-38 squares open
+- Size 4 Shells are 8 x 8, with an average of 44-48 squares open
+
 Shell Designs:
 - Starting Shell:
 	- o o o o o
@@ -134,7 +172,7 @@ Shell Designs:
 	- o ? ? ? ? ? o
  	- ? i u u u i u
 	- ? u o o o u u
-	- ? u o g  o u u
+	- ? u o g o u u
 	- ? u o o o u u
 	- ? i u u u i u
 	- o u u u u u o
@@ -490,7 +528,7 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o x x o o o
 
 + Capsule Shell:
-	- c: adjacent explosives deal +1 damage
+	- c: adjacent transient actions deal +1 damage
 	- o o o o o
 	- o x i x o
 	- i o c o i
@@ -533,6 +571,31 @@ Basic Shell Shapes (Could be applied to multiple concepts)
 	- o o o i o o o
 	- o s o i o s o
 	- o x o x o x o
+
+- Bombshell:
+	- +: adjacent explosives deal +1
+	- b: blast padding core
+
+	- i x o x i
+	- o o b o o
+	- o o + o o
+	- i o o o i
+	- o x o x o
+
+	- i x o x i o
+	- o o b o o x
+	- o o + o o x
+	- i o o o i o
+	- o x o x o o
+	- o o x o o o
+
+	- o o o o o o o
+	- o i x o x i o
+	- x o o b o o x
+	- x o o + o o x
+	- o i o o o i o
+	- o o x o x o o
+	- o o o x o o o
 
 Deprecated Shells:
 
@@ -581,6 +644,7 @@ Shell Concepts:
 - Armaments Shell (A shape?, has mods that do more damage when multiple weapon types are adjacent)
 - Sinkhole shell (lots of area, but has damage -1 for each adjacent weapon preinstalls)
 - Friend Shell (or maybe dog shell) Small shell with very limited area or no upgrades and low AP that comes with a soul core preinstalled)
+	- Restriction can't use weapons. Soul core can level up to use swords or gain some other buff (skill tree)
 - Color Egg shells are color shells	
 - Sea Shell
 - Minishell (Rare): 3 x 3, pre-install in the center: Can only install 1-tile programs. all programs get buffs. 4/2/0
