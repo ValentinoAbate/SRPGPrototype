@@ -53,7 +53,7 @@ public class Shell : MonoBehaviour, ILootable
     [SerializeField] private List<Pattern> patterns = new List<Pattern>(3);
 
     public List<InstalledProgram> preInstalledPrograms = new List<InstalledProgram>();
-    public IEnumerable<InstalledProgram> Programs => programs;
+    public IReadOnlyList<InstalledProgram> Programs => programs;
     private readonly List<InstalledProgram> programs = new List<InstalledProgram>();
 
     public IReadOnlyList<Action> Actions => actions;
