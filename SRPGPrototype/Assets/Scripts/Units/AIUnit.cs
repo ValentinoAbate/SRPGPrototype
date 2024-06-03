@@ -36,7 +36,17 @@ public abstract class AIUnit : Unit
 
     public override Shell Shell => throw new System.NotImplementedException();
 
-    public override IReadOnlyList<Action> Actions => AI == null ? System.Array.Empty<Action>() : AI.Actions;
+    public override IReadOnlyList<Action> Actions
+    {   
+        get
+        {
+            if(AI == null)
+            {
+                return System.Array.Empty<Action>();
+            }
+            return AI.Actions;
+        } 
+    }
     public Transform ActionTransform => actionTransform;
     [SerializeField] private Transform actionTransform = null;
 
