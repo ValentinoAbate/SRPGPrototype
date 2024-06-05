@@ -10,6 +10,8 @@ public abstract class Cursor<T> : MonoBehaviour where T : GridObject
     public System.Action<Vector2Int> OnHighlight { get; set; }
     public System.Action<Vector2Int> OnUnHighlight { get; set; }
 
+    public Vector2Int HighlightedPosition => Grid.GetPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
     public abstract Grid<T> Grid { get; }
     private Vector3 previousMousePos = Vector3.zero;
     private Vector2Int previousMouseGridPos = Vector2Int.zero;
@@ -52,8 +54,7 @@ public abstract class Cursor<T> : MonoBehaviour where T : GridObject
         }
         if (Input.GetMouseButtonDown(0))
         {
-            var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var mouseGridPos = Grid.GetPos(mouseWorldPos);
+            var mouseGridPos = HighlightedPosition;
             if (Grid.IsLegal(mouseGridPos))
                 OnClick?.Invoke(mouseGridPos);
         }

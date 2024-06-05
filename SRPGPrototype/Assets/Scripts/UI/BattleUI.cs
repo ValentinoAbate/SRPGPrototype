@@ -191,6 +191,11 @@ public class BattleUI : MonoBehaviour
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction, ref targetPatternEntires);
         cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntires);
+        var currentPos = cursor.HighlightedPosition;
+        if (grid.IsLegal(currentPos))
+        {
+            HighlightActionTarget(currentPos, action, unit, ref currAction, ref targetPatternEntires);
+        }
     }
 
     private void ExitActionUI(Unit unit, ref List<TileUI.Entry> entries)
