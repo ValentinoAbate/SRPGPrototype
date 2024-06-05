@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6101597004478269800}
   - component: {fileID: 2001857286567512118}
   m_Layer: 0
-  m_Name: TileQuadUI
+  m_Name: PatternSquareUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 590eae75f3d18ff488d794331c884450, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f44b910d56af114ca85f004c1e28c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortLayerName: GridUI
-  sortLayerOrder: 0
+  sortLayerName: Grid
+  sortLayerOrder: -10
 --- !u!114 &2001857286567512118
 MonoBehaviour:
   m_ObjectHideFlags: 0

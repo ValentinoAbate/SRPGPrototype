@@ -186,7 +186,7 @@ public class BattleUI : MonoBehaviour
         action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();
         var targetPatternEntires = new List<TileUI.Entry>();
-        targetRangeEntries = ShowRangePattern(action.SubActions[currAction].Range, unit, TileUI.Type.CustGreen);
+        targetRangeEntries = ShowRangePattern(action.SubActions[currAction].Range, unit);
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction, ref targetPatternEntires);
@@ -209,7 +209,7 @@ public class BattleUI : MonoBehaviour
         var subAction = action.SubActions[currAction];
         if (!subAction.Range.GetPositions(grid, unit.Pos).Contains(pos))
             return;
-        entries = ShowTargetPattern(subAction.targetPattern, unit, pos, TileUI.Type.CustWhite);
+        entries = ShowTargetPattern(subAction.targetPattern, unit, pos);
 
     }
 
@@ -229,7 +229,7 @@ public class BattleUI : MonoBehaviour
         }
         else
         {
-            entries = ShowRangePattern(action.SubActions[currAction].Range, unit, TileUI.Type.CustGreen);
+            entries = ShowRangePattern(action.SubActions[currAction].Range, unit);
         }
     }
 
@@ -259,22 +259,22 @@ public class BattleUI : MonoBehaviour
         return ret;
     }
 
-    public List<TileUI.Entry> ShowTargetPattern(TargetPattern p, Unit user, Vector2Int target, TileUI.Type type)
+    public List<TileUI.Entry> ShowTargetPattern(TargetPattern p, Unit user, Vector2Int target)
     {
         var ret = new List<TileUI.Entry>();
         foreach (var pos in p.Target(grid, user, target))
         {
-            ret.Add(grid.SpawnTileUI(pos, type));
+            ret.Add(grid.SpawnTileUI(pos, TileUI.Type.TargetPattern));
         }
         return ret;
     }
 
-    public List<TileUI.Entry> ShowRangePattern(RangePattern p, Unit user, TileUI.Type type)
+    public List<TileUI.Entry> ShowRangePattern(RangePattern p, Unit user)
     {
         var ret = new List<TileUI.Entry>();
         foreach (var pos in p.GetPositions(grid, user.Pos))
         {
-            ret.Add(grid.SpawnTileUI(pos, type));
+            ret.Add(grid.SpawnTileUI(pos, TileUI.Type.RangePattern));
         }
         return ret;
     }
