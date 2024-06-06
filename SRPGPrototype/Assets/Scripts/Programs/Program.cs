@@ -106,7 +106,7 @@ public class Program : GridObject, ILootable
                 return string.Empty;
             if (attTexts.Count == 1)
                 return attTexts[0];
-            return attTexts.Aggregate((s1, s2) => s1 + ", " + s2);
+            return string.Join(", ", attTexts);
         }
     }
 

@@ -159,7 +159,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         if(Program != null)
         {
             var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();
-            if (noSlowdownMods.Count() > 0 && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
+            if (noSlowdownMods.Any() && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
             {
                 GrantFreeUse();
             }
@@ -167,7 +167,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             {
                 var freeTransientMods = Program.ModifiedByType<ModifierActionFreeTransientChance>();
                 // Apply free transient chances if applicable
-                if (freeTransientMods.Count() <= 0 || RandomU.instance.RandomDouble() > freeTransientMods.Sum((m) => m.Chance))
+                if (!freeTransientMods.Any() || RandomU.instance.RandomDouble() > freeTransientMods.Sum((m) => m.Chance))
                 {
                     Program.GetComponent<ProgramAttributeTransient>().Uses++;
                 }
