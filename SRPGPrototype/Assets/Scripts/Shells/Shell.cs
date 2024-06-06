@@ -1,4 +1,5 @@
 ﻿using System;
+﻿using Extensions.VectorIntDimensionUtils;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -141,6 +142,13 @@ public class Shell : MonoBehaviour, ILootable
             programs.RemoveAt(ind);
             Compiled = false;
         }
+    }
+
+    public Program GetProgram(Vector2Int location)
+    {
+        if (!location.IsBoundedBy(CustArea.Dimensions))
+            return null;
+        return InstallMap[location.x, location.y];
     }
 
     #region Leveling Code
