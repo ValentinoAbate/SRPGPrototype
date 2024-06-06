@@ -1,5 +1,5 @@
-﻿using System;
 ﻿using Extensions.VectorIntDimensionUtils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +73,7 @@ public class Shell : MonoBehaviour, ILootable
     public Dictionary<Program, List<Modifier>> ModifierMap { get; private set; }
 
     public Program[,] InstallMap { get; private set; }
-    public Dictionary<Program, IEnumerable<Vector2Int>> InstallPositions { get; } = new Dictionary<Program, IEnumerable<Vector2Int>>();
+    public Dictionary<Program, List<Vector2Int>> InstallPositions { get; } = new Dictionary<Program, List<Vector2Int>>();
 
     public bool HasSoulCore => SoulCoreUnitPrefab != null;
     public GameObject SoulCoreUnitPrefab { get; private set; }
@@ -116,7 +116,7 @@ public class Shell : MonoBehaviour, ILootable
         }
         programs.Add(new InstalledProgram(prog, location));
         prog.Shell = this;
-        var positions = prog.shape.OffsetsShifted(location, false);
+        var positions = new List<Vector2Int>(prog.shape.OffsetsShifted(location, false));
         foreach (var pos in positions)
         {
             InstallMap[pos.x, pos.y] = prog;
@@ -170,33 +170,55 @@ public class Shell : MonoBehaviour, ILootable
     {
         if (Level >= MaxLevel)
             return;
-        var newInstallMap = new Program[CustArea.Dimensions.x + 1, CustArea.Dimensions.y + 1];
         // Level is even, expand into bottom right
         if (Level % 2 == 0)
         {
-            for(int x = 0; x < CustArea.Dimensions.x; ++x)
-                for(int y = 0; y < CustArea.Dimensions.y; ++y)
-                    newInstallMap[x, y + 1] = InstallMap[x, y];
-            for(int i = 0; i < programs.Count; ++i)
-            {
-                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, 1));
-                programs[i].program.Pos += new Vector2Int(0,1);
-            }
+            ChangeCustArea(Vector2Int.one, new Vector2Int(1, -1));
         }
         else // Level is odd, expand into top left
         {
-            for (int x = 0; x < CustArea.Dimensions.x; ++x)
-                for (int y = 0; y < CustArea.Dimensions.y; ++y)
-                    newInstallMap[x + 1, y] = InstallMap[x, y];
-            for (int i = 0; i < programs.Count; ++i)
-            {
-                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(1, 0));
-                programs[i].program.Pos += new Vector2Int(1, 0);
-            }
+            ChangeCustArea(Vector2Int.one, new Vector2Int(-1, 1));
         }
-        InstallMap = newInstallMap;
         ++Level;
         Compiled = false;
+    }
+
+    private void ChangeCustArea(Vector2Int sizeDelta, Vector2Int deltaDirection)
+    {
+        // Create expanded install map
+        var newInstallMap = new Program[CustArea.Dimensions.x + sizeDelta.x, CustArea.Dimensions.y + sizeDelta.y];
+        // Copy shifted install positions from old install map
+        var shiftBy = Vector2Int.zero;
+        if(deltaDirection.x < 0)
+        {
+            shiftBy.x = sizeDelta.x;
+        }
+        if(deltaDirection.y < 0)
+        {
+            shiftBy.y = sizeDelta.y;
+        }
+        for (int x = -Math.Min(sizeDelta.x, 0); x < CustArea.Dimensions.x + Math.Min(sizeDelta.x, 0); ++x)
+            for (int y = -Math.Min(sizeDelta.y, 0); y < CustArea.Dimensions.y + Math.Min(sizeDelta.y, 0); ++y)
+                newInstallMap[x + shiftBy.x, y + shiftBy.y] = InstallMap[x, y];
+        // Overwrite install map
+        InstallMap = newInstallMap;
+        // Shift programs
+        for (int i = 0; i < programs.Count; ++i)
+        {
+            programs[i] = new InstalledProgram(programs[i].program, programs[i].location + shiftBy);
+            programs[i].program.Pos += shiftBy;
+        }
+        // Shift install positions
+        var newPositions = new List<Vector2Int>();
+        foreach (var kvp in InstallPositions)
+        {
+            foreach (var pos in kvp.Value)
+            {
+                newPositions.Add(pos + shiftBy);
+            }
+            kvp.Value.Clear();
+            kvp.Value.AddRange(newPositions);
+        }
     }
 
     public bool CanLevelDown()
@@ -233,31 +255,15 @@ public class Shell : MonoBehaviour, ILootable
     {
         if (Level <= 0)
             return;
-        var newInstallMap = new Program[CustArea.Dimensions.x - 1, CustArea.Dimensions.y - 1];
         // Level is odd, contract from bottom right
         if (Level % 2 == 1)
         {
-            for (int x = 0; x < CustArea.Dimensions.x - 1; ++x)
-                for (int y = 1; y < CustArea.Dimensions.y; ++y)
-                    newInstallMap[x, y - 1] = InstallMap[x, y];
-            for (int i = 0; i < programs.Count; ++i)
-            {
-                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(0, -1));
-                programs[i].program.Pos += new Vector2Int(0, -1);
-            }
+            ChangeCustArea(-Vector2Int.one, new Vector2Int(1, -1));
         }
         else // Level is even, contract from top left
         {
-            for (int x = 1; x < CustArea.Dimensions.x; ++x)
-                for (int y = 0; y < CustArea.Dimensions.y - 1; ++y)
-                    newInstallMap[x - 1, y] = InstallMap[x, y];
-            for (int i = 0; i < programs.Count; ++i)
-            {
-                programs[i] = new InstalledProgram(programs[i].program, programs[i].location + new Vector2Int(-1, 0));
-                programs[i].program.Pos += new Vector2Int(-1, 0);
-            }
+            ChangeCustArea(-Vector2Int.one, new Vector2Int(-1, 1));
         }
-        InstallMap = newInstallMap;
         --Level;
         Compiled = false;
     }
