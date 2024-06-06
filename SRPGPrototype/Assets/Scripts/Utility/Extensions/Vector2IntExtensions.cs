@@ -66,6 +66,15 @@ public static class Vector2IntExtensions
         };
     }
 
+    public static Vector2Int[] Adjacent(this Vector2Int pos, ref Vector2Int[] output)
+    {
+        output[0] = pos + Vector2Int.up;
+        output[1] = pos + Vector2Int.down;
+        output[2] = pos + Vector2Int.left;
+        output[3] = pos + Vector2Int.right;
+        return output;
+    }
+
     public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos, int distance)
     {
         return new Vector2Int[]
