@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 5597248024022581365, guid: a6bdca908470cba4986a15ffefc2fb8c, type: 3}
+  action: {fileID: 625623200089507684, guid: 588596765a5071e4a9cdc14ef236eabd, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
