@@ -95,6 +95,15 @@ public class SubAction : MonoBehaviour
         int effectIndex = indices.Count > 0 ? indices.Dequeue() : 0;
         if (effectIndex >= effects.Length)
             return 0;
-        return effects[effectIndex] is IDamagingActionEffect d ? d.BaseDamage(action, this, user, indices) : 0;
+        if (effects[effectIndex] is IDamagingActionEffect damageEffect)
+        {
+            int baseDamage = damageEffect.BaseDamage(action, this, user, indices);
+            if(user != null && damageEffect.UsesPower)
+            {
+                baseDamage += user.Power.Value;
+            }
+            return baseDamage;
+        }
+        return 0;
     }
 }

@@ -75,11 +75,7 @@ public static class TextMacros
 		{
 			return errorString;
 		}
-		if (!TryGetActionEffect(sub, indices, out IDamagingActionEffect effect))
-		{
-			return errorString;
-		}
-		return effect.BaseDamage(action, sub, user, indices).ToString();
+		return sub.BaseDamage(action, user, indices).ToString();
 	}
 
 	private static string ActionMacroGambleChance(string[] args, Action action, Unit user)
