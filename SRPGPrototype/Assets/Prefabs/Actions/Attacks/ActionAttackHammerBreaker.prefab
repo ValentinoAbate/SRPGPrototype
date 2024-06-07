@@ -42,7 +42,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Attack an adajcent unit for {dmg} damage and then lower its defense
-        by the AP cost of this action ({dmg,1,1}).
+        by the AP cost of this action.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}

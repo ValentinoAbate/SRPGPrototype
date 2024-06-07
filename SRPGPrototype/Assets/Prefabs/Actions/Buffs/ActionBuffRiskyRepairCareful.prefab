@@ -14,11 +14,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 25ab72f3993420046ab26399639eef74,
         type: 3}
-      propertyPath: description
-      value: 'Lose 1 Repair, then Gamble: Success (80%) heal 2 HP / Failure no effect. '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 25ab72f3993420046ab26399639eef74,
-        type: 3}
       propertyPath: displayName
       value: Careful Risky Repair
       objectReference: {fileID: 0}

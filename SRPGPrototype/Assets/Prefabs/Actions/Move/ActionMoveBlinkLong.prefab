@@ -10,8 +10,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: d151dc333df7cc64e84cc466b5f3093c,
         type: 3}
       propertyPath: description
-      value: 'Gamble: Success (60%) warp to tile within range and regain this actions
-        AP cost / Failure no effect. '
+      value: 'Gamble: Success ({chance}) warp to tile within range and regain this
+        actions AP cost / Failure no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: d151dc333df7cc64e84cc466b5f3093c,
         type: 3}

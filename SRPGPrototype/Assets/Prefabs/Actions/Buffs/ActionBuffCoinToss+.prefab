@@ -9,9 +9,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: 8f710edeef5982f4f9555d2abe91f433,
         type: 3}
-      propertyPath: description
-      value: 'Gamble: Success (60%) gain AP equal to twice this actions AP cost /
-        Failure no effect. '
+      propertyPath: displayName
+      value: Coin Toss+
       objectReference: {fileID: 0}
     - target: {fileID: 5451953465001285454, guid: 8f710edeef5982f4f9555d2abe91f433,
         type: 3}

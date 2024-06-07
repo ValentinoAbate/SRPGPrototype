@@ -9,9 +9,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: d151dc333df7cc64e84cc466b5f3093c,
         type: 3}
-      propertyPath: description
-      value: 'Gamble: Success (70%) warp to adjacent or diagonally adjacent tile
-        and regain this actions AP cost / Failure no effect. '
+      propertyPath: displayName
+      value: Blink+
       objectReference: {fileID: 0}
     - target: {fileID: 5451953465001285454, guid: d151dc333df7cc64e84cc466b5f3093c,
         type: 3}
