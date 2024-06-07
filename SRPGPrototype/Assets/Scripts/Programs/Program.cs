@@ -161,6 +161,10 @@ public class Program : GridObject, ILootable
         {
             trigList.AddRange(t.GetComponents<ProgramTrigger>());
         }
+        foreach(var trigger in trigList)
+        {
+            trigger.Initialize(this);
+        }
         triggers = trigList.ToArray();
         ModifierEffects = GetComponents<ProgramModifier>();
         effects = GetComponents<ProgramEffect>();

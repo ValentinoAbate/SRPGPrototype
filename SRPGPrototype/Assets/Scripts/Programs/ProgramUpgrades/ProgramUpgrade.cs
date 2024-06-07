@@ -10,7 +10,8 @@ public class ProgramUpgrade : ProgramTrigger
     public string Description => description;
     [SerializeField] [TextArea(2, 4)] private string description = string.Empty;
     public string DisplayName { get => displayName; }
-    private void Awake()
+
+    public override void Initialize(Program program)
     {
         // Upgrades shouldn't include self
         var trigList = new List<ProgramTrigger>();
@@ -20,5 +21,9 @@ public class ProgramUpgrade : ProgramTrigger
         }
         Upgrades = trigList.ToArray();
         ProgramEffects = GetComponents<ProgramEffect>();
+        foreach(var effect in ProgramEffects)
+        {
+            effect.Initialize(program);
+        }
     }
 }

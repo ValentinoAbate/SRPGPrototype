@@ -6,4 +6,9 @@ public class ProgramHatch : ProgramTrigger
 {
     [SerializeField] private Shell[] shells;
     [SerializeField] private Program[] programs;
+
+    public override void Initialize(Program program)
+    {
+        throw new System.NotImplementedException();
+    }
 }
