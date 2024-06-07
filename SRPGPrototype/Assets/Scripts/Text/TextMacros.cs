@@ -105,7 +105,7 @@ public static class TextMacros
 			sub = null;
 			return false;
 		}
-		sub = action.SubActions[0];
+		sub = action.SubActions[subAction];
 		return true;
 	}
 }
