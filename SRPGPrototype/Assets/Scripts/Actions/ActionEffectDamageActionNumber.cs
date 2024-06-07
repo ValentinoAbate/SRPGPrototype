@@ -11,6 +11,11 @@ public class ActionEffectDamageActionNumber : ActionEffectDamage
         return damage.ActionValue(grid, action, user, GetTargetList(grid, targetPositions).Count);
     }
 
+    public override int BasicDamage(Action action, Unit user)
+    {
+        return damage.BaseValue(action, user);
+    }
+
     public override int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
         return damage.TargetValue(grid, action, user, target, targetData);

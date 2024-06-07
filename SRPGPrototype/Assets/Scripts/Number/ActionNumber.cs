@@ -35,39 +35,37 @@ public class ActionNumber
     [SerializeField]
     private Type type = Type.Constant;
 
+    public int BaseValue(Action action, Unit user)
+    {
+        if (type == Type.NumberOfTargets || type == Type.TargetStat)
+            return 0;
+        return BasicValue(action, user);
+    }
+
     public int ActionValue(BattleGrid grid, Action action, Unit user, int numTargets)
     {
-        if(type == Type.Constant)
-            return constant;
         if (type == Type.TargetStat)
             return 0;
-        int number = 0;
-        if(type == Type.APCost)
+        return type switch
         {
-            number = action.APCost - user.Speed.Value;
-        }
-        else if(type == Type.NumberOfTargets)
+            Type.NumberOfTargets => Value(numTargets),
+            _ => BasicValue(action, user)
+        };
+    }
+
+    private int BasicValue(Action action, Unit user)
+    {
+        if (type == Type.Constant)
+            return constant;
+        return Value(type switch
         {
-            number = numTargets;
-        }
-        else if(type == Type.TimeUsed)
-        {
-            number = action.TimesUsed;
-        }
-        else if(type == Type.TimesUsedThisBattle)
-        {
-            number = action.TimesUsedThisBattle;
-        }
-        else if (type == Type.TimesUsedThisTurn)
-        {
-            number = action.TimesUsedThisTurn;
-        }
-        else if (type == Type.UserStat)
-        {
-            number = unitNumber.Value(user);
-        }
-        int modNumber = baseAmount + ((number + modifier) * multiplier);
-        return Mathf.Clamp(modNumber, min, max);
+            Type.APCost => user == null ? action.APCost : action.APCost - user.Speed.Value,
+            Type.TimeUsed => action.TimesUsed,
+            Type.TimesUsedThisBattle => action.TimesUsedThisBattle,
+            Type.TimesUsedThisTurn => action.TimesUsedThisTurn,
+            Type.UserStat => unitNumber.Value(user),
+            _ => 0
+        });
     }
 
     public int TargetValue(BattleGrid grid, Action action, Unit user, Unit target, ActionEffect.PositionData targetData)
@@ -75,7 +73,12 @@ public class ActionNumber
         if(type != Type.TargetStat)
             return 0;
         // Type is targetStat
-        int number = unitNumber.Value(target);
+        return Value(unitNumber.Value(target));
+
+    }
+
+    private int Value(int number)
+    {
         int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);
     }

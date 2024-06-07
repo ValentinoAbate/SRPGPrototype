@@ -24,7 +24,7 @@ public class ActionDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = action.FullName;
-        descText.text = action.Description;
+        descText.text = action.GetDescription(user);
         // Program attributes
         if(action.Program != null)
         {
@@ -73,7 +73,7 @@ public class ActionDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = Hide(action.DisplayName) + " (" + Hide(action.ActionType.ToString()) + ")";
-        descText.text = Hide(action.Description); // add description later
+        descText.text = Hide(action.GetDescription(user)); // add description later
         attributesText.text = action.Program != null ? Hide(action.Program.AttributesText) : string.Empty; // this is also for later
         if (user == null || user.Speed.IsZero)
         {

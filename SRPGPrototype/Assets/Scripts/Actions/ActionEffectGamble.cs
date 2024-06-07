@@ -4,11 +4,11 @@ using UnityEngine;
 using RandomUtils;
 using System.Linq;
 
-public class ActionEffectGamble : ActionEffect
+public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
 {
     public override bool UsesPower => usedPower;
     private bool usedPower = false;
-    public override bool DealsDamage => successEffects.Any((e) => e.DealsDamage) || failureEffects.Any((e) => e.DealsDamage);
+    public bool DealsDamage => successEffects.Any((e) => e.CanDealDamage) || failureEffects.Any((e) => e.CanDealDamage);
     [Range(0, 1)]
     [SerializeField] private float successChance = 0.5f;
     [SerializeField] private GameObject successEffectsObj = null;
@@ -59,5 +59,18 @@ public class ActionEffectGamble : ActionEffect
             }
             usedPower = failureEffects.Length > 0 && failureEffects.Any((e) => e.UsesPower);
         }
+    }
+
+    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices)
+    {
+        if (indices.Length <= 0)
+            return 0;
+        var actionEffects = indices[0] == 0 ? successEffects : failureEffects;
+        int effectIndex = indices.Length > 1 ? indices[1] : 0;
+        if (effectIndex >= actionEffects.Length)
+            return 0;
+        if(actionEffects[effectIndex] is IDamagingActionEffect damageEffect)
+            return damageEffect.BaseDamage(action, sub, user, indices.Skip(2).ToArray());
+        return 0;
     }
 }

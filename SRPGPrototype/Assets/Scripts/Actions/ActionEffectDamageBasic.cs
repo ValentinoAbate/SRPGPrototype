@@ -15,4 +15,9 @@ public class ActionEffectDamageBasic : ActionEffectDamage
     {
         return 0;
     }
+
+    public override int BasicDamage(Action action, Unit user)
+    {
+        return damage;
+    }
 }

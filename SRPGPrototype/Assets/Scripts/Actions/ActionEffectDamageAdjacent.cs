@@ -19,6 +19,11 @@ public class ActionEffectDamageAdjacent : ActionEffectDamage
         return 0;
     }
 
+    public override int BasicDamage(Action action, Unit user)
+    {
+        return 0;
+    }
+
     public override int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
         return 0;

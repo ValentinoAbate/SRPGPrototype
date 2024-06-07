@@ -8,6 +8,11 @@ public class ActionEffectDamageModNumber : ActionEffectDamage
     [SerializeField] private Modifier mod;
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
+        return BasicDamage(action, user);
+    }
+
+    public override int BasicDamage(Action action, Unit user)
+    {
         if (action.Program == null || action.Program.Shell == null)
             return 0;
         return action.Program.Shell.ModifierMap.Count((kvp) => kvp.Value.Contains(mod));

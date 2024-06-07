@@ -50,6 +50,18 @@ public class ModifierActionDamage : ModifierAction
         return sum;
     }
 
+    public int BasicDamageMod(ActionEffectDamage.TargetStat targetStat, Action action, Unit user)
+    {
+        int sum = 0;
+        foreach (var mod in DamageModifiers)
+        {
+            if (mod.DamageTarget != targetStat)
+                continue;
+            sum += mod.BasicDamage(action, user);
+        }
+        return sum;
+    }
+
     public int IncomingDamageMod(ActionEffectDamage.TargetStat targetStat, BattleGrid grid, Action action, SubAction sub, Unit target, IReadOnlyList<Vector2Int> targetPositions)
     {
         if (!AppliesTo(action) || !AppliesTo(sub))

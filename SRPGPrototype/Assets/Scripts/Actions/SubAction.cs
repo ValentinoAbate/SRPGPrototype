@@ -28,7 +28,20 @@ public class SubAction : MonoBehaviour
     }
 
     // Sub-action Metadata
-    public bool DealsDamage => effects.Any((e) => e.DealsDamage);
+    public bool DealsDamage
+    {
+        get
+        {
+            foreach(var effect in effects)
+            {
+                if(effect is IDamagingActionEffect damageEffect && damageEffect.DealsDamage)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
     public bool UsesPower => effects.Any((e) => e.UsesPower);
 
     // Sub-action data
@@ -37,6 +50,7 @@ public class SubAction : MonoBehaviour
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern targetPattern;
+    public IReadOnlyList<ActionEffect> Effects => effects;
     [SerializeField] private ActionEffect[] effects;
 
     private void Awake()
@@ -74,5 +88,21 @@ public class SubAction : MonoBehaviour
             }
         }
         user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
+    }
+
+    public int BaseDamage(Action action, Unit user, params int[] indices)
+    {
+        if (indices.Length <= 0)
+        {
+            return effects[0] is IDamagingActionEffect d1 ? d1.BaseDamage(action, this, user) : 0;
+        }
+        int index = indices[0];
+        if (index >= effects.Length)
+            return 0;
+        if(indices.Length > 1)
+        {
+            return effects[index] is IDamagingActionEffect d2 ? d2.BaseDamage(action, this, user, indices.Skip(1).ToArray()) : 0;
+        }
+        return effects[index] is IDamagingActionEffect d3 ? d3.BaseDamage(action, this, user) : 0;
     }
 }

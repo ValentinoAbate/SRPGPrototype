@@ -64,7 +64,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
 
-    public string Description => description;
+    public string GetDescription(Unit user) => TextMacros.ApplyActionTextMacros(description, this, user);
     [SerializeField] [TextArea(1, 3)] private string description = string.Empty;
 
     public string ActionTypeText

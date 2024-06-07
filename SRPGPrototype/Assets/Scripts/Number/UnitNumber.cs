@@ -32,6 +32,8 @@ public class UnitNumber
     {
         if (type == Type.Constant)
             return constant;
+        if (unit == null)
+            return 0;
         int number = 0;
         if(type == Type.AP)
         {

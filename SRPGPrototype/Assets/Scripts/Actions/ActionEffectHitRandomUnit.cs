@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ActionEffectHitRandomUnit : ActionEffect
+public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect
 {
     public override bool UsesPower => effectToApply.UsesPower;
-    public override bool DealsDamage => effectToApply.DealsDamage;
+    public bool DealsDamage => effectToApply.CanDealDamage;
 
     [SerializeField] private ActionEffect effectToApply;
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
@@ -24,5 +24,14 @@ public class ActionEffectHitRandomUnit : ActionEffect
         var newTarget = RandomUtils.RandomU.instance.Choice(targets);
         var newTargetData = new PositionData() { targetPos = newTarget.Pos, selectedPos = targetData.selectedPos };
         effectToApply.ApplyEffect(grid, action, sub, user, newTarget, newTargetData);
+    }
+
+    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices)
+    {
+        if (effectToApply is IDamagingActionEffect damageEffect)
+        {
+            return damageEffect.BaseDamage(action, sub, user, indices);
+        }
+        return 0;
     }
 }

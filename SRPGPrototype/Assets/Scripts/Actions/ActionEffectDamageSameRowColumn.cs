@@ -30,4 +30,9 @@ public class ActionEffectDamageSameRowColumn : ActionEffectDamage
             _ => throw new System.NotImplementedException("Invalid Option"),
         };
     }
+
+    public override int BasicDamage(Action action, Unit user)
+    {
+        return 0;
+    }
 }

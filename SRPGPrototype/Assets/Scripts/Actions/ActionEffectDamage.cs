@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Linq;
 
-public abstract class ActionEffectDamage : ActionEffect
+public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
 {
     public enum TargetStat
     { 
@@ -12,22 +12,26 @@ public abstract class ActionEffectDamage : ActionEffect
     }
 
     sealed public override bool UsesPower => true;
-    sealed public override bool DealsDamage => true;
+    public bool DealsDamage => true;
     private int baseDamage;
 
     public TargetStat DamageTarget => targetStat;
     [SerializeField] private TargetStat targetStat = TargetStat.HP;
 
     private readonly List<ModifierActionDamage> modifiers = new List<ModifierActionDamage>();
-
-    private bool SameDmgTarget(ActionEffectDamage other) => targetStat == other.targetStat;
+    private static IEnumerable<ModifierActionDamage> GetApplicableMods(Action action, SubAction sub)
+    {
+        if (action.Program == null)
+            return System.Array.Empty<ModifierActionDamage>();
+        return action.Program.ModifiedByType<ModifierActionDamage>().Where((mod) => mod.AppliesTo(sub));
+    }
 
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
     {
         modifiers.Clear();
         if(action.Program != null)
         {
-            modifiers.AddRange(action.Program.ModifiedByType<ModifierActionDamage>().Where((mod) => mod.AppliesTo(sub)));
+            modifiers.AddRange(GetApplicableMods(action, sub));
         }
         baseDamage = BaseDamage(grid, action, user, targetPositions);
         // Apply modifier base damage
@@ -80,4 +84,17 @@ public abstract class ActionEffectDamage : ActionEffect
     public abstract int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions);
 
     public abstract int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData);
+
+    public abstract int BasicDamage(Action action, Unit user);
+
+    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices)
+    {
+        baseDamage = BasicDamage(action, user);
+        // Apply modifier base damage
+        foreach (var modifier in GetApplicableMods(action, sub))
+        {
+            baseDamage += modifier.BasicDamageMod(targetStat, action, user);
+        }
+        return baseDamage;
+    }
 }
