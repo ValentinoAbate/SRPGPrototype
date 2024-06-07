@@ -25,9 +25,11 @@ public static class TextMacros
 	private delegate string ActionMacro(string[] args, Action action, Unit user);
 
 	private const string dmgMacro = "dmg";
+	private const string chanceMacro = "chance";
 	private static readonly Dictionary<string, ActionMacro> actionMacroMap = new Dictionary<string, ActionMacro>
 	{
-		{ dmgMacro, ActionMacroDamage }
+		{ dmgMacro, ActionMacroDamage },
+		{ chanceMacro, ActionMacroGambleChance },
 	};
 
 	public static string ApplyActionTextMacros(string text, Action action, Unit user)
@@ -68,38 +70,36 @@ public static class TextMacros
 
 	private static string ActionMacroDamage(string[] args, Action action, Unit user)
 	{
-		if (!TryGetSubAction(args, action, 0, out var sub))
+		var indices = GetIndices(dmgMacro, args);
+		if (!TryGetSubAction(action, indices, out var sub))
 		{
 			return errorString;
 		}
-		if (!sub.DealsDamage)
+		if (!TryGetActionEffect(sub, indices, out IDamagingActionEffect effect))
 		{
 			return errorString;
 		}
-		if(args.Length > 1)
-        {
-			var indices = new Queue<int>(args.Length - 1);
-			for(int i = 1; i < args.Length; ++i)
-            {
-				if(!int.TryParse(args[i], out int index))
-                {
-					Debug.LogError(ArgumentErrorText(dmgMacro, i, "int"));
-					continue;
-                }
-				indices.Enqueue(index);
-            }
-			return sub.BaseDamage(action, user, indices).ToString();
-		}
-		return sub.BaseDamage(action, user, new Queue<int>(0)).ToString();
+		return effect.BaseDamage(action, sub, user, indices).ToString();
 	}
 
-	private static bool TryGetSubAction(string[] args, Action action, int argIndex, out SubAction sub)
-	{
-		int subAction = 0;
-		if (args.Length > argIndex)
+	private static string ActionMacroGambleChance(string[] args, Action action, Unit user)
+    {
+		var indices = GetIndices(dmgMacro, args);
+		if (!TryGetSubAction(action, indices, out var sub))
 		{
-			int.TryParse(args[argIndex], out subAction);
+			return errorString;
 		}
+		if(!TryGetActionEffect(sub, indices, out ActionEffectGamble effect))
+        {
+			return errorString;
+        }
+		int percent = Mathf.RoundToInt(effect.SuccessChance * 100);
+		return $"{percent}%";
+	}
+
+	private static bool TryGetSubAction(Action action, Queue<int> indices, out SubAction sub)
+	{
+		int subAction = indices.Count > 0 ? indices.Dequeue() : 0;
 		if (subAction >= action.SubActions.Count)
 		{
 			sub = null;
@@ -107,5 +107,34 @@ public static class TextMacros
 		}
 		sub = action.SubActions[subAction];
 		return true;
+	}
+
+	private static bool TryGetActionEffect<T>(SubAction sub, Queue<int> indices, out T effect)
+    {
+		int effectIndex = indices.Count > 0 ? indices.Dequeue() : 0;
+		if (effectIndex < sub.Effects.Count && sub.Effects[effectIndex] is T tEffect)
+        {
+			effect = tEffect;
+			return true;
+        }
+		effect = default;
+		return false;
+	}
+
+	private static Queue<int> GetIndices(string macroName, string[] args, int startingIndex = 0)
+    {
+		if (args.Length == 0)
+			return new Queue<int>(0);
+		var indices = new Queue<int>(args.Length - 1);
+		for (int i = startingIndex; i < args.Length; ++i)
+		{
+			if (!int.TryParse(args[i], out int index))
+			{
+				Debug.LogError(ArgumentErrorText(macroName, i, "int"));
+				continue;
+			}
+			indices.Enqueue(index);
+		}
+		return indices;
 	}
 }

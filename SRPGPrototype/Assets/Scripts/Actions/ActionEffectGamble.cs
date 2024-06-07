@@ -9,6 +9,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
     public override bool UsesPower => usedPower;
     private bool usedPower = false;
     public bool DealsDamage => successEffects.Any((e) => e.CanDealDamage) || failureEffects.Any((e) => e.CanDealDamage);
+    public float SuccessChance => successChance;
     [Range(0, 1)]
     [SerializeField] private float successChance = 0.5f;
     [SerializeField] private GameObject successEffectsObj = null;
