@@ -43,11 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasRange: 1
-  hasPattern: 1
-  range:
-    patternOffsets: []
-    dimensions: {x: 1, y: 1}
+  subtype: 0
   rangePattern:
     patternType: 1
     pattern:
@@ -60,6 +56,7 @@ MonoBehaviour:
       patternOffsets: []
       dimensions: {x: 1, y: 1}
     generator: {fileID: 0}
+  effects: []
 --- !u!1 &5543358981386903320
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,11 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02b11114bded541a79326b6b155307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasRange: 1
-  hasPattern: 1
-  range:
-    patternOffsets: []
-    dimensions: {x: 1, y: 1}
+  subtype: 0
   rangePattern:
     patternType: 1
     pattern:
@@ -120,6 +113,7 @@ MonoBehaviour:
       patternOffsets: []
       dimensions: {x: 1, y: 1}
     generator: {fileID: 0}
+  effects: []
 --- !u!1001 &8325386703084861488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionMultiple
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
@@ -149,6 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -160,16 +164,6 @@ PrefabInstance:
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
@@ -192,6 +186,21 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: subActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: subActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 728197433529636537}
+    - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: subActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 391451920999491312}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}
 --- !u!4 &6850460929336370086 stripped

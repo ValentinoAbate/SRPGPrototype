@@ -108,18 +108,12 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         }
     }
 
-    public List<SubAction> SubActions { get; private set; }
+    public IReadOnlyList<SubAction> SubActions => subActions;
+    [SerializeField] private SubAction[] subActions;
 
-    private void Awake()
+    public void SetSubActions(SubAction[] subs)
     {
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        var singleAction = GetComponent<SubAction>();
-        SubActions = singleAction != null ? new List<SubAction> { singleAction } :
-            new List<SubAction>(GetComponentsInChildren<SubAction>(true));
+        subActions = subs;
     }
 
     public Action Validate(Transform parent)
