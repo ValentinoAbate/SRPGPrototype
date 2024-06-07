@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 1
   attributes: 8
+  displayNameOverride: +Gamble Speed
   filterByActionType: 0
   actionTypes: 
   filterBySubType: 0

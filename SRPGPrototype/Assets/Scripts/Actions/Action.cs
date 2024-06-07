@@ -67,6 +67,47 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public string Description => description;
     [SerializeField] [TextArea(1, 3)] private string description = string.Empty;
 
+    public string ActionTypeText
+    {
+        get
+        {
+            return $"{ActionType} ({SubActionTypeText})";
+        }
+    }
+
+    private string SubActionTypeText
+    {
+        get
+        {
+            if (SubActions.Count <= 0)
+                return string.Empty;
+            if (SubActions.Count == 1)
+                return SubActions[0].Subtype.ToString();
+            return string.Join(" / ", SubActions.Select((s) => s.Subtype.ToString()));
+        }
+    }
+
+    public string ModifierText
+    {
+        get
+        {
+            return Program != null ? Program.ModifiedByText : string.Empty;
+        }
+    }
+
+    public string FullName
+    {
+        get
+        {
+            var modText = ModifierText;
+            if (string.IsNullOrEmpty(modText))
+            {
+                return $"{DisplayName} - {ActionTypeText}";
+            }
+            return $"{DisplayName} {modText} - {ActionTypeText}";
+        }
+    }
+
     public List<SubAction> SubActions { get; private set; }
 
     private void Awake()

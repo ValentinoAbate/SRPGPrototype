@@ -50,7 +50,16 @@ public class Program : GridObject, ILootable
 
     public Shell Shell { get; set; }
     // Modifier properties
-    public List<Modifier> ModifiedBy => Shell.ModifierMap.ContainsKey(this) ? Shell.ModifierMap[this] : new List<Modifier>();
+    public IReadOnlyList<Modifier> ModifiedBy
+    {
+        get
+        {
+            if (Shell != null && Shell.Compiled && Shell.ModifierMap != null && Shell.ModifierMap.ContainsKey(this))
+                return Shell.ModifierMap[this];
+            return System.Array.Empty<Modifier>();
+        }
+    }
+
     public IEnumerable<T> ModifiedByType<T>() where T : Modifier
     {
         return ModifiedBy.Where((m) => m is T).Select((m) => m as T);
@@ -107,6 +116,35 @@ public class Program : GridObject, ILootable
             if (attTexts.Count == 1)
                 return attTexts[0];
             return string.Join(", ", attTexts);
+        }
+    }
+
+    public string ModifiedByText
+    {
+        get
+        {
+            var mods = ModifiedBy;
+            if (mods.Count <= 0)
+                return string.Empty;
+            if (mods.Count == 1)
+                return mods[0].DisplayName;
+            var text = new string[mods.Count];
+            for (int i = 0; i < mods.Count; i++)
+            {
+                text[i] = mods[i].DisplayName;
+            }
+            return string.Join(" ", text);
+        }
+    }
+
+    public string FullName
+    {
+        get
+        {
+            var modText = ModifiedByText;
+            if (string.IsNullOrEmpty(modText))
+                return DisplayName;
+            return $"{DisplayName} {modText}";
         }
     }
 

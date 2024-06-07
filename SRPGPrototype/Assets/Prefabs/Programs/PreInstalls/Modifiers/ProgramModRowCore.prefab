@@ -31,6 +31,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 0
   attributes: 0
+  displayNameOverride: +Row Target
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1

@@ -19,7 +19,7 @@ public class ProgramDescriptionUI : MonoBehaviour
 
     public void Show(Program p)
     {
-        programNameText.text = p.DisplayName;
+        programNameText.text = p.FullName;
         programAttrText.text = p.AttributesText;
         patternDisplay.Show(p.shape, patternIconPrefab, p.ColorValue);
         gameObject.SetActive(true);

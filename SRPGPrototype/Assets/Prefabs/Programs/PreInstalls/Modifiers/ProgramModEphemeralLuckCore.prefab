@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 1
   attributes: 2
+  displayNameOverride: +Ephemeral Luck
   filterByActionType: 0
   actionTypes: 
   filterBySubType: 0
