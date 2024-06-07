@@ -58,3 +58,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Find Reference 2
+[Aa]ssets/FindReference2
+[Aa]ssets/FindReference2.meta
+[Aa]ssets/FR2_Cache.asset
+[Aa]ssets/FR2_Cache.asset.meta
+
+
