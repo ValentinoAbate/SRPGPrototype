@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ActionEffectMoveAwayFromSelected : ActionEffectMove
 {
+    [SerializeField] private int numSpaces = 1;
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;
-        Move(grid, target, targetData.selectedPos.DirectionTo(target.Pos));
+        for (int i = 0; i < numSpaces; ++i)
+        {
+            Move(grid, target, targetData.selectedPos.DirectionTo(target.Pos));
+        }
     }
 }
