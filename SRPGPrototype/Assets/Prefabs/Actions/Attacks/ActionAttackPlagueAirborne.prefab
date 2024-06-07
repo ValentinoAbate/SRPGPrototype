@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: 83e52d4c71abdff44a5a3c40e7fe4da1,
         type: 3}
       propertyPath: description
-      value: Ranged attack a unit for 3 damage which spreads to any adjacent units.
-        Can spread over 1 empty tile.
+      value: Ranged attack a unit for {dmg} damage which spreads to any adjacent
+        units. Can spread over 1 empty tile.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 83e52d4c71abdff44a5a3c40e7fe4da1,
         type: 3}

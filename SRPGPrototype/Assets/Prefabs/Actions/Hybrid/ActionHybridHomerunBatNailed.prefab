@@ -9,11 +9,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: 1a0db9599ed40b74e907acd14e1ed668,
         type: 3}
-      propertyPath: description
-      value: Attack an adajcent unit, pushing them back and then dealing 3 damage.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 1a0db9599ed40b74e907acd14e1ed668,
-        type: 3}
       propertyPath: displayName
       value: Nail Bat
       objectReference: {fileID: 0}

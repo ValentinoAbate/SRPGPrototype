@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 168078652610169254, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}
       propertyPath: description
-      value: Ranged attack for 7 damage, then lose 2 Repair.
+      value: Ranged attack for {dmg} damage, then lose 2 Repair.
       objectReference: {fileID: 0}
     - target: {fileID: 168078652610169254, guid: 111e7ce731c988c42a85f1c408f6d0e4,
         type: 3}

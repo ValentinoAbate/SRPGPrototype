@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: 7ad163e296457de498195bbf5515b739,
         type: 3}
       propertyPath: description
-      value: Ranged attack for 1 damage (x3).
+      value: Ranged attack for {dmg} damage (x3).
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 7ad163e296457de498195bbf5515b739,
         type: 3}

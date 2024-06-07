@@ -164,7 +164,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Move to a diagonally adjacent tile, then attack a diagonally adjacent
-        unit for 2 damage. '
+        unit for {dmg,1} damage. '
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

@@ -30,6 +30,7 @@ MonoBehaviour:
       - {x: 0, y: 1}
       dimensions: {x: 3, y: 3}
     generator: {fileID: 0}
+  effects: []
 --- !u!114 &4784791121136650577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affectUser: 0
   targetStat: 0
   damage: 4
 --- !u!1001 &1311431924678693674
@@ -55,6 +57,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionAttackExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
@@ -73,6 +80,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -84,16 +96,6 @@ PrefabInstance:
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3213334772041079702, guid: 201c07b38439f1b498a69435676b198d,
@@ -113,13 +115,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
-      propertyPath: displayName
-      value: Explosion
+      propertyPath: description
+      value: Hits all horizontally adjacent units and yourself for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 6890031406807454559, guid: 201c07b38439f1b498a69435676b198d,
         type: 3}
-      propertyPath: description
-      value: Hits all horizontally adjacent units and yourself for 4 damage.
+      propertyPath: displayName
+      value: Explosion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201c07b38439f1b498a69435676b198d, type: 3}

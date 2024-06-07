@@ -118,8 +118,8 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Ranged attack a unit for 2 damage which spreads to any diagonally adjacent
-        units.
+      value: Ranged attack a unit for {dmg} damage which spreads to any diagonally
+        adjacent units.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Attack an adajcent or diagonally adjacent unit or throw at range for
-        1 damage.
+        {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 780376d03893e704bacb2e515042cafc,
         type: 3}

@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -29,6 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -40,16 +50,6 @@ PrefabInstance:
     - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 855469590646541531, guid: 9405f418fd91de74e93f65ba945c31b8,
@@ -74,21 +74,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].x
       value: 5
       objectReference: {fileID: 0}
@@ -99,8 +84,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
@@ -109,17 +109,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].y
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
@@ -129,13 +134,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2554350143434953595, guid: 9405f418fd91de74e93f65ba945c31b8,
-        type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[7].y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708128739415983122, guid: 9405f418fd91de74e93f65ba945c31b8,
+        type: 3}
+      propertyPath: description
+      value: Long or diagonally long ranged attack for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 8708128739415983122, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}

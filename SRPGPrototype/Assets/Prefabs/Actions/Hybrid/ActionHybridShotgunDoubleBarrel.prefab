@@ -22,24 +22,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
-      propertyPath: slowdownInterval
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 8c68e8feb1cb4f946929839df886595e,
-        type: 3}
       propertyPath: description
-      value: 'Attack an adjacent tile with a three-target wide shot that deals 4
-        damage and pushes you back two tiles. '
+      value: 'Attack an adjacent tile with a three-target wide shot that pushes you
+        back two tiles then deals {dmg,0,1} damage. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
       propertyPath: displayName
       value: Double Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 4415060608083833614, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackShotgunDoubleBarrel
+      value: ActionHybridShotgunDoubleBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
@@ -58,6 +63,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -69,16 +79,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 8c68e8feb1cb4f946929839df886595e,
@@ -96,6 +96,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
+      propertyPath: effects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
+      propertyPath: effects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2438853389835402932}
+    - target: {fileID: 7417095590191965287, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
+      propertyPath: effects.Array.data[2]
+      value: 
+      objectReference: {fileID: 5401507226829765355}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c68e8feb1cb4f946929839df886595e, type: 3}
 --- !u!1 &2206044490495527463 stripped
@@ -104,3 +119,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5827167542107042275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5401507226829765355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1884827043973909256, guid: 8c68e8feb1cb4f946929839df886595e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5827167542107042275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206044490495527463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectUser: 0
+  numSpaces: 1
 --- !u!114 &8928888354316552521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +109,8 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Attack an adajcent unit, pushing them back and then dealing 2 damage.
+      value: Attack an adajcent unit, pushing them back and then dealing {dmg,0,1}
+        damage.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

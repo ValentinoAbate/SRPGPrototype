@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: e518ff4f20b53e84b91b8f8e219f7193,
         type: 3}
       propertyPath: description
-      value: Ranged attack a unit for 3 damage which spreads to any diagonally adjacent
-        units. Chain lightning can jump over 1 empty tile.
+      value: Ranged attack a unit for {dmg} damage which spreads to any diagonally
+        adjacent units. Arc lightning can jump over 1 empty tile.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: e518ff4f20b53e84b91b8f8e219f7193,
         type: 3}

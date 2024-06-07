@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}
       propertyPath: description
-      value: Throw a grenade that explodes for 4 damage in a large X pattern.
+      value: Throw a grenade that explodes for {dmg} damage in a large X pattern.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7,
         type: 3}

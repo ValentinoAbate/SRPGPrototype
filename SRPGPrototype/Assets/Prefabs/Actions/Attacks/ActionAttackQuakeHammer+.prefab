@@ -9,11 +9,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: 292999eddaf9a004288109d0b4c9fd06,
         type: 3}
-      propertyPath: description
-      value: Attack an adajcent tile with a two-target shockwave  for 5 damage.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 292999eddaf9a004288109d0b4c9fd06,
-        type: 3}
       propertyPath: displayName
       value: Quake Hammer+
       objectReference: {fileID: 0}
@@ -21,6 +16,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionAttackQuakeHammer+
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
         type: 3}
@@ -39,6 +39,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,16 +55,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 292999eddaf9a004288109d0b4c9fd06,

@@ -9,18 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: displayName
-      value: Sniper
+      propertyPath: description
+      value: Long ranged attack for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: description
-      value: Long ranged attack for 3 damage.
+      propertyPath: displayName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: m_Name
       value: ActionAttackSniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
@@ -39,6 +44,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,16 +60,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: fb70e556c1d7cbd4cb482deade03cc58,
@@ -84,11 +84,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
-        type: 3}
       propertyPath: rangePattern.patternType
       value: 6
       objectReference: {fileID: 0}
@@ -101,6 +96,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rangePattern.pattern.dimensions.y
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
@@ -129,12 +129,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
+        type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
@@ -144,12 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].x
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
@@ -159,18 +164,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: fb70e556c1d7cbd4cb482deade03cc58,
         type: 3}

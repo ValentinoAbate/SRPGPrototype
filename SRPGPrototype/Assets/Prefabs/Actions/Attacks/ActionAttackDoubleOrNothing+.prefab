@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Attack a diagonally adjacent unit or ranged with Gamble: Success (60%)
-        deal 2 damage (x2) / Failure no effect. '
+        deal {dmg} damage (x2) / Failure no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 52caaaded8636314ca32c935fd436966,
         type: 3}

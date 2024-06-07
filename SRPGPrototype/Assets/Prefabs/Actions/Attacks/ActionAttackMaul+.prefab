@@ -7,15 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4415060608083833614, guid: 0640208f9c8c2494090d455718b385e4,
-        type: 3}
-      propertyPath: description
-      value: Attack every diagonally adajcent unit for 4 damage.
-      objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: 0640208f9c8c2494090d455718b385e4,
         type: 3}
       propertyPath: m_Name
       value: ActionAttackMaul+
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
         type: 3}
@@ -34,6 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -45,16 +50,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 0640208f9c8c2494090d455718b385e4,

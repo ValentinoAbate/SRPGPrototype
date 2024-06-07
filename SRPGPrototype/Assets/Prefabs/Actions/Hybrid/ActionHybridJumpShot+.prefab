@@ -12,11 +12,6 @@ PrefabInstance:
       propertyPath: displayName
       value: Jump Shot+
       objectReference: {fileID: 0}
-    - target: {fileID: 308391873856083614, guid: 957855e41f854fe4587e284a75e3f73e,
-        type: 3}
-      propertyPath: description
-      value: 'Jump over a tile, then use a ranged attack for 4 damage. '
-      objectReference: {fileID: 0}
     - target: {fileID: 5680682514431361008, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
       propertyPath: damage
@@ -26,6 +21,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionHybridJumpShot+
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
@@ -44,6 +44,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -55,16 +60,6 @@ PrefabInstance:
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,

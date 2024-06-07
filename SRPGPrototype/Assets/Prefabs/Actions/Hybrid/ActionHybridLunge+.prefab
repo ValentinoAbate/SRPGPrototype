@@ -9,12 +9,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 308391873856083614, guid: 86dbf5115cd702f4f8716769e4dd4100,
         type: 3}
-      propertyPath: description
-      value: 'Move to a diagonally adjacent tile, then attack an adjacent unit for
-        3 damage. '
-      objectReference: {fileID: 0}
-    - target: {fileID: 308391873856083614, guid: 86dbf5115cd702f4f8716769e4dd4100,
-        type: 3}
       propertyPath: displayName
       value: Duelist's Lunge+
       objectReference: {fileID: 0}

@@ -10,17 +10,12 @@ PrefabInstance:
     - target: {fileID: 308391873856083614, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
       propertyPath: description
-      value: 'Jump over a tile, then use a two-target ranged attack for 3 damage. '
+      value: 'Jump over a tile, then use a two-target ranged attack for {dmg,1} damage. '
       objectReference: {fileID: 0}
     - target: {fileID: 308391873856083614, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
       propertyPath: displayName
       value: Jump Cannon
-      objectReference: {fileID: 0}
-    - target: {fileID: 3260306664766020353, guid: 957855e41f854fe4587e284a75e3f73e,
-        type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3260306664766020353, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
@@ -34,6 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260306664766020353, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260306664766020353, guid: 957855e41f854fe4587e284a75e3f73e,
+        type: 3}
       propertyPath: targetPattern.pattern.patternOffsets.Array.data[0].x
       value: 1
       objectReference: {fileID: 0}
@@ -41,6 +41,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionHybridJumpCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
@@ -59,6 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -70,16 +80,6 @@ PrefabInstance:
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 957855e41f854fe4587e284a75e3f73e,

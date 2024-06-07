@@ -95,8 +95,8 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Attack an adajcent or diagonally adjacent unit for 3 damage. Sharp but
-        breaks easily.
+      value: Attack an adajcent or diagonally adjacent unit for {dmg} damage. Sharp
+        but breaks easily.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

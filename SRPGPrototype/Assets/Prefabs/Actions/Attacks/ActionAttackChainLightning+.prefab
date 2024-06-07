@@ -9,12 +9,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4415060608083833614, guid: e518ff4f20b53e84b91b8f8e219f7193,
         type: 3}
-      propertyPath: description
-      value: Ranged attack a unit for 3 damage which spreads to any diagonally adjacent
-        units.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: e518ff4f20b53e84b91b8f8e219f7193,
-        type: 3}
       propertyPath: displayName
       value: Chain Lightning+
       objectReference: {fileID: 0}

@@ -12,15 +12,15 @@ PrefabInstance:
       propertyPath: displayName
       value: Sledge+
       objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
-        type: 3}
-      propertyPath: description
-      value: Attack every adajcent unit for 4 damage.
-      objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
         type: 3}
       propertyPath: m_Name
       value: ActionAttackSledge+
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
         type: 3}
@@ -39,6 +39,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,16 +55,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 1b5a3abd7b248bf4b9e2f9f2d9929477,

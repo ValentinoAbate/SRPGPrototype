@@ -162,8 +162,8 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: 'Attack adjacent unit with Gamble: Success (20%) deal 10 damage / Failure
-        no effect. '
+      value: 'Attack adjacent unit with Gamble: Success (20%) deal {dmg} damage /
+        Failure no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

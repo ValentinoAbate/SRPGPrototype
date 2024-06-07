@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
       propertyPath: description
-      value: 'Attack adjacent unit with Gamble: Success (30%) deal 8 damage / Failure
-        no effect. '
+      value: 'Attack adjacent unit with Gamble: Success (30%) deal {dmg} damage /
+        Failure no effect. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
@@ -35,6 +35,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,6 +55,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -61,16 +71,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,

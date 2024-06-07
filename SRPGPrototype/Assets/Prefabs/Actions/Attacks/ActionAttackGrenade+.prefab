@@ -14,11 +14,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
-      propertyPath: description
-      value: Throw a grenade that explodes for 4 damage in a plus pattern.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415060608083833614, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
-        type: 3}
       propertyPath: slowdownInterval
       value: 2
       objectReference: {fileID: 0}

@@ -100,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 8708128739415983122, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
       propertyPath: description
-      value: Long ranged 2-target attack for 4 damage.
+      value: Long ranged 2-target attack for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 8708128739415983122, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}

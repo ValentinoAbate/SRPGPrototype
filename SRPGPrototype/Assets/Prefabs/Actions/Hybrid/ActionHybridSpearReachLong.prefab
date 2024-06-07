@@ -11,12 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Move to an adjacent tile, then attack diagonally with a two-target stab
-        that deals 2 damage.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3260306664766020353, guid: 680e83f3990229d4f8f45a22c2ea3a01,
-        type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.size
-      value: 2
+        that deals {dmg,1} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 3260306664766020353, guid: 680e83f3990229d4f8f45a22c2ea3a01,
         type: 3}
@@ -30,6 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3260306664766020353, guid: 680e83f3990229d4f8f45a22c2ea3a01,
         type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260306664766020353, guid: 680e83f3990229d4f8f45a22c2ea3a01,
+        type: 3}
       propertyPath: targetPattern.pattern.patternOffsets.Array.data[0].x
       value: 1
       objectReference: {fileID: 0}
@@ -37,6 +37,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionHybridSpearReachLong
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
         type: 3}
@@ -55,6 +60,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -66,16 +76,6 @@ PrefabInstance:
     - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593397205324226135, guid: 680e83f3990229d4f8f45a22c2ea3a01,

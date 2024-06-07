@@ -14,19 +14,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
-      propertyPath: displayName
-      value: Net Harpoon
+      propertyPath: description
+      value: 'Ranged 3-target wide attack for {dmg} damage then pull all targets
+        towards you. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
-      propertyPath: description
-      value: 'Ranged 3-target wide attack for 1 damage then pull all targets towards
-        you. '
+      propertyPath: displayName
+      value: Net Harpoon
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackHarpoonNet
+      value: ActionHybridHarpoonNet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
@@ -45,6 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -56,16 +66,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: f9a70d25cd0a3e1479c15269d37ed94d,
@@ -85,11 +85,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: f9a70d25cd0a3e1479c15269d37ed94d,
-        type: 3}
       propertyPath: targetPattern.patternType
       value: 4
       objectReference: {fileID: 0}
@@ -101,6 +96,11 @@ PrefabInstance:
     - target: {fileID: 7417095590191965287, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: targetPattern.pattern.dimensions.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: f9a70d25cd0a3e1479c15269d37ed94d,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: f9a70d25cd0a3e1479c15269d37ed94d,
