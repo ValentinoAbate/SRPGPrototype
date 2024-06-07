@@ -15,7 +15,7 @@ MonoBehaviour:
   targetTeams: 02000000
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
-  standardAction: {fileID: 5597248024022581365, guid: 8639fc35a179b4840aa525189b135fc1,
+  standardAction: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75,
     type: 3}
 --- !u!114 &-231383600782668205
 MonoBehaviour:
@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  action: {fileID: 5597248024022581365, guid: 8639fc35a179b4840aa525189b135fc1, type: 3}
+  action: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75, type: 3}
   triggerOnSelfDestruct: 0
 --- !u!1001 &5261508470002482802
 PrefabInstance:

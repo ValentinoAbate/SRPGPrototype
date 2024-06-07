@@ -11,13 +11,13 @@ PrefabInstance:
         type: 3}
       propertyPath: standardAction
       value: 
-      objectReference: {fileID: 5597248024022581365, guid: 4cd52a64bcf9372429854ef0859b939e,
+      objectReference: {fileID: 7699832478826616085, guid: eb17782dc68dc3843a9a1346416c72a1,
         type: 3}
     - target: {fileID: -231383600782668205, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}
       propertyPath: action
       value: 
-      objectReference: {fileID: 5597248024022581365, guid: 4cd52a64bcf9372429854ef0859b939e,
+      objectReference: {fileID: 7699832478826616085, guid: eb17782dc68dc3843a9a1346416c72a1,
         type: 3}
     - target: {fileID: 139599480800094950, guid: 5c8cec4488c5d2a4a92050b11d114b5e,
         type: 3}

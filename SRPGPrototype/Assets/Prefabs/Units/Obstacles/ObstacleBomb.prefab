@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  action: {fileID: 5597248024022581365, guid: 8639fc35a179b4840aa525189b135fc1, type: 3}
+  action: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75, type: 3}
   triggerOnSelfDestruct: 1
 --- !u!1001 &4199561890093148515
 PrefabInstance:
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_Color.b
       value: 0.16037738
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
@@ -44,13 +44,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_Color.r
       value: 0.16037738
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
-        type: 3}
-      propertyPath: maxHP
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -59,13 +54,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
-      propertyPath: displayName
-      value: Bomb
+      propertyPath: maxHP
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: description
       value: Explodes when destroyed, dealing 4 damage to adjacent units.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: displayName
+      value: Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -84,6 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -95,16 +105,6 @@ PrefabInstance:
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
@@ -144,13 +144,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959495723498715618, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 8959495723498715618, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 8959495723498715618, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -159,8 +159,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959495723498715618, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d28da550a5fdc0458224d2b3be8ad66, type: 3}
