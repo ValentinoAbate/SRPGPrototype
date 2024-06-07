@@ -164,6 +164,10 @@ public class Program : GridObject, ILootable
         triggers = trigList.ToArray();
         ModifierEffects = GetComponents<ProgramModifier>();
         effects = GetComponents<ProgramEffect>();
+        foreach(var effect in effects)
+        {
+            effect.Initialize(this);
+        }
     }
 
     public void Highlight()

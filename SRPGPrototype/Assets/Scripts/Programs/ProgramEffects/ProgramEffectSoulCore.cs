@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProgramEffectSoulCore : ProgramEffect
 {
     public GameObject unitPrefab;
-    public override void ApplyEffect(Program program, ref Shell.CompileData data)
+    public override void ApplyEffect(ref Shell.CompileData data)
     {
         data.soulCoreUnitPrefab = unitPrefab;
     }

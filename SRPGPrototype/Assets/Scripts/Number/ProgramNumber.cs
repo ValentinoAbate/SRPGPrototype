@@ -47,17 +47,22 @@ public class ProgramNumber
         if (type == Type.Constant)
             return constant;
         int number = 0;
+        var shell = p.Shell;
+        if(shell == null)
+        {
+            shell = PersistantData.main.inventory.EquippedShell;
+        }
         if(type == Type.NumberOfInstallsAtrribute)
         {
-            number = p.Shell.Programs.Count((p2) => p2.program.attributes.HasFlag(attributes));
+            number = shell.Programs.Count((p2) => p2.program.attributes.HasFlag(attributes));
         }
         else if(type == Type.NumberOfInstallsColor)
         {
-            number = p.Shell.Programs.Count((p2) => p2.program.color == color);
+            number = shell.Programs.Count((p2) => p2.program.color == color);
         }
         else if(type == Type.NumberOfInstallsRarity)
         {
-            number = p.Shell.Programs.Count((p2) => p2.program.Rarity == rarity);
+            number = shell.Programs.Count((p2) => p2.program.Rarity == rarity);
         }
         else if(type == Type.InstallX)
         {
@@ -69,15 +74,15 @@ public class ProgramNumber
         }
         else if(type == Type.ShellCols)
         {
-            number = p.Shell.CustArea.Dimensions.x;
+            number = shell.CustArea.Dimensions.x;
         }
         else if (type == Type.ShellRows)
         {
-            number = p.Shell.CustArea.Dimensions.y;
+            number = shell.CustArea.Dimensions.y;
         }
         else if(type == Type.NumberOfEmptySpaces)
         {
-            number = p.Shell.CustArea.Offsets.Count((pos) => p.Shell.InstallMap[pos.x, pos.y] == null);
+            number = shell.CustArea.Offsets.Count((pos) => shell.InstallMap[pos.x, pos.y] == null);
         }
         int modNumber = baseAmount + ((number + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);

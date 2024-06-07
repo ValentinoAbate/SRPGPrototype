@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class ProgramEffectAddOnAfterSubActionAbility : ProgramEffectAddAbility
 {
-    protected override void AddAbility(Program program, ref Shell.CompileData data)
+    protected override void AddAbility(ref Shell.CompileData data)
     {
         data.onAfterSubAction += Ability;
     }

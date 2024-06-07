@@ -10,7 +10,7 @@ public class ProgramEffectAddDamageModifierAbility : ProgramEffectAddAbility
 
     protected override string AbilityName => abilityName;
 
-    protected override void AddAbility(Program program, ref Shell.CompileData data)
+    protected override void AddAbility(ref Shell.CompileData data)
     {
         if (!incoming)
         {

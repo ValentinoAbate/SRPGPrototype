@@ -301,7 +301,7 @@ public class Shell : MonoBehaviour, ILootable
             var program = install.program;
             foreach (var effect in program.Effects)
             {
-                effect.ApplyEffect(program, ref compileData);
+                effect.ApplyEffect(ref compileData);
             }
             foreach (var trigger in program.Triggers)
             {

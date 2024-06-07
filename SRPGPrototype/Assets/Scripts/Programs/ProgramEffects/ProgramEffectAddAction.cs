@@ -6,14 +6,15 @@ public class ProgramEffectAddAction : ProgramEffect
 {
     public Action action;
 
-    private void Awake()
+    public override void Initialize(Program program)
     {
+        base.Initialize(program);
         action = action.Validate(transform);
+        action.Program = program;
     }
 
-    public override void ApplyEffect(Program program, ref Shell.CompileData data)
+    public override void ApplyEffect(ref Shell.CompileData data)
     {
         data.actions.Add(action);
-        action.Program = program;
     }
 }
