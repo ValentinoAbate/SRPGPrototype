@@ -26,7 +26,7 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect
         effectToApply.ApplyEffect(grid, action, sub, user, newTarget, newTargetData);
     }
 
-    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices)
+    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         if (effectToApply is IDamagingActionEffect damageEffect)
         {

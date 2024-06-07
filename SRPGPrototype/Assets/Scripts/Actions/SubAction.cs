@@ -90,19 +90,15 @@ public class SubAction : MonoBehaviour
         user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
     }
 
-    public int BaseDamage(Action action, Unit user, params int[] indices)
+    public int BaseDamage(Action action, Unit user, Queue<int> indices)
     {
-        if (indices.Length <= 0)
+        if (indices.Count <= 0)
         {
-            return effects[0] is IDamagingActionEffect d1 ? d1.BaseDamage(action, this, user) : 0;
+            return effects[0] is IDamagingActionEffect d1 ? d1.BaseDamage(action, this, user, indices) : 0;
         }
-        int index = indices[0];
+        int index = indices.Dequeue();
         if (index >= effects.Length)
             return 0;
-        if(indices.Length > 1)
-        {
-            return effects[index] is IDamagingActionEffect d2 ? d2.BaseDamage(action, this, user, indices.Skip(1).ToArray()) : 0;
-        }
-        return effects[index] is IDamagingActionEffect d3 ? d3.BaseDamage(action, this, user) : 0;
+        return effects[index] is IDamagingActionEffect d2 ? d2.BaseDamage(action, this, user, indices) : 0;
     }
 }

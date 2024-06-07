@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IDamagingActionEffect
 {
     public bool DealsDamage { get; }
-    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices);
+    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices);
 }

@@ -78,7 +78,7 @@ public static class TextMacros
 		}
 		if(args.Length > 1)
         {
-			var indices = new int[args.Length - 1];
+			var indices = new Queue<int>(args.Length - 1);
 			for(int i = 1; i < args.Length; ++i)
             {
 				if(!int.TryParse(args[i], out int index))
@@ -86,11 +86,11 @@ public static class TextMacros
 					Debug.LogError(ArgumentErrorText(dmgMacro, i, "int"));
 					continue;
                 }
-				indices[i - 1] = index;
+				indices.Enqueue(index);
             }
 			return sub.BaseDamage(action, user, indices).ToString();
 		}
-		return sub.BaseDamage(action, user).ToString();
+		return sub.BaseDamage(action, user, new Queue<int>(0)).ToString();
 	}
 
 	private static bool TryGetSubAction(string[] args, Action action, int argIndex, out SubAction sub)

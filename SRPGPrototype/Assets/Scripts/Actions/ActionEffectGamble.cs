@@ -61,16 +61,24 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
         }
     }
 
-    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices)
+    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
-        if (indices.Length <= 0)
-            return 0;
-        var actionEffects = indices[0] == 0 ? successEffects : failureEffects;
-        int effectIndex = indices.Length > 1 ? indices[1] : 0;
+        if(indices.Count <= 0)
+        {
+            return BaseDamage(action, sub, user, true, indices);
+        }
+        bool isSuccess = indices.Dequeue() == 0;
+        return BaseDamage(action, sub, user, isSuccess, indices);
+    }
+
+    private int BaseDamage(Action action, SubAction sub, Unit user, bool success, Queue<int> indices)
+    {
+        var actionEffects = success ? successEffects : failureEffects;
+        int effectIndex = indices.Count > 1 ? indices.Dequeue() : 0;
         if (effectIndex >= actionEffects.Length)
             return 0;
-        if(actionEffects[effectIndex] is IDamagingActionEffect damageEffect)
-            return damageEffect.BaseDamage(action, sub, user, indices.Skip(2).ToArray());
+        if (actionEffects[effectIndex] is IDamagingActionEffect damageEffect)
+            return damageEffect.BaseDamage(action, sub, user, indices);
         return 0;
     }
 }

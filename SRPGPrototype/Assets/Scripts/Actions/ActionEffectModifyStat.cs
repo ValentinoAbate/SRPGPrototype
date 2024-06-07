@@ -26,7 +26,7 @@ public class ActionEffectModifyStat : ActionEffect, IDamagingActionEffect
         target.ModifyStat(grid, stat, value, user);
     }
 
-    public int BaseDamage(Action action, SubAction sub, Unit user, params int[] indices)
+    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         return DealsDamage ? number.BaseValue(action, user) : 0;
     }
