@@ -12,7 +12,7 @@ public class ProgramTriggerConditionNumberOfTargets : ProgramTriggerConditionRes
     {
         get
         {
-            string ret = "hit ";
+            string ret = "Hit ";
             if (comparison.HasFlag(ComparisonOperator.GreaterThan))
             {
                 ret += (comparison.HasFlag(ComparisonOperator.EqualTo) ? threshold : threshold + 1) + " or more ";
