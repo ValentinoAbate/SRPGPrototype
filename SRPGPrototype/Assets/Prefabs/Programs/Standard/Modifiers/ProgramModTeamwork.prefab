@@ -34,7 +34,7 @@ MonoBehaviour:
   displayNameOverride: 
   filterByActionType: 1
   actionTypes: 0100000002000000
-  filterBySubType: 1
+  filterBySubType: 0
   subTypes: 
   actionEffectContainer: {fileID: 0}
 --- !u!114 &3810536140382234709
