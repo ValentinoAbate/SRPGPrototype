@@ -20,13 +20,22 @@ public abstract class Modifier : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(displayNameOverride))
                 return displayNameOverride;
-            if(program == null)
+            var prog = Program;
+            if (prog == null)
+                return string.Empty;
+            return prog.DisplayName;
+        }
+    }
+
+    public Program Program
+    {
+        get
+        {
+            if (program == null)
             {
                 program = GetComponent<Program>();
             }
-            if (program == null)
-                return string.Empty;
-            return program.DisplayName;
+            return program;
         }
     }
     private Program program;

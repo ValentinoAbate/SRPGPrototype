@@ -60,7 +60,7 @@ public class ProgramModifier : MonoBehaviour
         }
     }
 
-    private static IEnumerable<Program> AdjacentPrograms(Shell shell, Program program)
+    public static IEnumerable<Program> AdjacentPrograms(Shell shell, Program program)
     {
         if (!shell.InstallPositions.ContainsKey(program))
             return System.Array.Empty<Program>();
