@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: description
-      value: A risky shell that can only use Gamble, Transient, and Fixed actions.
+      value: A risky Shell that can only use Gamble, Transient, and Fixed actions.
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
