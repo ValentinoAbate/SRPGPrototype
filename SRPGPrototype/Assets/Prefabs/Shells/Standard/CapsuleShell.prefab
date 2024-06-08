@@ -10,13 +10,13 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: rarity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: description
-      value: Contains a built-in mod that increases the damage of adjacent transient
-        weapons.
+      value: Contains a built-in mod that increases the damage of adjacent weapons
+        (except umbrellas).
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -56,7 +56,7 @@ PrefabInstance:
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[4].program
       value: 
-      objectReference: {fileID: 2560143424604166460, guid: 83e761d4d16178f47865473f52d87f4a,
+      objectReference: {fileID: 2560143424604166460, guid: b343cd8dbe9d5bb478b44805f8917e9e,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
