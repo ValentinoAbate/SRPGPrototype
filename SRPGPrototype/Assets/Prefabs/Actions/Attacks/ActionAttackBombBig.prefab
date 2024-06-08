@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
       propertyPath: description
-      value: Throw a grenade that explodes for {dmg} damage in a 3 x 3 pattern.
+      value: Throw a bomb that explodes for {dmg} damage in a 3 x 3 pattern.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
       propertyPath: displayName
-      value: Big Grenade
+      value: Big Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: 908f9ba40c29e294a8eb6b0cfeecc37e,
         type: 3}
