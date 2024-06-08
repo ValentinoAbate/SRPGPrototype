@@ -197,8 +197,8 @@ public class Shell : MonoBehaviour, ILootable
         {
             shiftBy.y = sizeDelta.y;
         }
-        for (int x = -Math.Min(sizeDelta.x, 0); x < CustArea.Dimensions.x + Math.Min(sizeDelta.x, 0); ++x)
-            for (int y = -Math.Min(sizeDelta.y, 0); y < CustArea.Dimensions.y + Math.Min(sizeDelta.y, 0); ++y)
+        for (int x = -Math.Min(shiftBy.x, 0); x < CustArea.Dimensions.x + Math.Min(shiftBy.y, 0); ++x)
+            for (int y = -Math.Min(shiftBy.y, 0); y < CustArea.Dimensions.y + Math.Min(shiftBy.x, 0); ++y)
                 newInstallMap[x + shiftBy.x, y + shiftBy.y] = InstallMap[x, y];
         // Overwrite install map
         InstallMap = newInstallMap;
@@ -212,6 +212,7 @@ public class Shell : MonoBehaviour, ILootable
         var newPositions = new List<Vector2Int>();
         foreach (var kvp in InstallPositions)
         {
+            newPositions.Clear();
             foreach (var pos in kvp.Value)
             {
                 newPositions.Add(pos + shiftBy);
