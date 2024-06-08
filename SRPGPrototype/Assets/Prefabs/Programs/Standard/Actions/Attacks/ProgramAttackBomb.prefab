@@ -74,10 +74,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 2
+  number: 5
   resetTrigger: 0
   comparison: 5
-  threshold: 5
+  threshold: 2
 --- !u!1 &2819246972921600012
 GameObject:
   m_ObjectHideFlags: 0
