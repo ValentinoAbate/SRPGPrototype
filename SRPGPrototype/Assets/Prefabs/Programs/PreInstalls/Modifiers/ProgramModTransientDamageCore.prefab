@@ -29,6 +29,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 1
   attributes: 2
+  displayNameOverride: +Transient Damage
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1
@@ -68,7 +69,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Raises the damage of adjacent transient weapons by 1.
+      value: Adds 1 damage to adjacent transient weapons.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -78,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramModEphemeralDamageCore
+      value: ProgramModTransientDamageCore
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

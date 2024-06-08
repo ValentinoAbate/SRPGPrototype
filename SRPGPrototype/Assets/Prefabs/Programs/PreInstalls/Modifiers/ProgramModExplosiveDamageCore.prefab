@@ -29,6 +29,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 0
   attributes: 0
+  displayNameOverride: +Explosive Damage
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1
@@ -68,7 +69,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Raises the damage of adjacent explosives by 1.
+      value: Adds 1 damage to adjacent explosives.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
