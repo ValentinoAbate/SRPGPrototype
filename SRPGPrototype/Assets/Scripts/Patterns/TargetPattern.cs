@@ -13,7 +13,8 @@ public class TargetPattern
         Simple,
         Pattern,
         Generated,
-        DirectionalPattern
+        DirectionalPattern,
+        DirectionalPatternAndSelf
     }
 
     public Type patternType = Type.Simple;
@@ -22,21 +23,23 @@ public class TargetPattern
 
     public IEnumerable<Vector2Int> Target(BattleGrid grid, Unit user, Vector2Int targetPos)
     {
-        if(patternType == Type.Simple)
-            return new Vector2Int[] { targetPos };
-        if (patternType == Type.Self)
-            return new Vector2Int[] { user.Pos };
-        if (patternType == Type.Pattern)
-            return pattern.OffsetsShifted(targetPos);
-        if(patternType == Type.Generated)
-            return generator.Generate(grid, user, targetPos);
-        if(patternType == Type.DirectionalPattern)
+        return patternType switch
         {
-            Vector2Int direction = user.Pos.DirectionTo(targetPos);
-            Vector2Int patternCenter = user.Pos + Vector2Int.right * (int)Vector2Int.Distance(user.Pos, targetPos) + Vector2Int.down * pattern.Center.y;
-            return pattern.OffsetsShifted(patternCenter, false).Select((p) => p.Rotated(user.Pos, Vector2Int.right, direction));
-        }
-        throw new System.Exception("Invalid target pattern type");
+            Type.Self => new Vector2Int[] { user.Pos },
+            Type.Simple => new Vector2Int[] { targetPos },
+            Type.Pattern => pattern.OffsetsShifted(targetPos),
+            Type.Generated => generator.Generate(grid, user, targetPos),
+            Type.DirectionalPattern => TargetDirectionalPattern(user, targetPos),
+            Type.DirectionalPatternAndSelf => TargetDirectionalPattern(user, targetPos).Concat(new Vector2Int[] { user.Pos }),
+            _ => System.Array.Empty<Vector2Int>(),
+        };
+    }
+
+    private IEnumerable<Vector2Int> TargetDirectionalPattern(Unit user, Vector2Int targetPos)
+    {
+        Vector2Int direction = user.Pos.DirectionTo(targetPos);
+        Vector2Int patternCenter = user.Pos + Vector2Int.right * (int)Vector2Int.Distance(user.Pos, targetPos) + Vector2Int.down * pattern.Center.y;
+        return pattern.OffsetsShifted(patternCenter, false).Select((p) => p.Rotated(user.Pos, Vector2Int.right, direction));
     }
 
     /// <summary>

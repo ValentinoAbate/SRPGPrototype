@@ -48,7 +48,7 @@ public class TargetPatternDrawer : PropertyDrawer
             EditorGUI.PropertyField(UIRect, generatorProp);
             UIRect.y += lineHeight;
         }
-        else if(type == TargetPattern.Type.Pattern || type == TargetPattern.Type.DirectionalPattern)
+        else if(type == TargetPattern.Type.Pattern || type == TargetPattern.Type.DirectionalPattern || type == TargetPattern.Type.DirectionalPatternAndSelf)
         {
             var patternProp = property.FindPropertyRelative("pattern");
             EditorGUI.PropertyField(UIRect, patternProp);
