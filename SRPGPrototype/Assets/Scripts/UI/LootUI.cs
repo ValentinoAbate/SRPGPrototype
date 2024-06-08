@@ -104,6 +104,7 @@ public class LootUI : MonoBehaviour
         foreach (var prog in data)
         {
             var lootButtonUI = Instantiate(programButtonPrefab, programDrawButtonContainer).GetComponent<LootButtonUI>();
+            lootButtonUI.icon.color = prog.ColorValue;
             lootButtonUI.nameText.text = prog.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));

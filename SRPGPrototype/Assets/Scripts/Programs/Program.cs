@@ -47,6 +47,7 @@ public class Program : GridObject, ILootable
     };
 
     public UnityEngine.Color ColorValue => colorValues[color];
+    public UnityEngine.Color ContrastColorValue => color == Color.Blue ? UnityEngine.Color.white : UnityEngine.Color.black;
 
     public Shell Shell { get; set; }
     // Modifier properties

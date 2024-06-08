@@ -10,4 +10,5 @@ public class LootButtonUI : MonoBehaviour
     public TextMeshProUGUI nameText;
     public EventTrigger trigger;
     public Button button;
+    public Image icon;
 }

@@ -8,10 +8,10 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button), typeof(EventTrigger))]
 public class ProgramButton : MonoBehaviour
 {
-
     public TextMeshProUGUI buttonNameText;
     public Button button;
     public EventTrigger trigger;
+    public Image icon;
 
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class ProgramButton : MonoBehaviour
 
     public void Initialize(Program p, CustUI uiManager)
     {
+        icon.color = p.ColorValue;
         buttonNameText.text = p.DisplayName;
 
         button.onClick.AddListener(() => uiManager.PickupProgramFromButton(this, p));
