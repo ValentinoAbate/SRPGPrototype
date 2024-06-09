@@ -227,7 +227,7 @@ Shell Designs:
 	- ? u u u u u u u
 
 - Z shell (Zoom)
-	- z: adjacent move recieve +1 to their slowdown interval
+	- z: adjacent moves recieve +1 to their slowdown interval
 	- i x o x i 
 	- o o o x o 
 	- o o z o o 
