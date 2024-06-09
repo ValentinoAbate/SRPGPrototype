@@ -21,7 +21,7 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
     private readonly List<ModifierActionDamage> modifiers = new List<ModifierActionDamage>();
     private static IEnumerable<ModifierActionDamage> GetApplicableMods(Action action, SubAction sub)
     {
-        if (action.Program == null)
+        if (action == null || action.Program == null)
             return System.Array.Empty<ModifierActionDamage>();
         return action.Program.ModifiedByType<ModifierActionDamage>().Where((mod) => mod.AppliesTo(sub));
     }

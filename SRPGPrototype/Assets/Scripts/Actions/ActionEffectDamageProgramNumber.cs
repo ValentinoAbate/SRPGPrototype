@@ -5,6 +5,8 @@ using UnityEngine;
 public class ActionEffectDamageProgramNumber : ActionEffectDamage
 {
     public ProgramNumber damage;
+    [SerializeField] private Program programOverride;
+
 
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
@@ -18,6 +20,6 @@ public class ActionEffectDamageProgramNumber : ActionEffectDamage
 
     public override int BasicDamage(Action action, Unit user)
     {
-        return damage.Value(action.Program);
+        return damage.Value(programOverride != null ? programOverride : action.Program);
     }
 }

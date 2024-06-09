@@ -66,7 +66,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Adds damage equal to the number of programs of the color with the least
-        programs installed to adjacent weapons (except umbrellas).
+        programs installed ({modDmg}) to adjacent weapons (except umbrellas).
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

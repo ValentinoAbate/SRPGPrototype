@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 1
   attributes: 2
+  displayNameOverride: 
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 0
@@ -45,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  affectUser: 0
   targetStat: 0
   damage:
     min: -2147483648
@@ -57,6 +60,7 @@ MonoBehaviour:
     attributes: 2
     color: 3
     rarity: 0
+  programOverride: {fileID: 2560143424604166460}
 --- !u!1001 &6707852538196646759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,24 +70,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: displayName
-      value: +Ephemeral
+      propertyPath: rarity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds damage equal to the number of transient programs installed to adjacent
-        transient weapons.
+      value: Adds damage equal to the number of transient programs installed ({modDmg})
+        to adjacent transient weapons.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: rarity
-      value: 1
+      propertyPath: displayName
+      value: +Ephemeral
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
       value: ProgramModEphemeral
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -102,6 +111,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -113,16 +127,6 @@ PrefabInstance:
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
@@ -148,3 +152,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6707852538196646759}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2560143424604166460 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+    type: 3}
+  m_PrefabInstance: {fileID: 6707852538196646759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953123168284495401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2825defd5bd0a44da17293ad3c7977d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

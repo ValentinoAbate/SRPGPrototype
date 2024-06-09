@@ -13,9 +13,10 @@ public class ActionEffectDamageModNumber : ActionEffectDamage
 
     public override int BasicDamage(Action action, Unit user)
     {
-        if (action.Program == null || action.Program.Shell == null)
+        var prog = mod.Program;
+        if (prog == null || prog.Shell == null || prog.Shell.ModifierMap == null)
             return 0;
-        return action.Program.Shell.ModifierMap.Count((kvp) => kvp.Value.Contains(mod));
+        return prog.Shell.ModifierMap.Count((kvp) => kvp.Value.Contains(mod));
     }
 
     public override int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)

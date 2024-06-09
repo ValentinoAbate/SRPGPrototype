@@ -28,13 +28,13 @@ public class ProgramDescriptionUI : MonoBehaviour
         {
             actionDisplay.gameObject.SetActive(true);
             actionDisplay.Show(actions[0].action);
-            programNameText.text += (" - " + p.Description);
+            programNameText.text += $" - {TextMacros.ApplyProgramTextMacros(p.Description, p)}";
             programDescText.text = string.Empty;
         }
         else
         {
             actionDisplay.gameObject.SetActive(false);
-            programDescText.text = p.Description;
+            programDescText.text = TextMacros.ApplyProgramTextMacros(p.Description, p);
         }
         upgradeDisplay.Show(p);
     }

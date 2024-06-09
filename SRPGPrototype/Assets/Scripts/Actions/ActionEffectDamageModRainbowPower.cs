@@ -13,10 +13,15 @@ public class ActionEffectDamageModRainbowPower : ActionEffectDamage
 
     public override int BasicDamage(Action action, Unit user)
     {
-        if (mod.Program == null || mod.Program.Shell == null)
+        if (mod.Program == null)
             return 0;
+        var shell = mod.Program.Shell;
+        if(shell == null)
+        {
+            shell = PersistantData.main.inventory.EquippedShell;
+        }
         var colors = new Dictionary<Program.Color, int>();
-        foreach (var prog in mod.Program.Shell.Programs)
+        foreach (var prog in shell.Programs)
         {
             var color = prog.program.color;
             if (!colors.ContainsKey(color))

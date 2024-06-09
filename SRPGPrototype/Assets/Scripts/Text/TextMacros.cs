@@ -23,28 +23,7 @@ public static class TextMacros
 	}
 
 	private delegate string ActionMacro(string[] args, Action action, Unit user);
-
-	private const string dmgMacro = "dmg";
-	private const string chanceMacro = "chance";
-	private static readonly Dictionary<string, ActionMacro> actionMacroMap = new Dictionary<string, ActionMacro>
-	{
-		{ dmgMacro, ActionMacroDamage },
-		{ chanceMacro, ActionMacroGambleChance },
-	};
-
-	public static string ApplyActionTextMacros(string text, Action action, Unit user)
-	{
-		string ApplyMacro(string macroName, string[] args)
-		{
-			if (actionMacroMap.TryGetValue(macroName, out var macro))
-			{
-				return macro(args, action, user);
-			}
-			Debug.LogError(MacroErrorText(macroName, "action"));
-			return string.Empty;
-		}
-		return ApplyMacros(text, ApplyMacro);
-	}
+	private delegate string ProgramMacro(string[] args, Program program);
 
 	private static string ApplyMacros(string text, System.Func<string, string[], string> applyMacro)
 	{
@@ -66,6 +45,30 @@ public static class TextMacros
 			}
 		}
 		return builder.ToString();
+	}
+
+	#region Action Macros
+
+	private const string dmgMacro = "dmg";
+	private const string chanceMacro = "chance";
+	private static readonly Dictionary<string, ActionMacro> actionMacroMap = new Dictionary<string, ActionMacro>
+	{
+		{ dmgMacro, ActionMacroDamage },
+		{ chanceMacro, ActionMacroGambleChance },
+	};
+
+	public static string ApplyActionTextMacros(string text, Action action, Unit user)
+	{
+		string ApplyMacro(string macroName, string[] args)
+		{
+			if (actionMacroMap.TryGetValue(macroName, out var macro))
+			{
+				return macro(args, action, user);
+			}
+			Debug.LogError(MacroErrorText(macroName, "action"));
+			return errorString;
+		}
+		return ApplyMacros(text, ApplyMacro);
 	}
 
 	private static string ActionMacroDamage(string[] args, Action action, Unit user)
@@ -116,6 +119,46 @@ public static class TextMacros
 		effect = default;
 		return false;
 	}
+
+	#endregion
+
+	#region Program Macros
+
+	private const string modDmg = "modDmg";
+	private static readonly Dictionary<string, ProgramMacro> programMacroMap = new Dictionary<string, ProgramMacro>
+	{
+		{ modDmg, ProgramMacroModDmg },
+	};
+
+	public static string ApplyProgramTextMacros(string text, Program program)
+	{
+		string ApplyMacro(string macroName, string[] args)
+		{
+			if (programMacroMap.TryGetValue(macroName, out var macro))
+			{
+				return macro(args, program);
+			}
+			Debug.LogError(MacroErrorText(macroName, "program"));
+			return errorString;
+		}
+		return ApplyMacros(text, ApplyMacro);
+	}
+
+	private static string ProgramMacroModDmg(string[] args, Program program)
+	{
+		if (program.ModifierEffects.Length <= 0)
+			return errorString;
+		var indices = GetIndices(modDmg, args);
+		var progMod = program.ModifierEffects[indices.Count > 0 ? indices.Dequeue() : 0];
+		var mod = progMod.Modifiers[indices.Count > 0 ? indices.Dequeue() : 0];
+		if(mod is ModifierActionDamage dmgMod)
+        {
+			return dmgMod.BasicDamageMod(ActionEffectDamage.TargetStat.HP, null, null).ToString();
+        }
+		return errorString;
+	}
+
+	#endregion
 
 	private static Queue<int> GetIndices(string macroName, string[] args, int startingIndex = 0)
     {

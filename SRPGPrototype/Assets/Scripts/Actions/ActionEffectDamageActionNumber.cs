@@ -13,6 +13,8 @@ public class ActionEffectDamageActionNumber : ActionEffectDamage
 
     public override int BasicDamage(Action action, Unit user)
     {
+        if (action == null)
+            return 0;
         return damage.BaseValue(action, user);
     }
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeFilterMode: 0
   attributes: 0
+  displayNameOverride: 
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
   affectUser: 0
   targetStat: 0
   damage:

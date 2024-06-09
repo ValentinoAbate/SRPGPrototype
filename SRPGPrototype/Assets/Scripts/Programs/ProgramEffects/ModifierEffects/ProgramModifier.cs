@@ -14,6 +14,7 @@ public class ProgramModifier : MonoBehaviour
     [SerializeField] private Scope scope = Scope.Adjacent;
 
     [SerializeField] private GameObject modifierContainer = null;
+    public IReadOnlyList<Modifier> Modifiers => modifiers;
     private Modifier[] modifiers;
 
     private void Awake()
