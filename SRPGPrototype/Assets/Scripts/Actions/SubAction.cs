@@ -25,6 +25,7 @@ public class SubAction : MonoBehaviour
         Gun,
         Explosive,
         Spell,
+        OverrideByEffects,
     }
 
     // Sub-action Metadata
@@ -45,7 +46,24 @@ public class SubAction : MonoBehaviour
     public bool UsesPower => effects.Any((e) => e.UsesPower);
 
     // Sub-action data
-    public Type Subtype => subtype;
+    public string SubTypeText
+    {
+        get
+        {
+            if(subtype == Type.OverrideByEffects)
+            {
+                var texts = new List<string>(effects.Length);
+                foreach(var effect in effects)
+                {
+                    if (effect.StandaloneSubActionType == Type.None)
+                        continue;
+                    texts.Add(effect.StandaloneSubActionType.ToString());
+                }
+                return string.Join(" / ", texts);
+            }
+            return subtype.ToString();
+        }
+    }
     [SerializeField] private Type subtype = Type.None;
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
@@ -72,23 +90,47 @@ public class SubAction : MonoBehaviour
             if (target != null)
                 targets.Add(target);
         }
-        user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
-        foreach (var effect in effects)
+        if(subtype == Type.OverrideByEffects)
         {
-            effect.Initialize(grid, action, this, user, targetPositions);
-            if (effect.AffectUser)
+            foreach (var effect in effects)
             {
-                effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
-            }
-            else
-            {
-                foreach(var target in targets)
+                if(effect.StandaloneSubActionType != Type.None)
                 {
-                    effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
+                    user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.StandaloneSubActionType);
+                    ApplyEffect(effect, grid, action, user, selectedPos, targets, targetPositions);
+                    user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.StandaloneSubActionType);
+                }
+                else
+                {
+                    ApplyEffect(effect, grid, action, user, selectedPos, targets, targetPositions);
                 }
             }
         }
-        user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
+        else
+        {
+            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
+            foreach (var effect in effects)
+            {
+                ApplyEffect(effect, grid, action, user, selectedPos, targets, targetPositions);
+            }
+            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
+        }
+    }
+
+    private void ApplyEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, List<Unit> targets, List<Vector2Int> targetPositions)
+    {
+        effect.Initialize(grid, action, this, user, targetPositions);
+        if (effect.AffectUser)
+        {
+            effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
+        }
+        else
+        {
+            foreach (var target in targets)
+            {
+                effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
+            }
+        }
     }
 
     public int BaseDamage(Action action, Unit user, Queue<int> indices)
@@ -106,5 +148,29 @@ public class SubAction : MonoBehaviour
             return baseDamage;
         }
         return 0;
+    }
+
+    public bool HasSubType(Type subT)
+    {
+        if(subtype != Type.OverrideByEffects)
+        {
+            return subtype == subT;
+        }
+        foreach(var effect in effects)
+        {
+            if (effect.StandaloneSubActionType == subT)
+                return true;
+        }
+        return false;
+    }
+
+    public bool HasAnySubType(params Type[] subTypes)
+    {
+        foreach(var subT in subTypes)
+        {
+            if (HasSubType(subT))
+                return true;
+        }
+        return false;
     }
 }

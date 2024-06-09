@@ -7,7 +7,7 @@ public abstract class Unit : GridObject
 {
     public delegate void OnBattleStartDel(BattleGrid grid, Unit unit);
 
-    public delegate void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
+    public delegate void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Type overrideSubType = SubAction.Type.None);
 
     public delegate void OnAfterAction(Action action);
 

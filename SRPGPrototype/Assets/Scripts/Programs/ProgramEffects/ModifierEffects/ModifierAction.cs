@@ -27,7 +27,7 @@ public abstract class ModifierAction : Modifier
 
     private bool SubActionFilter(SubAction sub)
     {
-        return (!filterBySubType || subTypes.Contains(sub.Subtype)) && AppliesTo(sub);
+        return (!filterBySubType || sub.HasAnySubType(subTypes)) && AppliesTo(sub);
     }
 
     public abstract bool AppliesTo(SubAction sub);

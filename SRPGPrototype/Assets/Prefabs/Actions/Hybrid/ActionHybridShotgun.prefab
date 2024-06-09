@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b19ad8ce5adf34b8c210eb34e7ad20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 7
   affectUser: 1
+  numSpaces: 1
 --- !u!114 &1884827043973909256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,6 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 12
   affectUser: 0
   targetStat: 0
   damage: 2
@@ -38,7 +41,12 @@ PrefabInstance:
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: subtype
-      value: 12
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: subtype2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

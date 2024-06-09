@@ -82,8 +82,8 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             if (SubActions.Count <= 0)
                 return string.Empty;
             if (SubActions.Count == 1)
-                return SubActions[0].Subtype.ToString();
-            return string.Join(" / ", SubActions.Select((s) => s.Subtype.ToString()));
+                return SubActions[0].SubTypeText;
+            return string.Join(" / ", SubActions.Select((s) => s.SubTypeText));
         }
     }
 
