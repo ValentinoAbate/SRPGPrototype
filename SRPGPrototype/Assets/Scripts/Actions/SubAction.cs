@@ -72,6 +72,7 @@ public class SubAction : MonoBehaviour
             if (target != null)
                 targets.Add(target);
         }
+        user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
         foreach (var effect in effects)
         {
             effect.Initialize(grid, action, this, user, targetPositions);

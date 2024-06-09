@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class ProgramEffectFeedback : ProgramEffectAddOnAfterSubActionAbility
+public class ProgramEffectGainStatOnDestroy : ProgramEffectAddSubActionAbility
 {
     public Stats.StatName stat;
-    public ProgramNumber number;
+    public Unit.Team[] teams = new Unit.Team[1] { Unit.Team.Enemy };
     protected override string AbilityName => abilityName;
     [SerializeField] private string abilityName = string.Empty;
     public override void Ability(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
-        if (subAction.DealsDamage && targets.Contains(user))
-            user.ModifyStat(grid, stat, number.Value(action.Program), user);
+        int number = targets.Where((t) => t.Dead && teams.Contains(t.UnitTeam)).Count();
+        if (number > 0)
+            user.ModifyStat(grid, stat, number, user);
     }
 }

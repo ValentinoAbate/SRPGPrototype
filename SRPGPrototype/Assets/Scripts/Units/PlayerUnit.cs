@@ -22,7 +22,8 @@ public class PlayerUnit : Unit
 
     #endregion
 
-    public override OnAfterSubAction OnAfterSubActionFn => Shell.OnAfterSubAction;
+    public override OnSubAction OnBeforeSubActionFn => Shell.OnBeforeSubAction;
+    public override OnSubAction OnAfterSubActionFn => Shell.OnAfterSubAction;
     public override OnAfterAction OnAfterActionFn => Shell.OnAfterAction;
     public override OnDeath OnDeathFn => Shell.OnDeath;
     public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;

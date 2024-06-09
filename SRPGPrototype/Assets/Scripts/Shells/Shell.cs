@@ -63,8 +63,8 @@ public class Shell : MonoBehaviour, ILootable
     public IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => incomingDamageModifiers;
     private readonly List<ModifierActionDamage> incomingDamageModifiers = new List<ModifierActionDamage>();
 
-
-    public Unit.OnAfterSubAction OnAfterSubAction { get; private set; }
+    public Unit.OnSubAction OnBeforeSubAction { get; private set; }
+    public Unit.OnSubAction OnAfterSubAction { get; private set; }
     public Unit.OnAfterAction OnAfterAction { get; private set; }
     public Unit.OnDeath OnDeath { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
@@ -367,6 +367,7 @@ public class Shell : MonoBehaviour, ILootable
         Capacity = compileData.capacity;
         // Apply abilities
         OnAfterSubAction = compileData.onAfterSubAction;
+        OnBeforeSubAction = compileData.onBeforeSubAction;
         OnAfterAction = compileData.onAfterAction;
         OnDeath = compileData.onDeath;
         OnBattleStart = compileData.onBattleStart;
@@ -387,7 +388,8 @@ public class Shell : MonoBehaviour, ILootable
         public List<string> restrictionNames = new List<string>();
         public List<Restriction> restrictions = new List<Restriction>();
         public List<string> abilityNames = new List<string>();
-        public Unit.OnAfterSubAction onAfterSubAction = null;
+        public Unit.OnSubAction onBeforeSubAction = null;
+        public Unit.OnSubAction onAfterSubAction = null;
         public Unit.OnAfterAction onAfterAction = null;
         public Unit.OnDeath onDeath = null;
         public Unit.OnBattleStartDel onBattleStart = null;

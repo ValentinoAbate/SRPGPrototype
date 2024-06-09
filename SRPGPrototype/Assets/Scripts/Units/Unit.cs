@@ -7,7 +7,7 @@ public abstract class Unit : GridObject
 {
     public delegate void OnBattleStartDel(BattleGrid grid, Unit unit);
 
-    public delegate void OnAfterSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
+    public delegate void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
 
     public delegate void OnAfterAction(Action action);
 
@@ -41,7 +41,8 @@ public abstract class Unit : GridObject
     public abstract CenterStat Power { get; }
     public abstract CenterStat Speed { get; }
     public abstract CenterStat Defense { get; }
-    public abstract OnAfterSubAction OnAfterSubActionFn { get; }
+    public abstract OnSubAction OnBeforeSubActionFn { get; }
+    public abstract OnSubAction OnAfterSubActionFn { get; }
     public abstract OnAfterAction OnAfterActionFn { get; }
     public abstract OnDeath OnDeathFn { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }

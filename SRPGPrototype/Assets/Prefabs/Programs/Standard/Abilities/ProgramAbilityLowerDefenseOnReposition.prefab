@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8615212270443164632
+--- !u!114 &-3242289543970737022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,16 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7202993979176963460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d475815048231469ff6dea38ba3649, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ef34704685337844952f32eed10d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: 5
+  timing: 0
+  stat: 7
   number:
-    min: 0
+    min: -2147483648
     max: 2147483647
-    constant: 1
+    constant: -1
     baseAmount: 0
-    modifier: -1
+    modifier: 0
     multiplier: 1
     unitNumber:
       min: -2147483648
@@ -28,8 +29,10 @@ MonoBehaviour:
       modifier: 0
       multiplier: 1
       type: 0
-    type: 2
-  abilityName: Gain Power on multi-hit
+    type: 0
+  abilityName: Lower target enemy defense on reposition
+  subTypes: 07000000
+  affectedTeams: 01000000
 --- !u!114 &-1288943963236124991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,23 +48,20 @@ MonoBehaviour:
   variantChance: 0.75
   patterns:
   - patternOffsets:
-    - {x: 2, y: 0}
+    - {x: 1, y: 1}
     - {x: 1, y: 0}
     - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 3, y: 2}
+    dimensions: {x: 2, y: 2}
   - patternOffsets:
-    - {x: 2, y: 1}
     - {x: 1, y: 1}
     - {x: 0, y: 1}
     - {x: 0, y: 0}
-    dimensions: {x: 3, y: 2}
+    dimensions: {x: 2, y: 2}
   - patternOffsets:
-    - {x: 2, y: 1}
-    - {x: 2, y: 0}
     - {x: 1, y: 0}
+    - {x: 0, y: 1}
     - {x: 0, y: 0}
-    dimensions: {x: 3, y: 2}
+    dimensions: {x: 2, y: 2}
   useWeights: 0
   weights: []
 --- !u!1001 &1592762870832421066
@@ -74,28 +74,28 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: After resolving an action that hit more than one target, gain one Power
-        for every target greater than one.
+      value: After resolving a reposition skill, lower each enemy target's Defense
+        by 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: Wide Power
+      value: Unbalance
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -105,12 +105,12 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[1].x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -130,12 +130,12 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[2].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[2].y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramAbilityGainPowerOnMultiHit
+      value: ProgramAbilityLowerDefenseOnReposition
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
