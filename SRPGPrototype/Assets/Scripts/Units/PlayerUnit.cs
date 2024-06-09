@@ -18,7 +18,7 @@ public class PlayerUnit : Unit
     public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
     public override CenterStat Power => Stats.Power;
     public override CenterStat Speed => Stats.Speed;
-    public override CenterStat Defense => Stats.Defense;
+    public override CenterStat Break => Stats.Break;
 
     #endregion
 
@@ -65,7 +65,7 @@ public class PlayerUnit : Unit
         // Reset center stats
         Power.Value = 0;
         Speed.Value = 0;
-        Defense.Value = 0;
+        Break.Value = 0;
     }
 
     // Start is called before the first frame update
@@ -80,7 +80,7 @@ public class PlayerUnit : Unit
         {
             Debug.Log("Power: " + Power.Value.ToString());
             Debug.Log("Speed: " + Speed.Value.ToString());
-            Debug.Log("Defense: " + Defense.Value.ToString());
+            Debug.Log("Break: " + Break.Value.ToString());
             Debug.Log("Repair: " + Repair.ToString());
         }
     }

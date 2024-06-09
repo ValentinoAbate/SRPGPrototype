@@ -13,7 +13,7 @@ public class UnitDescriptionUI : MonoBehaviour
     public TextMeshProUGUI repairNumberText;
     public TextMeshProUGUI powerNumberText;
     public TextMeshProUGUI speedNumberText;
-    public TextMeshProUGUI defenseNumberText;
+    public TextMeshProUGUI breakNumberText;
 
     public void Show(Unit unit)
     {
@@ -29,7 +29,7 @@ public class UnitDescriptionUI : MonoBehaviour
         repairNumberText.text = unit.Repair.ToString();
         powerNumberText.text = unit.Power.Value.ToString();
         speedNumberText.text = unit.Speed.Value.ToString();
-        defenseNumberText.text = unit.Defense.Value.ToString();
+        breakNumberText.text = unit.Break.Value.ToString();
     }
 
     public void Hide()

@@ -58,7 +58,7 @@ public abstract class AIUnit : Unit
 
     public override CenterStat Power { get; } = new CenterStat();
     public override CenterStat Speed { get; } = new CenterStat();
-    public override CenterStat Defense { get; } = new CenterStat();
+    public override CenterStat Break { get; } = new CenterStat();
 
     public abstract AIComponent<AIUnit> AI { get; }
 

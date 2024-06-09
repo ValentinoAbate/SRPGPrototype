@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84868eb16bd1eee46899d70b3dab7c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timing: 0
   stat: 4
   teams: 01000000
   abilityName: Gain Repair on Destroy Enemy
@@ -70,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: After destroying an enemy unit, gain 1 Repair. If you repair with more
-        than your base repair, take damage equal to the extra repair you had instead
+        than your Base Repair, take damage equal to the extra Repair you had instead
         of gaining HP.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,

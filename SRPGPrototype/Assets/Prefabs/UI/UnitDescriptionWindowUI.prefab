@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8869058117444303931}
   - component: {fileID: 1666910841645904968}
   m_Layer: 0
-  m_Name: DefenseText
+  m_Name: BreakText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Defense:'
+  m_text: 'Break:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1268,7 +1268,7 @@ MonoBehaviour:
   repairNumberText: {fileID: 7589169433294346926}
   powerNumberText: {fileID: 1490793549823407774}
   speedNumberText: {fileID: 6827853390290016495}
-  defenseNumberText: {fileID: 2519216589634667566}
+  breakNumberText: {fileID: 2519216589634667566}
 --- !u!1 &7294218377390125825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2173,7 @@ GameObject:
   - component: {fileID: 3060520040849103479}
   - component: {fileID: 2519216589634667566}
   m_Layer: 0
-  m_Name: DefenseNumberText
+  m_Name: BreakNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2195,7 +2195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 152.6, y: 0}
+  m_AnchoredPosition: {x: 110, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3060520040849103479

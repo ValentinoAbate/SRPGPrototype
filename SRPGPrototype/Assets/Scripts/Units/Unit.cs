@@ -40,7 +40,7 @@ public abstract class Unit : GridObject
     public abstract int Repair { get; set; }
     public abstract CenterStat Power { get; }
     public abstract CenterStat Speed { get; }
-    public abstract CenterStat Defense { get; }
+    public abstract CenterStat Break { get; }
     public abstract OnSubAction OnBeforeSubActionFn { get; }
     public abstract OnSubAction OnAfterSubActionFn { get; }
     public abstract OnAfterAction OnAfterActionFn { get; }
@@ -74,10 +74,10 @@ public abstract class Unit : GridObject
         if (Dead)
             return;
         int damage = amount;
-        if(!Defense.IsZero)
+        if(!Break.IsZero)
         {
-            damage -= Defense.Value;
-            Defense.Use();
+            damage += Break.Value;
+            Break.Use();
         }
         if (damage <= 0)
             return;
@@ -117,7 +117,7 @@ public abstract class Unit : GridObject
         AP = MaxAP;
         Power.Value = 0;
         Speed.Value = 0;
-        Defense.Value = 0;
+        Break.Value = 0;
     }
 
     public void ModifyStat(BattleGrid grid, Stats.StatName stat, int value, Unit source)
@@ -145,8 +145,8 @@ public abstract class Unit : GridObject
             case Stats.StatName.Speed:
                 Speed.Value += value;
                 break;
-            case Stats.StatName.Defense:
-                Defense.Value += value;
+            case Stats.StatName.Break:
+                Break.Value += value;
                 break;
         }
     }
@@ -169,8 +169,8 @@ public abstract class Unit : GridObject
                 return Power.Value;
             case Stats.StatName.Speed:
                 return Speed.Value;
-            case Stats.StatName.Defense:
-                return Defense.Value;
+            case Stats.StatName.Break:
+                return Break.Value;
         }
         throw new System.Exception("Attempt to get invalid stat: " + stat.ToString());
     }
@@ -200,8 +200,8 @@ public abstract class Unit : GridObject
             case Stats.StatName.Speed:
                 Speed.Value = value;
                 break;
-            case Stats.StatName.Defense:
-                Defense.Value = value;
+            case Stats.StatName.Break:
+                Break.Value = value;
                 break;
         }
     }
@@ -233,7 +233,7 @@ public abstract class Unit : GridObject
         AP = MaxAP;
         Power.Value = 0;
         Speed.Value = 0;
-        Defense.Value = 0;
+        Break.Value = 0;
         yield break;
     }
 

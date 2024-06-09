@@ -17,7 +17,7 @@ MonoBehaviour:
   number:
     min: -2147483648
     max: 2147483647
-    constant: -2
+    constant: 2
     baseAmount: 0
     modifier: 0
     multiplier: 1
@@ -41,8 +41,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: description
-      value: 'Ranged attack for {dmg} damage, pull the target towards you, then subtract
-        their Defense by 2. '
+      value: 'Ranged attack for {dmg} damage, pull the target towards you, then give
+        it 2 Break. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}

@@ -24,7 +24,7 @@ public class Stats
         Repair,
         Power,
         Speed,
-        Defense,
+        Break,
     }
 
     public RepairAbilities RepairAbilityFlags { get; set; }
@@ -57,7 +57,7 @@ public class Stats
 
     public CenterStat Power { get; set; } = new CenterStat();
     public CenterStat Speed { get; set; } = new CenterStat();
-    public CenterStat Defense { get; set; } = new CenterStat();
+    public CenterStat Break { get; set; } = new CenterStat();
 
     public void RestoreHpToMax() => HP = MaxHP;
 
