@@ -231,6 +231,9 @@ public abstract class Unit : GridObject
     public virtual IEnumerator OnPhaseEnd()
     {
         AP = MaxAP;
+        Power.Value = 0;
+        Speed.Value = 0;
+        Defense.Value = 0;
         yield break;
     }
 
