@@ -20,7 +20,14 @@ public class ActionEffectDamageModRainbowPower : ActionEffectDamage
         {
             shell = PersistantData.main.inventory.EquippedShell;
         }
-        var colors = new Dictionary<Program.Color, int>();
+        var colors = new Dictionary<Program.Color, int>(5)
+        {
+            { Program.Color.Blue, 0 },
+            { Program.Color.Red, 0 },
+            { Program.Color.Yellow, 0 },
+            { Program.Color.Green, 0 },
+            { Program.Color.White, 0 },
+        };
         foreach (var prog in shell.Programs)
         {
             var color = prog.program.color;
