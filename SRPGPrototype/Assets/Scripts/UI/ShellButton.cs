@@ -15,13 +15,14 @@ public class ShellButton : MonoBehaviour
     public EventTrigger[] triggers;
     public Color compiledColor = Color.green;
     public Color unCompiledColor = Color.red;
+    public Color soulCoreColor = new Color(255, 165, 0);
 
     public void Initialize(Shell s, CustUI uiManager, bool equippedShell = false)
     {
         shellNameText.text = s.DisplayName;
         equipButton.onClick.AddListener(() => uiManager.EquipShell(s));
         custButton.onClick.AddListener(() => uiManager.EnterCust(s));
-        shellImage.color = s.Compiled ? compiledColor : unCompiledColor;
+        shellImage.color = s.Compiled ? s.HasSoulCore ? soulCoreColor : compiledColor : unCompiledColor;
         equipButton.interactable = !equippedShell && s.Compiled && !s.HasSoulCore;
         foreach(var trigger in triggers)
         {

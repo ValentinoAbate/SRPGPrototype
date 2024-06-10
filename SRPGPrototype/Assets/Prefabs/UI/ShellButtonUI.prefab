@@ -774,6 +774,7 @@ MonoBehaviour:
   - {fileID: 887748919338922647}
   compiledColor: {r: 0, g: 1, b: 0, a: 1}
   unCompiledColor: {r: 1, g: 0, b: 0, a: 1}
+  soulCoreColor: {r: 0.9764706, g: 1, b: 0, a: 1}
 --- !u!114 &3217444414044138222
 MonoBehaviour:
   m_ObjectHideFlags: 0
