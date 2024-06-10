@@ -38,7 +38,6 @@ public class MapUI : MonoBehaviour
         HideChoiceUI();
         vertices = new List<Vertex<Encounter>>(map.NextEncounters);
         InitializeChoiceButtons(vertices);
-        gambleButton.onClick.AddListener(GambleEncounterChoice);
         ShowChoiceUI();
         unitDescriptionUI.Hide();
     }
@@ -54,11 +53,6 @@ public class MapUI : MonoBehaviour
             button.onClick.AddListener(HideChoiceUI);
             button.onClick.AddListener(() => ShowEncounterPreview(vertex));
         }
-    }
-
-    private void GambleEncounterChoice()
-    {
-        ConfirmEncounter(RandomU.instance.Choice(vertices));
     }
 
     private void ShowChoiceUI()
