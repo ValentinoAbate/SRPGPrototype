@@ -21,7 +21,14 @@ public class ShellDescriptionUI : MonoBehaviour
 
     public void Show(Shell s)
     {
-        nameText.text = s.DisplayName;
+        if(s.Compiled && s.HasSoulCore)
+        {
+            nameText.text = $"{s.DisplayName} (Soul Core)";
+        }
+        else
+        {
+            nameText.text = s.DisplayName;
+        }
         descriptionText.text = s.Description;
         // If the shell is an asset, compile data will generate from pre-installs
         var compileData = s.GetCompileData();
