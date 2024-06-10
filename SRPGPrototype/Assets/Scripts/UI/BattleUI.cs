@@ -53,6 +53,8 @@ public class BattleUI : MonoBehaviour
         }
     }
 
+    private readonly List<TileUI.Entry> targetPatternEntries = new List<TileUI.Entry>();
+
     public void RefreshLinkoutButton()
     {
         var canLinkout = grid.CanLinkOut(out var interferenceLevel, out int numInterferers);
@@ -185,16 +187,15 @@ public class BattleUI : MonoBehaviour
         int currAction = 0;
         action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();
-        var targetPatternEntires = new List<TileUI.Entry>();
         targetRangeEntries = ShowRangePattern(action.SubActions[currAction].Range, unit);
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
-        cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction, ref targetPatternEntires);
-        cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntires);
+        cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction);
+        cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntries);
         var currentPos = cursor.HighlightedPosition;
         if (grid.IsLegal(currentPos))
         {
-            HighlightActionTarget(currentPos, action, unit, ref currAction, ref targetPatternEntires);
+            HighlightActionTarget(currentPos, action, unit, ref currAction);
         }
     }
 
@@ -209,12 +210,13 @@ public class BattleUI : MonoBehaviour
         EnterActionMenu(unit, false);
     }
 
-    private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
+    private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction)
     {
         var subAction = action.SubActions[currAction];
         if (!subAction.Range.GetPositions(grid, unit.Pos).Contains(pos))
             return;
-        entries = ShowTargetPattern(subAction.targetPattern, unit, pos);
+        targetPatternEntries.Clear();
+        targetPatternEntries.AddRange(ShowTargetPattern(subAction.targetPattern, unit, pos));
 
     }
 
@@ -235,6 +237,11 @@ public class BattleUI : MonoBehaviour
         else
         {
             entries = ShowRangePattern(action.SubActions[currAction].Range, unit);
+            var currentPos = cursor.HighlightedPosition;
+            if (grid.IsLegal(currentPos))
+            {
+                HighlightActionTarget(currentPos, action, unit, ref currAction);
+            }
         }
     }
 
@@ -284,12 +291,13 @@ public class BattleUI : MonoBehaviour
         return ret;
     }
 
-    public void HideManyTiles(IEnumerable<TileUI.Entry> entries)
+    public void HideManyTiles(IList<TileUI.Entry> entries)
     {
         foreach (var entry in entries)
         {
             grid.RemoveTileUI(entry);
         }
+        entries.Clear();
     }
 
     #endregion
