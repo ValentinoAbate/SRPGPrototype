@@ -55,6 +55,7 @@ public class LootUI : MonoBehaviour
         menuUI.SetActive(false);
         programDrawUI.SetActive(false);
         shellDrawUI.SetActive(false);
+        shellDesc.Hide();
         menuButtonContainer.DestroyAllChildren();
         programDrawButtonContainer.DestroyAllChildren();
         shellDrawButtonContainer.DestroyAllChildren();
@@ -67,6 +68,7 @@ public class LootUI : MonoBehaviour
         programDrawUI.SetActive(false);
         programDesc.Hide();
         shellDrawUI.SetActive(false);
+        shellDesc.Hide();
         RefreshExitButton();
     }
 

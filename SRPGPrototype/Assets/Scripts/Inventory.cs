@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public event System.Action<Shell> OnEquippedShellChanged;
     public Shell EquippedShell 
     {
         get => equippedShell;
@@ -23,6 +24,7 @@ public class Inventory : MonoBehaviour
                 equippedShell = Instantiate(value.gameObject, shellContainer.transform).GetComponent<Shell>();
                 //shells.Remove(value);
             }
+            OnEquippedShellChanged?.Invoke(equippedShell);
         }
     }
     private Shell equippedShell = null;
