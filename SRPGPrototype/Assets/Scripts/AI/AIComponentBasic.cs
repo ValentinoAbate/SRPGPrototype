@@ -112,7 +112,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 }
                 // Sort by num obstacles, path length if equal
                 pathsByObjNum.Sort(PathCompare);
-                // Find an obstacle blocking the path the attack
+                // Find an obstacle blocking the path to the attack
                 foreach(var tPathWithValue in pathsByObjNum)
                 {
                     var targetObstacles = tPathWithValue.tPath.path.Where(grid.NotEmpty).Select(grid.Get);
@@ -123,7 +123,6 @@ public class AIComponentBasic : AIComponent<AIUnit>
                         yield break;
                     }
                 }
-                yield break;
             }
         }
         // Else no meaningful path to target range exists, just try and get close to a target

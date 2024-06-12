@@ -137,7 +137,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             }
         }
         // Find all shortests paths to target positions
-        var paths = new List<TargetPath>();
+        var paths = new List<TargetPath>(positions.Count);
         foreach (var posTargetPair in positions)
         {
             var path = Path(grid, self, moveAction, posTargetPair.Key.userPos, canMoveThroughTarget);
