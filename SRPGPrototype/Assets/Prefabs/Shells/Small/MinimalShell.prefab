@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: dc28f7de967c99d409af82f066a70094,
         type: 3}
       propertyPath: description
-      value: A small Shell that has high Max AP, but lower Max HP and Base Repair.
-        Needs less Capacity to compile at higher levels.
+      value: A small Shell with +1 Max AP, but less Max HP and Base Repair. Needs
+        less Capacity to compile at higher levels.
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: dc28f7de967c99d409af82f066a70094,
         type: 3}
