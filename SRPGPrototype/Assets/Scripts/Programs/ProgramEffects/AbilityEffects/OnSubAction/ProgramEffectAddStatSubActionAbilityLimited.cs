@@ -5,6 +5,13 @@ using UnityEngine;
 public class ProgramEffectAddStatSubActionAbilityLimited : ProgramEffectAddStatSubActionAbility
 {
     [SerializeField] private UseLimiter limiter;
+
+    protected override void AddAbility(ref Shell.CompileData data)
+    {
+        base.AddAbility(ref data);
+        limiter.Attatch(data);
+    }
+
     public override void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
         if (!limiter.TryUse())
