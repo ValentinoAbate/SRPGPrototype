@@ -51,6 +51,7 @@ public abstract class Unit : GridObject
     public abstract OnPhaseStartDel OnPhaseStartFn { get; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
+    public abstract UnitUI UI { get; }
 
     public abstract Shell Shell { get; }
 

@@ -12,13 +12,13 @@ public abstract class AIUnit : Unit
     public override int MaxHP { get => maxHP; set { maxHP = value; HP = Mathf.Min(HP, value); } }
     [SerializeField] private int maxHP = 3;
 
-    public override int HP { get => hp; protected set { hp = value; unitUI.Hp = value; } }
+    public override int HP { get => hp; protected set { hp = value; UI.Hp = value; } }
     private int hp = 0;
 
     public override int MaxAP { get => maxAP; set { maxAP = value; AP = Mathf.Min(AP, value); } }
     [SerializeField] private int maxAP = 3;
 
-    public override int AP { get => ap; set { ap = value; unitUI.AP = value; } }
+    public override int AP { get => ap; set { ap = value; UI.AP = value; } }
     private int ap = 0;
 
     public override int Repair { get; set; }
@@ -55,7 +55,8 @@ public abstract class AIUnit : Unit
     public Transform ActionTransform => actionTransform;
     [SerializeField] private Transform actionTransform = null;
 
-    public UnitUI unitUI;
+    public override UnitUI UI => unitUI;
+    [SerializeField] private UnitUI unitUI;
 
     public override CenterStat Power { get; } = new CenterStat();
     public override CenterStat Speed { get; } = new CenterStat();

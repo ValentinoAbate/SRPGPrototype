@@ -8,23 +8,23 @@ public class UnitUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpNumberText = null;
     [SerializeField] private TextMeshProUGUI apNumberText = null;
 
-    [SerializeField] private Transform hotKeyUI = null;
-    [SerializeField] private TextMeshProUGUI hotKeyText = null;
+    [SerializeField] private Transform numberUI = null;
+    [SerializeField] private TextMeshProUGUI numberText = null;
 
     public int Hp { set => hpNumberText.text = value.ToString(); }
     public int AP { set => apNumberText.text = value.ToString(); }
 
-    public void SetHotKey(string text)
+    public void SetNumberText(string text)
     {
-        if (hotKeyText == null)
+        if (numberText == null)
             return;
-        hotKeyText.text = text;
+        numberText.text = text;
     }
 
-    public void SetHotKeyActive(bool active)
+    public void SetNumberActive(bool active)
     {
-        if (hotKeyUI == null)
+        if (numberUI == null)
             return;
-        hotKeyUI.gameObject.SetActive(active);
+        numberUI.gameObject.SetActive(active);
     }
 }

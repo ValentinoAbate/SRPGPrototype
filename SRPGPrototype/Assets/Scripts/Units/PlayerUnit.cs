@@ -11,9 +11,9 @@ public class PlayerUnit : Unit
     #region Stats
 
     public override int MaxHP { get => Stats.MaxHP; set => Stats.MaxHP = value; }
-    public override int HP { get => Stats.HP; protected set { Stats.HP = value; unitUI.Hp = value; } }
+    public override int HP { get => Stats.HP; protected set { Stats.HP = value; UI.Hp = value; } }
     public override int MaxAP { get => Stats.MaxAP; set => Stats.MaxAP = value; }
-    public override int AP { get => ap; set { ap = value; unitUI.AP = value; } }
+    public override int AP { get => ap; set { ap = value; UI.AP = value; } }
     private int ap = 0;
     public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
     public override CenterStat Power => Stats.Power;
@@ -50,11 +50,12 @@ public class PlayerUnit : Unit
         set
         {
             unitIndex = value;
-            unitUI.SetHotKey((value + 1).ToString());
+            UI.SetNumberText((value + 1).ToString());
         }
     }
 
-    public UnitUI unitUI;
+    public override UnitUI UI => unitUI;
+    [SerializeField] private UnitUI unitUI;
 
     public override void ResetStats()
     {

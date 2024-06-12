@@ -17,6 +17,7 @@ public class PhaseManager : MonoBehaviour, IPausable
     private System.Action OnActiveEncounterEnd { get; set; }
 
     private List<Phase> phases;
+    public IReadOnlyList<Unit> Units => units;
     private List<Unit> units;
     private int currPhase;
 

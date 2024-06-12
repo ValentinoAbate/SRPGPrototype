@@ -16,6 +16,7 @@ public class BattleUI : MonoBehaviour
     public TextMeshProUGUI linkOutInfoText;
     public ActionDescriptionUI actionDescription;
     public UnitDescriptionUI unitDescription;
+    [SerializeField] TurnOrderViewerUI turnOrderUI;
 
     [Header("Set in Parent Prefab")]
     public BattleGrid grid;
@@ -28,19 +29,21 @@ public class BattleUI : MonoBehaviour
         {
             cursor.gameObject.SetActive(value);
             UnitSelectionUIEnabled = value;
+            turnOrderUI.SetInteractable(value);
         }
     }
     private bool inUnitSelection;
 
-    private bool UnitSelectionUIEnabled
+    public bool UnitSelectionUIEnabled
     {
+        get => inUnitSelection;
         set
         {
             inUnitSelection = value;
             endTurnButton.interactable = value;
             foreach (var unit in playerPhase.Units)
             {
-                unit.unitUI.SetHotKeyActive(value);
+                unit.UI.SetNumberActive(value);
             }
             if (value)
             {
@@ -103,6 +106,7 @@ public class BattleUI : MonoBehaviour
     {
         actionDescription.Hide();
         unitDescription.Hide();
+        turnOrderUI.Initialize(phaseManager, false);
     }
 
     private void Update()
