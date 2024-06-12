@@ -50,7 +50,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
             {
                 effect.ApplyEffect(grid, action, sub, user, target, targetData);
             }
-            usedPower = successEffects.Any((e) => e.UsesPower);
+            usedPower = successEffects.Any(ActionEffectUsesPower);
         }
         else
         {
@@ -58,9 +58,11 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
             {
                 effect.ApplyEffect(grid, action, sub, user, target, targetData);
             }
-            usedPower = failureEffects.Length > 0 && failureEffects.Any((e) => e.UsesPower);
+            usedPower = failureEffects.Length > 0 && failureEffects.Any(ActionEffectUsesPower);
         }
     }
+
+    public static bool ActionEffectUsesPower(ActionEffect e) => e.UsesPower;
 
     public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
