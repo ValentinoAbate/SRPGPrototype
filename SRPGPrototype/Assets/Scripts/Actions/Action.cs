@@ -163,7 +163,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         {
             sub.Use(grid, this, user, targetPos);
         }
-        FinishAction(user, applyAPCost);
+        FinishAction(grid, user, applyAPCost);
     }
 
     public void StartAction(Unit user)
@@ -172,7 +172,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         zeroSpeed = user.Speed.IsZero;
     }
 
-    public void FinishAction(Unit user, bool applyAPCost = true)
+    public void FinishAction(BattleGrid grid, Unit user, bool applyAPCost = true)
     {
         if(applyAPCost)
         {
@@ -208,7 +208,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
                 }
             }
         }
-        user.OnAfterActionFn?.Invoke(this);
+        user.OnAfterActionFn?.Invoke(grid, this, user);
     }
 
     public void GrantFreeUse()

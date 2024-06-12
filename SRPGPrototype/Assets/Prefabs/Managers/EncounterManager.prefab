@@ -77,6 +77,7 @@ MonoBehaviour:
   manager: {fileID: 1130085308880680659}
   phaseTransitionPrefab: {fileID: 0}
   ui: {fileID: 1130085309517156903}
+  grid: {fileID: 1130085307957486608}
 --- !u!1 &1130085307575049256
 GameObject:
   m_ObjectHideFlags: 0

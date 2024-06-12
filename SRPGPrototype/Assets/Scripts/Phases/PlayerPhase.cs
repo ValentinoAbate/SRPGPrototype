@@ -8,6 +8,7 @@ public class PlayerPhase : Phase
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
 
     public BattleUI ui;
+    [SerializeField] private BattleGrid grid;
 
     public List<PlayerUnit> Units { get; } = new List<PlayerUnit>();
 
@@ -31,7 +32,7 @@ public class PlayerPhase : Phase
         if (CheckEndBattle())
             yield break;
         foreach (var unit in Units)
-            yield return StartCoroutine(unit.OnPhaseStart());
+            yield return StartCoroutine(unit.OnPhaseStart(grid));
         ui.BeginPlayerTurn();
     }
 

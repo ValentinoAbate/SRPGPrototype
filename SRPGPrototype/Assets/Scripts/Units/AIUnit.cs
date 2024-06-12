@@ -29,6 +29,7 @@ public abstract class AIUnit : Unit
     public override OnDeath OnDeathFn { get => onDeathFn; }
     private OnDeath onDeathFn = null;
     public override OnBattleStartDel OnBattleStartFn { get; }
+    public override OnPhaseStartDel OnPhaseStartFn { get; }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -89,8 +90,9 @@ public abstract class AIUnit : Unit
         yield return StartCoroutine(AI.DoTurn(grid, this));
     }
 
-    public override IEnumerator OnPhaseStart()
+    public override IEnumerator OnPhaseStart(BattleGrid grid)
     {
+        OnPhaseStartFn?.Invoke(grid, this);
         foreach (var action in Actions)
         {
             action.ResetUses(Action.Trigger.TurnStart);

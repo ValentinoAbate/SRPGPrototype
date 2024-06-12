@@ -68,6 +68,7 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnAfterAction OnAfterAction { get; private set; }
     public Unit.OnDeath OnDeath { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
+    public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
 
     public Stats Stats { get; } = new Stats();
     public Dictionary<Program, List<Modifier>> ModifierMap { get; private set; }
@@ -371,6 +372,7 @@ public class Shell : MonoBehaviour, ILootable
         OnAfterAction = compileData.onAfterAction;
         OnDeath = compileData.onDeath;
         OnBattleStart = compileData.onBattleStart;
+        OnPhaseStart = compileData.onPhaseStart;
         incomingDamageModifiers.Clear();
         incomingDamageModifiers.AddRange(compileData.incomingDamageModifiers);
         // Apply compiled changes to actions and stats
@@ -393,6 +395,7 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnAfterAction onAfterAction = null;
         public Unit.OnDeath onDeath = null;
         public Unit.OnBattleStartDel onBattleStart = null;
+        public Unit.OnPhaseStartDel onPhaseStart = null;
         public GameObject soulCoreUnitPrefab = null;
         public Dictionary<Program, List<Modifier>> modifierMap = new Dictionary<Program, List<Modifier>>();
         public List<ModifierActionDamage> incomingDamageModifiers = new List<ModifierActionDamage>();

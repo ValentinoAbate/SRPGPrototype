@@ -27,6 +27,7 @@ public class PlayerUnit : Unit
     public override OnAfterAction OnAfterActionFn => Shell.OnAfterAction;
     public override OnDeath OnDeathFn => Shell.OnDeath;
     public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
+    public override OnPhaseStartDel OnPhaseStartFn => Shell.OnPhaseStart;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -91,8 +92,9 @@ public class PlayerUnit : Unit
     }
 
     // Reset uses per turn
-    public override IEnumerator OnPhaseStart()
+    public override IEnumerator OnPhaseStart(BattleGrid grid)
     {
+        OnPhaseStartFn?.Invoke(grid, this);
         foreach (var action in Actions)
             action.ResetUses(Action.Trigger.TurnStart);
         yield break;

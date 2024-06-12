@@ -22,7 +22,7 @@ public class AIPhase : Phase
         if (CheckEndBattle())
             yield break;
         foreach (var unit in units)
-            yield return StartCoroutine(unit.OnPhaseStart());
+            yield return StartCoroutine(unit.OnPhaseStart(grid));
         foreach (var unit in units)
         {
             // Skip units that are dead or have been reduced to 0 AP or have no AI

@@ -7,9 +7,11 @@ public abstract class Unit : GridObject
 {
     public delegate void OnBattleStartDel(BattleGrid grid, Unit unit);
 
+    public delegate void OnPhaseStartDel(BattleGrid grid, Unit unit);
+
     public delegate void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Type overrideSubType = SubAction.Type.None);
 
-    public delegate void OnAfterAction(Action action);
+    public delegate void OnAfterAction(BattleGrid grid, Action action, Unit user);
 
     public delegate void OnDeath(BattleGrid grid, Unit unit, Unit killedBy);
 
@@ -46,6 +48,7 @@ public abstract class Unit : GridObject
     public abstract OnAfterAction OnAfterActionFn { get; }
     public abstract OnDeath OnDeathFn { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
+    public abstract OnPhaseStartDel OnPhaseStartFn { get; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
 
@@ -223,7 +226,7 @@ public abstract class Unit : GridObject
         return uses;
     }
 
-    public virtual IEnumerator OnPhaseStart()
+    public virtual IEnumerator OnPhaseStart(BattleGrid grid)
     {
         yield break;
     }

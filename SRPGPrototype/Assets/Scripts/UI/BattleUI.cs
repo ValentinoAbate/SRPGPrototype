@@ -231,7 +231,7 @@ public class BattleUI : MonoBehaviour
         cursor.OnUnHighlight?.Invoke(pos);
         if (++currAction >= action.SubActions.Count)
         {
-            action.FinishAction(unit);
+            action.FinishAction(grid, unit);
             EnterUnitSelection();
         }
         else
