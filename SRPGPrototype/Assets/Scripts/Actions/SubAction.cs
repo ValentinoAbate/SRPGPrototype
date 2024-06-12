@@ -84,11 +84,18 @@ public class SubAction : MonoBehaviour
         // Get target positions
         var targetPositions = targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal).ToList();
         var targets = new List<Unit>(targetPositions.Count);
+        var emptyTargetPositions = new List<Vector2Int>(targetPositions.Count);
         foreach (var position in targetPositions)
         {
             var target = grid.Get(position);
             if (target != null)
+            {
                 targets.Add(target);
+            }
+            else
+            {
+                emptyTargetPositions.Add(position);
+            }
         }
         if(subtype == Type.OverrideByEffects)
         {
@@ -97,12 +104,12 @@ public class SubAction : MonoBehaviour
                 if(effect.StandaloneSubActionType != Type.None)
                 {
                     user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.StandaloneSubActionType);
-                    ApplyEffect(effect, grid, action, user, selectedPos, targets, targetPositions);
+                    ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
                     user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.StandaloneSubActionType);
                 }
                 else
                 {
-                    ApplyEffect(effect, grid, action, user, selectedPos, targets, targetPositions);
+                    ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
                 }
             }
         }
@@ -111,25 +118,27 @@ public class SubAction : MonoBehaviour
             user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
             foreach (var effect in effects)
             {
-                ApplyEffect(effect, grid, action, user, selectedPos, targets, targetPositions);
+                ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
             }
             user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
         }
     }
 
-    private void ApplyEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, List<Unit> targets, List<Vector2Int> targetPositions)
+    private void ApplyEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, List<Unit> targets, List<Vector2Int> emptyTargetPositions, List<Vector2Int> targetPositions)
     {
         effect.Initialize(grid, action, this, user, targetPositions);
         if (effect.AffectUser)
         {
             effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
+            return;
         }
-        else
+        foreach (var pos in emptyTargetPositions)
         {
-            foreach (var target in targets)
-            {
-                effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
-            }
+            effect.ApplyEffect(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos));
+        }
+        foreach (var target in targets)
+        {
+            effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
         }
     }
 
