@@ -77,11 +77,24 @@ public class PresetUI : MonoBehaviour
         }
     }
 
+    private List<Shell.InstalledProgram> ValidInstalls()
+    {
+        var installs = new List<Shell.InstalledProgram>(Shell.Programs.Count);
+        foreach (var prog in Shell.Programs)
+        {
+            if (!prog.program.attributes.HasFlag(Program.Attributes.Fixed))
+            {
+                installs.Add(prog);
+            }
+        }
+        return installs;
+    }
+
     private Shell.Preset CreatePreset(string name)
     {
         var preset = new Shell.Preset() { DisplayName = name };
         preset.Level = Shell.Level;
-        preset.Programs = new List<Shell.InstalledProgram>(Shell.Programs);
+        preset.Programs = ValidInstalls();
         return preset;
     }
 
@@ -125,7 +138,7 @@ public class PresetUI : MonoBehaviour
             CustUI.UninstallAll();
             return;
         }
-        var installs = new List<Shell.InstalledProgram>(Shell.Programs);
+        var installs = ValidInstalls();
         foreach (var install in installs)
         {
             var prog = install.program;
