@@ -78,6 +78,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool HasProgram(Program p)
+    {
+        return programs.Contains(p);
+    }
+
     public void AddShell(Shell s, bool fromAsset = false)
     {
         Shell addedShell;
