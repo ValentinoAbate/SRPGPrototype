@@ -90,6 +90,7 @@ public class PlayerUnit : Unit
     public override void DoRepair()
     {
         Shell.Stats.DoRepair();
+        UI.Hp = Shell.Stats.HP;
     }
 
     // Reset uses per turn
