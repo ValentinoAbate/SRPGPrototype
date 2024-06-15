@@ -122,10 +122,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3356999452330318041}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4481123732457011390}
+        m_TargetAssemblyTypeName: PresetUI, Assembly-CSharp
+        m_MethodName: EnterSaveNewMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -386,13 +386,17 @@ MonoBehaviour:
   preset3ButtonTexts:
   - {fileID: 8075229551744742759}
   - {fileID: 8075229551744742759}
+  loadMenu: {fileID: 1111522995161522550}
   loadButtons:
   - {fileID: 267664253602339168}
   - {fileID: 4714179200741010033}
   - {fileID: 2337305631407199430}
+  saveNewMenu: {fileID: 3356999452330318041}
   saveNewButtons:
   - {fileID: 6809728134563574318}
   - {fileID: 7453287325298014394}
+  newPresetNameMenu: {fileID: 5321907077458582032}
+  newPresetInput: {fileID: 638217523657208110}
 --- !u!1 &956115192527343566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,10 +1863,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3356999452330318041}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4481123732457011390}
+        m_TargetAssemblyTypeName: PresetUI, Assembly-CSharp
+        m_MethodName: EnterMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2835,10 +2839,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5321907077458582032}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4481123732457011390}
+        m_TargetAssemblyTypeName: PresetUI, Assembly-CSharp
+        m_MethodName: EnterSaveNewMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4356,10 +4360,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1111522995161522550}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4481123732457011390}
+        m_TargetAssemblyTypeName: PresetUI, Assembly-CSharp
+        m_MethodName: EnterMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

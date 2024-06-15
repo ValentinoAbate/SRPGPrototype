@@ -7,13 +7,18 @@ using UnityEngine.UI;
 public class PresetUI : MonoBehaviour
 {
     [Header("Preset UI")]
-    public TextMeshProUGUI presetNameText;
-    public Button savePresetButton;
-    public TextMeshProUGUI[] preset1ButtonTexts;
-    public TextMeshProUGUI[] preset2ButtonTexts;
-    public TextMeshProUGUI[] preset3ButtonTexts;
-    public Button[] loadButtons;
-    public Button[] saveNewButtons;
+    [SerializeField] private TextMeshProUGUI presetNameText;
+    [SerializeField] private Button savePresetButton;
+    [SerializeField] private TextMeshProUGUI[] preset1ButtonTexts;
+    [SerializeField] private TextMeshProUGUI[] preset2ButtonTexts;
+    [SerializeField] private TextMeshProUGUI[] preset3ButtonTexts;
+    [SerializeField] private GameObject loadMenu;
+    [SerializeField] private Button[] loadButtons;
+    [SerializeField] private GameObject saveNewMenu;
+    [SerializeField] private Button[] saveNewButtons;
+    [SerializeField] private GameObject newPresetNameMenu;
+    [SerializeField] private TMP_InputField newPresetInput;
+
 
     private Shell Shell { get; set; }
     private Inventory Inventory => PersistantData.main.inventory;
@@ -33,6 +38,7 @@ public class PresetUI : MonoBehaviour
         CustUI = ui;
         var presetManager = PersistantData.main.presetManager;
         presets = presetManager.GetPresets(Shell);
+        EnterMainMenu();
         SetLoadedPresetIndex(presetManager.GetLoadedPreset(Shell), false);
         InitializePresetButtons();
     }
@@ -164,5 +170,26 @@ public class PresetUI : MonoBehaviour
     public void Clear()
     {
         SetLoadedPresetIndex(PresetManager.noLoadedPreset);
+        EnterMainMenu();
+    }
+
+    public void EnterMainMenu()
+    {
+        loadMenu.SetActive(false);
+        saveNewMenu.SetActive(false);
+        ClearSaveNewMenu();
+    }
+
+    private void ClearSaveNewMenu()
+    {
+        newPresetNameMenu.SetActive(false);
+        SetSaveAsNewPresetName(string.Empty);
+        newPresetInput.text = string.Empty;
+    }
+
+    public void EnterSaveNewMenu()
+    {
+        saveNewMenu.SetActive(true);
+        ClearSaveNewMenu();
     }
 }
