@@ -11,6 +11,12 @@ public class ProgramTriggerConditionHitUnits : ProgramTriggerConditionResetTrigg
 
     protected override int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
-        return targets.Where((u) => teams.Contains(u.UnitTeam)).Count();
+        int count = 0;
+        foreach(var target in targets)
+        {
+            if (teams.Contains(target.UnitTeam))
+                ++count;
+        }
+        return count;
     }
 }
