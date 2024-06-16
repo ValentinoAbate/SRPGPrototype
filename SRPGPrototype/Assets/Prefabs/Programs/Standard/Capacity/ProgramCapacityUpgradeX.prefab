@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAPModifier: 1
-  maxHpModifier: -5
-  repairModifier: 0
+  maxHpModifier: -4
+  repairModifier: -1
 --- !u!114 &2536850600167629781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +53,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Gives +2 Capacity, +1 Max AP, and -5 Max Hp
+      value: Gives +2 Capacity, +1 Max AP, -4 Max Hp, and -1 Base Repair
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
