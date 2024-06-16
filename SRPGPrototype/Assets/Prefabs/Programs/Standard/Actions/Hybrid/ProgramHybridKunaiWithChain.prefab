@@ -97,7 +97,7 @@ MonoBehaviour:
   hidden: 0
   number: 6
   resetTrigger: 0
-  teams: 00000000
+  teams: 0300000004000000
 --- !u!114 &98220195974837385
 MonoBehaviour:
   m_ObjectHideFlags: 0
