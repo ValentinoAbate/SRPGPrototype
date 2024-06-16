@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76227cf6650a36a4fbd0382c3bb2a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
   affectUser: 0
 --- !u!114 &5680682514431361008
 MonoBehaviour:
@@ -25,6 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
   affectUser: 0
   targetStat: 0
   damage: 2
@@ -174,7 +176,7 @@ PrefabInstance:
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: slowdownInterval
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6850460929336370085, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
