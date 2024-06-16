@@ -57,8 +57,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1886681037636782710}
   - component: {fileID: 3208282018258584004}
-  - component: {fileID: 7890055360251378169}
   - component: {fileID: 131502316649569150}
+  - component: {fileID: 4548161759135223248}
   m_Layer: 0
   m_Name: UpgradeKnightsLance
   m_TagString: Untagged
@@ -95,21 +95,6 @@ MonoBehaviour:
   hidden: 0
   displayName: Knight's Lance
   description: Action
---- !u!114 &7890055360251378169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5725455643477320417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f94abe9b57cdb4b8cf70a0fbe83b85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hidden: 0
-  number: 3
-  resetCount: 1
 --- !u!114 &131502316649569150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +108,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 1661513406596137060, guid: 76fd73924db52de47b7e8411f94c2e21, type: 3}
+--- !u!114 &4548161759135223248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725455643477320417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c647892837b56d45a01385e3f904daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidden: 0
+  number: 3
+  resetTrigger: 1
+  teams: 01000000
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,18 +133,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: shape.patternOffsets.Array.size
+      propertyPath: color
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: displayName
-      value: Knight's Spear
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: tileType
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -152,13 +143,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: shape.dimensions.x
+      propertyPath: rarity
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 1
+      propertyPath: tileType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -167,18 +158,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: rarity
-      value: 2
+      propertyPath: displayName
+      value: Knight's Spear
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: color
-      value: 4
+      propertyPath: shape.dimensions.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: shape.patternOffsets.Array.data[0].x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -202,6 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -217,6 +223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -228,16 +239,6 @@ PrefabInstance:
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
