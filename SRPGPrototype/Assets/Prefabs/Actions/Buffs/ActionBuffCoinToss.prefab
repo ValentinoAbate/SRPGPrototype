@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
   affectUser: 0
   stat: 2
   number:
@@ -74,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
   affectUser: 0
   successChance: 0.5
   successEffectsObj: {fileID: 4593714877553315412}
@@ -203,7 +205,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
+      propertyPath: slowdownReset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
       propertyPath: maxUsesPerTurn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: slowdownInterval
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

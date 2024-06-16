@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 0
   displayName: Coin Toss+
-  description: Action (later make condition 2 successes in a row)
+  description: Action
 --- !u!114 &7356424466121278278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 0
   displayName: Coin Toss+
-  description: Action (later make condition 2 successes in a row)
+  description: Action
 --- !u!114 &95118761967658544
 MonoBehaviour:
   m_ObjectHideFlags: 0
