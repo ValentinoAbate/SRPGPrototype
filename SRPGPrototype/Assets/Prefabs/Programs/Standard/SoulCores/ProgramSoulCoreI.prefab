@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAPModifier: -1
-  maxHpModifier: -2
+  maxAPModifier: 0
+  maxHpModifier: -3
   repairModifier: 0
 --- !u!114 &3927021121853231309
 MonoBehaviour:
@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -55,7 +55,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Any shell with a Soul Core installed is deployable as a unit during
-        an encounter, but cannot be equipped. Gives -1 AP, and -2 Max Hp.
+        an encounter, but cannot be equipped. Gives -3 Max Hp.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

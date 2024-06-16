@@ -1,6 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6983903024886051007
+--- !u!114 &-9024472581301324192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343724877902909770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 2
+--- !u!114 &-5814529929720805406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAPModifier: 0
+  maxAPModifier: 1
   maxHpModifier: 0
   repairModifier: 0
 --- !u!114 &3927021121853231309
@@ -50,7 +63,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Any shell with a Soul Core installed is deployable as a unit during
-        an encounter, but cannot be equipped.
+        an encounter, but cannot be equipped. Gives +2 Capacity and +1 Max AP.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

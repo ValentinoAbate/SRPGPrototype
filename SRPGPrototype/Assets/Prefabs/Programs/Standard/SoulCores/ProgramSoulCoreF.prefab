@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6983903024886051007
+--- !u!114 &-6231837005370278252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 6343724877902909770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAPModifier: -1
-  maxHpModifier: 3
-  repairModifier: -2
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  targetStat: 0
+  damage: 1
+--- !u!114 &-2521759367720194199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343724877902909770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ce69ec60368d34fb0cda76806f6ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributeFilterMode: 0
+  attributes: 0
+  displayNameOverride: +Damage
+  filterByActionType: 1
+  actionTypes: 01000000
+  filterBySubType: 0
+  subTypes: 
+  actionEffectContainer: {fileID: 0}
 --- !u!114 &3927021121853231309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,8 +72,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Any shell with a Soul Core installed is deployable as a unit during
-        an encounter, but cannot be equipped. Gives -1 AP, +3 Max Hp and -2 Base
-        Repair.
+        an encounter, but cannot be equipped. Gives +1 damage to adjacent weapons.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
