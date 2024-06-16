@@ -28,6 +28,13 @@ public class SubAction : MonoBehaviour
         OverrideByEffects,
     }
 
+    [System.Flags]
+    public enum Options
+    {
+        None = 0,
+        SkipUpgradeCheck = 1,
+    }
+
     // Sub-action Metadata
     public bool DealsDamage
     {
@@ -103,9 +110,9 @@ public class SubAction : MonoBehaviour
             {
                 if(effect.StandaloneSubActionType != Type.None)
                 {
-                    user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.StandaloneSubActionType);
+                    user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                     ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
-                    user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.StandaloneSubActionType);
+                    user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                 }
                 else
                 {
@@ -115,12 +122,12 @@ public class SubAction : MonoBehaviour
         }
         else
         {
-            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
+            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, Options.None);
             foreach (var effect in effects)
             {
                 ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
             }
-            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions);
+            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, Options.None);
         }
     }
 

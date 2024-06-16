@@ -16,6 +16,8 @@ public abstract class ActionEffect : MonoBehaviour
 
     public SubAction.Type StandaloneSubActionType => standaloneSubActionType;
     [SerializeField] SubAction.Type standaloneSubActionType;
+    public SubAction.Options SubActionOptions => standaloneSubActionOptions;
+    [SerializeField] SubAction.Options standaloneSubActionOptions;
     public bool AffectUser => affectUser;
     [SerializeField] private bool affectUser = false;
 

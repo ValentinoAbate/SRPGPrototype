@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 7
+  standaloneSubActionOptions: -1
   affectUser: 1
   numSpaces: 1
 --- !u!114 &1884827043973909256
@@ -28,6 +29,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 12
+  standaloneSubActionOptions: 0
   affectUser: 0
   targetStat: 0
   damage: 2

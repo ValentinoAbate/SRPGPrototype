@@ -42,9 +42,9 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
         data.onAfterAction += UpdateUses;
     }
     protected abstract int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions);
-    private void Check(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Type overrideSubType = SubAction.Type.None)
+    private void Check(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Options options, SubAction.Type overrideSubType = SubAction.Type.None)
     {
-        if (completed || !actions.Contains(action))
+        if (completed || options.HasFlag(SubAction.Options.SkipUpgradeCheck) || !actions.Contains(action))
             return;
         CheckResetUses();
         progress += ProgressChange(grid, action, subAction, user, targets, targetPositions);

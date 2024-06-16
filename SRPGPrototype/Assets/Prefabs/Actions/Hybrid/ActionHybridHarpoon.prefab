@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 10
+  standaloneSubActionOptions: 0
   affectUser: 0
   targetStat: 0
   damage: 2
@@ -29,6 +30,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 7
+  standaloneSubActionOptions: -1
   affectUser: 0
 --- !u!1001 &8135780589257601915
 PrefabInstance:
