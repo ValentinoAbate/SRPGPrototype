@@ -18,6 +18,7 @@ public class Loot<T> where T : ILootable
         Max,
         Boss,
         Even,
+        SoulCore,
     }
 
     private readonly Dictionary<Rarity, WeightedSet<T>> dropTables = new Dictionary<Rarity, WeightedSet<T>>();
@@ -70,6 +71,11 @@ public class Loot<T> where T : ILootable
         {
             {Rarity.Boss, 1 },
         };
+        var soulCoreWeights = new WeightedSet<Rarity> 
+        {
+            {Rarity.SoulCore, 1} 
+        };
+
         standardLootRarities = new Dictionary<LootQuality, WeightedSet<Rarity>>()
         {
             { LootQuality.Standard, standardWeights },
@@ -77,6 +83,7 @@ public class Loot<T> where T : ILootable
             { LootQuality.Max, maxWeights },
             { LootQuality.Even, evenWeights },
             { LootQuality.Boss, bossWeights },
+            { LootQuality.SoulCore, soulCoreWeights }
         };
     }
 
