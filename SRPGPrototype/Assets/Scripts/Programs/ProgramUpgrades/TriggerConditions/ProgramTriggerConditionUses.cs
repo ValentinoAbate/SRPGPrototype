@@ -50,7 +50,7 @@ public class ProgramTriggerConditionUses: ProgramTriggerCondition
         data.onAfterAction += Check;
     }
 
-    private void Check(BattleGrid grid, Action action, Unit user)
+    private void Check(BattleGrid grid, Action action, Unit user, int cost)
     {
         if (completed || !actions.Contains(action))
             return;

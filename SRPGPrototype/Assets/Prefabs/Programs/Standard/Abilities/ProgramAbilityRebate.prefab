@@ -31,7 +31,7 @@ MonoBehaviour:
     dimensions: {x: 3, y: 3}
   useWeights: 0
   weights: []
---- !u!114 &3591623356241956809
+--- !u!114 &8894643187008860965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,17 +40,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7202993979176963460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c5baf5f2b96f54084c23651ccbee32, type: 3}
+  m_Script: {fileID: 11500000, guid: 510857e196d3e2c428e09578d97bf1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Gain 1 AP after using an action with 2+ AP cost (once/turn)
   stat: 2
   number:
-    min: 0
-    max: 1
+    min: -2147483648
+    max: 2147483647
     constant: 1
     baseAmount: 0
-    modifier: -1
+    modifier: 0
     multiplier: 1
     unitNumber:
       min: -2147483648
@@ -60,10 +60,11 @@ MonoBehaviour:
       modifier: 0
       multiplier: 1
       type: 0
-    type: 1
+    type: 0
   useLimiter:
     frequency: 1
     limit: 1
+  costThreshold: 2
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramAbilityRefund
+      value: ProgramAbilityRebate
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

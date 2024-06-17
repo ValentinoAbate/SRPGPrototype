@@ -13,5 +13,5 @@ public abstract class ProgramEffectAddOnAfterActionAbility : ProgramEffectAddAbi
         data.onAfterAction += Ability;
     }
 
-    protected abstract void Ability(BattleGrid grid, Action action, Unit user);
+    protected abstract void Ability(BattleGrid grid, Action action, Unit user, int cost);
 }

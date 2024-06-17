@@ -11,7 +11,7 @@ public abstract class Unit : GridObject
 
     public delegate void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Options options, SubAction.Type overrideSubType = SubAction.Type.None);
 
-    public delegate void OnAfterAction(BattleGrid grid, Action action, Unit user);
+    public delegate void OnAfterAction(BattleGrid grid, Action action, Unit user, int cost);
 
     public delegate void OnDeath(BattleGrid grid, Unit unit, Unit killedBy);
 

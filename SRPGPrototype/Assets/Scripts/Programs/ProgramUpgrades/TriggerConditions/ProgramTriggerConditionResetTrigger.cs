@@ -63,7 +63,7 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
             progress = 0;
         }
     }
-    private void UpdateUses(BattleGrid grid, Action action, Unit user)
+    private void UpdateUses(BattleGrid grid, Action action, Unit user, int cost)
     {
         if (completed || !actions.Contains(action))
             return;

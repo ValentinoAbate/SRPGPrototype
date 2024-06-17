@@ -6,14 +6,16 @@ public class ProgramEffectAddStatAfterActionAbility : ProgramEffectAddOnAfterAct
 {
     [SerializeField] private Stats.StatName stat;
     [SerializeField] private ActionNumber number;
-    protected override void Ability(BattleGrid grid, Action action, Unit user)
+    protected override void Ability(BattleGrid grid, Action action, Unit user, int cost)
     {
-        int value = number.BaseValue(action, user);
+        if (!AppliesToAction(action, cost, user, out int value))
+            return;
         user.ModifyStat(grid, stat, value, user);
     }
 
-    protected bool AppliesToAction(Action action, Unit user)
+    protected virtual bool AppliesToAction(Action action, int cost, Unit user, out int baseValue)
     {
-        return number.BaseValue(action, user) != 0;
+        baseValue = number.BaseValue(action, user);
+        return baseValue != 0;
     }
 }

@@ -12,12 +12,8 @@ public class ProgramEffectAddStatAfterActionAbilityTurnLimit : ProgramEffectAddS
         useLimiter.Attatch(data);
     }
 
-    protected override void Ability(BattleGrid grid, Action action, Unit user)
+    protected override bool AppliesToAction(Action action, int cost, Unit user, out int baseValue)
     {
-        if (!AppliesToAction(action, user))
-            return;
-        if (!useLimiter.TryUse())
-            return;
-        base.Ability(grid, action, user);
+        return base.AppliesToAction(action, cost, user, out baseValue) && useLimiter.TryUse();
     }
 }
