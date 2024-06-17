@@ -29,6 +29,7 @@ public abstract class AIUnit : Unit
     public override OnAfterAction OnAfterActionFn { get; }
     public override OnDeath OnDeathFn { get => onDeathFn; }
     private OnDeath onDeathFn = null;
+    public override OnDamaged OnDamagedFn { get; }
     public override OnBattleStartDel OnBattleStartFn { get; }
     public override OnPhaseStartDel OnPhaseStartFn { get; }
 

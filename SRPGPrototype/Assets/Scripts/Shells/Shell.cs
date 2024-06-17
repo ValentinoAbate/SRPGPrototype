@@ -67,6 +67,7 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnSubAction OnAfterSubAction { get; private set; }
     public Unit.OnAfterAction OnAfterAction { get; private set; }
     public Unit.OnDeath OnDeath { get; private set; }
+    public Unit.OnDamaged OnDamaged { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
 
@@ -371,6 +372,7 @@ public class Shell : MonoBehaviour, ILootable
         OnBeforeSubAction = compileData.onBeforeSubAction;
         OnAfterAction = compileData.onAfterAction;
         OnDeath = compileData.onDeath;
+        OnDamaged = compileData.onDamaged;
         OnBattleStart = compileData.onBattleStart;
         OnPhaseStart = compileData.onPhaseStart;
         incomingDamageModifiers.Clear();
@@ -394,6 +396,7 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnSubAction onAfterSubAction = null;
         public Unit.OnAfterAction onAfterAction = null;
         public Unit.OnDeath onDeath = null;
+        public Unit.OnDamaged onDamaged = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public Unit.OnPhaseStartDel onPhaseStart = null;
         public GameObject soulCoreUnitPrefab = null;

@@ -15,6 +15,8 @@ public abstract class Unit : GridObject
 
     public delegate void OnDeath(BattleGrid grid, Unit unit, Unit killedBy);
 
+    public delegate void OnDamaged(BattleGrid grid, Unit self, Unit source, int amount);
+
     public enum Team
     { 
         None,
@@ -48,6 +50,7 @@ public abstract class Unit : GridObject
     public abstract OnSubAction OnAfterSubActionFn { get; }
     public abstract OnAfterAction OnAfterActionFn { get; }
     public abstract OnDeath OnDeathFn { get; }
+    public abstract OnDamaged OnDamagedFn { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract OnPhaseStartDel OnPhaseStartFn { get; }
     public abstract string DisplayName { get; }
@@ -93,6 +96,7 @@ public abstract class Unit : GridObject
         else
         {
             HP -= damage;
+            OnDamagedFn?.Invoke(grid, this, source, damage);
         }
     }
 

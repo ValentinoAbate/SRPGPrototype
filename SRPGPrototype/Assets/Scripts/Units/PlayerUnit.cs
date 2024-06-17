@@ -27,6 +27,7 @@ public class PlayerUnit : Unit
     public override OnSubAction OnAfterSubActionFn => Shell.OnAfterSubAction;
     public override OnAfterAction OnAfterActionFn => Shell.OnAfterAction;
     public override OnDeath OnDeathFn => Shell.OnDeath;
+    public override OnDamaged OnDamagedFn => Shell.OnDamaged;
     public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
     public override OnPhaseStartDel OnPhaseStartFn => Shell.OnPhaseStart;
 
