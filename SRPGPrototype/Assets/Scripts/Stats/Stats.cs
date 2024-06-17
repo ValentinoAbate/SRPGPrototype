@@ -37,7 +37,7 @@ public class Stats
 
     public int MaxAP { get; set; }
 
-    private int baseRepair = 0;
+    public int BaseRepair { get; private set;  } = 0;
 
     public int Repair 
     { 
@@ -46,7 +46,7 @@ public class Stats
         {
             if(RepairAbilityFlags.HasFlag(RepairAbilities.BaseIsMax))
             {
-                repair = Mathf.Min(value, baseRepair);
+                repair = Mathf.Min(value, BaseRepair);
                 return;
             }
             repair = value;
@@ -63,21 +63,21 @@ public class Stats
 
     public void DoRepair()
     {
-        if(RepairAbilityFlags.HasFlag(RepairAbilities.ExcessRepairDamages) && Repair > baseRepair)
+        if(RepairAbilityFlags.HasFlag(RepairAbilities.ExcessRepairDamages) && Repair > BaseRepair)
         {
-            HP = Mathf.Max(1, HP - (Repair - baseRepair));
-            Repair = baseRepair;
+            HP = Mathf.Max(1, HP - (Repair - BaseRepair));
+            Repair = BaseRepair;
             return;
         }
         HP += Repair;
-        Repair = baseRepair;
+        Repair = BaseRepair;
     }
 
     public void SetShellValues(Stats compiledStats)
     {
         MaxHP = compiledStats.MaxHP;
         MaxAP = compiledStats.MaxAP;
-        baseRepair = compiledStats.Repair;
+        BaseRepair = compiledStats.Repair;
         Repair = compiledStats.Repair;
         RepairAbilityFlags = compiledStats.RepairAbilityFlags;
     }

@@ -40,6 +40,7 @@ public abstract class Unit : GridObject
     public abstract int MaxAP { get; set; }
     public abstract int AP { get; set; }
     public abstract int Repair { get; set; }
+    public abstract int BaseRepair { get; }
     public abstract CenterStat Power { get; }
     public abstract CenterStat Speed { get; }
     public abstract CenterStat Break { get; }

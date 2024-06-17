@@ -16,6 +16,7 @@ public class PlayerUnit : Unit
     public override int AP { get => ap; set { ap = value; UI.AP = value; } }
     private int ap = 0;
     public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
+    public override int BaseRepair => Stats.BaseRepair;
     public override CenterStat Power => Stats.Power;
     public override CenterStat Speed => Stats.Speed;
     public override CenterStat Break => Stats.Break;

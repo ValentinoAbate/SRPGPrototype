@@ -22,6 +22,7 @@ public abstract class AIUnit : Unit
     private int ap = 0;
 
     public override int Repair { get; set; }
+    public override int BaseRepair { get; }
 
     public override OnSubAction OnBeforeSubActionFn { get; }
     public override OnSubAction OnAfterSubActionFn { get; }
