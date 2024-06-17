@@ -49,7 +49,7 @@ MonoBehaviour:
     modifier: 0
     multiplier: 1
     type: 0
-  abilityName: Weakened
+  abilityName: Weak Start
 --- !u!1001 &6724310523622875936
 PrefabInstance:
   m_ObjectHideFlags: 0

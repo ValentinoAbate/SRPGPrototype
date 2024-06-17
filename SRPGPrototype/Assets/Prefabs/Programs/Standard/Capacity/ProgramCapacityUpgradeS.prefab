@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6cb1a5ec167c142a79f211bd713e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: 6
+  stat: 2
   number:
     min: -2147483648
     max: 2147483647
@@ -49,7 +49,7 @@ MonoBehaviour:
     modifier: 0
     multiplier: 1
     type: 0
-  abilityName: Slowed
+  abilityName: Slow Start
 --- !u!1001 &6724310523622875936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Gives +2 Capacity, +1 Max AP,  and -2 Speed on Battle Start.
+      value: Gives +2 Capacity, +1 Max AP,  and -2 AP on Battle Start.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
