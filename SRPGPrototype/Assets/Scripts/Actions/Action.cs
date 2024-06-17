@@ -174,9 +174,10 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 
     public void FinishAction(BattleGrid grid, Unit user, bool applyAPCost = true)
     {
+        int cost = 0;
         if(applyAPCost)
         {
-            int cost = APCost;
+            cost = APCost;
             if(!zeroSpeed)
             {
                 cost -= user.Speed.Value;
@@ -208,7 +209,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
                 }
             }
         }
-        user.OnAfterActionFn?.Invoke(grid, this, user);
+        user.OnAfterActionFn?.Invoke(grid, this, user, cost);
     }
 
     public void GrantFreeUse()
