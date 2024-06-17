@@ -54,7 +54,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected IEnumerable<Vector2Int> MovePositions(BattleGrid grid, Vector2Int pos, RangePattern pattern)
     {
-        return pattern.GetPositions(grid, pos).Where((p) => grid.IsLegalAndEmpty(p));
+        return pattern.GetPositions(grid, pos, null).Where((p) => grid.IsLegalAndEmpty(p));
     }
 
     protected Unit TargetPriority(Unit u1, Unit u2)
@@ -87,7 +87,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             // Use the move range, a legality check, and an emptiness / predicate check for the adjacency function
             IEnumerable<Vector2Int> NodeAdj(Vector2Int p)
             {
-                return moveRange.GetPositions(grid, p).Where((p2) => grid.IsLegal(p2) && (grid.IsEmpty(p2) || canMoveThroughTarget(grid.Get(p2))));
+                return moveRange.GetPositions(grid, p, null).Where((p2) => grid.IsLegal(p2) && (grid.IsEmpty(p2) || canMoveThroughTarget(grid.Get(p2))));
             }
             // Use 1 as the cost if the pos is empty, else use the number of grid positions (so paths will always prefer going through less things)
             int numGridPositions = grid.Dimensions.x * grid.Dimensions.y;
@@ -121,7 +121,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         {
             var targetablePositions = targetPattern.ReverseTarget(grid, target.Pos);
             var targetData = targetPattern.ReverseTarget(grid, target.Pos)  
-                                          .SelectMany((p) => targetRange.GetPositions(grid, p).Select((rPos) => new TargetData(rPos, p))
+                                          .SelectMany((p) => targetRange.GetPositions(grid, p, null).Select((rPos) => new TargetData(rPos, p))
                                           .Where((data) => ValidPos(data.userPos)));
             // For now, just add the empty/self legal positions where a target would be in range
             foreach(var posData in targetData)
@@ -200,7 +200,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> targetUnits) where Target : Unit
     {
         var subAction = standardAction.SubActions[0];
-        foreach (var pos in subAction.Range.GetPositions(grid, self.Pos))
+        foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
         {
             var targetPositions = subAction.targetPattern.Target(grid, self, pos);
             foreach (var tPos in targetPositions)

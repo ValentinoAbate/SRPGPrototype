@@ -12,7 +12,7 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
         Both = Horizontal | Diagonal
     }
     public Directions directions;
-    public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
+    public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos, Unit user)
     {
         var ret = new List<Vector2Int>();
         if(directions.HasFlag(Directions.Horizontal))

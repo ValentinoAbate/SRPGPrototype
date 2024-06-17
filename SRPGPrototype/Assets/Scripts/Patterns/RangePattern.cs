@@ -24,7 +24,7 @@ public class RangePattern
     public Pattern pattern;
     public RangePatternGenerator generator = null;
 
-    public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int userPos)
+    public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int userPos, Unit user)
     {
         switch (patternType)
         {
@@ -43,7 +43,7 @@ public class RangePattern
             case Type.Pattern:
                 return pattern.OffsetsShifted(userPos);
             case Type.Generated:
-                return generator.Generate(grid, userPos);
+                return generator.Generate(grid, userPos, user);
             case Type.Horizontal:
                 return new Vector2Int[] { userPos + Vector2Int.left, userPos + Vector2Int.right };
             case Type.Vertical:

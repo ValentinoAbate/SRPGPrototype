@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 public class RangePatternGeneratorAllUnits : RangePatternGenerator
 { 
-    public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos)
+    public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos, Unit user)
     {
         return grid.Select((u) => u.Pos);
     }
