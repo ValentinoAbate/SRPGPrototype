@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d475815048231469ff6dea38ba3649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timing: 0
+  subTypes: 
   stat: 5
   number:
     min: 0
@@ -79,7 +81,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
