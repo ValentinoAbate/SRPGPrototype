@@ -48,20 +48,17 @@ MonoBehaviour:
   variantChance: 0.75
   patterns:
   - patternOffsets:
-    - {x: 1, y: 1}
     - {x: 1, y: 0}
-    - {x: 0, y: 1}
-    dimensions: {x: 2, y: 2}
-  - patternOffsets:
-    - {x: 1, y: 1}
-    - {x: 0, y: 1}
     - {x: 0, y: 0}
-    dimensions: {x: 2, y: 2}
+    dimensions: {x: 2, y: 1}
   - patternOffsets:
-    - {x: 1, y: 0}
-    - {x: 0, y: 1}
+    - {x: 2, y: 0}
     - {x: 0, y: 0}
-    dimensions: {x: 2, y: 2}
+    dimensions: {x: 3, y: 1}
+  - patternOffsets:
+    - {x: 0, y: 2}
+    - {x: 0, y: 0}
+    dimensions: {x: 1, y: 3}
   useWeights: 0
   weights: []
 --- !u!1001 &1592762870832421066
@@ -94,7 +91,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -104,12 +101,12 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -119,7 +116,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[1].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
