@@ -33,6 +33,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d475815048231469ff6dea38ba3649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timing: 0
+  subTypes: 02000000
   stat: 5
   number:
     min: -2147483648
@@ -51,7 +53,6 @@ MonoBehaviour:
       type: 0
     type: 0
   abilityName: Gain 1 power after moves (except warps and jumps)
-  subTypes: 02000000
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,7 +68,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
