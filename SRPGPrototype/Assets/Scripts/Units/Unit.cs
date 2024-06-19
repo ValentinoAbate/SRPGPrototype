@@ -38,7 +38,7 @@ public abstract class Unit : GridObject
     public abstract Interference InterferenceLevel { get; }
     public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }
-    public bool Dead => HP <= 0;
+    public virtual bool Dead => HP <= 0;
     public abstract int MaxAP { get; set; }
     public abstract int AP { get; set; }
     public abstract int Repair { get; set; }
@@ -106,7 +106,7 @@ public abstract class Unit : GridObject
         Repair = 0;
     }
 
-    public void Kill(BattleGrid grid, Unit killedBy)
+    public virtual void Kill(BattleGrid grid, Unit killedBy)
     {
         HP = 0;
         OnDeathFn?.Invoke(grid, this, killedBy);

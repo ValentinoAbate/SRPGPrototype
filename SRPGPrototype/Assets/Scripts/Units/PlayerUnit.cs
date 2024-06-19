@@ -10,6 +10,7 @@ public class PlayerUnit : Unit
 
     #region Stats
 
+    public override bool Dead => Shell == null || base.Dead;
     public override int MaxHP { get => Stats.MaxHP; set => Stats.MaxHP = value; }
     public override int HP { get => Stats.HP; protected set { Stats.HP = value; UI.Hp = value; } }
     public override int MaxAP { get => Stats.MaxAP; set => Stats.MaxAP = value; }
