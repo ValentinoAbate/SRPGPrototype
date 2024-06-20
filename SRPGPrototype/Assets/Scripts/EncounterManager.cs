@@ -6,22 +6,19 @@ using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
-    public PhaseManager phaseManager;
-    public BattleGrid grid;
-    public LootManager loot;
-    public BattleCursor cursor;
-    public GameObject playerPrefab;
-    public GameObject unitPlacementUI;
-    public Button confirmPlayerPlacementButton;
-    public GameObject spawnPositionPrefab;
-    public Transform outOfBoundsPos;
-    public Transform battleGridCenter;
+    [SerializeField] private PhaseManager phaseManager;
+    public BattleGrid Grid => grid;
+    [SerializeField] private BattleGrid grid;
+    [SerializeField] private LootManager loot;
+    [SerializeField] private UnitPlacementUI unitPlacementUI;
+    [SerializeField] private Button confirmPlayerPlacementButton;
+    [SerializeField] private GameObject spawnPositionPrefab;
+    [SerializeField] private Transform battleGridCenter;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
     private readonly List<GameObject> spawnPositionObjects = new List<GameObject>();
-    private readonly Stack<PlayerUnit> spawnedUnits = new Stack<PlayerUnit>();
-    private readonly Stack<PlayerUnit> unitsToSpawn = new Stack<PlayerUnit>();
+    private readonly List<Unit> units = new List<Unit>();
 
     private void Start()
     {
@@ -36,84 +33,24 @@ public class EncounterManager : MonoBehaviour
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
         grid.CenterAtPosition(battleGridCenter.position);
         // Instantiate and add units to the grid
-        var units = InitializeUnits(encounter.units);
+        InitializeUnits(encounter.units);
         // Instantiate spawn position objects
+        spawnPositionObjects.Clear();
+        spawnPositionObjects.EnsureCapacity(encounter.spawnPositions.Count);
         foreach(var pos in encounter.spawnPositions)
         {
             var spawnPosObj = Instantiate(spawnPositionPrefab);
             spawnPosObj.transform.position = grid.GetSpace(pos);
             spawnPositionObjects.Add(spawnPosObj);
         }
-
-        // Add player units to spawn stack
-        unitsToSpawn.Clear();
-        spawnedUnits.Clear();
-        // Add drones (if applicable) to the spawn stack
-        var droneShells = PersistantData.main.inventory.DroneShells;
-        for (int i = 0; i < droneShells.Length; i++)
-        {
-            var droneShell = droneShells[i];
-            var droneUnit = Instantiate(droneShell.SoulCoreUnitPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerDroneUnit>();
-            droneUnit.SetShell(droneShell);
-            droneUnit.UnitIndex = droneShells.Length - i;
-            unitsToSpawn.Push(droneUnit);
-        }
-        // Add the player to the spawn stack
-        var player = Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>();
-        player.UnitIndex = 0;
-        player.IsMain = true;
-        unitsToSpawn.Push(player);
-
-        // Don't allow the encounter to start until the player has been placed
-        confirmPlayerPlacementButton.interactable = false;
-        confirmPlayerPlacementButton.onClick.AddListener(() => StartEncounter(units));
-        // Setup cursor for unit placement
-        cursor.OnClick += (pos) => PlaceUnit(pos, encounter.spawnPositions);
-        cursor.OnCancel += CancelUnitPlacement;
+        unitPlacementUI.Initialize(grid, encounter.spawnPositions, StartEncounter);
     }
 
-    private void PlaceUnit(Vector2Int pos, List<Vector2Int> spawnPositions)
-    {
-        if (grid.IsLegalAndEmpty(pos) && (spawnPositions.Count <= 0 || spawnPositions.Contains(pos)))
-        {
-            if(unitsToSpawn.Count >= 1)
-            {
-                var unit = unitsToSpawn.Pop();
-                grid.Add(pos, unit);
-                unit.transform.position = grid.GetSpace(pos);
-                spawnedUnits.Push(unit);
-                if (unitsToSpawn.Count <= 0)
-                {
-                    confirmPlayerPlacementButton.interactable = true;
-                }
-            }
-            else
-            {
-                grid.MoveAndSetWorldPos(spawnedUnits.Peek(), pos);
-            }
-        }
-    }
-
-    private void CancelUnitPlacement()
-    {
-        if(spawnedUnits.Count >= 1)
-        {
-            var unit = spawnedUnits.Pop();
-            unit.transform.position = outOfBoundsPos.position;
-            grid.Remove(unit);
-            unitsToSpawn.Push(unit);
-            confirmPlayerPlacementButton.interactable = false;
-        }
-    }
-
-    public void StartEncounter(List<Unit> units)
+    private void StartEncounter(IEnumerable<Unit> spawnedUnits)
     {
         // Add the player units to the list of units
         units.AddRange(spawnedUnits);
-        // Disable the placement UI
-        unitPlacementUI.SetActive(false);
-        // Clear the cursor's events
-        cursor.NullAllActions();
+
         // Log the grid's on add event to the phaseManager's add Unit function
         grid.OnAddUnit = phaseManager.AddUnit;
         // Destroy the spawn position objects
@@ -125,9 +62,10 @@ public class EncounterManager : MonoBehaviour
         StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }
 
-    private List<Unit> InitializeUnits(IEnumerable<Encounter.UnitEntry> entries)
+    private void InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> entries)
     {
-        var units = new List<Unit>();
+        units.Clear();
+        units.EnsureCapacity(entries.Count);
         foreach (var entry in entries)
         {
             var unit = Instantiate(entry.unit).GetComponent<Unit>();
@@ -135,7 +73,6 @@ public class EncounterManager : MonoBehaviour
             unit.transform.position = grid.GetSpace(unit.Pos);
             units.Add(unit);
         }
-        return units;
     }
 
     public void EndEncounter()

@@ -248,7 +248,7 @@ public abstract class Unit : GridObject
 
     public virtual IEnumerator OnBattleStart(EncounterManager manager)
     {
-        OnBattleStartFn?.Invoke(manager.grid, this);
+        OnBattleStartFn?.Invoke(manager.Grid, this);
         yield break;
     }
 
