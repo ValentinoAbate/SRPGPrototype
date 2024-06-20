@@ -28,8 +28,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b5a4588356efd044389e98c0b58a9dd0,
+        type: 3}
+    - target: {fileID: 1215119150226470895, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.059048653
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
@@ -38,23 +44,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0.059048653
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
-        type: 3}
-      propertyPath: displayName
-      value: Turret (Friendly)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
-        type: 3}
-      propertyPath: maxAP
-      value: 1
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: team
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: maxAP
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
@@ -66,6 +67,16 @@ PrefabInstance:
       propertyPath: description
       value: Attacks a unit diagonally adjacent or at range for 2 damage. Targets
         units on the Enemy Team.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: displayName
+      value: Turret (Friendly)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
@@ -84,6 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -95,16 +111,6 @@ PrefabInstance:
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
@@ -150,6 +156,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -165,6 +176,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -176,16 +192,6 @@ PrefabInstance:
     - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 7c60fd28afed5a148823908f978bec1c,
