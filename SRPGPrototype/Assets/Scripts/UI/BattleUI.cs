@@ -236,7 +236,10 @@ public class BattleUI : MonoBehaviour
         if (++currAction >= action.SubActions.Count)
         {
             action.FinishAction(grid, unit);
-            EnterUnitSelection();
+            if (!playerPhase.CheckEndBattle())
+            {
+                EnterUnitSelection();
+            }
         }
         else
         {
