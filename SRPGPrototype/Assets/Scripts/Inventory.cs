@@ -40,8 +40,8 @@ public class Inventory : MonoBehaviour
     private Program[] startingPrograms = new Program[2];
 
     public Shell[] DroneShells => Shells.Where((s) => s.HasSoulCore && s.Compiled).ToArray();
-    public IEnumerable<Shell> Shells => shells;
-    public IEnumerable<Program> Programs => programs;
+    public IReadOnlyList<Shell> Shells => shells;
+    public IReadOnlyList<Program> Programs => programs;
 
     private readonly List<Program> programs = new List<Program>();
     private readonly List<Shell> shells = new List<Shell>();
@@ -52,8 +52,6 @@ public class Inventory : MonoBehaviour
             AddProgram(prog, true);
         foreach (var shell in startingShells)
             AddShell(shell, true);
-        if (startingShells.Length >= 1)
-            EquippedShell = shells[0];
     }
 
     public void AddProgram(Program p, bool fromAsset = false)
