@@ -12,6 +12,7 @@ public class PersistantData : MonoBehaviour
     public Inventory inventory;
     public MapManager mapManager;
     public PresetManager presetManager;
+    public ShopManager shopManager;
 
     private void Awake()
     {
@@ -37,5 +38,6 @@ public class PersistantData : MonoBehaviour
         mapManager.Clear();
         inventory.Initialize();
         mapManager.Generate();
+        shopManager.Initialize();
     }
 }

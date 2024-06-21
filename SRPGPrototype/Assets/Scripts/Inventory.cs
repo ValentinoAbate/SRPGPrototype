@@ -34,10 +34,9 @@ public class Inventory : MonoBehaviour
     private Transform programContainer = null;
 
     [Header("Initial Values")]
-    [SerializeField]
-    private Shell[] startingShells = new Shell[1];
-    [SerializeField]
-    private Program[] startingPrograms = new Program[2];
+    [SerializeField] private Shell[] startingShells = new Shell[1];
+    [SerializeField] private Program[] startingPrograms = new Program[2];
+    [SerializeField] private int startingMoney = 0;
 
     public Shell[] DroneShells => Shells.Where((s) => s.HasSoulCore && s.Compiled).ToArray();
     public IReadOnlyList<Shell> Shells => shells;
@@ -46,12 +45,33 @@ public class Inventory : MonoBehaviour
     private readonly List<Program> programs = new List<Program>();
     private readonly List<Shell> shells = new List<Shell>();
 
+    public int Money 
+    { 
+        get => money;
+        set
+        {
+            money = Mathf.Max(0, money);
+        } 
+    }
+    private int money;
+
+    public void Clear()
+    {
+        EquippedShell = null;
+        shells.Clear();
+        programs.Clear();
+        shellContainer.DestroyAllChildren();
+        programContainer.DestroyAllChildren();
+        Money = 0;
+    }
+
     public void Initialize()
     {
         foreach (var prog in startingPrograms)
             AddProgram(prog, true);
         foreach (var shell in startingShells)
             AddShell(shell, true);
+        money = startingMoney;
     }
 
     public void AddProgram(Program p, bool fromAsset = false)
@@ -109,12 +129,5 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Clear()
-    {
-        EquippedShell = null;
-        shells.Clear();
-        programs.Clear();
-        shellContainer.DestroyAllChildren();
-        programContainer.DestroyAllChildren();
-    }
+    public bool CanAfford(int cost) => Money >= cost;
 }

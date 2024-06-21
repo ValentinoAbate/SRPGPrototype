@@ -10,7 +10,6 @@ public class CurrentShellViewer : MonoBehaviour
     public TextMeshProUGUI text;
     public Image shellImage;
     public EventTrigger[] triggers;
-    [SerializeField] private Color disabledColor;
     [SerializeField] private ShellDescriptionUI shellDescriptionUI;
 
     public void Start()
@@ -32,7 +31,7 @@ public class CurrentShellViewer : MonoBehaviour
                 trigger.triggers.Clear();
             }
             text.text = "No Equipped Shell";
-            shellImage.color = disabledColor;
+            shellImage.color = SharedColors.DisabledColor;
             return;
         }
         shellImage.color = Color.white;
