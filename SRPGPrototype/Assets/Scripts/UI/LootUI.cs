@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,20 +28,10 @@ public class LootUI : MonoBehaviour
 
     public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, System.Action onLootClose)
     {
-        // Create loot objects
-        var programDrawsInstantiated = programDraws.Select((list) => list.Select((prog) => Instantiate(prog.gameObject, transform).GetComponent<Program>()));
-        var shellDrawsInstantiated = shellDraws.Select((list) => list.Select((shell) => Instantiate(shell.gameObject, transform).GetComponent<Shell>()));
-        // Setup main menu
-        foreach (var draw in programDrawsInstantiated)
-        {
-            var button = Instantiate(programDrawButtonPrefab, menuButtonContainer).GetComponent<Button>();
-            button.onClick.AddListener(() => ShowProgDraw(inv, button, draw));
-        }
-        foreach (var draw in shellDrawsInstantiated)
-        {
-            var button = Instantiate(shellDrawButtonPrefab, menuButtonContainer).GetComponent<Button>();
-            button.onClick.AddListener(() => ShowShellDraw(inv, button, draw));
-        }
+        // Setup Program Draws
+        SetupDraws(inv, programDraws, programDrawButtonPrefab, ShowProgDraw);
+        // Setup ShellDraws
+        SetupDraws(inv, shellDraws, shellDrawButtonPrefab, ShowShellDraw);
         // Set up exit button
         exitButton.onClick.RemoveAllListeners();
         exitButton.onClick.AddListener(HideUI);
@@ -48,6 +39,25 @@ public class LootUI : MonoBehaviour
         // Activate menu
         ReturnToMainMenu();
         uiCanvas.gameObject.SetActive(true);
+    }
+
+    private void SetupDraws<T>(Inventory inv, LootData<T> draws, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>> onClick) where T : MonoBehaviour, ILootable
+    {
+        // Setup Program Draws
+        foreach (var draw in draws)
+        {
+            var instantiatedDraw = new List<T>(draw.Count);
+            foreach (var item in draw)
+            {
+                instantiatedDraw.Add(Instantiate(item.gameObject, transform).GetComponent<T>());
+            }
+            var button = Instantiate(buttonPrefab, menuButtonContainer).GetComponent<Button>();
+            void OnClick()
+            {
+                onClick(inv, button, instantiatedDraw);
+            }
+            button.onClick.AddListener(OnClick);
+        }
     }
 
     public void HideUI()
