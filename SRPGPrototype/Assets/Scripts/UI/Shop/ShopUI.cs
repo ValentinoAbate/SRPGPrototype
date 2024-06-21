@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopUI : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private ProgramDescriptionUI progDescUI;
     [SerializeField] private ShellDescriptionUI shellDescUI;
+    [SerializeField] private TextMeshProUGUI currentMoneyText;
     [SerializeField] private GameObject buttonContainer2;
     [SerializeField] private int pageSize = 10;
 
@@ -34,10 +36,10 @@ public class ShopUI : MonoBehaviour
         {
             shopEntries.Add(new ShellShopEntry(data, shell, shellDescUI));
         }
-        RefreshButtons();
+        Refresh();
     }
 
-    private void RefreshButtons()
+    private void Refresh()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -52,12 +54,13 @@ public class ShopUI : MonoBehaviour
             }
         }
         buttonContainer2.SetActive(shopEntries.Count > pageSize);
+        currentMoneyText.text = $"Money: ${PersistantData.main.inventory.Money}";
     }
 
     public void OnPurchaseComplete(int index)
     {
         shopEntries.RemoveAt(index);
-        RefreshButtons();
+        Refresh();
     }
 
     public void Hide()
