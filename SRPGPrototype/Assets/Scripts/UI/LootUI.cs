@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -26,7 +27,7 @@ public class LootUI : MonoBehaviour
 
     [SerializeField] private bool allowLootSkipping = true;
 
-    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, System.Action onLootClose)
+    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, UnityAction onLootClose)
     {
         // Setup Program Draws
         SetupDraws(inv, programDraws, programDrawButtonPrefab, ShowProgDraw);
@@ -35,7 +36,7 @@ public class LootUI : MonoBehaviour
         // Set up exit button
         exitButton.onClick.RemoveAllListeners();
         exitButton.onClick.AddListener(HideUI);
-        exitButton.onClick.AddListener(() => onLootClose());
+        exitButton.onClick.AddListener(onLootClose);
         // Activate menu
         ReturnToMainMenu();
         uiCanvas.gameObject.SetActive(true);
@@ -98,15 +99,14 @@ public class LootUI : MonoBehaviour
             lootButtonUI.nameText.text = shell.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddShell(shell));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
-            lootButtonUI.trigger.triggers.Clear();
-            var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((d) => shellDesc.Show(shell));
-            var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener((d) => shellDesc.Hide());
-            lootButtonUI.trigger.triggers.Add(hover);
-            lootButtonUI.trigger.triggers.Add(hoverExit);
+            lootButtonUI.trigger.SetHoverCallbacks((d) => shellDesc.Show(shell), HideShellDesc);
         }
         shellDrawUI.SetActive(true);
+    }
+
+    private void HideShellDesc(BaseEventData arg0)
+    {
+        shellDesc.Hide();
     }
 
     public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> data)
@@ -120,15 +120,14 @@ public class LootUI : MonoBehaviour
             lootButtonUI.nameText.text = prog.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
-            lootButtonUI.trigger.triggers.Clear();
-            var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((d) => programDesc.Show(prog));
-            var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener((d) => programDesc.Hide());
-            lootButtonUI.trigger.triggers.Add(hover);
-            lootButtonUI.trigger.triggers.Add(hoverExit);
+            lootButtonUI.trigger.SetHoverCallbacks((d) => programDesc.Show(prog), HideProgramDesc);
         }
         programDrawUI.SetActive(true);
+    }
+
+    private void HideProgramDesc(BaseEventData arg0)
+    {
+        programDesc.Hide();
     }
 
     private void RefreshExitButton()
