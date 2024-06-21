@@ -30,6 +30,7 @@ public class ShellShopEntry : ShopEntry
 
     public override void OnPurchase()
     {
+        base.OnPurchase();
         PersistantData.main.inventory.AddShell(shell);
         shopData.RemoveShell(shell);
     }

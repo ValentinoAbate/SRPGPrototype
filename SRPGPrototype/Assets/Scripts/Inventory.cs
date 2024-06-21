@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
         get => money;
         set
         {
-            money = Mathf.Max(0, money);
+            money = Mathf.Max(0, value);
         } 
     }
     private int money;

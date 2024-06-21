@@ -9,7 +9,10 @@ public abstract class ShopEntry
     public abstract int Cost { get; }
     public abstract Color? IconColor { get; }
 
-    public abstract void OnPurchase();
+    public virtual void OnPurchase()
+    {
+        PersistantData.main.inventory.Money -= Cost;
+    }
     public abstract void OnHover(BaseEventData data);
     public abstract void OnHoverExit(BaseEventData data);
 }

@@ -30,6 +30,7 @@ public class ProgramShopEntry : ShopEntry
 
     public override void OnPurchase()
     {
+        base.OnPurchase();
         PersistantData.main.inventory.AddProgram(program, false);
         shopData.RemoveProgram(program);
     }
