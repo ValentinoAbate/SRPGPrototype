@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 8708128739415983122, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
       propertyPath: description
-      value: Long or diagonally long ranged attack for {dmg} damage.
+      value: Long ranged or diagonally ranged attack for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 8708128739415983122, guid: 9405f418fd91de74e93f65ba945c31b8,
         type: 3}
