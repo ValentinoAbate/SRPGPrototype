@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: description
-      value: Horizontally focused Shell with a built-in mod that gives additional
+      value: Horizontally focused Shell with a built-in mod that gives +1 damage
         vs targets in the same row.
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
