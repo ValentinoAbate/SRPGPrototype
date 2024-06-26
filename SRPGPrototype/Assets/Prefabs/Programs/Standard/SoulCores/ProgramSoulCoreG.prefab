@@ -16,7 +16,7 @@ MonoBehaviour:
   attributes: 0
   displayNameOverride: +Damage
   filterByActionType: 1
-  actionTypes: 01000000
+  actionTypes: 0100000002000000
   filterBySubType: 0
   subTypes: 
   actionEffectContainer: {fileID: 0}
@@ -34,6 +34,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitPrefab: {fileID: 1068486978419434115, guid: d2fc5584c9758b644b05ef9ebd1fe74c,
     type: 3}
+--- !u!114 &4151871107103331238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343724877902909770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635ca3ab24307494f89a89ba32b176e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  modifierContainer: {fileID: 0}
 --- !u!114 &4675498822528328645
 MonoBehaviour:
   m_ObjectHideFlags: 0
