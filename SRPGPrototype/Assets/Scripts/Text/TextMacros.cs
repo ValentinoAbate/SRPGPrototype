@@ -153,7 +153,8 @@ public static class TextMacros
 		var mod = progMod.Modifiers[indices.Count > 0 ? indices.Dequeue() : 0];
 		if(mod is ModifierActionDamage dmgMod)
         {
-			return dmgMod.BasicDamageMod(ActionEffectDamage.TargetStat.HP, null, null).ToString();
+			int dmg = dmgMod.BasicDamageMod(ActionEffectDamage.TargetStat.HP, null, null);
+			return dmg >= 0 ? $"+{dmg}" : dmg.ToString();
         }
 		return errorString;
 	}
