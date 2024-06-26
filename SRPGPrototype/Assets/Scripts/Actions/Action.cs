@@ -22,7 +22,18 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         EncounterStart,
     }
 
-    public bool UsesPower => SubActions.Any((s) => s.UsesPower);
+    public bool UsedPower
+    {
+        get
+        {
+            foreach (var sub in SubActions)
+            {
+                if (sub.UsedPower)
+                    return true;
+            }
+            return false;
+        }
+    }
 
     public Program Program { get; set; }
 
@@ -153,7 +164,6 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         return baseAp + Slowdown * ((baseUsage + uses) / SlowdownInterval);
     }
 
-    private bool zeroPower = false;
     private bool zeroSpeed = false;
 
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
@@ -168,8 +178,11 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 
     public void StartAction(Unit user)
     {
-        zeroPower = user.Power.IsZero;
         zeroSpeed = user.Speed.IsZero;
+        foreach (var sub in SubActions)
+        {
+            sub.Initialize();
+        }
     }
 
     public void FinishAction(BattleGrid grid, Unit user, bool applyAPCost = true)
@@ -188,7 +201,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
-        if (UsesPower && !zeroPower)
+        if (UsedPower)
         {
             user.Power.Use();
         }

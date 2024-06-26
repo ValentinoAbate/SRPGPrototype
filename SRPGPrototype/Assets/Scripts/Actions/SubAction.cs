@@ -51,6 +51,7 @@ public class SubAction : MonoBehaviour
         }
     }
     public bool UsesPower => effects.Any((e) => e.UsesPower);
+    public bool UsedPower { get; private set; } = false;
 
     // Sub-action data
     public string SubTypeText
@@ -86,6 +87,11 @@ public class SubAction : MonoBehaviour
         }
     }
 
+    public void Initialize()
+    {
+        UsedPower = false;
+    }
+
     public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos)
     {
         // Get target positions
@@ -111,11 +117,13 @@ public class SubAction : MonoBehaviour
                 if(effect.StandaloneSubActionType != Type.None)
                 {
                     user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
+                    UsedPower |= effect.UsesPower && !user.Power.IsZero;
                     ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
                     user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                 }
                 else
                 {
+                    UsedPower |= effect.UsesPower && !user.Power.IsZero;
                     ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
                 }
             }
@@ -123,6 +131,7 @@ public class SubAction : MonoBehaviour
         else
         {
             user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, Options.None);
+            UsedPower = UsesPower && !user.Power.IsZero;
             foreach (var effect in effects)
             {
                 ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
