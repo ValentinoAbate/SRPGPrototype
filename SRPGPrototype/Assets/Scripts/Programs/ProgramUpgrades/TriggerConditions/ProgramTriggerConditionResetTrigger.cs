@@ -25,10 +25,9 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
             CheckResetUses();
             if(number <= 1)
             {
-                return completed ? ProgressConditionText + " (Done)" : ProgressConditionText;
+                return completed ? $"{ProgressConditionText} (Done)" : ProgressConditionText;
             }
-            string progressText = "(" + (completed ? "Done" : progress + "/" + number) + ")";
-            return ProgressConditionText + number + UsesText(resetTrigger) + progressText;
+            return $"{ProgressConditionText} {number} {UsesText(resetTrigger)} ({(completed ? "Done" : progress + "/" + number)})";
         }
     }
 

@@ -25,7 +25,7 @@ public class ProgramTriggerConditionNumberOfTargets : ProgramTriggerConditionRes
             {
                 ret += threshold + " ";
             }
-            return ret + "targets ";
+            return ret + "targets";
         }
     }
 

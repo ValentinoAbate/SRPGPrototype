@@ -22,12 +22,12 @@ public abstract class ProgramTriggerCondition : MonoBehaviour
         {
 
             case Action.Trigger.TurnStart:
-                return " times this turn ";
+                return "times this turn";
             case Action.Trigger.EncounterStart:
-                return " times this encounter ";
+                return "times this encounter";
             case Action.Trigger.Never:
             default:
-                return " times ";
+                return "times";
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProgramTriggerConditionUses: ProgramTriggerCondition
+public class ProgramTriggerConditionUses : ProgramTriggerCondition
 {
     public override bool Completed => completed;
     private bool completed = false;
@@ -36,9 +36,7 @@ public class ProgramTriggerConditionUses: ProgramTriggerCondition
     {
         get
         {
-            string progressText = "(" + (completed ? "Done" : Progress + "/" + number) + ")";
-            string conditionText = "Use " + number;
-            return conditionText + UsesText(resetCount) + progressText;
+            return $"Use {number} {UsesText(resetCount)} ({(completed ? "Done" : Progress + "/" + number)})";
         }
     }
 
