@@ -195,12 +195,12 @@ public class AIComponentBasic : AIComponent<AIUnit>
         }
 
         // No viable path, attempt to simply get closer as a last-ditch effort
-        int DistanceToClosestTarget(Vector2Int p)
+        float DistanceToClosestTarget(Vector2Int p)
         {
-            int minDist = int.MaxValue;
+            float minDist = float.MaxValue;
             foreach(var targetUnit in targetUnits)
             {
-                int dist = p.GridDistance(targetUnit.Pos);
+                float dist = Vector2Int.Distance(p, targetUnit.Pos);
                 if(dist < minDist)
                 {
                     minDist = dist;
