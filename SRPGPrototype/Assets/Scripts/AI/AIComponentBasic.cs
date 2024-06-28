@@ -34,7 +34,6 @@ public class AIComponentBasic : AIComponent<AIUnit>
             yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
             yield break;
         }
-        bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
         // Find all targets
         var targetUnits = grid.FindAll(IsUnitTarget);
         // Exit early if there are no targets
@@ -126,10 +125,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
             }
         }
         // Else no meaningful path to target range exists, just try and get close to a target
-        PosWithValue PosWithTargetRange(Vector2Int p) => new PosWithValue(p, targetUnits.Min((u) => (int)Vector2Int.Distance(u.Pos, p)));
+        PosWithValue PosWithTargetRange(Vector2Int p) => new PosWithValue(p, targetUnits.Min((u) => Vector2Int.Distance(u.Pos, p)));
         // Get reachable positions with target manhattan distance
         var positions = Reachable(grid, self, moveAction, self.Pos).Select(PosWithTargetRange).ToList();
-        positions.Sort((p1, p2) => p1.value.CompareTo(p2.value));
+        positions.Sort();
         // Already in the best spot, end turn
         if (positions[0].pos == self.Pos)
             yield break;
@@ -137,15 +136,22 @@ public class AIComponentBasic : AIComponent<AIUnit>
         yield return StartCoroutine(MoveAlongPath(grid, self, moveAction, pathToClosePos));
     }
 
-    private readonly struct PosWithValue
+    private bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
+
+    private readonly struct PosWithValue : System.IComparable<PosWithValue>
     {
         public readonly Vector2Int pos;
-        public readonly int value;
+        public readonly float value;
 
-        public PosWithValue(Vector2Int pos, int value)
+        public PosWithValue(Vector2Int pos, float value)
         {
             this.pos = pos;
             this.value = value;
+        }
+
+        public int CompareTo(PosWithValue other)
+        {
+            return value.CompareTo(other.value);
         }
     }
 
