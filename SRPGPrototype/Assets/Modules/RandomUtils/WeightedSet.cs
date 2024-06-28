@@ -6,13 +6,11 @@ using System.Linq;
 namespace RandomUtils
 {
 
-    public class WeightedSet<T> : IEnumerable<KeyValuePair<T, float>>
+    public class WeightedSet<T> : IReadOnlyCollection<KeyValuePair<T, float>>
     {
-        public delegate float Metric(T item);
-
         public IEnumerable<T> Items { get => items.Keys; }
         public IEnumerable<float> Weights { get => items.Values; }
-        public float Count { get => items.Count; }
+        public int Count { get => items.Count; }
         public Dictionary<T, float> Percentages
         {
             get
@@ -25,44 +23,64 @@ namespace RandomUtils
             }
         }
 
-        private readonly Dictionary<T, float> items = new Dictionary<T, float>();
+        private readonly Dictionary<T, float> items;
 
         #region Constructors
-        public WeightedSet() { }
+        public WeightedSet() { items = new Dictionary<T, float>(); }
+        public WeightedSet(int capacity) { items = new Dictionary<T, float>(capacity); }
+        public WeightedSet(IDictionary<T, float> items)
+        {
+            this.items = new Dictionary<T, float>(items);
+        }
         public WeightedSet(WeightedSet<T> toCopy) : this(toCopy.items) { }
-        public WeightedSet(IEnumerable<T> items, float weight = 0)
+        public WeightedSet(IEnumerable<T> items, float weight = 1)
         {
-            foreach (var item in items)
-                Add(item, weight);
+            this.items = new Dictionary<T, float>(items.Count());
+            AddRange(items, weight);
         }
-        public WeightedSet(IEnumerable<T> items, IEnumerable<float> weights)
+        public WeightedSet(ICollection<T> items, float weight = 1)
         {
-            if (items.Count() != weights.Count())
-                throw new Exception("Weighted Set Construction Exception: Items and weights are not the same length");
-            IEnumerator<float> e = weights.GetEnumerator();
-            e.MoveNext();
-            foreach (T item in items)
-            {
-                Add(item, e.Current);
-                e.MoveNext();
-            }
-        }
-        public WeightedSet(IEnumerable<KeyValuePair<T, float>> pairs)
-        {
-            foreach (var kvp in pairs)
-                Add(kvp.Key, kvp.Value);
+            this.items = new Dictionary<T, float>(items.Count);
+            AddRange(items, weight);
         }
         /// <summary>
         /// Creates a weighted set where the weight of each value given is the value of the metric function evaluated with the item
         /// </summary>
-        public  WeightedSet(IEnumerable<T> items, Metric weight)
+        public WeightedSet(IEnumerable<T> items, Func<T, float> weight)
         {
-            foreach (var item in items)
-                Add(item, weight(item));
+            this.items = new Dictionary<T, float>(items.Count());
+            AddRange(items, weight);
+        }
+        public WeightedSet(ICollection<T> items, Func<T, float> weight)
+        {
+            this.items = new Dictionary<T, float>(items.Count);
+            AddRange(items, weight);
+        }
+        public WeightedSet(IReadOnlyList<T> items, IReadOnlyList<float> weights)
+        {
+            int count = Math.Min(items.Count, weights.Count);
+            this.items = new Dictionary<T, float>(count);
+            for (int i = 0; i < count; i++)
+            {
+                Add(items[i], weights[i]);
+            }
+        }
+        public WeightedSet(IEnumerable<KeyValuePair<T, float>> keyValuePairs)
+        {
+            this.items = new Dictionary<T, float>(keyValuePairs.Count());
+            foreach(var kvp in keyValuePairs)
+            {
+                Add(kvp.Key, kvp.Value);
+            }
         }
         #endregion
 
-        public void Add(WeightedSet<T> set, float multiplier = 1)
+        public void Add(WeightedSet<T> set)
+        {
+            foreach (var item in set.Items)
+                Add(item, set[item]);
+        }
+        public void Add(WeightedSet<T> set, float multiplier)
         {
             foreach (var item in set.Items)
                 Add(item, set[item] * multiplier);
@@ -80,8 +98,8 @@ namespace RandomUtils
                     items[item] += weight;
                 }
 
-            }  
-            else if(weight < 0)
+            }
+            else if (weight <= 0)
             {
                 return;
             }
@@ -90,9 +108,74 @@ namespace RandomUtils
                 items.Add(item, weight);
             }
         }
+        public void Add(Func<T, float> m)
+        {
+            var keys = new List<T>(Items);
+            foreach (var key in keys)
+                Add(key, m(key));
+        }
+        public void AddRange(IEnumerable<T> items, float weight = 1)
+        {
+            foreach (var item in items)
+            {
+                Add(item, weight);
+            }
+        }
+        public void AddRange(IEnumerable<T> items, Func<T, float> weight)
+        {
+            foreach (var item in items)
+            {
+                Add(item, weight(item));
+            }
+        }
+        public void Multiply(float multiplier)
+        {
+            foreach (var item in items.Keys.ToArray())
+                Multiply(item, multiplier);
+        }
+        public void Multiply(T item, float multiplier)
+        {
+            if (items.ContainsKey(item))
+            {
+                if (items[item] * multiplier <= 0)
+                {
+                    Remove(item);
+                }
+                else
+                {
+                    items[item] *= multiplier;
+                }
+            }
+        }
+        public void Multiply(Func<T, float> m)
+        {
+            var keys = new List<T>(Items);
+            foreach (var key in keys)
+                Multiply(key, m(key));
+        }
+
+        public void Pow(float power)
+        {
+            if (power > 0 && power != 1)
+            {
+                Map(i => (float)Math.Pow(items[i], power));
+            }
+        }
+        public void Map(Func<T, float> m)
+        {
+            var keys = new List<T>(Items);
+            foreach (var key in keys)
+                items[key] = m(key);
+        }
+
         public void Remove(T item)
         {
             items.Remove(item);
+        }
+        public void RemoveIfContains(T item)
+        {
+            if (items.ContainsKey(item))
+                items.Remove(item);
         }
         public void RemoveWhere(Predicate<T> predicate)
         {
@@ -100,12 +183,15 @@ namespace RandomUtils
                 if (predicate(key))
                     items.Remove(key);
         }
+        public void Clear()
+        {
+            items.Clear();
+        }
 
         public bool Contains(T item)
         {
             return items.ContainsKey(item);
         }
-
         public void Normalize()
         {
             if (Count <= 0)
@@ -114,16 +200,25 @@ namespace RandomUtils
             foreach (var key in items.Keys.ToArray())
                 items[key] = items[key] / max;
         }
-        public void ApplyMetric(Metric m)
+        public void ApplyMetric(Func<T, float> m)
         {
             var keys = new List<T>(Items);
             foreach (var key in keys)
                 Add(key, m(key));
         }
+        public WeightedSet<T2> Distribution<T2>(Func<T, T2> selector)
+        {
+            var ret = new WeightedSet<T2>();
+            foreach (var kvp in items)
+            {
+                ret.Add(selector(kvp.Key), kvp.Value);
+            }
+            return ret;
+        }
 
         public override string ToString()
         {
-            List<string> ret = new List<string>();
+            var ret = new List<string>(Count);
             float totalWieght = Weights.Aggregate((a, b) => a + b);
             foreach (var kvp in items)
             {
