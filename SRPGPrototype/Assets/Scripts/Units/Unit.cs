@@ -236,6 +236,22 @@ public abstract class Unit : GridObject
         return uses;
     }
 
+    public int MaxUsesPerTurn(Action action)
+    {
+        int cost = action.APCost;
+        if (cost > MaxAP)
+            return 0;
+        int uses = 1;
+        while (uses < 100)
+        {
+            cost += action.APCostAfterXUses(uses);
+            if (cost > MaxAP)
+                break;
+            ++uses;
+        }
+        return uses;
+    }
+
     public virtual IEnumerator OnPhaseStart(BattleGrid grid)
     {
         yield break;

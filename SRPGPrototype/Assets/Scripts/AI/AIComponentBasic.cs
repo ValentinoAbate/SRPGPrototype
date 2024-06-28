@@ -124,37 +124,131 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 }
             }
         }
-        // Else no meaningful path to target range exists, just try and get close to a target
-        PosWithValue PosWithTargetRange(Vector2Int p) => new PosWithValue(p, targetUnits.Min((u) => Vector2Int.Distance(u.Pos, p)));
+        // Else no meaningful path to target range exists, try and path to a target
+        // Find all shortest paths to targets
+        var pathsToPositions = new List<List<Vector2Int>>(targetUnits.Count);
+        foreach (var targetUnit in targetUnits)
+        {
+            bool CanPassThroughTarget(Unit u)
+            {
+                return u == targetUnit;
+            }
+            var path = Path(grid, self, moveAction, targetUnit.Pos, CanPassThroughTarget);
+            if (path != null)
+            {
+                if (path.Count > 0)
+                {
+                    path.RemoveAt(path.Count - 1);
+                }
+                pathsToPositions.Add(path);
+            }
+        }
+        if (pathsToPositions.Count > 0)
+        {
+            pathsToPositions.Sort(ShortestPathComparer);
+            if (pathsToPositions[0].Count > 0)
+            {
+                // Move along the path
+                yield return MoveAlongPath(grid, self, moveAction, pathsToPositions[0]);
+            }
+            else
+            {
+                // Already in optimal position, do nothing
+                yield break;
+            }
+        }
+        // Else no meaningful path to target exists, just try and get close to a tile adjacent to a target
+        // Find all shortest paths to positions adjacent to targets
+        pathsToPositions.Clear();
+        var attackRangeType = standardAction.SubActions[0].Range.patternType;
+        // If attack range type is adjacent both, then we already tried this, break
+        if (attackRangeType != RangePattern.Type.AdjacentBoth)
+        {
+            var positionsToCheck = new List<Vector2Int>(attackRangeType == RangePattern.Type.Adjacent || attackRangeType == RangePattern.Type.AdjacentDiagonal ? 4 : 8);
+            foreach (var targetUnit in targetUnits)
+            {
+                positionsToCheck.Clear();
+                if (attackRangeType != RangePattern.Type.Adjacent)
+                {
+                    targetUnit.Pos.AddAdjacent(positionsToCheck);
+                }
+                if (attackRangeType != RangePattern.Type.AdjacentDiagonal)
+                {
+                    targetUnit.Pos.AddAdjacentDiagonal(positionsToCheck);
+                }
+                foreach (var closePos in positionsToCheck)
+                {
+                    var path = Path(grid, self, moveAction, closePos);
+                    if (path != null)
+                    {
+                        pathsToPositions.Add(path);
+                    }
+                }
+            }
+            if (pathsToPositions.Count > 0)
+            {
+                pathsToPositions.Sort(ShortestPathComparer);
+                if (pathsToPositions[0].Count > 0)
+                {
+                    // Move along the path
+                    yield return MoveAlongPath(grid, self, moveAction, pathsToPositions[0]);
+                }
+            }
+        }
+
+        // No viable path, attempt to simply get closer as a last-ditch effort
+        int DistanceToClosestTarget(Vector2Int p)
+        {
+            int minDist = int.MaxValue;
+            foreach(var targetUnit in targetUnits)
+            {
+                int dist = p.GridDistance(targetUnit.Pos);
+                if(dist < minDist)
+                {
+                    minDist = dist;
+                }
+            }
+            return minDist;
+        }
         // Get reachable positions with target manhattan distance
-        var positions = Reachable(grid, self, moveAction, self.Pos).Select(PosWithTargetRange).ToList();
-        positions.Sort();
-        // Already in the best spot, end turn
-        if (positions[0].pos == self.Pos)
-            yield break;
-        var pathToClosePos = Path(grid, self, moveAction, positions[0].pos);
-        yield return StartCoroutine(MoveAlongPath(grid, self, moveAction, pathToClosePos));
+        var reachablePosData = Reachable(grid, self, moveAction, self.Pos);
+        var reachablePositions = new List<ReachablePositionData>(reachablePosData.Count);
+        foreach(var reachablePosDatum in reachablePosData)
+        {
+            reachablePositions.Add(new ReachablePositionData(reachablePosDatum.Key, DistanceToClosestTarget(reachablePosDatum.Key), reachablePosDatum.Value));
+        }
+        reachablePositions.Sort();
+        // If we can get closer, do so
+        if (reachablePositions[0].pos != self.Pos)
+        {
+            var pathToClosePos = Path(grid, self, moveAction, reachablePositions[0].pos);
+            yield return StartCoroutine(MoveAlongPath(grid, self, moveAction, pathToClosePos));
+        }
+
+        // Nothing to be done
+        yield break;
     }
 
     private bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
 
-    private readonly struct PosWithValue : System.IComparable<PosWithValue>
+    private readonly struct ReachablePositionData : System.IComparable<ReachablePositionData>
     {
         public readonly Vector2Int pos;
-        public readonly float value;
+        public readonly float distanceToClosestTarget;
+        public readonly int movesToReach;
 
-        public PosWithValue(Vector2Int pos, float value)
+        public ReachablePositionData(Vector2Int pos, float distanceToClosestTarget, int movesToReach)
         {
             this.pos = pos;
-            this.value = value;
+            this.distanceToClosestTarget = distanceToClosestTarget;
+            this.movesToReach = movesToReach;
         }
 
-        public int CompareTo(PosWithValue other)
+        public int CompareTo(ReachablePositionData other)
         {
-            return value.CompareTo(other.value);
+            return distanceToClosestTarget.CompareTo(other.distanceToClosestTarget);
         }
     }
-
 
     private readonly struct PathWithValue
     {

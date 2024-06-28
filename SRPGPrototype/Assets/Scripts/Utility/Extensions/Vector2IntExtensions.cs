@@ -75,6 +75,14 @@ public static class Vector2IntExtensions
         return output;
     }
 
+    public static void AddAdjacent(this Vector2Int pos, IList<Vector2Int> output)
+    {
+        output.Add(pos + Vector2Int.up);
+        output.Add(pos + Vector2Int.down);
+        output.Add(pos + Vector2Int.left);
+        output.Add(pos + Vector2Int.right);
+    }
+
     public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos, int distance)
     {
         return new Vector2Int[]
@@ -97,6 +105,14 @@ public static class Vector2IntExtensions
         };
     }
 
+    public static void AddAdjacentDiagonal(this Vector2Int pos, IList<Vector2Int> output)
+    {
+        output.Add(pos + Vector2Int.up + Vector2Int.right);
+        output.Add(pos + Vector2Int.down + Vector2Int.right);
+        output.Add(pos + Vector2Int.down + Vector2Int.left);
+        output.Add(pos + Vector2Int.up + Vector2Int.left);
+    }
+
     public static IEnumerable<Vector2Int> AdjacentDiagonal(this Vector2Int pos, int distance)
     {
         return new Vector2Int[]
@@ -106,5 +122,10 @@ public static class Vector2IntExtensions
             pos + ((Vector2Int.down + Vector2Int.left) * distance),
             pos + ((Vector2Int.up + Vector2Int.left) * distance),
         };
+    }
+
+    public static int GridDistance(this Vector2Int pos, Vector2Int other)
+    {
+        return System.Math.Abs(pos.x - other.x) + System.Math.Abs(pos.y - other.y);
     }
 }

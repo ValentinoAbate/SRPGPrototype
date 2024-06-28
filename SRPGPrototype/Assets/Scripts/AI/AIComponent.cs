@@ -151,9 +151,14 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return paths;
     }
 
-    public List<Vector2Int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos)
+    public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos)
     {
         int range = self.ActionUsesUntilNoAP(moveAction);
+        return Reachable(grid, moveAction, startPos, range);
+    }
+
+    public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, Action moveAction, Vector2Int startPos, int range)
+    {
         // Use the move range and a legality / emptiness check for the adjacency function
         IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction.SubActions[0].Range);
         // Initialize distances with the startPosition
@@ -190,7 +195,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
         // Start Recursion
         ReachableRecursive(startPos, 0);
-        return distances.Keys.ToList();
+        return distances;
     }
 
     /// <summary>
@@ -236,5 +241,10 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             this.userPos = userPos;
             this.targetPos = targetPos;
         }
+    }
+
+    protected static int ShortestPathComparer(IReadOnlyCollection<Vector2Int> path1, IReadOnlyCollection<Vector2Int> path2)
+    {
+        return path1.Count.CompareTo(path2.Count);
     }
 }
