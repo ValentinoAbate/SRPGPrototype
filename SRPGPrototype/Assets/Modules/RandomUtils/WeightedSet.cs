@@ -15,10 +15,10 @@ namespace RandomUtils
         {
             get
             {
-                var ret = new Dictionary<T, float>();
-                float totalWieght = Weights.Aggregate((a, b) => a + b);
+                var ret = new Dictionary<T, float>(items.Count);
+                float totalWeight = Weights.Sum();
                 foreach (var kvp in items)
-                    ret.Add(kvp.Key, (kvp.Value / totalWieght) * 100);
+                    ret.Add(kvp.Key, (kvp.Value / totalWeight) * 100);
                 return ret;
             }
         }
@@ -219,12 +219,12 @@ namespace RandomUtils
         public override string ToString()
         {
             var ret = new List<string>(Count);
-            float totalWieght = Weights.Aggregate((a, b) => a + b);
+            float totalWeight = Weights.Sum();
             foreach (var kvp in items)
             {
-                ret.Add(kvp.Key.ToString() + ": " + ((kvp.Value / totalWieght) * 100).ToString("#.0") + "%");
+                ret.Add(kvp.Key.ToString() + ": " + ((kvp.Value / totalWeight) * 100).ToString("#.0") + "%");
             }
-            return ret.Aggregate((a, b) => a + b + "\n");
+            return string.Join("\n", ret);
         }
         public float this[T item]
         {
