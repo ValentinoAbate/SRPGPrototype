@@ -222,12 +222,16 @@ public abstract class Unit : GridObject
 
     public int ActionUsesUntilNoAP(Action action)
     {
-        int uses = 0;
         int cost = action.APCost - Speed.Value;
-        while(cost < AP)
+        if (cost > AP)
+            return 0;
+        int uses = 1;
+        while(uses < 100)
         {
-            ++uses;
             cost += action.APCostAfterXUses(uses) - Speed.ValueAfterXUses(uses);
+            if (cost > AP)
+                break;
+            ++uses;
         }
         return uses;
     }
