@@ -131,16 +131,13 @@ public class AIComponentBasic : AIComponent<AIUnit>
         {
             bool CanPassThroughTarget(Unit u)
             {
-                return u == targetUnit;
+                return u == targetUnit || IsUnitAlly(u);
             }
             var path = Path(grid, self, moveAction, targetUnit.Pos, CanPassThroughTarget);
             if (path != null)
             {
-                if (path.Count > 0)
-                {
-                    path.RemoveAt(path.Count - 1);
-                }
-                pathsToPositions.Add(path);
+                var shortenedPath = path.TakeWhile(grid.IsEmpty).ToList();
+                pathsToPositions.Add(shortenedPath);
             }
         }
         if (pathsToPositions.Count > 0)
@@ -178,10 +175,11 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 }
                 foreach (var closePos in positionsToCheck)
                 {
-                    var path = Path(grid, self, moveAction, closePos);
+                    var path = Path(grid, self, moveAction, closePos, IsUnitAlly);
                     if (path != null)
                     {
-                        pathsToPositions.Add(path);
+                        var shortenedPath = path.TakeWhile(grid.IsEmpty).ToList();
+                        pathsToPositions.Add(shortenedPath);
                     }
                 }
             }
