@@ -202,7 +202,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     /// Checks for tagets in range of the given standard action. Takes target pattern into account
     /// returns the first viable target position found, else BattleGrid.OutOfBounds
     /// </summary>
-    protected Vector2Int CheckforTargets<Target>(BattleGrid grid, Unit self, Action standardAction, List<Target> targetUnits) where Target : Unit
+    protected Vector2Int CheckForTargets<Target>(BattleGrid grid, Unit self, Action standardAction, IEnumerable<Target> targetUnits) where Target : Unit
     {
         var subAction = standardAction.SubActions[0];
         foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
@@ -210,10 +210,26 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             var targetPositions = subAction.targetPattern.Target(grid, self, pos);
             foreach (var tPos in targetPositions)
             {
-                if (targetUnits.Any((u) => u.Pos == tPos))
+                foreach(var target in targetUnits)
                 {
-                    return pos;
+                    if (target.Pos == tPos)
+                        return pos;
                 }
+            }
+        }
+        return BattleGrid.OutOfBounds;
+    }
+
+    protected Vector2Int CheckForEmptyTargetPosition(BattleGrid grid, Unit self, Action standardAction)
+    {
+        var subAction = standardAction.SubActions[0];
+        foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
+        {
+            var targetPositions = subAction.targetPattern.Target(grid, self, pos);
+            foreach (var tPos in targetPositions)
+            {
+                if (grid.IsLegalAndEmpty(tPos))
+                    return pos;
             }
         }
         return BattleGrid.OutOfBounds;

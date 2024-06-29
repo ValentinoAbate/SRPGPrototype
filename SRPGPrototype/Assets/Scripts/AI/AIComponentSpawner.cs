@@ -9,13 +9,16 @@ using UnityEngine;
 /// Only works with single-action actions currently.
 /// Assumes that the unit will move to any tile targeted by a move action
 /// </summary>
-public class AIComponentTurret : AIComponent<AIUnit>
+public class AIComponentSpawner : AIComponent<AIUnit>
 {
-    public List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
     [SerializeField]
     private Action standardAction;
+    [SerializeField] private Animator animator;
+    private static readonly int readyHash = Animator.StringToHash("Ready");
 
     public override List<Action> Actions => new List<Action> { standardAction };
+
+    private bool skipTurn = false;
 
     public override void Initialize(AIUnit self)
     {
@@ -24,6 +27,12 @@ public class AIComponentTurret : AIComponent<AIUnit>
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
+        skipTurn = !skipTurn;
+        animator.SetBool(readyHash, skipTurn);
+        if (skipTurn)
+        {
+            yield break;
+        }
         var subAction = standardAction.SubActions[0];
         // If action targets self, end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
@@ -31,18 +40,15 @@ public class AIComponentTurret : AIComponent<AIUnit>
             yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
             yield break;
         }
-        bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
-        // Find all targets
-        var targetUnits = grid.FindAll(IsUnitTarget);
-        // Exit early if there are no targets
-        if (targetUnits.Count <= 0)
-            yield break;
-        // Check for target in range
-        var tPos = CheckForTargets(grid, self, standardAction, targetUnits);
-        // Use standard action until exhausted if target is found, then end turn
-        if (tPos != BattleGrid.OutOfBounds)
+        // Check for targetspace in range
+        while (!self.Dead && self.CanUseAction(standardAction))
         {
-            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPos));
+            var tPos = CheckForEmptyTargetPosition(grid, self, standardAction);
+            if (tPos == BattleGrid.OutOfBounds)
+                break;
+            Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for spawning!");
+            yield return new WaitForSeconds(attackDelay);
+            standardAction.UseAll(grid, self, tPos);
         }
     }
 }

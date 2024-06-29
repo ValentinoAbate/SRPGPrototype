@@ -1,11 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectSpawnUnit : ActionEffect
+public abstract class ActionEffectSpawnUnit : ActionEffect
 {
     public const int spawnDamage = 2;
-    public Unit unitPrefab;
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
@@ -28,10 +27,12 @@ public class ActionEffectSpawnUnit : ActionEffect
         }
     }
 
+    protected abstract GameObject GetUnitPrefab();
+
     private void SpawnUnit(BattleGrid grid, Vector2Int pos)
     {
         // Spawn Unit
-        var unit = Instantiate(unitPrefab).GetComponent<Unit>();
+        var unit = Instantiate(GetUnitPrefab()).GetComponent<Unit>();
         // Add Unit to the grid
         grid.Add(pos, unit);
         unit.transform.position = grid.GetSpace(unit.Pos);
