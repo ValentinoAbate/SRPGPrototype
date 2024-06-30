@@ -17,9 +17,6 @@ public class EncounterManager : MonoBehaviour
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
-    private readonly List<GameObject> spawnPositionObjects = new List<GameObject>();
-    private readonly List<Unit> units = new List<Unit>();
-
     private void Start()
     {
         Initialize();
@@ -33,39 +30,40 @@ public class EncounterManager : MonoBehaviour
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
         grid.CenterAtPosition(battleGridCenter.position);
         // Instantiate and add units to the grid
-        InitializeUnits(encounter.units);
+        var units = InitializeUnits(encounter.units);
         // Instantiate spawn position objects
-        spawnPositionObjects.Clear();
-        spawnPositionObjects.EnsureCapacity(encounter.spawnPositions.Count);
+        var spawnPositionObjects = new List<GameObject>(encounter.spawnPositions.Count);
         foreach(var pos in encounter.spawnPositions)
         {
             var spawnPosObj = Instantiate(spawnPositionPrefab);
             spawnPosObj.transform.position = grid.GetSpace(pos);
             spawnPositionObjects.Add(spawnPosObj);
         }
-        unitPlacementUI.Initialize(grid, encounter.spawnPositions, StartEncounter);
+        void OnUnitPlacementComplete(IEnumerable<Unit> spawnedUnits)
+        {
+            spawnPositionObjects.ForEach(Destroy);
+            spawnPositionObjects.Clear();
+            units.AddRange(spawnedUnits);
+            units.Sort();
+            StartEncounter(units);
+        }
+        unitPlacementUI.Initialize(grid, encounter.spawnPositions, OnUnitPlacementComplete);
     }
 
-    private void StartEncounter(IEnumerable<Unit> spawnedUnits)
+    private void StartEncounter(List<Unit> units)
     {
-        // Add the player units to the list of units
-        units.AddRange(spawnedUnits);
-
         // Log the grid's on add event to the phaseManager's add Unit function
         grid.OnAddUnit = phaseManager.AddUnit;
-        // Destroy the spawn position objects
-        spawnPositionObjects.ForEach((obj) => Destroy(obj));
-        spawnPositionObjects.Clear();
         // Apply the units' on start abilities
+        units.Sort();
         units.ForEach((u) => StartCoroutine(u.OnBattleStart(this)));
         // Start the active encounter
         StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }
 
-    private void InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> entries)
+    private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> entries)
     {
-        units.Clear();
-        units.EnsureCapacity(entries.Count + PersistantData.main.inventory.DroneShells.Length + 1);
+        var units = new List<Unit>(entries.Count + PersistantData.main.inventory.DroneShells.Length + 1);
         foreach (var entry in entries)
         {
             var unit = Instantiate(entry.unit).GetComponent<Unit>();
@@ -73,6 +71,7 @@ public class EncounterManager : MonoBehaviour
             unit.transform.position = grid.GetSpace(unit.Pos);
             units.Add(unit);
         }
+        return units;
     }
 
     public void EndEncounter()
