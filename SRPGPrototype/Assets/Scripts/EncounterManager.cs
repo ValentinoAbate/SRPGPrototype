@@ -65,7 +65,7 @@ public class EncounterManager : MonoBehaviour
     private void InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> entries)
     {
         units.Clear();
-        units.EnsureCapacity(entries.Count);
+        units.EnsureCapacity(entries.Count + PersistantData.main.inventory.DroneShells.Length + 1);
         foreach (var entry in entries)
         {
             var unit = Instantiate(entry.unit).GetComponent<Unit>();
