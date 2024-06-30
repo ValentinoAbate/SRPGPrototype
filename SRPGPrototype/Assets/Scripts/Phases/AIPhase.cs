@@ -17,7 +17,13 @@ public class AIPhase : Phase
     public override IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits)
     {
         units.Clear();
-        units.AddRange(allUnits.Where((u) => u is AIUnit && UnitPredicate(u as AIUnit)).Select((u) => u as AIUnit));
+        foreach(var unit in allUnits)
+        {
+            if(unit is AIUnit aiUnit && UnitPredicate(aiUnit))
+            {
+                units.Add(aiUnit);
+            }
+        }
         RemoveAllDead();
         if (CheckEndBattle())
             yield break;
