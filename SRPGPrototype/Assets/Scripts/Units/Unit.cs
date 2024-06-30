@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public abstract class Unit : GridObject
+public abstract class Unit : GridObject, System.IComparable<Unit>
 {
     public delegate void OnBattleStartDel(BattleGrid grid, Unit unit);
 
@@ -33,9 +33,23 @@ public abstract class Unit : GridObject
         Jamming
     }
 
+    public enum Priority
+    {
+        First,
+        Earliest,
+        Earlier,
+        Early,
+        Normal,
+        Late,
+        Later,
+        Latest,
+        Last
+    }
+
     public virtual bool Movable => true;
     public abstract Team UnitTeam { get; }
     public abstract Interference InterferenceLevel { get; }
+    public abstract Priority PriorityLevel { get; }
     public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }
     public virtual bool Dead => HP <= 0;
@@ -275,5 +289,14 @@ public abstract class Unit : GridObject
     public virtual IEnumerator OnBattleEnd(EncounterManager manager)
     {
         yield break;
+    }
+
+    public int CompareTo(Unit other)
+    {
+        if(UnitTeam != other.UnitTeam)
+        {
+            return UnitTeam.CompareTo(other.UnitTeam);
+        }
+        return PriorityLevel.CompareTo(other.PriorityLevel);
     }
 }

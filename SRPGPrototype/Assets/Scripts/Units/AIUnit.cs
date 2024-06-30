@@ -9,6 +9,9 @@ public abstract class AIUnit : Unit
     public override Interference InterferenceLevel => interferenceLevel;
     [SerializeField] private Interference interferenceLevel = Interference.None;
 
+    public override Priority PriorityLevel => priorityLevel;
+    [SerializeField] private Priority priorityLevel = Priority.Normal;
+
     public override int MaxHP { get => maxHP; set { maxHP = value; HP = Mathf.Min(HP, value); } }
     [SerializeField] private int maxHP = 3;
 
