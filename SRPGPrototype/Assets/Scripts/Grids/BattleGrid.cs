@@ -7,8 +7,6 @@ public class BattleGrid : Grid.Grid<Unit>
     [SerializeField] private Vector2Int dimensions = new Vector2Int(8, 8);
     public override Vector2Int Dimensions => dimensions;
 
-    public System.Action<Unit> OnAddUnit { get; set; }
-
     public bool MainPlayerDead
     {
         get
@@ -21,6 +19,32 @@ public class BattleGrid : Grid.Grid<Unit>
                 }
             }
             return true;
+        }
+    }
+
+    public bool TryGetPlayer(int unitIndex, out PlayerUnit player)
+    {
+        foreach (var unit in this)
+        {
+            if (unit is PlayerUnit playerUnit && playerUnit.UnitIndex == unitIndex)
+            {
+                player = playerUnit;
+                return true;
+            }
+        }
+        player = null;
+        return false;
+    }
+
+    public IEnumerable<PlayerUnit> PlayerUnits
+    {
+        get
+        {
+            foreach (var unit in this)
+            {
+                if (unit is PlayerUnit playerUnit)
+                    yield return playerUnit;
+            }
         }
     }
 
@@ -40,7 +64,6 @@ public class BattleGrid : Grid.Grid<Unit>
     {
         if(base.Add(pos, obj))
         {
-            OnAddUnit?.Invoke(obj);
             return true;
         }
         return false;

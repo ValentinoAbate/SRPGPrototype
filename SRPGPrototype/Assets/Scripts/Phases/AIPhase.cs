@@ -7,59 +7,71 @@ public class AIPhase : Phase
 {
     public const float nextTurnDelay = 0.025f;
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
-    public BattleGrid grid;
 
     [SerializeField] private Unit.Team team = Unit.Team.None;
     [SerializeField] private bool canEndBattle = false;
 
     private readonly List<AIUnit> units = new List<AIUnit>();
 
-    public override IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits)
+    public override IEnumerator OnPhaseStart()
     {
-        units.Clear();
-        foreach(var unit in allUnits)
-        {
-            if(unit is AIUnit aiUnit && UnitPredicate(aiUnit))
-            {
-                units.Add(aiUnit);
-            }
-        }
-        RemoveAllDead();
         if (CheckEndBattle())
             yield break;
-        foreach (var unit in units)
-            yield return StartCoroutine(unit.OnPhaseStart(grid));
+        units.Clear();
+        units.AddRange(GetUnits<AIUnit>());
+        units.Sort();
         foreach (var unit in units)
         {
-            // Skip units that are dead or have been reduced to 0 AP or have no AI
-            if (unit == null || unit.Dead || unit.AP <= 0 || unit.AI == null)
+            if (unit.Dead)
+            {
                 continue;
-            yield return StartCoroutine(unit.DoTurn(grid));
-            if (CheckEndPhase())
+            }
+            yield return StartCoroutine(unit.OnPhaseStart(Grid));
+        }
+        for (int i = 0; i < units.Count; i++)
+        {
+            var unit = units[i];
+            // is unit AP is 0 or it has no AI, skip
+            if (unit.Dead || unit.AP <= 0 || unit.AI == null)
+                continue;
+            yield return StartCoroutine(unit.DoTurn(Grid)); 
+            if (CheckEndBattle())
+                yield break;
+            if (CheckEndPhase(units, i + 1))
                 yield break;
             yield return new WaitForSeconds(nextTurnDelay);
         }
         EndPhase();
     }
 
-    private bool UnitPredicate(AIUnit unit)
+    protected override bool UnitPredicate(Unit unit)
     {
         return unit.UnitTeam == team;
     }
 
     public override IEnumerator OnPhaseEnd()
     {
-        RemoveAllDead();
         if (CheckEndBattle())
             yield break;
         foreach (var unit in units)
+        {
+            if (unit.Dead)
+            {
+                continue;
+            }
             yield return StartCoroutine(unit.OnPhaseEnd());
+        }
+
     }
 
-    public bool CheckEndPhase()
+    public bool CheckEndPhase(IReadOnlyList<AIUnit> units, int startIndex)
     {
-        if (units.Any((u) => u != null && !u.Dead && u.AP > 0))
-            return false;
+        for(int i = startIndex; i < units.Count; ++i)
+        {
+            var unit = units[i];
+            if (!unit.Dead && unit.AP > 0)
+                return false;
+        }
         EndPhase();
         return true;
     }
@@ -68,16 +80,11 @@ public class AIPhase : Phase
     {
         if (!canEndBattle)
             return false;
-        if (units.Count <= 0 || grid.MainPlayerDead)
+        if (Grid.MainPlayerDead)
         {
             EndBattle();
             return true;
         }
         return false;
-    }
-
-    public void RemoveAllDead()
-    {
-        units.RemoveAll((u) => u == null || u.Dead);
     }
 }

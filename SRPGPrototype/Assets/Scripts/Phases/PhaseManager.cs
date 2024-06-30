@@ -13,50 +13,42 @@ public class PhaseManager : MonoBehaviour, IPausable
     public PauseHandle PauseHandle { get => ActivePhase.PauseHandle; set => ActivePhase.PauseHandle = value; }
     public int Turn { get; private set; }
     public Phase ActivePhase { get => phases[currPhase]; }
+    private int currPhase;
 
     private System.Action OnActiveEncounterEnd { get; set; }
-
-    private List<Phase> phases;
-    public IReadOnlyList<Unit> Units => units;
-    private List<Unit> units;
-    private int currPhase;
 
     public bool EncounterActive { get; set; } = false;
     public bool Transitioning { get; private set; } = true;
 
-    private void Awake()
-    {
-        InitializePhases();
-    }
+    [SerializeField] private List<Phase> phases;
 
-    /// <summary>
-    /// Get the list of phases from the child objects
-    /// Logs errors if valid party and enemy phases are not found
-    /// </summary>
-    private void InitializePhases()
-    {
-        phases = new List<Phase>();
-        phases.AddRange(GetComponentsInChildren<Phase>());
-        phases.RemoveAll((p) => !p.enabled);
-    }
+    public BattleGrid Grid => grid;
+    [Header("Set In Parent Prefab")]
+    [SerializeField] private BattleGrid grid;
+    public BattleUI BattleUI => battleUI;
+    [SerializeField] private BattleUI battleUI;
 
-    public void AddUnit(Unit u)
-    {
-        units.Add(u);
-    }
 
     /// <summary>
     /// Initialize the turn count, run the battle start coroutine, and start the first phase
     /// </summary>
-    public IEnumerator StartActiveEncounter(List<Unit> encounterUnits, System.Action onEnd)
+    public void StartActiveEncounter(System.Action onEnd)
     {
+        // Initialize Phases
+        foreach(var phase in phases)
+        {
+            phase.Initialize(this);
+        }
+        // Initialize Turn and Encounter
         Turn = 1;
-        units = encounterUnits;
         EncounterActive = true;
-        phases.ForEach((p) => p.InitializePhase(units));
         OnActiveEncounterEnd += onEnd;
-        yield return StartCoroutine(ShowEncounterStartUI());
-        yield return StartCoroutine(ActivePhase.OnPhaseStart(units));
+        StartCoroutine(StartEncounterCR());
+    }
+
+    private IEnumerator StartEncounterCR()
+    {
+        yield return StartCoroutine(ActivePhase.OnPhaseStart());
         Transitioning = false;
     }
 
@@ -69,15 +61,6 @@ public class PhaseManager : MonoBehaviour, IPausable
             return;
         Transitioning = true;
         StartCoroutine(NextPhaseCr());
-    }
-
-    /// <summary>
-    /// Do any logic and display any graphics needed to start the battle
-    /// Currently placeholder
-    /// </summary>
-    private IEnumerator ShowEncounterStartUI()
-    {
-        yield break;
     }
 
     public void EndActiveEncounter()
@@ -93,10 +76,11 @@ public class PhaseManager : MonoBehaviour, IPausable
     /// </summary>
     private IEnumerator NextPhaseCr(int nextPhase = -1)
     {
-        yield return new WaitWhile(() => PauseHandle.Paused);
+        var waitWhilePaused = new WaitWhile(IsPaused);
+        yield return waitWhilePaused;
         yield return StartCoroutine(ActivePhase.OnPhaseEnd());
-        yield return new WaitWhile(() => PauseHandle.Paused);
-        if(nextPhase >= 0)
+        yield return waitWhilePaused;
+        if (nextPhase >= 0)
         {
             currPhase = nextPhase;
         }
@@ -104,12 +88,12 @@ public class PhaseManager : MonoBehaviour, IPausable
         {
             currPhase = 0;
             ++Turn;
-            Debug.Log("It is turn " + Turn);
         }
-        yield return new WaitWhile(() => PauseHandle.Paused);
-        Debug.Log("Starting Phase: " + ActivePhase.displayName);
+        yield return waitWhilePaused;
         Transitioning = false;
-        yield return StartCoroutine(ActivePhase.OnPhaseStart(units));
-        yield return new WaitWhile(() => PauseHandle.Paused);
+        yield return StartCoroutine(ActivePhase.OnPhaseStart());
+        yield return waitWhilePaused;
     }
+
+    private bool IsPaused() => PauseHandle.Paused;
 }

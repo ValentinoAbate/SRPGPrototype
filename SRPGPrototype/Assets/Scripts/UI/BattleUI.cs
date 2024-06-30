@@ -41,7 +41,7 @@ public class BattleUI : MonoBehaviour
         {
             inUnitSelection = value;
             endTurnButton.interactable = value;
-            foreach (var unit in playerPhase.Units)
+            foreach (var unit in grid.PlayerUnits)
             {
                 unit.UI.SetNumberActive(value);
             }
@@ -106,24 +106,24 @@ public class BattleUI : MonoBehaviour
     {
         actionDescription.Hide();
         unitDescription.Hide();
-        turnOrderUI.Initialize(phaseManager, false);
+        turnOrderUI.Initialize(grid, false);
     }
 
     private void Update()
     {
         if (!inUnitSelection)
             return;
-        for (int i = 0; i < playerPhase.Units.Count && i < 9; ++i)
+        for (int i = 0; i < 9; ++i)
         {
-            if (Input.GetKeyDown((i + 1).ToString()) && playerPhase.TryGetPlayer(i, out var player))
+            if (Input.GetKeyDown((i + 1).ToString()) && grid.TryGetPlayer(i, out var player))
             {
                 SelectPlayer(player.Pos, true);
                 return;
             }
         }
-        if (playerPhase.Units.Count >= 10 && Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            if(playerPhase.TryGetPlayer(9, out var player))
+            if(grid.TryGetPlayer(9, out var player))
             {
                 SelectPlayer(player.Pos, true);
                 return;
@@ -133,7 +133,6 @@ public class BattleUI : MonoBehaviour
 
     private void EnterUnitSelection()
     {
-        playerPhase.CheckEndPhase();
         UnitSelectionUIEnabled = true;
         cursor.OnClick = SelectPlayer;
         cursor.OnCancel = null;

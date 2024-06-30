@@ -45,20 +45,11 @@ public class EncounterManager : MonoBehaviour
             spawnPositionObjects.Clear();
             units.AddRange(spawnedUnits);
             units.Sort();
-            StartEncounter(units);
+            units.ForEach((u) => StartCoroutine(u.OnBattleStart(this)));
+            // Start the active encounter
+            phaseManager.StartActiveEncounter(EndEncounter);
         }
         unitPlacementUI.Initialize(grid, encounter.spawnPositions, OnUnitPlacementComplete);
-    }
-
-    private void StartEncounter(List<Unit> units)
-    {
-        // Log the grid's on add event to the phaseManager's add Unit function
-        grid.OnAddUnit = phaseManager.AddUnit;
-        // Apply the units' on start abilities
-        units.Sort();
-        units.ForEach((u) => StartCoroutine(u.OnBattleStart(this)));
-        // Start the active encounter
-        StartCoroutine(phaseManager.StartActiveEncounter(units, EndEncounter));
     }
 
     private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> entries)

@@ -13,11 +13,11 @@ public class TurnOrderViewerUI : MonoBehaviour
     [SerializeField] private Color disabledColor;
     [SerializeField] private BattleUI battleUI;
 
-    private PhaseManager phaseManager;
+    private BattleGrid grid;
 
-    public void Initialize(PhaseManager phaseManager, bool interactable)
+    public void Initialize(BattleGrid grid, bool interactable)
     {
-        this.phaseManager = phaseManager;
+        this.grid = grid;
         foreach (var trigger in triggers)
         {
             trigger.triggers.Clear();
@@ -42,7 +42,7 @@ public class TurnOrderViewerUI : MonoBehaviour
 
     private void HideTurnOrder(BaseEventData arg0)
     {
-        foreach(var unit in phaseManager.Units)
+        foreach(var unit in grid)
         {
             if(unit.UnitTeam == Unit.Team.Player)
             {
@@ -61,12 +61,13 @@ public class TurnOrderViewerUI : MonoBehaviour
     private void ShowTurnOrder(BaseEventData arg0)
     {
         int orderCounter = 0;
-        for (int i = 0; i < phaseManager.Units.Count; i++)
+        var units = new List<Unit>(grid);
+        units.Sort();
+        foreach (var unit in units)
         {
-            var unit = phaseManager.Units[i];
             if (unit == null || unit.Dead)
                 continue;
-            if (unit.UnitTeam == Unit.Team.Player)
+            if (unit is PlayerUnit)
             {
                 unit.UI.SetNumberActive(false);
                 continue;

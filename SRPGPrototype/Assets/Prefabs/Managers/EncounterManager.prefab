@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1130085307429848437
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1130085307429848436}
-  - component: {fileID: 1130085307429848427}
-  m_Layer: 0
-  m_Name: PlayerPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1130085307429848436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130085307429848437}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130085308880680668}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1130085307429848427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130085307429848437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178f96894ff0a544dac51059f458b9ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Player Phase
-  manager: {fileID: 1130085308880680659}
-  phaseTransitionPrefab: {fileID: 0}
-  ui: {fileID: 1130085309517156903}
-  grid: {fileID: 1130085307957486608}
 --- !u!1 &1130085307575049256
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,201 +56,6 @@ MonoBehaviour:
   spawnPositionPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
     type: 3}
   battleGridCenter: {fileID: 5280788870636028732}
---- !u!1 &1130085308153283655
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1130085308153283654}
-  - component: {fileID: 8089420513198661843}
-  m_Layer: 0
-  m_Name: EnemyPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1130085308153283654
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130085308153283655}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130085308880680668}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8089420513198661843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130085308153283655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Enemy Phase
-  manager: {fileID: 1130085308880680659}
-  phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 1130085307957486608}
-  team: 1
-  canEndBattle: 1
---- !u!1 &1130085308880680669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1130085308880680668}
-  - component: {fileID: 1130085308880680659}
-  m_Layer: 0
-  m_Name: PhaseManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1130085308880680668
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130085308880680669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1130085307429848436}
-  - {fileID: 1130085308153283654}
-  - {fileID: 273360376185052428}
-  - {fileID: 3069531866594180900}
-  - {fileID: 6488333839459759523}
-  m_Father: {fileID: 1130085307575049263}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1130085308880680659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130085308880680669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb11a3bfb8b27f24487d1229f8773273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1229335412148432966
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6488333839459759523}
-  - component: {fileID: 9192069140174466522}
-  m_Layer: 0
-  m_Name: AllyPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6488333839459759523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229335412148432966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130085308880680668}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9192069140174466522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229335412148432966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Ally Phase
-  manager: {fileID: 1130085308880680659}
-  phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 1130085307957486608}
-  team: 2
-  canEndBattle: 0
---- !u!1 &5533421687268111219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 273360376185052428}
-  - component: {fileID: 5743164285540837011}
-  m_Layer: 0
-  m_Name: EnvironmentPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &273360376185052428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533421687268111219}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130085308880680668}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5743164285540837011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533421687268111219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Obstacle Phase
-  manager: {fileID: 1130085308880680659}
-  phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 1130085307957486608}
-  team: 3
-  canEndBattle: 0
 --- !u!1 &6475287161125201395
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,55 +86,6 @@ Transform:
   m_Father: {fileID: 1130085307575049263}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7710858363832536052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3069531866594180900}
-  - component: {fileID: 5740503981922105055}
-  m_Layer: 0
-  m_Name: DataPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3069531866594180900
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7710858363832536052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130085308880680668}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5740503981922105055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7710858363832536052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Data Phase
-  manager: {fileID: 1130085308880680659}
-  phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 1130085307957486608}
-  team: 4
-  canEndBattle: 0
 --- !u!1001 &1069226276291208189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,5 +469,144 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &8306335426899587121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1130085307575049263}
+    m_Modifications:
+    - target: {fileID: 217700102656053474, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1130085307957486608}
+    - target: {fileID: 925140223472066027, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1130085307957486608}
+    - target: {fileID: 4389978272695912174, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1130085307957486608}
+    - target: {fileID: 4392656099242186402, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1130085307957486608}
+    - target: {fileID: 9000679795036505826, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1130085307957486608}
+    - target: {fileID: 9000679795036505826, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: battleUI
+      value: 
+      objectReference: {fileID: 1130085309517156903}
+    - target: {fileID: 9000679795036505836, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_Name
+      value: PhaseManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000679796554413402, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1130085309517156903}
+    - target: {fileID: 9000679796554413402, guid: efc22a9e1f61bee40a1ce2679370d450,
+        type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1130085307957486608}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: efc22a9e1f61bee40a1ce2679370d450, type: 3}
+--- !u!4 &1130085308880680668 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
+    type: 3}
+  m_PrefabInstance: {fileID: 8306335426899587121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1130085308880680659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9000679795036505826, guid: efc22a9e1f61bee40a1ce2679370d450,
+    type: 3}
+  m_PrefabInstance: {fileID: 8306335426899587121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb11a3bfb8b27f24487d1229f8773273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1130085307429848427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9000679796554413402, guid: efc22a9e1f61bee40a1ce2679370d450,
+    type: 3}
+  m_PrefabInstance: {fileID: 8306335426899587121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178f96894ff0a544dac51059f458b9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

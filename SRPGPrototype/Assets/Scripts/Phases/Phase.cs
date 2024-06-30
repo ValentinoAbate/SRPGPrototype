@@ -7,25 +7,41 @@ public abstract class Phase : MonoBehaviour, IPausable
     public const bool playTransitionGrahics = true;
     public abstract PauseHandle PauseHandle { get; set; }
 
-    public string displayName;
-    public PhaseManager manager;
-    public GameObject phaseTransitionPrefab;
-
-    public virtual void InitializePhase(IEnumerable<Unit> allUnits)
+    protected IEnumerable<T> GetUnits<T>()
     {
+        foreach (var unit in Manager.Grid)
+        {
+            if (unit != null && !unit.Dead && UnitPredicate(unit) && unit is T tUnit)
+                yield return tUnit;
+        }
     }
 
-    public abstract IEnumerator OnPhaseStart(IEnumerable<Unit> allUnits);
+    public string DisplayName => displayName;
+    [SerializeField] private string displayName;
+    [SerializeField] private GameObject phaseTransitionPrefab;
+
+    private PhaseManager Manager { get; set; }
+    protected BattleUI BattleUI => Manager.BattleUI;
+    protected BattleGrid Grid => Manager.Grid;
+
+    public void Initialize(PhaseManager manager)
+    {
+        Manager = manager;
+    }
+
+    public abstract IEnumerator OnPhaseStart();
     public abstract IEnumerator OnPhaseEnd();
+
+    protected abstract bool UnitPredicate(Unit unit);
 
     protected void EndPhase()
     {
-        manager.NextPhase();
+        Manager.NextPhase();
     }
 
     protected void EndBattle()
     {
-        manager.EndActiveEncounter();
+        Manager.EndActiveEncounter();
     }
     protected IEnumerator PlayTransition()
     {
