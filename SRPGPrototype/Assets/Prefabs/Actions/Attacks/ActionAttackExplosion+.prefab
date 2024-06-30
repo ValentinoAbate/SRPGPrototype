@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
       propertyPath: description
-      value: Hits all horizontally and diagonally adjacent units and yourself for
-        {dmg} damage.
+      value: Destroy yourself, hitting all horizontally and diagonally adjacent units
+        for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
       propertyPath: targetPattern.pattern.patternOffsets.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
@@ -131,27 +131,27 @@ PrefabInstance:
     - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
       propertyPath: targetPattern.pattern.patternOffsets.Array.data[4].y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
-        type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.data[5].x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
-        type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.data[5].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.data[6].y
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[5].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[5].y
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
-      propertyPath: targetPattern.pattern.patternOffsets.Array.data[7].y
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[6].y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486456060610840582, guid: cbafbabd8fd38d247b6c701d76323b75,
+        type: 3}
+      propertyPath: targetPattern.pattern.patternOffsets.Array.data[7].y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbafbabd8fd38d247b6c701d76323b75, type: 3}
