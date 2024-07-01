@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
+  m_Name: ProtoV1Encounter2-2
+  m_EditorClassIdentifier: 
+  targetDifficulty: 23
+  dimensions: {x: 7, y: 6}
+  numSpawnPositions: 3
+  numEnemies: 050000000600000007000000
+  numEnemiesWeights:
+  - 1
+  - 3
+  - 1
+  enemies:
+  - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
+  - {fileID: 4568531750757968395, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}
+  - {fileID: 4568531750757968395, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
+  - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
+  baseEnemyWeights:
+  - 5
+  - 2
+  - 1
+  - 0.25
+  numObstacles: 03000000
+  numObstaclesWeights:
+  - 1
+  obstacles:
+  - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
+  baseObstacleWeights:
+  - 1
+  lootFlags: 0
+  seed:
+    name: Encounter
+    dimensions: {x: 0, y: 0}
+    units: []
+    spawnPositions: []
