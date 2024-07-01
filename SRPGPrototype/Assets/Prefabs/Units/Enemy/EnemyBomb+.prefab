@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: displayName
-      value: Bomb+
+      value: Walking Bomb+
       objectReference: {fileID: 0}
     - target: {fileID: 1792016175676184936, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
