@@ -10,34 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
-  m_Name: ProtoV2Encounter2-7
+  m_Name: ProtoV2Encounter2-10-RestArea
   m_EditorClassIdentifier: 
-  targetDifficulty: 29
-  dimensions: {x: 7, y: 6}
+  targetDifficulty: 0
+  dimensions: {x: 5, y: 5}
   numSpawnPositions: 3
-  numEnemies: 060000000700000008000000
+  numEnemies: 05000000
   numEnemiesWeights:
   - 1
-  - 3
-  - 1
-  enemies:
-  - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
-  - {fileID: 4568531750757968395, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}
-  - {fileID: 4568531750757968395, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
-  - {fileID: 4568531750757968395, guid: b3165f0cc7f603f4a92787664e892e2f, type: 3}
+  enemies: []
   baseEnemyWeights:
-  - 2
-  - 2
-  - 2
-  - 2
+  - 1
   numObstacles: 03000000
   numObstaclesWeights:
   - 1
-  obstacles:
-  - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
+  obstacles: []
   baseObstacleWeights:
   - 1
-  lootFlags: 0
+  lootFlags: 8
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}

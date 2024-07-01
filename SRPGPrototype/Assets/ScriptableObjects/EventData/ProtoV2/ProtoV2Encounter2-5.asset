@@ -10,34 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
-  m_Name: ProtoV2Encounter1-10-Chung
+  m_Name: ProtoV2Encounter2-6
   m_EditorClassIdentifier: 
-  targetDifficulty: 25
-  dimensions: {x: 6, y: 6}
-  numSpawnPositions: 4
-  numEnemies: 07000000
+  targetDifficulty: 27
+  dimensions: {x: 7, y: 6}
+  numSpawnPositions: 3
+  numEnemies: 0600000007000000
   numEnemiesWeights:
-  - 1
+  - 8
+  - 2
   enemies:
-  - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
-  - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
+  - {fileID: 4568531750757968395, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
+  - {fileID: 4568531750757968395, guid: b3165f0cc7f603f4a92787664e892e2f, type: 3}
   baseEnemyWeights:
-  - 6
-  - 3
-  numObstacles: 06000000
+  - 1
+  - 1
+  numObstacles: 03000000
   numObstaclesWeights:
   - 1
   obstacles:
   - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
-  - {fileID: 1229754312500399323, guid: 70516652d2abaf64cbe177d56d86332b, type: 3}
-  - {fileID: 2057450463593074828, guid: 7dd1c1b5a40494f4b810791aea4d8c8d, type: 3}
-  - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
+  - {fileID: 5593980168300560687, guid: 623976d1319491145960d75a348b3c5a, type: 3}
   baseObstacleWeights:
-  - 1
-  - 0.33
-  - 1
-  - 1
-  lootFlags: 2
+  - 4
+  - 0.5
+  lootFlags: 0
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
