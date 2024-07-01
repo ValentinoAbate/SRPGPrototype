@@ -20,7 +20,8 @@ PrefabInstance:
     - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent. Attack: Adjacent (2 damage). Spawns a Swarm+ when destroyed.'
+      value: 'Move: Adjacent. Attack: Adjacent (2 damage). Spawns a Hatchling+ when
+        destroyed.'
       objectReference: {fileID: 0}
     - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}

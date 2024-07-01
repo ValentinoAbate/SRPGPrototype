@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: description
-      value: Spawns a Swarm when destroyed. Attacks self for 1 damage every turn.
+      value: Spawns a Hatchling when destroyed. Attacks self for 1 damage every turn.
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
