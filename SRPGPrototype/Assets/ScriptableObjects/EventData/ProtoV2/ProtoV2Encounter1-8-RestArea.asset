@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
-  m_Name: ProtoV2Encounter1-10-RestArea
+  m_Name: ProtoV2Encounter1-8-RestArea
   m_EditorClassIdentifier: 
   targetDifficulty: 0
   dimensions: {x: 5, y: 5}
   numSpawnPositions: 3
-  numEnemies: 05000000
+  numEnemies: 00000000
   numEnemiesWeights:
   - 1
   enemies: []
