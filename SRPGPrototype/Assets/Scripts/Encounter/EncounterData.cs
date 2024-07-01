@@ -8,8 +8,8 @@ public class EncounterData : ScriptableObject
     public enum LootModifiers
     { 
         None = 0,
-        Midboss = 1,
-        Boss = 2,
+        Shell = 1,
+        BossCapacity = 2,
         Bonus = 4,
         NoNormalLoot = 8,
     }

@@ -181,12 +181,12 @@ public class EncounterGenerator : MonoBehaviour
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the midboss loot (if applicable)
-        if(lootFlags.HasFlag(EncounterData.LootModifiers.Midboss))
+        if(lootFlags.HasFlag(EncounterData.LootModifiers.Shell))
         {
             PlaceLoot(midbossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the boss loot (if applicable)
-        if(lootFlags.HasFlag(EncounterData.LootModifiers.Boss))
+        if(lootFlags.HasFlag(EncounterData.LootModifiers.BossCapacity))
         {
             PlaceLoot(bossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
