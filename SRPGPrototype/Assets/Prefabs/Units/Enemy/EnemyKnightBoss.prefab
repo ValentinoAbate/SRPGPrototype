@@ -96,7 +96,7 @@ PrefabInstance:
         type: 3}
       propertyPath: moveAction
       value: 
-      objectReference: {fileID: 3797766334593930996, guid: c9dc82ef3fa52f64aa764be2f7ef6bd7,
+      objectReference: {fileID: 4415060608083833614, guid: 3cecb34250087d047878d19a9a746372,
         type: 3}
     - target: {fileID: 6464810328418194555, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTeams: 02000000
-  moveAction: {fileID: 4415060608083833614, guid: 6e00c565ae5f3294a8cc03e907b5b5bf,
+  moveAction: {fileID: 4415060608083833614, guid: 7639b53931f7bbf44bb03905083e2ae6,
     type: 3}
   standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
     type: 3}
