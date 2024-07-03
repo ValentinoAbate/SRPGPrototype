@@ -214,6 +214,6 @@ MonoBehaviour:
     type: 3}
   actionButtonSkillPrefab: {fileID: 3970063363860568234, guid: 900de70988d54cd4b825c3b5d6ad0a4b,
     type: 3}
-  linkoutButtonPrefab: {fileID: 3074257871435298261, guid: fd1be97f66f799849a9001b6ad945a28,
+  actionButtonSpecialPrefab: {fileID: 3970063363860568234, guid: 7d63ad959f9f7d2409ae1ca71ff5d2e6,
     type: 3}
   actionButtonContainer: {fileID: 1014812663518074332}

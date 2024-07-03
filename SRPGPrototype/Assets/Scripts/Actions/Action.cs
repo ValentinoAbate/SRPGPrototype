@@ -13,6 +13,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         Weapon,
         Hybrid,
         Skill,
+        Special
     }
 
     public enum Trigger

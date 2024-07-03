@@ -10,6 +10,7 @@ public class ActionMenu : MonoBehaviour
     [SerializeField] private GameObject actionButtonMovePrefab;
     [SerializeField] private GameObject actionButtonHybridPrefab;
     [SerializeField] private GameObject actionButtonSkillPrefab;
+    [SerializeField] private GameObject actionButtonSpecialPrefab;
 
     public Transform actionButtonContainer;
     private Dictionary<Action.Type, GameObject> buttonPrefabs;
@@ -25,6 +26,7 @@ public class ActionMenu : MonoBehaviour
             {Action.Type.Move, actionButtonMovePrefab },
             {Action.Type.Hybrid, actionButtonHybridPrefab },
             {Action.Type.Skill, actionButtonSkillPrefab },
+            {Action.Type.Special, actionButtonSpecialPrefab }
         };
     }
 
@@ -62,6 +64,14 @@ public class ActionMenu : MonoBehaviour
         // Action Buttons
         var actions = new List<Action>(unit.Actions);
         actions.Sort();
+        foreach(var otherUnit in grid)
+        {
+            var contextActions = otherUnit.GetContextualActions(unit, grid);
+            if(contextActions.Count > 0)
+            {
+                actions.InsertRange(0, contextActions);
+            }
+        }
         buttons.Clear();
         for (int i = 0; i < actions.Count; i++)
         {

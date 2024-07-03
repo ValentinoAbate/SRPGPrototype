@@ -107,4 +107,11 @@ public class BattleGrid : Grid.Grid<Unit>
         }
         return interferenceLevel == Unit.Interference.None || (interferenceLevel == Unit.Interference.Low && numInterferers <= 2);
     }
+
+    public bool IsAdjacent(Unit unit1, Unit unit2)
+    {
+        int xDist = System.Math.Abs(unit1.Pos.y - unit2.Pos.y);
+        int yDist = System.Math.Abs(unit1.Pos.x - unit2.Pos.x);
+        return (xDist + yDist) == 1;
+    }
 }

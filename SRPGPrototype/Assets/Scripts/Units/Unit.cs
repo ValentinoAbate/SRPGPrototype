@@ -24,6 +24,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         Player,
         Obstacle,
         Data,
+        NPC,
     }
 
     public enum Interference
@@ -75,6 +76,10 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public abstract IReadOnlyList<Action> Actions { get; }
     public abstract IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers { get; }
+    public virtual IReadOnlyCollection<Action> GetContextualActions(Unit user, BattleGrid grid)
+    {
+        return System.Array.Empty<Action>();
+    }
 
     public void ModifyHp(BattleGrid grid, int amount, Unit source)
     {

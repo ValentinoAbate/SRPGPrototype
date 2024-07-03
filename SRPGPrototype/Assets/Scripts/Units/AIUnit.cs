@@ -75,7 +75,7 @@ public abstract class AIUnit : Unit
         Initialize();
     }
 
-    protected void Initialize()
+    protected virtual void Initialize()
     {
         if (AI != null)
         {

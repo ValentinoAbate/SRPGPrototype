@@ -62,7 +62,15 @@ public class ActionDescriptionUI : MonoBehaviour
                 timesUsed = action.TimesUsedThisBattle - action.FreeUsesThisBattle;
                 break;
         }
-        slowdownUsesNumberText.text = (timesUsed % action.SlowdownInterval).ToString() + "/" + action.SlowdownInterval.ToString();
+        if(action.SlowdownInterval == 0)
+        {
+            slowdownUsesNumberText.text = "N/A";
+        }
+        else
+        {
+            slowdownUsesNumberText.text = $"{timesUsed % action.SlowdownInterval}/{action.SlowdownInterval}";
+        }
+
     }
 
     public void ShowHidden(Action action, Unit user = null)
