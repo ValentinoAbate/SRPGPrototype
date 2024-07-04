@@ -65,10 +65,11 @@ public class Program : GridObject, ILootable
     {
         return ModifiedBy.Where((m) => m is T).Select((m) => m as T);
     }
-    public ProgramModifier[] ModifierEffects { get; private set; }
+    public ProgramModifier[] ModifierEffects => IsUpgraded ? Upgrade.ModifierEffects : modifiers;
+    [SerializeField] private ProgramModifier[] modifiers;
     // Effect Properties
     public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;
-    private ProgramEffect[] effects;
+    [SerializeField] private ProgramEffect[] effects;
     // Trigger / upgrade properties
     public ProgramUpgrade Upgrade { get; set; }
     public bool IsUpgraded => Upgrade != null;
@@ -167,8 +168,6 @@ public class Program : GridObject, ILootable
             trigger.Initialize(this);
         }
         triggers = trigList.ToArray();
-        ModifierEffects = GetComponents<ProgramModifier>();
-        effects = GetComponents<ProgramEffect>();
         foreach(var effect in effects)
         {
             effect.Initialize(this);
@@ -215,4 +214,12 @@ public class Program : GridObject, ILootable
         }
         uiEntries.Clear();
     }
+
+#if UNITY_EDITOR
+    public void SetEffects()
+    {
+        modifiers = GetComponents<ProgramModifier>();
+        effects = GetComponents<ProgramEffect>();
+    }
+#endif
 }

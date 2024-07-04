@@ -44,9 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  modifiers: []
+  effects: []
   displayName: 
-  tileType: 1
-  colors: 0
+  description: 
+  rarity: 0
+  lootWeight: 1
+  color: 0
   attributes: 0
   shape:
     patternOffsets:

@@ -7,6 +7,7 @@ public class ProgramUpgrade : ProgramTrigger
 {
     public ProgramTrigger[] Upgrades { get; private set; }
     public ProgramEffect[] ProgramEffects { get; private set; }
+    public ProgramModifier[] ModifierEffects { get; private set; }
     public string Description => description;
     [SerializeField] [TextArea(2, 4)] private string description = string.Empty;
     public string DisplayName { get => displayName; }
@@ -21,6 +22,7 @@ public class ProgramUpgrade : ProgramTrigger
         }
         Upgrades = trigList.ToArray();
         ProgramEffects = GetComponents<ProgramEffect>();
+        ModifierEffects = GetComponents<ProgramModifier>();
         foreach(var effect in ProgramEffects)
         {
             effect.Initialize(program);
