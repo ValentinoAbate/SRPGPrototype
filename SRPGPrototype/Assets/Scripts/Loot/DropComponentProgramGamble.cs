@@ -44,7 +44,7 @@ public class DropComponentProgramGamble : DropComponent<Program>
         }
         // Very Rare: Give the player a white program
         if (roll < 980)
-            return new List<Program>() { loot.GetDropStandard(LootProvider.LootQuality.Even, ProgramFilters.IsWhite };
+            return new List<Program>() { loot.GetDropStandard(LootProvider.LootQuality.Even, ProgramFilters.IsWhite) };
         // Very Rare: Give the player a random preinstall program
         if (roll < 990)
             return new List<Program> { loot.GetDropCustom(Rarity.PreInstall) };
