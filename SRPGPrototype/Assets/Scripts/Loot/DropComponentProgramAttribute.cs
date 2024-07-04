@@ -3,7 +3,7 @@
 public class DropComponentProgramAttribute : DropComponent<Program>
 {
     public Program.Attributes attributes = Program.Attributes.None;
-    public Loot<Program>.LootQuality[] lootQualities = new Loot<Program>.LootQuality[3];
+    public LootProvider.LootQuality[] lootQualities = new LootProvider.LootQuality[3];
     public override List<Program> GenerateDrop(Loot<Program> loot)
     {
         return loot.GetDropsStandardNoDuplicates(lootQualities, Filter);

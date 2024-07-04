@@ -5,29 +5,12 @@ using UnityEngine;
 using RandomUtils;
 using System.Linq;
 
-public class Loot<T> where T : ILootable
+public class Loot<T> : LootProvider where T : ILootable
 {
-    public const int standardDraws = 3;
-    /// <summary>
-    /// A link to the 
-    /// </summary>
-    public enum LootQuality
-    {
-        Standard,
-        High,
-        Max,
-        Boss,
-        Even,
-        SoulCore,
-    }
-
     private readonly Dictionary<Rarity, WeightedSet<T>> dropTables = new Dictionary<Rarity, WeightedSet<T>>();
-
-    private Dictionary<LootQuality, WeightedSet<Rarity>> standardLootRarities;
 
     public Loot(List<T> loot)
     {
-        BuildStandardLootRarities();
         BuildDropTables(loot);
     }
 
@@ -40,51 +23,6 @@ public class Loot<T> where T : ILootable
                 dropTables.Add(item.Rarity, new WeightedSet<T>());
             dropTables[item.Rarity].Add(item, item.LootWeight);
         }
-    }
-
-    private void BuildStandardLootRarities()
-    {
-        var standardWeights = new WeightedSet<Rarity>
-        {
-            {Rarity.Common, 75 },
-            {Rarity.Uncommon, 22 },
-            {Rarity.Rare, 3 },
-        };
-        var highWeights = new WeightedSet<Rarity>
-        {
-            {Rarity.Common, 15},
-            {Rarity.Uncommon, 75 },
-            {Rarity.Rare, 10 },
-        };
-        var maxWeights = new WeightedSet<Rarity>
-        {
-            {Rarity.Uncommon, 25 },
-            {Rarity.Rare, 75 },
-        };
-        var evenWeights = new WeightedSet<Rarity>
-        {
-            {Rarity.Common, 1},
-            {Rarity.Uncommon, 1 },
-            {Rarity.Rare, 1 },
-        };
-        var bossWeights = new WeightedSet<Rarity>
-        {
-            {Rarity.Boss, 1 },
-        };
-        var soulCoreWeights = new WeightedSet<Rarity> 
-        {
-            {Rarity.SoulCore, 1} 
-        };
-
-        standardLootRarities = new Dictionary<LootQuality, WeightedSet<Rarity>>()
-        {
-            { LootQuality.Standard, standardWeights },
-            { LootQuality.High, highWeights },
-            { LootQuality.Max, maxWeights },
-            { LootQuality.Even, evenWeights },
-            { LootQuality.Boss, bossWeights },
-            { LootQuality.SoulCore, soulCoreWeights }
-        };
     }
 
     public T GetDropStandard(LootQuality quality, System.Predicate<T> filter = null)
@@ -126,25 +64,23 @@ public class Loot<T> where T : ILootable
         return GetDropsNoDuplicates(Generator, qualities.Count, filter);
     }
 
-    public T GetDropCustom(WeightedSet<Rarity> rarities)
+    public T GetDropCustom(Rarity rarity)
     {
-        var rarity = RandomU.instance.Choice(rarities);
         return RandomU.instance.Choice(dropTables[rarity]);
     }
 
-    public List<T> GetDropsCustomNoDuplicates(WeightedSet<Rarity> rarities, int drops)
+    public T GetDropCustom(WeightedSet<Rarity> rarities)
     {
-        return GetDropsCustomNoDuplicates(rarities, drops, null);
+        return GetDropCustom(RandomU.instance.Choice(rarities));
     }
 
-    public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter)
+    public T GetDropCustom(Rarity rarity, System.Predicate<T> filter)
     {
         if (filter == null)
-            return GetDropCustom(rarities);
-        var rarity = RandomU.instance.Choice(rarities);
+            return GetDropCustom(rarity);
         var dropTable = dropTables[rarity];
         var choices = new List<KeyValuePair<T, float>>(dropTable.Count);
-        foreach(var kvp in dropTable)
+        foreach (var kvp in dropTable)
         {
             if (filter(kvp.Key))
             {
@@ -156,7 +92,21 @@ public class Loot<T> where T : ILootable
         return RandomU.instance.Choice<T>(choices);
     }
 
-    public List<T> GetDropsCustomNoDuplicates(WeightedSet<Rarity> rarities, int drops, System.Predicate<T> filter)
+    public List<T> GetDropsCustomNoDuplicates(Rarity rarity, int drops, System.Predicate<T> filter = null)
+    {
+        T Generator(int index, System.Predicate<T> innerFilter)
+        {
+            return GetDropCustom(rarity, innerFilter);
+        }
+        return GetDropsNoDuplicates(Generator, drops, filter);
+    }
+
+    public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter)
+    {
+        return GetDropCustom(RandomU.instance.Choice(rarities), filter);
+    }
+
+    public List<T> GetDropsCustomNoDuplicates(WeightedSet<Rarity> rarities, int drops, System.Predicate<T> filter = null)
     {
         T Generator(int index, System.Predicate<T> innerFilter)
         {
