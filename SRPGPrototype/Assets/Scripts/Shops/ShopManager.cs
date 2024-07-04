@@ -32,7 +32,7 @@ public class ShopManager : MonoBehaviour
             data.Add(generator.ShopID, generator.GenerateShopData(objectContainer));
         }
 #if DEBUG
-        debugShopData.AddProgramsFromAssets(debugShopPrograms, objectContainer);
+        debugShopData.AddProgramFromAsset(debugShopPrograms, objectContainer);
         debugShopData.AddShellsFromAssets(debugShopShells, objectContainer);
 #endif
     }
@@ -68,7 +68,7 @@ public class ShopManager : MonoBehaviour
         {
             programs.Add(Instantiate(program.gameObject, container).GetComponent<Program>());
         }
-        public void AddProgramsFromAssets(IEnumerable<Program> programs, Transform container)
+        public void AddProgramFromAsset(IEnumerable<Program> programs, Transform container)
         {
             foreach (var program in programs)
             {
