@@ -114,50 +114,27 @@ public class Loot<T> where T : ILootable
 
     public List<T> GetDropsStandardNoDuplicates(LootQuality quality, int drops = standardDraws, System.Predicate<T> filter = null)
     {
-        return GetDropsStandardNoDuplicatesInternal(Enumerable.Repeat(quality, drops), drops, filter);
+        return GetDropsStandardNoDuplicates(Enumerable.Repeat(quality, drops).ToArray(), filter);
     }
 
-    public List<T> GetDropsStandardNoDuplicates(ICollection<LootQuality> qualities, System.Predicate<T> filter = null)
+    public List<T> GetDropsStandardNoDuplicates(IReadOnlyList<LootQuality> qualities, System.Predicate<T> filter = null)
     {
-        return GetDropsStandardNoDuplicatesInternal(qualities, qualities.Count, filter);
-    }
-
-    private List<T> GetDropsStandardNoDuplicatesInternal(IEnumerable<LootQuality> qualities, int count, System.Predicate<T> filter)
-    {
-        var ret = new List<T>(count);
-        var lookup = new HashSet<T>();
-        // Local filter function to call input filter and assure no duplicates
-        bool NoDupeFilter(T item)
+        T Generator(int index, System.Predicate<T> innerFilter)
         {
-            if (filter != null && !filter(item))
-                return false;
-            return !lookup.Contains(item);
+            return GetDropCustom(standardLootRarities[qualities[index]], innerFilter);
         }
-        foreach (var quality in qualities)
-        {
-            try
-            {
-                var drop = GetDropCustom(standardLootRarities[quality], NoDupeFilter);
-                ret.Add(drop);
-                lookup.Add(drop);
-            }
-            catch
-            {
-
-            }
-        }
-        if (ret.Count <= 0)
-        {
-            ret.Add(GetDropStandard(LootQuality.Standard));
-            Debug.LogError("No applicable loot found");
-        }
-        return ret;
+        return GetDropsNoDuplicates(Generator, qualities.Count, filter);
     }
 
     public T GetDropCustom(WeightedSet<Rarity> rarities)
     {
         var rarity = RandomU.instance.Choice(rarities);
         return RandomU.instance.Choice(dropTables[rarity]);
+    }
+
+    public List<T> GetDropsCustomNoDuplicates(WeightedSet<Rarity> rarities, int drops)
+    {
+        return GetDropsCustomNoDuplicates(rarities, drops, null);
     }
 
     public T GetDropCustom(WeightedSet<Rarity> rarities, System.Predicate<T> filter)
@@ -179,6 +156,15 @@ public class Loot<T> where T : ILootable
         return RandomU.instance.Choice<T>(choices);
     }
 
+    public List<T> GetDropsCustomNoDuplicates(WeightedSet<Rarity> rarities, int drops, System.Predicate<T> filter)
+    {
+        T Generator(int index, System.Predicate<T> innerFilter)
+        {
+            return GetDropCustom(rarities, innerFilter);
+        }
+        return GetDropsNoDuplicates(Generator, drops, filter);
+    }
+
     // Get a custom drop without any respect to rarity
     public T GetDropCustom(System.Predicate<T> filter)
     {
@@ -194,5 +180,49 @@ public class Loot<T> where T : ILootable
             }
         }
         return RandomU.instance.Choice(choices);
+    }
+
+    private T GetDropCustom(int index, System.Predicate<T> filter)
+    {
+        return GetDropCustom(filter);
+    }
+
+    public List<T> GetDropsCustomNoDuplicates(int drops, System.Predicate<T> filter)
+    {
+        return GetDropsNoDuplicates(GetDropCustom, drops, filter);
+    }
+
+    private delegate T DropFunction(int index, System.Predicate<T> filter);
+
+    private List<T> GetDropsNoDuplicates(DropFunction generator, int count, System.Predicate<T> filter)
+    {
+        var ret = new List<T>(count);
+        var lookup = new HashSet<T>();
+        // Local filter function to call input filter and assure no duplicates
+        bool NoDupeFilter(T item)
+        {
+            if (filter != null && !filter(item))
+                return false;
+            return !lookup.Contains(item);
+        }
+        for (int i = 0; i < count; ++i)
+        {
+            try
+            {
+                var drop = generator(i, NoDupeFilter);
+                ret.Add(drop);
+                lookup.Add(drop);
+            }
+            catch
+            {
+
+            }
+        }
+        if (ret.Count <= 0)
+        {
+            ret.Add(GetDropStandard(LootQuality.Standard));
+            Debug.LogError("No applicable loot found");
+        }
+        return ret;
     }
 }
