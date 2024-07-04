@@ -88,7 +88,10 @@ public class Loot<T> : LootProvider where T : ILootable
             }
         }
         if (choices.Count <= 0)
-            throw new System.Exception("No valid choices");
+        {
+            Debug.LogError("No applicable loot found");
+            return GetDropStandard(LootQuality.Standard);
+        }
         return RandomU.instance.Choice<T>(choices);
     }
 
@@ -157,16 +160,9 @@ public class Loot<T> : LootProvider where T : ILootable
         }
         for (int i = 0; i < count; ++i)
         {
-            try
-            {
-                var drop = generator(i, NoDupeFilter);
-                ret.Add(drop);
-                lookup.Add(drop);
-            }
-            catch
-            {
-
-            }
+            var drop = generator(i, NoDupeFilter);
+            ret.Add(drop);
+            lookup.Add(drop);
         }
         if (ret.Count <= 0)
         {
