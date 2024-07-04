@@ -81,7 +81,7 @@ PrefabInstance:
         type: 3}
       propertyPath: shopActions.Array.data[0]
       value: 
-      objectReference: {fileID: 2727635088828455536, guid: 102ccb1f4bd5e0e4c97660df43e6976e,
+      objectReference: {fileID: 2727635088828455536, guid: 2853b9adbd962934d9b7c58181b39916,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 578d96ee301379247a80755c1e23f793, type: 3}

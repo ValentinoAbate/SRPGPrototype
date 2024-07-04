@@ -10,19 +10,27 @@ public class ShopManager : MonoBehaviour
     {
         None,
         Debug,
+        Standard,
     }
 
     [SerializeField] private ShopUI ui;
     [SerializeField] private List<Program> debugShopPrograms;
     [SerializeField] private List<Shell> debugShopShells;
     [SerializeField] private Transform objectContainer;
+    [SerializeField] private ShopGenerator[] shopGenerators;
 
-    private ShopData debugShopData = new ShopData();
+    private readonly ShopData debugShopData = new ShopData();
     private readonly Dictionary<ShopID, ShopData> data = new Dictionary<ShopID, ShopData>();
 
     public void Initialize()
     {
         Clear();
+        foreach(var generator in shopGenerators)
+        {
+            if (data.ContainsKey(generator.ShopID))
+                continue;
+            data.Add(generator.ShopID, generator.GenerateShopData(objectContainer));
+        }
 #if DEBUG
         debugShopData.AddProgramsFromAssets(debugShopPrograms, objectContainer);
         debugShopData.AddShellsFromAssets(debugShopShells, objectContainer);

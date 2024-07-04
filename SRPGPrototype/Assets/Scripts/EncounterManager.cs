@@ -9,7 +9,6 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private PhaseManager phaseManager;
     public BattleGrid Grid => grid;
     [SerializeField] private BattleGrid grid;
-    [SerializeField] private LootManager loot;
     [SerializeField] private UnitPlacementUI unitPlacementUI;
     [SerializeField] private Button confirmPlayerPlacementButton;
     [SerializeField] private GameObject spawnPositionPrefab;
@@ -85,6 +84,7 @@ public class EncounterManager : MonoBehaviour
     private void GenerateAndShowLoot()
     {
         var inv = PersistantData.main.inventory;
+        var loot = PersistantData.main.loot;
 
         // Generate Shell Loot
         var shellDraws = new LootData<Shell>();

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StartingShopManager : MonoBehaviour
 {
-    [SerializeField] LootManager loot;
     [SerializeField] private DropComponent<Shell>[] startingShellDrops;
     [SerializeField] private float[] startingShellDropWeights;
     [SerializeField] private DropComponent<Program>[] startingProgramDrops;
@@ -20,6 +19,7 @@ public class StartingShopManager : MonoBehaviour
     private void GenerateAndShowLoot()
     {
         var inv = PersistantData.main.inventory;
+        var loot = PersistantData.main.loot;
 
         // Generate Shell Loot
         var startingShellDrop = RandomUtils.RandomU.instance.Choice(startingShellDrops, startingShellDropWeights);

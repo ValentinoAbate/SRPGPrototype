@@ -13,6 +13,7 @@ public class PersistantData : MonoBehaviour
     public MapManager mapManager;
     public PresetManager presetManager;
     public ShopManager shopManager;
+    public LootManager loot;
 
     private void Awake()
     {
