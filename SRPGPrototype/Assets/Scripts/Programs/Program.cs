@@ -70,7 +70,13 @@ public class Program : GridObject, ILootable
 
     public IEnumerable<T> ModifiedByType<T>() where T : Modifier
     {
-        return ModifiedBy.Where((m) => m is T).Select((m) => m as T);
+        foreach(var m in ModifiedBy)
+        {
+            if(m is T t)
+            {
+                yield return t;
+            }
+        }
     }
     public ProgramModifier[] ModifierEffects => IsUpgraded ? Upgrade.ModifierEffects : modifiers;
     [SerializeField] private ProgramModifier[] modifiers;
