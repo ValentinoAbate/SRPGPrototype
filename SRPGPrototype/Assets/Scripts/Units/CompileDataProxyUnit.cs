@@ -6,7 +6,7 @@ public class CompileDataProxyUnit : Unit
 {
     public override Team UnitTeam => Team.Player;
 
-    public override Interference InterferenceLevel => throw new System.NotImplementedException();
+    public override Jamming InterferenceLevel => throw new System.NotImplementedException();
 
     public override Priority PriorityLevel => Priority.Normal;
 

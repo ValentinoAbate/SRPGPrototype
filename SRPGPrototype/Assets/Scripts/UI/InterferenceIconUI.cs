@@ -10,15 +10,15 @@ public class InterferenceIconUI : MonoBehaviour
     [SerializeField] private Color lowColorUnderThreshold;
     [SerializeField] private Color lowColorOverThreshold;
 
-    public void UpdateDisplay(Unit.Interference level, bool underThreshold = false)
+    public void UpdateDisplay(Unit.Jamming level, bool underThreshold = false)
     {
-        if(level == Unit.Interference.None)
+        if(level == Unit.Jamming.None)
         {
             gameObject.SetActive(false);
             return;
         }
         gameObject.SetActive(true);
-        if(level == Unit.Interference.Jamming)
+        if(level == Unit.Jamming.Full)
         {
             mainImage.color = jammingColor;
             return;

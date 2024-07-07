@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerUnit : Unit
 {
     public override Team UnitTeam => Team.Player;
-    public override Interference InterferenceLevel => Interference.None;
+    public override Jamming InterferenceLevel => Jamming.None;
     public override Priority PriorityLevel => Priority.Normal;
 
     #region Stats

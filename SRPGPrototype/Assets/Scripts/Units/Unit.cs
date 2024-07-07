@@ -27,11 +27,11 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         NPC,
     }
 
-    public enum Interference
+    public enum Jamming
     { 
         None,
         Low,
-        Jamming
+        Full
     }
 
     public enum Priority
@@ -49,7 +49,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public virtual bool Movable => true;
     public abstract Team UnitTeam { get; }
-    public abstract Interference InterferenceLevel { get; }
+    public abstract Jamming InterferenceLevel { get; }
     public abstract Priority PriorityLevel { get; }
     public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }

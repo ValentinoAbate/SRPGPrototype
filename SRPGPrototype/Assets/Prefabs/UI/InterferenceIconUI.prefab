@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 30}
+  m_SizeDelta: {x: 14, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1802500142792681162
 CanvasRenderer:
@@ -68,7 +68,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -90,9 +90,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 10
+  m_MinWidth: 14
   m_MinHeight: -1
-  m_PreferredWidth: 10
+  m_PreferredWidth: 14
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -111,5 +111,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainImage: {fileID: 1017457766483252307}
   jammingColor: {r: 0, g: 0, b: 0, a: 1}
-  lowColorUnderThreshold: {r: 0.13333334, g: 0.8, b: 0, a: 1}
+  lowColorUnderThreshold: {r: 0.16666675, g: 1, b: 0, a: 1}
   lowColorOverThreshold: {r: 1, g: 0, b: 0, a: 1}

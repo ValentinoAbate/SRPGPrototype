@@ -67,22 +67,22 @@ public class BattleUI : MonoBehaviour
         else
         {
             linkOutButton.interactable = false;
-            linkOutButtonText.text = "Link Out Blocked";
+            linkOutButtonText.text = "Link Out Jammed";
         }
         for(int i = 0; i < interferenceIcons.Length; ++i)
         {
             var icon = interferenceIcons[i];
             if(i < numJammers)
             {
-                icon.UpdateDisplay(Unit.Interference.Jamming);
+                icon.UpdateDisplay(Unit.Jamming.Full);
             }
             else if(i < numJammers + numInterferers)
             {
-                icon.UpdateDisplay(Unit.Interference.Low, (i - numJammers) < threshold);
+                icon.UpdateDisplay(Unit.Jamming.Low, (i - numJammers) < threshold);
             }
             else
             {
-                icon.UpdateDisplay(Unit.Interference.None);
+                icon.UpdateDisplay(Unit.Jamming.None);
             }
         }
     }

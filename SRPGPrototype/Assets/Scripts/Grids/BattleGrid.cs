@@ -85,11 +85,11 @@ public class BattleGrid : Grid.Grid<Unit>
         numInterferers = 0;
         foreach (var unit in this)
         {
-            if(unit.InterferenceLevel == Unit.Interference.Low)
+            if(unit.InterferenceLevel == Unit.Jamming.Low)
             {
                 ++numInterferers;
             }
-            else if(unit.InterferenceLevel == Unit.Interference.Jamming)
+            else if(unit.InterferenceLevel == Unit.Jamming.Full)
             {
                 ++numJammers;
             }

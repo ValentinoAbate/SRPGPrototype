@@ -6,8 +6,8 @@ public abstract class AIUnit : Unit
 {
     public override Team UnitTeam => team;
     [SerializeField] private Team team = Team.None;
-    public override Interference InterferenceLevel => interferenceLevel;
-    [SerializeField] private Interference interferenceLevel = Interference.None;
+    public override Jamming InterferenceLevel => interferenceLevel;
+    [SerializeField] private Jamming interferenceLevel = Jamming.None;
 
     public override Priority PriorityLevel => priorityLevel;
     [SerializeField] private Priority priorityLevel = Priority.Normal;
