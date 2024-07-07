@@ -51,6 +51,7 @@ public class UnitPlacementUI : MonoBehaviour
         // Don't allow the encounter to start until the player has been placed
         confirmButton.interactable = false;
         canvas.enabled = true;
+        enabled = true;
 
         // Setup Cursor
         cursor.OnClick += PlaceUnit;
@@ -89,6 +90,7 @@ public class UnitPlacementUI : MonoBehaviour
         // Clear the cursor's events
         cursor.NullAllActions();
         canvas.enabled = false;
+        enabled = false;
         onComplete?.Invoke(spawnedUnits);
     }
 
@@ -136,6 +138,14 @@ public class UnitPlacementUI : MonoBehaviour
         {
             placementText.text = "All Units Placed";
             unitsLeftText.text = "0 Units Left";
+        }
+    }
+
+    private void Update()
+    {
+        if(confirmButton.interactable && Input.GetKeyDown(KeyCode.C))
+        {
+            FinishUnitPlacement();
         }
     }
 }

@@ -74,7 +74,7 @@ public class BattleUI : MonoBehaviour
         if (canLinkout)
         {
             linkOutButton.interactable = true;
-            linkOutButtonText.text = "Link Out";
+            linkOutButtonText.text = "Link Out (L)";
         }
         else
         {
@@ -131,6 +131,17 @@ public class BattleUI : MonoBehaviour
 
     private void Update()
     {
+        if (generalUI.enabled)
+        {
+            if(linkOutButton.interactable && Input.GetKeyDown(KeyCode.L))
+            {
+                linkOutButton.onClick?.Invoke();
+            }
+            else if(endTurnButton.interactable && Input.GetKeyDown(KeyCode.E))
+            {
+                endTurnButton.onClick?.Invoke();
+            }
+        }
         if (!inUnitSelection)
             return;
         for (int i = 0; i < 9; ++i)
