@@ -29,7 +29,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1130085307957486615}
-  - {fileID: 5280788870636028732}
   - {fileID: 1130085309517156896}
   - {fileID: 1130085308880680668}
   m_Father: {fileID: 0}
@@ -53,38 +52,7 @@ MonoBehaviour:
   confirmPlayerPlacementButton: {fileID: 8345950362579963109}
   spawnPositionPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
     type: 3}
-  battleGridCenter: {fileID: 5280788870636028732}
   ui: {fileID: 1130085309517156903}
---- !u!1 &6475287161125201395
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5280788870636028732}
-  m_Layer: 0
-  m_Name: GridCenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5280788870636028732
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6475287161125201395}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1130085307575049263}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5653658574179703731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 7533927811408021992, guid: 961a8f7b6c0e08548984af07e88f517f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7533927811408021992, guid: 961a8f7b6c0e08548984af07e88f517f,
         type: 3}
@@ -428,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9000679795036505837, guid: efc22a9e1f61bee40a1ce2679370d450,
         type: 3}

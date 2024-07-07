@@ -69,7 +69,7 @@ public class MapUI : MonoBehaviour
     {
         var dimensions = vertex.value.dimensions;
         previewGrid.SetDimensions(dimensions.x, dimensions.y);
-        previewGrid.CenterAtPosition(new Vector2(0, 0.5f));
+        previewGrid.CenterAtPosition(BattleGrid.DefaultCenter);
         previewUI.SetActive(true);
         confirmEncounterButton.onClick.RemoveAllListeners();
         confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(vertex));

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BattleGrid : Grid.Grid<Unit>
 {
+    public static Vector2 DefaultCenter { get; } = new Vector2(0, 0.5f);
     [SerializeField] private Vector2Int dimensions = new Vector2Int(8, 8);
     public override Vector2Int Dimensions => dimensions;
 

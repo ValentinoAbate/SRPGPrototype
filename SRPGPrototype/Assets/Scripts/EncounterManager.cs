@@ -12,7 +12,6 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private UnitPlacementUI unitPlacementUI;
     [SerializeField] private Button confirmPlayerPlacementButton;
     [SerializeField] private GameObject spawnPositionPrefab;
-    [SerializeField] private Transform battleGridCenter;
     [SerializeField] private BattleUI ui;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
@@ -28,7 +27,7 @@ public class EncounterManager : MonoBehaviour
         var encounter = PersistantData.main.mapManager.Map.Current.value;
         // Initialize Grid
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
-        grid.CenterAtPosition(battleGridCenter.position);
+        grid.CenterAtPosition(BattleGrid.DefaultCenter);
         // Instantiate and add units to the grid
         var units = InitializeUnits(encounter.units);
         // Instantiate spawn position objects
