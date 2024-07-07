@@ -307,21 +307,6 @@ PrefabInstance:
       propertyPath: battleGrid
       value: 
       objectReference: {fileID: 1130085307957486608}
-    - target: {fileID: 7533927812390347677, guid: 961a8f7b6c0e08548984af07e88f517f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1060
-      objectReference: {fileID: 0}
-    - target: {fileID: 7533927812390347677, guid: 961a8f7b6c0e08548984af07e88f517f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -640
-      objectReference: {fileID: 0}
-    - target: {fileID: 7533927812390347678, guid: 961a8f7b6c0e08548984af07e88f517f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 961a8f7b6c0e08548984af07e88f517f, type: 3}
 --- !u!4 &1130085309517156896 stripped
@@ -349,7 +334,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7431851930114137032}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e80ec23231511314986317370048b819, type: 3}
   m_Name: 
