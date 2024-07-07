@@ -7,9 +7,12 @@ using UnityEngine.UI;
 
 public class ShellInfoDisplayUI : MonoBehaviour
 {
+    public TextMeshProUGUI shellNameText;
     public TextMeshProUGUI shellHpNumberText;
-    public TextMeshProUGUI shellLvNumberText;
-    public TextMeshProUGUI shellCapNumberText;
+    public TextMeshProUGUI shellApNumberText;
+    public TextMeshProUGUI shellRepairNumberText;
+    public TextMeshProUGUI shellCapacityText;
+    public TextMeshProUGUI shellCapacityNumberText;
     public Button levelUpButton;
     public Button levelDownButton;
 
@@ -23,12 +26,15 @@ public class ShellInfoDisplayUI : MonoBehaviour
 
     public void UpdateUI(Shell shell)
     {
-        int level = shell.Level;
         var compileData = shell.GetCompileData();
-        shellHpNumberText.text = Mathf.Clamp(shell.Stats.HP, 0, compileData.stats.MaxHP).ToString() + "/" + compileData.stats.MaxHP;
-        shellLvNumberText.text = level == shell.MaxLevel ? "Max" : level.ToString();
-        shellCapNumberText.text = compileData.capacity.ToString() + "/" + shell.CapacityThresholds[level].ToString();
-        levelDownButton.interactable = level > 0;
-        levelUpButton.interactable = level < shell.MaxLevel;
+        shellNameText.text = shell.DisplayName;
+        shellHpNumberText.text = $"{Mathf.Clamp(shell.Stats.HP, 0, compileData.stats.MaxHP)}/{compileData.stats.MaxHP}";
+        shellApNumberText.text = compileData.stats.MaxAP.ToString();
+        shellRepairNumberText.text = compileData.stats.Repair.ToString();
+        string levelString = shell.Level == shell.MaxLevel ? "Max" : $"Lv{shell.DisplayLevel}";
+        shellCapacityText.text = $"Capacity ({levelString})";
+        shellCapacityNumberText.text = $"{compileData.capacity}/{shell.CapacityThresholds[shell.Level]}";
+        levelDownButton.interactable = shell.Level > 0;
+        levelUpButton.interactable = shell.Level < shell.MaxLevel;
     }
 }

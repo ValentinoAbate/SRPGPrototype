@@ -39,7 +39,7 @@ public class ShellDescriptionUI : MonoBehaviour
         // Restricions text
         restrictionsText.text = AggregateText(compileData.restrictionNames);
         // Stats
-        levelNumberText.text = s.Level.ToString();
+        levelNumberText.text = s.DisplayLevel.ToString();
         capacityNumberText.text = compileData.capacity.ToString() + "/" + s.CapacityThresholds[s.Level];
         hpNumberText.text = Mathf.Clamp(s.Stats.HP, 0, compileData.stats.MaxHP).ToString() + "/" + compileData.stats.MaxHP;
         apNumberText.text = compileData.stats.MaxAP.ToString();

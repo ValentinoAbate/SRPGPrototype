@@ -29,6 +29,7 @@ public class Shell : MonoBehaviour, ILootable
 
     public List<int> CapacityThresholds => levelThresholds[Type];
 
+    public int DisplayLevel => Level + 1;
     public int Level { get; private set; } = 0;
 
     public int Capacity { get; private set; } = 0;
