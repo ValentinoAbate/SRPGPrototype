@@ -24,9 +24,8 @@ public class ShellInfoDisplayUI : MonoBehaviour
         levelDownButton.onClick.AddListener(onLevelDown);
     }
 
-    public void UpdateUI(Shell shell)
+    public void UpdateUI(Shell shell, Shell.CompileData compileData)
     {
-        var compileData = shell.GetCompileData();
         shellNameText.text = shell.DisplayName;
         shellHpNumberText.text = $"{Mathf.Clamp(shell.Stats.HP, 0, compileData.stats.MaxHP)}/{compileData.stats.MaxHP}";
         shellApNumberText.text = compileData.stats.MaxAP.ToString();

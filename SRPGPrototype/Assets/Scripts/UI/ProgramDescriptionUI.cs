@@ -17,7 +17,7 @@ public class ProgramDescriptionUI : MonoBehaviour
     const string hiddenPattern = @"[^\s]";
     public static string Hide(string input) => Regex.Replace(input, hiddenPattern, hiddenChar);
 
-    public void Show(Program p)
+    public void Show(Program p, Unit user = null)
     {
         programNameText.text = p.FullName;
         programAttrText.text = p.AttributesText;
@@ -27,14 +27,14 @@ public class ProgramDescriptionUI : MonoBehaviour
         if (actions.Count == 1)
         {
             actionDisplay.gameObject.SetActive(true);
-            actionDisplay.Show(actions[0].action);
-            programNameText.text += $" - {TextMacros.ApplyProgramTextMacros(p.Description, p)}";
+            actionDisplay.Show(actions[0].action, user);
+            programNameText.text += $" - {TextMacros.ApplyProgramTextMacros(p.Description, p, user)}";
             programDescText.text = string.Empty;
         }
         else
         {
             actionDisplay.gameObject.SetActive(false);
-            programDescText.text = TextMacros.ApplyProgramTextMacros(p.Description, p);
+            programDescText.text = TextMacros.ApplyProgramTextMacros(p.Description, p, user);
         }
         upgradeDisplay.Show(p);
     }
@@ -42,7 +42,7 @@ public class ProgramDescriptionUI : MonoBehaviour
     /// <summary>
     /// Show the description with the info hidden. Used in the upgrade previews
     /// </summary>
-    public void ShowHidden(Program p)
+    public void ShowHidden(Program p, Unit user = null)
     {
         programNameText.text = Hide(p.DisplayName);
         programAttrText.text = Hide(p.AttributesText);
@@ -52,7 +52,7 @@ public class ProgramDescriptionUI : MonoBehaviour
         if (actions.Count == 1)
         {
             actionDisplay.gameObject.SetActive(true);
-            actionDisplay.ShowHidden(actions[0].action);
+            actionDisplay.ShowHidden(actions[0].action, user);
             programNameText.text += (" - " + Hide(p.Description));
             programDescText.text = string.Empty;
         }

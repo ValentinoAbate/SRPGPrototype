@@ -1,23 +1,23 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectDamageActionNumber : ActionEffectDamage
+public class ActionEffectDamageUnitNumber : ActionEffectDamage
 {
-    public ActionNumber damage;
+    [SerializeField] private UnitNumber unitNumber;
 
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
-        return damage.ActionValue(grid, action, user, GetTargetList(grid, targetPositions).Count);
+        return BasicDamage(action, user);
     }
 
     public override int BasicDamage(Action action, Unit user)
     {
-        return damage.BaseValue(action, user);
+        return unitNumber.Value(user);
     }
 
     public override int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData)
     {
-        return damage.TargetValue(grid, action, user, target, targetData);
+        return 0;
     }
 }

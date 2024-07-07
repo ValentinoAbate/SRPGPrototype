@@ -23,7 +23,7 @@ public static class TextMacros
 	}
 
 	private delegate string ActionMacro(string[] args, Action action, Unit user);
-	private delegate string ProgramMacro(string[] args, Program program);
+	private delegate string ProgramMacro(string[] args, Program program, Unit user);
 
 	private static string ApplyMacros(string text, System.Func<string, string[], string> applyMacro)
 	{
@@ -130,13 +130,13 @@ public static class TextMacros
 		{ modDmg, ProgramMacroModDmg },
 	};
 
-	public static string ApplyProgramTextMacros(string text, Program program)
+	public static string ApplyProgramTextMacros(string text, Program program, Unit user)
 	{
 		string ApplyMacro(string macroName, string[] args)
 		{
 			if (programMacroMap.TryGetValue(macroName, out var macro))
 			{
-				return macro(args, program);
+				return macro(args, program, user);
 			}
 			Debug.LogError(MacroErrorText(macroName, "program"));
 			return errorString;
@@ -144,7 +144,7 @@ public static class TextMacros
 		return ApplyMacros(text, ApplyMacro);
 	}
 
-	private static string ProgramMacroModDmg(string[] args, Program program)
+	private static string ProgramMacroModDmg(string[] args, Program program, Unit user)
 	{
 		if (program.ModifierEffects.Length <= 0)
 			return errorString;
@@ -153,7 +153,7 @@ public static class TextMacros
 		var mod = progMod.Modifiers[indices.Count > 0 ? indices.Dequeue() : 0];
 		if(mod is ModifierActionDamage dmgMod)
         {
-			int dmg = dmgMod.BasicDamageMod(ActionEffectDamage.TargetStat.HP, null, null);
+			int dmg = dmgMod.BasicDamageMod(ActionEffectDamage.TargetStat.HP, null, user);
 			return dmg >= 0 ? $"+{dmg}" : dmg.ToString();
         }
 		return errorString;

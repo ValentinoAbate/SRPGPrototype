@@ -42,6 +42,7 @@ public class CustUI : MonoBehaviour
 
     [Header("Program Description UI")]
     [SerializeField] private ProgramDescriptionUI programDesc;
+    [SerializeField] private CompileDataProxyUnit proxyUnit;
 
     [Header("Compile UI")]
     [SerializeField] private Button compileButton;
@@ -133,9 +134,11 @@ public class CustUI : MonoBehaviour
         compileButton.image.color = Shell.Compiled ? Color.green : Color.red;
     }
 
-    private void UpdateShellPropertyUI()
+    private void UpdateCompileData()
     {
-        shellInfoDisplayUI.UpdateUI(Shell);
+        var compileData = Shell.GetCompileData();
+        shellInfoDisplayUI.UpdateUI(Shell, compileData);
+        proxyUnit.UpdateData(Shell.Stats.HP, compileData);
     }
 
     public void LevelUp()
@@ -144,7 +147,7 @@ public class CustUI : MonoBehaviour
         {
             Shell.LevelUp();
             grid.ResetShell();
-            UpdateShellPropertyUI();
+            UpdateCompileData();
             UpdateCompileButtonColor();
         }
     }
@@ -157,7 +160,7 @@ public class CustUI : MonoBehaviour
             {
                 Shell.LevelDown();
                 grid.ResetShell();
-                UpdateShellPropertyUI();
+                UpdateCompileData();
                 UpdateCompileButtonColor();
             }
             else
@@ -176,7 +179,7 @@ public class CustUI : MonoBehaviour
         shellMenuUI.SetActive(false);
         custUI.SetActive(true);
         // Set shell property display values
-        UpdateShellPropertyUI();
+        UpdateCompileData();
         // Initialize Preset UI
         presetUI.Initialize(s, grid, this);
         // Set cursor properties
@@ -258,7 +261,7 @@ public class CustUI : MonoBehaviour
                 Shell.Uninstall(prog, prog.Pos);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
-                UpdateShellPropertyUI();
+                UpdateCompileData();
                 UpdateCompileButtonColor();
                 var progButtonComponent = AddProgramButton(prog);
                 progButtonComponent.button.onClick.Invoke();
@@ -279,7 +282,7 @@ public class CustUI : MonoBehaviour
             cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
             heldProgramUI.Hide();
             heldProgramUI.gameObject.SetActive(false);
-            UpdateShellPropertyUI();
+            UpdateCompileData();
             UpdateCompileButtonColor();
         }
     }
@@ -293,7 +296,7 @@ public class CustUI : MonoBehaviour
     public void ShowProgramDescriptionWindow(Program p, bool fromGrid)
     {
         descEnabledFromGrid = fromGrid;
-        programDesc.Show(p);
+        programDesc.Show(p, proxyUnit);
         programDesc.gameObject.SetActive(true);
     }
 
@@ -308,7 +311,7 @@ public class CustUI : MonoBehaviour
     {
         Shell.Compile();
         UpdateCompileButtonColor();
-        UpdateShellPropertyUI();
+        UpdateCompileData();
     }
 
     public void UninstallAll()
@@ -327,7 +330,7 @@ public class CustUI : MonoBehaviour
         }
         
         UpdateCompileButtonColor();
-        UpdateShellPropertyUI();
+        UpdateCompileData();
         presetUI.Clear();
     }
 

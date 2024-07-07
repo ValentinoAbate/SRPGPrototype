@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,7 +10,7 @@ public class ActionNumber
         Constant,
         APCost,
         NumberOfTargets,
-        TimeUsed,
+        TimesUsed,
         TimesUsedThisBattle,
         TimesUsedThisTurn,
         UserStat,
@@ -59,13 +58,22 @@ public class ActionNumber
             return constant;
         return Value(type switch
         {
-            Type.APCost => user == null ? action.APCost : action.APCost - user.Speed.Value,
-            Type.TimeUsed => action.TimesUsed,
-            Type.TimesUsedThisBattle => action.TimesUsedThisBattle,
-            Type.TimesUsedThisTurn => action.TimesUsedThisTurn,
+            Type.APCost => GetAPCost(action, user),
+            Type.TimesUsed => action == null ? 0 : action.TimesUsed,
+            Type.TimesUsedThisBattle => action == null ? 0 : action.TimesUsedThisBattle,
+            Type.TimesUsedThisTurn => action == null ? 0 : action.TimesUsedThisTurn,
             Type.UserStat => unitNumber.Value(user),
             _ => 0
         });
+    }
+
+    private int GetAPCost(Action action, Unit user)
+    {
+        if (action == null)
+            return 0;
+        if (user == null)
+            return action.APCost;
+        return action.APCost - user.Speed.Value;
     }
 
     public int TargetValue(BattleGrid grid, Action action, Unit user, Unit target, ActionEffect.PositionData targetData)
