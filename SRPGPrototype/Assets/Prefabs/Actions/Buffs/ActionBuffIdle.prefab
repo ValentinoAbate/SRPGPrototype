@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   stat: 4
   number:
@@ -30,7 +32,7 @@ MonoBehaviour:
       multiplier: 1
       type: 0
     type: 0
-  usesPower: 1
+  usesPower: 0
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
