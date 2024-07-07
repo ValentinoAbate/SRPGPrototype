@@ -14,7 +14,6 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private Transform readyProgramContainer = null;
     [SerializeField] private Transform notReadyProgramContainer = null;
     [SerializeField] private GameObject programSelectButtonPrefab = null;
-    [SerializeField] private ProgramDescriptionUI programDescriptionUI = null;
     [Header("Upgrade UI")]
     [SerializeField] private GameObject upgradeUI = null;
     [SerializeField] private Transform upgradeButtonContainer = null;
@@ -38,8 +37,9 @@ public class UpgradeUI : MonoBehaviour
         showButtonText.text = "Upgrades (" + upgradeCount + ")";
     }
 
-    public void EnterProgramSelectionUI()
+    public void EnterProgramSelectionUI(bool setTempTitle)
     {
+        UIManager.main.TopBarUI.SetTitleText("Program Upgrades", setTempTitle);
         // Clear existing objects
         readyProgramContainer.DestroyAllChildren();
         notReadyProgramContainer.DestroyAllChildren();
@@ -88,9 +88,9 @@ public class UpgradeUI : MonoBehaviour
             // Set up event triggers
             eventTrigger.triggers.Clear();
             var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((data) => programDescriptionUI.Show(prog));
+            hover.callback.AddListener((_) => UIManager.main.ProgramDescriptionUI.Show(prog));
             var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener((data) => programDescriptionUI.Hide());
+            hoverExit.callback.AddListener(UIManager.main.HideProgramDescriptionUI);
             eventTrigger.triggers.Add(hover);
             eventTrigger.triggers.Add(hoverExit);
         }
@@ -98,11 +98,14 @@ public class UpgradeUI : MonoBehaviour
 
     public void ExitProgramSelectionUI()
     {
+        UIManager.main.TopBarUI.EndTempTitleText();
         UpdateShowButtonText();
     }
 
     public void ShowProgramUpgradeUI(Program p)
     {
+        UIManager.main.TopBarUI.SetTitleText($"{p.DisplayName} Upgrades", true);
+        UIManager.main.ProgramDescriptionUI.Hide();
         var inv = PersistantData.main.inventory;
         upgradeButtonContainer.DestroyAllChildren();
         upgradeUI.SetActive(true);
@@ -171,7 +174,9 @@ public class UpgradeUI : MonoBehaviour
 
     public void ExitProgramUpgradeUI()
     {
+        UIManager.main.TopBarUI.EndTempTitleText();
+        UIManager.main.ProgramDescriptionUI.Hide();
         upgradeUI.SetActive(false);
-        EnterProgramSelectionUI();
+        EnterProgramSelectionUI(false);
     }
 }
