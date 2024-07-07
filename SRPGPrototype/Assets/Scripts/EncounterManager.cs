@@ -38,6 +38,8 @@ public class EncounterManager : MonoBehaviour
             spawnPosObj.transform.position = grid.GetSpace(pos);
             spawnPositionObjects.Add(spawnPosObj);
         }
+        // Initialize Battle UI
+        ui.Initialize();
         void OnUnitPlacementComplete(IEnumerable<Unit> spawnedUnits)
         {
             spawnPositionObjects.ForEach(Destroy);
@@ -45,6 +47,7 @@ public class EncounterManager : MonoBehaviour
             units.AddRange(spawnedUnits);
             units.Sort();
             units.ForEach((u) => StartCoroutine(u.OnBattleStart(this)));
+            ui.SetGeneralUIEnabled(true);
             // Start the active encounter
             phaseManager.StartActiveEncounter(EndEncounter);
         }

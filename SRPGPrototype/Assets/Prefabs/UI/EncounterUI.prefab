@@ -1083,6 +1083,7 @@ MonoBehaviour:
   linkOutButton: {fileID: 2487367324880657588}
   linkOutButtonText: {fileID: 6251229465209262901}
   topBarOverlay: {fileID: 5710225804797322561}
+  generalUI: {fileID: 91477559371023918}
   interferenceIcons:
   - {fileID: 7972560938838765540}
   - {fileID: 7868509234137597594}

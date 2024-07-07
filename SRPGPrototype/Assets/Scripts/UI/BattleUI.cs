@@ -14,6 +14,7 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Button linkOutButton;
     [SerializeField] private TextMeshProUGUI linkOutButtonText;
     [SerializeField] private Canvas topBarOverlay;
+    [SerializeField] private Canvas generalUI;
     [SerializeField] private InterferenceIconUI[] interferenceIcons;
     [SerializeField] TurnOrderViewerUI turnOrderUI;
 
@@ -60,6 +61,11 @@ public class BattleUI : MonoBehaviour
     public void HideTopBarOverlay()
     {
         topBarOverlay.enabled = false;
+    }
+
+    public void SetGeneralUIEnabled(bool state)
+    {
+        generalUI.enabled = state;
     }
 
     public void RefreshLinkOutUI()
@@ -115,11 +121,12 @@ public class BattleUI : MonoBehaviour
         phaseManager.NextPhase();
     }
 
-    private void Start()
+    public void Initialize()
     {
         UIManager.main.HideAllDescriptionUI();
         turnOrderUI.Initialize(grid, false);
         RefreshLinkOutUI();
+        SetGeneralUIEnabled(false);
     }
 
     private void Update()
