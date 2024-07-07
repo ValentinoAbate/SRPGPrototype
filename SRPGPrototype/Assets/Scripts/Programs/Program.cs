@@ -55,8 +55,15 @@ public class Program : GridObject, ILootable
     {
         get
         {
-            if (Shell != null && Shell.Compiled && Shell.ModifierMap != null && Shell.ModifierMap.ContainsKey(this))
-                return Shell.ModifierMap[this];
+            if (Shell == null)
+            {
+                return System.Array.Empty<Modifier>();
+            }
+            var modifierMap = Shell.Compiled ? Shell.ModifierMap : Shell.LatestCompileData?.modifierMap;
+            if (modifierMap != null && modifierMap.ContainsKey(this))
+            {
+                return modifierMap[this];
+            }
             return System.Array.Empty<Modifier>();
         }
     }

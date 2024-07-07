@@ -80,6 +80,8 @@ public class Shell : MonoBehaviour, ILootable
 
     public bool HasSoulCore => SoulCoreUnitPrefab != null;
     public GameObject SoulCoreUnitPrefab { get; private set; }
+    // Current compile data. May not reflect a shell that can actually compile
+    public CompileData LatestCompileData { get; private set; }
 
     private void Awake()
     {
@@ -312,6 +314,7 @@ public class Shell : MonoBehaviour, ILootable
                 trigger.Condition.LinkEffect(program, ref compileData);
             }
         }
+        LatestCompileData = compileData;
         return compileData;
     }
 
