@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ShellButton : MonoBehaviour
 {
-
     public TextMeshProUGUI shellNameText;
     public Image shellImage;
     public Button equipButton;
@@ -28,9 +27,9 @@ public class ShellButton : MonoBehaviour
         {
             trigger.triggers.Clear();
             var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((data) => uiManager.shellDescriptionUI.Show(s));
+            hover.callback.AddListener((data) => uiManager.ShellDescriptionUI.Show(s));
             var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener((data) => uiManager.shellDescriptionUI.Hide());
+            hoverExit.callback.AddListener((data) => uiManager.ShellDescriptionUI.Hide());
             trigger.triggers.Add(hover);
             trigger.triggers.Add(hoverExit);
         }

@@ -523,19 +523,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 724338346171884885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CustUI, Assembly-CSharp
-        m_MethodName: LevelDown
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2156925807908021576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,19 +657,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5767509856822204589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CustUI, Assembly-CSharp
-        m_MethodName: LevelUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6573359151469865757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,6 +681,7 @@ GameObject:
   - component: {fileID: 1496785155180247053}
   - component: {fileID: 7969822672592225777}
   - component: {fileID: 1075719160658822293}
+  - component: {fileID: 886479883335311563}
   m_Layer: 0
   m_Name: ShellInfoDisplayUI
   m_TagString: Untagged
@@ -774,6 +751,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &886479883335311563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966122359354986079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa39bf6c8f09a643ad26ec216dcac27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellHpNumberText: {fileID: 9174817630726969118}
+  shellLvNumberText: {fileID: 1334080907805837167}
+  shellCapNumberText: {fileID: 8040343242778366682}
+  levelUpButton: {fileID: 6141573700637049324}
+  levelDownButton: {fileID: 3936914784892107171}
 --- !u!1 &4587162078589689915
 GameObject:
   m_ObjectHideFlags: 0

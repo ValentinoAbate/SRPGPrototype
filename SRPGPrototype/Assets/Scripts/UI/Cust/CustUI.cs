@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -16,47 +17,42 @@ public class CustUI : MonoBehaviour
         }
     }
 
-    public GameObject shellMenuUI;
-    public GameObject custUI;
-    public Canvas uiCanvas;
-    public CustCursor cursor;
+    [SerializeField] private GameObject shellMenuUI;
+    [SerializeField] private GameObject custUI;
+    [SerializeField] private Canvas uiCanvas;
+    [SerializeField] private CustCursor cursor;
 
     [Header("Shell Menu UI")]
-    public ShellButton equippedShellButton;
-    public GameObject shellButtonPrefab;
-    public GameObject shellButtonContainer;
-    public Button exitToBattleButton;
-    public ShellDescriptionUI shellDescriptionUI;
+    [SerializeField] private ShellButton equippedShellButton;
+    [SerializeField] private GameObject shellButtonPrefab;
+    [SerializeField] private GameObject shellButtonContainer;
+    [SerializeField] private Button exitToBattleButton;
+    [SerializeField] private ShellDescriptionUI shellDescriptionUI;
+    [SerializeField] private ShellInfoDisplayUI shellInfoDisplayUI;
 
     [Header("Cust UI")]
-    public CustGrid grid;
-    public PatternDisplayUI heldProgramUI;
-    public GameObject programPatternIconPrefab;
-
-    [Header("Shell Level Info Panel")]
-    public TextMeshProUGUI shellHpNumberText;
-    public TextMeshProUGUI shellLvNumberText;
-    public TextMeshProUGUI shellCapNumberText;
-    public Button levelUpButton;
-    public Button levelDownButton;
+    [SerializeField] private CustGrid grid;
+    [SerializeField] private PatternDisplayUI heldProgramUI;
+    [SerializeField] private GameObject programPatternIconPrefab;
 
     [Header("Program Button UI")]
-    public GameObject programButtonPrefab;
-    public Transform programButtonContainer;
-    public RectTransform programButtonRect;
-
+    [SerializeField] private GameObject programButtonPrefab;
+    [SerializeField] private Transform programButtonContainer;
+    [SerializeField] private RectTransform programButtonRect;
 
     [Header("Program Description UI")]
-    public ProgramDescriptionUI programDesc;
+    [SerializeField] private ProgramDescriptionUI programDesc;
 
     [Header("Compile UI")]
-    public Button compileButton;
-    public Button exitCustButton;
+    [SerializeField] private Button compileButton;
+    [SerializeField] private Button exitCustButton;
 
     [Header("Preset UI")]
     [SerializeField] private PresetUI presetUI;
 
-    private Shell Shell => grid.Shell;
+    public CustGrid Grid => grid;
+    public Shell Shell => grid.Shell;
+    public ShellDescriptionUI ShellDescriptionUI => shellDescriptionUI;
     private Inventory inventory;
     private ProgramButton pButton;
     private Program selectedProgram;
@@ -65,6 +61,7 @@ public class CustUI : MonoBehaviour
     {
         HideProgramDescriptionWindow(descEnabledFromGrid);
         inventory = PersistantData.main.inventory;
+        shellInfoDisplayUI.Initialize(LevelUp, LevelDown);
         EnterShellMenu();
     }
 
@@ -136,15 +133,9 @@ public class CustUI : MonoBehaviour
         compileButton.image.color = Shell.Compiled ? Color.green : Color.red;
     }
 
-    public void UpdateShellPropertyUI()
+    private void UpdateShellPropertyUI()
     {
-        int level = Shell.Level;
-        var compileData = Shell.GetCompileData();
-        shellHpNumberText.text = Mathf.Clamp(Shell.Stats.HP, 0, compileData.stats.MaxHP).ToString() + "/" + compileData.stats.MaxHP;
-        shellLvNumberText.text = level == Shell.MaxLevel ? "Max" : level.ToString();
-        shellCapNumberText.text = compileData.capacity.ToString() + "/" + Shell.CapacityThresholds[level].ToString();
-        levelDownButton.interactable = level > 0;
-        levelUpButton.interactable = level < Shell.MaxLevel;
+        shellInfoDisplayUI.UpdateUI(Shell);
     }
 
     public void LevelUp()
