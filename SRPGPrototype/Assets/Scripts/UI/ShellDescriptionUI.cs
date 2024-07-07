@@ -16,7 +16,6 @@ public class ShellDescriptionUI : MonoBehaviour
     public TextMeshProUGUI apNumberText;
     public TextMeshProUGUI repairNumberText;
     public TextMeshProUGUI compiledStatusText;
-    public TextMeshProUGUI bugNumberText;
     public ShellPatternDisplayUI shellPatternDisplay;
 
     public void Show(Shell s)
@@ -45,7 +44,6 @@ public class ShellDescriptionUI : MonoBehaviour
         apNumberText.text = compileData.stats.MaxAP.ToString();
         repairNumberText.text = compileData.stats.Repair.ToString();
         compiledStatusText.text = s.Compiled ? "Yes" : "No";
-        bugNumberText.text = "N/A";
         // Show shell graphics
         shellPatternDisplay.Show(s);
         gameObject.SetActive(true);
