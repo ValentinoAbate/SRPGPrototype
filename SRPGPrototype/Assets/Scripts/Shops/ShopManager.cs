@@ -59,10 +59,13 @@ public class ShopManager : MonoBehaviour
 
     public class ShopData
     {
+        private const string defaultShopName = "Shop";
         public IReadOnlyList<Program> Programs => programs;
         private readonly List<Program> programs = new List<Program>();
         public IReadOnlyList<Shell> Shells => shells;
         private readonly List<Shell> shells = new List<Shell>();
+
+        public string DisplayName { get; set; } = defaultShopName;
 
         public void AddProgramFromAsset(Program program, Transform container)
         {

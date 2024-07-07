@@ -17,14 +17,12 @@ public class ShellShopEntry : ShopEntry
 
     public override Color? IconColor => null;
 
-    private readonly ShellDescriptionUI descriptionUI;
     private readonly Shell shell;
     private readonly ShopManager.ShopData shopData;
 
-    public ShellShopEntry(ShopManager.ShopData shopData, Shell s, ShellDescriptionUI descriptionUI)
+    public ShellShopEntry(ShopManager.ShopData shopData, Shell s)
     {
         shell = s;
-        this.descriptionUI = descriptionUI;
         this.shopData = shopData;
     }
 
@@ -37,15 +35,11 @@ public class ShellShopEntry : ShopEntry
 
     public override void OnHover(BaseEventData data)
     {
-        if (descriptionUI == null)
-            return;
-        descriptionUI.Show(shell);
+        UIManager.main.ShellDescriptionUI.Show(shell);
     }
 
     public override void OnHoverExit(BaseEventData data)
     {
-        if (descriptionUI == null)
-            return;
-        descriptionUI.Hide();
+        UIManager.main.ShellDescriptionUI.Hide();
     }
 }

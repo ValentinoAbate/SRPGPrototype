@@ -22,8 +22,6 @@ public class LootUI : MonoBehaviour
     public Transform programDrawButtonContainer;
     public Transform shellDrawButtonContainer;
     public Button exitButton;
-    public ProgramDescriptionUI programDesc;
-    public ShellDescriptionUI shellDesc;
 
     [SerializeField] private bool allowLootSkipping = true;
 
@@ -66,7 +64,7 @@ public class LootUI : MonoBehaviour
         menuUI.SetActive(false);
         programDrawUI.SetActive(false);
         shellDrawUI.SetActive(false);
-        shellDesc.Hide();
+        UIManager.main.HideAllDescriptionUI();
         menuButtonContainer.DestroyAllChildren();
         programDrawButtonContainer.DestroyAllChildren();
         shellDrawButtonContainer.DestroyAllChildren();
@@ -77,9 +75,9 @@ public class LootUI : MonoBehaviour
     {
         menuUI.SetActive(true);
         programDrawUI.SetActive(false);
-        programDesc.Hide();
         shellDrawUI.SetActive(false);
-        shellDesc.Hide();
+        UIManager.main.HideAllDescriptionUI();
+        UIManager.main.TopBarUI.SetTitleText("Loot");
         RefreshExitButton();
     }
 
@@ -99,14 +97,9 @@ public class LootUI : MonoBehaviour
             lootButtonUI.nameText.text = shell.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddShell(shell));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
-            lootButtonUI.trigger.SetHoverCallbacks((d) => shellDesc.Show(shell), HideShellDesc);
+            lootButtonUI.trigger.SetHoverCallbacks((_) => UIManager.main.ShellDescriptionUI.Show(shell), UIManager.main.HideShellDescriptionUI);
         }
         shellDrawUI.SetActive(true);
-    }
-
-    private void HideShellDesc(BaseEventData arg0)
-    {
-        shellDesc.Hide();
     }
 
     public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> data)
@@ -120,14 +113,9 @@ public class LootUI : MonoBehaviour
             lootButtonUI.nameText.text = prog.DisplayName;
             lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog));
             lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
-            lootButtonUI.trigger.SetHoverCallbacks((d) => programDesc.Show(prog), HideProgramDesc);
+            lootButtonUI.trigger.SetHoverCallbacks((_) => UIManager.main.ProgramDescriptionUI.Show(prog), UIManager.main.HideProgramDescriptionUI);
         }
         programDrawUI.SetActive(true);
-    }
-
-    private void HideProgramDesc(BaseEventData arg0)
-    {
-        programDesc.Hide();
     }
 
     private void RefreshExitButton()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDroneUnit : PlayerUnit
 {
+    public override int LinkOutThreshold => 0;
     public override Shell Shell => shell;
 
     private Shell shell = null;

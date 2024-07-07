@@ -10,12 +10,10 @@ public class BattleUI : MonoBehaviour
 {
     public ActionMenu menu;
     public BattleCursor cursor;
-    public Button endTurnButton;
-    public Button linkOutButton;
-    public TextMeshProUGUI linkOutButtonText;
-    public TextMeshProUGUI linkOutInfoText;
-    public ActionDescriptionUI actionDescription;
-    public UnitDescriptionUI unitDescription;
+    [SerializeField] private Button endTurnButton;
+    [SerializeField] private Button linkOutButton;
+    [SerializeField] private TextMeshProUGUI linkOutButtonText;
+    [SerializeField] private InterferenceIconUI[] interferenceIcons;
     [SerializeField] TurnOrderViewerUI turnOrderUI;
 
     [Header("Set in Parent Prefab")]
@@ -47,7 +45,7 @@ public class BattleUI : MonoBehaviour
             }
             if (value)
             {
-                RefreshLinkoutButton();
+                RefreshLinkOutUI();
             }
             else
             {
@@ -58,25 +56,34 @@ public class BattleUI : MonoBehaviour
 
     private readonly List<TileUI.Entry> targetPatternEntries = new List<TileUI.Entry>();
 
-    public void RefreshLinkoutButton()
+    public void RefreshLinkOutUI()
     {
-        var canLinkout = grid.CanLinkOut(out var interferenceLevel, out int numInterferers);
+        var canLinkout = grid.CanLinkOut(out int numJammers, out int numInterferers, out int threshold);
         if (canLinkout)
         {
             linkOutButton.interactable = true;
             linkOutButtonText.text = "Link Out";
-            linkOutInfoText.text = "Link Out Ready";
-            return;
-        }
-        linkOutButton.interactable = false;
-        linkOutButtonText.text = "Link Out Blocked";
-        if (interferenceLevel == Unit.Interference.Jamming)
-        {
-            linkOutInfoText.text = $"Link Out Blocked - Defeat all Jamming Units ({numInterferers} left)";
         }
         else
         {
-            linkOutInfoText.text = $"Link Out Blocked - Must less than 3 Low Interference Units ({numInterferers} left)";
+            linkOutButton.interactable = false;
+            linkOutButtonText.text = "Link Out Blocked";
+        }
+        for(int i = 0; i < interferenceIcons.Length; ++i)
+        {
+            var icon = interferenceIcons[i];
+            if(i < numJammers)
+            {
+                icon.UpdateDisplay(Unit.Interference.Jamming);
+            }
+            else if(i < numJammers + numInterferers)
+            {
+                icon.UpdateDisplay(Unit.Interference.Low, (i - numJammers) < threshold);
+            }
+            else
+            {
+                icon.UpdateDisplay(Unit.Interference.None);
+            }
         }
     }
 
@@ -104,9 +111,9 @@ public class BattleUI : MonoBehaviour
 
     private void Start()
     {
-        actionDescription.Hide();
-        unitDescription.Hide();
+        UIManager.main.HideAllDescriptionUI();
         turnOrderUI.Initialize(grid, false);
+        RefreshLinkOutUI();
     }
 
     private void Update()
@@ -136,7 +143,7 @@ public class BattleUI : MonoBehaviour
         UnitSelectionUIEnabled = true;
         cursor.OnClick = SelectPlayer;
         cursor.OnCancel = null;
-        cursor.OnUnHighlight = HideUnitDescription;
+        cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
         cursor.OnHighlight = ShowUnitDescription;
     }
 
@@ -144,12 +151,10 @@ public class BattleUI : MonoBehaviour
     {
         var unit = grid.Get(pos);
         if (unit != null)
-            unitDescription.Show(unit);
-    }
+        {
+            UIManager.main.UnitDescriptionUI.Show(unit);
+        }
 
-    private void HideUnitDescription(Vector2Int pos)
-    {
-        unitDescription.Hide();
     }
 
     private void SelectPlayer(Vector2Int pos)
@@ -168,7 +173,7 @@ public class BattleUI : MonoBehaviour
 
     private void EnterActionMenu(Unit unit, bool fromHotKey)
     {
-        unitDescription.Hide();
+        UIManager.main.UnitDescriptionUI.Hide();
         UnitSelectionUIEnabled = false;
         menu.Show(grid, this, unit, fromHotKey);
         cursor.OnClick = null;
@@ -180,13 +185,13 @@ public class BattleUI : MonoBehaviour
     private void CancelActionMenu()
     {
         menu.Hide();
-        actionDescription.Hide();
+        UIManager.main.ActionDescriptionUI.Hide();
         EnterUnitSelection();
     }
 
     public void EnterActionUI(Action action, Unit unit)
     {
-        actionDescription.Hide();
+        UIManager.main.ActionDescriptionUI.Hide();
         int currAction = 0;
         action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();

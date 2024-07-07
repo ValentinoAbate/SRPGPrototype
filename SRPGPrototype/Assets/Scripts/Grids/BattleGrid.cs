@@ -7,7 +7,7 @@ public class BattleGrid : Grid.Grid<Unit>
     [SerializeField] private Vector2Int dimensions = new Vector2Int(8, 8);
     public override Vector2Int Dimensions => dimensions;
 
-    public bool MainPlayerDead
+    public PlayerUnit MainPlayer
     {
         get
         {
@@ -15,10 +15,19 @@ public class BattleGrid : Grid.Grid<Unit>
             {
                 if (unit is PlayerUnit playerUnit && playerUnit.IsMain)
                 {
-                    return playerUnit.Dead;
+                    return playerUnit;
                 }
             }
-            return true;
+            return null;
+        }
+    }
+
+    public bool MainPlayerDead
+    {
+        get
+        {
+            var player = MainPlayer;
+            return player == null || player.Dead;
         }
     }
 
@@ -69,43 +78,25 @@ public class BattleGrid : Grid.Grid<Unit>
         return false;
     }
 
-    public bool CanLinkOut(out Unit.Interference interferenceLevel, out int numInterferers)
+    public bool CanLinkOut(out int numJammers, out int numInterferers, out int threshold)
     {
         // Link Out Button
-        interferenceLevel = Unit.Interference.None;
+        numJammers = 0;
         numInterferers = 0;
         foreach (var unit in this)
         {
-            if (unit.InterferenceLevel == Unit.Interference.Jamming)
+            if(unit.InterferenceLevel == Unit.Interference.Low)
             {
-                if (interferenceLevel != Unit.Interference.Jamming)
-                {
-                    numInterferers = 1;
-                    interferenceLevel = Unit.Interference.Jamming;
-                }
-                else
-                {
-                    ++numInterferers;
-                }
-                continue;
+                ++numInterferers;
             }
-
-            if (interferenceLevel == Unit.Interference.Jamming)
-                continue;
-            if (unit.InterferenceLevel == Unit.Interference.Low)
+            else if(unit.InterferenceLevel == Unit.Interference.Jamming)
             {
-                if (interferenceLevel != Unit.Interference.Low)
-                {
-                    numInterferers = 1;
-                    interferenceLevel = Unit.Interference.Low;
-                }
-                else
-                {
-                    ++numInterferers;
-                }
+                ++numJammers;
             }
         }
-        return interferenceLevel == Unit.Interference.None || (interferenceLevel == Unit.Interference.Low && numInterferers <= 2);
+        var mainPlayer = MainPlayer;
+        threshold = mainPlayer != null ? MainPlayer.LinkOutThreshold : PersistantData.main.inventory.EquippedShell.LinkOutThreshold;
+        return numJammers <= 0 && numInterferers <= threshold;
     }
 
     public bool IsAdjacent(Unit unit1, Unit unit2)

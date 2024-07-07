@@ -27,7 +27,6 @@ public class CustUI : MonoBehaviour
     [SerializeField] private GameObject shellButtonPrefab;
     [SerializeField] private GameObject shellButtonContainer;
     [SerializeField] private Button exitToBattleButton;
-    [SerializeField] private ShellDescriptionUI shellDescriptionUI;
     [SerializeField] private ShellInfoDisplayUI shellInfoDisplayUI;
 
     [Header("Cust UI")]
@@ -41,7 +40,6 @@ public class CustUI : MonoBehaviour
     [SerializeField] private RectTransform programButtonRect;
 
     [Header("Program Description UI")]
-    [SerializeField] private ProgramDescriptionUI programDesc;
     [SerializeField] private CompileDataProxyUnit proxyUnit;
 
     [Header("Compile UI")]
@@ -53,7 +51,6 @@ public class CustUI : MonoBehaviour
 
     public CustGrid Grid => grid;
     public Shell Shell => grid.Shell;
-    public ShellDescriptionUI ShellDescriptionUI => shellDescriptionUI;
     private Inventory inventory;
     private ProgramButton pButton;
     private Program selectedProgram;
@@ -98,7 +95,9 @@ public class CustUI : MonoBehaviour
         GenerateShellButtons();
         shellMenuUI.SetActive(true);
         custUI.SetActive(false);
-        shellDescriptionUI.Hide();
+        UIManager.main.HideAllDescriptionUI();
+        UIManager.main.TopBarUI.SetTitleText("Shell Customization");
+        UIManager.main.TopBarUI.Show();
     }
 
     public void EquipShell(Shell s)
@@ -187,6 +186,7 @@ public class CustUI : MonoBehaviour
         cursor.OnHighlight = HighlightProgram;
         cursor.OnUnHighlight = UnHighlightProgram;
         cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
+        UIManager.main.TopBarUI.Hide();
     }
 
     public void InitializeProgramButtons()
@@ -296,15 +296,14 @@ public class CustUI : MonoBehaviour
     public void ShowProgramDescriptionWindow(Program p, bool fromGrid)
     {
         descEnabledFromGrid = fromGrid;
-        programDesc.Show(p, proxyUnit);
-        programDesc.gameObject.SetActive(true);
+        UIManager.main.ProgramDescriptionUI.Show(p, proxyUnit);
     }
 
     public void HideProgramDescriptionWindow(bool fromGrid)
     {
         if (fromGrid != descEnabledFromGrid)
             return;
-        programDesc.gameObject.SetActive(false);
+        UIManager.main.ProgramDescriptionUI.Hide();
     }
 
     public void Compile()

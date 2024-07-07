@@ -7,12 +7,8 @@ public class ShopUI : MonoBehaviour
 {
     [SerializeField] private ShopButtonUI[] buttons;
     [SerializeField] private Canvas canvas;
-    [SerializeField] private ProgramDescriptionUI progDescUI;
-    [SerializeField] private ShellDescriptionUI shellDescUI;
-    [SerializeField] private TextMeshProUGUI currentMoneyText;
     [SerializeField] private GameObject buttonContainer2;
     [SerializeField] private int pageSize = 10;
-
 
     private System.Action onComplete = null;
     private readonly List<ShopEntry> shopEntries = new List<ShopEntry>();
@@ -24,17 +20,18 @@ public class ShopUI : MonoBehaviour
 
     public void Show(ShopManager.ShopData data, System.Action onComplete)
     {
+        UIManager.main.TopBarUI.SetTitleText(data.DisplayName);
         this.onComplete = onComplete;
         canvas.enabled = true;
         shopEntries.Clear();
         shopEntries.EnsureCapacity(data.Programs.Count + data.Shells.Count);
         foreach(var program in data.Programs)
         {
-            shopEntries.Add(new ProgramShopEntry(data, program, progDescUI));
+            shopEntries.Add(new ProgramShopEntry(data, program));
         }
         foreach(var shell in data.Shells)
         {
-            shopEntries.Add(new ShellShopEntry(data, shell, shellDescUI));
+            shopEntries.Add(new ShellShopEntry(data, shell));
         }
         Refresh();
     }
@@ -54,7 +51,6 @@ public class ShopUI : MonoBehaviour
             }
         }
         buttonContainer2.SetActive(shopEntries.Count > pageSize);
-        currentMoneyText.text = $"Money: ${PersistantData.main.inventory.Money}";
     }
 
     public void OnPurchaseComplete(int index)

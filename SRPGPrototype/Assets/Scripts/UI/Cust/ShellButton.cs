@@ -27,9 +27,9 @@ public class ShellButton : MonoBehaviour
         {
             trigger.triggers.Clear();
             var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((data) => uiManager.ShellDescriptionUI.Show(s));
+            hover.callback.AddListener((_) => UIManager.main.ShellDescriptionUI.Show(s));
             var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener((data) => uiManager.ShellDescriptionUI.Hide());
+            hoverExit.callback.AddListener(UIManager.main.HideShellDescriptionUI);
             trigger.triggers.Add(hover);
             trigger.triggers.Add(hoverExit);
         }

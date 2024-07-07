@@ -51,6 +51,7 @@ public class Inventory : MonoBehaviour
         set
         {
             money = Mathf.Max(0, value);
+            UIManager.main.TopBarUI.SetMoneyText(money);
         } 
     }
     private int money;

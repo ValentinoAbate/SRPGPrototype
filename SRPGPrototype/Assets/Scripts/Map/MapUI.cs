@@ -12,18 +12,15 @@ public class MapUI : MonoBehaviour
     public GameObject choiceUI;
     public Transform eventButtonContainer;
     public GameObject eventButtonPrefab;
-    public Button gambleButton;
     [Header("Preview UI References")]
     public GameObject previewUI;
     public BattleGrid previewGrid;
     public Transform previewObjContainer;
-    public TextMeshProUGUI encounterNameText;
     public Button confirmEncounterButton;
     public Button backToEncounterSelectionButton;
     public Button nextEncounterButton;
     public Button prevEncounterButton;
     public GameObject spawnPointPrefab;
-    public UnitDescriptionUI unitDescriptionUI;
     public BattleCursor cursor;
 
     private List<Vertex<Encounter>> vertices = null;
@@ -39,7 +36,7 @@ public class MapUI : MonoBehaviour
         vertices = new List<Vertex<Encounter>>(map.NextEncounters);
         InitializeChoiceButtons(vertices);
         ShowChoiceUI();
-        unitDescriptionUI.Hide();
+        UIManager.main.HideAllDescriptionUI();
     }
 
     private void InitializeChoiceButtons(IEnumerable<Vertex<Encounter>> vertices)
@@ -58,7 +55,8 @@ public class MapUI : MonoBehaviour
     private void ShowChoiceUI()
     {
         choiceUI.SetActive(true);
-        unitDescriptionUI.Hide();
+        UIManager.main.TopBarUI.SetTitleText("Choose an Encounter");
+        UIManager.main.UnitDescriptionUI.Hide();
         cursor.NullAllActions();
     }
 
@@ -81,18 +79,20 @@ public class MapUI : MonoBehaviour
         prevEncounterButton.onClick.AddListener(() => NextEncounter(vertex, true));
         var encounter = vertex.value;
         InitializePreviewObjects(encounter);
-        encounterNameText.text = encounter.name;
+        UIManager.main.TopBarUI.SetTitleText(encounter.name);
 
-        // Enable unit descriptions
-        void ShowUnitDescription(Vector2Int pos)
-        {
-            var unit = previewGrid.Get(pos);
-            if (unit != null)
-                unitDescriptionUI.Show(unit);
-        }
         cursor.OnHighlight = ShowUnitDescription;
-        cursor.OnUnHighlight = (pos) => unitDescriptionUI.Hide();
-        // Add graph resizing when that's relvant
+        cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
+    }
+
+    // Enable unit descriptions
+    private void ShowUnitDescription(Vector2Int pos)
+    {
+        var unit = previewGrid.Get(pos);
+        if (unit != null)
+        {
+            UIManager.main.UnitDescriptionUI.Show(unit);
+        }
     }
 
     private void NextEncounter(Vertex<Encounter> current, bool backwards = false)

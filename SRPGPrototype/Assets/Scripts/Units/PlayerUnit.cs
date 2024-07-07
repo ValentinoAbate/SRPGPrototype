@@ -61,6 +61,8 @@ public class PlayerUnit : Unit
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
 
+    public virtual int LinkOutThreshold => Shell.LinkOutThreshold;
+
     public override void ResetStats()
     {
         AP = MaxAP;

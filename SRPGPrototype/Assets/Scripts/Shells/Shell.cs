@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, ILootable
 {
+    public const int baseLinkOutThreshold = 2;
     public enum Progression
     { 
         Small,
@@ -80,6 +81,7 @@ public class Shell : MonoBehaviour, ILootable
 
     public bool HasSoulCore => SoulCoreUnitPrefab != null;
     public GameObject SoulCoreUnitPrefab { get; private set; }
+    public int LinkOutThreshold { get; private set; } = baseLinkOutThreshold;
     // Current compile data. May not reflect a shell that can actually compile
     public CompileData LatestCompileData { get; private set; }
 

@@ -10,7 +10,6 @@ public class CurrentShellViewer : MonoBehaviour
     public TextMeshProUGUI text;
     public Image shellImage;
     public EventTrigger[] triggers;
-    [SerializeField] private ShellDescriptionUI shellDescriptionUI;
 
     public void Start()
     {
@@ -40,9 +39,9 @@ public class CurrentShellViewer : MonoBehaviour
         {
             trigger.triggers.Clear();
             var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((data) => shellDescriptionUI.Show(s));
+            hover.callback.AddListener((data) => UIManager.main.ShellDescriptionUI.Show(s));
             var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener((data) => shellDescriptionUI.Hide());
+            hoverExit.callback.AddListener(UIManager.main.HideShellDescriptionUI);
             trigger.triggers.Add(hover);
             trigger.triggers.Add(hoverExit);
         }

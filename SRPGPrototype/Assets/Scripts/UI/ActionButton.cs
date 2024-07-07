@@ -43,11 +43,11 @@ public class ActionButton : MonoBehaviour
         }
         // Add show action description trigger
         var showActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-        showActionDesc.callback.AddListener((data) => ui.actionDescription.Show(action, unit));
+        showActionDesc.callback.AddListener((_) => UIManager.main.ActionDescriptionUI.Show(action, unit));
         trigger.triggers.Add(showActionDesc);
         // Add hide action description trigger
         var hideActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-        hideActionDesc.callback.AddListener((data) => ui.actionDescription.Hide());
+        hideActionDesc.callback.AddListener(UIManager.main.HideActionDescriptionUI);
         trigger.triggers.Add(hideActionDesc);
         // Continue if the unit doesn't have enough AP
         if (!unit.CanUseAction(action))

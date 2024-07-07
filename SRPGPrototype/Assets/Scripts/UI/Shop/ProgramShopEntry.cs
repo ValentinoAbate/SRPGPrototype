@@ -17,14 +17,12 @@ public class ProgramShopEntry : ShopEntry
 
     public override Color? IconColor => program.ColorValue;
 
-    private readonly ProgramDescriptionUI descriptionUI;
     private readonly Program program;
     private readonly ShopManager.ShopData shopData;
 
-    public ProgramShopEntry(ShopManager.ShopData shopData, Program program, ProgramDescriptionUI descriptionUI)
+    public ProgramShopEntry(ShopManager.ShopData shopData, Program program)
     {
         this.program = program;
-        this.descriptionUI = descriptionUI;
         this.shopData = shopData;
     }
 
@@ -37,15 +35,11 @@ public class ProgramShopEntry : ShopEntry
 
     public override void OnHover(BaseEventData data)
     {
-        if (descriptionUI == null)
-            return;
-        descriptionUI.Show(program);
+        UIManager.main.ProgramDescriptionUI.Show(program);
     }
 
     public override void OnHoverExit(BaseEventData data)
     {
-        if (descriptionUI == null)
-            return;
-        descriptionUI.Hide();
+        UIManager.main.ProgramDescriptionUI.Hide();
     }
 }
