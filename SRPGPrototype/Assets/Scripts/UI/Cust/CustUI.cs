@@ -187,6 +187,7 @@ public class CustUI : MonoBehaviour
         cursor.OnUnHighlight = UnHighlightProgram;
         cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
         UIManager.main.TopBarUI.Hide();
+        UIManager.main.HideAllDescriptionUI();
     }
 
     public void InitializeProgramButtons()
