@@ -13,6 +13,7 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Button endTurnButton;
     [SerializeField] private Button linkOutButton;
     [SerializeField] private TextMeshProUGUI linkOutButtonText;
+    [SerializeField] private Canvas topBarOverlay;
     [SerializeField] private InterferenceIconUI[] interferenceIcons;
     [SerializeField] TurnOrderViewerUI turnOrderUI;
 
@@ -55,6 +56,11 @@ public class BattleUI : MonoBehaviour
     }
 
     private readonly List<TileUI.Entry> targetPatternEntries = new List<TileUI.Entry>();
+
+    public void HideTopBarOverlay()
+    {
+        topBarOverlay.enabled = false;
+    }
 
     public void RefreshLinkOutUI()
     {

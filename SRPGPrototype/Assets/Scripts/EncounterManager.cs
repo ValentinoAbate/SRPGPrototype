@@ -13,6 +13,7 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private Button confirmPlayerPlacementButton;
     [SerializeField] private GameObject spawnPositionPrefab;
     [SerializeField] private Transform battleGridCenter;
+    [SerializeField] private BattleUI ui;
     public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
     public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
 
@@ -85,6 +86,7 @@ public class EncounterManager : MonoBehaviour
     {
         var inv = PersistantData.main.inventory;
         var loot = PersistantData.main.loot;
+        ui.HideTopBarOverlay();
 
         // Generate Shell Loot
         var shellDraws = new LootData<Shell>();

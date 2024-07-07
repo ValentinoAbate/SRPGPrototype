@@ -54,6 +54,7 @@ MonoBehaviour:
   spawnPositionPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
     type: 3}
   battleGridCenter: {fileID: 5280788870636028732}
+  ui: {fileID: 1130085309517156903}
 --- !u!1 &6475287161125201395
 GameObject:
   m_ObjectHideFlags: 0

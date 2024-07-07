@@ -1082,6 +1082,7 @@ MonoBehaviour:
   endTurnButton: {fileID: 6968658016526285739}
   linkOutButton: {fileID: 2487367324880657588}
   linkOutButtonText: {fileID: 6251229465209262901}
+  topBarOverlay: {fileID: 5710225804797322561}
   interferenceIcons:
   - {fileID: 7972560938838765540}
   - {fileID: 7868509234137597594}
