@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec91f9a51f74ac41b641d15c010eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Starter Shell
   lootQualities: 0000000000000000
 --- !u!114 &4507535958620543167
 MonoBehaviour:
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec91f9a51f74ac41b641d15c010eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Starter Shell
   lootQualities: 0000000001000000
 --- !u!114 &5649885724498108751
 MonoBehaviour:
@@ -97,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec91f9a51f74ac41b641d15c010eacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Starter Shell
   lootQualities: 0100000002000000
 --- !u!114 &3424048849655575801
 MonoBehaviour:
@@ -110,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5edb74c5ed5d8459ad912158074135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Starter Attack
 --- !u!114 &5160773069629858030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,3 +126,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb58c98615d85f41be72f4f38a91f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Starter Move

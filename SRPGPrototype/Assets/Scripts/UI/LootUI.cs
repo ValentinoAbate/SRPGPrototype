@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -40,10 +41,10 @@ public class LootUI : MonoBehaviour
         uiCanvas.gameObject.SetActive(true);
     }
 
-    private void SetupDraws<T>(Inventory inv, LootData<T> draws, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>> onClick) where T : MonoBehaviour, ILootable
+    private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>> onClick) where T : MonoBehaviour, ILootable
     {
         // Setup Program Draws
-        foreach (var draw in draws)
+        foreach (var draw in lootData.Draws)
         {
             var instantiatedDraw = new List<T>(draw.Count);
             foreach (var item in draw)
@@ -54,8 +55,14 @@ public class LootUI : MonoBehaviour
             void OnClick()
             {
                 onClick(inv, button, instantiatedDraw);
+                UIManager.main.TopBarUI.SetTitleText(string.IsNullOrEmpty(draw.Name) ? "Choose Loot" : draw.Name, false);
             }
             button.onClick.AddListener(OnClick);
+            if (!string.IsNullOrEmpty(draw.Name))
+            {
+                var text = button.GetComponentInChildren<TextMeshProUGUI>();
+                text.text = draw.Name;
+            }
         }
     }
 

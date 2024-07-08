@@ -13,8 +13,8 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private Button confirmPlayerPlacementButton;
     [SerializeField] private GameObject spawnPositionPrefab;
     [SerializeField] private BattleUI ui;
-    public LootManager.GenerateProgramLootFn GenerateProgramLoot { get; set; }
-    public LootManager.GenerateShellLootFn GenerateShellLoot { get; set; }
+    public LootData<Program>.GenerateLootFunction GenerateProgramLoot { get; set; }
+    public LootData<Shell>.GenerateLootFunction GenerateShellLoot { get; set; }
 
     private void Start()
     {
@@ -94,15 +94,20 @@ public class EncounterManager : MonoBehaviour
         var shellDraws = new LootData<Shell>();
         if (GenerateShellLoot != null)
         {
-            foreach (LootManager.GenerateShellLootFn shellLoot in GenerateShellLoot.GetInvocationList())
-                shellDraws.Add(shellLoot(loot.ShellLoot));
+            foreach (LootData<Shell>.GenerateLootFunction shellLootGenerator in GenerateShellLoot.GetInvocationList())
+            {
+                shellDraws.Add(loot.ShellLoot, shellLootGenerator);
+            }
+
         }
         // Generate Program loot
         var progDraws = new LootData<Program>();
         if (GenerateProgramLoot != null)
         {
-            foreach (LootManager.GenerateProgramLootFn progLoot in GenerateProgramLoot.GetInvocationList())
-                progDraws.Add(progLoot(loot.ProgramLoot));
+            foreach (LootData<Program>.GenerateLootFunction progLootGenerator in GenerateProgramLoot.GetInvocationList())
+            {
+                progDraws.Add(loot.ProgramLoot, progLootGenerator);
+            }
         }
 
         loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);

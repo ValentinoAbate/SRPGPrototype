@@ -80,7 +80,12 @@ PrefabInstance:
     - target: {fileID: 4462558509915415869, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}
       propertyPath: displayName
-      value: Ability/Mod Mystery Data - Rare
+      value: Ability/Mod Program Data - Rare
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925400928908998563, guid: edec4a06881e32e46bf78f32a029e66a,
+        type: 3}
+      propertyPath: dropName
+      value: Ability/Mod Program Data (R)
       objectReference: {fileID: 0}
     - target: {fileID: 4925400928908998563, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}

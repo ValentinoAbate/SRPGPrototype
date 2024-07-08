@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842772206710819546, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
         type: 3}
+      propertyPath: dropName
+      value: Capacity Program Data (R)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842772206710819546, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
+        type: 3}
       propertyPath: lootQualities.Array.data[0]
       value: 1
       objectReference: {fileID: 0}

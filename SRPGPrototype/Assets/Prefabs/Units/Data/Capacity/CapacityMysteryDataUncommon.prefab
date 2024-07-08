@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842772206710819546, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
         type: 3}
+      propertyPath: dropName
+      value: Capacity Program Data (U)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842772206710819546, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
+        type: 3}
       propertyPath: lootQualities.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
@@ -75,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 7594287889711242676, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
         type: 3}
       propertyPath: displayName
-      value: Capacity Mystery Data - Uncommon
+      value: Capacity Program Data - Uncommon
       objectReference: {fileID: 0}
     - target: {fileID: 7820793239401814768, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
         type: 3}

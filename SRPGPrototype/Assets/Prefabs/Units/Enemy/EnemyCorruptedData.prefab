@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5d29d932f0e8947a21e93257d13471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Corrupted Program Data
   lootQualities: 000000000100000000000000
 --- !u!114 &7394969623243043658
 MonoBehaviour:

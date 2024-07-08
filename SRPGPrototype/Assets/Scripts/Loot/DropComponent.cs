@@ -4,5 +4,11 @@ using UnityEngine;
 
 public abstract class DropComponent<T> : MonoBehaviour where T : ILootable
 {
-    public abstract List<T> GenerateDrop(Loot<T> loot);
+    [SerializeField] private string dropName;
+    public List<T> GenerateDrop(Loot<T> loot, out string name)
+    {
+        name = dropName;
+        return GenerateDrop(loot);
+    }
+    protected abstract List<T> GenerateDrop(Loot<T> loot);
 }

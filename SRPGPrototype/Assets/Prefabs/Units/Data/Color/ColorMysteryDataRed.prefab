@@ -9,28 +9,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 712469755556700837, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
-      propertyPath: m_Color.g
+      propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 712469755556700837, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_Color.g
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298886888759046285, guid: 04d9b7364542e004d912bddfc88cadca,
-        type: 3}
-      propertyPath: displayName
-      value: Red Mystery Data
       objectReference: {fileID: 0}
     - target: {fileID: 1298886888759046285, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
       propertyPath: description
       value: Drops a Red Program at the end of the encounter.
       objectReference: {fileID: 0}
+    - target: {fileID: 1298886888759046285, guid: 04d9b7364542e004d912bddfc88cadca,
+        type: 3}
+      propertyPath: displayName
+      value: Red Program Data
+      objectReference: {fileID: 0}
     - target: {fileID: 1723695741483710409, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
       propertyPath: m_Name
       value: ColorMysteryDataRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
@@ -49,6 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -60,16 +70,6 @@ PrefabInstance:
     - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4335724716671447564, guid: 04d9b7364542e004d912bddfc88cadca,
@@ -91,6 +91,11 @@ PrefabInstance:
         type: 3}
       propertyPath: color
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808179721894831726, guid: 04d9b7364542e004d912bddfc88cadca,
+        type: 3}
+      propertyPath: dropName
+      value: Red Program Data
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04d9b7364542e004d912bddfc88cadca, type: 3}

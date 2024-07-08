@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}
       propertyPath: displayName
-      value: Mystery Data - Rare
+      value: Program Data - Rare
       objectReference: {fileID: 0}
     - target: {fileID: 1550129024380200485, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}
@@ -81,6 +81,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965787398765822326, guid: c0e1ef933e3f5474cac0ca77288efcf1,
+        type: 3}
+      propertyPath: dropName
+      value: Program Data (R)
       objectReference: {fileID: 0}
     - target: {fileID: 5965787398765822326, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}

@@ -4,7 +4,7 @@ public class DropComponentProgramColor: DropComponent<Program>
 {
     public Program.Color color;
     public LootProvider.LootQuality[] lootQualities = new LootProvider.LootQuality[3];
-    public override List<Program> GenerateDrop(Loot<Program> loot)
+    protected override List<Program> GenerateDrop(Loot<Program> loot)
     {
 
         return loot.GetDropsStandardNoDuplicates(lootQualities, Filter);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c52a4d1a18f4b47a22c82e7638e4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Capacity Program Data
   lootQualities: 000000000000000000000000
 --- !u!1001 &7087835945193470067
 PrefabInstance:
@@ -22,11 +23,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
-      propertyPath: displayName
-      value: Capacity Mystery Data
-      objectReference: {fileID: 0}
-    - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
-        type: 3}
       propertyPath: category
       value: 3
       objectReference: {fileID: 0}
@@ -35,6 +31,11 @@ PrefabInstance:
       propertyPath: description
       value: Drops a Capacity Program at the end of the encounter.
       objectReference: {fileID: 0}
+    - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
+      propertyPath: displayName
+      value: Capacity Program Data
+      objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: m_Name
@@ -42,7 +43,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 0094300eefbb09549b66fbb049403897,
@@ -52,8 +53,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
@@ -72,6 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -83,16 +94,6 @@ PrefabInstance:
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 0094300eefbb09549b66fbb049403897,

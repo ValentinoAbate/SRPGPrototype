@@ -14,7 +14,7 @@ public class DropComponentProgramGamble : DropComponent<Program>
         {8, 1}
     };
 
-    public override List<Program> GenerateDrop(Loot<Program> loot)
+    protected override List<Program> GenerateDrop(Loot<Program> loot)
     {
         int roll = RandomU.instance.RandomInt(0, 1000);
         // Give the player a gamble program

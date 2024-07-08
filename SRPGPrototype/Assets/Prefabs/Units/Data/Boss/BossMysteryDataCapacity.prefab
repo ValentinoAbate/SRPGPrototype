@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c52a4d1a18f4b47a22c82e7638e4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Boss Capacity Data
   lootQualities: 030000000300000003000000
 --- !u!1001 &2147300373272971273
 PrefabInstance:
@@ -33,7 +34,7 @@ PrefabInstance:
     - target: {fileID: 5026363331897916687, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}
       propertyPath: displayName
-      value: Boss Mystery Data - Capacity
+      value: Boss Program Data - Capacity
       objectReference: {fileID: 0}
     - target: {fileID: 7776659684859248526, guid: a7f0db1b586a6d844affda46ba457a79,
         type: 3}

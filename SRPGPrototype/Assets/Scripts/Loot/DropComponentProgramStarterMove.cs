@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropComponentProgramStarterMove : DropComponent<Program>
 {
-    public override List<Program> GenerateDrop(Loot<Program> loot)
+    protected override List<Program> GenerateDrop(Loot<Program> loot)
     {
         return new List<Program>() { loot.GetDropCustom(Filter) };
     }

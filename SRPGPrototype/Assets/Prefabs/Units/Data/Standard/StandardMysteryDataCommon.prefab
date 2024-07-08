@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5d29d932f0e8947a21e93257d13471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropName: Program Data
   lootQualities: 000000000000000000000000
 --- !u!1001 &1970092962795111590
 PrefabInstance:
@@ -28,7 +29,7 @@ PrefabInstance:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: displayName
-      value: Mystery Data - Common
+      value: Program Data - Common
       objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}

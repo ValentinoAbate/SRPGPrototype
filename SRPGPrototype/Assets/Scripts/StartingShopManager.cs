@@ -23,13 +23,14 @@ public class StartingShopManager : MonoBehaviour
 
         // Generate Shell Loot
         var startingShellDrop = RandomUtils.RandomU.instance.Choice(startingShellDrops, startingShellDropWeights);
-        var shellDraws = new LootData<Shell>(startingShellDrop.GenerateDrop(loot.ShellLoot));
+        var shellDraws = new LootData<Shell>(1);
+        shellDraws.Add(loot.ShellLoot, startingShellDrop.GenerateDrop);
 
         // Generate Program loot
         var progDraws = new LootData<Program>(startingProgramDrops.Length);
         foreach(var startProgramDrop in startingProgramDrops)
         {
-            progDraws.Add(startProgramDrop.GenerateDrop(loot.ProgramLoot));
+            progDraws.Add(loot.ProgramLoot, startProgramDrop.GenerateDrop);
         }
 
         loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);

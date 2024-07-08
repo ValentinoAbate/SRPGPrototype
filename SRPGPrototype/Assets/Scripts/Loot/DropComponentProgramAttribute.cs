@@ -4,9 +4,9 @@ public class DropComponentProgramAttribute : DropComponent<Program>
 {
     public Program.Attributes attributes = Program.Attributes.None;
     public LootProvider.LootQuality[] lootQualities = new LootProvider.LootQuality[3];
-    public override List<Program> GenerateDrop(Loot<Program> loot)
+    protected override List<Program> GenerateDrop(Loot<Program> loot)
     {
-        return loot.GetDropsStandardNoDuplicates(lootQualities, Filter);
+        return loot.GetDropsStandardNoDuplicates(lootQualities);
     }
 
     // Filter out all programs that don't give the given attributes
