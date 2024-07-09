@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LootData<T> where T : ILootable
 {
-    public delegate List<T> GenerateLootFunction(Loot<T> loot, out string lootName);
+    public delegate List<T> GenerateLootFunction(Loot<T> loot, out string lootName, out int declineBonus);
     public IReadOnlyList<Data> Draws => draws;
     private readonly List<Data> draws = new List<Data>();
+
     public LootData(params Data[] args)
     {
         draws.EnsureCapacity(draws.Count);
@@ -18,24 +19,27 @@ public class LootData<T> where T : ILootable
         draws.Capacity = capacity;
     }
 
-    public void Add(IEnumerable<T> items, string name)
+    public void Add(IEnumerable<T> items, string name, int declineBonus)
     {
-        draws.Add(new Data(items, name));
+        draws.Add(new Data(items, name, declineBonus));
     }
 
     public void Add(Loot<T> loot, GenerateLootFunction generator)
     {
-        var items = generator(loot, out var lootName);
-        Add(items, lootName);
+        var items = generator(loot, out var lootName, out int declineBonus);
+        Add(items, lootName, declineBonus);
     }
 
     public class Data : List<T>
     {
         public string Name { get; }
 
-        public Data(IEnumerable<T> items, string name) : base(items)
+        public int DeclineBonus { get; }
+
+        public Data(IEnumerable<T> items, string name, int declineBonus) : base(items)
         {
             Name = name;
+            DeclineBonus = declineBonus;
         }
     }
 }

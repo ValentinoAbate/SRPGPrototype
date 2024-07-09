@@ -4,7 +4,7 @@ using System.Linq;
 
 public class DropComponentProgramGamble : DropComponent<Program>
 {
-    private readonly WeightedSet<int> amountWeights = new WeightedSet<int>
+    private static readonly WeightedSet<int> amountWeights = new WeightedSet<int>
     {
         {2, 50},
         {3, 20},
@@ -57,4 +57,8 @@ public class DropComponentProgramGamble : DropComponent<Program>
         throw new System.Exception("Roll should be in between 0 and 999");
     }
 
+    protected override int GenerateDeclineBonus(List<Program> drops)
+    {
+        return declineBonusOverride != nullDeclineBonusOverride ? declineBonusOverride : 0;
+    }
 }

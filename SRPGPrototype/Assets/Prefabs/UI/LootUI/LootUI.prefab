@@ -370,6 +370,8 @@ MonoBehaviour:
     type: 3}
   shellButtonPrefab: {fileID: 4921574273223274422, guid: 7a238936243d2fc4d96d4ba0efb8ed72,
     type: 3}
+  moneyButtonPrefab: {fileID: 7943866347174890339, guid: 2ff02ee3025a38140b9d9c9022405bc0,
+    type: 3}
   uiCanvas: {fileID: 6831854041697112361}
   menuUI: {fileID: 6347957018003824706}
   programDrawUI: {fileID: 2503200036520517505}
@@ -378,8 +380,6 @@ MonoBehaviour:
   programDrawButtonContainer: {fileID: 4648850411042332128}
   shellDrawButtonContainer: {fileID: 3364482286650478870}
   exitButton: {fileID: 7788089143340120972}
-  programDesc: {fileID: 0}
-  shellDesc: {fileID: 0}
   allowLootSkipping: 1
 --- !u!1 &3024933504776548132
 GameObject:

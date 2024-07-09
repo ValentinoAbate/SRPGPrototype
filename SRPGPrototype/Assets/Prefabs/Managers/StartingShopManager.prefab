@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropName: Starter Shell
+  declineBonusOverride: 0
   lootQualities: 0000000000000000
 --- !u!114 &4507535958620543167
 MonoBehaviour:
@@ -86,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropName: Starter Shell
+  declineBonusOverride: 0
   lootQualities: 0000000001000000
 --- !u!114 &5649885724498108751
 MonoBehaviour:
@@ -100,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropName: Starter Shell
+  declineBonusOverride: 0
   lootQualities: 0100000002000000
 --- !u!114 &3424048849655575801
 MonoBehaviour:
@@ -114,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropName: Starter Attack
+  declineBonusOverride: 0
 --- !u!114 &5160773069629858030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +131,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropName: Starter Move
+  declineBonusOverride: 0

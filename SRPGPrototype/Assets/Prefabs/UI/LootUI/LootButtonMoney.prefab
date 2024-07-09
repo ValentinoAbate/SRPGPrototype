@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2126904533632860949
+--- !u!1001 &4032676069554022336
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 6469625229419637923, guid: 5d8e6596fcde3e34693b1ef698b7286a,
         type: 3}
       propertyPath: m_Name
-      value: LootButtonShell
+      value: LootButtonMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d8e6596fcde3e34693b1ef698b7286a, type: 3}

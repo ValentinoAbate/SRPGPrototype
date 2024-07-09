@@ -14,6 +14,7 @@ public class LootUI : MonoBehaviour
     public GameObject shellDrawButtonPrefab;
     public GameObject programButtonPrefab;
     public GameObject shellButtonPrefab;
+    public GameObject moneyButtonPrefab;
 
     public Canvas uiCanvas;
     public GameObject menuUI;
@@ -41,7 +42,7 @@ public class LootUI : MonoBehaviour
         uiCanvas.gameObject.SetActive(true);
     }
 
-    private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>> onClick) where T : MonoBehaviour, ILootable
+    private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>, LootData<T>.Data> onClick) where T : MonoBehaviour, ILootable
     {
         // Setup Program Draws
         foreach (var draw in lootData.Draws)
@@ -54,7 +55,7 @@ public class LootUI : MonoBehaviour
             var button = Instantiate(buttonPrefab, menuButtonContainer).GetComponent<Button>();
             void OnClick()
             {
-                onClick(inv, button, instantiatedDraw);
+                onClick(inv, button, instantiatedDraw, draw);
                 UIManager.main.TopBarUI.SetTitleText(string.IsNullOrEmpty(draw.Name) ? "Choose Loot" : draw.Name, false);
             }
             button.onClick.AddListener(OnClick);
@@ -94,35 +95,59 @@ public class LootUI : MonoBehaviour
         ReturnToMainMenu();
     }
 
-    public void ShowShellDraw(Inventory inv, Button menuButton, IEnumerable<Shell> data)
+    public void ShowShellDraw(Inventory inv, Button menuButton, IEnumerable<Shell> shells, LootData<Shell>.Data data)
     {
         menuUI.SetActive(false);
         shellDrawButtonContainer.DestroyAllChildren();
-        foreach (var shell in data)
+        foreach (var shell in shells)
         {
             var lootButtonUI = Instantiate(shellButtonPrefab, shellDrawButtonContainer).GetComponent<LootButtonUI>();
             lootButtonUI.nameText.text = shell.DisplayName;
-            lootButtonUI.button.onClick.AddListener(() => inv.AddShell(shell));
-            lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
+            void OnClick()
+            {
+                inv.AddShell(shell);
+                FinishLootDraw(menuButton);
+            }
+            lootButtonUI.button.onClick.AddListener(OnClick);
             lootButtonUI.trigger.SetHoverCallbacks((_) => UIManager.main.ShellDescriptionUI.Show(shell), UIManager.main.HideShellDescriptionUI);
         }
+        CreateDeclineButton(data.DeclineBonus, shellDrawButtonContainer, menuButton);
         shellDrawUI.SetActive(true);
     }
 
-    public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> data)
+    public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> programs, LootData<Program>.Data data)
     {
         menuUI.SetActive(false);
         programDrawButtonContainer.DestroyAllChildren();
-        foreach (var prog in data)
+        foreach (var prog in programs)
         {
             var lootButtonUI = Instantiate(programButtonPrefab, programDrawButtonContainer).GetComponent<LootButtonUI>();
             lootButtonUI.icon.color = prog.ColorValue;
             lootButtonUI.nameText.text = prog.DisplayName;
-            lootButtonUI.button.onClick.AddListener(() => inv.AddProgram(prog));
-            lootButtonUI.button.onClick.AddListener(() => FinishLootDraw(menuButton));
+            void OnClick()
+            {
+                inv.AddProgram(prog);
+                FinishLootDraw(menuButton);
+            }
+            lootButtonUI.button.onClick.AddListener(OnClick);
             lootButtonUI.trigger.SetHoverCallbacks((_) => UIManager.main.ProgramDescriptionUI.Show(prog), UIManager.main.HideProgramDescriptionUI);
         }
+        CreateDeclineButton(data.DeclineBonus, programDrawButtonContainer, menuButton);
         programDrawUI.SetActive(true);
+    }
+
+    private void CreateDeclineButton(int bonus, Transform container, Button drawButton)
+    {
+        if (bonus <= 0)
+            return;
+        var lootButtonUI = Instantiate(moneyButtonPrefab, container).GetComponent<LootButtonUI>();
+        lootButtonUI.nameText.text = $"Decline (+${bonus})";
+        void OnClick()
+        {
+            PersistantData.main.inventory.Money += bonus;
+            FinishLootDraw(drawButton);
+        }
+        lootButtonUI.button.onClick.AddListener(OnClick);
     }
 
     private void RefreshExitButton()
