@@ -9,9 +9,9 @@ public class ProgramShopEntry : ShopEntry
 
     public override int Cost => program.Rarity switch
     {
-        Rarity.Common => 100,
-        Rarity.Uncommon => 150,
-        Rarity.Rare => 300,
+        Rarity.Common => 75,
+        Rarity.Uncommon => 125,
+        Rarity.Rare => 250,
         _ => 999,
     };
 

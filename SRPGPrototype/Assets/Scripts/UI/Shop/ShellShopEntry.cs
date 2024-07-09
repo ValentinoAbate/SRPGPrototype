@@ -9,9 +9,9 @@ public class ShellShopEntry : ShopEntry
 
     public override int Cost => shell.Rarity switch
     {
-        Rarity.Common => 200,
-        Rarity.Uncommon => 300,
-        Rarity.Rare => 400,
+        Rarity.Common => 150,
+        Rarity.Uncommon => 200,
+        Rarity.Rare => 250,
         _ => 999
     };
 
