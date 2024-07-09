@@ -69,6 +69,7 @@ public class EncounterManager : MonoBehaviour
 
     public void EndEncounter()
     {
+        ui.DisableInput();
         if (grid.MainPlayerDead)
         {
             GameOver();
@@ -88,7 +89,6 @@ public class EncounterManager : MonoBehaviour
     {
         var inv = PersistantData.main.inventory;
         var loot = PersistantData.main.loot;
-        ui.HideTopBarOverlay();
 
         // Generate Shell Loot
         var shellDraws = new LootData<Shell>();
