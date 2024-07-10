@@ -14,6 +14,7 @@ public class MysteryDataUnit : AIUnit
         Gamble,
         Boss,
         Unique,
+        Money,
     }
 
     public enum Quality
@@ -65,5 +66,8 @@ public class MysteryDataUnit : AIUnit
         var shellDrops = GetComponentsInChildren<DropComponent<Shell>>(true);
         foreach (var drop in shellDrops)
             manager.GenerateShellLoot += drop.GenerateDrop;
+        var moneyRewards = GetComponentsInChildren<MoneyRewardComponent>(true);
+        foreach (var reward in moneyRewards)
+            manager.GenerateMoneyLoot += reward.GenerateMoneyData;
     }
 }
