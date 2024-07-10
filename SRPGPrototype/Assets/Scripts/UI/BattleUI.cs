@@ -58,18 +58,26 @@ public class BattleUI : MonoBehaviour
 
     private readonly List<TileUI.Entry> targetPatternEntries = new List<TileUI.Entry>();
 
-    public void DisableInput()
+    private void Awake()
     {
-        cursor.NullAllActions();
-        SetGeneralUIEnabled(false);
-        HideTopBarOverlay();
-        enabled = false;
-        menu.enabled = false;
+        if (UIManager.main.BattleUI == null)
+        {
+            UIManager.main.BattleUI = this;
+        }
     }
 
-    public void HideTopBarOverlay()
+    public void SetUIEnabled(bool value)
     {
-        topBarOverlay.enabled = false;
+        cursor.enabled = value;
+        SetGeneralUIEnabled(value);
+        TSetopBarOverlayEnabled(value);
+        enabled = value;
+        menu.enabled = value;
+    }
+
+    public void TSetopBarOverlayEnabled(bool value)
+    {
+        topBarOverlay.enabled = value;
     }
 
     public void SetGeneralUIEnabled(bool state)

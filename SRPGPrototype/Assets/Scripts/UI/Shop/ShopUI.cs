@@ -20,6 +20,7 @@ public class ShopUI : MonoBehaviour
 
     public void Show(ShopManager.ShopData data, System.Action onComplete)
     {
+        UIManager.main.BattleUI?.SetUIEnabled(false);
         UIManager.main.TopBarUI.SetTitleText(data.DisplayName, true);
         this.onComplete = onComplete;
         canvas.enabled = true;
@@ -63,6 +64,7 @@ public class ShopUI : MonoBehaviour
     {
         canvas.enabled = false;
         UIManager.main.TopBarUI.EndTempTitleText();
+        UIManager.main.BattleUI?.SetUIEnabled(true);
         onComplete?.Invoke();
     }
 }

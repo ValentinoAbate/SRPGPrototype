@@ -19,6 +19,18 @@ public class UIManager : MonoBehaviour
     public UnitDescriptionUI UnitDescriptionUI => unitDescriptionUI;
     [SerializeField] private UnitDescriptionUI unitDescriptionUI;
 
+    public BattleUI BattleUI 
+    {
+        get
+        {
+            if (battleUI == null)
+                return null;
+            return battleUI;
+        } 
+        set => battleUI = value; 
+    }
+    private BattleUI battleUI;
+
     private void Awake()
     {
         if(main == null)

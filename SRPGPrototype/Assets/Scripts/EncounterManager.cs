@@ -75,7 +75,7 @@ public class EncounterManager : MonoBehaviour
 
     public void EndEncounter()
     {
-        ui.DisableInput();
+        ui.SetUIEnabled(false);
         if (grid.MainPlayerDead)
         {
             GameOver();
