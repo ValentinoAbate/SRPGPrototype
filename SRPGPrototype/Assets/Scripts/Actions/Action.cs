@@ -45,7 +45,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     {
         get
         {
-            if (slowdownInterval == 0)
+            if (SlowdownInterval == 0)
                 return baseAp;
             int usage = TimesUsed - FreeUses;
             if (SlowdownReset == Trigger.TurnStart)
@@ -159,6 +159,8 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 
     public int APCostAfterXUses(int uses)
     {
+        if (SlowdownInterval == 0)
+            return baseAp;
         int baseUsage = TimesUsed;
         if (SlowdownReset == Trigger.TurnStart)
             baseUsage = TimesUsedThisTurn;
