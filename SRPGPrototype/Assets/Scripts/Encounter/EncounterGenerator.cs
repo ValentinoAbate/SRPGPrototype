@@ -61,6 +61,10 @@ public class EncounterGenerator : MonoBehaviour
     {
         { MysteryDataUnit.Category.Boss, 100 }
     };
+    private readonly WeightedSet<MysteryDataUnit.Category> moneyLootCategoryWeights = new WeightedSet<MysteryDataUnit.Category>
+    {
+        { MysteryDataUnit.Category.Money, 100 },
+    };
 
     #endregion
 
@@ -180,8 +184,20 @@ public class EncounterGenerator : MonoBehaviour
         {
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
         }
+        // Place the bonus money loot (if applicable)
+        if (lootFlags.HasFlag(EncounterData.LootModifiers.BonusMoney))
+        {
+            PlaceLoot(moneyLootCategoryWeights, qualityWeights, ref encounter, ref positions);
+        }
+        // Place the bonus money loot (if applicable)
+        if (lootFlags.HasFlag(EncounterData.LootModifiers.BonusRandom))
+        {
+            var hybridWeights = new WeightedSet<MysteryDataUnit.Category>(categoryWeights);
+            hybridWeights.Add(moneyLootCategoryWeights);
+            PlaceLoot(hybridWeights, qualityWeights, ref encounter, ref positions);
+        }
         // Place the midboss loot (if applicable)
-        if(lootFlags.HasFlag(EncounterData.LootModifiers.Shell))
+        if (lootFlags.HasFlag(EncounterData.LootModifiers.Shell))
         {
             PlaceLoot(midbossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }

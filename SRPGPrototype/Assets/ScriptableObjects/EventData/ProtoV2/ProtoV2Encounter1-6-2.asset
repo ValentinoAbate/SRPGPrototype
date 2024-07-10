@@ -45,7 +45,7 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  lootFlags: 4
+  lootFlags: 32
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}

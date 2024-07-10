@@ -12,6 +12,8 @@ public class EncounterData : ScriptableObject
         BossCapacity = 2,
         Bonus = 4,
         NoNormalLoot = 8,
+        BonusMoney = 16,
+        BonusRandom = 32,
     }
     [Header("General")]
     public float targetDifficulty;
