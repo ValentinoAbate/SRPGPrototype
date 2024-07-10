@@ -39,7 +39,7 @@ public class TargetPatternGeneratorChain : TargetPatternGenerator
         {
             static IEnumerable<Vector2Int> Adj(Vector2Int pos)
             {
-                return pos.Adjacent().Concat(pos.Adjacent(1));
+                return pos.Adjacent().Concat(pos.Adjacent(2));
             }
             GetChainTargets(targetPos, grid, Adj, ref targets);
         }
@@ -47,7 +47,7 @@ public class TargetPatternGeneratorChain : TargetPatternGenerator
         {
             static IEnumerable<Vector2Int> Adj(Vector2Int pos)
             {
-                return pos.AdjacentDiagonal().Concat(pos.AdjacentDiagonal(1));
+                return pos.AdjacentDiagonal().Concat(pos.AdjacentDiagonal(2));
             }
             GetChainTargets(targetPos, grid, Adj, ref targets);
         }
