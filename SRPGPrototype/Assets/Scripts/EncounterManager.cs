@@ -15,6 +15,7 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private BattleUI ui;
     public LootData<Program>.GenerateLootFunction GenerateProgramLoot { get; set; }
     public LootData<Shell>.GenerateLootFunction GenerateShellLoot { get; set; }
+    public System.Func<LootUI.MoneyData> GenerateMoneyLoot { get; set; }
 
     private void Start()
     {
@@ -110,7 +111,17 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
-        loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);
+        var moneyData = new List<LootUI.MoneyData>();
+        if(GenerateMoneyLoot != null)
+        {
+            foreach(System.Func<LootUI.MoneyData> moneyLootGenerator in GenerateMoneyLoot.GetInvocationList())
+            {
+                moneyData.Add(moneyLootGenerator());
+            }
+        }
+        moneyData.Add(new LootUI.MoneyData(RandomUtils.RandomU.instance.RandomInt(6, 13)));
+
+        loot.UI.ShowUI(inv, progDraws, shellDraws, moneyData, EndScene);
     }
 
     public void EndScene()

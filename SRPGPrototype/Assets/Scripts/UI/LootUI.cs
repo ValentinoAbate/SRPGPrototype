@@ -12,6 +12,7 @@ public class LootUI : MonoBehaviour
 {
     public GameObject programDrawButtonPrefab;
     public GameObject shellDrawButtonPrefab;
+    public GameObject moneyDrawButtonPrefab;
     public GameObject programButtonPrefab;
     public GameObject shellButtonPrefab;
     public GameObject moneyButtonPrefab;
@@ -27,12 +28,17 @@ public class LootUI : MonoBehaviour
 
     [SerializeField] private bool allowLootSkipping = true;
 
-    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, UnityAction onLootClose)
+    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, IEnumerable<MoneyData> moneyData, UnityAction onLootClose)
     {
         // Setup Program Draws
         SetupDraws(inv, programDraws, programDrawButtonPrefab, ShowProgDraw);
         // Setup ShellDraws
         SetupDraws(inv, shellDraws, shellDrawButtonPrefab, ShowShellDraw);
+        // Setup Money
+        foreach(var data in moneyData)
+        {
+            SetupMoneyDrawButton(data, menuButtonContainer);
+        }
         // Set up exit button
         exitButton.onClick.RemoveAllListeners();
         exitButton.onClick.AddListener(HideUI);
@@ -150,6 +156,21 @@ public class LootUI : MonoBehaviour
         lootButtonUI.button.onClick.AddListener(OnClick);
     }
 
+    private void SetupMoneyDrawButton(MoneyData data, Transform container)
+    {
+        if (data.Amount <= 0)
+            return;
+        var button = Instantiate(moneyDrawButtonPrefab, container).GetComponent<Button>();
+        var text = button.GetComponentInChildren<TextMeshProUGUI>();
+        text.text = data.Name;
+        void OnClick()
+        {
+            PersistantData.main.inventory.Money += data.Amount;
+            button.gameObject.SetActive(false);
+        }
+        button.onClick.AddListener(OnClick);
+    }
+
     private void RefreshExitButton()
     {
         if (allowLootSkipping)
@@ -166,5 +187,16 @@ public class LootUI : MonoBehaviour
             }
         }
         exitButton.interactable = true;
+    }
+
+    public class MoneyData
+    {
+        public string Name { get; }
+        public int Amount { get; }
+        public MoneyData(int amount, string name = null)
+        {
+            Amount = amount;
+            Name = string.IsNullOrEmpty(name) ? $"${amount}" : $"{name} (${amount})";
+        }
     }
 }

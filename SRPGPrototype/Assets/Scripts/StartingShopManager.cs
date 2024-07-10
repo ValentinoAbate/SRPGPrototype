@@ -33,7 +33,7 @@ public class StartingShopManager : MonoBehaviour
             progDraws.Add(loot.ProgramLoot, startProgramDrop.GenerateDrop);
         }
 
-        loot.UI.ShowUI(inv, progDraws, shellDraws, EndScene);
+        loot.UI.ShowUI(inv, progDraws, shellDraws, System.Array.Empty<LootUI.MoneyData>(), EndScene);
     }
 
     public void EndScene()

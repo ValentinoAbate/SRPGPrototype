@@ -366,6 +366,8 @@ MonoBehaviour:
     type: 3}
   shellDrawButtonPrefab: {fileID: 8141979138597358568, guid: 3260dc7dc9e161348bea4f1b7bf82e54,
     type: 3}
+  moneyDrawButtonPrefab: {fileID: 8257040937922284194, guid: f311a6e10fb17be40a12b427231261ff,
+    type: 3}
   programButtonPrefab: {fileID: 4921574273223274422, guid: 2d929e80db63c7d4595dbe9135e2e255,
     type: 3}
   shellButtonPrefab: {fileID: 4921574273223274422, guid: 7a238936243d2fc4d96d4ba0efb8ed72,
