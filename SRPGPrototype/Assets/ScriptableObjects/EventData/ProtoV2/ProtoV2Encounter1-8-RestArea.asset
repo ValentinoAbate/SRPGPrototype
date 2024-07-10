@@ -21,15 +21,19 @@ MonoBehaviour:
   enemies: []
   baseEnemyWeights:
   - 1
-  numObstacles: 03000000
+  numObstacles: 00000000
   numObstaclesWeights:
   - 1
   obstacles: []
   baseObstacleWeights:
   - 1
   lootFlags: 8
+  moneyOption: 0
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0
