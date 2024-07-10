@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardName: Money Data
-  baseAmount: 50
-  variance: 3
+  baseAmount: 75
+  variance: 10
 --- !u!1001 &2373241909718698810
 PrefabInstance:
   m_ObjectHideFlags: 0

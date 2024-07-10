@@ -65,12 +65,12 @@ PrefabInstance:
     - target: {fileID: 1019905377264692421, guid: 25796ec6f882c9d4187c26690b5b921a,
         type: 3}
       propertyPath: variance
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1019905377264692421, guid: 25796ec6f882c9d4187c26690b5b921a,
         type: 3}
       propertyPath: baseAmount
-      value: 75
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 1019905377264692421, guid: 25796ec6f882c9d4187c26690b5b921a,
         type: 3}
