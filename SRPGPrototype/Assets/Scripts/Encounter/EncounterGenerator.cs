@@ -209,6 +209,28 @@ public class EncounterGenerator : MonoBehaviour
         // Set additional spawn positions
         SetSpawnPositions(numSpawnPositions, data.dimensions, encounter, ref positions);
 
+        // Generate Money
+        if(data.moneyOption == EncounterData.MoneyOption.None)
+        {
+            encounter.giveCompletionMoney = false;
+        }
+        else
+        {
+            encounter.giveCompletionMoney = true;
+            encounter.baseCompletionMoney = data.moneyOption switch
+            {
+                EncounterData.MoneyOption.Miniboss => 50,
+                EncounterData.MoneyOption.Boss => 100,
+                _ => 10,
+            };
+            encounter.completionMoneyVariance = data.moneyOption switch
+            {
+                EncounterData.MoneyOption.Miniboss => 8,
+                EncounterData.MoneyOption.Boss => 12,
+                _ => 4,
+            };
+        }
+
         return encounter;
     }
 

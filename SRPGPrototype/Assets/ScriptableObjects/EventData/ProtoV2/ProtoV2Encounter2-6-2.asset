@@ -38,6 +38,7 @@ MonoBehaviour:
   baseObstacleWeights:
   - 1
   lootFlags: 4
+  moneyOption: 1
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
@@ -52,3 +53,6 @@ MonoBehaviour:
       unit: {fileID: 4568531750757968395, guid: 9d70d33ca0f990c47a4d1d4069c63220,
         type: 3}
     spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0

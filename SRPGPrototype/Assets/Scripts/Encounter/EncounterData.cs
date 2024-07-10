@@ -15,6 +15,13 @@ public class EncounterData : ScriptableObject
         BonusMoney = 16,
         BonusRandom = 32,
     }
+    public enum MoneyOption
+    {
+        None,
+        Normal,
+        Miniboss,
+        Boss,
+    }
     [Header("General")]
     public float targetDifficulty;
     public Vector2Int dimensions = new Vector2Int(8, 8);
@@ -31,6 +38,7 @@ public class EncounterData : ScriptableObject
     public List<float> baseObstacleWeights = new List<float>() { 1 };
     [Header("Loot")]
     public LootModifiers lootFlags;
+    public MoneyOption moneyOption;
     [Header("Seed Properties")]
     public Encounter seed = null;
 }

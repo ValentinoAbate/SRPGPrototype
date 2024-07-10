@@ -40,8 +40,12 @@ MonoBehaviour:
   - 9
   - 1
   lootFlags: 4
+  moneyOption: 1
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0

@@ -33,8 +33,12 @@ MonoBehaviour:
   baseObstacleWeights:
   - 1
   lootFlags: 0
+  moneyOption: 1
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0

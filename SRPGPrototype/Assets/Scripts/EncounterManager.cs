@@ -26,6 +26,11 @@ public class EncounterManager : MonoBehaviour
     {
         // Get the encounter from the map
         var encounter = PersistantData.main.mapManager.Map.Current.value;
+        // Setup Money Drop (if applicable)
+        if (encounter.giveCompletionMoney)
+        {
+            GenerateMoneyLoot += encounter.CompletionMoneyData;
+        }
         // Initialize Grid
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
         grid.CenterAtPosition(BattleGrid.DefaultCenter);
@@ -119,7 +124,6 @@ public class EncounterManager : MonoBehaviour
                 moneyData.Add(moneyLootGenerator());
             }
         }
-        moneyData.Add(new LootUI.MoneyData(RandomUtils.RandomU.instance.RandomInt(6, 13)));
 
         loot.UI.ShowUI(inv, progDraws, shellDraws, moneyData, EndScene);
     }

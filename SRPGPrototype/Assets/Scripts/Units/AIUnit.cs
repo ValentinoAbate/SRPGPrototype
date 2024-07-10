@@ -116,5 +116,8 @@ public abstract class AIUnit : Unit
         var shellDrops = GetComponentsInChildren<DropComponent<Shell>>(true);
         foreach (var drop in shellDrops)
             manager.GenerateShellLoot += drop.GenerateDrop;
+        var moneyRewards = GetComponentsInChildren<MoneyRewardComponent>(true);
+        foreach (var reward in moneyRewards)
+            manager.GenerateMoneyLoot += reward.GenerateMoneyData;
     }
 }
