@@ -141,7 +141,7 @@ public class LootUI : MonoBehaviour
         if (bonus <= 0)
             return;
         var lootButtonUI = Instantiate(moneyButtonPrefab, container).GetComponent<LootButtonUI>();
-        lootButtonUI.nameText.text = $"Decline (+${bonus})";
+        lootButtonUI.nameText.text = $"Skip (+${bonus})";
         void OnClick()
         {
             PersistantData.main.inventory.Money += bonus;
