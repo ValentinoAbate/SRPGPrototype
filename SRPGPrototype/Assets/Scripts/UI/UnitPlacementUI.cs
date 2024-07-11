@@ -56,8 +56,19 @@ public class UnitPlacementUI : MonoBehaviour
         // Setup Cursor
         cursor.OnClick += PlaceUnit;
         cursor.OnCancel += CancelUnitPlacement;
+        cursor.OnHighlight = ShowUnitDescription;
+        cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
     }
 
+    // Enable unit descriptions
+    private void ShowUnitDescription(Vector2Int pos)
+    {
+        var unit = grid.Get(pos);
+        if (unit != null)
+        {
+            UIManager.main.UnitDescriptionUI.Show(unit);
+        }
+    }
     public void FinishUnitPlacement()
     {
         if(unitsToSpawn.Count <= 0)
