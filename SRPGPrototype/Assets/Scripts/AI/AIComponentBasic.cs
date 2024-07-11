@@ -17,7 +17,9 @@ public class AIComponentBasic : AIComponent<AIUnit>
     [SerializeField]
     private Action standardAction;
 
-    public override List<Action> Actions => new List<Action> { moveAction, standardAction };
+    protected virtual Action StandardAction => standardAction;
+
+    public override List<Action> Actions => new List<Action> { moveAction, StandardAction };
 
     public override void Initialize(AIUnit self)
     {
@@ -27,11 +29,11 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
-        var subAction = standardAction.SubActions[0];
+        var subAction = StandardAction.SubActions[0];
         // If action targets self, use it on self end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {
-            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
+            yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
             yield break;
         }
         // Find all targets
@@ -40,11 +42,11 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (targetUnits.Count <= 0)
             yield break;
         // Check for target in range
-        var tPos = CheckForTargets(grid, self, standardAction, targetUnits);
+        var tPos = CheckForTargets(grid, self, StandardAction, targetUnits);
         // Use standard action until exhausted if target is found, then end turn
         if (tPos != BattleGrid.OutOfBounds)
         {
-            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPos));
+            yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, tPos));
             yield break;
         }
         // Attempt to move into range
@@ -55,11 +57,11 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (MovePositions(grid, self.Pos, moveAction.SubActions[0].Range).Count() <= 0)
             yield break;
         // Find Paths to target range
-        var paths = PathsToTargetRange(grid, self, moveAction, standardAction, targetUnits);
+        var paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits);
         // If a path was found, take it
         if(paths.Count > 0)
         {
-            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, standardAction, paths[0]));
+            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, paths[0]));
             yield break;
         }
         // Predicate for determining if a unit is an ally
@@ -68,7 +70,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         var allyUnits = grid.FindAll(IsUnitAlly);
         if(allyUnits.Count > 0)
         {
-            paths = PathsToTargetRange(grid, self, moveAction, standardAction, targetUnits, IsUnitAlly);
+            paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits, IsUnitAlly);
             // If path to target range through allies exists
             if(paths.Count > 0)
             {
@@ -96,7 +98,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         // (If obstacles exist) Get path to target range through obstacles
         if (obstacleUnits.Count > 0)
         {
-            paths = PathsToTargetRange(grid, self, moveAction, standardAction, targetUnits, IsUnitObstacle);
+            paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits, IsUnitObstacle);
             // If path to target range through obstacles exists
             if (paths.Count > 0)
             {
@@ -115,10 +117,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 foreach(var tPathWithValue in pathsByObjNum)
                 {
                     var targetObstacles = tPathWithValue.tPath.path.Where(grid.NotEmpty).Select(grid.Get);
-                    paths = PathsToTargetRange(grid, self, moveAction, standardAction, targetObstacles);
+                    paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetObstacles);
                     if(paths.Count > 0)
                     {
-                        yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, standardAction, paths[0]));
+                        yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, paths[0]));
                         yield break;
                     }
                 }
@@ -157,7 +159,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         // Else no meaningful path to target exists, just try and get close to a tile adjacent to a target
         // Find all shortest paths to positions adjacent to targets
         pathsToPositions.Clear();
-        var attackRangeType = standardAction.SubActions[0].Range.patternType;
+        var attackRangeType = StandardAction.SubActions[0].Range.patternType;
         // If attack range type is adjacent both, then we already tried this, break
         if (attackRangeType != RangePattern.Type.AdjacentBoth)
         {

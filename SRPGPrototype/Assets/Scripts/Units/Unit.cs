@@ -132,6 +132,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         // On Death call may prevent death somehow
         if(Dead)
         {
+            EncounterEventManager.main.OnUnitDeath?.Invoke(grid, this, killedBy);
             if(Pos != BattleGrid.OutOfBounds)
                 grid.Remove(this);
             // Temporary: move to OOB

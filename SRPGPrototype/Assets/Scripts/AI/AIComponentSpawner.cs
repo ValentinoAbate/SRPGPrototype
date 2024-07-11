@@ -11,12 +11,12 @@ using UnityEngine;
 /// </summary>
 public class AIComponentSpawner : AIComponent<AIUnit>
 {
-    [SerializeField]
-    private Action standardAction;
+    protected virtual Action StandardAction => standardAction;
+    [SerializeField] private Action standardAction;
     [SerializeField] private Animator animator;
     private static readonly int readyHash = Animator.StringToHash("Ready");
 
-    public override List<Action> Actions => new List<Action> { standardAction };
+    public override List<Action> Actions => new List<Action> { StandardAction };
 
     private bool skipTurn = false;
 
@@ -28,27 +28,30 @@ public class AIComponentSpawner : AIComponent<AIUnit>
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
         skipTurn = !skipTurn;
-        animator.SetBool(readyHash, skipTurn);
+        if(animator != null)
+        {
+            animator.SetBool(readyHash, skipTurn);
+        }
         if (skipTurn)
         {
             yield break;
         }
-        var subAction = standardAction.SubActions[0];
+        var subAction = StandardAction.SubActions[0];
         // If action targets self, end early
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {
-            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
+            yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
             yield break;
         }
         // Check for targetspace in range
-        while (!self.Dead && self.CanUseAction(standardAction))
+        while (!self.Dead && self.CanUseAction(StandardAction))
         {
-            var tPos = CheckForEmptyTargetPosition(grid, self, standardAction);
+            var tPos = CheckForEmptyTargetPosition(grid, self, StandardAction);
             if (tPos == BattleGrid.OutOfBounds)
                 break;
             Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for spawning!");
             yield return new WaitForSeconds(attackDelay);
-            standardAction.UseAll(grid, self, tPos);
+            StandardAction.UseAll(grid, self, tPos);
         }
     }
 }

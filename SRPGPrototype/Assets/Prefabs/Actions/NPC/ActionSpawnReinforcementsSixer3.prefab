@@ -16,21 +16,15 @@ MonoBehaviour:
   standaloneSubActionOptions: 0
   affectUser: 0
   unitPrefabs:
-  - {fileID: 4535508650336827781, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
   - {fileID: 4535508650336827781, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
-  - {fileID: 4535508650336827781, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}
-  - {fileID: 5174817585663237361, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
-  - {fileID: 4535508650336827781, guid: ab388bb81eb29454faece0ab8d644049, type: 3}
-  - {fileID: 4535508650336827781, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
-  - {fileID: 6377858535508662765, guid: 6d01255e47000e240a8b8371ca8f7cbf, type: 3}
+  - {fileID: 4535508650336827781, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
+  - {fileID: 4535508650336827781, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}
+  - {fileID: 4535508650336827781, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
   weights:
-  - 80
-  - 10
-  - 10
-  - 5
-  - 5
-  - 3
-  - 2
+  - 1
+  - 1
+  - 1
+  - 1
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionSpawnReinforcements1
+      value: ActionSpawnReinforcementsSixer3
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
