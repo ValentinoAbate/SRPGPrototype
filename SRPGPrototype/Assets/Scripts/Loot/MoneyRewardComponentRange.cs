@@ -8,6 +8,6 @@ public class MoneyRewardComponentRange : MoneyRewardComponent
     [SerializeField] private int variance;
     protected override int GetAmount()
     {
-        return baseAmount + RandomUtils.RandomU.instance.RandomInt(-baseAmount, baseAmount + 1);
+        return baseAmount + RandomUtils.RandomU.instance.RandomInt(-variance, variance + 1);
     }
 }
