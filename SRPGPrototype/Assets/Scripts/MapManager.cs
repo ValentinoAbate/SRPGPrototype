@@ -7,24 +7,27 @@ using UnityEngine;
 /// </summary>
 public class MapManager : MonoBehaviour
 {
-    public Map Map => currMap < maps.Count ? maps[currMap] : null;
-    public Encounter Encounter => Map.Current.value;
-
+    public Map Map { get; private set; }
+    public bool SkipMapSelection { get; set; } = false;
+    public IReadOnlyList<MapData> MapData => data;
     [SerializeField] private MapData[] data = null;
     [SerializeField] private MapGenerator generator = null;
-    private List<Map> maps = new List<Map>();
-    private int currMap = 0;
 
-    public void Generate()
+    private MapData lastMapData;
+
+    public void Generate(MapData mapData)
     {
-        foreach (var d in data)
-        {
-            maps.Add(generator.Generate(d));
-        }
+        lastMapData = mapData;
+        Map = generator.Generate(mapData);
+    }
+
+    public void Regenerate()
+    {
+        Map = generator.Generate(lastMapData);
     }
 
     public void Clear()
     {
-        maps.Clear();
+        Map = null;
     }
 }

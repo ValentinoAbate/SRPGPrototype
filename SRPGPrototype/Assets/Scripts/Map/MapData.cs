@@ -2,13 +2,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapData", menuName = "Map Generation Data")]
 public class MapData : ScriptableObject
 {
     public const int defaultDepth = 10;
+    public string MapName => mapName;
+    [SerializeField] private string mapName;
     public int Depth => depth;
     [SerializeField] private int depth = defaultDepth;
     [SerializeField] private List<Entry> encounterData = new List<Entry>(defaultDepth);

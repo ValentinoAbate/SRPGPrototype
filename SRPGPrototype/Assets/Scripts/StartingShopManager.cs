@@ -8,15 +8,31 @@ public class StartingShopManager : MonoBehaviour
     [SerializeField] private float[] startingShellDropWeights;
     [SerializeField] private DropComponent<Program>[] startingProgramDrops;
 
+    [SerializeField] private MapSelector mapSelector;
 
     // Start is called before the first frame update
     void Start()
     {
-        GenerateAndShowLoot();
+        ShowMapSelector();
     }
 
 
-    private void GenerateAndShowLoot()
+    private void ShowMapSelector()
+    {
+        var mapManager = PersistantData.main.mapManager;
+        if (mapManager.SkipMapSelection)
+        {
+            mapSelector.Hide();
+            mapManager.Regenerate();
+            GenerateAndShowLoot();
+        }
+        else
+        {
+            mapSelector.Show(mapManager, GenerateAndShowLoot);
+        }
+    }
+
+    public void GenerateAndShowLoot()
     {
         var inv = PersistantData.main.inventory;
         var loot = PersistantData.main.loot;

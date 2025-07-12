@@ -38,7 +38,6 @@ public class PersistantData : MonoBehaviour
         inventory.Clear();
         mapManager.Clear();
         inventory.Initialize();
-        mapManager.Generate();
         shopManager.Initialize();
     }
 }

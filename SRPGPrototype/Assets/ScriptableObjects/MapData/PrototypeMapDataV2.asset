@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: PrototypeMapDataV2
   m_EditorClassIdentifier: 
+  mapName: Prototype V2
   depth: 16
   encounterData:
   - data:

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: PrototypeMapDataV1
   m_EditorClassIdentifier: 
+  mapName: Prototype V1
   depth: 21
   encounterData:
   - data:
@@ -120,6 +121,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 14d88ab9a74cc8b42b8e02574519a234, type: 2}
     weights:
     - 2
-  testMode: 1
+  testMode: 0
   testData:
   - {fileID: 11400000, guid: 751383b8a655ce2489bcab5a5ed8f8ab, type: 2}
