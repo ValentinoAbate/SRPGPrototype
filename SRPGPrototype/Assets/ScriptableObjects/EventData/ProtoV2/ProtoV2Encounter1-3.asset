@@ -15,7 +15,7 @@ MonoBehaviour:
   targetDifficulty: 9
   dimensions: {x: 6, y: 6}
   numSpawnPositions: 3
-  numEnemies: 050000000600000007000000
+  numEnemies: 040000000500000006000000
   numEnemiesWeights:
   - 1
   - 3
@@ -24,13 +24,9 @@ MonoBehaviour:
   - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
   - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
   - {fileID: 4568531750757968395, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}
-  - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
-  - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
   baseEnemyWeights:
   - 3
   - 1
-  - 2
-  - 0.25
   - 2
   numObstacles: 04000000
   numObstaclesWeights:
@@ -48,7 +44,10 @@ MonoBehaviour:
   seed:
     name: Encounter
     dimensions: {x: 0, y: 0}
-    units: []
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161,
+        type: 3}
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0
