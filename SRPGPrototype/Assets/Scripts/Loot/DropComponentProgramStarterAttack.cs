@@ -6,9 +6,13 @@ public class DropComponentProgramStarterAttack : DropComponent<Program>
 {
     protected override List<Program> GenerateDrop(Loot<Program> loot)
     {
-        return new List<Program>() { loot.GetDropCustom(Filter) };
+        var drops = loot.GetDropsStandardNoDuplicates(LootProvider.LootQuality.Low, 2, RandomWeaponFilter);
+        drops.Insert(0, loot.GetDropCustom(Filter));
+        return drops;
     }
 
+    static bool RandomWeaponFilter(Program p) => ProgramFilters.IsRed(p) && ProgramFilters.GivesWeaponAction(p);
+
     // Filter out all programs that don't have the correct color and the proper attributes
-    static bool Filter(Program p) => p.attributes.HasFlag(Program.Attributes.Starter) && p.color == Program.Color.Red && p.GetComponent<ProgramVariantColor>() == null;
+    static bool Filter(Program p) => ProgramFilters.HasAttributes(p, Program.Attributes.Starter) && ProgramFilters.IsRed(p);
 }

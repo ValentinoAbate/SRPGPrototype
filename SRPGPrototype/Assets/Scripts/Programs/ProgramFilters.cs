@@ -86,6 +86,10 @@ public static class ProgramFilters
 
     public static bool IsWhite(Program p) => IsColor(p, Program.Color.White);
 
+    public static bool IsRed(Program p) => IsColor(p, Program.Color.Red);
+
+    public static bool IsBlue(Program p) => IsColor(p, Program.Color.Blue);
+
     public static bool IsColor(Program p, Program.Color color) => p.color == color && p.GetComponent<ProgramVariantColor>() == null;
 
     public static bool HasAttributes(Program p, Program.Attributes attributes) => p.attributes.HasFlag(attributes);

@@ -17,6 +17,7 @@ public abstract class LootProvider
         Boss,
         Even,
         SoulCore,
+        Low,
     }
 
     protected static readonly Dictionary<LootQuality, WeightedSet<Rarity>> standardLootRarities;
@@ -54,6 +55,12 @@ public abstract class LootProvider
         {
             {Rarity.SoulCore, 1}
         };
+        var lowWeights = new WeightedSet<Rarity>
+        {
+            {Rarity.Common, 89 },
+            {Rarity.Uncommon, 10 },
+            {Rarity.Rare, 1 },
+        };
         standardLootRarities = new Dictionary<LootQuality, WeightedSet<Rarity>>()
         {
             { LootQuality.Standard, standardWeights },
@@ -61,7 +68,8 @@ public abstract class LootProvider
             { LootQuality.Max, maxWeights },
             { LootQuality.Even, evenWeights },
             { LootQuality.Boss, bossWeights },
-            { LootQuality.SoulCore, soulCoreWeights }
+            { LootQuality.SoulCore, soulCoreWeights },
+            { LootQuality.Low, lowWeights }
         };
     }
 }
