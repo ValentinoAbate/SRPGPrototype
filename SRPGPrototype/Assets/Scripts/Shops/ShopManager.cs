@@ -40,6 +40,7 @@ public class ShopManager : MonoBehaviour
     public void Clear()
     {
         data.Clear();
+        objectContainer.DestroyAllChildren();
     }
 
     public void ShowShop(ShopID id, System.Action onComplete = null)
