@@ -12,6 +12,7 @@ public class MapSelector : MonoBehaviour
 
     public void Show(MapManager mapManager, System.Action onComplete)
     {
+        UIManager.main.TopBarUI.SetTitleText("Select Map");
         foreach(var mapData in mapManager.MapData)
         {
             var button = Instantiate(buttonPrefab, buttonContainer).GetComponent<Button>();
