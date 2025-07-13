@@ -16,7 +16,7 @@ public class StandardShopGenerator : ShopGenerator
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropStandard(LootProvider.LootQuality.Standard, ProgramFilters.GivesRepositionSkill), objectContainer);
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandardNoDuplicates(LootProvider.LootQuality.Standard, 2, ProgramFilters.HasModifierEffect), objectContainer);
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropStandard(LootProvider.LootQuality.Standard, ProgramFilters.HasAbility), objectContainer);
-        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandardNoDuplicates(LootProvider.LootQuality.Standard, 2, ProgramFilters.GivesCapacity), objectContainer);
+        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandard(LootProvider.LootQuality.Standard, 2, ProgramFilters.GivesCapacity), objectContainer);
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandardNoDuplicates(LootProvider.LootQuality.High, 2), objectContainer);
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropCustom(Rarity.Rare), objectContainer);
         return data;
