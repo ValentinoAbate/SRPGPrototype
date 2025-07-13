@@ -15,17 +15,25 @@ public class MapGenerator : MonoBehaviour
     {
         var events = new List<Encounter>[data.Depth];
         // Generate Events
+        int displayDepth = 1;
+        int displayMap = 1;
         foreach(int depth in Enumerable.Range(0, data.Depth))
         {
             events[depth] = new List<Encounter>();
             var encounterBank = data.GetEncounterData(depth);
             int width = RandomU.instance.RandomInt(minWidth, maxWidth);
+            if(encounterBank.Count <= 0)
+            {
+                displayDepth = 1;
+                ++displayMap;
+                continue;
+            }
             foreach(var i in Enumerable.Range(0, width))
             {
                 var encounterData = RandomU.instance.Choice(encounterBank);
-                string encounterName = "Encounter " + i.ToString();
-                events[depth].Add(encounterGenerator.Generate(encounterData, encounterName));
+                events[depth].Add(encounterGenerator.Generate(encounterData, displayMap, displayDepth));
             }
+            displayDepth++;
         }
         // Create the event graph and initial vertices to all depth 0 encounters
         Digraph<Encounter> eventGraph = new Digraph<Encounter>(events[0]);

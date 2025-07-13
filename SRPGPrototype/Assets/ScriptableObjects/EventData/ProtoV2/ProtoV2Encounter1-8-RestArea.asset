@@ -15,6 +15,9 @@ MonoBehaviour:
   targetDifficulty: 0
   dimensions: {x: 5, y: 5}
   numSpawnPositions: 3
+  encounterType: 3
+  depth: 1
+  index: 8
   numEnemies: 00000000
   numEnemiesWeights:
   - 1
@@ -30,7 +33,7 @@ MonoBehaviour:
   lootFlags: 8
   moneyOption: 0
   seed:
-    name: Encounter
+    nameOverride: 
     dimensions: {x: 0, y: 0}
     units: []
     spawnPositions: []

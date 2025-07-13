@@ -34,21 +34,22 @@ public class MapUI : MonoBehaviour
         HideEncounterPreview();
         HideChoiceUI();
         vertices = new List<Vertex<Encounter>>(map.NextEncounters);
-        InitializeChoiceButtons(vertices);
+        InitializeChoiceButtons();
         ShowChoiceUI();
         UIManager.main.HideAllDescriptionUI();
     }
 
-    private void InitializeChoiceButtons(IEnumerable<Vertex<Encounter>> vertices)
+    private void InitializeChoiceButtons()
     {
-        foreach(var vertex in vertices)
+        for(int index = 0; index < vertices.Count; ++index)
         {
+            var vertex = vertices[index];
             var encounter = vertex.value;
             var button = Instantiate(eventButtonPrefab, eventButtonContainer).GetComponent<Button>();
             var buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = encounter.name;
+            buttonText.text = encounter.nameOverride;
             button.onClick.AddListener(HideChoiceUI);
-            button.onClick.AddListener(() => ShowEncounterPreview(vertex));
+            button.onClick.AddListener(() => ShowEncounterPreview(vertex, index));
         }
     }
 
@@ -65,7 +66,7 @@ public class MapUI : MonoBehaviour
         choiceUI.SetActive(false);
     }
 
-    private void ShowEncounterPreview(Vertex<Encounter> vertex)
+    private void ShowEncounterPreview(Vertex<Encounter> vertex, int index)
     {
         var dimensions = vertex.value.dimensions;
         previewGrid.SetDimensions(dimensions.x, dimensions.y);
@@ -79,7 +80,7 @@ public class MapUI : MonoBehaviour
         prevEncounterButton.onClick.AddListener(() => NextEncounter(vertex, true));
         var encounter = vertex.value;
         InitializePreviewObjects(encounter);
-        UIManager.main.TopBarUI.SetTitleText(encounter.name);
+        UIManager.main.TopBarUI.SetTitleText($"{encounter.nameOverride ?? "Encounter"} ({index + 1}/{vertices.Count})");
 
         cursor.OnHighlight = ShowUnitDescription;
         cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
@@ -109,7 +110,7 @@ public class MapUI : MonoBehaviour
         }
 
         previewObjContainer.DestroyAllChildren();
-        ShowEncounterPreview(vertices[index]);
+        ShowEncounterPreview(vertices[index], index);
     }
 
     public void HideEncounterPreview()

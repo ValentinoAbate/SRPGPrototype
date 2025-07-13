@@ -57,6 +57,8 @@ MonoBehaviour:
     weights:
     - 1
     - 1
+  - data: []
+    weights: []
   - data:
     - {fileID: 11400000, guid: 1fd0e697dbc70ee40a209d6ddb03297d, type: 2}
     weights:
@@ -97,6 +99,8 @@ MonoBehaviour:
     weights:
     - 2
     - 1
+  - data: []
+    weights: []
   - data:
     - {fileID: 11400000, guid: 315c1cfc8b1318a42851882d78357833, type: 2}
     weights:
@@ -121,6 +125,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 14d88ab9a74cc8b42b8e02574519a234, type: 2}
     weights:
     - 2
+  - data: []
+    weights: []
   testMode: 0
   testData:
   - {fileID: 11400000, guid: 751383b8a655ce2489bcab5a5ed8f8ab, type: 2}

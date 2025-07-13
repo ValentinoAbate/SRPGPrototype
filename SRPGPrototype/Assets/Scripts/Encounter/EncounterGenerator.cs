@@ -97,11 +97,11 @@ public class EncounterGenerator : MonoBehaviour
         }
     }
 
-    public Encounter Generate(EncounterData data, string encounterName)
+    public Encounter Generate(EncounterData data, int mapIndex, int index)
     {
         Initialize();
         var positions = data.dimensions.Enumerate();
-        var encounter = new Encounter() { name = encounterName, dimensions = data.dimensions };
+        var encounter = new Encounter() { nameOverride = $"{data.encounterType} {mapIndex}-{index}", dimensions = data.dimensions };
         int numSpawnPositions = data.numSpawnPositions;
         int numEnemies = RandomU.instance.Choice(data.numEnemies, data.numEnemiesWeights);
         int numObstacles = RandomU.instance.Choice(data.numObstacles, data.numObstaclesWeights);
@@ -136,6 +136,10 @@ public class EncounterGenerator : MonoBehaviour
                 Vector2Int pos = RandomU.instance.Choice(positions);
                 encounter.units.Add(new Encounter.UnitEntry(entry.unit, pos));
                 positions.Remove(pos);
+            }
+            if (!string.IsNullOrEmpty(data.seed.nameOverride))
+            {
+                encounter.nameOverride = data.seed.nameOverride;
             }
         }
 

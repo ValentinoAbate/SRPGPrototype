@@ -22,10 +22,19 @@ public class EncounterData : ScriptableObject
         Miniboss,
         Boss,
     }
+    public enum Type 
+    {
+        Encounter,
+        Shop,
+        Boss,
+        Rest,
+    }
+
     [Header("General")]
     public float targetDifficulty;
     public Vector2Int dimensions = new Vector2Int(8, 8);
     public int numSpawnPositions = 3;
+    public Type encounterType;
     [Header("Enemies")]
     public List<int> numEnemies = new List<int>{ 5 };
     public List<float> numEnemiesWeights = new List<float>{ 1 };
