@@ -13,26 +13,27 @@ public class MapGenerator : MonoBehaviour
 
     public Map Generate(MapData data)
     {
-        var events = new List<Encounter>[data.Depth];
+        var events = new List<List<Encounter>>(data.Depth);
         // Generate Events
         int displayDepth = 1;
         int displayMap = 1;
         foreach(int depth in Enumerable.Range(0, data.Depth))
         {
-            events[depth] = new List<Encounter>();
             var encounterBank = data.GetEncounterData(depth);
-            int width = RandomU.instance.RandomInt(minWidth, maxWidth);
             if(encounterBank.Count <= 0)
             {
                 displayDepth = 1;
                 ++displayMap;
                 continue;
             }
-            foreach(var i in Enumerable.Range(0, width))
+            int width = RandomU.instance.RandomInt(minWidth, maxWidth);
+            var encounters = new List<Encounter>(width);
+            foreach (var i in Enumerable.Range(0, width))
             {
                 var encounterData = RandomU.instance.Choice(encounterBank);
-                events[depth].Add(encounterGenerator.Generate(encounterData, displayMap, displayDepth));
+                encounters.Add(encounterGenerator.Generate(encounterData, displayMap, displayDepth));
             }
+            events.Add(encounters);
             displayDepth++;
         }
         // Create the event graph and initial vertices to all depth 0 encounters
@@ -44,10 +45,10 @@ public class MapGenerator : MonoBehaviour
         // Connect the starting vertex to all nodes at depth 0
         currVertices.ForEach((v) => eventGraph.AddEdge(startVertex, v));
         // Generate Graph
-        foreach (int depth in Enumerable.Range(0, data.Depth - 1))
+        for (int i = 1; i < events.Count; ++i)
         {
             // Create vertices from next encounters
-            var nextVertices = events[depth + 1].Select((e) => eventGraph.AddVertex(e)).ToList();
+            var nextVertices = events[i].Select((e) => eventGraph.AddVertex(e)).ToList();
             foreach(var from in currVertices)
             {
                 // Choose a random number of connections (or less if the nextVertices has few choices)
