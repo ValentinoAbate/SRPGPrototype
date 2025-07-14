@@ -80,23 +80,35 @@ public class CustGrid : Grid.Grid<Program>
         Shell = PersistantData.main.inventory.EquippedShell;
     }
 
-    public override bool Add(Vector2Int addPos, Program obj)
+    public bool CanAdd(Vector2Int addPos, Program obj)
     {
-        var positions = obj.shape.OffsetsShifted(addPos, false);
+        return CanAddInternal(obj.shape.OffsetsShifted(addPos, false), obj.DisplayName);
+    }
+
+    private bool CanAddInternal(IEnumerable<Vector2Int> positions, string objectName)
+    {
         var shellPositions = shell.CustArea.OffsetsSet;
-        foreach(var pos in positions)
+        foreach (var pos in positions)
         {
-            if(!IsLegal(pos) || !shellPositions.Contains(pos))
+            if (!IsLegal(pos) || !shellPositions.Contains(pos))
             {
-                Debug.LogWarning("Program: " + obj.name + " attempted to be added to an illegal pos:  " + pos.ToString());
+                Debug.LogWarning("Program: " + objectName + " attempted to be added to an illegal pos:  " + pos.ToString());
                 return false;
             }
             if (!IsEmpty(pos))
             {
-                Debug.LogWarning("Program: " + obj.name + " overlaps another program at " + pos.ToString());
+                Debug.LogWarning("Program: " + objectName + " overlaps another program at " + pos.ToString());
                 return false;
             }
         }
+        return true;
+    }
+
+    public override bool Add(Vector2Int addPos, Program obj)
+    {
+        var positions = obj.shape.OffsetsShifted(addPos, false);
+        if (!CanAddInternal(positions, obj.DisplayName))
+            return false;
         foreach (var pos in positions)
         {
             Set(pos, obj);

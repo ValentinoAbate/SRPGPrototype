@@ -53,7 +53,6 @@ public class CustUI : MonoBehaviour
     public Shell Shell => grid.Shell;
     private Inventory inventory;
     private ProgramButton pButton;
-    private Program selectedProgram;
 
     private void Start()
     {
@@ -237,9 +236,8 @@ public class CustUI : MonoBehaviour
         pButton = button;
         heldProgramUI.Show(p.shape, programPatternIconPrefab, p.ColorValue);
         heldProgramUI.gameObject.SetActive(true);
-        selectedProgram = p;
         cursor.OnCancel = () => CancelProgramPlacement(p, button);
-        cursor.OnClick = (pos) => PlaceProgam(button, p, pos);
+        cursor.OnClick = (pos) => PlaceProgram(button, p, pos);
     }
 
     public void CancelProgramPlacement(Program p , ProgramButton b)
@@ -270,22 +268,52 @@ public class CustUI : MonoBehaviour
         }
     }
 
-    public void PlaceProgam(ProgramButton button, Program p, Vector2Int pos)
+    public void PlaceProgram(ProgramButton button, Program p, Vector2Int pos)
     {
-        if (grid.IsLegal(pos) && grid.Add(pos, selectedProgram))
+        if (grid.IsLegal(pos) && grid.CanAdd(pos, p))
         {
-            inventory.RemoveProgram(selectedProgram);
-            Shell.Install(selectedProgram, pos);
-            selectedProgram = null;
-            Destroy(pButton.gameObject);
-            programButtonRect.sizeDelta = new Vector2(programButtonRect.sizeDelta.x, programButtonContainer.childCount * buttonContentSize);
-            cursor.OnClick = null;
-            cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
-            heldProgramUI.Hide();
-            heldProgramUI.gameObject.SetActive(false);
-            UpdateCompileData();
-            UpdateCompileButtonColor();
+            if(ProgramFilters.HasAttributes(p, Program.Attributes.Fixed))
+            {
+                void OnConfirmationPopupComplete(bool success)
+                {
+                    if (success)
+                    {
+                        PlaceProgramInternal(p, pos);
+                    }
+                    else
+                    {
+                        cursor.OnCancel = () => CancelProgramPlacement(p, button);
+                        cursor.OnClick = (pos) => PlaceProgram(button, p, pos);
+                        heldProgramUI.Show(p.shape, programPatternIconPrefab, p.ColorValue);
+                        heldProgramUI.gameObject.SetActive(true);
+                    }
+                }
+                cursor.OnClick = null;
+                cursor.OnCancel = null;
+                heldProgramUI.Hide();
+                heldProgramUI.gameObject.SetActive(false);
+                PopupManager.main.ShowConfirmationPopup(OnConfirmationPopupComplete, "Warning!", $"{p.DisplayName} is fixed. You will not be able to remove it after installing it.", "Install");
+            }
+            else
+            {
+                PlaceProgramInternal(p, pos);
+            }
         }
+    }
+
+    private void PlaceProgramInternal(Program p, Vector2Int pos)
+    {
+        grid.Add(pos, p);
+        inventory.RemoveProgram(p);
+        Shell.Install(p, pos);
+        Destroy(pButton.gameObject);
+        programButtonRect.sizeDelta = new Vector2(programButtonRect.sizeDelta.x, programButtonContainer.childCount * buttonContentSize);
+        cursor.OnClick = null;
+        cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
+        heldProgramUI.Hide();
+        heldProgramUI.gameObject.SetActive(false);
+        UpdateCompileData();
+        UpdateCompileButtonColor();
     }
 
     private Vector2Int GetMouseGridPos()
