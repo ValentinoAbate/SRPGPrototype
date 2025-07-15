@@ -49,7 +49,8 @@ public class MapUI : MonoBehaviour
             var buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = encounter.nameOverride;
             button.onClick.AddListener(HideChoiceUI);
-            button.onClick.AddListener(() => ShowEncounterPreview(vertex, index));
+            int displayIndex = index;
+            button.onClick.AddListener(() => ShowEncounterPreview(vertex, displayIndex));
         }
     }
 
