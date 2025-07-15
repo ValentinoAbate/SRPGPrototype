@@ -29,7 +29,7 @@ MonoBehaviour:
   targetTeams: 02000000
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
-  standardAction: {fileID: 4415060608083833614, guid: 8fea341d78e1f9a42887c57f78fa1b37,
+  standardAction: {fileID: 4415060608083833614, guid: 97617ed5f0a8adb46a1ad57fdb5014ef,
     type: 3}
 --- !u!114 &8708654031822163210
 MonoBehaviour:
@@ -66,13 +66,13 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: maxHP
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent. Attack: Adjacent/Ranged (2 damage). Spawns a Walking
-        Nest when damaged. Spawns a Walking Nest+ when destroyed.'
+      value: 'Move: Adjacent. Attack: Adjacent (2 damage + 1 AP damage). Spawns a
+        Walking Nest when damaged. Spawns a Walking Nest+ when destroyed.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
