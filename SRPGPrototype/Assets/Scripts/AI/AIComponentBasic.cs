@@ -167,13 +167,13 @@ public class AIComponentBasic : AIComponent<AIUnit>
             foreach (var targetUnit in targetUnits)
             {
                 positionsToCheck.Clear();
-                if (attackRangeType != RangePattern.Type.Adjacent)
+                if (attackRangeType != RangePattern.Type.Adjacent) // Ignore adj if already checked
                 {
-                    targetUnit.Pos.AddAdjacent(positionsToCheck);
+                    positionsToCheck.AddRange(targetUnit.Pos.Adjacent());
                 }
-                if (attackRangeType != RangePattern.Type.AdjacentDiagonal)
+                if (attackRangeType != RangePattern.Type.AdjacentDiagonal) // Ignore diag adj if already checked
                 {
-                    targetUnit.Pos.AddAdjacentDiagonal(positionsToCheck);
+                    positionsToCheck.AddRange(targetUnit.Pos.AdjacentDiagonal());
                 }
                 foreach (var closePos in positionsToCheck)
                 {

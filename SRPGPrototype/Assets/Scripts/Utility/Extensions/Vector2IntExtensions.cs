@@ -47,81 +47,58 @@ public static class Vector2IntExtensions
 
     public static IEnumerable<Vector2Int> AdjacentBoth(this Vector2Int pos)
     {
-        return Adjacent(pos).Concat(AdjacentDiagonal(pos));
+        foreach(var adjPos in Adjacent(pos))
+        {
+            yield return adjPos;
+        }
+        foreach (var adjPos in AdjacentDiagonal(pos))
+        {
+            yield return adjPos;
+        }
     }
 
     public static IEnumerable<Vector2Int> AdjacentBoth(this Vector2Int pos, int distance)
     {
-        return Adjacent(pos, distance).Concat(AdjacentDiagonal(pos, distance));
+        foreach (var adjPos in Adjacent(pos, distance))
+        {
+            yield return adjPos;
+        }
+        foreach (var adjPos in AdjacentDiagonal(pos, distance))
+        {
+            yield return adjPos;
+        }
     }
 
     public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos)
     {
-        return new Vector2Int[]
-        {
-            pos + Vector2Int.up,
-            pos + Vector2Int.down,
-            pos + Vector2Int.left,
-            pos + Vector2Int.right,
-        };
-    }
-
-    public static Vector2Int[] Adjacent(this Vector2Int pos, ref Vector2Int[] output)
-    {
-        output[0] = pos + Vector2Int.up;
-        output[1] = pos + Vector2Int.down;
-        output[2] = pos + Vector2Int.left;
-        output[3] = pos + Vector2Int.right;
-        return output;
-    }
-
-    public static void AddAdjacent(this Vector2Int pos, IList<Vector2Int> output)
-    {
-        output.Add(pos + Vector2Int.up);
-        output.Add(pos + Vector2Int.down);
-        output.Add(pos + Vector2Int.left);
-        output.Add(pos + Vector2Int.right);
+        yield return pos + Vector2Int.up;
+        yield return pos + Vector2Int.down;
+        yield return pos + Vector2Int.left;
+        yield return pos + Vector2Int.right;
     }
 
     public static IEnumerable<Vector2Int> Adjacent(this Vector2Int pos, int distance)
     {
-        return new Vector2Int[]
-        {
-            pos + (Vector2Int.up * distance),
-            pos + (Vector2Int.down * distance),
-            pos + (Vector2Int.left * distance),
-            pos + (Vector2Int.right * distance),
-        };
+        yield return pos + (Vector2Int.up * distance);
+        yield return pos + (Vector2Int.down * distance);
+        yield return pos + (Vector2Int.left * distance);
+        yield return pos + (Vector2Int.right * distance);
     }
 
     public static IEnumerable<Vector2Int> AdjacentDiagonal(this Vector2Int pos)
     {
-        return new Vector2Int[]
-        {
-            pos + Vector2Int.up + Vector2Int.right,
-            pos + Vector2Int.down + Vector2Int.right,
-            pos + Vector2Int.down + Vector2Int.left,
-            pos + Vector2Int.up + Vector2Int.left,
-        };
-    }
-
-    public static void AddAdjacentDiagonal(this Vector2Int pos, IList<Vector2Int> output)
-    {
-        output.Add(pos + Vector2Int.up + Vector2Int.right);
-        output.Add(pos + Vector2Int.down + Vector2Int.right);
-        output.Add(pos + Vector2Int.down + Vector2Int.left);
-        output.Add(pos + Vector2Int.up + Vector2Int.left);
+        yield return pos + Vector2Int.up + Vector2Int.right;
+        yield return pos + Vector2Int.down + Vector2Int.right;
+        yield return pos + Vector2Int.down + Vector2Int.left;
+        yield return pos + Vector2Int.up + Vector2Int.left;
     }
 
     public static IEnumerable<Vector2Int> AdjacentDiagonal(this Vector2Int pos, int distance)
     {
-        return new Vector2Int[]
-        {
-            pos + ((Vector2Int.up + Vector2Int.right) * distance),
-            pos + ((Vector2Int.down + Vector2Int.right) * distance),
-            pos + ((Vector2Int.down + Vector2Int.left) * distance),
-            pos + ((Vector2Int.up + Vector2Int.left) * distance),
-        };
+        yield return pos + ((Vector2Int.up + Vector2Int.right) * distance);
+        yield return pos + ((Vector2Int.down + Vector2Int.right) * distance);
+        yield return pos + ((Vector2Int.down + Vector2Int.left) * distance);
+        yield return pos + ((Vector2Int.up + Vector2Int.left) * distance);
     }
 
     public static int GridDistance(this Vector2Int pos, Vector2Int other)

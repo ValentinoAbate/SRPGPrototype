@@ -66,11 +66,9 @@ public class ProgramModifier : MonoBehaviour
         if (!shell.InstallPositions.ContainsKey(program))
             return System.Array.Empty<Program>();
         var adjacentPrograms = new HashSet<Program>();
-        var adjArray = new Vector2Int[4];
         foreach(var position in shell.InstallPositions[program])
         {
-            position.Adjacent(ref adjArray);
-            foreach(var adjPos in adjArray)
+            foreach(var adjPos in position.Adjacent())
             {
                 var adjProgram = shell.GetProgram(adjPos);
                 if (adjProgram == null || adjProgram == program || adjacentPrograms.Contains(adjProgram))
