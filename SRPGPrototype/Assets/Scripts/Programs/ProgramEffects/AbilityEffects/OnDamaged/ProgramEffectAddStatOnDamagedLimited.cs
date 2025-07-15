@@ -12,7 +12,7 @@ public class ProgramEffectAddStatOnDamagedLimited : ProgramEffectAddStatOnDamage
         limiter.Attatch(data);
     }
 
-    protected override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
+    public override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
     {
         if (!limiter.TryUse())
         {

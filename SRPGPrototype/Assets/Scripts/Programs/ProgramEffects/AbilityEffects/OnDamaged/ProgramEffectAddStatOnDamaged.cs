@@ -9,7 +9,7 @@ public class ProgramEffectAddStatOnDamaged : ProgramEffectAddOnDamagedAbility
     protected override string AbilityName => abilityName;
     [SerializeField] private string abilityName = string.Empty;
 
-    protected override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
+    public override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
     {
         self.ModifyStat(grid, stat, number.Value(self), self);
     }
