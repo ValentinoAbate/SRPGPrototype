@@ -183,7 +183,7 @@ public class EncounterGenerator : MonoBehaviour
             // Actually place the loot
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
         }
-        // Place the bonus loot (if applicable)
+        // Place the bonus default loot (if applicable)
         if(lootFlags.HasFlag(EncounterData.LootModifiers.Bonus))
         {
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
@@ -193,19 +193,19 @@ public class EncounterGenerator : MonoBehaviour
         {
             PlaceLoot(moneyLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
-        // Place the bonus money loot (if applicable)
+        // Place the bonus money or default loot (if applicable)
         if (lootFlags.HasFlag(EncounterData.LootModifiers.BonusRandom))
         {
             var hybridWeights = new WeightedSet<MysteryDataUnit.Category>(categoryWeights);
             hybridWeights.Add(moneyLootCategoryWeights);
             PlaceLoot(hybridWeights, qualityWeights, ref encounter, ref positions);
         }
-        // Place the midboss loot (if applicable)
+        // Place the shell loot (if applicable)
         if (lootFlags.HasFlag(EncounterData.LootModifiers.Shell))
         {
             PlaceLoot(midbossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
-        // Place the boss loot (if applicable)
+        // Place the boss capacity loot (if applicable)
         if(lootFlags.HasFlag(EncounterData.LootModifiers.BossCapacity))
         {
             PlaceLoot(bossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
