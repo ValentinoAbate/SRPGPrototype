@@ -12,7 +12,7 @@ public class ProgramTriggerConditionGambles : ProgramTriggerConditionResetTrigge
         int progressGained = 0;
         foreach(var effect in subAction.Effects)
         {
-            if(effect is ActionEffectGamble gambleEffect && gambleEffect.LastUsageWasSuccessful == success)
+            if(effect is IGambleActionEffect gambleEffect && gambleEffect.GambleSuccess.HasValue && gambleEffect.GambleSuccess.Value == success)
             {
                 ++progressGained;
             }

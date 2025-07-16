@@ -15,8 +15,10 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: f616c00871c3d824b81cea1251c2fc45,
         type: 3}
       propertyPath: description
-      value: Hit a random player or enemy unit for the AP Cost of this action times
+      value: 'Hit a random player or enemy unit for the AP Cost of this action times
         10 ({dmg}).
+
+        Counts as a gamble failure if a player unit is hit.'
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f616c00871c3d824b81cea1251c2fc45,
         type: 3}

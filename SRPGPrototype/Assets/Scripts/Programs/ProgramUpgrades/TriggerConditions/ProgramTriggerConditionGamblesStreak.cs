@@ -13,11 +13,11 @@ public class ProgramTriggerConditionGamblesStreak : ProgramTriggerConditionReset
         int progressGained = 0;
         foreach(var effect in subAction.Effects)
         {
-            if (!(effect is ActionEffectGamble gambleEffect))
+            if (!(effect is IGambleActionEffect gambleEffect && gambleEffect.GambleSuccess.HasValue))
             {
                 continue;
             }
-            if (gambleEffect.LastUsageWasSuccessful == success)
+            if (gambleEffect.GambleSuccess.Value == success)
             {
                 ++progressGained;
             }
