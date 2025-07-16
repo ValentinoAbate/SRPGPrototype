@@ -16,8 +16,6 @@ MonoBehaviour:
   dimensions: {x: 7, y: 6}
   numSpawnPositions: 4
   encounterType: 0
-  depth: 2
-  index: 7
   numEnemies: 06000000
   numEnemiesWeights:
   - 1
@@ -34,7 +32,7 @@ MonoBehaviour:
   - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
   baseObstacleWeights:
   - 1
-  lootFlags: 8
+  lootFlags: 9
   moneyOption: 3
   seed:
     nameOverride: 
