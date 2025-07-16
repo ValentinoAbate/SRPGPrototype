@@ -8,6 +8,6 @@ public class ModifierActionNoSlowdownChance : ModifierAction
     [Range(0, 1)] [SerializeField] private float chance = 1;
     public override bool AppliesTo(SubAction sub)
     {
-        return true; ;
+        return true;
     }
 }
