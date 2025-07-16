@@ -6,6 +6,7 @@ using System.Linq;
 
 public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
 {
+    public bool LastUsageWasSuccessful { get; set; } = false;
     public override bool UsesPower => usedPower;
     private bool usedPower = false;
     public bool DealsDamage => successEffects.Any((e) => e.CanDealDamage) || failureEffects.Any((e) => e.CanDealDamage);
@@ -51,6 +52,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
                 effect.ApplyEffect(grid, action, sub, user, target, targetData);
             }
             usedPower = successEffects.Any(ActionEffectUsesPower);
+            LastUsageWasSuccessful = true;
         }
         else
         {
@@ -59,6 +61,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
                 effect.ApplyEffect(grid, action, sub, user, target, targetData);
             }
             usedPower = failureEffects.Length > 0 && failureEffects.Any(ActionEffectUsesPower);
+            LastUsageWasSuccessful = false;
         }
     }
 

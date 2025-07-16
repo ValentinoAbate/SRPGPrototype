@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1603214881504611386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6867451458564045714}
+  - component: {fileID: 6673738864349571074}
+  m_Layer: 0
+  m_Name: FailureEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6867451458564045714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603214881504611386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5639408088848563143}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6673738864349571074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603214881504611386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb900b094a99d348bd117fd42bc93f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  effect: {fileID: 1712857086706031764}
+  modifier: 4
 --- !u!1 &4593714877553315412
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8916043604375117652}
   - component: {fileID: 1712857086706031764}
+  - component: {fileID: 1718355617303149668}
   m_Layer: 0
   m_Name: SuccessEffects
   m_TagString: Untagged
@@ -43,9 +92,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   targetStat: 0
-  damage: 10
+  damage: 4
+--- !u!114 &1718355617303149668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593714877553315412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7fbeadba890714fbb3d9046458f090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  effect: {fileID: 1712857086706031764}
+  value: 4
 --- !u!114 &5451953465001285454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,10 +126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
-  successChance: 0.2
+  successChance: 0.25
   successEffectsObj: {fileID: 4593714877553315412}
-  failureEffectsObj: {fileID: 0}
+  failureEffectsObj: {fileID: 1603214881504611386}
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,7 +142,7 @@ PrefabInstance:
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: subtype
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -157,18 +227,18 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackLuckyPickaxe
+      value: ActionAttackJackpotPickaxe
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
       value: 'Attack adjacent unit with Gamble: Success ({chance}) deal {dmg} damage
-        / Failure no effect. '
+        but reset to base damage / Failure increase damage by +4. '
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Lucky Pickaxe
+      value: Jackpot Pickaxe
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -179,6 +249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxUsesPerTurn
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

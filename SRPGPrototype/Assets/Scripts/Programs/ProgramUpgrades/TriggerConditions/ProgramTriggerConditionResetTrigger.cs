@@ -12,7 +12,7 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
     [SerializeField] private Action.Trigger resetTrigger = Action.Trigger.Never;
 
     private readonly List<Action> actions = new List<Action>();
-    private int progress = 0;
+    protected int Progress { get; private set; } = 0;
     private int turnUses = 0;
     private int encounterUses = 0;
 
@@ -27,7 +27,7 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
             {
                 return completed ? $"{ProgressConditionText} (Done)" : ProgressConditionText;
             }
-            return $"{ProgressConditionText} {number} {UsesText(resetTrigger)} ({(completed ? "Done" : progress + "/" + number)})";
+            return $"{ProgressConditionText} {number} {UsesText(resetTrigger)} ({(completed ? "Done" : Progress + "/" + number)})";
         }
     }
 
@@ -46,20 +46,20 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
         if (completed || options.HasFlag(SubAction.Options.SkipUpgradeCheck) || !actions.Contains(action))
             return;
         CheckResetUses();
-        progress += ProgressChange(grid, action, subAction, user, targets, targetPositions);
-        completed = progress >= number;
+        Progress += ProgressChange(grid, action, subAction, user, targets, targetPositions);
+        completed = Progress >= number;
     }
     private void CheckResetUses()
     {
         if (resetTrigger == Action.Trigger.TurnStart && actions.Sum((a) => a.TimesUsedThisTurn) != turnUses)
         {
             turnUses = 0;
-            progress = 0;
+            Progress = 0;
         }
         else if (resetTrigger == Action.Trigger.EncounterStart && actions.Sum((a) => a.TimesUsedThisBattle) != encounterUses)
         {
             encounterUses = 0;
-            progress = 0;
+            Progress = 0;
         }
     }
     private void UpdateUses(BattleGrid grid, Action action, Unit user, int cost)
