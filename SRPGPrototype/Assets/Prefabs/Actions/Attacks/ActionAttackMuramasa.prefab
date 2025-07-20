@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   targetStat: 0
   damage:
@@ -20,7 +22,7 @@ MonoBehaviour:
     constant: 1
     baseAmount: 0
     modifier: 0
-    multiplier: 5
+    multiplier: 6
     unitNumber:
       min: -2147483648
       max: 2147483647
@@ -105,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Attack an adjacent target for damage equal to five times this action's
+      value: Attack an adjacent target for damage equal to six times this action's
         AP Cost ({dmg}).
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
