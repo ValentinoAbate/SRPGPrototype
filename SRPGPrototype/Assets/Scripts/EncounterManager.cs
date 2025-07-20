@@ -25,7 +25,7 @@ public class EncounterManager : MonoBehaviour
     private void Initialize()
     {
         // Get the encounter from the map
-        var encounter = PersistantData.main.mapManager.Map.Current.value;
+        var encounter = PersistantData.main.mapManager.CurrentEncounter;
         // Setup Money Drop (if applicable)
         if (encounter.giveCompletionMoney)
         {
@@ -130,6 +130,7 @@ public class EncounterManager : MonoBehaviour
 
     public void EndScene()
     {
+        PersistantData.main.mapManager.GenerateNextEncounters();
         SceneTransitionManager.main.TransitionToScene("Cust");
     }
 

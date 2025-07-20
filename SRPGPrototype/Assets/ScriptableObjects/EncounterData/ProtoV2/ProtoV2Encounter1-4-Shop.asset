@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
+  m_Name: ProtoV2Encounter1-4-Shop
+  m_EditorClassIdentifier: 
+  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
+  targetDifficulty: 0
+  dimensions: {x: 5, y: 5}
+  numSpawnPositions: 0
+  encounterType: 1
+  numEnemies: 00000000
+  numEnemiesWeights:
+  - 1
+  enemies: []
+  baseEnemyWeights:
+  - 1
+  numObstacles: 00000000
+  numObstaclesWeights:
+  - 1
+  obstacles: []
+  baseObstacleWeights:
+  - 1
+  lootFlags: 8
+  moneyOption: 0
+  seed:
+    nameOverride: 
+    dimensions: {x: 0, y: 0}
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 3234413674390493618, guid: aade82900fa0d44448ce3acd45f5f8c2,
+        type: 3}
+    - pos: {x: 2, y: 2}
+      unit: {fileID: 9140513036302482194, guid: 1693a0c3ab6635d4c9c316cc232c3050,
+        type: 3}
+    spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0

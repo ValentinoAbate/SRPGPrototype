@@ -7,27 +7,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MapData", menuName = "Map Generation Data")]
 public class MapData : ScriptableObject
 {
-    public const int defaultDepth = 10;
     public string MapName => mapName;
     [SerializeField] private string mapName;
-    public int Depth => depth;
-    [SerializeField] private int depth = defaultDepth;
-    [SerializeField] private List<Entry> encounterData = new List<Entry>(defaultDepth);
-    [Header("Test Data")]
-    [SerializeField] private bool testMode = false;
-    [SerializeField] private List<EncounterData> testData = new List<EncounterData>(defaultDepth);
+    [SerializeField] private string mapSymbol;
+    public MapData NextMap => nextMap;
+    [SerializeField] private MapData nextMap;
+    [SerializeField] private List<EncounterSetGenerator> encounterSetGenerators;
+    [Header("Legacy")]
+    [SerializeField] private List<Entry> encounterData = new List<Entry>(10);
 
-    public WeightedSet<EncounterData> GetEncounterData(int depth)
+    public bool TryGetEncounterSet(int depth, out IReadOnlyList<Encounter> encounterSet)
     {
-        if (depth >= Depth)
-            return null;
-        // Just return the test data if in testing mode
-        if (testMode)
-            return new WeightedSet<EncounterData>(testData, 1);
-        // Actual ecnounter data logic
-        var entry = encounterData[depth];
-        return new WeightedSet<EncounterData>(entry.data, entry.weights);
+        if (depth < 0 || depth >= encounterSetGenerators.Count)
+        {
+            encounterSet = Array.Empty<Encounter>();
+            return false;
+        }
+        encounterSet = encounterSetGenerators[depth].GenerateEncounters(mapSymbol, depth + 1);
+        return true;
     }
+
+    // legacy data for reference
     [Serializable]
     public class Entry
     {

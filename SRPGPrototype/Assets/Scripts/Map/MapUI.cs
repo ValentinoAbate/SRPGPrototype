@@ -23,17 +23,17 @@ public class MapUI : MonoBehaviour
     public GameObject spawnPointPrefab;
     public BattleCursor cursor;
 
-    private List<Vertex<Encounter>> vertices = null;
+    private readonly List<Encounter> encounterChoices = new List<Encounter>();
 
     // Start is called before the first frame update
     void Start()
     {
-        var map = PersistantData.main.mapManager.Map;
         backToEncounterSelectionButton.onClick.AddListener(HideEncounterPreview);
         backToEncounterSelectionButton.onClick.AddListener(ShowChoiceUI);
         HideEncounterPreview();
         HideChoiceUI();
-        vertices = new List<Vertex<Encounter>>(map.NextEncounters);
+        encounterChoices.Clear();
+        encounterChoices.AddRange(PersistantData.main.mapManager.NextEncounters);
         InitializeChoiceButtons();
         ShowChoiceUI();
         UIManager.main.HideAllDescriptionUI();
@@ -41,16 +41,15 @@ public class MapUI : MonoBehaviour
 
     private void InitializeChoiceButtons()
     {
-        for(int index = 0; index < vertices.Count; ++index)
+        for(int index = 0; index < encounterChoices.Count; ++index)
         {
-            var vertex = vertices[index];
-            var encounter = vertex.value;
+            var encounter = encounterChoices[index];
             var button = Instantiate(eventButtonPrefab, eventButtonContainer).GetComponent<Button>();
             var buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = encounter.nameOverride;
             button.onClick.AddListener(HideChoiceUI);
             int displayIndex = index;
-            button.onClick.AddListener(() => ShowEncounterPreview(vertex, displayIndex));
+            button.onClick.AddListener(() => ShowEncounterPreview(encounter, displayIndex));
         }
     }
 
@@ -67,21 +66,20 @@ public class MapUI : MonoBehaviour
         choiceUI.SetActive(false);
     }
 
-    private void ShowEncounterPreview(Vertex<Encounter> vertex, int index)
+    private void ShowEncounterPreview(Encounter encounter, int index)
     {
-        var dimensions = vertex.value.dimensions;
+        var dimensions = encounter.dimensions;
         previewGrid.SetDimensions(dimensions.x, dimensions.y);
         previewGrid.CenterAtPosition(BattleGrid.DefaultCenter);
         previewUI.SetActive(true);
         confirmEncounterButton.onClick.RemoveAllListeners();
-        confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(vertex));
+        confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(encounter));
         nextEncounterButton.onClick.RemoveAllListeners();
-        nextEncounterButton.onClick.AddListener(() => NextEncounter(vertex));
+        nextEncounterButton.onClick.AddListener(() => NextEncounter(encounter));
         prevEncounterButton.onClick.RemoveAllListeners();
-        prevEncounterButton.onClick.AddListener(() => NextEncounter(vertex, true));
-        var encounter = vertex.value;
+        prevEncounterButton.onClick.AddListener(() => NextEncounter(encounter, true));
         InitializePreviewObjects(encounter);
-        UIManager.main.TopBarUI.SetTitleText($"{encounter.nameOverride ?? "Encounter"} ({index + 1}/{vertices.Count})");
+        UIManager.main.TopBarUI.SetTitleText($"{encounter.nameOverride ?? "Encounter"} ({index + 1}/{encounterChoices.Count})");
 
         cursor.OnHighlight = ShowUnitDescription;
         cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
@@ -97,21 +95,21 @@ public class MapUI : MonoBehaviour
         }
     }
 
-    private void NextEncounter(Vertex<Encounter> current, bool backwards = false)
+    private void NextEncounter(Encounter current, bool backwards = false)
     {
-        int index = vertices.IndexOf(current);
+        int index = encounterChoices.IndexOf(current);
         if (backwards)
         {
             if (--index < 0)
-                index = vertices.Count - 1;
+                index = encounterChoices.Count - 1;
         }
-        else if (++index >= vertices.Count)
+        else if (++index >= encounterChoices.Count)
         {
             index = 0;
         }
 
         previewObjContainer.DestroyAllChildren();
-        ShowEncounterPreview(vertices[index], index);
+        ShowEncounterPreview(encounterChoices[index], index);
     }
 
     public void HideEncounterPreview()
@@ -135,9 +133,9 @@ public class MapUI : MonoBehaviour
         }
     }
 
-    private void ConfirmEncounter(Vertex<Encounter> vertex)
+    private void ConfirmEncounter(Encounter encounter)
     {
-        PersistantData.main.mapManager.Map.Current = vertex;
+        PersistantData.main.mapManager.CurrentEncounter = encounter;
         SceneTransitionManager.main.TransitionToScene(encounterSceneName);
     }
 }

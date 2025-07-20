@@ -23,7 +23,7 @@ public class StartingShopManager : MonoBehaviour
         if (mapManager.SkipMapSelection)
         {
             mapSelector.Hide();
-            mapManager.Regenerate();
+            mapManager.Restart();
             GenerateAndShowLoot();
         }
         else

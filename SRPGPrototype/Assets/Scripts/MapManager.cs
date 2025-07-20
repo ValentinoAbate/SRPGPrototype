@@ -7,27 +7,67 @@ using UnityEngine;
 /// </summary>
 public class MapManager : MonoBehaviour
 {
-    public Map Map { get; private set; }
+    public Encounter CurrentEncounter { get; set; }
+    public IReadOnlyList<Encounter> NextEncounters { get; private set; }
+    public int BaseMapDepth { get; private set; }
     public bool SkipMapSelection { get; set; } = false;
-    public IReadOnlyList<MapData> MapData => data;
-    [SerializeField] private MapData[] data = null;
-    [SerializeField] private MapGenerator generator = null;
+    public IReadOnlyList<MapData> StartingMaps => startingMaps;
+    [SerializeField] private MapData[] startingMaps = null;
 
-    private MapData lastMapData;
+    private MapData lastStartingMapData;
+    private readonly Stack<MapDataEntry> mapStack = new Stack<MapDataEntry>();
 
-    public void Generate(MapData mapData)
+    public void Setup(MapData startingMap)
     {
-        lastMapData = mapData;
-        Map = generator.Generate(mapData);
+        lastStartingMapData = startingMap;
+        mapStack.Clear();
+        BaseMapDepth = 0;
+        mapStack.Push(new MapDataEntry(startingMap, true));
+        GenerateNextEncounters();
     }
 
-    public void Regenerate()
+    public void Restart()
     {
-        Map = generator.Generate(lastMapData);
+        Setup(lastStartingMapData);
     }
 
-    public void Clear()
+    public void GenerateNextEncounters()
     {
-        Map = null;
+        while(mapStack.Count > 0)
+        {
+            var mapEntry = mapStack.Peek();
+            var map = mapEntry.data;
+            if (map.TryGetEncounterSet(mapEntry.isBaseMap ? BaseMapDepth : mapEntry.progress, out var encounters))
+            {
+                ++BaseMapDepth;
+                ++mapEntry.progress;
+                NextEncounters = encounters;
+                return;
+            }
+            mapStack.Pop();
+            if(map.NextMap != null)
+            {
+                if (mapEntry.isBaseMap)
+                {
+                    BaseMapDepth = 0;
+                }
+                mapStack.Push(new MapDataEntry(map.NextMap, mapEntry.isBaseMap));
+            }
+        }
+        NextEncounters = System.Array.Empty<Encounter>();
+        return;
+    }
+
+    private class MapDataEntry
+    {
+        public MapData data;
+        public int progress = 0;
+        public bool isBaseMap;
+
+        public MapDataEntry(MapData data, bool isBaseMap)
+        {
+            this.data = data;
+            this.isBaseMap = isBaseMap;
+        }
     }
 }

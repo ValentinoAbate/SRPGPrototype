@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour
+/*public class MapGenerator : MonoBehaviour
 {
     public const int maxWidth = 8;
     public const int minWidth = 5;
@@ -65,4 +65,4 @@ public class MapGenerator : MonoBehaviour
         }
         return new Map(eventGraph, startVertex);
     }
-}
+}*/

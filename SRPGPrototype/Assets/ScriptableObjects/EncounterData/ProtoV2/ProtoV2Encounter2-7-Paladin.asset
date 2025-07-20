@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
+  m_Name: ProtoV2Encounter2-7-Paladin
+  m_EditorClassIdentifier: 
+  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
+  targetDifficulty: 42
+  dimensions: {x: 7, y: 6}
+  numSpawnPositions: 4
+  encounterType: 0
+  numEnemies: 06000000
+  numEnemiesWeights:
+  - 1
+  enemies:
+  - {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e, type: 3}
+  - {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc, type: 3}
+  baseEnemyWeights:
+  - 2
+  - 2
+  numObstacles: 04000000
+  numObstaclesWeights:
+  - 1
+  obstacles:
+  - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
+  baseObstacleWeights:
+  - 1
+  lootFlags: 9
+  moneyOption: 3
+  seed:
+    nameOverride: 
+    dimensions: {x: 0, y: 0}
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 1278278986212401478, guid: 999e48b4f705e2f49a342d02444fd7a4,
+        type: 3}
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 6344873143029282054, guid: f8e1c054325b82b439cf4096d8dc2ce7,
+        type: 3}
+    spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0
