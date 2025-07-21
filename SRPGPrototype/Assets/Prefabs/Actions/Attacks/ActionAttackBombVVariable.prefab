@@ -9,6 +9,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3499793203226119316, guid: e25e51fcf26b38d44820fad02f2bb12d,
         type: 3}
+      propertyPath: description
+      value: Throw a bomb at range or at a diagonally adjacent tile that explodes
+        for {dmg} damage in a V pattern.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499793203226119316, guid: e25e51fcf26b38d44820fad02f2bb12d,
+        type: 3}
       propertyPath: displayName
       value: Falcon Bomb
       objectReference: {fileID: 0}
