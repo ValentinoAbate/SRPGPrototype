@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   targetStat: 0
-  damage: 4
+  damage: 5
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
