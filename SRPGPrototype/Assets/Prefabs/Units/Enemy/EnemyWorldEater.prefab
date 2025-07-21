@@ -97,7 +97,7 @@ MonoBehaviour:
   targetTeams: 03000000
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
-  standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
+  standardAction: {fileID: 4415060608083833614, guid: 4d8a0b319dd392543b2f1b4a8cc751b4,
     type: 3}
 --- !u!1001 &3469278218771208966
 PrefabInstance:
