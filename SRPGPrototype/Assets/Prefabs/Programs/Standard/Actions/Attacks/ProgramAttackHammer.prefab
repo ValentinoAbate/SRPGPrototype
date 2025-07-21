@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 7
+  number: 8
   resetTrigger: 0
   teams: 01000000
 --- !u!114 &1507228574610157520
@@ -128,10 +128,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3215933224863054534}
   - component: {fileID: 896514720061848565}
-  - component: {fileID: 8832947169656566083}
+  - component: {fileID: 265354881553805237}
   - component: {fileID: 7301312720255828124}
   m_Layer: 0
-  m_Name: UpgradeBreaker
+  m_Name: UpgradeThrowingHammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  displayName: Breaker
+  displayName: Throwing Hammer
   description: Action
---- !u!114 &8832947169656566083
+--- !u!114 &265354881553805237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,13 +175,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6705502700179398177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c647892837b56d45a01385e3f904daf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eda1bea01ad9394cb2f399cd5d7858c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  number: 10
+  number: 3
   resetTrigger: 0
-  teams: 01000000
+  comparison: 5
+  threshold: 3
 --- !u!114 &7301312720255828124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 8128480315039584089, guid: d6c2a4f47a6e0a540be7fb917dfbc37f, type: 3}
+  action: {fileID: 2993639122543412026, guid: 14d59530f5fa74045897ba2f34cff7d6, type: 3}
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0

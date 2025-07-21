@@ -14,7 +14,8 @@ public class TargetPattern
         Pattern,
         Generated,
         DirectionalPattern,
-        DirectionalPatternAndSelf
+        DirectionalPatternAndSelf,
+        DirectionalPatternShift1
     }
 
     public Type patternType = Type.Simple;
@@ -31,6 +32,7 @@ public class TargetPattern
             Type.Generated => generator.Generate(grid, user, targetPos),
             Type.DirectionalPattern => TargetDirectionalPattern(user, targetPos),
             Type.DirectionalPatternAndSelf => TargetDirectionalPattern(user, targetPos).Concat(new Vector2Int[] { user.Pos }),
+            Type.DirectionalPatternShift1 => TargetDirectionalPatternShiftedTowardsUser(user, targetPos, 1),
             _ => System.Array.Empty<Vector2Int>(),
         };
     }
@@ -39,6 +41,13 @@ public class TargetPattern
     {
         Vector2Int direction = user.Pos.DirectionTo(targetPos);
         Vector2Int patternCenter = user.Pos + Vector2Int.right * (int)Vector2Int.Distance(user.Pos, targetPos) + Vector2Int.down * pattern.Center.y;
+        return pattern.OffsetsShifted(patternCenter, false).Select((p) => p.Rotated(user.Pos, Vector2Int.right, direction));
+    }
+
+    private IEnumerable<Vector2Int> TargetDirectionalPatternShiftedTowardsUser(Unit user, Vector2Int targetPos, int shift)
+    {
+        Vector2Int direction = user.Pos.DirectionTo(targetPos);
+        Vector2Int patternCenter = user.Pos + (Vector2Int.right * ((int)Vector2Int.Distance(user.Pos, targetPos) - shift)) + Vector2Int.down * pattern.Center.y;
         return pattern.OffsetsShifted(patternCenter, false).Select((p) => p.Rotated(user.Pos, Vector2Int.right, direction));
     }
 
