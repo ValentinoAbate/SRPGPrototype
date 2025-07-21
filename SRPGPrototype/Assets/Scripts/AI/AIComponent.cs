@@ -28,6 +28,39 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         }
     }
 
+    protected Coroutine RunAway(BattleGrid grid, T self, Action moveAction, System.Predicate<Unit> runAwayFrom)
+    {
+        var reachable = Reachable(grid, self, moveAction, self.Pos);
+        if (reachable.Count == 0)
+            return null;
+        var runAwayFromUnits = grid.FindAll(runAwayFrom);
+        float highestScore = 0;
+        Vector2Int bestPos = self.Pos;
+        foreach(var kvp in reachable)
+        {
+            float score = ComputeRunAwayScore(kvp.Key, runAwayFromUnits);
+            if(score > highestScore)
+            {
+                highestScore = score;
+                bestPos = kvp.Key;
+            }
+        }
+        if (bestPos == self.Pos)
+            return null;
+        var path = Path(grid, self, moveAction, bestPos);
+        return StartCoroutine(MoveAlongPath(grid, self, moveAction, path));
+    }
+
+    private float ComputeRunAwayScore(Vector2Int pos, IReadOnlyList<Unit> runAwayFrom)
+    {
+        float score = 0;
+        foreach(var unit in runAwayFrom)
+        {
+            score += Vector2Int.Distance(pos, unit.Pos);
+        }
+        return score;
+    }
+
     protected IEnumerator AttackUntilExhausted(BattleGrid grid, AIUnit self, Action standardAction, Vector2Int tPos)
     {
         while (!self.Dead && self.CanUseAction(standardAction))
@@ -36,6 +69,23 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             yield return new WaitForSeconds(attackDelay);
             standardAction.UseAll(grid, self, tPos);
         }
+    }
+
+    protected Coroutine AttackFirstUnitInRange(BattleGrid grid, AIUnit self, Action standardAction, System.Predicate<Unit> isUnitTarget)
+    {
+        // Find all targets
+        var targetUnits = grid.FindAll(isUnitTarget);
+        // Exit early if there are no targets
+        if (targetUnits.Count <= 0)
+            return null;
+        // Check for target in range
+        var tPos = GetFirstValidTargetPosInRange(grid, self, standardAction, targetUnits);
+        // Use standard action until exhausted if target is found, then end turn
+        if (tPos != BattleGrid.OutOfBounds)
+        {
+            return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPos));
+        }
+        return null;
     }
 
     protected IEnumerator PathThenAttackIfAble(BattleGrid grid, T self, Action moveAction, Action standardAction, TargetPath tPath)
@@ -199,10 +249,10 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     }
 
     /// <summary>
-    /// Checks for tagets in range of the given standard action. Takes target pattern into account
+    /// Checks for positions in range of the given standard action that will hit at least one target unit
     /// returns the first viable target position found, else BattleGrid.OutOfBounds
     /// </summary>
-    protected Vector2Int CheckForTargets<Target>(BattleGrid grid, Unit self, Action standardAction, IEnumerable<Target> targetUnits) where Target : Unit
+    protected Vector2Int GetFirstValidTargetPosInRange<Target>(BattleGrid grid, Unit self, Action standardAction, IEnumerable<Target> targetUnits) where Target : Unit
     {
         var subAction = standardAction.SubActions[0];
         foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))

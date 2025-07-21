@@ -31,18 +31,12 @@ public class AIComponentTurret : AIComponent<AIUnit>
             yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
             yield break;
         }
-        bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
-        // Find all targets
-        var targetUnits = grid.FindAll(IsUnitTarget);
-        // Exit early if there are no targets
-        if (targetUnits.Count <= 0)
-            yield break;
-        // Check for target in range
-        var tPos = CheckForTargets(grid, self, standardAction, targetUnits);
-        // Use standard action until exhausted if target is found, then end turn
-        if (tPos != BattleGrid.OutOfBounds)
+        var attackRoutine = AttackFirstUnitInRange(grid, self, standardAction, IsUnitTarget);
+        if(attackRoutine!= null)
         {
-            yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPos));
+            yield return attackRoutine;
         }
     }
+
+    bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
 }

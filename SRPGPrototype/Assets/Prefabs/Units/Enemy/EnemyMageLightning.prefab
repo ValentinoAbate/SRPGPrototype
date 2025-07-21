@@ -1,31 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5826979018467067453
+--- !u!114 &6332754291488586876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773284678297221127}
+  m_GameObject: {fileID: 2861515215645996028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93294be81adf2ea44a7c51483cbe4ab0, type: 3}
+  m_Script: {fileID: 11500000, guid: c9b6f3f21a038ee4ba63af8e871a25b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardAction: {fileID: 4415060608083833614, guid: eae216a5cc6fee4429f2aff40e24a671,
+  readyOption: 0
+  standardAction: {fileID: 4415060608083833614, guid: 683e966d1d793a44b8af22b3c91064f9,
     type: 3}
-  animator: {fileID: 3218824302643247765}
---- !u!95 &3218824302643247765
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
+    type: 3}
+  animator: {fileID: 4508877108862989139}
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
+--- !u!95 &4508877108862989139
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7052550441030917563}
+  m_GameObject: {fileID: 6841650265260824128}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: d758565b04b487a45aaa03aaa7cf95a6, type: 2}
+  m_Controller: {fileID: 22100000, guid: a9d7e929a2061a14e9581d4093ed266a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -34,7 +39,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &1607783125316688516
+--- !u!1001 &2981985294836191615
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -44,28 +49,28 @@ PrefabInstance:
     - target: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Name
-      value: EnemyBeacon
+      value: EnemyMageLightning
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: maxAP
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: maxHP
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: A beacon that will allow an Enemy reinforcement to link in every other
-        turn.
+      value: 'Move: Adjacent (Runs Away). Attack: Random player unit (3 damage) every
+        other turn.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: displayName
+      value: Lightning Mage
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: priorityLevel
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -126,29 +131,34 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: de07c5a832fdf7840b002fa3107e71aa,
+      objectReference: {fileID: 21300000, guid: f7f61149e04a2e74cb70fd3d7901acba,
         type: 3}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Color.g
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9764706
       objectReference: {fileID: 0}
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: challengeRating
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
---- !u!1 &1773284678297221127 stripped
+--- !u!1 &2861515215645996028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
     type: 3}
-  m_PrefabInstance: {fileID: 1607783125316688516}
+  m_PrefabInstance: {fileID: 2981985294836191615}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7052550441030917563 stripped
+--- !u!1 &6841650265260824128 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8615473470323705663, guid: 7ad1ec7a0493cc149835e689342fc184,
     type: 3}
-  m_PrefabInstance: {fileID: 1607783125316688516}
+  m_PrefabInstance: {fileID: 2981985294836191615}
   m_PrefabAsset: {fileID: 0}
