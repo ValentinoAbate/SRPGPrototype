@@ -147,11 +147,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             }
         }
         // Move towards the target position with the shortest path
-        paths.Sort(ShortestPathComparer);
+        paths.Sort(ShortestTargetPathComparer);
         return paths;
     }
-
-    private static int ShortestPathComparer(TargetPath p1, TargetPath p2) => p1.path.Count.CompareTo(p2.path.Count);
 
     public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos)
     {
@@ -265,4 +263,6 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     {
         return path1.Count.CompareTo(path2.Count);
     }
+
+    private static int ShortestTargetPathComparer(TargetPath p1, TargetPath p2) => p1.path.Count.CompareTo(p2.path.Count);
 }
