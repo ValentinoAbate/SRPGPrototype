@@ -59,8 +59,8 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent (Runs Away). Attack: Random player unit (3 damage) every
-        other turn.'
+      value: 'Move: Adjacent (Runs Away). Attack: Closest player unit (3 damage)
+        every other turn.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
