@@ -14,21 +14,19 @@ namespace Grid
         /// Return all the currently empty positions in the grid
         /// O(x*y)
         /// </summary>
-        public List<Vector2Int> EmptyPositions
+        public IEnumerable<Vector2Int> EmptyPositions
         {
             get
             {
-                var ret = new List<Vector2Int>();
                 for (int x = 0; x < Dimensions.x; ++x)
                 {
                     for (int y = 0; y < Dimensions.y; ++y)
                     {
                         var pos = new Vector2Int(x, y);
                         if (IsEmpty(pos))
-                            ret.Add(pos);
+                            yield return pos;
                     }
                 }
-                return ret;
             }
         }
         public Vector2 CenterToVextexOffset => new Vector2((cellSize.x + skewXOffset) * 0.5f, cellSize.y * 0.5f);

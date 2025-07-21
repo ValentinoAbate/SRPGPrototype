@@ -14,34 +14,54 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
     public Directions directions;
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos, Unit user)
     {
-        var ret = new List<Vector2Int>();
         if(directions.HasFlag(Directions.Horizontal))
         {
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.up));
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.down));
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.left));
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.right));
+            foreach(var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.up))
+            {
+                yield return pos;
+            }
+            foreach (var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.down))
+            {
+                yield return pos;
+            }
+            foreach (var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.left))
+            {
+                yield return pos;
+            }
+            foreach (var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.right))
+            {
+                yield return pos;
+            }
         }
         if (directions.HasFlag(Directions.Diagonal))
         {
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.up + Vector2Int.right));
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.down + Vector2Int.right));
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.down + Vector2Int.left));
-            ret.AddRange(PositionsUntilObstacle(grid, userPos, Vector2Int.up + Vector2Int.left));
+            foreach (var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.up + Vector2Int.right))
+            {
+                yield return pos;
+            }
+            foreach (var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.down + Vector2Int.right))
+            {
+                yield return pos;
+            }
+            foreach (var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.down + Vector2Int.left))
+            {
+                yield return pos;
+            }
+            foreach(var pos in PositionsUntilObstacle(grid, userPos, Vector2Int.up + Vector2Int.left))
+            {
+                yield return pos;
+            }
         }
-        return ret;
     }
 
-    private List<Vector2Int> PositionsUntilObstacle(BattleGrid grid, Vector2Int startPos, Vector2Int direction)
+    private IEnumerable<Vector2Int> PositionsUntilObstacle(BattleGrid grid, Vector2Int startPos, Vector2Int direction)
     {
         Vector2Int pos = startPos + direction;
-        var ret = new List<Vector2Int>();
         while(grid.IsLegalAndEmpty(pos))
         {
-            ret.Add(pos);
+            yield return pos;
             pos += direction;
         }
-        return ret;
     }
 
     public override int MaxDistance(BattleGrid grid)

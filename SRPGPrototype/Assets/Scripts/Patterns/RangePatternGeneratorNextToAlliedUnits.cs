@@ -5,9 +5,9 @@ public class RangePatternGeneratorNextToAlliedUnits : RangePatternGenerator
 { 
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos, Unit user)
     {
-        var positions = new List<Vector2Int>() { userPos };
+        yield return userPos;
         if (user == null)
-            return positions;
+            yield break;
         foreach (var unit in grid) 
         { 
             if(unit.UnitTeam == user.UnitTeam && unit != user)
@@ -16,12 +16,11 @@ public class RangePatternGeneratorNextToAlliedUnits : RangePatternGenerator
                 {
                     if (grid.IsLegalAndEmpty(pos))
                     {
-                        positions.Add(pos);
+                        yield return pos;
                     }
                 }
             }
         }
-        return positions;
     }
 
     public override int MaxDistance(BattleGrid grid)

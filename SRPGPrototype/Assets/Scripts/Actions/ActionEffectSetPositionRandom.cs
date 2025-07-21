@@ -1,4 +1,5 @@
 ﻿using RandomUtils;
+using System.Linq;
 
 public class ActionEffectSetPositionRandom : ActionEffect
 {
@@ -7,7 +8,7 @@ public class ActionEffectSetPositionRandom : ActionEffect
         if (target == null)
             return;
         var emptySpaces = grid.EmptyPositions;
-        if (emptySpaces.Count <= 0)
+        if (!emptySpaces.Any())
             return;
         grid.MoveAndSetWorldPos(target, RandomU.instance.Choice(emptySpaces));
     }
