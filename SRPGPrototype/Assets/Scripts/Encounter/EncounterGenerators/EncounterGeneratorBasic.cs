@@ -7,17 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Encounter", menuName = "Encounter Generation/Encounter Gen (Basic)")]
 public class EncounterGeneratorBasic : EncounterGenerator
 {
-    [System.Flags]
-    public enum LootModifiers
-    { 
-        None = 0,
-        Shell = 1,
-        BossCapacity = 2,
-        Bonus = 4,
-        NoNormalLoot = 8,
-        BonusMoney = 16,
-        BonusRandom = 32,
-    }
     public enum MoneyOption
     {
         None,
@@ -71,62 +60,15 @@ public class EncounterGeneratorBasic : EncounterGenerator
         float difficultyMod = difficulty - targetDifficulty;
 
         // Generate Loot category weights
-        var categoryWeights = new WeightedSet<MysteryDataUnit.Category>();
-        var qualityWeights = new WeightedSet<MysteryDataUnit.Quality>();
+        var difficultyEnum = difficultyMod < 0 ? EncounterDifficulty.Easy : (difficultyMod > 0 ? EncounterDifficulty.Hard : EncounterDifficulty.Normal);
         // Choose weights to use based on difficulty mod
-        if (difficultyMod == 0)
-        {
-            categoryWeights.Add(lootCategoryWeights);
-            qualityWeights.Add(lootQualityWeights);
-        }
-        else if (difficultyMod > 0)
-        {
-            categoryWeights.Add(lootCategoryWeightsDifficult);
-            qualityWeights.Add(lootQualityWeightsDifficult);
-        }
-        else
-        {
-            categoryWeights.Add(lootCategoryWeightsEasy);
-            qualityWeights.Add(lootQualityWeightsEasy);
-        }
-        // Place the default loot unless there shouldn't be normal loot 
-        if (!lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.NoNormalLoot))
-        {
-            // Actually place the loot
-            PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
-        }
-        // Place the bonus default loot (if applicable)
-        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.Bonus))
-        {
-            PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
-        }
-        // Place the bonus money loot (if applicable)
-        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.BonusMoney))
-        {
-            PlaceLoot(moneyLootCategoryWeights, qualityWeights, ref encounter, ref positions);
-        }
-        // Place the bonus money or default loot (if applicable)
-        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.BonusRandom))
-        {
-            var hybridWeights = new WeightedSet<MysteryDataUnit.Category>(categoryWeights);
-            hybridWeights.Add(moneyLootCategoryWeights);
-            PlaceLoot(hybridWeights, qualityWeights, ref encounter, ref positions);
-        }
-        // Place the shell loot (if applicable)
-        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.Shell))
-        {
-            PlaceLoot(midbossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
-        }
-        // Place the boss capacity loot (if applicable)
-        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.BossCapacity))
-        {
-            PlaceLoot(bossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
-        }
+        GetLootWeights(difficultyEnum, out var categoryWeights, out var qualityWeights);
+        PlaceLootDefault(lootFlags, categoryWeights, qualityWeights, ref encounter, ref positions);
         // Set additional spawn positions
         SetSpawnPositions(numSpawnPositions, encounter, ref positions);
 
         // Generate Money
-        if (moneyOption == EncounterGeneratorBasic.MoneyOption.None)
+        if (moneyOption == MoneyOption.None)
         {
             encounter.giveCompletionMoney = false;
         }
@@ -135,14 +77,14 @@ public class EncounterGeneratorBasic : EncounterGenerator
             encounter.giveCompletionMoney = true;
             encounter.baseCompletionMoney = moneyOption switch
             {
-                EncounterGeneratorBasic.MoneyOption.Miniboss => 50,
-                EncounterGeneratorBasic.MoneyOption.Boss => 100,
+                MoneyOption.Miniboss => 50,
+                MoneyOption.Boss => 100,
                 _ => 10,
             };
             encounter.completionMoneyVariance = moneyOption switch
             {
-                EncounterGeneratorBasic.MoneyOption.Miniboss => 8,
-                EncounterGeneratorBasic.MoneyOption.Boss => 12,
+                MoneyOption.Miniboss => 8,
+                MoneyOption.Boss => 12,
                 _ => 4,
             };
         }

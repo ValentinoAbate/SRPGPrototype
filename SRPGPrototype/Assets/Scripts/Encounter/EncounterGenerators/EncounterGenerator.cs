@@ -14,6 +14,24 @@ public abstract class EncounterGenerator : ScriptableObject
         Rest,
     }
 
+    [System.Flags]
+    public enum LootModifiers
+    {
+        None = 0,
+        Shell = 1,
+        BossCapacity = 2,
+        Bonus = 4,
+        NoNormalLoot = 8,
+        BonusMoney = 16,
+        BonusRandom = 32,
+    }
+    public enum EncounterDifficulty
+    {
+        Normal,
+        Easy,
+        Hard
+    }
+
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter);
     public delegate float NextUnitWeighting(Unit u, Encounter encounter);
 
@@ -184,12 +202,69 @@ public abstract class EncounterGenerator : ScriptableObject
     }
 
     protected static float PassThrough(Unit _, Encounter _2) => 0;
-    //private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
 
-    protected void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
-        ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    public static void GetLootWeights(EncounterDifficulty difficulty, out WeightedSet<MysteryDataUnit.Category> categoryWeights,
+        out WeightedSet<MysteryDataUnit.Quality> qualityWeights)
     {
-        PlaceLoot(categories, qualities, lootUnits, ref encounter, ref validPositions);
+        if (difficulty == EncounterDifficulty.Easy)
+        {
+            categoryWeights = lootCategoryWeightsEasy;
+            qualityWeights = lootQualityWeightsEasy;
+        }
+        else if (difficulty == EncounterDifficulty.Hard)
+        {
+            categoryWeights = lootCategoryWeightsDifficult;
+            qualityWeights = lootQualityWeightsDifficult;
+        }
+        else
+        {
+            categoryWeights = lootCategoryWeights;
+            qualityWeights = lootQualityWeights;
+        }
+    }
+
+    protected void PlaceLootDefault(LootModifiers lootFlags, WeightedSet<MysteryDataUnit.Category> categoryWeights, WeightedSet<MysteryDataUnit.Quality> qualityWeights,
+        ref Encounter encounter, ref HashSet<Vector2Int> positions)
+    {
+        PlaceLootDefault(lootFlags, categoryWeights, qualityWeights, ref encounter, ref positions);
+    }
+
+    public static void PlaceLootDefault(LootModifiers lootFlags, WeightedSet<MysteryDataUnit.Category> categoryWeights, WeightedSet<MysteryDataUnit.Quality> qualityWeights,
+        LootUnitSet lootUnits, ref Encounter encounter, ref HashSet<Vector2Int> positions)
+    {
+        // Place the default loot unless there shouldn't be normal loot 
+        if (!lootFlags.HasFlag(LootModifiers.NoNormalLoot))
+        {
+            // Actually place the loot
+            PlaceLoot(categoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
+        }
+        // Place the bonus default loot (if applicable)
+        if (lootFlags.HasFlag(LootModifiers.Bonus))
+        {
+            PlaceLoot(categoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
+        }
+        // Place the bonus money loot (if applicable)
+        if (lootFlags.HasFlag(LootModifiers.BonusMoney))
+        {
+            PlaceLoot(moneyLootCategoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
+        }
+        // Place the bonus money or default loot (if applicable)
+        if (lootFlags.HasFlag(LootModifiers.BonusRandom))
+        {
+            var hybridWeights = new WeightedSet<MysteryDataUnit.Category>(categoryWeights);
+            hybridWeights.Add(moneyLootCategoryWeights);
+            PlaceLoot(hybridWeights, qualityWeights, lootUnits, ref encounter, ref positions);
+        }
+        // Place the shell loot (if applicable)
+        if (lootFlags.HasFlag(LootModifiers.Shell))
+        {
+            PlaceLoot(midbossLootCategoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
+        }
+        // Place the boss capacity loot (if applicable)
+        if (lootFlags.HasFlag(LootModifiers.BossCapacity))
+        {
+            PlaceLoot(bossLootCategoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
+        }
     }
 
     public static void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
