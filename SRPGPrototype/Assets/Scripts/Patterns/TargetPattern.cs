@@ -24,17 +24,40 @@ public class TargetPattern
 
     public IEnumerable<Vector2Int> Target(BattleGrid grid, Unit user, Vector2Int targetPos)
     {
-        return patternType switch
+        if(patternType == Type.Self)
         {
-            Type.Self => new Vector2Int[] { user.Pos },
-            Type.Simple => new Vector2Int[] { targetPos },
-            Type.Pattern => pattern.OffsetsShifted(targetPos),
-            Type.Generated => generator.Generate(grid, user, targetPos),
-            Type.DirectionalPattern => TargetDirectionalPattern(user, targetPos),
-            Type.DirectionalPatternAndSelf => TargetDirectionalPattern(user, targetPos).Concat(new Vector2Int[] { user.Pos }),
-            Type.DirectionalPatternShift1 => TargetDirectionalPatternShiftedTowardsUser(user, targetPos, 1),
-            _ => System.Array.Empty<Vector2Int>(),
-        };
+            yield return user.Pos;
+        }
+        else if(patternType == Type.Simple)
+        {
+            yield return targetPos;
+        }
+        else if(patternType == Type.Pattern)
+        {
+            foreach (var pos in pattern.OffsetsShifted(targetPos))
+                yield return pos;
+        }
+        else if(patternType == Type.Generated)
+        {
+            foreach (var pos in generator.Generate(grid, user, targetPos))
+                yield return pos;
+        }
+        else if(patternType == Type.DirectionalPattern)
+        {
+            foreach (var pos in TargetDirectionalPattern(user, targetPos))
+                yield return pos;
+        }
+        else if(patternType == Type.DirectionalPatternAndSelf)
+        {
+            foreach (var pos in TargetDirectionalPattern(user, targetPos))
+                yield return pos;
+            yield return user.Pos;
+        }
+        else if(patternType == Type.DirectionalPatternShift1)
+        {
+            foreach (var pos in TargetDirectionalPatternShiftedTowardsUser(user, targetPos, 1))
+                yield return pos;
+        }
     }
 
     private IEnumerable<Vector2Int> TargetDirectionalPattern(Unit user, Vector2Int targetPos)
@@ -53,23 +76,40 @@ public class TargetPattern
 
     /// <summary>
     /// Returns the spaces that would hit the targetPos argument when targeted
-    /// WARNING: Directional and Generated target patterns unsupported (throws exception)
+    /// WARNING: Directional and Generated target patterns unsupported
     /// WARNING: Pattern type patterns only supported when symmetrical (unefined behavior)
     /// </summary>
     public IEnumerable<Vector2Int> ReverseTarget(BattleGrid grid, Vector2Int targetPos)
     {
         if (patternType == Type.Simple)
-            return new Vector2Int[] { targetPos };
-        if (patternType == Type.Self)
-            return grid.Dimensions.Enumerate();
-        if (patternType == Type.Pattern) // Only supported when symmetrical
-            return pattern.OffsetsShifted(targetPos);
-        if (patternType == Type.Generated) // May have to be per generator
-            throw new System.Exception("Generated target patterns do not support reverse targeting");
-        if (patternType == Type.DirectionalPattern) // May have to be in all range-allowed directions
         {
-            throw new System.Exception("Directional target patterns do not support reverse targeting");
+            yield return targetPos;
         }
-        throw new System.Exception("Invalid target pattern type");
+        else if (patternType == Type.Self)
+        {
+            foreach(var pos in grid.Dimensions.Enumerate())
+            {
+                yield return pos;
+            } 
+        }
+        else if (patternType == Type.Pattern) // Only supported when symmetrical
+        {
+            foreach(var pos in pattern.OffsetsShifted(targetPos))
+            {
+                yield return pos;
+            }
+        }
+        else if (patternType == Type.Generated) // May have to be per generator
+        {
+            Debug.LogError("Generated target patterns do not support reverse targeting");
+        }
+        else if (patternType == Type.DirectionalPattern) // May have to be in all range-allowed directions
+        {
+            Debug.LogError("Directional target patterns do not support reverse targeting");
+        }
+        else
+        {
+            Debug.LogError("Invalid target pattern type");
+        }
     }
 }

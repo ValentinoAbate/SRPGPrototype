@@ -169,7 +169,6 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         // Calculate possible target positions
         foreach (var target in targets)
         {
-            var targetablePositions = targetPattern.ReverseTarget(grid, target.Pos);
             var targetData = targetPattern.ReverseTarget(grid, target.Pos)  
                                           .SelectMany((p) => targetRange.GetPositions(grid, p, null).Select((rPos) => new TargetData(rPos, p))
                                           .Where((data) => ValidPos(data.userPos)));
@@ -257,8 +256,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         var subAction = standardAction.SubActions[0];
         foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
         {
-            var targetPositions = subAction.targetPattern.Target(grid, self, pos);
-            foreach (var tPos in targetPositions)
+            foreach (var tPos in subAction.targetPattern.Target(grid, self, pos))
             {
                 foreach(var target in targetUnits)
                 {
@@ -275,8 +273,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         var subAction = standardAction.SubActions[0];
         foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
         {
-            var targetPositions = subAction.targetPattern.Target(grid, self, pos);
-            foreach (var tPos in targetPositions)
+            foreach (var tPos in subAction.targetPattern.Target(grid, self, pos))
             {
                 if (grid.IsLegalAndEmpty(tPos))
                     return pos;
