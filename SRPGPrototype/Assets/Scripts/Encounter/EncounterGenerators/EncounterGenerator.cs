@@ -14,8 +14,8 @@ public abstract class EncounterGenerator : ScriptableObject
         Rest,
     }
 
-    public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter, Vector2Int dimensions);
-    public delegate float NextUnitWeighting(Unit u, Encounter encounter, Vector2Int dimensions);
+    public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter);
+    public delegate float NextUnitWeighting(Unit u, Encounter encounter);
 
     #region Weightings
 
@@ -130,16 +130,11 @@ public abstract class EncounterGenerator : ScriptableObject
         }
     }
 
-    protected void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit,
+    public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit,
         Encounter encounter, ref HashSet<Vector2Int> validPositions) where T : Unit, IEncounterUnit
     {
-        PlaceUnitsWeighted(number, units, nextPos, nextUnit, dimensions, encounter, ref validPositions);
-    }
-    public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit, 
-        Vector2Int dimensions, Encounter encounter, ref HashSet<Vector2Int> validPositions) where T : Unit, IEncounterUnit
-    {
-        float UnitWeight(Unit u) => nextUnit(u, encounter, dimensions);
-        float PosWeight(Vector2Int p) => nextPos(p, encounter, dimensions);
+        float UnitWeight(Unit u) => nextUnit(u, encounter);
+        float PosWeight(Vector2Int p) => nextPos(p, encounter);
         for (int i = 0; i < number; ++ i)
         {
             var unitSet = new WeightedSet<T>(units);
@@ -162,12 +157,12 @@ public abstract class EncounterGenerator : ScriptableObject
         }
     }
 
-    protected static float ClumpWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
+    protected static float ClumpWeight(Vector2Int pos, Encounter encounter)
     {
         float weight = 1;
         foreach(var p in pos.Adjacent())
         {
-            if(p.IsBoundedBy(dimensions) && encounter.units.FindIndex((e) => e.pos == p) != -1)
+            if(p.IsBoundedBy(encounter.dimensions) && encounter.units.FindIndex((e) => e.pos == p) != -1)
             {
                 weight *= 2;
             }
@@ -175,12 +170,12 @@ public abstract class EncounterGenerator : ScriptableObject
         return weight;
     }
 
-    protected static float SpreadWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
+    protected static float SpreadWeight(Vector2Int pos, Encounter encounter)
     {
         float weight = 1;
         foreach (var p in pos.Adjacent())
         {
-            if (p.IsBoundedBy(dimensions) && encounter.units.FindIndex((e) => e.pos == p) == -1)
+            if (p.IsBoundedBy(encounter.dimensions) && encounter.units.FindIndex((e) => e.pos == p) == -1)
             {
                 weight *= 2;
             }
@@ -188,7 +183,7 @@ public abstract class EncounterGenerator : ScriptableObject
         return weight;
     }
 
-    protected static float PassThrough(Unit _, Encounter _2, Vector2Int _3) => 0;
+    protected static float PassThrough(Unit _, Encounter _2) => 0;
     //private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
 
     protected void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
@@ -215,23 +210,18 @@ public abstract class EncounterGenerator : ScriptableObject
         validPositions.Remove(pos);
     }
 
-    protected void SetSpawnPositions(int num, Encounter encounter, ref HashSet<Vector2Int> validPositions)
-    {
-        SetSpawnPositions(num, dimensions, encounter, ref validPositions);
-    }
-
-    public static void SetSpawnPositions(int num, Vector2Int dimensions, Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    public static void SetSpawnPositions(int num, Encounter encounter, ref HashSet<Vector2Int> validPositions)
     {
         if(num > 0 && validPositions.Count > 0)
         {
-            var weights = new WeightedSet<Vector2Int>(validPositions, (pos) => SpreadWeight(pos, encounter, dimensions));
+            var weights = new WeightedSet<Vector2Int>(validPositions, (pos) => SpreadWeight(pos, encounter));
             Vector2Int spawnPos = RandomU.instance.Choice(weights);
             encounter.spawnPositions.Add(spawnPos);
             validPositions.Remove(spawnPos);
         }
         for (int i = 1; i < num && validPositions.Count > 0; ++i)
         {
-            var weights = new WeightedSet<Vector2Int>(validPositions, (pos) => ClumpWeight(pos,encounter, dimensions));//(pos) => SpreadWeight(pos, encounter, dimensions));
+            var weights = new WeightedSet<Vector2Int>(validPositions, (pos) => ClumpWeight(pos, encounter));
             Vector2Int spawnPos = RandomU.instance.Choice(weights);
             encounter.spawnPositions.Add(spawnPos);
             validPositions.Remove(spawnPos);
