@@ -25,19 +25,9 @@ public class EncounterGeneratorBasic : EncounterGenerator
         Miniboss,
         Boss,
     }
-    public enum Type 
-    {
-        Encounter,
-        Shop,
-        Boss,
-        Rest,
-    }
 
-    [Header("General")]
     public float targetDifficulty;
-    public Vector2Int dimensions = new Vector2Int(8, 8);
     public int numSpawnPositions = 3;
-    public Type encounterType;
     [Header("Enemies")]
     public List<int> numEnemies = new List<int>{ 5 };
     public List<float> numEnemiesWeights = new List<float>{ 1 };
@@ -56,54 +46,22 @@ public class EncounterGeneratorBasic : EncounterGenerator
 
     public override Encounter Generate(string mapSymbol, int encounterNumber)
     {
-        var positions = dimensions.Enumerate();
-        var encounter = new Encounter() { nameOverride = $"{encounterType} {mapSymbol}-{encounterNumber}", dimensions = dimensions };
+        InitializeEncounter(mapSymbol, encounterNumber, out var positions, out var encounter);
         int numEnemiesChoice = RandomU.instance.Choice(numEnemies, numEnemiesWeights);
         int numObstaclesChoice = RandomU.instance.Choice(numObstacles, numObstaclesWeights);
         var enemySet = new WeightedSet<EnemyUnit>(enemies, baseEnemyWeights);
         var obstacleSet = new WeightedSet<ObstacleUnit>(obstacles, baseObstacleWeights);
 
-        // Initialize encounter values from seed if applicable
-        if (seed != null)
-        {
-            List<Encounter.UnitEntry> outOfBoundsUnits = new List<Encounter.UnitEntry>();
-            foreach (var entry in seed.units)
-            {
-                // Position is invalid, generated a proper position later
-                if (!positions.Contains(entry.pos))
-                {
-                    outOfBoundsUnits.Add(entry);
-                    continue;
-                }
-                encounter.units.Add(entry);
-                positions.Remove(entry.pos);
-            }
-            // Remove all seed spawn positions from valid positions choices
-            positions.RemoveAll((p) => seed.spawnPositions.Contains(p));
-            // Add all seed spawn positions to the encounter
-            encounter.spawnPositions.AddRange(seed.spawnPositions);
-            // Generate positions for any unit entries that had negative positions
-            foreach (var entry in outOfBoundsUnits)
-            {
-                if (positions.Count <= 0)
-                    break;
-                Vector2Int pos = RandomU.instance.Choice(positions);
-                encounter.units.Add(new Encounter.UnitEntry(entry.unit, pos));
-                positions.Remove(pos);
-            }
-            if (!string.IsNullOrEmpty(seed.nameOverride))
-            {
-                encounter.nameOverride = seed.nameOverride;
-            }
-        }
+        // Apply seed
+        ApplySeed(seed, ref encounter, ref positions);
 
         // Generate enemies
         PlaceUnitsRandom(numEnemiesChoice / 2 + numEnemiesChoice % 2, enemySet, ref encounter, ref positions);
-        PlaceUnitsWeighted(numEnemiesChoice / 2, enemySet, ClumpWeight, PassThrough, dimensions, encounter, ref positions);
+        PlaceUnitsWeighted(numEnemiesChoice / 2, enemySet, ClumpWeight, PassThrough, encounter, ref positions);
 
         // Generate obstacles
         PlaceUnitsRandom(numObstaclesChoice / 2 + numObstaclesChoice % 2, obstacleSet, ref encounter, ref positions);
-        PlaceUnitsWeighted(numObstaclesChoice / 2, obstacleSet, ClumpWeight, PassThrough, dimensions, encounter, ref positions);
+        PlaceUnitsWeighted(numObstaclesChoice / 2, obstacleSet, ClumpWeight, PassThrough, encounter, ref positions);
 
         //Generate loot
         float difficulty = encounter.units.Where((e) => e.unit is IEncounterUnit)
@@ -165,7 +123,7 @@ public class EncounterGeneratorBasic : EncounterGenerator
             PlaceLoot(bossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Set additional spawn positions
-        SetSpawnPositions(numSpawnPositions, dimensions, encounter, ref positions);
+        SetSpawnPositions(numSpawnPositions, encounter, ref positions);
 
         // Generate Money
         if (moneyOption == EncounterGeneratorBasic.MoneyOption.None)

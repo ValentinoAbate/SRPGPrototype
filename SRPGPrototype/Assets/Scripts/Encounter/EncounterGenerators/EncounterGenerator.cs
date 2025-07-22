@@ -6,6 +6,14 @@ using Extensions.VectorIntDimensionUtils;
 
 public abstract class EncounterGenerator : ScriptableObject
 {
+    public enum Type
+    {
+        Encounter,
+        Shop,
+        Boss,
+        Rest,
+    }
+
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter, Vector2Int dimensions);
     public delegate float NextUnitWeighting(Unit u, Encounter encounter, Vector2Int dimensions);
 
@@ -69,13 +77,66 @@ public abstract class EncounterGenerator : ScriptableObject
     #endregion
 
 
-
+    [Header("General")]
+    [SerializeField] private Type encounterType;
+    [SerializeField] private Vector2Int dimensions = new Vector2Int(8, 8);
     [SerializeField] private LootUnitSet lootUnits;
 
     public abstract Encounter Generate(string mapSymbol, int encounterNumber);
 
-    protected void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit, 
-        Vector2Int dimensions, Encounter encounter, ref List<Vector2Int> validPositions) where T : Unit, IEncounterUnit
+    protected void InitializeEncounter(string mapSymbol, int encounterNumber, out HashSet<Vector2Int> positions, out Encounter encounter)
+    {
+        positions = new HashSet<Vector2Int>(dimensions.Enumerate());
+        encounter = new Encounter() { nameOverride = $"{encounterType} {mapSymbol}-{encounterNumber}", dimensions = dimensions };
+    }
+
+    protected void ApplySeed(Encounter seed, ref Encounter encounter, ref HashSet<Vector2Int> positions)
+    {
+        // Initialize encounter values from seed if applicable
+        if (seed != null)
+        {
+            var outOfBoundsUnits = new List<Encounter.UnitEntry>(seed.units.Count);
+            // Place seed units
+            foreach (var entry in seed.units)
+            {
+                // Position is invalid, generate a proper position later
+                if (!positions.Contains(entry.pos))
+                {
+                    outOfBoundsUnits.Add(entry);
+                    continue;
+                }
+                encounter.units.Add(entry);
+                positions.Remove(entry.pos);
+            }
+            // Process seed spawn positions
+            foreach(var spawnPosition in seed.spawnPositions)
+            {
+                positions.Remove(spawnPosition);
+                encounter.spawnPositions.Add(spawnPosition);
+            }
+            // Generate positions for any unit entries that had negative positions
+            foreach (var entry in outOfBoundsUnits)
+            {
+                if (positions.Count <= 0)
+                    break;
+                Vector2Int pos = RandomU.instance.Choice(positions);
+                encounter.units.Add(new Encounter.UnitEntry(entry.unit, pos));
+                positions.Remove(pos);
+            }
+            if (!string.IsNullOrEmpty(seed.nameOverride))
+            {
+                encounter.nameOverride = seed.nameOverride;
+            }
+        }
+    }
+
+    protected void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit,
+        Encounter encounter, ref HashSet<Vector2Int> validPositions) where T : Unit, IEncounterUnit
+    {
+        PlaceUnitsWeighted(number, units, nextPos, nextUnit, dimensions, encounter, ref validPositions);
+    }
+    public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit, 
+        Vector2Int dimensions, Encounter encounter, ref HashSet<Vector2Int> validPositions) where T : Unit, IEncounterUnit
     {
         float UnitWeight(Unit u) => nextUnit(u, encounter, dimensions);
         float PosWeight(Vector2Int p) => nextPos(p, encounter, dimensions);
@@ -90,7 +151,7 @@ public abstract class EncounterGenerator : ScriptableObject
         }
     }
 
-    protected void PlaceUnitsRandom<T>(int number, WeightedSet<T> units, ref Encounter encounter, ref List<Vector2Int> validPositions) where T : Unit, IEncounterUnit
+    public static void PlaceUnitsRandom<T>(int number, WeightedSet<T> units, ref Encounter encounter, ref HashSet<Vector2Int> validPositions) where T : Unit, IEncounterUnit
     {
         for (int i = 0; i < number; ++i)
         {
@@ -127,11 +188,17 @@ public abstract class EncounterGenerator : ScriptableObject
         return weight;
     }
 
-    protected static float PassThrough(Unit u, Encounter encounter, Vector2Int dimensions) => 0;
+    protected static float PassThrough(Unit _, Encounter _2, Vector2Int _3) => 0;
     //private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
 
     protected void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
-        ref Encounter encounter, ref List<Vector2Int> validPositions)
+        ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    {
+        PlaceLoot(categories, qualities, lootUnits, ref encounter, ref validPositions);
+    }
+
+    public static void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
+        LootUnitSet lootUnits, ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
     {
         var category = RandomU.instance.Choice(categories);
         if (!lootUnits.LootUnitTable.ContainsKey(category))
@@ -148,7 +215,12 @@ public abstract class EncounterGenerator : ScriptableObject
         validPositions.Remove(pos);
     }
 
-    protected void SetSpawnPositions(int num, Vector2Int dimensions, Encounter encounter, ref List<Vector2Int> validPositions)
+    protected void SetSpawnPositions(int num, Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    {
+        SetSpawnPositions(num, dimensions, encounter, ref validPositions);
+    }
+
+    public static void SetSpawnPositions(int num, Vector2Int dimensions, Encounter encounter, ref HashSet<Vector2Int> validPositions)
     {
         if(num > 0 && validPositions.Count > 0)
         {
