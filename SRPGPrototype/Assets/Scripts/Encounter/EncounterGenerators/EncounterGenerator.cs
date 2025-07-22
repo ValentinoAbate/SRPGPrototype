@@ -197,13 +197,21 @@ public abstract class EncounterGenerator : ScriptableObject
     {
         var category = RandomU.instance.Choice(categories);
         if (!lootUnits.LootUnitTable.ContainsKey(category))
-            throw new System.Exception("Loot excpetion: category " + category.ToString() + " does not exist!");
-        MysteryDataUnit.Quality quality = MysteryDataUnit.Quality.None;
+        {
+            Debug.LogError("Loot Error: category " + category.ToString() + " does not exist!");
+            return;
+        }
+        var quality = MysteryDataUnit.Quality.None;
         // Quality doesn't currently apply to boss, color, and gamble loot
         if (category != MysteryDataUnit.Category.Boss && category != MysteryDataUnit.Category.Gamble && category != MysteryDataUnit.Category.Color)
+        {
             quality = RandomU.instance.Choice(qualities);
+        }
         if (!lootUnits.LootUnitTable[category].ContainsKey(quality))
-            throw new System.Exception("Loot excpetion: no data of quality " + quality.ToString() + "in category " + category.ToString());
+        {
+            Debug.LogError("Loot Error: no data of quality " + quality.ToString() + "in category " + category.ToString());
+            return;
+        }
         var unit = RandomU.instance.Choice(lootUnits.LootUnitTable[category][quality]);
         var pos = RandomU.instance.Choice(validPositions);
         encounter.units.Add(new Encounter.UnitEntry(unit, pos));
