@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: DebugEncounterMage
   m_EditorClassIdentifier: 
+  encounterType: 0
+  dimensions: {x: 6, y: 6}
   lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
   targetDifficulty: 4
-  dimensions: {x: 6, y: 6}
   numSpawnPositions: 3
-  encounterType: 0
-  numEnemies: 0400000005000000
+  numEnemies: 0200000003000000
   numEnemiesWeights:
   - 8
   - 2
@@ -40,6 +40,15 @@ MonoBehaviour:
     units:
     - pos: {x: -1, y: -1}
       unit: {fileID: 2747713192606589042, guid: a022e7493dc21fd4fb4796c7ea1dbfc2,
+        type: 3}
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 2747713192606589042, guid: 4e450fcc6564d064da2df2fcc766c26b,
+        type: 3}
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 2747713192606589042, guid: f0f7db5235666004fbdc1a88f5efb076,
+        type: 3}
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 2747713192606589042, guid: a3afc4e019becee46960b82788138b3e,
         type: 3}
     spawnPositions: []
     giveCompletionMoney: 0

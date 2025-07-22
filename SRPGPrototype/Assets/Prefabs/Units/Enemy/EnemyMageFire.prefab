@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   readyOption: 0
-  standardAction: {fileID: 4415060608083833614, guid: 683e966d1d793a44b8af22b3c91064f9,
+  standardAction: {fileID: 4415060608083833614, guid: e72135d1395c9054a9c66ecec216dc16,
     type: 3}
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
@@ -49,28 +49,18 @@ PrefabInstance:
     - target: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Name
-      value: EnemyMageLightning
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: maxAP
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: maxHP
-      value: 6
+      value: EnemyMageFire
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent (Runs Away). Attack: Closest player unit (3 damage)
+      value: 'Move: Adjacent (Runs Away). Attack: Closest player unit (2 damage)
         every other turn.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: displayName
-      value: Lightning Mage
+      value: Fire Mage
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -141,17 +131,17 @@ PrefabInstance:
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.9764706
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: challengeRating
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
