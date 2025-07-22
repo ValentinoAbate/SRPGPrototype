@@ -5,13 +5,13 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EncounterData))]
-public class EncounterDataInspector : Editor
+[CustomEditor(typeof(EncounterGeneratorBasic))]
+public class EncounterGeneratorBasicInspector : Editor
 {
     public const int targetDifficultyGenerationIterations = 10000;
     public override void OnInspectorGUI()
     {
-        var data = target as EncounterData;
+        var data = target as EncounterGeneratorBasic;
         if(GUILayout.Button(new GUIContent("Generate Target Difficulty")))
         {
             float sum = 0;

@@ -31,7 +31,7 @@ public class MapData : ScriptableObject
     [Serializable]
     public class Entry
     {
-        public List<EncounterData> data = new List<EncounterData>();
+        public List<EncounterGeneratorBasic> data = new List<EncounterGeneratorBasic>();
         public List<float> weights = new List<float>();
     }
 }

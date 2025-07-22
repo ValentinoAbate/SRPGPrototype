@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EncounterNew", menuName = "Event Data / Encounter Data")]
-public class EncounterData : EncounterGenerator
+public class EncounterGeneratorBasic : EncounterGenerator
 {
     [System.Flags]
     public enum LootModifiers
@@ -132,35 +132,35 @@ public class EncounterData : EncounterGenerator
             qualityWeights.Add(lootQualityWeightsEasy);
         }
         // Place the default loot unless there shouldn't be normal loot 
-        if (!lootFlags.HasFlag(EncounterData.LootModifiers.NoNormalLoot))
+        if (!lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.NoNormalLoot))
         {
             // Actually place the loot
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the bonus default loot (if applicable)
-        if (lootFlags.HasFlag(EncounterData.LootModifiers.Bonus))
+        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.Bonus))
         {
             PlaceLoot(categoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the bonus money loot (if applicable)
-        if (lootFlags.HasFlag(EncounterData.LootModifiers.BonusMoney))
+        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.BonusMoney))
         {
             PlaceLoot(moneyLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the bonus money or default loot (if applicable)
-        if (lootFlags.HasFlag(EncounterData.LootModifiers.BonusRandom))
+        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.BonusRandom))
         {
             var hybridWeights = new WeightedSet<MysteryDataUnit.Category>(categoryWeights);
             hybridWeights.Add(moneyLootCategoryWeights);
             PlaceLoot(hybridWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the shell loot (if applicable)
-        if (lootFlags.HasFlag(EncounterData.LootModifiers.Shell))
+        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.Shell))
         {
             PlaceLoot(midbossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
         // Place the boss capacity loot (if applicable)
-        if (lootFlags.HasFlag(EncounterData.LootModifiers.BossCapacity))
+        if (lootFlags.HasFlag(EncounterGeneratorBasic.LootModifiers.BossCapacity))
         {
             PlaceLoot(bossLootCategoryWeights, qualityWeights, ref encounter, ref positions);
         }
@@ -168,7 +168,7 @@ public class EncounterData : EncounterGenerator
         SetSpawnPositions(numSpawnPositions, dimensions, encounter, ref positions);
 
         // Generate Money
-        if (moneyOption == EncounterData.MoneyOption.None)
+        if (moneyOption == EncounterGeneratorBasic.MoneyOption.None)
         {
             encounter.giveCompletionMoney = false;
         }
@@ -177,14 +177,14 @@ public class EncounterData : EncounterGenerator
             encounter.giveCompletionMoney = true;
             encounter.baseCompletionMoney = moneyOption switch
             {
-                EncounterData.MoneyOption.Miniboss => 50,
-                EncounterData.MoneyOption.Boss => 100,
+                EncounterGeneratorBasic.MoneyOption.Miniboss => 50,
+                EncounterGeneratorBasic.MoneyOption.Boss => 100,
                 _ => 10,
             };
             encounter.completionMoneyVariance = moneyOption switch
             {
-                EncounterData.MoneyOption.Miniboss => 8,
-                EncounterData.MoneyOption.Boss => 12,
+                EncounterGeneratorBasic.MoneyOption.Miniboss => 8,
+                EncounterGeneratorBasic.MoneyOption.Boss => 12,
                 _ => 4,
             };
         }
