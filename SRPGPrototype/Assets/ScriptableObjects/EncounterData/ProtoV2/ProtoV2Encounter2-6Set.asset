@@ -16,7 +16,7 @@ MonoBehaviour:
   numEncounterWeights: []
   generators:
   - {fileID: 11400000, guid: ec8c0ee01bc8e1c47a422d67242089f5, type: 2}
-  - {fileID: 11400000, guid: ec8c0ee01bc8e1c47a422d67242089f5, type: 2}
+  - {fileID: 11400000, guid: 64b58500fb7119641bf2a2f4063c80db, type: 2}
   generatorWeights:
   - 3
   - 1
