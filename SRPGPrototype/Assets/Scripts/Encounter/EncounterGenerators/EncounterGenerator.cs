@@ -226,7 +226,7 @@ public abstract class EncounterGenerator : ScriptableObject
     protected void PlaceLootDefault(LootModifiers lootFlags, WeightedSet<MysteryDataUnit.Category> categoryWeights, WeightedSet<MysteryDataUnit.Quality> qualityWeights,
         ref Encounter encounter, ref HashSet<Vector2Int> positions)
     {
-        PlaceLootDefault(lootFlags, categoryWeights, qualityWeights, ref encounter, ref positions);
+        PlaceLootDefault(lootFlags, categoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
     }
 
     public static void PlaceLootDefault(LootModifiers lootFlags, WeightedSet<MysteryDataUnit.Category> categoryWeights, WeightedSet<MysteryDataUnit.Quality> qualityWeights,
