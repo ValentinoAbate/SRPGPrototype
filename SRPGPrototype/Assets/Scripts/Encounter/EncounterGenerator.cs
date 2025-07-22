@@ -101,7 +101,7 @@ public abstract class EncounterGenerator : ScriptableObject
         }
     }
 
-    protected float ClumpWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
+    protected static float ClumpWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
     {
         float weight = 1;
         foreach(var p in pos.Adjacent())
@@ -114,7 +114,7 @@ public abstract class EncounterGenerator : ScriptableObject
         return weight;
     }
 
-    protected float SpreadWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
+    protected static float SpreadWeight(Vector2Int pos, Encounter encounter, Vector2Int dimensions)
     {
         float weight = 1;
         foreach (var p in pos.Adjacent())
@@ -127,7 +127,7 @@ public abstract class EncounterGenerator : ScriptableObject
         return weight;
     }
 
-    protected float PassThrough(Unit u, Encounter encounter, Vector2Int dimensions) => 0;
+    protected static float PassThrough(Unit u, Encounter encounter, Vector2Int dimensions) => 0;
     //private float PassThrough(Vector2Int pos, Encounter encounter, Vector2Int dimensions) => 0;
 
     protected void PlaceLoot(WeightedSet<MysteryDataUnit.Category> categories, WeightedSet<MysteryDataUnit.Quality> qualities, 
