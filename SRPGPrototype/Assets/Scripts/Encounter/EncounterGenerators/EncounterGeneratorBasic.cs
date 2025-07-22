@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EncounterNew", menuName = "Event Data / Encounter Data")]
+[CreateAssetMenu(fileName = "Encounter", menuName = "Encounter Generation/Encounter Gen (Basic)")]
 public class EncounterGeneratorBasic : EncounterGenerator
 {
     [System.Flags]
