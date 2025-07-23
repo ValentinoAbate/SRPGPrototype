@@ -1,14 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class RangePatternGeneratorDirectional : RangePatternGenerator
+public class RangePatternGeneratorDirectionalRaycast : RangePatternGenerator
 {
     [SerializeField] private AdjacencyDirections directions;
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos, Unit user)
     {
+        foreach(var direction in directions.GetDirectionVectors())
+        {
+            var unit = grid.Raycast(userPos, direction);
+            if (unit != null)
+                yield return unit.Pos;
+        }
+    }
+
+    public override IEnumerable<Vector2Int> ReverseGenerate(BattleGrid grid, Vector2Int targetPos, Unit user)
+    {
         foreach (var direction in directions.GetDirectionVectors())
         {
-            foreach (var pos in grid.PositionsUntilRaycastHit(userPos, direction))
+            foreach(var pos in grid.PositionsUntilRaycastHit(targetPos, direction))
             {
                 yield return pos;
             }

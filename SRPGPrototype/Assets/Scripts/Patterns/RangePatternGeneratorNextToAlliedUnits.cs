@@ -23,6 +23,11 @@ public class RangePatternGeneratorNextToAlliedUnits : RangePatternGenerator
         }
     }
 
+    public override IEnumerable<Vector2Int> ReverseGenerate(BattleGrid grid, Vector2Int targetPos, Unit user)
+    {
+        yield break; // not implementing unless needed
+    }
+
     public override int MaxDistance(BattleGrid grid)
     {
         return grid.Dimensions.x + grid.Dimensions.y - 2;

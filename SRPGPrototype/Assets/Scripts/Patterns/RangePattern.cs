@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Extensions.VectorIntDimensionUtils;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -50,6 +51,15 @@ public class RangePattern
                 return new Vector2Int[] { userPos + Vector2Int.up, userPos + Vector2Int.down };
         }
         throw new System.Exception("Range Pattern Error: Invalid pattern type");
+    }
+
+    public IEnumerable<Vector2Int> ReverseRange(BattleGrid grid, Vector2Int targetPos, Unit user)
+    {
+        if(patternType == Type.Generated)
+        {
+            return generator.ReverseGenerate(grid, targetPos, user);
+        }
+        return GetPositions(grid, targetPos, user);
     }
 
     public int MaxDistance(BattleGrid grid)

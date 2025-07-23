@@ -24,6 +24,11 @@ public class RangePatternGeneratorClosestTargetUnit : RangePatternGenerator
         }
     }
 
+    public override IEnumerable<Vector2Int> ReverseGenerate(BattleGrid grid, Vector2Int targetPos, Unit user)
+    {
+        yield break; // Not implementing unless needed
+    }
+
     private bool IsTarget(Unit unit) => targetTeams.Contains(unit.UnitTeam);
 
     public override int MaxDistance(BattleGrid grid)

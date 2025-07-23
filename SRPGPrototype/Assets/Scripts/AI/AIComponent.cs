@@ -169,19 +169,23 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         // Calculate possible target positions
         foreach (var target in targets)
         {
-            var targetData = targetPattern.ReverseTarget(grid, target.Pos)  
-                                          .SelectMany((p) => targetRange.GetPositions(grid, p, null).Select((rPos) => new TargetData(rPos, p))
-                                          .Where((data) => ValidPos(data.userPos)));
-            // For now, just add the empty/self legal positions where a target would be in range
-            foreach(var posData in targetData)
+            foreach(var potentialTargetPos in targetPattern.ReverseTarget(grid, target.Pos))
             {
-                if(!positions.ContainsKey(posData))
+                foreach(var potentialUnitPos in targetRange.ReverseRange(grid, potentialTargetPos, self))
                 {
-                    positions.Add(posData, target);
-                }
-                else
-                {
-                    positions[posData] = TargetPriority(positions[posData], target);
+                    if (!ValidPos(potentialUnitPos))
+                    {
+                        continue;
+                    }
+                    var posData = new TargetData(potentialUnitPos, potentialTargetPos);
+                    if (!positions.ContainsKey(posData))
+                    {
+                        positions.Add(posData, target);
+                    }
+                    else
+                    {
+                        positions[posData] = TargetPriority(positions[posData], target);
+                    }
                 }
             }
         }

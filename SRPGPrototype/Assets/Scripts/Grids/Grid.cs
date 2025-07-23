@@ -277,6 +277,28 @@ namespace Grid
             return objects;
         }
 
+        public Obj Raycast(Vector2Int startPos, Vector2Int direction)
+        {
+            Vector2Int pos = startPos + direction;
+            while (IsLegal(pos))
+            {
+                if (!IsEmpty(pos))
+                    return Get(pos);
+                pos += direction;
+            }
+            return null;
+        }
+
+        public IEnumerable<Vector2Int> PositionsUntilRaycastHit(Vector2Int startPos, Vector2Int direction)
+        {
+            Vector2Int pos = startPos + direction;
+            while (IsLegalAndEmpty(pos))
+            {
+                yield return pos;
+                pos += direction;
+            }
+        }
+
         public IEnumerator<Obj> GetEnumerator()
         {
             return FieldObjects();
