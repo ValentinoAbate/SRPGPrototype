@@ -157,6 +157,22 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 
     }
 
+    public int MaxUses(int apBudget)
+    {
+        int cost = APCost;
+        if (cost > apBudget)
+            return 0;
+        int uses = 1;
+        while (uses < 100)
+        {
+            cost += APCostAfterXUses(uses);
+            if (cost > apBudget)
+                break;
+            ++uses;
+        }
+        return uses;
+    }
+
     public int APCostAfterXUses(int uses)
     {
         if (SlowdownInterval == 0)

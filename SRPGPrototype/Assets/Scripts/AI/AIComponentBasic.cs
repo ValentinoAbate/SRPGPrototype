@@ -11,11 +11,18 @@ using UnityEngine;
 /// </summary>
 public class AIComponentBasic : AIComponent<AIUnit>
 {
-    public List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
-    [SerializeField]
-    private Action moveAction;
-    [SerializeField]
-    private Action standardAction;
+    [System.Flags]
+    public enum Options
+    {
+        None = 0,
+        PrioritizeDistance = 1,
+        RunAwayAfterAttacking = 2,
+    }
+    [SerializeField] private Action moveAction;
+    [SerializeField] private Action standardAction;
+    [SerializeField] private Options options;
+    [SerializeField] private List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
+    [SerializeField] private List<Unit.Team> runAwayFromTeams = new List<Unit.Team> { Unit.Team.Player };
 
     protected virtual Action StandardAction => standardAction;
 
@@ -34,6 +41,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
         {
             yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
+            if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
+            {
+                yield return runRoutine;
+            }
             yield break;
         }
         // Find all targets
@@ -47,6 +58,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (tPos != BattleGrid.OutOfBounds)
         {
             yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, tPos));
+            if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
+            {
+                yield return runRoutine;
+            }
             yield break;
         }
         // Attempt to move into range
@@ -61,7 +76,20 @@ public class AIComponentBasic : AIComponent<AIUnit>
         // If a path was found, take it
         if(paths.Count > 0)
         {
-            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, paths[0]));
+            TargetPath path;
+            if (options.HasFlag(Options.PrioritizeDistance))
+            {
+                path = GetTargetPathPrioritizeDistance(grid, self, paths);
+            }
+            else
+            {
+                path = paths[0];
+            }
+            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, path));
+            if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
+            {
+                yield return runRoutine;
+            }
             yield break;
         }
         // Predicate for determining if a unit is an ally
@@ -229,7 +257,47 @@ public class AIComponentBasic : AIComponent<AIUnit>
         yield break;
     }
 
+    private TargetPath GetTargetPathPrioritizeDistance(BattleGrid grid, AIUnit self, List<TargetPath> paths)
+    {
+        int moves = moveAction.MaxUses(self.AP - standardAction.APCost);
+        var reachablePaths = new List<TargetPath>(paths.Count);
+        foreach (var path in paths)
+        {
+            if (path.path.Count <= moves)
+            {
+                reachablePaths.Add(path);
+            }
+        }
+        if (reachablePaths.Count <= 0)
+            return paths[0];
+        reachablePaths.Sort(TargetPathLargestDistanceToTargetComparer);
+        return reachablePaths[0];
+    }
+
+    private static int TargetPathLargestDistanceToTargetComparer(TargetPath p1, TargetPath p2)
+    {
+        return DistanceFromPathEndToTargetPos(p2.path, p2.targetPos).CompareTo(DistanceFromPathEndToTargetPos(p1.path, p1.targetPos));
+    }
+
+    private static float DistanceFromPathEndToTargetPos(IReadOnlyList<Vector2Int> path, Vector2Int targetPos)
+    {
+        return path.Count <= 0 ? float.MaxValue : Vector2Int.Distance(path[path.Count - 1], targetPos);
+    }
+
     private bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
+
+    private bool RunAwayFromUnit(Unit other) => runAwayFromTeams.Contains(other.UnitTeam);
+
+    private bool TryRunAwayAfterAttack(BattleGrid grid, AIUnit self, out Coroutine routine)
+    {
+        if(!options.HasFlag(Options.PrioritizeDistance) || !self.CanUseAction(moveAction))
+        {
+            routine = null;
+            return false;
+        }
+        routine = RunAway(grid, self, moveAction, RunAwayFromUnit);
+        return routine != null;
+    }
 
     private readonly struct ReachablePositionData : System.IComparable<ReachablePositionData>
     {
