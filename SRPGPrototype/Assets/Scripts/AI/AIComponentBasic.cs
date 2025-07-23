@@ -54,7 +54,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (!self.CanUseAction(moveAction))
             yield break;
         // If there are no available moves (all moves are illegal or blocked), end early
-        if (MovePositions(grid, self.Pos, moveAction.SubActions[0].Range).Count() <= 0)
+        if (!MovePositions(grid, self.Pos, moveAction.SubActions[0].Range).Any())
             yield break;
         // Find Paths to target range
         var paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits);
