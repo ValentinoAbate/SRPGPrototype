@@ -12,19 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202fff1b413f49d4587e107818dfa742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   targetStat: 0
   damage:
     min: -2147483648
     max: 2147483647
-    constant: 1
     baseAmount: 0
     modifier: 0
     multiplier: 2
+    constant: 1
     type: 1
     attributes: 2
     color: 0
     rarity: 0
+  programOverride: {fileID: 0}
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,11 +202,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: slowdown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
       propertyPath: description
       value: Attack an adjacent or diagonally adjacent unit for damage equal to twice
         the number of transient programs installed ({dmg}).
@@ -222,6 +220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxUsesPerBattle
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}
