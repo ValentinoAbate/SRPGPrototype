@@ -53,17 +53,17 @@ MonoBehaviour:
   damage:
     min: -2147483648
     max: 2147483647
+    baseAmount: 0
+    modifier: -1
+    multiplier: 2
     constant: 1
-    baseAmount: -1
-    modifier: 0
-    multiplier: 1
     unitNumber:
       min: -2147483648
       max: 2147483647
-      constant: 1
       baseAmount: -2
       modifier: 0
       multiplier: 1
+      constant: 1
       type: 3
     type: 1
 --- !u!1001 &6707852538196646759
@@ -86,8 +86,8 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Adds damage equal to current AP cost minus 1 to all adjacent weapons
-        (except umbrellas).
+      value: Adds damage equal to current AP cost minus 1 then times 2 to all adjacent
+        weapons (except umbrellas).
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
