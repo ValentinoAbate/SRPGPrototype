@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class UnitNumber
+public class UnitNumber : DynamicNumber
 {
     public enum Type
     {
@@ -14,17 +14,7 @@ public class UnitNumber
     }
 
     [SerializeField]
-    private int min = int.MinValue;
-    [SerializeField]
-    private int max = int.MaxValue;
-    [SerializeField]
     private int constant = 1;
-    [SerializeField]
-    private int baseAmount = 0;
-    [SerializeField]
-    private int modifier = 0;
-    [SerializeField]
-    private int multiplier = 1;
     [SerializeField]
     private Type type = Type.Constant;
 
@@ -55,7 +45,6 @@ public class UnitNumber
         {
             number = unit.Repair;
         }
-        int modNumber = baseAmount + ((number + modifier) * multiplier);
-        return Mathf.Clamp(modNumber, min, max);
+        return Value(number);
     }
 }

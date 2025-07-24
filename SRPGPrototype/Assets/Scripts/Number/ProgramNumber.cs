@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class ProgramNumber
+public class ProgramNumber : DynamicNumber
 {
     public enum Type
     { 
@@ -21,17 +21,7 @@ public class ProgramNumber
     }
 
     [SerializeField]
-    private int min = int.MinValue;
-    [SerializeField]
-    private int max = int.MaxValue;
-    [SerializeField]
     private int constant = 1;
-    [SerializeField]
-    private int baseAmount = 0;
-    [SerializeField]
-    private int modifier = 0;
-    [SerializeField]
-    private int multiplier = 1;
     [SerializeField]
     private Type type = Type.Constant;
     [SerializeField]
@@ -84,7 +74,6 @@ public class ProgramNumber
         {
             number = shell.CustArea.Offsets.Count((pos) => shell.InstallMap[pos.x, pos.y] == null);
         }
-        int modNumber = baseAmount + ((number + modifier) * multiplier);
-        return Mathf.Clamp(modNumber, min, max);
+        return Value(number);
     }
 }

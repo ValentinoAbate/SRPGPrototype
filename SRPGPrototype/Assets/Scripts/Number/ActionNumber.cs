@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ActionNumber
+public class ActionNumber : DynamicNumber
 {
     public enum Type
     {
@@ -18,17 +18,7 @@ public class ActionNumber
     }
 
     [SerializeField]
-    private int min = int.MinValue;
-    [SerializeField]
-    private int max = int.MaxValue;
-    [SerializeField]
     private int constant = 1;
-    [SerializeField]
-    private int baseAmount = 0;
-    [SerializeField]
-    private int modifier = 0;
-    [SerializeField]
-    private int multiplier = 1;
     [SerializeField]
     UnitNumber unitNumber = new UnitNumber();
     [SerializeField]
@@ -85,9 +75,5 @@ public class ActionNumber
 
     }
 
-    private int Value(int number)
-    {
-        int modNumber = baseAmount + ((number + modifier) * multiplier);
-        return Mathf.Clamp(modNumber, min, max);
-    }
+
 }
