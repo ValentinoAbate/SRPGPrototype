@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProgramTriggerConditionDestoyUnits : ProgramTriggerConditionResetTrigger
+public class ProgramTriggerConditionDestroyUnits : ProgramTriggerConditionResetTrigger
 {
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
 
