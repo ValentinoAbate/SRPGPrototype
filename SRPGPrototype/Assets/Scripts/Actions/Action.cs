@@ -239,7 +239,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
                 // Apply free transient chances if applicable
                 if (!freeTransientMods.Any() || RandomU.instance.RandomDouble() > freeTransientMods.Sum((m) => m.Chance))
                 {
-                    Program.GetComponent<ProgramAttributeTransient>().Uses++;
+                    Program.GetComponent<ProgramAttributeTransient>().Use(grid, user);
                 }
             }
         }

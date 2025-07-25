@@ -7,25 +7,13 @@ public class ProgramAttributeTransient : ProgramAttribute
     public int UsesLeft => MaxUses - Uses;
     public int MaxUses { get => maxUses; set => maxUses = value; }
     [SerializeField] private int maxUses = 3;
-    public int Uses 
-    { 
-        get => uses; 
-        set
-        {
-            uses = value;
-            if(uses >= maxUses)
-            {
-                TriggerDestroy();
-            }
-        }
-    }
-    private int uses = 0;
+    public int Uses { get; private set; } = 0;
 
-    public void TriggerDestroy()
+    public void Use(BattleGrid grid, Unit user)
     {
-        var shell = program.Shell;
-        shell.Uninstall(program, program.Pos, true);
-        if (!shell.Compile())
-            Debug.LogError("Destroyed program has caused shell compile error");
+        if(++Uses >= MaxUses)
+        {
+            program.Shell.DestroyProgram(program, program.Pos, grid, user);
+        }
     }
 }

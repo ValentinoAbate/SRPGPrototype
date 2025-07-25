@@ -18,6 +18,8 @@ public class Shell : MonoBehaviour, ILootable
 
     public delegate bool Restriction(Shell shell, out string errorMessage);
 
+    public delegate void OnProgramDestroyedDel(Program p, BattleGrid grid, Unit user);
+
     private static readonly Dictionary<Progression, List<int>> levelThresholds = new Dictionary<Progression, List<int>>()
     {
         { Progression.Small, new List<int>{ 0, 1, 4} },
@@ -72,6 +74,7 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnDamaged OnDamaged { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
+    public OnProgramDestroyedDel OnProgramDestroyed { get; private set; }
 
     public Stats Stats { get; } = new Stats();
     public Dictionary<Program, List<Modifier>> ModifierMap { get; private set; }
@@ -132,7 +135,12 @@ public class Shell : MonoBehaviour, ILootable
         Compiled = false;
     }
 
-    public void Uninstall(Program program, Vector2Int location, bool destroy = false)
+    public void Uninstall(Program program, Vector2Int location)
+    {
+        Uninstall(program, location, false);
+    }
+
+    private void Uninstall(Program program, Vector2Int location, bool destroy, BattleGrid grid = null, Unit user = null)
     {
         if (program.Shell != this)
             return;
@@ -145,9 +153,21 @@ public class Shell : MonoBehaviour, ILootable
                 InstallMap[pos.x, pos.y] = null;
             InstallPositions.Remove(program);
             if (destroy)
-                Destroy(programs[ind].program.gameObject);
+            {
+                OnProgramDestroyed?.Invoke(program, grid, user);
+                Destroy(program.gameObject);
+            }
             programs.RemoveAt(ind);
             Compiled = false;
+        }
+    }
+
+    public void DestroyProgram(Program program, Vector2Int location, BattleGrid grid, Unit user)
+    {
+        Uninstall(program, location, true, grid, user);
+        if (!Compile())
+        {
+            Debug.LogError("Destroyed program has caused shell compile error");
         }
     }
 
@@ -381,6 +401,7 @@ public class Shell : MonoBehaviour, ILootable
         OnDamaged = compileData.onDamaged;
         OnBattleStart = compileData.onBattleStart;
         OnPhaseStart = compileData.onPhaseStart;
+        OnProgramDestroyed = compileData.onProgramDestroyed;
         incomingDamageModifiers.Clear();
         incomingDamageModifiers.AddRange(compileData.incomingDamageModifiers);
         // Apply compiled changes to actions and stats
@@ -405,6 +426,7 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnDamaged onDamaged = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public Unit.OnPhaseStartDel onPhaseStart = null;
+        public OnProgramDestroyedDel onProgramDestroyed = null;
         public GameObject soulCoreUnitPrefab = null;
         public Dictionary<Program, List<Modifier>> modifierMap = new Dictionary<Program, List<Modifier>>();
         public List<ModifierActionDamage> incomingDamageModifiers = new List<ModifierActionDamage>();

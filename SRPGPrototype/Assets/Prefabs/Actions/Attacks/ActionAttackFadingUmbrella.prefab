@@ -92,27 +92,22 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackGlassUmbrella
+      value: ActionAttackFadingUmbrella
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Attack an adajcent or diagonally adjacent unit for {dmg} damage. Sharp
-        but breaks easily.
+      value: Attack an adajcent or diagonally adjacent unit for {dmg} damage. Nearly
+        gone but still holds power.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Glass Umbrella
+      value: Fading Umbrella
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: maxUsesPerTurn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: slowdownInterval
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
