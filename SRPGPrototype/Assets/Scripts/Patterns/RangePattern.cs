@@ -19,36 +19,39 @@ public class RangePattern
         Generated,
         Horizontal,
         Vertical,
+        RangedBoth,
     }
 
     public Type patternType = Type.Adjacent;
     public Pattern pattern;
     public RangePatternGenerator generator = null;
 
-    public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int userPos, Unit user)
+    public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int origin, Unit user)
     {
         switch (patternType)
         {
             case Type.Self:
-                return new Vector2Int[] { userPos };
+                return new Vector2Int[] { origin };
             case Type.Adjacent:
-                return userPos.Adjacent();
+                return origin.Adjacent();
             case Type.AdjacentDiagonal:
-                return userPos.AdjacentDiagonal();
+                return origin.AdjacentDiagonal();
             case Type.AdjacentBoth:
-                return userPos.AdjacentBoth();
+                return origin.AdjacentBoth();
             case Type.Ranged:
-                return userPos.Adjacent(2);
+                return origin.Adjacent(2);
             case Type.RangedDiagonal:
-                return userPos.AdjacentDiagonal(2);
+                return origin.AdjacentDiagonal(2);
             case Type.Pattern:
-                return pattern.OffsetsShifted(userPos);
+                return pattern.OffsetsShifted(origin);
             case Type.Generated:
-                return generator.Generate(grid, userPos, user);
+                return generator.Generate(grid, origin, user);
             case Type.Horizontal:
-                return new Vector2Int[] { userPos + Vector2Int.left, userPos + Vector2Int.right };
+                return new Vector2Int[] { origin + Vector2Int.left, origin + Vector2Int.right };
             case Type.Vertical:
-                return new Vector2Int[] { userPos + Vector2Int.up, userPos + Vector2Int.down };
+                return new Vector2Int[] { origin + Vector2Int.up, origin + Vector2Int.down };
+            case Type.RangedBoth:
+                return origin.AdjacentBoth(2);
         }
         throw new System.Exception("Range Pattern Error: Invalid pattern type");
     }

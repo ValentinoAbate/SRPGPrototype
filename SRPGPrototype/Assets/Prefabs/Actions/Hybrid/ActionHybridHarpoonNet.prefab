@@ -15,13 +15,18 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: description
-      value: 'Ranged 3-target wide attack for {dmg} damage then pull all targets
-        towards you. '
+      value: 'Ranged or diagonally ranged 3-target wide attack for {dmg} damage then
+        pull all targets towards you. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: displayName
       value: Net Harpoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
+        type: 3}
+      propertyPath: slowdownInterval
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}

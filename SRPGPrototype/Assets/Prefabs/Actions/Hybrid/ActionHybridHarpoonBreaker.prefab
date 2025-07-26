@@ -12,22 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   stat: 7
   number:
     min: -2147483648
     max: 2147483647
-    constant: 2
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    constant: 2
     unitNumber:
       min: -2147483648
       max: 2147483647
-      constant: 1
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      constant: 1
       type: 0
     type: 0
   usesPower: 0
@@ -41,8 +43,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}
       propertyPath: description
-      value: 'Ranged attack for {dmg} damage, pull the target towards you, then give
-        it 2 Break. '
+      value: 'Ranged or diagonally ranged attack for {dmg} damage, pull the target
+        towards you, then give it 2 Break. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f9a70d25cd0a3e1479c15269d37ed94d,
         type: 3}

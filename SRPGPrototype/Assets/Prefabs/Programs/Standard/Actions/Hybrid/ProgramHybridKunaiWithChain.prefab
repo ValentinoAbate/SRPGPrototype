@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3413283479869876486}
   - component: {fileID: 98220195974837385}
   m_Layer: 0
-  m_Name: UpgradeGrapple
+  m_Name: UpgradeLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  displayName: Grappling Hook
+  displayName: Kunai With Chain (Long)
   description: Action
 --- !u!114 &3413283479869876486
 MonoBehaviour:
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 8898072172279978900}
   - component: {fileID: 2686882861101761997}
   m_Layer: 0
-  m_Name: Upgrade+
+  m_Name: UpgradeBreaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
-  displayName: Kunai With Chain+
+  displayName: Kunai With Chain (Breaker)
   description: Action
 --- !u!114 &8898072172279978900
 MonoBehaviour:
