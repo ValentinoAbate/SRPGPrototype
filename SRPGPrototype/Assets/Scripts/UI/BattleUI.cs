@@ -57,6 +57,8 @@ public class BattleUI : MonoBehaviour
     }
 
     private readonly List<TileUI.Entry> targetPatternEntries = new List<TileUI.Entry>();
+    private readonly List<Unit> lastTargets = new List<Unit>();
+    private Vector2Int lastSelectedPos;
 
     private void Awake()
     {
@@ -234,9 +236,11 @@ public class BattleUI : MonoBehaviour
     {
         UIManager.main.ActionDescriptionUI.Hide();
         int currAction = 0;
+        lastTargets.Clear();
+        lastSelectedPos = Vector2Int.zero;
         action.StartAction(unit);
         var targetRangeEntries = new List<TileUI.Entry>();
-        targetRangeEntries = ShowRangePattern(action.SubActions[currAction].Range, unit);
+        targetRangeEntries = ShowRangePattern(action.SubActions[currAction], unit);
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction);
@@ -262,7 +266,7 @@ public class BattleUI : MonoBehaviour
     private void HighlightActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction)
     {
         var subAction = action.SubActions[currAction];
-        if (!subAction.Range.GetPositions(grid, unit.Pos, unit).Contains(pos))
+        if (!GetRangePositions(subAction, unit).Contains(pos))
             return;
         targetPatternEntries.Clear();
         targetPatternEntries.AddRange(ShowTargetPattern(subAction.targetPattern, unit, pos));
@@ -273,9 +277,12 @@ public class BattleUI : MonoBehaviour
     private void SelectActionTarget(Vector2Int pos, Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)
     {
         var subAction = action.SubActions[currAction];
-        if (!subAction.Range.GetPositions(grid, unit.Pos, unit).Contains(pos))
+        if (!GetRangePositions(subAction, unit).Contains(pos))
             return;
-        subAction.Use(grid, action, unit, pos);
+        subAction.Use(grid, action, unit, pos, lastTargets, out var targets);
+        lastTargets.Clear();
+        lastTargets.AddRange(targets);
+        lastSelectedPos = pos;
         HideManyTiles(entries);
         cursor.OnUnHighlight?.Invoke(pos);
         if (++currAction >= action.SubActions.Count)
@@ -288,7 +295,7 @@ public class BattleUI : MonoBehaviour
         }
         else
         {
-            entries = ShowRangePattern(action.SubActions[currAction].Range, unit);
+            entries = ShowRangePattern(action.SubActions[currAction], unit);
             var currentPos = cursor.HighlightedPosition;
             if (grid.IsLegal(currentPos))
             {
@@ -333,10 +340,16 @@ public class BattleUI : MonoBehaviour
         return ret;
     }
 
-    public List<TileUI.Entry> ShowRangePattern(RangePattern p, Unit user)
+    private IEnumerable<Vector2Int> GetRangePositions(SubAction subAction, Unit user)
+    {
+        var rangePos = subAction.OptionFlags.HasFlag(SubAction.Options.RangeBasedOnLastSelectorPos) ? lastSelectedPos : user.Pos;
+        return subAction.Range.GetPositions(grid, rangePos, user);
+    }
+
+    public List<TileUI.Entry> ShowRangePattern(SubAction sub, Unit user)
     {
         var ret = new List<TileUI.Entry>();
-        foreach (var pos in p.GetPositions(grid, user.Pos, user))
+        foreach (var pos in GetRangePositions(sub, user))
         {
             ret.Add(grid.SpawnTileUI(pos, TileUI.Type.RangePattern));
         }

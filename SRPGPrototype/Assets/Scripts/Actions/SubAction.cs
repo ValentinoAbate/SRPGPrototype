@@ -33,6 +33,8 @@ public class SubAction : MonoBehaviour
     {
         None = 0,
         SkipUpgradeCheck = 1,
+        ApplyToLastTargets = 2,
+        RangeBasedOnLastSelectorPos = 4,
     }
 
     // Sub-action Metadata
@@ -69,10 +71,12 @@ public class SubAction : MonoBehaviour
                 }
                 return string.Join(" / ", texts);
             }
-            return subtype.ToString();
+            return subtype == Type.None ? string.Empty : subtype.ToString();
         }
     }
     [SerializeField] private Type subtype = Type.None;
+    public Options OptionFlags => options;
+    [SerializeField] private Options options = Options.None;
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern targetPattern;
@@ -92,24 +96,33 @@ public class SubAction : MonoBehaviour
         UsedPower = false;
     }
 
-    public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos)
+    public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, IReadOnlyList<Unit> lastTargets, out List<Unit> targets)
     {
         // Get target positions
         var targetPositions = targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal).ToList();
-        var targets = new List<Unit>(targetPositions.Count);
         var emptyTargetPositions = new List<Vector2Int>(targetPositions.Count);
-        foreach (var position in targetPositions)
+        if (options.HasFlag(Options.ApplyToLastTargets))
         {
-            var target = grid.Get(position);
-            if (target != null)
+            targets = new List<Unit>(lastTargets);
+        }
+        else
+        {
+            targets = new List<Unit>(targetPositions.Count);
+            foreach (var position in targetPositions)
             {
-                targets.Add(target);
-            }
-            else
-            {
-                emptyTargetPositions.Add(position);
+                var target = grid.Get(position);
+                if (target != null)
+                {
+                    targets.Add(target);
+                }
+                else
+                {
+                    emptyTargetPositions.Add(position);
+                }
             }
         }
+        if (effects.Length <= 0)
+            return;
         if(subtype == Type.OverrideByEffects)
         {
             foreach (var effect in effects)
@@ -130,13 +143,13 @@ public class SubAction : MonoBehaviour
         }
         else
         {
-            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, Options.None);
+            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options);
             UsedPower = UsesPower && !user.Power.IsZero;
             foreach (var effect in effects)
             {
                 ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
             }
-            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, Options.None);
+            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options);
         }
     }
 
@@ -156,6 +169,7 @@ public class SubAction : MonoBehaviour
         {
             effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
         }
+
     }
 
     public int BaseDamage(Action action, Unit user, Queue<int> indices)

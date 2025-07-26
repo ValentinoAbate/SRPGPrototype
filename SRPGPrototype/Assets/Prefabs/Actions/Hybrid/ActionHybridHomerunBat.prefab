@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 7
-  standaloneSubActionOptions: -1
+  standaloneSubActionOptions: 1
   affectUser: 0
   numSpaces: 1
 --- !u!114 &8928888354316552521

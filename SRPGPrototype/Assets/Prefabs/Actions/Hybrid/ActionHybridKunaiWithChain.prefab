@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 7
-  standaloneSubActionOptions: -1
+  standaloneSubActionOptions: 1
   affectUser: 1
 --- !u!1001 &8135780589257601915
 PrefabInstance:

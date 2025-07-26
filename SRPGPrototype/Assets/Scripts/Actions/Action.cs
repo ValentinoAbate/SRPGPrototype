@@ -97,7 +97,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
                 return string.Empty;
             if (SubActions.Count == 1)
                 return SubActions[0].SubTypeText;
-            return string.Join(" / ", SubActions.Select((s) => s.SubTypeText));
+            return string.Join(" / ", SubActions.Select((s) => s.SubTypeText).Where((s) => !string.IsNullOrEmpty(s)));
         }
     }
 
@@ -190,9 +190,12 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
     {
         StartAction(user);
+        var lastTargets = new List<Unit>();
         foreach (var sub in SubActions)
         {
-            sub.Use(grid, this, user, targetPos);
+            sub.Use(grid, this, user, targetPos, lastTargets, out var targets);
+            lastTargets.Clear();
+            lastTargets.AddRange(targets);
         }
         FinishAction(grid, user, applyAPCost);
     }
