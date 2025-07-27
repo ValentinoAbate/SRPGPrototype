@@ -373,7 +373,7 @@ namespace Grid
         public bool Move(Obj obj, Vector2Int dest)
         {
             // If the destination is not legal and empty, return
-            if (!(IsLegal(dest) && IsEmpty(dest)))
+            if (!IsLegalAndEmpty(dest))
                 return false;
             Vector2Int src = obj.Pos;
             Set(src, null);
