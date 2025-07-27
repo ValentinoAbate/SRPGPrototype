@@ -20,23 +20,28 @@ public abstract class ActionEffectMove : ActionEffect
         if(unitAtDestination == null)
         {
             // Do move
-            EnactMove(grid, target, destination);
-            return true;
+            return EnactMove(grid, target, destination);
         }
         else if(Move(grid, unitAtDestination, direction))
         {
             // Do move
-            EnactMove(grid, target, destination);
-            return true;
+            return EnactMove(grid, target, destination);
         }
         return false;
+    }
+
+    protected bool SetPosition(BattleGrid grid, Unit target, Vector2Int position)
+    {
+        if (!target.Movable)
+            return false;
+        return EnactMove(grid, target, position);
     }
 
     /// <summary>
     /// Actually moves a unit, and shows any applicable visualizations
     /// </summary>
-    private void EnactMove(BattleGrid grid, Unit target, Vector2Int destination)
+    private bool EnactMove(BattleGrid grid, Unit target, Vector2Int destination)
     {
-        grid.MoveAndSetWorldPos(target, destination);
+        return grid.MoveAndSetWorldPos(target, destination);
     }
 }
