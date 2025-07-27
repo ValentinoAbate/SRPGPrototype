@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Fire a projectile horizontally, vertically, or dialgonally, which deals
-        {dmg} damage to the first thing it hits.
+        {dmg} damage to the first unit it hits.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: e61974592bb09a74d9efca664d65bb0a,
         type: 3}
