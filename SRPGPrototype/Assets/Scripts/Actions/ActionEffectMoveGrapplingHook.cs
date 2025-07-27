@@ -10,9 +10,9 @@ public class ActionEffectMoveGrapplingHook : ActionEffectMove
             return;
         var direction = target.Pos.DirectionTo(targetData.selectedPos);
         var goal = targetData.selectedPos - direction;
-        while(user.Pos != goal)
+        while(target.Pos != goal)
         {
-            if(!Move(grid, user, direction))
+            if(!Move(grid, target, direction))
                 break;
         }
     }
