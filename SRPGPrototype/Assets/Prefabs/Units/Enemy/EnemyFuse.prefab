@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTeams: 02000000
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
   standardAction: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75,
     type: 3}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
 --- !u!114 &-231383600782668205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +65,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyFuse
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: tags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}

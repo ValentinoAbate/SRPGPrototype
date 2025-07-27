@@ -47,10 +47,19 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         Last
     }
 
+    [System.Flags]
+    public enum Tags
+    {
+        None = 0,
+        Explosive = 1,
+        Placeholder = 2,
+    }
+
     public virtual bool Movable => true;
     public abstract Team UnitTeam { get; }
     public abstract Jamming InterferenceLevel { get; }
     public abstract Priority PriorityLevel { get; }
+    public abstract Tags UnitTags { get; }
     public abstract int MaxHP { get; set; }
     public abstract int HP { get; protected set; }
     public virtual bool Dead => HP <= 0;

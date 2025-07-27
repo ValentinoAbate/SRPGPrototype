@@ -12,6 +12,9 @@ public abstract class AIUnit : Unit
     public override Priority PriorityLevel => priorityLevel;
     [SerializeField] private Priority priorityLevel = Priority.Normal;
 
+    public override Tags UnitTags => tags;
+    [SerializeField] private Tags tags;
+
     public override int MaxHP { get => maxHP; set { maxHP = value; HP = Mathf.Min(HP, value); } }
     [SerializeField] private int maxHP = 3;
 

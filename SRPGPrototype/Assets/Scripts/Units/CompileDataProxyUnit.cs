@@ -10,6 +10,8 @@ public class CompileDataProxyUnit : Unit
 
     public override Priority PriorityLevel => Priority.Normal;
 
+    public override Tags UnitTags => Tags.None;
+
     public override int MaxHP { get => CompileData.stats.MaxHP; set { } }
     public override int HP { get; protected set; }
     public override int MaxAP { get => CompileData.stats.MaxAP; set { } }

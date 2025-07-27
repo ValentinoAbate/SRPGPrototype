@@ -79,6 +79,15 @@ public class BattleGrid : Grid.Grid<Unit>
         return false;
     }
 
+    public IEnumerable<Unit> FindUnitsWithTags(Unit.Tags tags, BooleanOperator op)
+    {
+        foreach(var unit in this)
+        {
+            if (op.Evaluate(unit.UnitTags, tags))
+                yield return unit;
+        }
+    }
+
     public bool CanLinkOut(out int numJammers, out int numInterferers, out int threshold)
     {
         // Link Out Button
