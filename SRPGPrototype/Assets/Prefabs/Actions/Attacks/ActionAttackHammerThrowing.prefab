@@ -10,7 +10,8 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
       propertyPath: description
-      value: Attack three adjacent tiles or three tiles at range for {dmg} damage.
+      value: Diagonally smash 3 tiles in a corner shape or throw diagonally for {dmg}
+        damage.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
@@ -105,72 +106,72 @@ PrefabInstance:
     - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[0].y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
-      value: 2
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].x
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
-        type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].y
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[1].y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
-      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[2].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[3].y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[4].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[5].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
+      propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
+        type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[6].y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7417095590191965287, guid: 87ebb2961b8335643b8a6aa71cdba585,
         type: 3}
       propertyPath: rangePattern.pattern.patternOffsets.Array.data[7].y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ebb2961b8335643b8a6aa71cdba585, type: 3}
