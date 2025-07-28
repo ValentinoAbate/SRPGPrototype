@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: ProtoV2Encounter1-7-Sixers
   m_EditorClassIdentifier: 
-  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
-  targetDifficulty: 34
-  dimensions: {x: 6, y: 6}
-  numSpawnPositions: 3
   encounterType: 2
+  dimensions: {x: 6, y: 6}
+  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
+  targetDifficulty: 26
+  numSpawnPositions: 3
   numEnemies: 02000000
   numEnemiesWeights:
   - 1

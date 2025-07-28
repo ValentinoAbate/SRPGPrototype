@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b725b10a5f94db64b9242762c8b480f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTeams: 02000000
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
   standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
     type: 3}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
 --- !u!1001 &3469278218771208966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: challengeRating
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
