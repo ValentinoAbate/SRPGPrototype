@@ -249,16 +249,19 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         return AP >= (action.APCost - Speed.Value);
     }
 
-    public int ActionUsesUntilNoAP(Action action)
+    public int ActionUsesUntilNoAP(Action action, int apToSave = 0)
     {
+        int apBudget = AP - apToSave;
+        if (apBudget <= 0)
+            return 0;
         int cost = action.APCost - Speed.Value;
-        if (cost > AP)
+        if (cost > apBudget)
             return 0;
         int uses = 1;
         while(uses < 100)
         {
             cost += action.APCostAfterXUses(uses) - Speed.ValueAfterXUses(uses);
-            if (cost > AP)
+            if (cost > apBudget)
                 break;
             ++uses;
         }

@@ -59,13 +59,14 @@ public abstract class AIUnit : Unit
         } 
     }
 
-    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => System.Array.Empty<ModifierActionDamage>();
-
     public Transform ActionTransform => actionTransform;
     [SerializeField] private Transform actionTransform = null;
 
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
+
+    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => incomingDamageModifiers;
+    [SerializeField] private ModifierActionDamage[] incomingDamageModifiers;
 
     public override CenterStat Power { get; } = new CenterStat();
     public override CenterStat Speed { get; } = new CenterStat();

@@ -125,9 +125,18 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public IReadOnlyList<SubAction> SubActions => subActions;
     [SerializeField] private SubAction[] subActions;
 
-    public void SetSubActions(SubAction[] subs)
+    public IEnumerable<Vector2Int> GetRange(BattleGrid grid, Vector2Int origin, Unit user, int subActionIndex = 0)
     {
-        subActions = subs;
+        if (subActionIndex < 0 || subActionIndex >= SubActions.Count)
+            return Array.Empty<Vector2Int>();
+        return subActions[subActionIndex].Range.GetPositions(grid, origin, user);
+    }
+
+    public IEnumerable<Vector2Int> GetTargets(BattleGrid grid, Vector2Int targetPos, Unit user, int subActionIndex = 0)
+    {
+        if (subActionIndex < 0 || subActionIndex >= SubActions.Count)
+            return Array.Empty<Vector2Int>();
+        return subActions[subActionIndex].targetPattern.Target(grid, user, targetPos);
     }
 
     public Action Validate(Transform parent)

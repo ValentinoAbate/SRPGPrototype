@@ -79,7 +79,7 @@ public class BattleGrid : Grid.Grid<Unit>
         return false;
     }
 
-    public IEnumerable<Unit> FindUnitsWithTags(Unit.Tags tags, BooleanOperator op)
+    public IEnumerable<Unit> FindUnitsWithTags(Unit.Tags tags, BooleanOperator op = BooleanOperator.AND)
     {
         foreach(var unit in this)
         {

@@ -18,8 +18,6 @@ MonoBehaviour:
   - 5
   - 1
   generators:
-  - {fileID: 11400000, guid: 1dd200841eb6815468a190eea765d9ec, type: 2}
+  - {fileID: 11400000, guid: 21868c72527816345be40501063b8051, type: 2}
   - {fileID: 11400000, guid: 8ddda75df615fa64eb5cdac6b9013fe9, type: 2}
-  generatorWeights:
-  - 1
-  - 2
+  generatorWeights: []

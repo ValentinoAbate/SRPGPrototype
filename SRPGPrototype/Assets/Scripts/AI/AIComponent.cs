@@ -31,9 +31,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         }
     }
 
-    protected Coroutine RunAway(BattleGrid grid, T self, Action moveAction, System.Predicate<Unit> runAwayFrom)
+    protected Coroutine RunAway(BattleGrid grid, T self, Action moveAction, System.Predicate<Unit> runAwayFrom, int apToSave = 0)
     {
-        var reachable = Reachable(grid, self, moveAction, self.Pos);
+        var reachable = Reachable(grid, self, moveAction, self.Pos, apToSave);
         if (reachable.Count == 0)
             return null;
         var runAwayFromUnits = grid.FindAll(runAwayFrom);
@@ -207,9 +207,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return paths;
     }
 
-    public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos)
+    public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos, int apToSave = 0)
     {
-        int range = self.ActionUsesUntilNoAP(moveAction);
+        int range = self.ActionUsesUntilNoAP(moveAction, apToSave);
         return Reachable(grid, moveAction, startPos, range);
     }
 

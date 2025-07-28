@@ -232,20 +232,13 @@ namespace Grid
         /// </summary>
         public T Get<T>(Vector2Int pos) where T : Obj
         {
-            if (IsLegal(pos))
-            {
-                // Avoid references to destroyed GameObjects not working with the ?. operator (return a true null value)
-                if (field[pos.x, pos.y] == null)
-                    return null;
-                return field[pos.x, pos.y] as T;
-            }
-            return null;
+            return Get(pos) as T;
         }
 
         public Obj Get(Vector2Int pos)
         {
             // Avoid references to destroyed GameObjects not working with the ?. operator (return a true null value)
-            if (field[pos.x, pos.y] == null)
+            if (!IsLegal(pos) || field[pos.x, pos.y] == null)
                 return null;
             return field[pos.x, pos.y];
         }
