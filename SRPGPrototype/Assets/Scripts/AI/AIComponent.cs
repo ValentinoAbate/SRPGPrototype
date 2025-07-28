@@ -6,8 +6,11 @@ using UnityEngine;
 public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 {
     // amount of time to pause for each square moved
-    public const float moveDelay = 0.25f;
-    public const float attackDelay = 0.2f;
+    private const float moveDelayTime = 0.25f;
+    private const float attackDelayTime = 0.2f;
+
+    protected static readonly WaitForSeconds moveDelay = new WaitForSeconds(moveDelayTime);
+    protected static readonly WaitForSeconds attackDelay = new WaitForSeconds(attackDelayTime);
 
     public abstract IEnumerable<Action> Actions { get; }
 
@@ -24,7 +27,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             if (!self.CanUseAction(moveAction))
                 yield break;
             moveAction.UseAll(grid, self, pos);
-            yield return new WaitForSeconds(moveDelay);
+            yield return moveDelay;
         }
     }
 
@@ -66,7 +69,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         while (!self.Dead && self.CanUseAction(standardAction))
         {
             Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
-            yield return new WaitForSeconds(attackDelay);
+            yield return attackDelay;
             standardAction.UseAll(grid, self, tPos);
         }
     }
@@ -97,7 +100,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             if (!self.CanUseAction(moveAction))
                 yield break;
             moveAction.UseAll(grid, self, pos);
-            yield return new WaitForSeconds(moveDelay);
+            yield return moveDelay;
         }
         yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPath.targetPos));
     }

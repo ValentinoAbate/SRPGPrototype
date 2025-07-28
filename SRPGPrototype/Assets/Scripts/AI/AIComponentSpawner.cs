@@ -56,7 +56,7 @@ public class AIComponentSpawner : AIComponent<AIUnit>
             if (tPos == BattleGrid.OutOfBounds)
                 break;
             Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for spawning!");
-            yield return new WaitForSeconds(attackDelay);
+            yield return attackDelay;
             StandardAction.UseAll(grid, self, tPos);
         }
     }
