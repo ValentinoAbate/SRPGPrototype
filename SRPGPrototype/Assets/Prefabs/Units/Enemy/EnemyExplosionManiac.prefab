@@ -1,27 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4488055950034289200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368307566530739906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045db6f9279a70d448e69beb1ce6cf42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: b8e7015d4f273ee48acb9f7a934d38ec,
-    type: 3}
-  detonateAction: {fileID: 625623200089507684, guid: d55d1dc9433b90644a1ba7e9e5075cea,
-    type: 3}
-  summonActionInert: {fileID: 4415060608083833614, guid: fd861995a96ea644a856363aaaadd7f3,
-    type: 3}
-  summonActionStandard: {fileID: 4415060608083833614, guid: df664cba111983d42bda17b1708c564e,
-    type: 3}
-  summonActionHard: {fileID: 4415060608083833614, guid: 3610c575a72053d4ca2d0ba3d9a9b0ec,
-    type: 3}
 --- !u!114 &1811919415839276681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +52,26 @@ MonoBehaviour:
   affectUser: 0
   targetStat: 0
   damage: -3
+--- !u!114 &4488055950034289200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368307566530739906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045db6f9279a70d448e69beb1ce6cf42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: b8e7015d4f273ee48acb9f7a934d38ec,
+    type: 3}
+  detonateAction: {fileID: 625623200089507684, guid: d55d1dc9433b90644a1ba7e9e5075cea,
+    type: 3}
+  summonActionInert: {fileID: 4415060608083833614, guid: fd861995a96ea644a856363aaaadd7f3,
+    type: 3}
+  summonActionStandard: {fileID: 4415060608083833614, guid: df664cba111983d42bda17b1708c564e,
+    type: 3}
 --- !u!1001 &2335862822019341377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,9 +97,9 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent/Jump. Attack: Special. If possible, detonates an explosive
-        unit (from any range) if it will damage a player unit. Then, summons several
-        explosive units and runs away. Takes -3 Damage from Explosives.'
+      value: 'Move: Adjacent/Jump. Attack: Special. Detonates an explosive unit (from
+        any range) if it will damage a player unit. Then, runs away and summons several
+        explosive units. Takes -3 Damage from Explosives.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
