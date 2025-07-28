@@ -10,6 +10,10 @@ namespace Grid
         public static readonly Vector2Int OutOfBounds = new Vector2Int(-100, -100);
         public abstract Vector2Int Dimensions { get; }
 
+        public int MaxGridDistance => Dimensions.x + Dimensions.y - 2;
+
+        public float MaxDistance => Vector2Int.Distance(new Vector2Int(0, 0), Dimensions - Vector2Int.one);
+
         /// <summary>
         /// Return all the currently empty positions in the grid
         /// O(x*y)

@@ -24,6 +24,6 @@ public class RangePatternGeneratorAllUnits : RangePatternGenerator
 
     public override int MaxDistance(BattleGrid grid)
     {
-        return grid.Dimensions.x + grid.Dimensions.y - 2;
+        return grid.MaxGridDistance;
     }
 }

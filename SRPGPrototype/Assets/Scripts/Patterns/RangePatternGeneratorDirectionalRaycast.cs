@@ -28,7 +28,7 @@ public class RangePatternGeneratorDirectionalRaycast : RangePatternGenerator
     public override int MaxDistance(BattleGrid grid)
     {
         if(directions.HasFlag(AdjacencyDirections.Diagonal))
-            return grid.Dimensions.x + grid.Dimensions.y - 2;
+            return grid.MaxGridDistance;
         if (directions.HasFlag(AdjacencyDirections.Horizontal))
             return Mathf.Max(grid.Dimensions.x, grid.Dimensions.y) - 1;
         return 0;
