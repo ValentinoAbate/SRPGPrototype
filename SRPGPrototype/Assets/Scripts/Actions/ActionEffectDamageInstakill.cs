@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActionEffectDamageInstakill : ActionEffectDamage
 {
+    public override bool UsesPower => false;
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
         return 0;

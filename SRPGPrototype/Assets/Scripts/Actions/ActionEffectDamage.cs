@@ -11,7 +11,7 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
         HealHP,
     }
 
-    sealed public override bool UsesPower => true;
+    public override bool UsesPower => true;
     public bool DealsDamage => true;
     private int baseDamage;
 
@@ -48,7 +48,11 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
 
         // Calculate final damage
 
-        int damage = baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power.Value;
+        int damage = baseDamage + TargetModifier(grid, action, user, target, targetData);
+        if (UsesPower)
+        {
+            damage += user.Power.Value;
+        }
         // Apply effect modifier target values
         foreach (var modifier in modifiers)
         {
