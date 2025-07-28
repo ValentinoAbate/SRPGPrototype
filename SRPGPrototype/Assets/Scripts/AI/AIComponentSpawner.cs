@@ -16,7 +16,13 @@ public class AIComponentSpawner : AIComponent<AIUnit>
     [SerializeField] private Animator animator;
     private static readonly int readyHash = Animator.StringToHash("Ready");
 
-    public override List<Action> Actions => new List<Action> { StandardAction };
+    public override IEnumerable<Action> Actions
+    {
+        get
+        {
+            yield return StandardAction;
+        }
+    }
 
     private bool skipTurn = false;
 

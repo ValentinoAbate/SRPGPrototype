@@ -26,7 +26,14 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     protected virtual Action StandardAction => standardAction;
 
-    public override List<Action> Actions => new List<Action> { moveAction, StandardAction };
+    public override IEnumerable<Action> Actions
+    {
+        get
+        {
+            yield return StandardAction;
+            yield return moveAction;
+        }
+    }
 
     public override void Initialize(AIUnit self)
     {

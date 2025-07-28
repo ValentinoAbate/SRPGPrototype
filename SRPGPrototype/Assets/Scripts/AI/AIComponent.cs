@@ -9,7 +9,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     public const float moveDelay = 0.25f;
     public const float attackDelay = 0.2f;
 
-    public abstract List<Action> Actions { get; }
+    public abstract IEnumerable<Action> Actions { get; }
 
     public abstract void Initialize(T self);
 

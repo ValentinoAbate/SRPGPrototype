@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class AIComponentDoNothing : AIComponent<AIUnit>
 {
-    public override List<Action> Actions => new List<Action>();
+    public override IEnumerable<Action> Actions
+    {
+        get
+        {
+            yield break;
+        }
+    }
+
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {

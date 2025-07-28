@@ -83,7 +83,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public abstract Shell Shell { get; }
 
-    public abstract IReadOnlyList<Action> Actions { get; }
+    public abstract IEnumerable<Action> Actions { get; }
     public abstract IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers { get; }
     public virtual IReadOnlyCollection<Action> GetContextualActions(Unit user, BattleGrid grid)
     {

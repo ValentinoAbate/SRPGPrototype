@@ -21,7 +21,14 @@ public class AIComponentMage : AIComponent<AIUnit>
     [SerializeField] private List<Unit.Team> runAwayFromTeams = new List<Unit.Team> { Unit.Team.Player };
     private static readonly int readyHash = Animator.StringToHash("Ready");
 
-    public override List<Action> Actions => new List<Action> { StandardAction, MoveAction };
+    public override IEnumerable<Action> Actions
+    {
+        get
+        {
+            yield return StandardAction;
+            yield return MoveAction;
+        }
+    }
 
     private bool readyToCast = false;
 

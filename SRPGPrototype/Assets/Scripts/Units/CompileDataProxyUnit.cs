@@ -47,7 +47,7 @@ public class CompileDataProxyUnit : Unit
     public override UnitUI UI => null;
 
     public override Shell Shell => null;
-    public override IReadOnlyList<Action> Actions => CompileData.actions;
+    public override IEnumerable<Action> Actions => CompileData.actions;
 
     public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => CompileData.incomingDamageModifiers;
 

@@ -47,7 +47,7 @@ public abstract class AIUnit : Unit
 
     public override Shell Shell => throw new System.NotImplementedException();
 
-    public override IReadOnlyList<Action> Actions
+    public override IEnumerable<Action> Actions
     {   
         get
         {

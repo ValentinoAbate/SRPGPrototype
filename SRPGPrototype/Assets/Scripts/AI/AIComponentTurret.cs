@@ -15,7 +15,13 @@ public class AIComponentTurret : AIComponent<AIUnit>
     [SerializeField]
     private Action standardAction;
 
-    public override List<Action> Actions => new List<Action> { standardAction };
+    public override IEnumerable<Action> Actions
+    {
+        get
+        {
+            yield return standardAction;
+        }
+    }
 
     public override void Initialize(AIUnit self)
     {
