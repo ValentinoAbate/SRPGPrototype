@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ce94b06aeb043b48a71015723ef34d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f7f699368228bf4dbaea1a3429ed861, type: 3}
   m_Name: PlaceObstacles
   m_EditorClassIdentifier: 
-  numUnits: 020000000300000004000000
+  numUnits: 030000000400000005000000
   numUnitsWeights:
   - 1
   - 4
@@ -20,7 +20,3 @@ MonoBehaviour:
   units:
   - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
   unitChoiceWeights: []
-  targetPosition: {x: 0, y: 5}
-  useColumnDist: 0
-  useRowDist: 1
-  weightExponent: 1
