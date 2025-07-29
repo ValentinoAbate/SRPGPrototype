@@ -48,18 +48,15 @@ public class EncounterGeneratorBasic : EncounterGenerator
 
         // Generate enemies
         PlaceUnitsRandom(numEnemiesChoice / 2 + numEnemiesChoice % 2, enemySet, ref encounter, ref positions);
-        PlaceUnitsWeighted(numEnemiesChoice / 2, enemySet, ClumpWeight, PassThrough, encounter, ref positions);
+        PlaceUnitsWeighted(numEnemiesChoice / 2, enemySet, ClumpWeight, encounter, ref positions);
 
         // Generate obstacles
         PlaceUnitsRandom(numObstaclesChoice / 2 + numObstaclesChoice % 2, obstacleSet, ref encounter, ref positions);
-        PlaceUnitsWeighted(numObstaclesChoice / 2, obstacleSet, ClumpWeight, PassThrough, encounter, ref positions);
+        PlaceUnitsWeighted(numObstaclesChoice / 2, obstacleSet, ClumpWeight, encounter, ref positions);
 
-        //Generate loot
-        float difficulty = encounter.units.Where((e) => e.unit is IEncounterUnit)
-                                               .Select((e) => e.unit as IEncounterUnit)
-                                               .Sum((u) => u.EncounterData.challengeRating);
+        // Generate loot
         // Calculate difficulty mod
-        float difficultyMod = difficulty - targetDifficulty;
+        float difficultyMod = encounter.Difficulty - targetDifficulty;
 
         // Generate Loot category weights
         var difficultyEnum = difficultyMod < 0 ? EncounterDifficulty.Easy : (difficultyMod > 0 ? EncounterDifficulty.Hard : EncounterDifficulty.Normal);

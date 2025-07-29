@@ -11,6 +11,6 @@ public class EncounterStepPlaceUnitsWeightedDefault : EncounterStepPlaceUnitsWei
         // Place half rounded up totally randomly
         PlaceUnitsRandom(numUnits / 2 + numUnits % 2, units, ref encounter, ref validPositions);
         // Place half rounded down using clump weight
-        PlaceUnitsWeighted(numUnits / 2, units, ClumpWeight, PassThrough, encounter, ref validPositions);
+        PlaceUnitsWeighted(numUnits / 2, units, ClumpWeight, encounter, ref validPositions);
     }
 }

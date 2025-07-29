@@ -9,7 +9,6 @@ using static EncounterGenerator;
 public abstract class EncounterGeneratorStep : ScriptableObject
 {
     public delegate float NextPosWeighting(Vector2Int pos, Encounter encounter);
-    public delegate float NextUnitWeighting(Unit u, Encounter encounter);
 
     #region Weightings
 
@@ -70,18 +69,22 @@ public abstract class EncounterGeneratorStep : ScriptableObject
 
     #endregion
 
-    public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, NextUnitWeighting nextUnit, Encounter encounter, ref HashSet<Vector2Int> validPositions) where T : Unit
+    public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, Encounter encounter, ref HashSet<Vector2Int> validPositions, System.Action<WeightedSet<T>, T> unitSetAdjustmentFn = null) where T : Unit
     {
-        float UnitWeight(Unit u) => nextUnit(u, encounter);
+        var unitSet = new WeightedSet<T>(units);
         float PosWeight(Vector2Int p) => nextPos(p, encounter);
         for (int i = 0; i < number; ++i)
         {
-            var unitSet = new WeightedSet<T>(units);
-            unitSet.ApplyMetric(UnitWeight);
             var unit = RandomU.instance.Choice(unitSet);
             var pos = RandomU.instance.Choice(validPositions, validPositions.Select(PosWeight));
             validPositions.Remove(pos);
             encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+            if(unitSetAdjustmentFn != null)
+            {
+                unitSetAdjustmentFn.Invoke(unitSet, unit);
+                if (unitSet.Count <= 0)
+                    return;
+            }
         }
     }
 
@@ -121,8 +124,6 @@ public abstract class EncounterGeneratorStep : ScriptableObject
         }
         return weight;
     }
-
-    public static float PassThrough(Unit _, Encounter _2) => 0;
 
     public static void GetLootWeights(EncounterDifficulty difficulty, out WeightedSet<MysteryDataUnit.Category> categoryWeights, out WeightedSet<MysteryDataUnit.Quality> qualityWeights)
     {
