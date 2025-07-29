@@ -41,6 +41,8 @@ public class ProgramNumber : DynamicNumber
         if(shell == null)
         {
             shell = PersistantData.main.inventory.EquippedShell;
+            if (shell == null)
+                return number;
         }
         if(type == Type.NumberOfInstallsAtrribute)
         {
