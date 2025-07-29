@@ -5,6 +5,21 @@ using UnityEngine;
 [System.Serializable]
 public class Encounter
 {
+    public float Difficulty
+    {
+        get
+        {
+            float difficulty = 0;
+            foreach (var unit in units)
+            {
+                if (!(unit.unit is IEncounterUnit encounterUnit))
+                    continue;
+                difficulty += encounterUnit.EncounterData.challengeRating;
+            }
+            return difficulty;
+        }
+    }
+
     public string nameOverride = string.Empty;
     public Vector2Int dimensions;
     public List<UnitEntry> units = new List<UnitEntry>();
@@ -12,6 +27,7 @@ public class Encounter
     public bool giveCompletionMoney;
     public int baseCompletionMoney;
     public int completionMoneyVariance;
+
     public LootUI.MoneyData CompletionMoneyData()
     {
         int money = baseCompletionMoney;

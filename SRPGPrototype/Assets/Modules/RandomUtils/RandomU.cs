@@ -119,6 +119,10 @@ namespace RandomUtils
             }
             throw new Exception("No item chosen");
         }
+        public T ChoiceWeightsOptional<T>(IReadOnlyList<T> items, IReadOnlyList<float> weights)
+        {
+            return weights.Count <= 0 ? Choice(items) : Choice(items, weights);
+        }
         /// <summary> Returns a weighted random choice from the given items and float weights </summary> 
         public T Choice<T>(IReadOnlyList<T> items, IReadOnlyList<float> weights)
         {

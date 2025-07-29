@@ -3,6 +3,7 @@ using RandomUtils;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static EncounterGeneratorStep;
 
 [CreateAssetMenu(fileName = "Encounter", menuName = "Encounter Generation/Encounter Gen (Basic)")]
 public class EncounterGeneratorBasic : EncounterGenerator
@@ -15,6 +16,7 @@ public class EncounterGeneratorBasic : EncounterGenerator
         Boss,
     }
 
+    [SerializeField] private LootUnitSet lootUnits;
     public float targetDifficulty;
     public int numSpawnPositions = 3;
     [Header("Enemies")]
@@ -65,7 +67,7 @@ public class EncounterGeneratorBasic : EncounterGenerator
         GetLootWeights(difficultyEnum, out var categoryWeights, out var qualityWeights);
         PlaceLootDefault(lootFlags, categoryWeights, qualityWeights, ref encounter, ref positions);
         // Set additional spawn positions
-        SetSpawnPositions(numSpawnPositions, encounter, ref positions);
+        ChooseSpawnPositionsDefault(numSpawnPositions, encounter, ref positions);
 
         // Generate Money
         if (moneyOption == MoneyOption.None)
@@ -90,5 +92,10 @@ public class EncounterGeneratorBasic : EncounterGenerator
         }
 
         return encounter;
+    }
+
+    protected void PlaceLootDefault(LootModifiers lootFlags, WeightedSet<MysteryDataUnit.Category> categoryWeights, WeightedSet<MysteryDataUnit.Quality> qualityWeights, ref Encounter encounter, ref HashSet<Vector2Int> positions)
+    {
+        EncounterGeneratorStep.PlaceLootDefault(lootFlags, categoryWeights, qualityWeights, lootUnits, ref encounter, ref positions);
     }
 }
