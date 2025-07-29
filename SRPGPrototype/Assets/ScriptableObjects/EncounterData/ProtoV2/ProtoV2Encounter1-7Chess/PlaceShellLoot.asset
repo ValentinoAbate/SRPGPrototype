@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce94b06aeb043b48a71015723ef34d9, type: 3}
+  m_Name: PlaceShellLoot
+  m_EditorClassIdentifier: 
+  numUnits: 01000000
+  numUnitsWeights: []
+  units:
+  - {fileID: 1443466573746710886, guid: c21a492318cf85f4185711ef57bb24d9, type: 3}
+  - {fileID: 8585781542819371794, guid: a99a37978c98a604ead8402ec6169974, type: 3}
+  - {fileID: 8585781542819371794, guid: 6c830d382bd2fe14688ba3a3eaf81338, type: 3}
+  unitChoiceWeights:
+  - 6
+  - 3
+  - 1
+  targetPosition: {x: 0, y: 4}
+  useColumnDist: 0
+  useRowDist: 1
+  weightExponent: 3

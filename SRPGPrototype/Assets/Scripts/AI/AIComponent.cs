@@ -64,7 +64,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return score;
     }
 
-    protected IEnumerator AttackUntilExhausted(BattleGrid grid, AIUnit self, Action standardAction, Vector2Int tPos)
+    protected IEnumerator AttackUntilExhausted(BattleGrid grid, T self, Action standardAction, Vector2Int tPos)
     {
         while (!self.Dead && self.CanUseAction(standardAction))
         {
@@ -74,7 +74,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         }
     }
 
-    protected Coroutine AttackFirstUnitInRange(BattleGrid grid, AIUnit self, Action standardAction, System.Predicate<Unit> isUnitTarget)
+    protected Coroutine AttackFirstUnitInRange(BattleGrid grid, T self, Action standardAction, System.Predicate<Unit> isUnitTarget)
     {
         // Find all targets
         var targetUnits = grid.FindAll(isUnitTarget);
@@ -83,6 +83,18 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             return null;
         // Check for target in range
         var tPos = GetFirstValidTargetPosInRange(grid, self, standardAction, targetUnits);
+        // Use standard action until exhausted if target is found, then end turn
+        if (tPos != BattleGrid.OutOfBounds)
+        {
+            return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPos));
+        }
+        return null;
+    }
+
+    protected Coroutine AttackBestPositionInRange(BattleGrid grid, T self, Action standardAction, System.Predicate<Unit> isUnitTarget)
+    {
+        // Check for target in range
+        var tPos = GetBestValidTargetPosInRange(grid, self, standardAction, isUnitTarget);
         // Use standard action until exhausted if target is found, then end turn
         if (tPos != BattleGrid.OutOfBounds)
         {
@@ -260,10 +272,9 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     /// </summary>
     protected Vector2Int GetFirstValidTargetPosInRange<Target>(BattleGrid grid, Unit self, Action standardAction, IEnumerable<Target> targetUnits) where Target : Unit
     {
-        var subAction = standardAction.SubActions[0];
-        foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
+        foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
         {
-            foreach (var tPos in subAction.targetPattern.Target(grid, self, pos))
+            foreach (var tPos in standardAction.GetTargets(grid, pos, self))
             {
                 foreach(var target in targetUnits)
                 {
@@ -273,6 +284,37 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             }
         }
         return BattleGrid.OutOfBounds;
+    }
+
+    protected Vector2Int GetBestValidTargetPosInRange(BattleGrid grid, Unit self, Action standardAction, System.Predicate<Unit> isTarget)
+    {
+        // TODO: TEST
+        int highestScore = 0;
+        Vector2Int bestPos = BattleGrid.OutOfBounds;
+        foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
+        {
+            int score = 0;
+            foreach (var tPos in standardAction.GetTargets(grid, pos, self))
+            {
+                var unit = grid.Get(tPos);
+                if (unit == null)
+                    continue;
+                if (isTarget(unit))
+                {
+                    score += 200 - System.Math.Min(190, unit.HP);
+                }
+                else if(unit == self)
+                {
+                    score -= 5;
+                }
+            }
+            if(score > highestScore)
+            {
+                highestScore = score;
+                bestPos = pos;
+            }
+        }
+        return bestPos;
     }
 
     protected Vector2Int CheckForEmptyTargetPosition(BattleGrid grid, Unit self, Action standardAction)

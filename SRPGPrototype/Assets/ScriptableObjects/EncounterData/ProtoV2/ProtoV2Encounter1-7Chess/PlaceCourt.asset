@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84536a28b455a5d44851070a3d6f6b2e, type: 3}
+  m_Name: PlaceCourt
+  m_EditorClassIdentifier: 
+  units:
+  - {fileID: 583214222783952847, guid: ffd22a888e246ef45be7250190a77bd1, type: 3}
+  - {fileID: 4568531750757968395, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
+  - {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc, type: 3}
+  - {fileID: 4568531750757968395, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}

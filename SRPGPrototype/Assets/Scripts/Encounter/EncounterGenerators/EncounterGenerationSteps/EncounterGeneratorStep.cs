@@ -69,6 +69,12 @@ public abstract class EncounterGeneratorStep : ScriptableObject
 
     #endregion
 
+    public static void AddUnit(Unit unit, Vector2Int pos, ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    {
+        validPositions.Remove(pos);
+        encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+    }
+
     public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, Encounter encounter, ref HashSet<Vector2Int> validPositions, System.Action<WeightedSet<T>, T> unitSetAdjustmentFn = null) where T : Unit
     {
         var unitSet = new WeightedSet<T>(units);
@@ -220,6 +226,17 @@ public abstract class EncounterGeneratorStep : ScriptableObject
         for (int i = 0; i < number && validPositions.Count > 0; ++i)
         {
             Vector2Int spawnPos = RandomU.instance.Choice(new WeightedSet<Vector2Int>(validPositions, weightFn));
+            encounter.spawnPositions.Add(spawnPos);
+            validPositions.Remove(spawnPos);
+        }
+    }
+
+    protected static void ChooseSpawnPositionsWeightedEnc(int number, System.Func<Vector2Int, Encounter, float> weightFn, Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    {
+        float Weight(Vector2Int pos) => weightFn(pos, encounter);
+        for (int i = 0; i < number && validPositions.Count > 0; ++i)
+        {
+            Vector2Int spawnPos = RandomU.instance.Choice(new WeightedSet<Vector2Int>(validPositions, Weight));
             encounter.spawnPositions.Add(spawnPos);
             validPositions.Remove(spawnPos);
         }

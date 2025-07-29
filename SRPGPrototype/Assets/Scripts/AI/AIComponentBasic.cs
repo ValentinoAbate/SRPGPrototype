@@ -60,7 +60,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if (targetUnits.Count <= 0)
             yield break;
         // Check for target in range
-        var tPos = GetFirstValidTargetPosInRange(grid, self, StandardAction, targetUnits);
+        var tPos = GetBestValidTargetPosInRange(grid, self, StandardAction, IsUnitTarget);
         // Use standard action until exhausted if target is found, then end turn
         if (tPos != BattleGrid.OutOfBounds)
         {
