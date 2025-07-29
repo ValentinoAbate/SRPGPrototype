@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76227cf6650a36a4fbd0382c3bb2a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
 --- !u!114 &8443925619452982778
 MonoBehaviour:
@@ -57,22 +59,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   stat: 2
   number:
     min: -2147483648
     max: 2147483647
-    constant: 1
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    constant: 1
     unitNumber:
       min: -2147483648
       max: 2147483647
-      constant: 1
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      constant: 1
       type: 0
     type: 1
   usesPower: 0
@@ -88,6 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
   successChance: 0.6
   successEffectsObj: {fileID: 4593714877553315412}
@@ -437,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: type
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
