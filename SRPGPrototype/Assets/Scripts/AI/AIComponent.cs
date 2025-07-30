@@ -288,7 +288,6 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected Vector2Int GetBestValidTargetPosInRange(BattleGrid grid, Unit self, Action standardAction, System.Predicate<Unit> isTarget)
     {
-        // TODO: TEST
         int highestScore = 0;
         Vector2Int bestPos = BattleGrid.OutOfBounds;
         foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
