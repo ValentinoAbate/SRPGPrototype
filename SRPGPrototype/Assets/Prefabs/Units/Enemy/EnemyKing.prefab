@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae5a8aeace178c45be97bd3fe86c183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
+  standardAction: {fileID: 4415060608083833614, guid: 6799a6ce7ce0e234e947829110db613e,
     type: 3}
-  moveAction: {fileID: 4415060608083833614, guid: 6799a6ce7ce0e234e947829110db613e,
+  moveAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
     type: 3}
 --- !u!1001 &7621738116255551272
 PrefabInstance:
@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: maxHP
-      value: 24
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
