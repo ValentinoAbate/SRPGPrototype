@@ -25,15 +25,30 @@ public class AIComponentPawn : AIComponent<AIUnit>
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
+        // Attack if able
         var attackRoutine = AttackBestPositionInRange(grid, self, standardAction, UnitFilters.IsPlayer);
         if (attackRoutine != null)
         {
             yield return attackRoutine;
         }
-        var path = Path(grid, self, moveAction, new Vector2Int(self.Pos.x, 0));
-        if(path != null)
+        // Try moving to any available space
+        while (self.CanUseAction(moveAction))
         {
-            yield return StartCoroutine(MoveAlongPath(grid, self, moveAction, path));
+            bool foundMove = false;
+            foreach (var rPos in moveAction.GetRange(grid, self.Pos, self))
+            {
+                if (grid.IsLegalAndEmpty(rPos))
+                {
+                    foundMove = true;
+                    moveAction.UseAll(grid, self, rPos);
+                    yield return moveDelay;
+                    break;
+                }
+            }
+            if (!foundMove)
+            {
+                break;
+            }
         }
         // Promotion check
         if(self.Pos.y == 0)
