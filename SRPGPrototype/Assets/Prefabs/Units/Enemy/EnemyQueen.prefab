@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAction: {fileID: 4415060608083833614, guid: 3a34a3090ae71384d82a338b6b01b33d,
     type: 3}
-  standardAction: {fileID: 4415060608083833614, guid: 4d8a0b319dd392543b2f1b4a8cc751b4,
+  standardAction: {fileID: 4415060608083833614, guid: 41ef8f2eb858a9b47bd0736691a6bc92,
     type: 3}
   options: 0
   targetTeams: 02000000
@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Queen. Attack: Adjacent (3 damage).'
+      value: 'Move: Queen (slowdown 1). Attack: Adjacent/Diagonal (3 damage).'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -50,6 +50,11 @@ PrefabInstance:
         type: 3}
       propertyPath: priorityLevel
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: interferenceLevel
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}

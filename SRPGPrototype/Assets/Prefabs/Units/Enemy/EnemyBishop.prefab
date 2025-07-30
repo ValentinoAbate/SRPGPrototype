@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTeams: 02000000
   moveAction: {fileID: 4415060608083833614, guid: 7639b53931f7bbf44bb03905083e2ae6,
     type: 3}
   standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
     type: 3}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
 --- !u!1001 &3469278218771208966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Bishop. Attack: Adjacent (2 damage).'
+      value: 'Move: Bishop (slowdown 1). Attack: Adjacent (2 damage).'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
