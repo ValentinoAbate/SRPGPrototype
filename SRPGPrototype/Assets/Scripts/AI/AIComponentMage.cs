@@ -12,10 +12,12 @@ public class AIComponentMage : AIComponent<AIUnit>
         ReadyEveryTurn,
     }
     [SerializeField] private ReadyOption readyOption;
-    protected virtual Action StandardAction => standardAction;
+
     [SerializeField] private Action standardAction;
-    protected virtual Action MoveAction => moveAction;
+    [SerializeField] private bool targetEmptySpaces;
+    [SerializeField] private Action attackAction;
     [SerializeField] private Action moveAction;
+    
     [SerializeField] private Animator animator;
     [SerializeField] private List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
     [SerializeField] private List<Unit.Team> runAwayFromTeams = new List<Unit.Team> { Unit.Team.Player };
@@ -25,8 +27,12 @@ public class AIComponentMage : AIComponent<AIUnit>
     {
         get
         {
-            yield return StandardAction;
-            yield return MoveAction;
+            yield return standardAction;
+            yield return moveAction;
+            if(attackAction != null)
+            {
+                yield return attackAction;
+            }
         }
     }
 
@@ -36,6 +42,10 @@ public class AIComponentMage : AIComponent<AIUnit>
     {
         standardAction = standardAction.Validate(self.ActionTransform);
         moveAction = moveAction.Validate(self.ActionTransform);
+        if(attackAction != null)
+        {
+            attackAction = attackAction.Validate(self.ActionTransform);
+        }
         if(readyOption == ReadyOption.ReadyEveryTurn || readyOption == ReadyOption.StartReady)
         {
             SetCastReady(true);
@@ -44,27 +54,49 @@ public class AIComponentMage : AIComponent<AIUnit>
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
+        // Attack if in range
+        if(attackAction != null)
+        {
+            var attackRoutine = AttackBestPositionInRange(grid, self, attackAction, UnitFilters.IsPlayer);
+            if (attackRoutine != null)
+            {
+                yield return attackRoutine;
+            }
+        }
         // Casting
         if (readyToCast)
         {
-            var subAction = StandardAction.SubActions[0];
-            SetCastReady(false);
+
             // If action targets self, end early
-            if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
+            if (standardAction.SubActions[0].targetPattern.patternType == TargetPattern.Type.Self)
             {
-                yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
+                SetCastReady(false);
+                yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
+                CheckReadyEveryTurn();
+            }
+            else if (targetEmptySpaces)
+            {
+                // Check for targetspace in range
+                while (!self.Dead && self.CanUseAction(standardAction))
+                {
+                    var tPos = ChooseRandomEmptyTargetPosition(grid, self, standardAction);
+                    if (tPos == BattleGrid.OutOfBounds)
+                        break;
+                    SetCastReady(false);
+                    yield return attackDelay;
+                    standardAction.UseAll(grid, self, tPos);
+                }
+                CheckReadyEveryTurn();
             }
             else
             {
                 var attackRoutine = AttackFirstUnitInRange(grid, self, standardAction, IsUnitTarget);
-                if(attackRoutine != null)
+                if (attackRoutine != null)
                 {
+                    SetCastReady(false);
                     yield return attackRoutine;
+                    CheckReadyEveryTurn();
                 }
-            }
-            if(readyOption == ReadyOption.ReadyEveryTurn)
-            {
-                SetCastReady(true);
             }
         }
         else
@@ -76,7 +108,6 @@ public class AIComponentMage : AIComponent<AIUnit>
         {
             yield return runRoutine;
         }
-
     }
 
     bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
@@ -86,5 +117,13 @@ public class AIComponentMage : AIComponent<AIUnit>
     {
         animator.SetBool(readyHash, value);
         readyToCast = value;
+    }
+
+    private void CheckReadyEveryTurn()
+    {
+        if (readyOption == ReadyOption.ReadyEveryTurn)
+        {
+            SetCastReady(true);
+        }
     }
 }

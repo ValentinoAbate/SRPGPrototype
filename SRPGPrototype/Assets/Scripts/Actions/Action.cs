@@ -132,7 +132,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         return subActions[subActionIndex].Range.GetPositions(grid, origin, user);
     }
 
-    public IEnumerable<Vector2Int> GetTargets(BattleGrid grid, Vector2Int targetPos, Unit user, int subActionIndex = 0)
+    public IEnumerable<Vector2Int> GetTargets(BattleGrid grid, Unit user, Vector2Int targetPos, int subActionIndex = 0)
     {
         if (subActionIndex < 0 || subActionIndex >= SubActions.Count)
             return Array.Empty<Vector2Int>();

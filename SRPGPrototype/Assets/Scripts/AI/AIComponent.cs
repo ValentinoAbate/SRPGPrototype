@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RandomUtils;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -274,7 +275,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     {
         foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
         {
-            foreach (var tPos in standardAction.GetTargets(grid, pos, self))
+            foreach (var tPos in standardAction.GetTargets(grid, self, pos))
             {
                 foreach(var target in targetUnits)
                 {
@@ -293,7 +294,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
         {
             int score = 0;
-            foreach (var tPos in standardAction.GetTargets(grid, pos, self))
+            foreach (var tPos in standardAction.GetTargets(grid, self, pos))
             {
                 var unit = grid.Get(tPos);
                 if (unit == null)
@@ -318,16 +319,32 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     protected Vector2Int CheckForEmptyTargetPosition(BattleGrid grid, Unit self, Action standardAction)
     {
-        var subAction = standardAction.SubActions[0];
-        foreach (var pos in subAction.Range.GetPositions(grid, self.Pos, self))
+        foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
         {
-            foreach (var tPos in subAction.targetPattern.Target(grid, self, pos))
+            foreach (var tPos in standardAction.GetTargets(grid, self, pos))
             {
                 if (grid.IsLegalAndEmpty(tPos))
                     return pos;
             }
         }
         return BattleGrid.OutOfBounds;
+    }
+
+    protected Vector2Int ChooseRandomEmptyTargetPosition(BattleGrid grid, Unit self, Action standardAction)
+    {
+        var positions = new List<Vector2Int>();
+        foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
+        {
+            foreach (var tPos in standardAction.GetTargets(grid, self, pos))
+            {
+                if (grid.IsLegalAndEmpty(tPos))
+                {
+                    positions.Add(pos);
+                    break;
+                }
+            }
+        }
+        return positions.Count > 0 ? RandomU.instance.Choice(positions) : BattleGrid.OutOfBounds;
     }
 
     public readonly struct TargetPath

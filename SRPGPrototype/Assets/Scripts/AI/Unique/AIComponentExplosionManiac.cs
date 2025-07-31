@@ -139,7 +139,7 @@ public class AIComponentExplosionManiac : AIComponent<AIUnit>
         if (useActionOnDeathComponent == null)
             return 0;
         int score = 0;
-        foreach (var pos in useActionOnDeathComponent.action.GetTargets(grid, target.Pos, target))
+        foreach (var pos in useActionOnDeathComponent.action.GetTargets(grid, target, target.Pos))
         {
             var unit = grid.Get(pos);
             if (unit == null || seenUnits.Contains(unit))

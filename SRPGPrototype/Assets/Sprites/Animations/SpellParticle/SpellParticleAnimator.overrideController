@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpellParticleAnimator
+  m_Controller: {fileID: 9100000, guid: 7150d4b459c928a4b8e8b15b2881ea7c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 155564458d789a94f965ed87c83ece12, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6941f59da378f0e4faf622bfdc83cd3a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1bef1e7c2566553409e40cac5247c818, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5d4ec9c621abfd4459d2f141a0ee5a42, type: 2}
