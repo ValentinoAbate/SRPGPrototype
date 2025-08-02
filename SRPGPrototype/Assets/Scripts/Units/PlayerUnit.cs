@@ -48,17 +48,6 @@ public class PlayerUnit : Unit
     public override IEnumerable<Action> Actions => Shell.Actions;
     public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => Shell.IncomingDamageModifiers;
 
-    private int unitIndex = 0;
-    public int UnitIndex
-    { 
-        get => unitIndex;
-        set
-        {
-            unitIndex = value;
-            UI.SetNumberText((value + 1).ToString());
-        }
-    }
-
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
 

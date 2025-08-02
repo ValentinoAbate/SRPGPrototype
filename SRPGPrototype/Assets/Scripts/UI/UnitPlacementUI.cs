@@ -17,8 +17,8 @@ public class UnitPlacementUI : MonoBehaviour
 
     private BattleGrid grid;
     private List<Vector2Int> spawnPositions;
-    private readonly Stack<PlayerUnit> spawnedUnits = new Stack<PlayerUnit>();
-    private readonly Stack<PlayerUnit> unitsToSpawn = new Stack<PlayerUnit>();
+    private readonly Stack<Unit> spawnedUnits = new Stack<Unit>();
+    private readonly Stack<Unit> unitsToSpawn = new Stack<Unit>();
 
     private System.Action<IEnumerable<Unit>> onComplete;
 
@@ -37,12 +37,12 @@ public class UnitPlacementUI : MonoBehaviour
             var droneShell = droneShells[i];
             var droneUnit = Instantiate(droneShell.SoulCoreUnitPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerDroneUnit>();
             droneUnit.SetShell(droneShell);
-            droneUnit.UnitIndex = droneShells.Length - i;
+            droneUnit.HotkeyIndex = droneShells.Length - i;
             unitsToSpawn.Push(droneUnit);
         }
         // Add the player to the spawn stack
         var player = Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>();
-        player.UnitIndex = 0;
+        player.HotkeyIndex = 0;
         player.IsMain = true;
         unitsToSpawn.Push(player);
 

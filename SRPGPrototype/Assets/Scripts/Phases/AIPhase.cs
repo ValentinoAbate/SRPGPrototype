@@ -11,14 +11,11 @@ public class AIPhase : Phase
     [SerializeField] private Unit.Team team = Unit.Team.None;
     [SerializeField] private bool canEndBattle = false;
 
-    private readonly List<AIUnit> units = new List<AIUnit>();
-
     public override IEnumerator OnPhaseStart()
     {
         if (CheckEndBattle())
             yield break;
-        units.Clear();
-        units.AddRange(GetUnits<AIUnit>());
+        var units = new List<AIUnit>(GetUnits<AIUnit>());
         units.Sort();
         foreach (var unit in units)
         {
@@ -32,12 +29,18 @@ public class AIPhase : Phase
                 yield return phaseStartCr;
             }
         }
+        bool firstUnitGone = false;
         for (int i = 0; i < units.Count; i++)
         {
             var unit = units[i];
             // is unit AP is 0 or it has no AI, skip
             if (unit.Dead || unit.AP <= 0 || unit.AI == null)
                 continue;
+            if(firstUnitGone)
+            {
+                yield return new WaitForSeconds(nextTurnDelay);
+            }
+            firstUnitGone = true;
             var turnCr = unit.DoTurn(Grid);
             if(turnCr != null)
             {
@@ -45,9 +48,6 @@ public class AIPhase : Phase
             }
             if (CheckEndBattle())
                 yield break;
-            if (CheckEndPhase(units, i + 1))
-                yield break;
-            yield return new WaitForSeconds(nextTurnDelay);
         }
         EndPhase();
     }
@@ -61,6 +61,8 @@ public class AIPhase : Phase
     {
         if (CheckEndBattle())
             yield break;
+        var units = new List<AIUnit>(GetUnits<AIUnit>());
+        units.Sort();
         foreach (var unit in units)
         {
             if (unit.Dead)
@@ -73,18 +75,6 @@ public class AIPhase : Phase
                 yield return phaseEndCr;
             }
         }
-    }
-
-    public bool CheckEndPhase(IReadOnlyList<AIUnit> units, int startIndex)
-    {
-        for(int i = startIndex; i < units.Count; ++i)
-        {
-            var unit = units[i];
-            if (!unit.Dead && unit.AP > 0)
-                return false;
-        }
-        EndPhase();
-        return true;
     }
 
     public bool CheckEndBattle()

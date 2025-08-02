@@ -32,30 +32,18 @@ public class BattleGrid : Grid.Grid<Unit>
         }
     }
 
-    public bool TryGetPlayer(int unitIndex, out PlayerUnit player)
+    public bool TryGetHotKeyUnit(int hotkeyIndex, out Unit hotkeyUnit)
     {
         foreach (var unit in this)
         {
-            if (unit is PlayerUnit playerUnit && playerUnit.UnitIndex == unitIndex)
+            if (unit.HotkeyIndex == hotkeyIndex)
             {
-                player = playerUnit;
+                hotkeyUnit = unit;
                 return true;
             }
         }
-        player = null;
+        hotkeyUnit = null;
         return false;
-    }
-
-    public IEnumerable<PlayerUnit> PlayerUnits
-    {
-        get
-        {
-            foreach (var unit in this)
-            {
-                if (unit is PlayerUnit playerUnit)
-                    yield return playerUnit;
-            }
-        }
     }
 
     // Start is called before the first frame update

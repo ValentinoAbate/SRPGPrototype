@@ -36,5 +36,20 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
         // Add Unit to the grid
         grid.Add(pos, unit);
         unit.transform.position = grid.GetSpace(unit.Pos);
+        if (unit.UnitTeam is Unit.Team.Player)
+        {
+            int maxHotkeyIndex = -1;
+            foreach (var u in grid)
+            {
+                if(u.HotkeyIndex > maxHotkeyIndex)
+                {
+                    maxHotkeyIndex = u.HotkeyIndex;
+                }
+            }
+            if(maxHotkeyIndex < BattleUI.MaxHotkeyIndex)
+            {
+                unit.HotkeyIndex = maxHotkeyIndex + 1;
+            }
+        }
     }
 }

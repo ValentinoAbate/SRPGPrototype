@@ -8,6 +8,7 @@ using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
+    public const int MaxHotkeyIndex = 9;
     public ActionMenu menu;
     public BattleCursor cursor;
     [SerializeField] private Button endTurnButton;
@@ -41,9 +42,15 @@ public class BattleUI : MonoBehaviour
         {
             inUnitSelection = value;
             endTurnButton.interactable = value;
-            foreach (var unit in grid.PlayerUnits)
+            foreach (var unit in grid)
             {
-                unit.UI.SetNumberActive(value);
+                if (unit.UnitTeam != Unit.Team.Player)
+                    continue;
+                if(unit.HotkeyIndex >= 0)
+                {
+                    unit.UI.SetNumberText((unit.HotkeyIndex + 1).ToString());
+                    unit.UI.SetNumberActive(value);
+                }
             }
             if (value)
             {
@@ -163,19 +170,19 @@ public class BattleUI : MonoBehaviour
         }
         if (!inUnitSelection)
             return;
-        for (int i = 0; i < 9; ++i)
+        for (int i = 0; i < MaxHotkeyIndex; ++i)
         {
-            if (Input.GetKeyDown((i + 1).ToString()) && grid.TryGetPlayer(i, out var player))
+            if (Input.GetKeyDown((i + 1).ToString()) && grid.TryGetHotKeyUnit(i, out var player))
             {
-                SelectPlayer(player.Pos, true);
+                SelectUnit(player.Pos, true);
                 return;
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            if(grid.TryGetPlayer(9, out var player))
+            if(grid.TryGetHotKeyUnit(MaxHotkeyIndex, out var player))
             {
-                SelectPlayer(player.Pos, true);
+                SelectUnit(player.Pos, true);
                 return;
             }
         }
@@ -184,7 +191,7 @@ public class BattleUI : MonoBehaviour
     private void EnterUnitSelection()
     {
         UnitSelectionUIEnabled = true;
-        cursor.OnClick = SelectPlayer;
+        cursor.OnClick = SelectUnit;
         cursor.OnCancel = null;
         cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
         cursor.OnHighlight = ShowUnitDescription;
@@ -200,17 +207,17 @@ public class BattleUI : MonoBehaviour
 
     }
 
-    private void SelectPlayer(Vector2Int pos)
+    private void SelectUnit(Vector2Int pos)
     {
-        SelectPlayer(pos, false);
+        SelectUnit(pos, false);
     }
 
-    private void SelectPlayer(Vector2Int pos, bool fromHotKey)
+    private void SelectUnit(Vector2Int pos, bool fromHotKey)
     {
-        var playerUnit = grid.Get<PlayerUnit>(pos);
-        if (playerUnit != null)
+        var unit = grid.Get<Unit>(pos);
+        if (unit != null && unit.UnitTeam == Unit.Team.Player)
         {
-            EnterActionMenu(playerUnit, fromHotKey);
+            EnterActionMenu(unit, fromHotKey);
         }
     }
 

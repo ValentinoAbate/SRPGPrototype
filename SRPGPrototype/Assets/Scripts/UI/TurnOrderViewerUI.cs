@@ -67,7 +67,7 @@ public class TurnOrderViewerUI : MonoBehaviour
         {
             if (unit == null || unit.Dead)
                 continue;
-            if (unit is PlayerUnit)
+            if (unit.UnitTeam == Unit.Team.Player)
             {
                 unit.UI.SetNumberActive(false);
                 continue;

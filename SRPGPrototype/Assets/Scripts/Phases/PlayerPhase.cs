@@ -6,15 +6,12 @@ using UnityEngine;
 public class PlayerPhase : Phase
 {
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
-    private readonly List<PlayerUnit> units = new List<PlayerUnit>();
 
     public override IEnumerator OnPhaseStart()
     {
         if (CheckEndBattle())
             yield break;
-        units.Clear();
-        units.AddRange(GetUnits<PlayerUnit>());
-        foreach (var unit in units)
+        foreach (var unit in GetUnits<Unit>())
         {
             if (!unit.Dead)
             {
@@ -29,7 +26,7 @@ public class PlayerPhase : Phase
     {
         if (CheckEndBattle())
             yield break;
-        foreach (var unit in units)
+        foreach (var unit in GetUnits<Unit>())
         {
             if (!unit.Dead)
             {
@@ -55,6 +52,6 @@ public class PlayerPhase : Phase
 
     protected override bool UnitPredicate(Unit unit)
     {
-        return true;
+        return UnitFilters.IsPlayer(unit);
     }
 }
