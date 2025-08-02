@@ -26,7 +26,11 @@ public class AIPhase : Phase
             {
                 continue;
             }
-            yield return StartCoroutine(unit.OnPhaseStart(Grid));
+            var phaseStartCr = unit.OnPhaseStart(Grid);
+            if (phaseStartCr != null)
+            {
+                yield return phaseStartCr;
+            }
         }
         for (int i = 0; i < units.Count; i++)
         {
@@ -34,7 +38,11 @@ public class AIPhase : Phase
             // is unit AP is 0 or it has no AI, skip
             if (unit.Dead || unit.AP <= 0 || unit.AI == null)
                 continue;
-            yield return StartCoroutine(unit.DoTurn(Grid)); 
+            var turnCr = unit.DoTurn(Grid);
+            if(turnCr != null)
+            {
+                yield return turnCr;
+            }
             if (CheckEndBattle())
                 yield break;
             if (CheckEndPhase(units, i + 1))
@@ -59,9 +67,12 @@ public class AIPhase : Phase
             {
                 continue;
             }
-            yield return StartCoroutine(unit.OnPhaseEnd());
+            var phaseEndCr = unit.OnPhaseEnd();
+            if(phaseEndCr != null)
+            {
+                yield return phaseEndCr;
+            }
         }
-
     }
 
     public bool CheckEndPhase(IReadOnlyList<AIUnit> units, int startIndex)

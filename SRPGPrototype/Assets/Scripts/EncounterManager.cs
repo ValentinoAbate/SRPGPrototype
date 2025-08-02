@@ -52,7 +52,10 @@ public class EncounterManager : MonoBehaviour
             spawnPositionObjects.Clear();
             units.AddRange(spawnedUnits);
             units.Sort();
-            units.ForEach((u) => StartCoroutine(u.OnBattleStart(this)));
+            foreach(var unit in units)
+            {
+                unit.OnBattleStart(this);
+            }
             ui.SetGeneralUIEnabled(true);
             // Start the active encounter
             phaseManager.StartActiveEncounter(EndEncounter);
@@ -87,7 +90,13 @@ public class EncounterManager : MonoBehaviour
     private IEnumerator EndEncounterCr()
     {
         foreach(var unit in grid)
-            yield return StartCoroutine(unit.OnBattleEnd(this));
+        {
+            var battleEndCr = unit.OnBattleEnd(this);
+            if(battleEndCr != null)
+            {
+                yield return battleEndCr;
+            }
+        }
         GenerateAndShowLoot();
     }
 

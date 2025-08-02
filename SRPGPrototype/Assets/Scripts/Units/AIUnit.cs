@@ -99,27 +99,29 @@ public abstract class AIUnit : Unit
         }
     }
 
-    public IEnumerator DoTurn(BattleGrid grid)
+    public Coroutine DoTurn(BattleGrid grid)
     {
         if (AI == null)
-            yield break;
-        yield return StartCoroutine(AI.DoTurn(grid, this));
+            return null;
+        return StartCoroutine(AI.DoTurn(grid, this));
     }
 
-    public override IEnumerator OnPhaseStart(BattleGrid grid)
+    public override Coroutine OnPhaseStart(BattleGrid grid)
     {
         OnPhaseStartFn?.Invoke(grid, this);
         foreach (var action in Actions)
         {
             action.ResetUses(Action.Trigger.TurnStart);
         }
-        yield break;
+        return null;
     }
 
-    public override IEnumerator OnBattleEnd(EncounterManager manager)
+    public override Coroutine OnBattleEnd(EncounterManager manager)
     {
         if (Dead)
-            yield break;
+        {
+            return null;
+        }
         var progDrops = GetComponentsInChildren<DropComponent<Program>>(true);
         foreach (var drop in progDrops)
             manager.GenerateProgramLoot += drop.GenerateDrop;
@@ -129,5 +131,6 @@ public abstract class AIUnit : Unit
         var moneyRewards = GetComponentsInChildren<MoneyRewardComponent>(true);
         foreach (var reward in moneyRewards)
             manager.GenerateMoneyLoot += reward.GenerateMoneyData;
+        return null;
     }
 }

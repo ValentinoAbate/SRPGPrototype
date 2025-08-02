@@ -18,7 +18,8 @@ public class PlayerPhase : Phase
         {
             if (!unit.Dead)
             {
-                yield return StartCoroutine(unit.OnPhaseStart(Grid));
+                var phaseStartCr = unit.OnPhaseStart(Grid);
+                yield return phaseStartCr;
             }
         }
         BattleUI.BeginPlayerTurn();
@@ -32,7 +33,11 @@ public class PlayerPhase : Phase
         {
             if (!unit.Dead)
             {
-                yield return StartCoroutine(unit.OnPhaseEnd());
+                var phaseStartCr = unit.OnPhaseEnd();
+                if (phaseStartCr != null)
+                {
+                    yield return phaseStartCr;
+                }
             }
         }
         BattleUI.EndPlayerTurn();

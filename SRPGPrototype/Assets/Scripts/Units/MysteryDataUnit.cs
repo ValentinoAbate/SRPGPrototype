@@ -56,10 +56,12 @@ public class MysteryDataUnit : AIUnit
         }
     }
 
-    public override IEnumerator OnBattleEnd(EncounterManager manager)
+    public override Coroutine OnBattleEnd(EncounterManager manager)
     {
-        if(Dead)
-            yield break;
+        if (Dead)
+        {
+            return null;
+        }
         var progDrops = GetComponentsInChildren<DropComponent<Program>>(true);
         foreach (var drop in progDrops)
             manager.GenerateProgramLoot += drop.GenerateDrop;
@@ -69,5 +71,6 @@ public class MysteryDataUnit : AIUnit
         var moneyRewards = GetComponentsInChildren<MoneyRewardComponent>(true);
         foreach (var reward in moneyRewards)
             manager.GenerateMoneyLoot += reward.GenerateMoneyData;
+        return null;
     }
 }

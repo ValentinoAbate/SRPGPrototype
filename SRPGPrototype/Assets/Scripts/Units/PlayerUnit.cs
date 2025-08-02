@@ -101,19 +101,19 @@ public class PlayerUnit : Unit
     }
 
     // Reset uses per turn
-    public override IEnumerator OnPhaseStart(BattleGrid grid)
+    public override Coroutine OnPhaseStart(BattleGrid grid)
     {
         OnPhaseStartFn?.Invoke(grid, this);
         foreach (var action in Actions)
             action.ResetUses(Action.Trigger.TurnStart);
-        yield break;
+        return null;
     }
 
-    public override IEnumerator OnBattleEnd(EncounterManager manager)
+    public override Coroutine OnBattleEnd(EncounterManager manager)
     {
         foreach (var action in Actions)
             action.ResetUses(Action.Trigger.EncounterStart);
         DoRepair();
-        yield break;
+        return null;
     }
 }

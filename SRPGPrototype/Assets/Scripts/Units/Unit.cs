@@ -268,29 +268,29 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         return uses;
     }
 
-    public virtual IEnumerator OnPhaseStart(BattleGrid grid)
+    public virtual Coroutine OnPhaseStart(BattleGrid grid)
     {
-        yield break;
+        return null;
     }
 
-    public virtual IEnumerator OnPhaseEnd()
+    public virtual Coroutine OnPhaseEnd()
     {
         AP = MaxAP;
         Power.Value = 0;
         Speed.Value = 0;
         Break.Value = 0;
-        yield break;
+        return null;
     }
 
-    public virtual IEnumerator OnBattleStart(EncounterManager manager)
+    public virtual Coroutine OnBattleStart(EncounterManager manager)
     {
         OnBattleStartFn?.Invoke(manager.Grid, this);
-        yield break;
+        return null;
     }
 
-    public virtual IEnumerator OnBattleEnd(EncounterManager manager)
+    public virtual Coroutine OnBattleEnd(EncounterManager manager)
     {
-        yield break;
+        return null;
     }
 
     public int CompareTo(Unit other)
