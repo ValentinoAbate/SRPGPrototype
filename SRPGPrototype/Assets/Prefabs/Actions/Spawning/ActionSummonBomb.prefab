@@ -15,7 +15,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
-  unitPrefab: {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485,
+  unitPrefab: {fileID: 2642816320315214134, guid: 7030b6e6151fd7348b488eccac7d284a,
     type: 3}
 --- !u!1001 &8756941603298927365
 PrefabInstance:
@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionSpawnWall
+      value: ActionSummonBomb
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -97,12 +97,13 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Spawns a 5 HP wall in an adjacent tile.
+      value: Summons a 3 HP bomb that explodes into adjacent tiles for 4 damage when
+        destroyed into an adjacent tile.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Summon Wall
+      value: Summon Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

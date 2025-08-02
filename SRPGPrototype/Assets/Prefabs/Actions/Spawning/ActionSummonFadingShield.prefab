@@ -15,7 +15,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
-  unitPrefab: {fileID: 7927054458215739916, guid: 0830af9dd32f2bd44ab972c833272918,
+  unitPrefab: {fileID: 7927054458215739916, guid: 3daef29d661db944385b08492ded9c5a,
     type: 3}
 --- !u!1001 &8756941603298927365
 PrefabInstance:
@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionSpawnFadingShield
+      value: ActionSummonFadingShield
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -97,22 +97,12 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Spawns a 1 HP shield that loses 1 HP every turn.
+      value: Summons a 1 HP shield that loses 1 HP every turn into an adjacent tile.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Summon Fading Shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: slowdownReset
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: slowdownInterval
-      value: 2
+      value: Summon Shield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

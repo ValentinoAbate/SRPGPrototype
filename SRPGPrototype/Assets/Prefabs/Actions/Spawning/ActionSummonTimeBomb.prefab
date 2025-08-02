@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionSpawnTimeBomb
+      value: ActionSummonTimeBomb
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -97,13 +97,13 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Spawns a 3 HP time bomb that explodes into adjacent tiles for 4 damage
-        when destroyed. Loses 1 HP every turn.
+      value: Summons a 3 HP time bomb that explodes into adjacent tiles for 4 damage
+        when destroyed into an adjacent tile. Loses 1 HP every turn.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Summon Time Bomb
+      value: Time Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
