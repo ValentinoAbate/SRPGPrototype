@@ -24,7 +24,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         Player,
         Obstacle,
         Data,
-        NPC,
+        Neutral,
     }
 
     public enum Jamming
@@ -55,6 +55,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         Placeholder = 2,
     }
 
+    public int HotkeyIndex { get; set; } = -1;
     public virtual bool Movable => true;
     public abstract Team UnitTeam { get; }
     public abstract Jamming InterferenceLevel { get; }

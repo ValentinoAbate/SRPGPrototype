@@ -45,7 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Data Phase
   phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 0}
   team: 4
   canEndBattle: 0
 --- !u!1 &4579212744982086466
@@ -93,7 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Obstacle Phase
   phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 0}
   team: 3
   canEndBattle: 0
 --- !u!1 &7082317253198069879
@@ -107,7 +105,7 @@ GameObject:
   - component: {fileID: 2976097943661217170}
   - component: {fileID: 925140223472066027}
   m_Layer: 0
-  m_Name: AllyPhase
+  m_Name: NeutralPhase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,10 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Ally Phase
+  displayName: Neutral Phase
   phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 0}
-  team: 2
+  team: 5
   canEndBattle: 0
 --- !u!1 &9000679795036505836
 GameObject:
@@ -290,6 +287,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Enemy Phase
   phaseTransitionPrefab: {fileID: 0}
-  grid: {fileID: 0}
   team: 1
   canEndBattle: 1
