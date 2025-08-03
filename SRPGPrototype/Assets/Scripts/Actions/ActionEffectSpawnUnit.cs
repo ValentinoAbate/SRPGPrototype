@@ -20,6 +20,18 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
 
     private void SpawnUnit(BattleGrid grid, Vector2Int pos)
     {
+        var previousUnit = grid.Get(pos);
+        if(previousUnit != null)
+        {
+            if (previousUnit.Dead)
+            {
+                grid.Remove(previousUnit);
+            }
+            else
+            {
+                return;
+            }
+        }
         // Spawn Unit
         var unit = Instantiate(GetUnitPrefab()).GetComponent<Unit>();
         // Add Unit to the grid
