@@ -78,7 +78,7 @@ public static class TextMacros
 		{
 			return errorString;
 		}
-		return sub.BaseDamage(action, user, indices).ToString();
+		return sub.ActionMacroDamage(action, user, indices).ToString();
 	}
 
 	private static string ActionMacroGambleChance(string[] args, Action action, Unit user)

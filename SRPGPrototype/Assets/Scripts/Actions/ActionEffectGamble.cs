@@ -67,24 +67,24 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
 
     public static bool ActionEffectUsesPower(ActionEffect e) => e.UsesPower;
 
-    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
+    public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         if(indices.Count <= 0)
         {
-            return BaseDamage(action, sub, user, true, indices);
+            return ActionMacroDamage(action, sub, user, true, indices);
         }
         bool isSuccess = indices.Dequeue() == 0;
-        return BaseDamage(action, sub, user, isSuccess, indices);
+        return ActionMacroDamage(action, sub, user, isSuccess, indices);
     }
 
-    private int BaseDamage(Action action, SubAction sub, Unit user, bool success, Queue<int> indices)
+    private int ActionMacroDamage(Action action, SubAction sub, Unit user, bool success, Queue<int> indices)
     {
         var actionEffects = success ? successEffects : failureEffects;
         int effectIndex = indices.Count > 1 ? indices.Dequeue() : 0;
         if (effectIndex >= actionEffects.Length)
             return 0;
         if (actionEffects[effectIndex] is IDamagingActionEffect damageEffect)
-            return damageEffect.BaseDamage(action, sub, user, indices);
+            return damageEffect.ActionMacroDamage(action, sub, user, indices);
         return 0;
     }
 }

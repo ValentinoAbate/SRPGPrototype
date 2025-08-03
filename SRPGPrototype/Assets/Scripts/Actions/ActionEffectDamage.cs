@@ -95,7 +95,7 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
 
     public abstract int BasicDamage(Action action, Unit user);
 
-    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
+    public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         baseDamage = BasicDamage(action, user);
         // Apply modifier base damage

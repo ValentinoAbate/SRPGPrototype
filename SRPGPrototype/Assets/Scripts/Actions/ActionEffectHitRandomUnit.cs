@@ -39,11 +39,11 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
         effectToApply.ApplyEffect(grid, action, sub, user, newTarget, newTargetData);
     }
 
-    public int BaseDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
+    public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         if (effectToApply is IDamagingActionEffect damageEffect)
         {
-            return damageEffect.BaseDamage(action, sub, user, indices);
+            return damageEffect.ActionMacroDamage(action, sub, user, indices);
         }
         return 0;
     }
