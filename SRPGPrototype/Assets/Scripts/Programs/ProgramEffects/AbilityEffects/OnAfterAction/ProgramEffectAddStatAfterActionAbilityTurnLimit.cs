@@ -9,7 +9,7 @@ public class ProgramEffectAddStatAfterActionAbilityTurnLimit : ProgramEffectAddS
     protected override void AddAbility(ref Shell.CompileData data)
     {
         base.AddAbility(ref data);
-        useLimiter.Attatch(data);
+        useLimiter.Attach(data);
     }
 
     protected override bool AppliesToAction(Action action, int cost, Unit user, out int baseValue)
