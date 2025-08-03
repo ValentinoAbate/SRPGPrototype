@@ -24,6 +24,7 @@ public class MapUI : MonoBehaviour
     public BattleCursor cursor;
 
     private readonly List<Encounter> encounterChoices = new List<Encounter>();
+    private Encounter currentPreviewEncounter = null;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,20 @@ public class MapUI : MonoBehaviour
         InitializeChoiceButtons();
         ShowChoiceUI();
         UIManager.main.HideAllDescriptionUI();
+    }
+
+    private void Update()
+    {
+        if (currentPreviewEncounter == null)
+            return;
+        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Tab))
+        {
+            NextEncounter(currentPreviewEncounter);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            NextEncounter(currentPreviewEncounter, true);
+        }
     }
 
     private void InitializeChoiceButtons()
@@ -68,6 +83,7 @@ public class MapUI : MonoBehaviour
 
     private void ShowEncounterPreview(Encounter encounter, int index)
     {
+        currentPreviewEncounter = encounter;
         var dimensions = encounter.dimensions;
         previewGrid.SetDimensions(dimensions.x, dimensions.y);
         previewGrid.CenterAtPosition(BattleGrid.DefaultCenter);
