@@ -22,8 +22,12 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
     private static IEnumerable<ModifierActionDamage> GetApplicableMods(Action action, SubAction sub)
     {
         if (action == null || action.Program == null)
-            return System.Array.Empty<ModifierActionDamage>();
-        return action.Program.ModifiedByType<ModifierActionDamage>().Where((mod) => mod.AppliesTo(sub));
+            yield break;
+        foreach(var mod in action.Program.ModifiedByType<ModifierActionDamage>())
+        {
+            if (mod.AppliesTo(sub))
+                yield return mod;
+        }
     }
 
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
