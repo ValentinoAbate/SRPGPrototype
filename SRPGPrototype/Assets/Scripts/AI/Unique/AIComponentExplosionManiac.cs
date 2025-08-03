@@ -40,11 +40,11 @@ public class AIComponentExplosionManiac : AIComponent<AIUnit>
             {
                 Unit bestTarget = null;
                 int bestTargetScore = 0;
-                var seenUnits = new HashSet<Unit>();
+                var seenUnits = new Dictionary<Unit, int>();
                 foreach (var target in detonateTargets)
                 {
                     seenUnits.Clear();
-                    int score = GetDetonateTargetScore(grid, self, target, ref seenUnits);
+                    int score = GetDetonateTargetScore<IDetonatable>(grid, self, target, ref seenUnits, GetAction, target.HP);
                     if (score > bestTargetScore)
                     {
                         bestTargetScore = score;
@@ -130,34 +130,63 @@ public class AIComponentExplosionManiac : AIComponent<AIUnit>
         return score;
     }
 
-    private int GetDetonateTargetScore(BattleGrid grid, AIUnit self, Unit target, ref HashSet<Unit> seenUnits)
+    private int GetDetonateTargetScore<T>(BattleGrid grid, AIUnit self, Unit target, ref Dictionary<Unit, int> hitUnits, System.Func<T, Action> getAction, int damage)
     {
-        if (seenUnits.Contains(target))
-            return 0;
-        seenUnits.Add(target);
-        var useActionOnDeathComponent = target.GetComponent<ProgramEffectUseActionOnDeath>();
-        if (useActionOnDeathComponent == null)
-            return 0;
         int score = 0;
-        foreach (var pos in useActionOnDeathComponent.action.GetTargets(grid, target, target.Pos))
+        if (!hitUnits.ContainsKey(target))
+        {
+            hitUnits.Add(target, damage);
+            score += DetonationHitWeighting(target.Pos, self, target, damage);
+        }
+        var component = target.GetComponent<T>();
+        if (component == null)
+            return 0;
+        var detonateAction = getAction(component);
+        var targetPositions = new List<Vector2Int>(detonateAction.GetTargets(grid, target, target.Pos));
+        foreach (var pos in targetPositions)
         {
             var unit = grid.Get(pos);
-            if (unit == null || seenUnits.Contains(unit))
+            if (unit == null || (hitUnits.TryGetValue(unit, out int dmgTaken) && dmgTaken >= unit.HP))
                 continue;
-            if (pos == self.Pos)
+            int simDamage = ActionUtils.SimulateDamageCalc(grid, detonateAction, detonateAction.SubActions[0], target, unit, new ActionEffect.PositionData(target.Pos, target.Pos), 0, targetPositions);
+            score += DetonationHitWeighting(pos, self, unit, simDamage);
+            if (hitUnits.ContainsKey(unit))
             {
-                score -= 500;
+                hitUnits[unit] += simDamage;
             }
-            else if (unit.UnitTeam == Unit.Team.Player)
+            else
             {
-                score += 1000 - (unit.HP * 10);
+                hitUnits[unit] = simDamage;
             }
-            else if (unit.UnitTeam == Unit.Team.Enemy)
+            if(hitUnits[unit] >= unit.HP)
             {
-                score -= 10;
+                score += GetDetonateTargetScore<ProgramEffectUseActionOnDeath>(grid, self, unit, ref hitUnits, GetAction, simDamage);
             }
-            GetDetonateTargetScore(grid, self, unit, ref seenUnits);
         }
         return score;
+    }
+
+    private static Action GetAction(ProgramEffectUseActionOnDeath p) => p.action;
+    private static Action GetAction(IDetonatable d) => d.DetonateAction;
+
+    private int DetonationHitWeighting(Vector2Int pos, Unit self, Unit unit, int damage)
+    {
+        const int selfHitWeighting = -250;
+        const int allyHitWeighting = -10;
+        const int targetHitWeighting = 1000;
+        const int hpFactor = 10;
+        if (pos == self.Pos)
+        {
+            return selfHitWeighting - damage * hpFactor;
+        }
+        else if (unit.UnitTeam == Unit.Team.Player)
+        {
+            return targetHitWeighting - (unit.HP * hpFactor) + damage * hpFactor;
+        }
+        else if (unit.UnitTeam == Unit.Team.Enemy)
+        {
+            return allyHitWeighting - damage;
+        }
+        return 0;
     }
 }

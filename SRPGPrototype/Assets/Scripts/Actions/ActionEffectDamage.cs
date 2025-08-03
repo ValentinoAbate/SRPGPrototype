@@ -51,30 +51,9 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
             return;
 
         // Calculate final damage
-
-        int damage = baseDamage + TargetModifier(grid, action, user, target, targetData);
-        if (UsesPower)
-        {
-            damage += user.Power.Value;
-        }
-        // Apply effect modifier target values
-        foreach (var modifier in modifiers)
-        {
-            damage += modifier.TargetDamageMod(targetStat, grid, action, user, target, targetData);
-        }
-        // Apply unit incoming damage modifier base values
-        if(target.IncomingDamageMods != null)
-        {
-            foreach (Unit.IncomingDamageMod modifier in target.IncomingDamageMods.GetInvocationList())
-            {
-                damage += modifier(grid, action, sub, target, user, damage, targetStat);
-            }
-        }
-        // Make sure damage is non-negative
-        damage = Mathf.Max(damage, 0);
+        int damage = CalculateDamage(grid, action, sub, user, target, targetData, false);
 
         // Apply damage
-
         if (targetStat == TargetStat.HP)
         {
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + (target.HP - damage) + " HP");
@@ -90,6 +69,30 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
             Debug.Log(target.DisplayName + " heals " + damage.ToString() + " damage and is now at " + (target.HP + damage) + " HP");
             target.Heal(damage, user);
         }
+    }
+
+    public int CalculateDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData, bool simulation)
+    {
+        int damage = baseDamage + TargetModifier(grid, action, user, target, targetData);
+        if (UsesPower)
+        {
+            damage += user.Power.Value;
+        }
+        // Apply effect modifier target values
+        foreach (var modifier in modifiers)
+        {
+            damage += modifier.TargetDamageMod(targetStat, grid, action, user, target, targetData);
+        }
+        // Apply unit incoming damage modifier base values
+        if (target.IncomingDamageMods != null)
+        {
+            foreach (Unit.IncomingDamageMod modifier in target.IncomingDamageMods.GetInvocationList())
+            {
+                damage += modifier(grid, action, sub, target, user, damage, targetStat, simulation);
+            }
+        }
+        // Make sure damage is non-negative
+        return Mathf.Max(damage, 0);
     }
 
     public abstract int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions);

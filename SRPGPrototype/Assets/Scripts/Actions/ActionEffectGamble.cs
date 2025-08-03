@@ -87,4 +87,9 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
             return damageEffect.ActionMacroDamage(action, sub, user, indices);
         return 0;
     }
+
+    public int CalculateDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData, bool simulation)
+    {
+        return 0; //unable to simulate
+    }
 }

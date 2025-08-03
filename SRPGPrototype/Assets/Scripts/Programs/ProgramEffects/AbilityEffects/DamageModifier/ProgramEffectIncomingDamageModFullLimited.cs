@@ -16,10 +16,14 @@ public class ProgramEffectIncomingDamageModFullLimited : ProgramEffectAddIncomin
         limiter.Attach(data);
     }
 
-    public override int Ability(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat)
+    public override int Ability(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat, bool simulation)
     {
-        if (damage <= 0 || !ActionFilters.IsAnyTypeAndSubTypeOptional(action, actionTypeFilter, sub, subTypeFilter) || !limiter.TryUse())
+        if (damage <= 0 || !ActionFilters.IsAnyTypeAndSubTypeOptional(action, actionTypeFilter, sub, subTypeFilter) || !limiter.CanUse)
             return 0;
+        if (!simulation)
+        {
+            limiter.TryUse();
+        }
         return -damage;
     }
 }

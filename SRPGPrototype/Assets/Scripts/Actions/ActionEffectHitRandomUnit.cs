@@ -47,4 +47,13 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
         }
         return 0;
     }
+
+    public int CalculateDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData, bool simulation)
+    {
+        if (effectToApply is IDamagingActionEffect damageEffect)
+        {
+            return damageEffect.CalculateDamage(grid, action, sub, user, target, targetData, simulation);
+        }
+        return 0;
+    }
 }

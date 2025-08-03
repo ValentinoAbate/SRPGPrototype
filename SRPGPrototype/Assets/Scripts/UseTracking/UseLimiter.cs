@@ -19,6 +19,8 @@ public class UseLimiter
 
     private int currUses;
 
+    public bool CanUse => currUses < limit;
+
     public bool TryUse()
     {
         if (currUses >= limit)

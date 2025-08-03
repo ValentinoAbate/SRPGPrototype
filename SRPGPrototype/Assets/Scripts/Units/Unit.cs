@@ -17,7 +17,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public delegate void OnDamaged(BattleGrid grid, Unit self, Unit source, int amount);
 
-    public delegate int IncomingDamageMod(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat);
+    public delegate int IncomingDamageMod(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat, bool simulation);
 
     public enum Team
     { 
