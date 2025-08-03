@@ -9,7 +9,7 @@ public class ProgramEffectAddStatOnDamagedLimited : ProgramEffectAddStatOnDamage
     protected override void AddAbility(ref Shell.CompileData data)
     {
         base.AddAbility(ref data);
-        limiter.Attatch(data);
+        limiter.Attach(data);
     }
 
     public override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
