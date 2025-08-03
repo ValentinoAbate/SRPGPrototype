@@ -203,7 +203,7 @@ public class SubAction : MonoBehaviour
         return false;
     }
 
-    public bool HasAnySubType(params Type[] subTypes)
+    public bool HasAnySubType(IEnumerable<Type> subTypes)
     {
         foreach(var subT in subTypes)
         {
@@ -211,5 +211,11 @@ public class SubAction : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    // If no subtypes are passed in, returns true
+    public bool HasAnySubTypeOptional(ICollection<Type> subTypes)
+    {
+        return subTypes.Count <= 0 || HasAnySubType(subTypes);
     }
 }

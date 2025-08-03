@@ -1,40 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1811919415839276681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368307566530739906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ce69ec60368d34fb0cda76806f6ab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributeFilterMode: 0
-  attributes: 0
-  displayNameOverride: 
-  filterByActionType: 1
-  actionTypes: 0100000002000000
-  filterBySubType: 1
-  subTypes: 0d000000
-  actionEffectContainer: {fileID: 0}
---- !u!114 &3426201525776468791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368307566530739906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb7e87c5990ce5499043a866baafa19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modifier: {fileID: 1811919415839276681}
-  abilityName: Blast Padding
-  incoming: 1
 --- !u!114 &4036286117463943849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,7 +17,23 @@ MonoBehaviour:
   affectUser: 0
   targetStat: 0
   damage: -3
---- !u!114 &4488055950034289200
+--- !u!114 &1332931722694242414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368307566530739906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b625574922c023241b4cf2b6aa027508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Blast Padding
+  actionTypeFilter: 
+  subTypeFilter: 0d000000
+  damageMod: {fileID: 4036286117463943849}
+--- !u!114 &5077985061281855641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +106,17 @@ PrefabInstance:
         type: 3}
       propertyPath: incomingDamageModifiers.Array.data[0]
       value: 
-      objectReference: {fileID: 1811919415839276681}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: incomingDamageModifierAbilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: incomingDamageModifierAbilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 1332931722694242414}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_RootOrder

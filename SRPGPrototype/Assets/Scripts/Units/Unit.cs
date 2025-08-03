@@ -17,6 +17,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public delegate void OnDamaged(BattleGrid grid, Unit self, Unit source, int amount);
 
+    public delegate int IncomingDamageMod(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat);
+
     public enum Team
     { 
         None,
@@ -76,6 +78,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract OnAfterAction OnAfterActionFn { get; }
     public abstract OnDeath OnDeathFn { get; }
     public abstract OnDamaged OnDamagedFn { get; }
+    public abstract IncomingDamageMod IncomingDamageMods { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract OnPhaseStartDel OnPhaseStartFn { get; }
     public abstract string DisplayName { get; }
@@ -85,7 +88,6 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract Shell Shell { get; }
 
     public abstract IEnumerable<Action> Actions { get; }
-    public abstract IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers { get; }
     public virtual IReadOnlyCollection<Action> GetContextualActions(Unit user, BattleGrid grid)
     {
         return System.Array.Empty<Action>();

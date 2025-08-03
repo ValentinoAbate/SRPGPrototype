@@ -63,9 +63,12 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
             damage += modifier.TargetDamageMod(targetStat, grid, action, user, target, targetData);
         }
         // Apply unit incoming damage modifier base values
-        foreach (var modifier in target.IncomingDamageModifiers)
+        if(target.IncomingDamageMods != null)
         {
-            damage += modifier.IncomingDamageMod(targetStat, grid, action, sub, target, System.Array.Empty<Vector2Int>());
+            foreach (Unit.IncomingDamageMod modifier in target.IncomingDamageMods.GetInvocationList())
+            {
+                damage += modifier(grid, action, sub, target, user, damage, targetStat);
+            }
         }
         // Make sure damage is non-negative
         damage = Mathf.Max(damage, 0);

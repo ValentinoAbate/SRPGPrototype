@@ -36,6 +36,8 @@ public class CompileDataProxyUnit : Unit
 
     public override OnDamaged OnDamagedFn => CompileData.onDamaged;
 
+    public override IncomingDamageMod IncomingDamageMods => CompileData.incomingDamageMods;
+
     public override OnBattleStartDel OnBattleStartFn => CompileData.onBattleStart;
 
     public override OnPhaseStartDel OnPhaseStartFn => CompileData.onPhaseStart;
@@ -48,8 +50,6 @@ public class CompileDataProxyUnit : Unit
 
     public override Shell Shell => null;
     public override IEnumerable<Action> Actions => CompileData.actions;
-
-    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => CompileData.incomingDamageModifiers;
 
     public Shell.CompileData CompileData { get; private set; } = new Shell.CompileData();
 

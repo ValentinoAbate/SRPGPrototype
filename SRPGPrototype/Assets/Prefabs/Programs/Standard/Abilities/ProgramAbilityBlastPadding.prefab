@@ -31,41 +31,6 @@ MonoBehaviour:
     dimensions: {x: 2, y: 2}
   useWeights: 0
   weights: []
---- !u!114 &-6473818745695957493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202993979176963460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ce69ec60368d34fb0cda76806f6ab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributeFilterMode: 0
-  attributes: 0
-  displayNameOverride: 
-  filterByActionType: 1
-  actionTypes: 0100000002000000
-  filterBySubType: 1
-  subTypes: 0d000000
-  actionEffectContainer: {fileID: 0}
---- !u!114 &-4888201933335671092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202993979176963460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb7e87c5990ce5499043a866baafa19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modifier: {fileID: -6473818745695957493}
-  abilityName: Blast Padding
-  incoming: 1
 --- !u!114 &-3755304063010105539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +48,22 @@ MonoBehaviour:
   affectUser: 0
   targetStat: 0
   damage: -3
+--- !u!114 &333606500172687186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202993979176963460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b625574922c023241b4cf2b6aa027508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Take -3 damage from Explosives
+  actionTypeFilter: 
+  subTypeFilter: 0d000000
+  damageMod: {fileID: -3755304063010105539}
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,7 +110,7 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[0]
       value: 
-      objectReference: {fileID: -4888201933335671092}
+      objectReference: {fileID: 333606500172687186}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size

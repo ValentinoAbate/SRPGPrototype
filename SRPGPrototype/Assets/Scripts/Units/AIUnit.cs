@@ -37,6 +37,8 @@ public abstract class AIUnit : Unit
     private OnDeath onDeathFn = null;
     public override OnDamaged OnDamagedFn { get => onDamagedFn; }
     private OnDamaged onDamagedFn = null;
+    public override IncomingDamageMod IncomingDamageMods => incomingDamageMods;
+    private IncomingDamageMod incomingDamageMods = null;
     public override OnBattleStartDel OnBattleStartFn { get; }
     public override OnPhaseStartDel OnPhaseStartFn { get; }
 
@@ -65,14 +67,13 @@ public abstract class AIUnit : Unit
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
 
-    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => incomingDamageModifiers;
-    [SerializeField] private ModifierActionDamage[] incomingDamageModifiers;
-
     public override CenterStat Power { get; } = new CenterStat();
     public override CenterStat Speed { get; } = new CenterStat();
     public override CenterStat Break { get; } = new CenterStat();
 
     public abstract AIComponent<AIUnit> AI { get; }
+
+    [SerializeField] private ProgramEffectAddIncomingDamageModifierAbility[] incomingDamageModifierAbilities;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +97,10 @@ public abstract class AIUnit : Unit
         foreach (var effect in onDamagedEffects)
         {
             onDamagedFn += effect.Ability;
+        }
+        foreach(var effect in incomingDamageModifierAbilities)
+        {
+            incomingDamageMods += effect.Ability;
         }
     }
 

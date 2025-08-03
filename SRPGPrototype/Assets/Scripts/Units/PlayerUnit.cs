@@ -31,6 +31,7 @@ public class PlayerUnit : Unit
     public override OnAfterAction OnAfterActionFn => Shell.OnAfterAction;
     public override OnDeath OnDeathFn => Shell.OnDeath;
     public override OnDamaged OnDamagedFn => Shell.OnDamaged;
+    public override IncomingDamageMod IncomingDamageMods => Shell.IncomingDamageMods;
     public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
     public override OnPhaseStartDel OnPhaseStartFn => Shell.OnPhaseStart;
 
@@ -46,7 +47,6 @@ public class PlayerUnit : Unit
     private Stats Stats => Shell.Stats;
 
     public override IEnumerable<Action> Actions => Shell.Actions;
-    public override IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => Shell.IncomingDamageModifiers;
 
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;

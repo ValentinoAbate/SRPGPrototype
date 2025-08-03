@@ -64,14 +64,12 @@ public class Shell : MonoBehaviour, ILootable
     public IReadOnlyList<Action> Actions => actions;
     private readonly List<Action> actions = new List<Action>();
 
-    public IReadOnlyList<ModifierActionDamage> IncomingDamageModifiers => incomingDamageModifiers;
-    private readonly List<ModifierActionDamage> incomingDamageModifiers = new List<ModifierActionDamage>();
-
     public Unit.OnSubAction OnBeforeSubAction { get; private set; }
     public Unit.OnSubAction OnAfterSubAction { get; private set; }
     public Unit.OnAfterAction OnAfterAction { get; private set; }
     public Unit.OnDeath OnDeath { get; private set; }
     public Unit.OnDamaged OnDamaged { get; private set; }
+    public Unit.IncomingDamageMod IncomingDamageMods { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
     public OnProgramDestroyedDel OnProgramDestroyed { get; private set; }
@@ -399,11 +397,10 @@ public class Shell : MonoBehaviour, ILootable
         OnAfterAction = compileData.onAfterAction;
         OnDeath = compileData.onDeath;
         OnDamaged = compileData.onDamaged;
+        IncomingDamageMods = compileData.incomingDamageMods;
         OnBattleStart = compileData.onBattleStart;
         OnPhaseStart = compileData.onPhaseStart;
         OnProgramDestroyed = compileData.onProgramDestroyed;
-        incomingDamageModifiers.Clear();
-        incomingDamageModifiers.AddRange(compileData.incomingDamageModifiers);
         // Apply compiled changes to actions and stats
         Stats.SetShellValues(compileData.stats);
         actions.Clear();
@@ -424,12 +421,12 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnAfterAction onAfterAction = null;
         public Unit.OnDeath onDeath = null;
         public Unit.OnDamaged onDamaged = null;
+        public Unit.IncomingDamageMod incomingDamageMods = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public Unit.OnPhaseStartDel onPhaseStart = null;
         public OnProgramDestroyedDel onProgramDestroyed = null;
         public GameObject soulCoreUnitPrefab = null;
         public Dictionary<Program, List<Modifier>> modifierMap = new Dictionary<Program, List<Modifier>>();
-        public List<ModifierActionDamage> incomingDamageModifiers = new List<ModifierActionDamage>();
         public int capacity = 0;
     }
 
