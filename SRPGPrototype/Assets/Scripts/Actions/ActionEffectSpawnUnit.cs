@@ -4,27 +4,16 @@ using UnityEngine;
 
 public abstract class ActionEffectSpawnUnit : ActionEffect
 {
-    public const int spawnDamage = 2;
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        if (target == null)
-        {
-            SpawnUnit(grid, targetData.targetPos);
-        }
-        else if (target.Dead)
-        {
-            grid.Remove(target);
-            SpawnUnit(grid, targetData.targetPos);
-        }
-        else
-        {
-            target.Damage(grid, spawnDamage, user);
-            if (target.Dead)
-            {
-                grid.Remove(target);
-                SpawnUnit(grid, targetData.targetPos);
-            }
-        }
+        if (!IsValidTarget(grid, action, sub, user, target, targetData))
+            return;
+        SpawnUnit(grid, targetData.targetPos);
+    }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return grid.IsLegal(targetData.targetPos) && (grid.IsEmpty(targetData.targetPos) || grid.Get(targetData.targetPos).Dead);
     }
 
     protected abstract GameObject GetUnitPrefab();

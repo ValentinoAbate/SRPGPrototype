@@ -15,6 +15,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
     [SerializeField] private float successChance = 0.5f;
     [SerializeField] private GameObject successEffectsObj = null;
     [SerializeField] private GameObject failureEffectsObj = null;
+    [SerializeField] private bool allowFailureEffectsForValidTargetPosChecks = false;
     private ActionEffect[] successEffects;
     private ActionEffect[] failureEffects;
 
@@ -27,7 +28,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
         }
         else
         {
-            failureEffects = new ActionEffect[0];
+            failureEffects = System.Array.Empty<ActionEffect>();;
         }
     }
 
@@ -63,6 +64,24 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
             usedPower = failureEffects.Length > 0 && failureEffects.Any(ActionEffectUsesPower);
             GambleSuccess = false;
         }
+    }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        foreach (var effect in successEffects)
+        {
+            if (effect.IsValidTarget(grid, action, sub, user, target, targetData))
+                return true;
+        }
+        if (allowFailureEffectsForValidTargetPosChecks)
+        {
+            foreach (var effect in failureEffects)
+            {
+                if (effect.IsValidTarget(grid, action, sub, user, target, targetData))
+                    return true;
+            }
+        }
+        return false;
     }
 
     public static bool ActionEffectUsesPower(ActionEffect e) => e.UsesPower;

@@ -11,4 +11,9 @@ public class ActionEffectRepair : ActionEffect
             target.DoRepair();
         }
     }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return target != null;
+    }
 }

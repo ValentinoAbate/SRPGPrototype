@@ -10,4 +10,9 @@ public class ActionEffectSetDamage : ActionEffect
     {
         effect.damage = value;
     }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return true;
+    }
 }

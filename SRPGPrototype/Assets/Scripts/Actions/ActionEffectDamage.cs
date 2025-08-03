@@ -71,6 +71,11 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
         }
     }
 
+    public sealed override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return target != null;
+    }
+
     public int CalculateDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData, bool simulation)
     {
         int damage = baseDamage + TargetModifier(grid, action, user, target, targetData);

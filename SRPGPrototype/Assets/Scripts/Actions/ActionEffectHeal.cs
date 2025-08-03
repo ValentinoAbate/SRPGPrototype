@@ -20,6 +20,11 @@ public abstract class ActionEffectHeal : ActionEffect
         target.Heal(damage, user);
     }
 
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return target != null;
+    }
+
     public abstract int BaseDamage(BattleGrid grid, Action action, Unit user, List<Vector2Int> targetPositions);
 
     public abstract int TargetModifier(BattleGrid grid, Action action, Unit user, Unit target, PositionData targetData);

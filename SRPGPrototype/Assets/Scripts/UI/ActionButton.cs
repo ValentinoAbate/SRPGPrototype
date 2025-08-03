@@ -56,8 +56,8 @@ public class ActionButton : MonoBehaviour
             return;
         }
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
         button.onClick.AddListener(onHide);
+        button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
     }
 
     public void OnHotKey()

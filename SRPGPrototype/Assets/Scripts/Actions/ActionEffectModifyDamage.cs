@@ -11,4 +11,9 @@ public class ActionEffectModifyDamage : ActionEffect
     {
         effect.damage += modifier;
     }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return true;
+    }
 }

@@ -84,6 +84,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract OnPhaseStartDel OnPhaseStartFn { get; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
+    protected virtual int HybridFailurePenalty => 2;
     public abstract UnitUI UI { get; }
 
     public abstract Shell Shell { get; }
@@ -149,6 +150,11 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
             // Temporary: move to OOB
             transform.position = grid.GetSpace(BattleGrid.OutOfBounds);
         }
+    }
+
+    public void ApplyHybridFailurePenaly(BattleGrid grid)
+    {
+        Damage(grid, HybridFailurePenalty, this);
     }
 
     public virtual void ResetStats()

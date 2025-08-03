@@ -96,18 +96,58 @@ public class SubAction : MonoBehaviour
         UsedPower = false;
     }
 
-    public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, IReadOnlyList<Unit> lastTargets, out List<Unit> targets)
+    public IEnumerable<Vector2Int> GetValidRangePositions(BattleGrid grid, Action action, Vector2Int origin, Unit user, IReadOnlyList<Unit> lastTargets)
+    {
+        var targetPositions = new List<Vector2Int>();
+        var targets = new List<Unit>();
+        var emptyTargetPositions = new List<Vector2Int>();
+        foreach(var pos in Range.GetPositions(grid, origin, user))
+        {
+            GetTargetsAndTargetPositions(grid, user, pos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
+            foreach(var effect in effects)
+            {
+                if(IsValidRangePosForEffect(effect, grid, action, user, pos, targets, emptyTargetPositions, targetPositions))
+                {
+                    yield return pos;
+                    break;
+                }
+            }
+        }
+    }
+
+    private bool IsValidRangePosForEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, List<Unit> targets, List<Vector2Int> emptyTargetPositions, List<Vector2Int> targetPositions)
+    {
+        if (effect.AffectUser)
+        {
+            return effect.IsValidTarget(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
+        }
+        foreach (var pos in emptyTargetPositions)
+        {
+            if (effect.IsValidTarget(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos)))
+                return true;
+        }
+        foreach (var target in targets)
+        {
+            if (effect.IsValidTarget(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos)))
+                return true;
+        }
+        return false;
+    }
+
+    private void GetTargetsAndTargetPositions(BattleGrid grid, Unit user, Vector2Int selectedPos, IReadOnlyList<Unit> lastTargets, ref List<Vector2Int> targetPositions, ref List<Unit> targets, ref List<Vector2Int> emptyTargetPositions)
     {
         // Get target positions
-        var targetPositions = targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal).ToList();
-        var emptyTargetPositions = new List<Vector2Int>(targetPositions.Count);
+        targetPositions.Clear();
+        targetPositions.AddRange(targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal));
+        // Prepare target lists
+        emptyTargetPositions.Clear();
+        targets.Clear();
         if (options.HasFlag(Options.ApplyToLastTargets))
         {
-            targets = new List<Unit>(lastTargets);
+            targets.AddRange(lastTargets);
         }
         else
         {
-            targets = new List<Unit>(targetPositions.Count);
             foreach (var position in targetPositions)
             {
                 var target = grid.Get(position);
@@ -121,6 +161,14 @@ public class SubAction : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Use(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, IReadOnlyList<Unit> lastTargets, out List<Unit> targets)
+    {
+        var targetPositions = new List<Vector2Int>();
+        var emptyTargetPositions = new List<Vector2Int>();
+        targets = new List<Unit>();
+        GetTargetsAndTargetPositions(grid, user, selectedPos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
         if (effects.Length <= 0)
             return;
         if(subtype == Type.OverrideByEffects)
@@ -169,7 +217,6 @@ public class SubAction : MonoBehaviour
         {
             effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
         }
-
     }
 
     public int ActionMacroDamage(Action action, Unit user, Queue<int> indices)

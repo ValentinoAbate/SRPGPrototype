@@ -14,4 +14,9 @@ public class ActionEffectSwapStat : ActionEffect
         target.SetStat(stat1, target.GetStat(stat2));
         target.SetStat(stat2, temp);
     }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return target != null;
+    }
 }

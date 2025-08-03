@@ -10,4 +10,9 @@ public class ActionEffectSwap : ActionEffect
             return;
         grid.SwapAndSetWorldPos(user, target);
     }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return user.Movable && target != null && target.Movable;
+    }
 }

@@ -10,4 +10,9 @@ public class ActionEffectSetPosition : ActionEffect
             return;
         grid.MoveAndSetWorldPos(target, targetData.selectedPos);
     }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return grid.IsLegalAndEmpty(targetData.selectedPos) && target != null && target.Movable;
+    }
 }

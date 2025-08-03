@@ -4,6 +4,10 @@ using UnityEngine;
 
 public abstract class ActionEffectMove : ActionEffect
 {
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return target != null && target.Movable;
+    }
     /// <summary>
     /// A chained movement function. Returns true if the move was a success, else false.
     /// If unit exists in the destination square, tries to move it in the same direction (recursive).

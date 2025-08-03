@@ -13,6 +13,8 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
     [SerializeField] private bool gambleFailOnHitAlly;
 
+    private bool OnTargetTeam(Unit u) => teams.Contains(u.UnitTeam);
+
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
     {
         effectToApply.Initialize(grid, action, sub, user, targetPositions);
@@ -20,7 +22,7 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
 
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        var targets = grid.FindAll((u) => teams.Contains(u.UnitTeam));
+        var targets = grid.FindAll(OnTargetTeam);
         if (targets.Count <= 0)
         {
             GambleSuccess = null;
@@ -37,6 +39,11 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
             GambleSuccess = null;
         }
         effectToApply.ApplyEffect(grid, action, sub, user, newTarget, newTargetData);
+    }
+
+    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return grid.FindAll(OnTargetTeam).Count > 0;
     }
 
     public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
