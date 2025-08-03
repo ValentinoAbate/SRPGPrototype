@@ -9,7 +9,7 @@ public class ProgramEffectAddStatSubActionAbilityLimited : ProgramEffectAddStatS
     protected override void AddAbility(ref Shell.CompileData data)
     {
         base.AddAbility(ref data);
-        limiter.Attatch(data);
+        limiter.Attach(data);
     }
 
     public override void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)

@@ -27,7 +27,7 @@ public class UseLimiter
         return true;
     }
 
-    public void Attatch(Shell.CompileData data)
+    public void Attach(Shell.CompileData data)
     {
         currUses = 0;
         if(frequency == Frequency.Battle)
