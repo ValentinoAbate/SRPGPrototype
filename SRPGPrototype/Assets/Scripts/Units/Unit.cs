@@ -110,7 +110,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public virtual void Damage(BattleGrid grid, int amount, Unit source)
     {
-        if (Dead)
+        if (Dead || amount <= 0)
             return;
         int damage = amount;
         if(!Break.IsZero)
@@ -118,8 +118,6 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
             damage += Break.Value;
             Break.Use();
         }
-        if (damage <= 0)
-            return;
         if (damage >= HP)
         {
             Kill(grid, source);
