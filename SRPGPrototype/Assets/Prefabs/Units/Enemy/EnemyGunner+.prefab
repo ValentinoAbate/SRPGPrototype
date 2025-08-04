@@ -69,19 +69,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: ab388bb81eb29454faece0ab8d644049,
         type: 3}
-      propertyPath: maxAP
-      value: 3
+      propertyPath: maxHP
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: ab388bb81eb29454faece0ab8d644049,
         type: 3}
-      propertyPath: maxHP
-      value: 6
+      propertyPath: description
+      value: 'Move: Adjacent. Attack: Ranged/Long Ranged (2 damage).'
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: ab388bb81eb29454faece0ab8d644049,
         type: 3}
       propertyPath: displayName
       value: Gunner+
       objectReference: {fileID: 0}
+    - target: {fileID: 6464810328418194555, guid: ab388bb81eb29454faece0ab8d644049,
+        type: 3}
+      propertyPath: options
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464810328418194555, guid: ab388bb81eb29454faece0ab8d644049,
+        type: 3}
+      propertyPath: standardAction
+      value: 
+      objectReference: {fileID: 8616228202451974398, guid: 449d69eb76d5a5149a1ea479ca6f3c74,
+        type: 3}
     - target: {fileID: 8452542628105313215, guid: ab388bb81eb29454faece0ab8d644049,
         type: 3}
       propertyPath: m_Sprite

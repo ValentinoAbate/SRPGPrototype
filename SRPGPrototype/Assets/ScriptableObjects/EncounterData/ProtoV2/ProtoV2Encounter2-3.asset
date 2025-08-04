@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: ProtoV2Encounter2-3
   m_EditorClassIdentifier: 
-  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
-  targetDifficulty: 23
-  dimensions: {x: 7, y: 6}
-  numSpawnPositions: 3
   encounterType: 0
+  dimensions: {x: 7, y: 6}
+  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
+  targetDifficulty: 31
+  numSpawnPositions: 3
   numEnemies: 050000000600000007000000
   numEnemiesWeights:
   - 1
@@ -25,10 +25,10 @@ MonoBehaviour:
   enemies:
   - {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e, type: 3}
   - {fileID: 4568531750757968395, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
-  - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
+  - {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc, type: 3}
   baseEnemyWeights:
-  - 3
-  - 3
+  - 5
+  - 6
   - 1
   numObstacles: 05000000
   numObstaclesWeights:
@@ -44,7 +44,10 @@ MonoBehaviour:
   seed:
     nameOverride: 
     dimensions: {x: 0, y: 0}
-    units: []
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0
