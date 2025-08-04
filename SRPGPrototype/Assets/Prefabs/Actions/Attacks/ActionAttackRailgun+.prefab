@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: e61974592bb09a74d9efca664d65bb0a,
         type: 3}
       propertyPath: slowdownInterval
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: e61974592bb09a74d9efca664d65bb0a,
         type: 3}
