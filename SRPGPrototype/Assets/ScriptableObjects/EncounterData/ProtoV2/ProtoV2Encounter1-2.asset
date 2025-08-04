@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
   m_Name: ProtoV2Encounter1-2
   m_EditorClassIdentifier: 
+  encounterType: 0
+  dimensions: {x: 6, y: 6}
   lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
   targetDifficulty: 5
-  dimensions: {x: 6, y: 6}
   numSpawnPositions: 3
-  encounterType: 0
   numEnemies: 0400000005000000
   numEnemiesWeights:
   - 1
@@ -28,7 +28,7 @@ MonoBehaviour:
   - {fileID: 4568531750757968395, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
   - {fileID: 6419114847918869091, guid: 6d01255e47000e240a8b8371ca8f7cbf, type: 3}
   baseEnemyWeights:
-  - 5
+  - 3
   - 2
   - 1
   - 0.25
