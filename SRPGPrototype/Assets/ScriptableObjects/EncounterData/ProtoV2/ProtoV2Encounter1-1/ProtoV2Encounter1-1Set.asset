@@ -15,8 +15,11 @@ MonoBehaviour:
   numEncounterOptions: 030000000400000005000000
   numEncounterWeights:
   - 5
-  - 4
+  - 2
   - 1
   generators:
-  - {fileID: 11400000, guid: 3afd5e53add5e6b4da5d46aae3c0994f, type: 2}
-  generatorWeights: []
+  - {fileID: 11400000, guid: c93d11234c00bc84aaea383fe829df73, type: 2}
+  - {fileID: 11400000, guid: 5b6fd341ae861dc4aac323614f5a1a01, type: 2}
+  generatorWeights:
+  - 9
+  - 1
