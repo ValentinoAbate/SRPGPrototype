@@ -69,7 +69,7 @@ public class AIPhase : Phase
             {
                 continue;
             }
-            var phaseEndCr = unit.OnPhaseEnd();
+            var phaseEndCr = unit.OnPhaseEnd(Grid);
             if(phaseEndCr != null)
             {
                 yield return phaseEndCr;

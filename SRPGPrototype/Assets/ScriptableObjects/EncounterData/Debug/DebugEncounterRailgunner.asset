@@ -22,7 +22,7 @@ MonoBehaviour:
   - 8
   - 2
   enemies:
-  - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
+  - {fileID: 6361471704087255999, guid: 1b020db341f7895479d07128ef67b29c, type: 3}
   baseEnemyWeights:
   - 20
   numObstacles: 07000000

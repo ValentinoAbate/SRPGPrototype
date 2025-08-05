@@ -42,6 +42,8 @@ public class CompileDataProxyUnit : Unit
 
     public override OnPhaseStartDel OnPhaseStartFn => CompileData.onPhaseStart;
 
+    public override OnPhaseEndDel OnPhaseEndFn => CompileData.onPhaseEnd;
+
     public override string DisplayName => Shell.DisplayName;
 
     public override string Description => string.Empty;

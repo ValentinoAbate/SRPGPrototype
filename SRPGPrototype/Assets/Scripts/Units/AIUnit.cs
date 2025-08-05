@@ -41,13 +41,15 @@ public abstract class AIUnit : Unit
     private IncomingDamageMod incomingDamageMods = null;
     public override OnBattleStartDel OnBattleStartFn { get; }
     public override OnPhaseStartDel OnPhaseStartFn { get; }
+    public override OnPhaseEndDel OnPhaseEndFn => onPhaseEnd;
+    private OnPhaseEndDel onPhaseEnd;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
     public override string Description => description;
     [SerializeField] [TextArea(1, 2)] private string description = string.Empty;
 
-    public override Shell Shell => throw new System.NotImplementedException();
+    public override Shell Shell => null;
 
     public override IEnumerable<Action> Actions
     {   
@@ -74,6 +76,7 @@ public abstract class AIUnit : Unit
     public abstract AIComponent<AIUnit> AI { get; }
 
     [SerializeField] private ProgramEffectAddIncomingDamageModifierAbility[] incomingDamageModifierAbilities;
+    [SerializeField] private ProgramEffectAddOnPhaseEndAbility[] onPhaseEndAbilities;
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +104,10 @@ public abstract class AIUnit : Unit
         foreach(var effect in incomingDamageModifierAbilities)
         {
             incomingDamageMods += effect.Ability;
+        }
+        foreach(var effect in onPhaseEndAbilities)
+        {
+            onPhaseEnd += effect.Ability;
         }
     }
 

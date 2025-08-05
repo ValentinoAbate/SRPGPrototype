@@ -34,6 +34,7 @@ public class PlayerUnit : Unit
     public override IncomingDamageMod IncomingDamageMods => Shell.IncomingDamageMods;
     public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
     public override OnPhaseStartDel OnPhaseStartFn => Shell.OnPhaseStart;
+    public override OnPhaseEndDel OnPhaseEndFn => Shell.OnPhaseEnd;
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

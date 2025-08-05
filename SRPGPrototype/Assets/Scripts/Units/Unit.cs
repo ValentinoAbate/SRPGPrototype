@@ -9,6 +9,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public delegate void OnPhaseStartDel(BattleGrid grid, Unit unit);
 
+    public delegate void OnPhaseEndDel(BattleGrid grid, Unit unit);
+
     public delegate void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Options options, SubAction.Type overrideSubType = SubAction.Type.None);
 
     public delegate void OnAfterAction(BattleGrid grid, Action action, Unit user, int cost);
@@ -82,6 +84,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract IncomingDamageMod IncomingDamageMods { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract OnPhaseStartDel OnPhaseStartFn { get; }
+    public abstract OnPhaseEndDel OnPhaseEndFn { get; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
     protected virtual int HybridFailurePenalty => 2;
@@ -286,8 +289,9 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         return null;
     }
 
-    public virtual Coroutine OnPhaseEnd()
+    public virtual Coroutine OnPhaseEnd(BattleGrid grid)
     {
+        OnPhaseEndFn?.Invoke(grid, this);
         AP = MaxAP;
         Power.Value = 0;
         Speed.Value = 0;
