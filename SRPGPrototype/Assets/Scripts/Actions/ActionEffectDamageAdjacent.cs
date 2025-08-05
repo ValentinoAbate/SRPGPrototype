@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 public class ActionEffectDamageAdjacent : ActionEffectDamage
 {
-    [SerializeField] private AdjacencyDirections directions = AdjacencyDirections.Horizontal;
+    [SerializeField] private AdjacencyDirections directions = AdjacencyDirections.HorizontalVertical;
     [SerializeField] private Unit.Team[] teams = new Unit.Team[] { Unit.Team.Enemy };
     [SerializeField] private int modifier = 1;
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
@@ -12,7 +12,7 @@ public class ActionEffectDamageAdjacent : ActionEffectDamage
         bool ValidPos(Vector2Int p) => grid.IsLegal(p) && !grid.IsEmpty(p) && teams.Contains(grid.Get(p).UnitTeam);
         if (directions.HasFlag(AdjacencyDirections.Both))
             return user.Pos.AdjacentBoth().Count(ValidPos) * modifier;
-        if (directions.HasFlag(AdjacencyDirections.Horizontal))
+        if (directions.HasFlag(AdjacencyDirections.HorizontalVertical))
             return user.Pos.Adjacent().Count(ValidPos) * modifier;
         if (directions.HasFlag(AdjacencyDirections.Diagonal))
             return user.Pos.AdjacentDiagonal().Count(ValidPos) * modifier;

@@ -6,7 +6,7 @@ public static class AdjacencyDirectionsExtensions
 {
     public static IEnumerable<Vector2Int> GetDirectionVectors(this AdjacencyDirections directions)
     {
-        if (directions.HasFlag(AdjacencyDirections.Horizontal))
+        if (directions.HasFlag(AdjacencyDirections.HorizontalVertical))
         {
             yield return Vector2Int.up;
             yield return Vector2Int.down;

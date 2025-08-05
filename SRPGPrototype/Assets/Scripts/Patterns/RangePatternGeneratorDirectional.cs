@@ -19,7 +19,7 @@ public class RangePatternGeneratorDirectional : RangePatternGenerator
     {
         if(directions.HasFlag(AdjacencyDirections.Diagonal))
             return grid.MaxGridDistance;
-        if (directions.HasFlag(AdjacencyDirections.Horizontal))
+        if (directions.HasFlag(AdjacencyDirections.HorizontalVertical))
             return Mathf.Max(grid.Dimensions.x, grid.Dimensions.y) - 1;
         return 0;
     }
