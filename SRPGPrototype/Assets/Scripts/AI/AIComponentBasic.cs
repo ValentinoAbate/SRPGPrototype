@@ -297,7 +297,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     private bool TryRunAwayAfterAttack(BattleGrid grid, AIUnit self, out Coroutine routine)
     {
-        if(!options.HasFlag(Options.PrioritizeDistance) || !self.CanUseAction(moveAction))
+        if(!options.HasFlag(Options.RunAwayAfterAttacking) || !self.CanUseAction(moveAction))
         {
             routine = null;
             return false;
