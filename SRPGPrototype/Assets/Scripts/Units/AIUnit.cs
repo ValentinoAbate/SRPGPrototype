@@ -111,16 +111,6 @@ public abstract class AIUnit : Unit
         return StartCoroutine(AI.DoTurn(grid, this));
     }
 
-    public override Coroutine OnPhaseStart(BattleGrid grid)
-    {
-        OnPhaseStartFn?.Invoke(grid, this);
-        foreach (var action in Actions)
-        {
-            action.ResetUses(Action.Trigger.TurnStart);
-        }
-        return null;
-    }
-
     public override Coroutine OnBattleEnd(EncounterManager manager)
     {
         if (Dead)

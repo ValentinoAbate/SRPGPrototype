@@ -72,30 +72,10 @@ public class PlayerUnit : Unit
         ResetStats();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("Power: " + Power.Value.ToString());
-            Debug.Log("Speed: " + Speed.Value.ToString());
-            Debug.Log("Break: " + Break.Value.ToString());
-            Debug.Log("Repair: " + Repair.ToString());
-        }
-    }
-
     public override void DoRepair()
     {
         Shell.Stats.DoRepair();
         UI.Hp = Shell.Stats.HP;
-    }
-
-    // Reset uses per turn
-    public override Coroutine OnPhaseStart(BattleGrid grid)
-    {
-        OnPhaseStartFn?.Invoke(grid, this);
-        foreach (var action in Actions)
-            action.ResetUses(Action.Trigger.TurnStart);
-        return null;
     }
 
     public override Coroutine OnBattleEnd(EncounterManager manager)

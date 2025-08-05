@@ -278,6 +278,11 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public virtual Coroutine OnPhaseStart(BattleGrid grid)
     {
+        OnPhaseStartFn?.Invoke(grid, this);
+        foreach (var action in Actions)
+        {
+            action.ResetUses(Action.Trigger.TurnStart);
+        }
         return null;
     }
 
