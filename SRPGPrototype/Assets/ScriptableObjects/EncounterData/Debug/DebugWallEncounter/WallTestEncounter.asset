@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95894705adac3db43acf64bd02fba487, type: 3}
+  m_Name: WallTestEncounter
+  m_EditorClassIdentifier: 
+  encounterType: 0
+  dimensions: {x: 8, y: 6}
+  targetDifficulty: 0
+  steps:
+  - {fileID: 11400000, guid: eef74ca0b00c3d54ea4c3a08bedfbe10, type: 2}
+  - {fileID: 11400000, guid: 857f9c7552a914e42b53abf7b4bb4a27, type: 2}
+  - {fileID: 11400000, guid: a73ec06d034ba0a4ca92003ad7c991bd, type: 2}
+  - {fileID: 11400000, guid: 1f36e04573f56984688e3f800a19e340, type: 2}
+  seed:
+    nameOverride: 
+    dimensions: {x: 0, y: 0}
+    units: []
+    spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0
