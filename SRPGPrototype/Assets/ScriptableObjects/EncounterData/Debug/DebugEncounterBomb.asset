@@ -24,7 +24,9 @@ MonoBehaviour:
   enemies:
   - {fileID: 5064112337391898495, guid: 6cd40a25972d4324ab456fdfbe829215, type: 3}
   - {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e, type: 3}
+  - {fileID: 5064112337391898495, guid: af50a86aa069e8f419c717d68a3c786f, type: 3}
   baseEnemyWeights:
+  - 1
   - 1
   - 1
   numObstacles: 07000000
@@ -47,6 +49,7 @@ MonoBehaviour:
     - pos: {x: -1, y: -1}
       unit: {fileID: 5064112337391898495, guid: b733a468635e1b9449b4b8cd148158a6,
         type: 3}
+    ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0

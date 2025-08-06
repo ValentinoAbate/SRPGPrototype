@@ -16,7 +16,7 @@ MonoBehaviour:
   dimensions: {x: 6, y: 6}
   lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
   targetDifficulty: 4
-  numSpawnPositions: 3
+  numSpawnPositions: 5
   numEnemies: 0200000003000000
   numEnemiesWeights:
   - 8
@@ -50,6 +50,7 @@ MonoBehaviour:
     - pos: {x: -1, y: -1}
       unit: {fileID: 2747713192606589042, guid: a3afc4e019becee46960b82788138b3e,
         type: 3}
+    ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0
