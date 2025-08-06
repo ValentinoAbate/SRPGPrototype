@@ -15,11 +15,28 @@ MonoBehaviour:
   readyOption: 2
   standardAction: {fileID: 4415060608083833614, guid: 7d88dad2bf624eb4ea048726d49152e8,
     type: 3}
+  targetEmptySpaces: 0
+  attackAction: {fileID: 0}
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
   animator: {fileID: 4508877108862989139}
   targetTeams: 02000000
   runAwayFromTeams: 02000000
+--- !u!114 &1154474996332517494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861515215645996028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee272380e17a3f04fa3ebb3a48a700a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 1
+  action: {fileID: 4415060608083833614, guid: 8f229633893fb004491762041ff165fd, type: 3}
+  triggerOnSelfDestruct: 1
 --- !u!95 &4508877108862989139
 Animator:
   serializedVersion: 3
@@ -59,7 +76,8 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent (Runs Away). Attack: Closest player unit (-1 AP).'
+      value: 'Move: Adjacent (Runs Away). Attack: All player units (-1 AP). When
+        destroyed, gives +1 AP to the unit who destroyed it.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}

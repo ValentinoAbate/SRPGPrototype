@@ -19,8 +19,9 @@
         if (!triggerOnSelfDestruct && killedBy == self)
             return;
         var targetPos = target == Target.Self ? self.Pos : killedBy.Pos;
+        var targetUnit = target == Target.Self ? self : killedBy;
         var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
-        actionInstance.UseAll(grid, self, targetPos, false);
+        actionInstance.UseAll(grid, targetUnit, targetPos, false);
         Destroy(actionInstance);
     }
 
