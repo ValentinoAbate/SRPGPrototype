@@ -12,6 +12,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitUIObstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 5974653754817635152, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974653754817635152, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5974653754817635152, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974653754817635152, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974653754817635152, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110849526434682516, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110849526434682516, guid: 795f8ae9e832ccf46aba64c22d0d6410,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7021832221501493634, guid: 795f8ae9e832ccf46aba64c22d0d6410,
         type: 3}
       propertyPath: m_AnchoredPosition.x

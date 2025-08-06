@@ -50,19 +50,22 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   team: 4
   interferenceLevel: 0
+  priorityLevel: 4
+  tags: 0
   maxHP: 4
   maxAP: 0
   displayName: Mystery Data
   description: 
   actionTransform: {fileID: 3712248076188329141}
   unitUI: {fileID: 3639768143138655526}
+  incomingDamageModifierAbilities: []
+  onPhaseEndAbilities: []
   category: 0
   quality: 0
   frameSprite: {fileID: 3641254494763364026}
   commonColor: {r: 1, g: 1, b: 1, a: 1}
   uncommonColor: {r: 0.8023014, g: 0, b: 1, a: 1}
   rareColor: {r: 0.9622642, g: 0.644532, b: 0, a: 1}
-  gambleColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
 --- !u!1 &3603020454643237770
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,12 +275,12 @@ PrefabInstance:
     - target: {fileID: 1189834482057283811, guid: b7d7983af2328a6478dc927fa02f7511,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.016
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1189834482057283811, guid: b7d7983af2328a6478dc927fa02f7511,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.68
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1189834482057283811, guid: b7d7983af2328a6478dc927fa02f7511,
         type: 3}

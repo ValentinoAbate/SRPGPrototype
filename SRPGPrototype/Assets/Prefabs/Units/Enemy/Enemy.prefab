@@ -50,12 +50,16 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   team: 1
   interferenceLevel: 1
+  priorityLevel: 4
+  tags: 0
   maxHP: 4
   maxAP: 2
   displayName: Enemy
   description: 
   actionTransform: {fileID: 3827073035875608505}
   unitUI: {fileID: 5273064424718646244}
+  incomingDamageModifierAbilities: []
+  onPhaseEndAbilities: []
   encounterData: {fileID: 5254388976346715284}
 --- !u!114 &5254388976346715284
 MonoBehaviour:
@@ -202,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 1189834482057283811, guid: f6acf841d4b3e1142bc21d055e45e0d8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.62
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1189834482057283811, guid: f6acf841d4b3e1142bc21d055e45e0d8,
         type: 3}
