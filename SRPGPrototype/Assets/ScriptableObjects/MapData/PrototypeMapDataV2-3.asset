@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
+  m_Name: PrototypeMapDataV2-3
+  m_EditorClassIdentifier: 
+  mapName: Prototype V2
+  mapSymbol: 3
+  nextMap: {fileID: 0}
+  encounterSetGenerators:
+  - {fileID: 11400000, guid: 4de92b3f7d4233a48bf313a2e5af935e, type: 2}
+  - {fileID: 11400000, guid: 3f199d03b54f13e4d8f33c89c4215c66, type: 2}
+  encounterData: []

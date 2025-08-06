@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapName: Prototype V2
   mapSymbol: 2
-  nextMap: {fileID: 0}
+  nextMap: {fileID: 11400000, guid: 72adf84960a4337408ef8dae6dd26364, type: 2}
   encounterSetGenerators:
   - {fileID: 11400000, guid: 1f7cc8dde46dcec45b81c22e5e9aafbd, type: 2}
   - {fileID: 11400000, guid: ff6cf5e03e6a02c49a261cfecad74bdd, type: 2}
