@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75,
         type: 3}
       propertyPath: description
-      value: Destroy yourself, hitting all horizontally and diagonally adjacent units
+      value: Destroy yourself, hitting all adjacent and diagonally adjacent units
         for {dmg} damage.
       objectReference: {fileID: 0}
     - target: {fileID: 3345701516349644655, guid: cbafbabd8fd38d247b6c701d76323b75,
