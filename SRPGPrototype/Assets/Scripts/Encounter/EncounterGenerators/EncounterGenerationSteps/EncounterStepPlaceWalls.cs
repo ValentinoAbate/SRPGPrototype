@@ -26,20 +26,36 @@ public class EncounterStepPlaceWalls : EncounterGeneratorStep
             var wallUnit = RandomU.instance.ChoiceWeightsOptional(units, unitChoiceWeights);
             var startingPos = RandomU.instance.Choice(validPositions);
             AddUnit(wallUnit, startingPos, ref encounter, ref validPositions);
-            var direction = RandomU.instance.RandomBool() ? Vector2Int.up : Vector2Int.left;
+            var directions = new List<Vector2Int>(3);
+            directions.Add(Vector2Int.one);
+            if(startingPos.x != 0 && startingPos.x != encounter.dimensions.x - 1)
+            {
+                directions.Add(Vector2Int.up);
+            }
+            if(startingPos.y != 0 && startingPos.y != encounter.dimensions.y - 1)
+            {
+                directions.Add(Vector2Int.right);
+            }
+            var direction = RandomU.instance.Choice(directions);
+            int wallsLeft = wallLength - 1;
             for(int j = 1; j < wallLength; ++j)
             {
                 var targetPos = startingPos + (direction * j);
-                if (!validPositions.Contains(targetPos)) // could create long walls (valid positions might be filled with other units)
+                if (validPositions.Contains(targetPos))
                 {
-                    targetPos = startingPos - (direction * j);
+                    AddUnit(wallUnit, targetPos, ref encounter, ref validPositions);
+                    wallsLeft--;
                 }
-                if (!validPositions.Contains(targetPos))
+                targetPos = startingPos - (direction * j);
+                if (wallsLeft <= 0)
+                    break;
+                if (validPositions.Contains(targetPos))
                 {
-                    continue;
+                    AddUnit(wallUnit, targetPos, ref encounter, ref validPositions);
+                    wallsLeft--;
                 }
-                direction *= -1;
-                AddUnit(wallUnit, targetPos, ref encounter, ref validPositions);
+                if (wallsLeft <= 0)
+                    break;
             }
         }
     }

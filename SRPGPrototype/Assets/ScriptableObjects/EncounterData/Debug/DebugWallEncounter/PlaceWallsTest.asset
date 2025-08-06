@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40041c3d937023041a24c58c9248e4f0, type: 3}
   m_Name: PlaceWallsTest
   m_EditorClassIdentifier: 
-  numWalls: 030000000400000005000000
+  numWalls: 020000000300000004000000
   numWallsWeights:
   - 1
-  - 3
+  - 4
   - 1
   units:
-  - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}
+  - {fileID: 5132225929935089415, guid: 751ab3c4b12d0074ea220cdd3c892a6e, type: 3}
   unitChoiceWeights: []
   wallLengthAvg: 3
-  wallLengthStdDeviation: 0.5
+  wallLengthStdDeviation: 0.4
