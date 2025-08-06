@@ -35,7 +35,7 @@ public class EncounterManager : MonoBehaviour
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
         grid.CenterAtPosition(BattleGrid.DefaultCenter);
         // Instantiate and add units to the grid
-        var units = InitializeUnits(encounter.units);
+        var units = InitializeUnits(encounter.ambushUnits, encounter.units);
         // Instantiate spawn position objects
         var spawnPositionObjects = new List<GameObject>(encounter.spawnPositions.Count);
         foreach(var pos in encounter.spawnPositions)
@@ -63,17 +63,33 @@ public class EncounterManager : MonoBehaviour
         unitPlacementUI.Initialize(grid, encounter.spawnPositions, OnUnitPlacementComplete);
     }
 
-    private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> entries)
+    private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> ambushUnitEntries, IReadOnlyCollection<Encounter.UnitEntry> entries)
     {
-        var units = new List<Unit>(entries.Count + PersistantData.main.inventory.DroneShells.Length + 1);
+        var units = new List<Unit>(entries.Count + ambushUnitEntries.Count + PersistantData.main.inventory.DroneShells.Length + 1);
+        foreach (var entry in ambushUnitEntries)
+        {
+            if (TrySpawnUnit(entry, out var unit))
+                units.Add(unit);
+        }
         foreach (var entry in entries)
         {
-            var unit = Instantiate(entry.unit).GetComponent<Unit>();
-            grid.Add(entry.pos, unit);
-            unit.transform.position = grid.GetSpace(unit.Pos);
-            units.Add(unit);
+            if (TrySpawnUnit(entry, out var unit))
+                units.Add(unit);
         }
         return units;
+    }
+
+    private bool TrySpawnUnit(Encounter.UnitEntry entry, out Unit unit)
+    {
+        if (!grid.IsLegalAndEmpty(entry.pos))
+        {
+            unit = null;
+            return false;
+        }
+        unit = Instantiate(entry.unit).GetComponent<Unit>();
+        grid.Add(entry.pos, unit);
+        unit.transform.position = grid.GetSpace(unit.Pos);
+        return true;
     }
 
     public void EndEncounter()

@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1737562330047354283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6271173752637959633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67798271725c4e42968247a891d5b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  units:
+  - {fileID: 661975691798095813, guid: 3aab0dee69156054e9ea97155e01e119, type: 3}
+  - {fileID: 661975691798095813, guid: 249d5e1bfa4e8e8439279d021465183e, type: 3}
+  unitWeights:
+  - 3
+  - 1
 --- !u!1001 &6472702304044650322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26,7 +44,7 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: displayName
-      value: Ice BLock
+      value: Ice Block
       objectReference: {fileID: 0}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -85,3 +103,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d28da550a5fdc0458224d2b3be8ad66, type: 3}
+--- !u!1 &6271173752637959633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+    type: 3}
+  m_PrefabInstance: {fileID: 6472702304044650322}
+  m_PrefabAsset: {fileID: 0}

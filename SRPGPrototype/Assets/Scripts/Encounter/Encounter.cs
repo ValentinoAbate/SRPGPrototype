@@ -16,6 +16,12 @@ public class Encounter
                     continue;
                 difficulty += encounterUnit.EncounterData.challengeRating;
             }
+            foreach (var unit in ambushUnits)
+            {
+                if (!(unit.unit is IEncounterUnit encounterUnit))
+                    continue;
+                difficulty += encounterUnit.EncounterData.challengeRating;
+            }
             return difficulty;
         }
     }
@@ -23,6 +29,7 @@ public class Encounter
     public string nameOverride = string.Empty;
     public Vector2Int dimensions;
     public List<UnitEntry> units = new List<UnitEntry>();
+    public List<UnitEntry> ambushUnits = new List<UnitEntry>();
     public List<Vector2Int> spawnPositions = new List<Vector2Int>();
     public bool giveCompletionMoney;
     public int baseCompletionMoney;
