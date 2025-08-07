@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95894705adac3db43acf64bd02fba487, type: 3}
-  m_Name: ProtoV2Encounter3-2
+  m_Name: ProtoV2Encounter3-5
   m_EditorClassIdentifier: 
   encounterType: 0
   dimensions: {x: 8, y: 6}
-  targetDifficulty: 38
+  targetDifficulty: 47
   steps:
-  - {fileID: 11400000, guid: f620131027dc7134cb5ce86e49da6402, type: 2}
-  - {fileID: 11400000, guid: 7a1bdf4d6eb26ce4ea601d85660686ad, type: 2}
-  - {fileID: 11400000, guid: affad4f5c0d6213408aebdd725fbd490, type: 2}
-  - {fileID: 11400000, guid: b03bb248e6a027940a3cb31d97ebee45, type: 2}
-  - {fileID: 11400000, guid: 5a2c3f4f67de43741b82ab37c88f8362, type: 2}
+  - {fileID: 11400000, guid: f24bbff177d9d7b4e8a616265151d9e9, type: 2}
+  - {fileID: 11400000, guid: 45ab3213e16e0b642862a93a8b407899, type: 2}
+  - {fileID: 11400000, guid: 814d51d6f66707745b85bea667404eaa, type: 2}
+  - {fileID: 11400000, guid: e5ca84527dca1514c84a76e4cd76283d, type: 2}
   - {fileID: 11400000, guid: d711ba0e345b5bb45a11b8dca4d51d95, type: 2}
   - {fileID: 11400000, guid: 1f36e04573f56984688e3f800a19e340, type: 2}
   seed:

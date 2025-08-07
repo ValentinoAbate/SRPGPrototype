@@ -10,41 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
-  m_Name: ProtoV2Encounter3-5-Knight
+  m_Name: ProtoV2Encounter3-4-Shop
   m_EditorClassIdentifier: 
-  encounterType: 0
-  dimensions: {x: 8, y: 6}
-  lootUnits: {fileID: 0}
-  targetDifficulty: 54
-  numSpawnPositions: 3
-  numEnemies: 04000000
+  encounterType: 1
+  dimensions: {x: 5, y: 5}
+  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
+  targetDifficulty: 0
+  numSpawnPositions: 0
+  numEnemies: 00000000
   numEnemiesWeights:
   - 1
-  enemies:
-  - {fileID: 3896841673119514508, guid: 689a150d0a5da804aae7a0c31e614041, type: 3}
+  enemies: []
   baseEnemyWeights:
   - 1
-  numObstacles: 04000000
+  numObstacles: 00000000
   numObstaclesWeights:
   - 1
-  obstacles:
-  - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
+  obstacles: []
   baseObstacleWeights:
   - 1
-  lootFlags: 1
+  lootFlags: 8
   moneyOption: 0
   seed:
     nameOverride: 
     dimensions: {x: 0, y: 0}
     units:
     - pos: {x: -1, y: -1}
-      unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
+      unit: {fileID: 3234413674390493618, guid: aade82900fa0d44448ce3acd45f5f8c2,
         type: 3}
-    - pos: {x: -1, y: -1}
-      unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
-        type: 3}
-    - pos: {x: -1, y: -1}
-      unit: {fileID: 7009125224750767685, guid: 941024f4a1e39694aaa3dbf8e8a5517c,
+    - pos: {x: 2, y: 2}
+      unit: {fileID: 9140513036302482194, guid: 1693a0c3ab6635d4c9c316cc232c3050,
         type: 3}
     ambushUnits: []
     spawnPositions: []

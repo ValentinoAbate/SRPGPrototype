@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7f699368228bf4dbaea1a3429ed861, type: 3}
   m_Name: PlaceUnits
   m_EditorClassIdentifier: 
-  numUnits: 020000000300000004000000
+  numUnits: 060000000700000008000000
   numUnitsWeights:
   - 1
   - 7
   - 1
   units:
-  - {fileID: 4568531750757968395, guid: 78748ad249fb66a4f9aa9c86b8ef856f, type: 3}
   - {fileID: 6361471704087255999, guid: 1b020db341f7895479d07128ef67b29c, type: 3}
+  - {fileID: 1131008218599519694, guid: 975114fac48760043aca8dd9f7d73be8, type: 3}
   - {fileID: 5064112337391898495, guid: af50a86aa069e8f419c717d68a3c786f, type: 3}
   unitChoiceWeights:
-  - 5
   - 3
+  - 5
   - 3
