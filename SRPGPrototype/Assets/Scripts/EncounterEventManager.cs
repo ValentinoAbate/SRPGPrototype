@@ -6,6 +6,7 @@ public class EncounterEventManager : MonoBehaviour
 {
     public static EncounterEventManager main;
     public Unit.OnDeath OnUnitDeath { get; set; }
+    public Unit.OnDamaged OnUnitDamaged { get; set; }
 
     private void Awake()
     {

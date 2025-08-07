@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8267239636157838933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823956966424869125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560a5cab76062dd45bafe8d6818fba37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 2679527008744717267}
+  action: {fileID: 4415060608083833614, guid: b3c9c1168f303944f93be0632bc519bc, type: 3}
+  targetEmptySpaces: 1
+  damagedTeams: 02000000
+  targetTeams: 
+--- !u!1001 &4306966984323521414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1068486978419434115, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_Name
+      value: ObstacleSharkBurrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9cd76aaa14476f44ca66cad28efbf00b,
+        type: 3}
+    - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215119150226470895, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: maxHP
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: description
+      value: Spawns a Tunnel Shark in an adjacent tile whenever a player unit is
+        damaged.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: displayName
+      value: Shark Burrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261383732389681203, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: challengeRating
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d28da550a5fdc0458224d2b3be8ad66, type: 3}
+--- !u!1 &3823956966424869125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+    type: 3}
+  m_PrefabInstance: {fileID: 4306966984323521414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2679527008744717267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+    type: 3}
+  m_PrefabInstance: {fileID: 4306966984323521414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823956966424869125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0752e1ba5e6394fb724aef05207904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

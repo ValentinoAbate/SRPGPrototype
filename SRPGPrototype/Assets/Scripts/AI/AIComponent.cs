@@ -271,7 +271,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
     /// Checks for positions in range of the given standard action that will hit at least one target unit
     /// returns the first viable target position found, else BattleGrid.OutOfBounds
     /// </summary>
-    protected Vector2Int GetFirstValidTargetPosInRange<Target>(BattleGrid grid, Unit self, Action standardAction, IEnumerable<Target> targetUnits) where Target : Unit
+    public static Vector2Int GetFirstValidTargetPosInRange<Target>(BattleGrid grid, Unit self, Action standardAction, IEnumerable<Target> targetUnits) where Target : Unit
     {
         foreach (var pos in standardAction.GetRange(grid, self.Pos, self))
         {
@@ -330,7 +330,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return BattleGrid.OutOfBounds;
     }
 
-    protected Vector2Int ChooseRandomEmptyTargetPosition(BattleGrid grid, Unit self, Action standardAction)
+    public static Vector2Int ChooseRandomEmptyTargetPosition(BattleGrid grid, Unit self, Action standardAction)
     {
         var positions = new List<Vector2Int>();
         foreach (var pos in standardAction.GetRange(grid, self.Pos, self))

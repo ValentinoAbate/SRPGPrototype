@@ -131,6 +131,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         {
             HP -= damage;
             OnDamagedFn?.Invoke(grid, this, source, damage);
+            EncounterEventManager.main.OnUnitDamaged?.Invoke(grid, this, source, amount);
         }
     }
 
