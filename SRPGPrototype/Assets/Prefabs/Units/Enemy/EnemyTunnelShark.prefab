@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2770937131309061819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019457843170371136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 13774abe8a1c36d488b340a7b94605e5,
+    type: 3}
+  standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
+    type: 3}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
+--- !u!1001 &68064988789851331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyTunnelShark
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: maxAP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: maxHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Adjacent/Tunnel (move under other units in a line). Attack: Adjacent
+        (2 damage).'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: displayName
+      value: Tunnel Shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: priorityLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b47b6836eeb86bc4b8df02ae288b55f1,
+        type: 3}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: challengeRating
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
+--- !u!1 &1019457843170371136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
+    type: 3}
+  m_PrefabInstance: {fileID: 68064988789851331}
+  m_PrefabAsset: {fileID: 0}
