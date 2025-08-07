@@ -296,6 +296,18 @@ namespace Grid
             }
         }
 
+        public Vector2Int FirstEmptyPositionInDirection(Vector2Int startPos, Vector2Int direction)
+        {
+            Vector2Int pos = startPos + direction;
+            while (IsLegal(pos))
+            {
+                if (IsEmpty(pos))
+                    return pos;
+                pos += direction;
+            }
+            return OutOfBounds;
+        }
+
         public IEnumerator<Obj> GetEnumerator()
         {
             return FieldObjects();
