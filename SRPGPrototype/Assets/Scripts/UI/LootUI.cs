@@ -30,10 +30,10 @@ public class LootUI : MonoBehaviour
 
     public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, IEnumerable<MoneyData> moneyData, UnityAction onLootClose)
     {
-        // Setup Program Draws
-        SetupDraws(inv, programDraws, programDrawButtonPrefab, ShowProgDraw);
         // Setup ShellDraws
         SetupDraws(inv, shellDraws, shellDrawButtonPrefab, ShowShellDraw);
+        // Setup Program Draws
+        SetupDraws(inv, programDraws, programDrawButtonPrefab, ShowProgDraw);
         // Setup Money
         foreach(var data in moneyData)
         {
