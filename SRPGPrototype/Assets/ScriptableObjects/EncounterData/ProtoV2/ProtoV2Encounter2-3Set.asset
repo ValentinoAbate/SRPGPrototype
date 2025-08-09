@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1759a614f6702b1478a2e7955aea0727, type: 2}
   - {fileID: 11400000, guid: 5dd6d561ee70f504d90ea5aab3bb54bd, type: 2}
   generatorWeights:
-  - 4
+  - 7
   - 1
   - 2
