@@ -12,12 +12,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d01410949c88d046922b4ab96605bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardAction: {fileID: 4415060608083833614, guid: eae216a5cc6fee4429f2aff40e24a671,
+  readyOption: 2
+  standardAction: {fileID: 4415060608083833614, guid: 878b84cdc14a21047b5c5001e0420378,
     type: 3}
-  animator: {fileID: 0}
+  targetEmptySpaces: 1
+  attackAction: {fileID: 0}
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
+    type: 3}
+  animator: {fileID: 3702139463172725037}
+  targetTeams: 
+  runAwayFromTeams: 02000000
   upgradedActions:
   - {fileID: 4415060608083833614, guid: 3ad2da867a524a9458d49606d0b9df95, type: 3}
   - {fileID: 4415060608083833614, guid: b5d17faa669d75e4e9cf8bb148548cbf, type: 3}
+--- !u!1001 &3031321163979547980
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8539148379705171298}
+    m_Modifications:
+    - target: {fileID: 1609909539236910889, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellParticlesUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306499610727292763, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547915682959559031, guid: 20fb990aa15b6784eb05a878ca039bc4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20fb990aa15b6784eb05a878ca039bc4, type: 3}
+--- !u!95 &3702139463172725037 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1833473794199682145, guid: 20fb990aa15b6784eb05a878ca039bc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 3031321163979547980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3469278218771208966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,19 +119,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: maxAP
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
       propertyPath: maxHP
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent. Attack: Ranged (2 damage). Summons reinforcements every
-        other turn. Reinforcment difficulty increases every time another Sixer dies.'
+      value: 'Move: Adjacent Attack: None. Summons reinforcements every turn. Reinforcement
+        difficulty increases every time another Sixer dies.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -152,6 +234,12 @@ PrefabInstance:
 --- !u!1 &4535508650336827781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
+    type: 3}
+  m_PrefabInstance: {fileID: 3469278218771208966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8539148379705171298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5090329943644456548, guid: 7ad1ec7a0493cc149835e689342fc184,
     type: 3}
   m_PrefabInstance: {fileID: 3469278218771208966}
   m_PrefabAsset: {fileID: 0}

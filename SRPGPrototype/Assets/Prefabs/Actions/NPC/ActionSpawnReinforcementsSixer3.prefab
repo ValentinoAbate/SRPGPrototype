@@ -16,7 +16,7 @@ MonoBehaviour:
   standaloneSubActionOptions: 0
   affectUser: 0
   unitPrefabs:
-  - {fileID: 4535508650336827781, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
+  - {fileID: 4535508650336827781, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
   - {fileID: 4535508650336827781, guid: 5d54f3a92870535428d5215ffd20ca46, type: 3}
   - {fileID: 4535508650336827781, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}
   - {fileID: 4535508650336827781, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
@@ -154,11 +154,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
-      propertyPath: slowdown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
       propertyPath: description
       value: Spawn reinforments in an adjacent tile.
       objectReference: {fileID: 0}
@@ -171,11 +166,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxUsesPerTurn
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
-        type: 3}
-      propertyPath: slowdownInterval
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}

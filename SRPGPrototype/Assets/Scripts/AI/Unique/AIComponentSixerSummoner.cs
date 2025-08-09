@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIComponentSixerSummoner : AIComponentSpawner
+public class AIComponentSixerSummoner : AIComponentMage
 {
 
     [SerializeField] private Action[] upgradedActions;

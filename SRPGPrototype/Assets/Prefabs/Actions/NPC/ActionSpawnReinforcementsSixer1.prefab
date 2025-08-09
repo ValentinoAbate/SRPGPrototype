@@ -23,12 +23,12 @@ MonoBehaviour:
   - {fileID: 4535508650336827781, guid: 2f062fba53f11ec43aa795d48aaf0161, type: 3}
   - {fileID: 4535508650336827781, guid: 4aa3ba0bfced9b343807fc0d10ed0672, type: 3}
   weights:
-  - 5
-  - 5
-  - 10
-  - 10
-  - 3
-  - 3
+  - 20
+  - 20
+  - 1
+  - 1
+  - 1
+  - 1
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 4515749849844402367, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_Name
-      value: ActionSpawnReinforcementsSixer2
+      value: ActionSpawnReinforcementsSixer1
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}

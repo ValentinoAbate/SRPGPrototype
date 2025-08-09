@@ -12,7 +12,7 @@ public class AIComponentMage : AIComponent<AIUnit>
         ReadyEveryTurn,
     }
     [SerializeField] private ReadyOption readyOption;
-
+    protected virtual Action StandardAction => standardAction;
     [SerializeField] private Action standardAction;
     [SerializeField] private bool targetEmptySpaces;
     [SerializeField] private Action attackAction;
@@ -27,7 +27,7 @@ public class AIComponentMage : AIComponent<AIUnit>
     {
         get
         {
-            yield return standardAction;
+            yield return StandardAction;
             yield return moveAction;
             if(attackAction != null)
             {
@@ -68,29 +68,29 @@ public class AIComponentMage : AIComponent<AIUnit>
         {
 
             // If action targets self, end early
-            if (standardAction.SubActions[0].targetPattern.patternType == TargetPattern.Type.Self)
+            if (StandardAction.SubActions[0].targetPattern.patternType == TargetPattern.Type.Self)
             {
                 SetCastReady(false);
-                yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
+                yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
                 CheckReadyEveryTurn();
             }
             else if (targetEmptySpaces)
             {
                 // Check for targetspace in range
-                while (!self.Dead && self.CanUseAction(standardAction))
+                while (!self.Dead && self.CanUseAction(StandardAction))
                 {
-                    var tPos = ChooseRandomEmptyTargetPosition(grid, self, standardAction);
+                    var tPos = ChooseRandomEmptyTargetPosition(grid, self, StandardAction);
                     if (tPos == BattleGrid.OutOfBounds)
                         break;
                     SetCastReady(false);
+                    StandardAction.UseAll(grid, self, tPos);
                     yield return attackDelay;
-                    standardAction.UseAll(grid, self, tPos);
                 }
                 CheckReadyEveryTurn();
             }
             else
             {
-                var attackRoutine = AttackFirstUnitInRange(grid, self, standardAction, IsUnitTarget);
+                var attackRoutine = AttackFirstUnitInRange(grid, self, StandardAction, IsUnitTarget);
                 if (attackRoutine != null)
                 {
                     SetCastReady(false);
