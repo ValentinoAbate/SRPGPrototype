@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounterType: 0
   dimensions: {x: 6, y: 6}
-  targetDifficulty: 6
+  targetDifficulty: 5
   steps:
   - {fileID: 11400000, guid: a73ec06d034ba0a4ca92003ad7c991bd, type: 2}
   - {fileID: 11400000, guid: 857f9c7552a914e42b53abf7b4bb4a27, type: 2}
@@ -26,6 +26,7 @@ MonoBehaviour:
     nameOverride: 
     dimensions: {x: 0, y: 0}
     units: []
+    ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0

@@ -25,6 +25,7 @@ MonoBehaviour:
     nameOverride: 
     dimensions: {x: 0, y: 0}
     units: []
+    ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0

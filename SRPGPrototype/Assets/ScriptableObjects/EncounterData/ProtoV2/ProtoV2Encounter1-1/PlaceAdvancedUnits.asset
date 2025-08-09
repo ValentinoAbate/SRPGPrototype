@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numUnits: 0100000002000000
   numUnitsWeights:
+  - 9
   - 1
-  - 4
   units:
   - {fileID: 4568531750757968395, guid: 777def6e970d8434a899e1c0d30d4102, type: 3}
   - {fileID: 4568531750757968395, guid: 5dec7e8eaea4b4f4795b20e339cfd4a7, type: 3}

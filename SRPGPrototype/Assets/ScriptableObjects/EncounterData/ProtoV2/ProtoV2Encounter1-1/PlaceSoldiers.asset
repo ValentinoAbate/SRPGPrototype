@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7f699368228bf4dbaea1a3429ed861, type: 3}
   m_Name: PlaceSoldiers
   m_EditorClassIdentifier: 
-  numUnits: 03000000
-  numUnitsWeights: []
+  numUnits: 0300000004000000
+  numUnitsWeights:
+  - 9
+  - 1
   units:
   - {fileID: 4568531750757968395, guid: edda42c51848ea14d8d93233192b5a9c, type: 3}
   unitChoiceWeights: []
