@@ -102,8 +102,8 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Summons a controllable turret with a ranged or diagonally adjacent attack
-        and 4 HP into an adjacent tile.
+      value: Summons a controllable 5 HP 2 AP turret with a ranged or diagonally
+        adjacent attack into an adjacent tile.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
