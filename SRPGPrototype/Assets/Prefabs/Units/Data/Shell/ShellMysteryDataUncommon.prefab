@@ -14,11 +14,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1443466573746710886, guid: c21a492318cf85f4185711ef57bb24d9,
         type: 3}
-      propertyPath: maxHP
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1443466573746710886, guid: c21a492318cf85f4185711ef57bb24d9,
-        type: 3}
       propertyPath: quality
       value: 1
       objectReference: {fileID: 0}
