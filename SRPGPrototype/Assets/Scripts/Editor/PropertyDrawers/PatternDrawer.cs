@@ -67,6 +67,7 @@ public class PatternDrawer : PropertyDrawer
             for (int x = 0; x < values.GetLength(0); ++x)
             {
                 values[x, y] = EditorGUI.Toggle(checkRect, values[x, y]);
+                TryShowCheckboxContextMenu(checkRect, x, y);
                 checkRect.x += checkWidth;
             }
             checkRect.y += lineHeight + 5;
@@ -115,5 +116,21 @@ public class PatternDrawer : PropertyDrawer
             }
         }
 
+    }
+
+    private void TryShowCheckboxContextMenu(Rect rect, int x, int y)
+    {
+        Event current = Event.current;
+        if (!rect.Contains(current.mousePosition) || current.type != EventType.ContextClick)
+            return;
+        // Show a custom dropdown menu that allows the user to copy the grid coordinates
+        var menu = new GenericMenu();
+        void CopyCoordinates()
+        {
+            GUIUtility.systemCopyBuffer = $"Vector2({x},{y})";
+        }
+        menu.AddItem(new GUIContent("Copy Coordinates"), false, CopyCoordinates);
+        menu.ShowAsContext();
+        current.Use();
     }
 }
