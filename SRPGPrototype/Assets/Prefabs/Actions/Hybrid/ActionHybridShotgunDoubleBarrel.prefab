@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: numSpaces
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1884827043973909256, guid: 8c68e8feb1cb4f946929839df886595e,
+        type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 8c68e8feb1cb4f946929839df886595e,
         type: 3}
       propertyPath: description
