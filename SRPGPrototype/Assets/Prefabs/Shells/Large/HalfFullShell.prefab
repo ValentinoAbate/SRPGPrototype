@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: e43a58370bf5dcf40ba2febacf61e524,
         type: 3}
       propertyPath: description
-      value: A Large Shell with less Max AP, but its space is in one block. Needs
-        more Capacity to compile at higher levels.
+      value: A Large open Shell with lower Base Repair and lower Max HP. Needs more
+        Capacity to compile at higher levels.
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: e43a58370bf5dcf40ba2febacf61e524,
         type: 3}
@@ -32,19 +32,19 @@ PrefabInstance:
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[0].program
       value: 
-      objectReference: {fileID: 2357944613507835519, guid: 455aab91e6664a64d8bc6715ee298cb3,
+      objectReference: {fileID: 2357944613507835519, guid: afc20c517a8ce674e80b20fa62f0742e,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: e43a58370bf5dcf40ba2febacf61e524,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[1].program
       value: 
-      objectReference: {fileID: 2357944613507835519, guid: 57c1a31c0a488714fb4f4bfd0cf79132,
+      objectReference: {fileID: 2357944613507835519, guid: 9218973466f54044fb546272d8c03191,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: e43a58370bf5dcf40ba2febacf61e524,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[2].program
       value: 
-      objectReference: {fileID: 2357944613507835519, guid: 4a4ac3e95a600764899690fe38e9aaa6,
+      objectReference: {fileID: 2357944613507835519, guid: facd11e0f6694a444930ba3af72b52d8,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: e43a58370bf5dcf40ba2febacf61e524,
         type: 3}
