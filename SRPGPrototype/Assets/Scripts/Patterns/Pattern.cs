@@ -6,12 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public class Pattern
 {
-    private static readonly Vector2Int autoCenter = new Vector2Int(-1, 1);
     public ISet<Vector2Int> OffsetsSet => new HashSet<Vector2Int>(Offsets);
-    public IEnumerable<Vector2Int> Offsets => patternOffsets;
+    public IReadOnlyList<Vector2Int> Offsets => patternOffsets;
     [SerializeField]
     private List<Vector2Int> patternOffsets = new List<Vector2Int>();
-    public Vector2Int Dimensions => dimensions;
+    public Vector2Int Dimensions
+    {
+        get => dimensions;
+        set => dimensions = value;
+    }
     [SerializeField]
     private Vector2Int dimensions = new Vector2Int(1, 1);
 
@@ -26,5 +29,10 @@ public class Pattern
     public void AddOffset(Vector2Int offset)
     {
         patternOffsets.Add(offset);
+    }
+
+    public void AddOffsets(IEnumerable<Vector2Int> offsets)
+    {
+        patternOffsets.AddRange(offsets);
     }
 }

@@ -38,7 +38,12 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 
     public Program Program { get; set; }
 
-    public Type ActionType => type;
+    public Type ActionType
+    {
+        get => type;
+        set => type = value;
+    }
+
     [SerializeField] Type type = Type.Weapon;
 
     public int APCost 
@@ -55,15 +60,34 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             return baseAp + Slowdown * (usage / SlowdownInterval);
         }
     }
+    public int BaseAPCost
+    {
+        get => baseAp;
+        set => baseAp = value;
+    }
     [SerializeField] private int baseAp = 1;
 
-    public int Slowdown => slowdown;
+    public int Slowdown
+    {
+        get => slowdown;
+        set => slowdown = value;
+    }
+
     [SerializeField] private int slowdown = 1;
 
-    public int SlowdownInterval => slowdownInterval;
+    public int SlowdownInterval
+    {
+        get => slowdownInterval;
+        set => slowdownInterval = value;
+    }
+
     [SerializeField] private int slowdownInterval = 1;
 
-    public Trigger SlowdownReset => slowdownReset;
+    public Trigger SlowdownReset
+    {
+        get => slowdownReset;
+        set => slowdownReset = value;
+    }
     [SerializeField] private Trigger slowdownReset = Trigger.TurnStart;
 
     public int TimesUsed { get; private set; } = 0;
@@ -75,10 +99,15 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public int TimesUsedThisTurn { get; private set; } = 0;
     public int FreeUsesThisTurn { get; private set; } = 0;
 
-    public string DisplayName => displayName;
+    public string DisplayName
+    {
+        get => displayName;
+        set => displayName = value;
+    }
     [SerializeField] private string displayName = string.Empty;
 
     public string GetDescription(Unit user) => TextMacros.ApplyActionTextMacros(description, this, user);
+    public string SetDescription(string newDescription) => description = newDescription;
     [SerializeField] [TextArea(1, 3)] private string description = string.Empty;
 
     public string ActionTypeText
@@ -123,6 +152,14 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     }
 
     public IReadOnlyList<SubAction> SubActions => subActions;
+    public void SetSubActions(IReadOnlyList<SubAction> newSubActions)
+    {
+        subActions = new SubAction[newSubActions.Count];
+        for (int i = 0; i < newSubActions.Count; i++)
+        {
+            subActions[i] = newSubActions[i];
+        }
+    }
     [SerializeField] private SubAction[] subActions;
 
     public IEnumerable<Vector2Int> GetRange(BattleGrid grid, Vector2Int origin, Unit user, int subActionIndex = 0)

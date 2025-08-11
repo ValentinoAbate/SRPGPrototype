@@ -80,9 +80,25 @@ public class Program : GridObject, ILootable
     }
     public ProgramModifier[] ModifierEffects => IsUpgraded ? Upgrade.ModifierEffects : modifiers;
     [SerializeField] private ProgramModifier[] modifiers;
+    public void SetModifiers(IReadOnlyList<ProgramModifier> newModifiers)
+    {
+        modifiers = new ProgramModifier[newModifiers.Count];
+        for (int i = 0; i < newModifiers.Count; i++)
+        {
+            modifiers[i] = newModifiers[i];
+        }
+    }
     // Effect Properties
     public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;
     [SerializeField] private ProgramEffect[] effects;
+    public void SetEffects(IReadOnlyList<ProgramEffect> newEffects)
+    {
+        effects = new ProgramEffect[newEffects.Count];
+        for (int i = 0; i < newEffects.Count; i++)
+        {
+            effects[i] = newEffects[i];
+        }
+    }
     // Trigger / upgrade properties
     public ProgramUpgrade Upgrade { get; set; }
     public bool IsUpgraded => Upgrade != null;
@@ -94,6 +110,7 @@ public class Program : GridObject, ILootable
 
     public string Description => IsUpgraded ? Upgrade.Description : description;
     [SerializeField] [TextArea(2,4)] private string description = string.Empty;
+    public string SetDescription(string newDescription) => description = newDescription;
 
     public Rarity Rarity => rarity;
     [SerializeField] Rarity rarity = Rarity.Common;

@@ -7,7 +7,7 @@ public class ProgramAttributeTransient : ProgramAttribute
     public int UsesLeft => MaxUses - Uses;
     public int MaxUses { get => maxUses; set => maxUses = value; }
     [SerializeField] private int maxUses = 3;
-    public int Uses { get; private set; } = 0;
+    public int Uses { get; set; } = 0;
 
     public void Use(BattleGrid grid, Unit user)
     {

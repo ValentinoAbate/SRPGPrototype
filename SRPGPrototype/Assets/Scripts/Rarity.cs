@@ -9,4 +9,5 @@
     PreInstall,
     Debug,
     SoulCore,
+    Fusion,
 }
