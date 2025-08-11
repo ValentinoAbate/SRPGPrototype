@@ -12,23 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAPModifier: 4
+  maxAPModifier: 3
   maxHpModifier: 10
   repairModifier: 2
---- !u!114 &3701097549704910457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2438211451447782650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8c9f4291edf324d97b364714df1310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributeFilterMode: 1
-  attributes: 3
 --- !u!114 &5799343838765205231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +27,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dce8a1a781eab44abb06a0b6b15e655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8924513180913120112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438211451447782650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db92b9044800682408a8fc3ed410ac22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: 0
+  number:
+    min: -2147483648
+    max: 2147483647
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    constant: -2
+    type: 0
+  abilityName: -2 HP On Phase End
 --- !u!1001 &6069385401371376052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,9 +74,9 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: "Installing programs that give actions and do not have the Transient,
-        or Fixed attributes or adjacent programs of the same color will cause a compile
-        error. \nGives +4 Max AP, +10 Max HP, and +2 Base Repair"
+      value: "Deals 2 damage to you at the end of the player phase.\nInstalling adjacent
+        programs of the same color will cause a compile error. \nGives +3 Max AP,
+        +10 Max HP, and +2 Base Repair"
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -89,16 +97,16 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[1]
       value: 
-      objectReference: {fileID: 3701097549704910457}
+      objectReference: {fileID: 5799343838765205231}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: effects.Array.data[2]
       value: 
-      objectReference: {fileID: 5799343838765205231}
+      objectReference: {fileID: 8924513180913120112}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramRestrictionFadingCore
+      value: ProgramFadingCore
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}

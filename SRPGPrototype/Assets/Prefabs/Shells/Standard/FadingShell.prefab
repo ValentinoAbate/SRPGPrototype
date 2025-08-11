@@ -15,8 +15,8 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: description
-      value: Fading, yet here. Can only use Transient, and Fixed actions but has
-        high Max AP and powerful abilities.
+      value: Fading, yet here. Can keep transient actions from degrading but damages
+        you on phase end.
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -38,19 +38,19 @@ PrefabInstance:
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[1].program
       value: 
-      objectReference: {fileID: 3015378823072566748, guid: 0b095d790718a494cb040183f2fbde9a,
+      objectReference: {fileID: 2560143424604166460, guid: 4809e1dd997cfd44f9fd6d6d7ca6a55e,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[2].program
       value: 
-      objectReference: {fileID: 7533046481697725073, guid: c679d4f79eecd564a9d2c2c2ecd48dc0,
+      objectReference: {fileID: 3015378823072566748, guid: 1224bb6150f7d424abd8f1462056412d,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[3].program
       value: 
-      objectReference: {fileID: 2560143424604166460, guid: 4809e1dd997cfd44f9fd6d6d7ca6a55e,
+      objectReference: {fileID: 3015378823072566748, guid: 1224bb6150f7d424abd8f1462056412d,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -70,18 +70,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
+      propertyPath: preInstalledPrograms.Array.data[1].location.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
       propertyPath: preInstalledPrograms.Array.data[1].location.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[2].location.x
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[2].location.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -91,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[3].location.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
