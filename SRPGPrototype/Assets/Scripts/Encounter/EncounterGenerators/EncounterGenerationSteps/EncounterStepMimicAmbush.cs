@@ -16,8 +16,8 @@ public class EncounterStepMimicAmbush : EncounterGeneratorStep
         {
             alreadyTaken.Add(entry.pos);
         }
-        var mimicTargets = new Dictionary<Vector2Int, EncounterUnitMimicData>(encounter.units.Count - alreadyTaken.Count);
-        foreach(var entry in encounter.units)
+        var mimicTargets = new Dictionary<Vector2Int, EncounterUnitMimicData>(encounter.Units.Count - alreadyTaken.Count);
+        foreach(var entry in encounter.Units)
         {
             var mimicComponent = entry.unit.GetComponent<EncounterUnitMimicData>();
             if (mimicComponent == null)

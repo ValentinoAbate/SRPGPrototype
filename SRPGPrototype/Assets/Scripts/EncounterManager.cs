@@ -35,7 +35,7 @@ public class EncounterManager : MonoBehaviour
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
         grid.CenterAtPosition(BattleGrid.DefaultCenter);
         // Instantiate and add units to the grid
-        var units = InitializeUnits(encounter.ambushUnits, encounter.units);
+        var units = InitializeUnits(encounter.ambushUnits, encounter.Units);
         // Instantiate spawn position objects
         var spawnPositionObjects = new List<GameObject>(encounter.spawnPositions.Count);
         foreach(var pos in encounter.spawnPositions)

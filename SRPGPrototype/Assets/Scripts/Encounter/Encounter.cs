@@ -28,12 +28,30 @@ public class Encounter
 
     public string nameOverride = string.Empty;
     public Vector2Int dimensions;
-    public List<UnitEntry> units = new List<UnitEntry>();
+    public IReadOnlyList<UnitEntry> Units => units;
+    [SerializeField] private List<UnitEntry> units = new List<UnitEntry>();
     public List<UnitEntry> ambushUnits = new List<UnitEntry>();
     public List<Vector2Int> spawnPositions = new List<Vector2Int>();
     public bool giveCompletionMoney;
     public int baseCompletionMoney;
     public int completionMoneyVariance;
+
+    private Dictionary<Vector2Int, Unit> unitDict = new Dictionary<Vector2Int, Unit>();
+
+    public void AddUnit(Unit unit, Vector2Int pos)
+    {
+        AddUnit(new UnitEntry(unit, pos));
+    }
+    public void AddUnit(UnitEntry entry)
+    {
+        units.Add(entry);
+        unitDict.Add(entry.pos, entry.unit);
+    }
+    public bool HasUnitAt(Vector2Int pos) => unitDict.ContainsKey(pos);
+    public bool TryGetUnit(Vector2Int pos, out Unit u)
+    {
+        return unitDict.TryGetValue(pos, out u);
+    }
 
     public LootUI.MoneyData CompletionMoneyData()
     {

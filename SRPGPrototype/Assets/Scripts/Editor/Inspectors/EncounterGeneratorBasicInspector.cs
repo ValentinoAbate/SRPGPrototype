@@ -19,7 +19,7 @@ public class EncounterGeneratorBasicInspector : Editor
             {
                 if(data.seed != null)
                 {
-                    sum += data.seed.units.Where((u) => u.unit is IEncounterUnit)
+                    sum += data.seed.Units.Where((u) => u.unit is IEncounterUnit)
                                           .Sum((u) => (u.unit as IEncounterUnit).EncounterData.challengeRating);
                 }
                 int numEnemies = RandomU.instance.Choice(data.numEnemies, data.numEnemiesWeights);

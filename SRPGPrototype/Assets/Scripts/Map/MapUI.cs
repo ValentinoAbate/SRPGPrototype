@@ -136,7 +136,7 @@ public class MapUI : MonoBehaviour
 
     private void InitializePreviewObjects(Encounter e)
     {
-        foreach (var entry in e.units)
+        foreach (var entry in e.Units)
         {
             var unit = Instantiate(entry.unit, previewObjContainer).GetComponent<Unit>();
             previewGrid.Add(entry.pos, unit);

@@ -49,9 +49,9 @@ public abstract class EncounterGenerator : ScriptableObject
         // Initialize encounter values from seed if applicable
         if (seed != null)
         {
-            var outOfBoundsUnits = new List<Encounter.UnitEntry>(seed.units.Count);
+            var outOfBoundsUnits = new List<Encounter.UnitEntry>(seed.Units.Count);
             // Place seed units
-            foreach (var entry in seed.units)
+            foreach (var entry in seed.Units)
             {
                 // Position is invalid, generate a proper position later
                 if (!positions.Contains(entry.pos))
@@ -59,7 +59,7 @@ public abstract class EncounterGenerator : ScriptableObject
                     outOfBoundsUnits.Add(entry);
                     continue;
                 }
-                encounter.units.Add(entry);
+                encounter.AddUnit(entry);
                 positions.Remove(entry.pos);
             }
             // Process seed spawn positions
@@ -74,7 +74,7 @@ public abstract class EncounterGenerator : ScriptableObject
                 if (positions.Count <= 0)
                     break;
                 Vector2Int pos = RandomU.instance.Choice(positions);
-                encounter.units.Add(new Encounter.UnitEntry(entry.unit, pos));
+                encounter.AddUnit(entry.unit, pos);
                 positions.Remove(pos);
             }
             if (!string.IsNullOrEmpty(seed.nameOverride))

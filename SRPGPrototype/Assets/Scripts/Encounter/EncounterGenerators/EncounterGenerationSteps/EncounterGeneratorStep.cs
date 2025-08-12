@@ -72,7 +72,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
     public static void AddUnit(Unit unit, Vector2Int pos, ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
     {
         validPositions.Remove(pos);
-        encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+        encounter.AddUnit(unit, pos);
     }
 
     public static void PlaceUnitsWeighted<T>(int number, WeightedSet<T> units, NextPosWeighting nextPos, Encounter encounter, ref HashSet<Vector2Int> validPositions, System.Action<WeightedSet<T>, T> unitSetAdjustmentFn = null) where T : Unit
@@ -84,7 +84,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
             var unit = RandomU.instance.Choice(unitSet);
             var pos = RandomU.instance.Choice(new WeightedSet<Vector2Int>(validPositions, PosWeight));
             validPositions.Remove(pos);
-            encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+            encounter.AddUnit(unit, pos);
             if(unitSetAdjustmentFn != null)
             {
                 unitSetAdjustmentFn.Invoke(unitSet, unit);
@@ -101,7 +101,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
             var unit = RandomU.instance.Choice(units);
             var pos = RandomU.instance.Choice(validPositions);
             validPositions.Remove(pos);
-            encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+            encounter.AddUnit(unit, pos);
         }
     }
 
@@ -110,7 +110,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
         float weight = 1;
         foreach (var p in pos.Adjacent())
         {
-            if (p.IsBoundedBy(encounter.dimensions) && encounter.units.FindIndex((e) => e.pos == p) != -1)
+            if (p.IsBoundedBy(encounter.dimensions) && encounter.HasUnitAt(p))
             {
                 weight *= 2;
             }
@@ -123,7 +123,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
         float weight = 1;
         foreach (var p in pos.Adjacent())
         {
-            if (p.IsBoundedBy(encounter.dimensions) && encounter.units.FindIndex((e) => e.pos == p) == -1)
+            if (p.IsBoundedBy(encounter.dimensions) && !encounter.HasUnitAt(p))
             {
                 weight *= 2;
             }
@@ -208,7 +208,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
         }
         var unit = RandomU.instance.Choice(lootUnits.LootUnitTable[category][quality]);
         var pos = RandomU.instance.Choice(validPositions);
-        encounter.units.Add(new Encounter.UnitEntry(unit, pos));
+        encounter.AddUnit(unit, pos);
         validPositions.Remove(pos);
     }
 
