@@ -20,8 +20,9 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
       propertyPath: description
-      value: 'Attack adjacent unit with Gamble: Success ({chance}) deal {dmg} damage
-        but reset to base damage / Failure increase damage by +7. '
+      value: 'Attack an adjacent or diagonally adjacent unit with Gamble: Success
+        ({chance}) deal {dmg} damage but reset to base damage / Failure increase
+        damage by +7. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
