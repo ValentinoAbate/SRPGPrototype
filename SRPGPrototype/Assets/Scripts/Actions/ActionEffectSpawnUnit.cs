@@ -6,12 +6,12 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
 {
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        if (!IsValidTarget(grid, action, sub, user, target, targetData))
+        if (!IsValidTargetInternal(grid, action, sub, user, target, targetData))
             return;
         SpawnUnit(grid, targetData.targetPos);
     }
 
-    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         return grid.IsLegal(targetData.targetPos) && (grid.IsEmpty(targetData.targetPos) || grid.Get(targetData.targetPos).Dead);
     }

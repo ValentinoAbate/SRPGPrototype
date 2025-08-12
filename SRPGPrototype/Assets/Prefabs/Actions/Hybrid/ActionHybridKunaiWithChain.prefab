@@ -15,6 +15,7 @@ MonoBehaviour:
   standaloneSubActionType: 9
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   targetStat: 0
   damage: 2
 --- !u!114 &8905086654610292599
@@ -32,6 +33,7 @@ MonoBehaviour:
   standaloneSubActionType: 7
   standaloneSubActionOptions: 1
   affectUser: 1
+  ignoreInValidRangeCalcs: 1
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0

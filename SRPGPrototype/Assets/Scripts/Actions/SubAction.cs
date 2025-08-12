@@ -106,6 +106,8 @@ public class SubAction : MonoBehaviour
             GetTargetsAndTargetPositions(grid, user, pos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
             foreach(var effect in effects)
             {
+                if (effect.IgnoreInValidRangeCalcs)
+                    continue;
                 if(IsValidRangePosForEffect(effect, grid, action, user, pos, targets, emptyTargetPositions, targetPositions))
                 {
                     yield return pos;

@@ -15,6 +15,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 1
   effect: {fileID: 1394482864294072678}
   multiplier: 2
 --- !u!1001 &333117625485856242

@@ -12,7 +12,7 @@ public class ActionEffectRepair : ActionEffect
         }
     }
 
-    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         return target != null;
     }

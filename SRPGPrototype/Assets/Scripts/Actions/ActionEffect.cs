@@ -20,10 +20,16 @@ public abstract class ActionEffect : MonoBehaviour
     [SerializeField] SubAction.Options standaloneSubActionOptions;
     public bool AffectUser => affectUser;
     [SerializeField] private bool affectUser = false;
+    public bool IgnoreInValidRangeCalcs => ignoreInValidRangeCalcs;
+    [SerializeField] private bool ignoreInValidRangeCalcs = false;
 
     public virtual void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions) { }
     public abstract void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData);
-    public abstract bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData);
+    public bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return !ignoreInValidRangeCalcs && IsValidTargetInternal(grid, action, sub, user, target, targetData);
+    }
+    protected abstract bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData);
 
     public struct PositionData
     {

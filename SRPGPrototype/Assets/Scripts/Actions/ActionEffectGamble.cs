@@ -66,7 +66,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
         }
     }
 
-    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         foreach (var effect in successEffects)
         {

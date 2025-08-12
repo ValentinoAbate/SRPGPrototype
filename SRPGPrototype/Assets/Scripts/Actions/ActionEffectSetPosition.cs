@@ -11,7 +11,7 @@ public class ActionEffectSetPosition : ActionEffect
         grid.MoveAndSetWorldPos(target, targetData.selectedPos);
     }
 
-    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         return grid.IsLegalAndEmpty(targetData.selectedPos) && target != null && target.Movable;
     }

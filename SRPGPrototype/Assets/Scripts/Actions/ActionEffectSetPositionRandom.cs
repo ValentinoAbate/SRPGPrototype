@@ -13,7 +13,7 @@ public class ActionEffectSetPositionRandom : ActionEffect
         grid.MoveAndSetWorldPos(target, RandomU.instance.Choice(emptySpaces));
     }
 
-    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         return target != null && target.Movable && grid.EmptyPositions.Any();
     }

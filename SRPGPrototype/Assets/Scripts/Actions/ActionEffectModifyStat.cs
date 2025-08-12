@@ -25,7 +25,7 @@ public class ActionEffectModifyStat : ActionEffect, IDamagingActionEffect
         target.ModifyStat(grid, stat, CalculateValue(grid, action, user, target, targetData), user);
     }
 
-    public override bool IsValidTarget(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         return target != null;
     }
