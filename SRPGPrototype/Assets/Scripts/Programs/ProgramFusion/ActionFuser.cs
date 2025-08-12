@@ -19,7 +19,7 @@ public class ActionFuser : MonoBehaviour
         var subActions = new List<SubAction>();
         int sumBaseAp = 0;
         var highestSlowdownType = Action.Trigger.TurnStart;
-        float sumSlowdown = 0;
+        int sumSlowdown = 0;
         int slowdownCount = 0;
         for(int i = 0; i < actions.Count; ++i)
         {
@@ -53,7 +53,7 @@ public class ActionFuser : MonoBehaviour
         fusedAction.SetSubActions(subActions);
         fusedAction.BaseAPCost = System.Math.Max(0, sumBaseAp - 1);
         fusedAction.SlowdownReset = highestSlowdownType;
-        fusedAction.SlowdownInterval = slowdownCount > 0 ? (int)System.Math.Round(sumSlowdown / slowdownCount, System.MidpointRounding.AwayFromZero) : 0; 
+        fusedAction.SlowdownInterval = slowdownCount > 0 ? sumSlowdown / slowdownCount : 0; 
         return fusedAction;
     }
 }
