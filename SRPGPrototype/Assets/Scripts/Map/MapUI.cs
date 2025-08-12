@@ -36,7 +36,7 @@ public class MapUI : MonoBehaviour
         encounterChoices.Clear();
         encounterChoices.AddRange(PersistantData.main.mapManager.NextEncounters);
         InitializeChoiceButtons();
-        ShowChoiceUI();
+        ShowEncounterPreview(encounterChoices[0], 0);
         UIManager.main.HideAllDescriptionUI();
     }
 
