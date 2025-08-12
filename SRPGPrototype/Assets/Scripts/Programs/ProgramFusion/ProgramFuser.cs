@@ -1,3 +1,4 @@
+using RandomUtils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,7 +65,21 @@ public class ProgramFuser : MonoBehaviour
 
     private Pattern FusePatterns(Pattern p1, Pattern p2)
     {
-        int overlap = (p1.Offsets.Count + p2.Offsets.Count) / 3; // TODO, filter for overlap
-        return RandomUtils.RandomU.instance.Choice(PatternUtils.GetAllOverlaps(p1, p2));
+        int targetSize = Mathf.Max(p1.Offsets.Count, p2.Offsets.Count) + (Mathf.Min(p1.Offsets.Count, p2.Offsets.Count) / 2);
+        var allOptions = PatternUtils.GetAllOverlaps(p1, p2);
+        var choices = new WeightedSet<Pattern>(allOptions.Count);
+        foreach (var option in allOptions)
+        {
+            if (option.Offsets.Count == targetSize)
+                choices.Add(option);
+        }
+        if (choices.Count > 0)
+        {
+            return RandomU.instance.Choice(choices);
+        }
+        // Choose from all options, weighted by distance from targetSize (less is better)
+        float Weight(Pattern p) => 1 / Mathf.Pow(Mathf.Abs(targetSize - p.Offsets.Count), 3);
+        choices.AddRange(allOptions, Weight);
+        return RandomU.instance.Choice(choices);
     }
 }
