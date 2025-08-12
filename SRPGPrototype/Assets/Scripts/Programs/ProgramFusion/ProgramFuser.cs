@@ -10,40 +10,16 @@ public class ProgramFuser : MonoBehaviour
     public Program FusePrograms(Transform container, Program p1, Program p2)
     {
         var fusedProgram = Instantiate(programTemplate.gameObject, container.transform).GetComponent<Program>();
+        p1.transform.SetParent(fusedProgram.transform);
+        p2.transform.SetParent(fusedProgram.transform);
         fusedProgram.color = Program.Color.Yellow;
         int maxTransientUses = 0;
         int currentTransientUses = 0;
         var actions = new List<Action>();
         var effects = new List<ProgramEffect>(p1.Effects.Length + p2.Effects.Length);
         var modifiers = new List<ProgramModifier>(p1.ModifierEffects.Length + p2.ModifierEffects.Length);
-        // TODO: refactor to not be loop, just helper function or individual calculations
-        IEnumerable<Program> Programs()
-        {
-            yield return p1;
-            yield return p2;
-        }
-        foreach(var program in Programs())
-        {
-            fusedProgram.attributes |= program.attributes;
-            foreach(var effect in program.Effects)
-            {
-                if(effect is ProgramEffectAddAction addActionEffect)
-                {
-                    actions.Add(addActionEffect.action);
-                }
-                else
-                {
-                    effects.Add(effect);
-                }
-            }
-            modifiers.AddRange(program.ModifierEffects);
-            var trAttr = program.GetComponent<ProgramAttributeTransient>();
-            if(trAttr != null)
-            {
-                maxTransientUses += trAttr.MaxUses;
-                currentTransientUses += trAttr.Uses;
-            }
-        }
+        ProcessProgram(p1, ref actions, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
+        ProcessProgram(p2, ref actions, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
         if(actions.Count >= 1)
         {
             var fusedAction = fusedProgram.gameObject.AddComponent<ProgramEffectAddAction>();
@@ -56,11 +32,34 @@ public class ProgramFuser : MonoBehaviour
             transientAttribute.MaxUses = maxTransientUses;
             transientAttribute.Uses = currentTransientUses;
         }
+        fusedProgram.attributes = p1.attributes | p2.attributes;
         fusedProgram.SetEffects(effects);
         fusedProgram.SetModifiers(modifiers);
         fusedProgram.SetDescription($"{p1.DisplayName} + {p2.DisplayName}");
         fusedProgram.shape = FusePatterns(p1.shape, p2.shape);
         return fusedProgram;
+    }
+
+    private void ProcessProgram(Program program, ref List<Action> actions, ref List<ProgramEffect> effects, ref List<ProgramModifier> modifiers, ref int maxTransientUses, ref int currentTransientUses)
+    {
+        foreach (var effect in program.Effects)
+        {
+            if (effect is ProgramEffectAddAction addActionEffect)
+            {
+                actions.Add(addActionEffect.action);
+            }
+            else
+            {
+                effects.Add(effect);
+            }
+        }
+        modifiers.AddRange(program.ModifierEffects);
+        var trAttr = program.GetComponent<ProgramAttributeTransient>();
+        if (trAttr != null)
+        {
+            maxTransientUses += trAttr.MaxUses;
+            currentTransientUses += trAttr.Uses;
+        }
     }
 
     private Pattern FusePatterns(Pattern p1, Pattern p2)

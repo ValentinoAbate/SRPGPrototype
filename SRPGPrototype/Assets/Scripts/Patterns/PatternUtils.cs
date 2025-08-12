@@ -29,7 +29,7 @@ public static class PatternUtils
                 int xDim = System.Math.Max(p1.x + pattern1.Dimensions.x, p2.x + pattern2.Dimensions.x);
                 int yDim = System.Math.Max(p1.y + pattern1.Dimensions.y, p2.y + pattern2.Dimensions.y);
                 overlap.Dimensions = new Vector2Int(xDim, yDim);
-                overlaps.Add(pattern2);
+                overlaps.Add(overlap);
             }
         }
         return overlaps;
