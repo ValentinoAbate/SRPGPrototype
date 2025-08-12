@@ -24,6 +24,7 @@ public class LootUI : MonoBehaviour
     public Transform menuButtonContainer;
     public Transform programDrawButtonContainer;
     public Transform shellDrawButtonContainer;
+    [SerializeField] private Transform itemContainer;
     public Button exitButton;
 
     [SerializeField] private bool allowLootSkipping = true;
@@ -56,7 +57,7 @@ public class LootUI : MonoBehaviour
             var instantiatedDraw = new List<T>(draw.Count);
             foreach (var item in draw)
             {
-                instantiatedDraw.Add(Instantiate(item.gameObject, transform).GetComponent<T>());
+                instantiatedDraw.Add(Instantiate(item.gameObject, itemContainer).GetComponent<T>());
             }
             var button = Instantiate(buttonPrefab, menuButtonContainer).GetComponent<Button>();
             void OnClick()
@@ -82,6 +83,7 @@ public class LootUI : MonoBehaviour
         menuButtonContainer.DestroyAllChildren();
         programDrawButtonContainer.DestroyAllChildren();
         shellDrawButtonContainer.DestroyAllChildren();
+        itemContainer.DestroyAllChildren();
         uiCanvas.gameObject.SetActive(false);
     }
 
