@@ -82,7 +82,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
         for (int i = 0; i < number; ++i)
         {
             var unit = RandomU.instance.Choice(unitSet);
-            var pos = RandomU.instance.Choice(validPositions, validPositions.Select(PosWeight));
+            var pos = RandomU.instance.Choice(new WeightedSet<Vector2Int>(validPositions, PosWeight));
             validPositions.Remove(pos);
             encounter.units.Add(new Encounter.UnitEntry(unit, pos));
             if(unitSetAdjustmentFn != null)
