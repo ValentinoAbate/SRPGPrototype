@@ -15,8 +15,9 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   targetStat: 0
-  damage: 1
+  damage: 2
 --- !u!114 &-2521759367720194199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +87,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Any shell with a Soul Core installed is deployable as a unit during
-        an encounter, but cannot be equipped. Gives +1 damage to adjacent weapons.
+        an encounter, but cannot be equipped. Gives +2 damage to adjacent weapons.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
