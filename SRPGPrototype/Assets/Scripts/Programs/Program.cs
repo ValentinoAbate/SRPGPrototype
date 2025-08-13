@@ -97,6 +97,7 @@ public class Program : GridObject, ILootable
         for (int i = 0; i < newEffects.Count; i++)
         {
             effects[i] = newEffects[i];
+            effects[i].Initialize(this);
         }
     }
     // Trigger / upgrade properties
