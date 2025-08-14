@@ -38,7 +38,17 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Program[] startingPrograms = new Program[2];
     [SerializeField] private int startingMoney = 0;
 
-    public Shell[] DroneShells => Shells.Where((s) => s.HasSoulCore && s.Compiled).ToArray();
+    public IEnumerable<Shell> DroneShells
+    {
+        get
+        {
+            foreach(var shell in Shells)
+            {
+                if (shell.Compiled && shell.HasSoulCore)
+                    yield return shell;
+            }
+        }
+    }
     public IReadOnlyList<Shell> Shells => shells;
     public IReadOnlyList<Program> Programs => programs;
 

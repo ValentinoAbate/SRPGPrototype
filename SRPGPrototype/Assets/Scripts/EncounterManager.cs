@@ -65,7 +65,7 @@ public class EncounterManager : MonoBehaviour
 
     private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> ambushUnitEntries, IReadOnlyCollection<Encounter.UnitEntry> entries)
     {
-        var units = new List<Unit>(entries.Count + ambushUnitEntries.Count + PersistantData.main.inventory.DroneShells.Length + 1);
+        var units = new List<Unit>(entries.Count + ambushUnitEntries.Count + PersistantData.main.inventory.DroneShells.Count() + 1);
         foreach (var entry in ambushUnitEntries)
         {
             if (TrySpawnUnit(entry, out var unit))

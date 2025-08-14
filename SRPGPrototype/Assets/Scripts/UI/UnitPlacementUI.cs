@@ -31,13 +31,13 @@ public class UnitPlacementUI : MonoBehaviour
         unitsToSpawn.Clear();
         spawnedUnits.Clear();
         // Add drones (if applicable) to the spawn stack
-        var droneShells = PersistantData.main.inventory.DroneShells;
-        for (int i = 0; i < droneShells.Length; i++)
+        var droneShells = new List<Shell>(PersistantData.main.inventory.DroneShells);
+        for (int i = 0; i < droneShells.Count; i++)
         {
             var droneShell = droneShells[i];
             var droneUnit = Instantiate(droneShell.SoulCoreUnitPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerDroneUnit>();
             droneUnit.SetShell(droneShell);
-            droneUnit.HotkeyIndex = droneShells.Length - i;
+            droneUnit.HotkeyIndex = droneShells.Count - i;
             unitsToSpawn.Push(droneUnit);
         }
         // Add the player to the spawn stack
