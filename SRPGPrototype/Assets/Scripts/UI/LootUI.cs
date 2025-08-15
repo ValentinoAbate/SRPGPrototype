@@ -51,6 +51,8 @@ public class LootUI : MonoBehaviour
 
     private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>, LootData<T>.Data> onClick) where T : MonoBehaviour, ILootable
     {
+        if (lootData == null)
+            return;
         // Setup Program Draws
         foreach (var draw in lootData.Draws)
         {
