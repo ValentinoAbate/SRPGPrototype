@@ -19,7 +19,11 @@ public class UIManager : MonoBehaviour
     public UnitDescriptionUI UnitDescriptionUI => unitDescriptionUI;
     [SerializeField] private UnitDescriptionUI unitDescriptionUI;
 
+    public TurnOrderViewerUI TurnOrderUI => turnOrderUI;
+    [SerializeField] private TurnOrderViewerUI turnOrderUI;
+
     [SerializeField] private ShellViewerControllerUI shellViewerController;
+
 
     public BattleUI BattleUI 
     {

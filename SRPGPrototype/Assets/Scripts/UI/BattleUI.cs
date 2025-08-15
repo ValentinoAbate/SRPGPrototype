@@ -17,7 +17,6 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Canvas topBarOverlay;
     [SerializeField] private Canvas generalUI;
     [SerializeField] private InterferenceIconUI[] interferenceIcons;
-    [SerializeField] TurnOrderViewerUI turnOrderUI;
 
     [Header("Set in Parent Prefab")]
     public BattleGrid grid;
@@ -30,7 +29,7 @@ public class BattleUI : MonoBehaviour
         {
             cursor.gameObject.SetActive(value);
             UnitSelectionUIEnabled = value;
-            turnOrderUI.SetInteractable(value);
+            UIManager.main.TurnOrderUI.SetInteractable(value);
         }
     }
     private bool inUnitSelection;
@@ -79,14 +78,22 @@ public class BattleUI : MonoBehaviour
     {
         cursor.enabled = value;
         SetGeneralUIEnabled(value);
-        TSetopBarOverlayEnabled(value);
+        SetTopBarOverlayEnabled(value);
         enabled = value;
         menu.enabled = value;
     }
 
-    public void TSetopBarOverlayEnabled(bool value)
+    public void SetTopBarOverlayEnabled(bool value)
     {
         topBarOverlay.enabled = value;
+        if (value)
+        {
+            UIManager.main.TurnOrderUI.Show();
+        }
+        else
+        {
+            UIManager.main.TurnOrderUI.Hide();
+        }
     }
 
     public void SetGeneralUIEnabled(bool state)
@@ -150,8 +157,9 @@ public class BattleUI : MonoBehaviour
     public void Initialize()
     {
         UIManager.main.HideAllDescriptionUI();
-        turnOrderUI.Initialize(grid, false);
+        UIManager.main.TurnOrderUI.Initialize(grid);
         RefreshLinkOutUI();
+        SetTopBarOverlayEnabled(true);
         SetGeneralUIEnabled(false);
     }
 

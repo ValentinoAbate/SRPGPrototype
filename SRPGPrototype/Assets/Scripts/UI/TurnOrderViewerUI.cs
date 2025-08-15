@@ -11,13 +11,11 @@ public class TurnOrderViewerUI : MonoBehaviour
     [SerializeField] private Image backingImage;
     [SerializeField] private EventTrigger[] triggers;
     [SerializeField] private Color disabledColor;
-    [SerializeField] private BattleUI battleUI;
 
     private BattleGrid grid;
 
-    public void Initialize(BattleGrid grid, bool interactable)
+    private void Awake()
     {
-        this.grid = grid;
         foreach (var trigger in triggers)
         {
             trigger.triggers.Clear();
@@ -28,7 +26,22 @@ public class TurnOrderViewerUI : MonoBehaviour
             trigger.triggers.Add(hover);
             trigger.triggers.Add(hoverExit);
         }
-        SetInteractable(interactable);
+        SetInteractable(false);
+    }
+
+    public void Initialize(BattleGrid grid)
+    {
+        this.grid = grid;
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
     }
 
     public void SetInteractable(bool interactable)
@@ -46,7 +59,7 @@ public class TurnOrderViewerUI : MonoBehaviour
         {
             if(unit.UnitTeam == Unit.Team.Player)
             {
-                if (battleUI.UnitSelectionUIEnabled)
+                if (UIManager.main.BattleUI.UnitSelectionUIEnabled)
                 {
                     unit.UI.SetNumberActive(true);
                 }
