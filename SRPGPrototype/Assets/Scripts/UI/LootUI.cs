@@ -29,8 +29,13 @@ public class LootUI : MonoBehaviour
 
     [SerializeField] private bool allowLootSkipping = true;
 
-    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, IEnumerable<MoneyData> moneyData, UnityAction onLootClose)
+    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, ICollection<MoneyData> moneyData, UnityAction onLootClose)
     {
+        if(programDraws.Draws.Count <= 0 && shellDraws.Draws.Count <= 0 && moneyData.Count <= 0)
+        {
+            onLootClose?.Invoke();
+            return;
+        }
         // Setup ShellDraws
         SetupDraws(inv, shellDraws, shellDrawButtonPrefab, ShowShellDraw);
         // Setup Program Draws
