@@ -24,8 +24,10 @@ public class ItemSelector : MonoBehaviour
             var button = buttons[i];
             void OnClick()
             {
-                if(handler.TrySelectItem(item))
+                if (handler.TrySelectItem(item))
+                {
                     button.Hide();
+                }
             }
             if(item is Program program)
             {

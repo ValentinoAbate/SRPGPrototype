@@ -52,6 +52,9 @@ public class ItemButton : MonoBehaviour
 
     public void Hide()
     {
+        if (!gameObject.activeSelf)
+            return;
         gameObject.SetActive(false);
+        trigger.OnPointerExit(null);
     }
 }
