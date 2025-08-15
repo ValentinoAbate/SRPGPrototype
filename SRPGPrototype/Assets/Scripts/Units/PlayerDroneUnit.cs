@@ -14,6 +14,7 @@ public class PlayerDroneUnit : PlayerUnit
     public override void Kill(BattleGrid grid, Unit killedBy)
     {
         base.Kill(grid, killedBy);
+        UIManager.main.RemoveUnitShellFromViewer(Shell);
         var inventory = PersistantData.main.inventory;
         foreach(var installedProgram in shell.Programs)
         {

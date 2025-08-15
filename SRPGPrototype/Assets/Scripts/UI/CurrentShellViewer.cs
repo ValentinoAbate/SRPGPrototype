@@ -5,11 +5,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CurrentShellViewer : MonoBehaviour
+public class CurrentShellViewer : ShellViewer
 {
     public TextMeshProUGUI text;
     public Image shellImage;
-    public EventTrigger[] triggers;
 
     public void Start()
     {
@@ -25,25 +24,13 @@ public class CurrentShellViewer : MonoBehaviour
     {
         if (PersistantData.main.inventory.EquippedShell == null)
         {
-            foreach (var trigger in triggers)
-            {
-                trigger.triggers.Clear();
-            }
-            text.text = "No Equipped Shell";
+            ClearTriggers();
+            text.text = "None";
             shellImage.color = SharedColors.DisabledColor;
             return;
         }
         shellImage.color = Color.white;
-        text.text = "View Equipped Shell";
-        foreach (var trigger in triggers)
-        {
-            trigger.triggers.Clear();
-            var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-            hover.callback.AddListener((data) => UIManager.main.ShellDescriptionUI.Show(s));
-            var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-            hoverExit.callback.AddListener(UIManager.main.HideShellDescriptionUI);
-            trigger.triggers.Add(hover);
-            trigger.triggers.Add(hoverExit);
-        }
+        text.text = "Equipped";
+        AttachToShell(s);
     }
 }

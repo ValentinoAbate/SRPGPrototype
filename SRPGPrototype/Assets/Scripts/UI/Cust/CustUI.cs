@@ -94,6 +94,7 @@ public class CustUI : MonoBehaviour
         GenerateShellButtons();
         shellMenuUI.SetActive(true);
         custUI.SetActive(false);
+        UIManager.main.UpdateShellViewerController();
         UIManager.main.HideAllDescriptionUI();
         UIManager.main.TopBarUI.SetTitleText("Shell Customization");
         UIManager.main.TopBarUI.Show();

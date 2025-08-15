@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     public UnitDescriptionUI UnitDescriptionUI => unitDescriptionUI;
     [SerializeField] private UnitDescriptionUI unitDescriptionUI;
 
+    [SerializeField] private ShellViewerControllerUI shellViewerController;
+
     public BattleUI BattleUI 
     {
         get
@@ -42,6 +44,16 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void UpdateShellViewerController()
+    {
+        shellViewerController.Setup();
+    }
+
+    public void RemoveUnitShellFromViewer(Shell s)
+    {
+        shellViewerController.RemoveUnitView(s);
     }
 
     public void HideShellDescriptionUI(BaseEventData _)
