@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class CurrentShellViewer : ShellViewer
 {
-    public TextMeshProUGUI text;
     public Image shellImage;
 
     public void Start()
@@ -25,12 +24,10 @@ public class CurrentShellViewer : ShellViewer
         if (PersistantData.main.inventory.EquippedShell == null)
         {
             ClearTriggers();
-            text.text = "None";
             shellImage.color = SharedColors.DisabledColor;
             return;
         }
         shellImage.color = Color.white;
-        text.text = "Equipped";
         AttachToShell(s);
     }
 }

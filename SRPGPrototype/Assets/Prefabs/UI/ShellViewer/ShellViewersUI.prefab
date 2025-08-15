@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -287,8 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d235c2585b071a48a86daae386ee3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layoutGroup: {fileID: 7613749823037672855}
-  layoutTransform: {fileID: 3319925373778956455}
   unitViewerPrefab: {fileID: 4692063083089192694, guid: 6205b58c2b7a6ea42b5d2dbc838d41f2,
     type: 3}
 --- !u!1001 &4378369920511090541
