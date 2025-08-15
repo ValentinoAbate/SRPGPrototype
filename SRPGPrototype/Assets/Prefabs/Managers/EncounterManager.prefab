@@ -320,7 +320,8 @@ PrefabInstance:
       propertyPath: battleGrid
       value: 
       objectReference: {fileID: 1130085307957486608}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4096561085759995919, guid: 961a8f7b6c0e08548984af07e88f517f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 961a8f7b6c0e08548984af07e88f517f, type: 3}
 --- !u!4 &1130085309517156896 stripped
 Transform:
