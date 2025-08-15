@@ -23,7 +23,7 @@ public class ItemButton : MonoBehaviour
         {
             UIManager.main.ProgramDescriptionUI.Show(p, selector);
         }
-        trigger.SetOnPointerEnter(ShowProgramDescriptionWindow, UIManager.main.HideProgramDescriptionUI);
+        trigger.SetHoverCallbacks(ShowProgramDescriptionWindow, UIManager.main.HideProgramDescriptionUI);
         button.SetCallback(callback);
         button.interactable = callback != null;
         Item = p;
@@ -38,7 +38,7 @@ public class ItemButton : MonoBehaviour
         {
             UIManager.main.ShellDescriptionUI.Show(s);
         }
-        trigger.SetOnPointerEnter(ShowShellDescriptionWindow, UIManager.main.HideShellDescriptionUI);
+        trigger.SetHoverCallbacks(ShowShellDescriptionWindow, UIManager.main.HideShellDescriptionUI);
         button.SetCallback(callback);
         button.interactable = callback != null;
         Item = s;

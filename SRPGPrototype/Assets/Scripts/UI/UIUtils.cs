@@ -13,15 +13,4 @@ public static class UIUtils
         if (callback != null)
             button.onClick.AddListener(callback);
     }
-
-    public static void SetOnPointerEnter(this EventTrigger trigger, UnityAction<BaseEventData> onPointerEnter, UnityAction<BaseEventData> onPointerExit)
-    {
-        trigger.triggers.Clear();
-        var hover = new EventTrigger.Entry() { eventID = EventTriggerType.PointerEnter };
-        hover.callback.AddListener(onPointerEnter);
-        var hoverExit = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
-        hoverExit.callback.AddListener(onPointerExit);
-        trigger.triggers.Add(hover);
-        trigger.triggers.Add(hoverExit);
-    }
 }
