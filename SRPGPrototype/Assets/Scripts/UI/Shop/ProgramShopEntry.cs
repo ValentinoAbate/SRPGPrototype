@@ -19,11 +19,13 @@ public class ProgramShopEntry : ShopEntry
 
     private readonly Program program;
     private readonly ShopManager.ShopData shopData;
+    private readonly Unit shopper;
 
-    public ProgramShopEntry(ShopManager.ShopData shopData, Program program)
+    public ProgramShopEntry(ShopManager.ShopData shopData, Program program, Unit shopper)
     {
         this.program = program;
         this.shopData = shopData;
+        this.shopper = shopper;
     }
 
     public override void OnPurchase()
@@ -35,7 +37,7 @@ public class ProgramShopEntry : ShopEntry
 
     public override void OnHover(BaseEventData data)
     {
-        UIManager.main.ProgramDescriptionUI.Show(program);
+        UIManager.main.ProgramDescriptionUI.Show(program, shopper);
     }
 
     public override void OnHoverExit(BaseEventData data)

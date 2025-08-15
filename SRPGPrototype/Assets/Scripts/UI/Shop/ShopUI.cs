@@ -18,7 +18,7 @@ public class ShopUI : MonoBehaviour
         Hide();
     }
 
-    public void Show(ShopManager.ShopData data, System.Action onComplete)
+    public void Show(ShopManager.ShopData data, Unit shopper, System.Action onComplete)
     {
         UIManager.main.BattleUI?.SetUIEnabled(false);
         UIManager.main.TopBarUI.SetTitleText(data.DisplayName, true);
@@ -28,7 +28,7 @@ public class ShopUI : MonoBehaviour
         shopEntries.EnsureCapacity(data.Programs.Count + data.Shells.Count);
         foreach(var program in data.Programs)
         {
-            shopEntries.Add(new ProgramShopEntry(data, program));
+            shopEntries.Add(new ProgramShopEntry(data, program, shopper));
         }
         foreach(var shell in data.Shells)
         {

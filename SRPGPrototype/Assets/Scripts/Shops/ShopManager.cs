@@ -43,9 +43,9 @@ public class ShopManager : MonoBehaviour
         objectContainer.DestroyAllChildren();
     }
 
-    public void ShowShop(ShopID id, System.Action onComplete = null)
+    public void ShowShop(ShopID id, Unit shopper = null, System.Action onComplete = null)
     {
-        ui.Show(GetShopData(id), onComplete);
+        ui.Show(GetShopData(id), shopper, onComplete);
     }
 
     private ShopData GetShopData(ShopID id)
