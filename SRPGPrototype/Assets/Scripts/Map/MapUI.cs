@@ -152,6 +152,7 @@ public class MapUI : MonoBehaviour
     private void ConfirmEncounter(Encounter encounter)
     {
         PersistantData.main.mapManager.CurrentEncounter = encounter;
+        UIManager.main.TopBarUI.SetTitleText(encounter.nameOverride ?? "Encounter");
         SceneTransitionManager.main.TransitionToScene(encounterSceneName);
     }
 }
