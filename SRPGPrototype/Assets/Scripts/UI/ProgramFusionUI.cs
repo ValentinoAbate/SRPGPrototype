@@ -12,9 +12,15 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     [SerializeField] private ProgramFuser programFuser;
 
     private readonly List<ProgramItemButton> previewButtons = new List<ProgramItemButton>();
-    private IReadOnlyList<Program> fusions = System.Array.Empty<Program>();
+    private readonly List<Program> fusions = new List<Program>();
     private int argumentIndex = 0;
     private Unit user;
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+            Cancel();
+    }
 
     public void Show(Unit user)
     {
@@ -22,6 +28,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         UIManager.main.TopBarUI.SetTitleText("Program Fusion", true);
         this.user = user;
         argumentIndex = 0;
+        fusions.Clear();
         foreach(var button in previewButtons)
         {
             button.Hide();
@@ -41,16 +48,16 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         OnComplete();
     }
 
-    private void OnComplete()
-    {
-        UIManager.main.BattleUI?.SetUIEnabled(true);
-        UIManager.main.TopBarUI.EndTempTitleText();
-    }
-
     private void HideUI()
     {
         UIManager.main.ItemSelector.Hide();
         gameObject.SetActive(false);
+    }
+
+    private void OnComplete()
+    {
+        UIManager.main.BattleUI?.SetUIEnabled(true);
+        UIManager.main.TopBarUI.EndTempTitleText();
     }
 
     public void Confirm()
@@ -58,7 +65,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         // Remove fusion arguments from inventory
         foreach (var button in fusionArguments)
         {
-            PersistantData.main.inventory.RemoveProgram(button.Program, false);
+            PersistantData.main.inventory.RemoveProgram(button.Program, true);
         }
         // Generate Program loot
         var progDraws = new LootData<Program>();
@@ -73,7 +80,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
             return false;
         if (!(item is Program program))
             return false;
-        fusionArguments[argumentIndex].Setup(program, null, user);
+        fusionArguments[argumentIndex].Setup(program, user);
         if(++argumentIndex >= fusionArguments.Count)
         {
             FusionReady();
@@ -81,9 +88,61 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         return true;
     }
 
+    private void Cancel()
+    {
+        if(argumentIndex <= 0)
+        {
+            return;
+        }
+        CancelInternal(--argumentIndex);
+    }
+
+    public void Cancel(int index)
+    {
+        CancelInternal(index);
+    }
+
+    private void CancelInternal(int index)
+    {
+        var button = fusionArguments[index];
+        UIManager.main.ItemSelector.ReturnItem(button.Program);
+        if (index == 0)
+        {
+            if (fusionArguments[1].gameObject.activeSelf)
+            {
+                fusionArguments[0].Setup(fusionArguments[1].Program, user);
+                fusionArguments[1].Hide();
+                argumentIndex = 1;
+            }
+            else
+            {
+                button.Hide();
+                argumentIndex = 0;
+            }
+        }
+        else
+        {
+            button.Hide();
+            argumentIndex = 1;
+        }
+        CancelFusionReady();
+    }
+
+    private void CancelFusionReady()
+    {
+        foreach(var button in previewButtons)
+        {
+            button.Hide();
+        }
+        confirmButton.SetInteractable(false);
+        fusions.Clear();
+        previewProgramContainer.DestroyAllChildren();
+    }
+
     private void FusionReady()
     {
-        fusions = programFuser.GetFusions(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue);
+        fusions.Clear();
+        fusions.AddRange(programFuser.GetFusions(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue));
         for (int i = 0; i < fusions.Count; ++i)
         {
             if (i >= previewButtons.Count)

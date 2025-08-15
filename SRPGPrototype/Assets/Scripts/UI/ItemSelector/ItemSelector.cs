@@ -49,4 +49,15 @@ public class ItemSelector : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public void ReturnItem(object item)
+    {
+        foreach(var button in buttons)
+        {
+            if(button.Item == item)
+            {
+                button.Show();
+            }
+        }
+    }
 }

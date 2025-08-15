@@ -14,7 +14,7 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     public object Item { get; private set; }
 
-    public void SetupAsProgram(Program p, UnityAction callback, Unit selector = null)
+    public void SetupAsProgram(Program p, Unit selector = null)
     {
         colorIcon.color = p.ColorValue;
         colorIcon.gameObject.SetActive(true);
@@ -24,10 +24,15 @@ public class ItemButton : MonoBehaviour
             UIManager.main.ProgramDescriptionUI.Show(p, selector);
         }
         trigger.SetHoverCallbacks(ShowProgramDescriptionWindow, UIManager.main.HideProgramDescriptionUI);
-        button.SetCallback(callback);
-        button.interactable = callback != null;
         Item = p;
         Show();
+    }
+
+    public void SetupAsProgram(Program p, UnityAction callback, Unit selector = null)
+    {
+        button.SetCallback(callback);
+        button.interactable = callback != null;
+        SetupAsProgram(p, selector);
     }
 
     public void SetupAsShell(Shell s, UnityAction callback)

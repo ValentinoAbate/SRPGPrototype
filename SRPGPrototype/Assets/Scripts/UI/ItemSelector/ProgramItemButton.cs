@@ -8,6 +8,12 @@ public class ProgramItemButton : MonoBehaviour
     [SerializeField] private ItemButton itemButton;
     public Program Program { get; private set; }
     
+    public void Setup(Program p, Unit unit = null)
+    {
+        itemButton.SetupAsProgram(p, unit);
+        Program = p;
+    }
+
     public void Setup(Program p, UnityAction callback, Unit unit = null)
     {
         itemButton.SetupAsProgram(p, callback, unit);

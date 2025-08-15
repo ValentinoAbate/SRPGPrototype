@@ -10,15 +10,19 @@ public class ProgramFuser : MonoBehaviour
 
     public Program FusePrograms(Transform container, Program p1, Program p2)
     {
-        var fusedProgram = FuseProgramsInternal(container, p1, p2);
-        fusedProgram.shape = FusePatterns(p1.shape, p2.shape);
+        var p1Clone = Instantiate(p1, container);
+        var p2Clone = Instantiate(p2, container);
+        var fusedProgram = FuseProgramsInternal(container, p1Clone, p2Clone);
+        fusedProgram.shape = FusePatterns(p1Clone.shape, p2Clone.shape);
         return fusedProgram;
     }
 
     public IReadOnlyList<Program> GetFusions(Transform container, Program p1, Program p2, int maxFusions, int maxFallbackFusions)
     {
-        var fusedProgramTemplate = FuseProgramsInternal(container, p1, p2);
-        var patterns = FusePatterns(p1.shape, p2.shape, maxFusions, maxFallbackFusions);
+        var p1Clone = Instantiate(p1, container);
+        var p2Clone = Instantiate(p2, container);
+        var fusedProgramTemplate = FuseProgramsInternal(container, p1Clone, p2Clone);
+        var patterns = FusePatterns(p1Clone.shape, p2Clone.shape, maxFusions, maxFallbackFusions);
         if (patterns.Count <= 0)
         {
             return System.Array.Empty<Program>();
