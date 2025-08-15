@@ -57,6 +57,7 @@ public class ShopUI : MonoBehaviour
     public void OnPurchaseComplete(int index)
     {
         shopEntries.RemoveAt(index);
+        UIManager.main.HideAllDescriptionUI();
         Refresh();
     }
 

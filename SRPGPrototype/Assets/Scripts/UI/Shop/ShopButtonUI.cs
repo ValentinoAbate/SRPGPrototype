@@ -39,6 +39,10 @@ public class ShopButtonUI : MonoBehaviour
         button.onClick.AddListener(entry.OnPurchase);
         button.onClick.AddListener(OnPurchase);
         trigger.SetHoverCallbacks(entry.OnHover, entry.OnHoverExit);
+        if (RectTransformUtility.RectangleContainsScreenPoint(button.image.rectTransform, Input.mousePosition))
+        {
+            entry.OnHover(null);
+        }
         RefreshInteractivity();
         gameObject.SetActive(true);
     }
