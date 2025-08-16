@@ -37,7 +37,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         {
             button.Hide();
         }
-        UIManager.main.ItemSelector.Show("Select a Program", PersistantData.main.inventory.Programs, user, this);
+        UIManager.main.ItemSelector.Show("Select Programs", PersistantData.main.inventory.Programs, user, this);
         gameObject.SetActive(true);
         confirmButton.SetInteractable(false);
     }
@@ -62,6 +62,17 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
 
     public void Confirm()
     {
+        PopupManager.main.ShowInputPopup(OnNamingComplete, null, 16, false, "Name Your Creation");
+    }
+
+    private void OnNamingComplete(string programName)
+    {
+        // Name program
+        foreach(var program in fusions)
+        {
+            program.SetDisplayName(programName);
+            program.SetActionNames(programName);
+        }
         // Remove fusion arguments from inventory
         foreach (var button in fusionArguments)
         {

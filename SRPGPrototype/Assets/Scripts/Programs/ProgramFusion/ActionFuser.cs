@@ -13,7 +13,7 @@ public class ActionFuser : MonoBehaviour
         if (actions.Count == 1)
             return actions[0];
         var fusedAction = actionTemplatePrefab.Validate(container);
-        fusedAction.DisplayName = "MyHybrid";
+        fusedAction.DisplayName = "Fused Action";
         fusedAction.ActionType = Action.Type.Hybrid;
         string description = "Use ";
         var subActions = new List<SubAction>();

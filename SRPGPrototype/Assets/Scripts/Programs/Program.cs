@@ -108,6 +108,7 @@ public class Program : GridObject, ILootable
         
     public string DisplayName => IsUpgraded ? Upgrade.DisplayName : displayName;
     [SerializeField] private string displayName = string.Empty;
+    public string SetDisplayName(string newDisplayName) => displayName = newDisplayName;
 
     public string Description => IsUpgraded ? Upgrade.Description : description;
     [SerializeField] [TextArea(2,4)] private string description = string.Empty;
@@ -244,6 +245,17 @@ public class Program : GridObject, ILootable
             grid.RemoveTileUI(entry);
         }
         uiEntries.Clear();
+    }
+
+    public void SetActionNames(string actionName)
+    {
+        foreach(var effect in Effects)
+        {
+            if(effect is ProgramEffectAddAction addAction)
+            {
+                addAction.action.DisplayName = actionName;
+            }
+        }
     }
 
 #if UNITY_EDITOR
