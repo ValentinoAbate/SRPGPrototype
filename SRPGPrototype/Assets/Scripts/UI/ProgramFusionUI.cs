@@ -15,6 +15,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     private readonly List<Program> fusions = new List<Program>();
     private int argumentIndex = 0;
     private Unit user;
+    private int cost;
 
     private void Update()
     {
@@ -22,11 +23,12 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
             Cancel();
     }
 
-    public void Show(Unit user)
+    public void Show(Unit user, int cost)
     {
+        this.user = user;
+        this.cost = cost;
         UIManager.main.BattleUI?.SetUIEnabled(false);
         UIManager.main.TopBarUI.SetTitleText("Program Fusion", true);
-        this.user = user;
         argumentIndex = 0;
         fusions.Clear();
         foreach(var button in previewButtons)
@@ -39,6 +41,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         }
         UIManager.main.ItemSelector.Show("Select Programs", PersistantData.main.inventory.Programs, user, this);
         gameObject.SetActive(true);
+        confirmButton.SetCost(cost);
         confirmButton.SetInteractable(false);
     }
 
@@ -78,6 +81,8 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         {
             PersistantData.main.inventory.RemoveProgram(button.Program, true);
         }
+        // Spend cost
+        PersistantData.main.inventory.Money -= cost;
         // Generate Program loot
         var progDraws = new LootData<Program>();
         progDraws.Add(fusions, "Fused Program", 0);
