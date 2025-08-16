@@ -25,14 +25,42 @@ public static class PatternUtils
                     if (offsetsSet.Contains(pos))
                         continue;
                     overlap.AddOffset(pos);
+                    offsetsSet.Add(pos);
                 }
                 int xDim = System.Math.Max(p1.x + pattern1.Dimensions.x, p2.x + pattern2.Dimensions.x);
                 int yDim = System.Math.Max(p1.y + pattern1.Dimensions.y, p2.y + pattern2.Dimensions.y);
                 overlap.Dimensions = new Vector2Int(xDim, yDim);
+                if (HasDuplicate(overlaps, overlap, offsetsSet))
+                    continue;
                 overlaps.Add(overlap);
             }
         }
         return overlaps;
+    }
+
+    private static bool HasDuplicate(IEnumerable<Pattern> patterns, Pattern newPattern, ISet<Vector2Int> newPatternSet)
+    {
+        foreach (var pattern in patterns)
+        {
+            if (pattern.Offsets.Count != newPattern.Offsets.Count)
+                continue;
+            if (newPattern.Dimensions != pattern.Dimensions)
+                continue;
+            bool isDuplicate = true;
+            foreach (var otherOffset in pattern.Offsets)
+            {
+                if (!newPatternSet.Contains(otherOffset))
+                {
+                    isDuplicate = false;
+                    break;
+                }
+            }
+            if (isDuplicate)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static IEnumerable<Vector2Int> ValidPositionsWithinGrid(Vector2Int patternDimesions, Vector2Int gridDimensions)
