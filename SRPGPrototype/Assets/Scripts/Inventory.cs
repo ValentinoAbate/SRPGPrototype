@@ -82,7 +82,7 @@ public class Inventory : MonoBehaviour
             AddProgram(prog, true);
         foreach (var shell in startingShells)
             AddShell(shell, true);
-        money = startingMoney;
+        Money = startingMoney;
     }
 
     public void AddProgram(Program p, bool fromAsset = false)
