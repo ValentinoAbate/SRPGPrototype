@@ -73,7 +73,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         // Remove fusion arguments from inventory
         foreach (var button in fusionArguments)
         {
-            PersistantData.main.inventory.RemoveProgram(button.Program, true);
+            PersistantData.main.inventory.RemoveProgram(button.Program, false);
         }
         // Spend cost
         PersistantData.main.inventory.Money -= cost;
@@ -158,7 +158,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     private void FusionReady()
     {
         fusions.Clear();
-        fusions.AddRange(programFuser.GetFusions(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue));
+        fusions.AddRange(programFuser.GetFusionPreviews(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue));
         for (int i = 0; i < fusions.Count; ++i)
         {
             if (i >= previewButtons.Count)

@@ -6,7 +6,7 @@ public class ActionFuser : MonoBehaviour
 {
     [SerializeField] private Action actionTemplatePrefab;
 
-    public Action Fuse(Transform container, IReadOnlyList<Action> actions)
+    public Action Fuse(Transform container, IReadOnlyList<Action> actions, bool preview)
     {
         if (actions.Count <= 0)
             return null;
@@ -24,7 +24,10 @@ public class ActionFuser : MonoBehaviour
         for(int i = 0; i < actions.Count; ++i)
         {
             var action = actions[i];
-            action.transform.SetParent(fusedAction.transform);
+            if (!preview)
+            {
+                action.transform.SetParent(fusedAction.transform);
+            }
             subActions.AddRange(action.SubActions);
             sumBaseAp += action.BaseAPCost;
             description += i < actions.Count - 1 ? $"{action.DisplayName}, then " : $"{action.DisplayName}.";

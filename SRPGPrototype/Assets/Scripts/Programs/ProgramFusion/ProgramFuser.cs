@@ -8,21 +8,17 @@ public class ProgramFuser : MonoBehaviour
     [SerializeField] private Program programTemplate;
     [SerializeField] private ActionFuser actionFuser;
 
-    public Program FusePrograms(Transform container, Program p1, Program p2)
+    public Program FusePrograms(Transform container, Program p1, Program p2, Pattern pattern = null)
     {
-        var p1Clone = Instantiate(p1, container);
-        var p2Clone = Instantiate(p2, container);
-        var fusedProgram = FuseProgramsInternal(container, p1Clone, p2Clone);
-        fusedProgram.shape = FusePatterns(p1Clone.shape, p2Clone.shape);
+        var fusedProgram = FuseProgramsInternal(container, p1, p2, false);
+        fusedProgram.shape = pattern ?? FusePatterns(p1.shape, p2.shape);
         return fusedProgram;
     }
 
-    public IReadOnlyList<Program> GetFusions(Transform container, Program p1, Program p2, int maxFusions, int maxFallbackFusions)
+    public IReadOnlyList<Program> GetFusionPreviews(Transform container, Program p1, Program p2, int maxFusions, int maxFallbackFusions)
     {
-        var p1Clone = Instantiate(p1, container);
-        var p2Clone = Instantiate(p2, container);
-        var fusedProgramTemplate = FuseProgramsInternal(container, p1Clone, p2Clone);
-        var patterns = FusePatterns(p1Clone.shape, p2Clone.shape, maxFusions, maxFallbackFusions);
+        var fusedProgramTemplate = FuseProgramsInternal(container, p1, p2, true);
+        var patterns = FusePatterns(p1.shape, p2.shape, maxFusions, maxFallbackFusions);
         if (patterns.Count <= 0)
         {
             return System.Array.Empty<Program>();
@@ -38,11 +34,14 @@ public class ProgramFuser : MonoBehaviour
         return fusions;
     }
 
-    private Program FuseProgramsInternal(Transform container, Program p1, Program p2)
+    private Program FuseProgramsInternal(Transform container, Program p1, Program p2, bool preview)
     {
         var fusedProgram = Instantiate(programTemplate.gameObject, container.transform).GetComponent<Program>();
-        p1.transform.SetParent(fusedProgram.transform);
-        p2.transform.SetParent(fusedProgram.transform);
+        if (!preview)
+        {
+            p1.transform.SetParent(fusedProgram.transform);
+            p2.transform.SetParent(fusedProgram.transform);
+        }
         fusedProgram.color = Program.Color.Yellow;
         int maxTransientUses = 0;
         int currentTransientUses = 0;
@@ -54,7 +53,7 @@ public class ProgramFuser : MonoBehaviour
         if (actions.Count >= 1)
         {
             var fusedAction = fusedProgram.gameObject.AddComponent<ProgramEffectAddAction>();
-            fusedAction.action = actionFuser.Fuse(fusedProgram.transform, actions);
+            fusedAction.action = actionFuser.Fuse(fusedProgram.transform, actions, preview);
             effects.Add(fusedAction);
         }
         if (maxTransientUses > 0)
