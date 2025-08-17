@@ -8,12 +8,13 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     [SerializeField] private ProgramItemButton previewButtonPrefab;
     [SerializeField] private Transform previewProgramContainer;
     [SerializeField] private List<ProgramItemButton> fusionArguments;
-    [SerializeField] private CostButton confirmButton;
     [SerializeField] private ProgramFuser programFuser;
+    [SerializeField] private CostDisplay costDisplay;
 
     private readonly List<ProgramItemButton> previewButtons = new List<ProgramItemButton>();
     private readonly List<Program> fusions = new List<Program>();
     private int argumentIndex = 0;
+    private int selectedFusion = 0;
     private Unit user;
     private int cost;
 
@@ -30,6 +31,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         UIManager.main.BattleUI?.SetUIEnabled(false);
         UIManager.main.TopBarUI.SetTitleText("Program Fusion", true);
         argumentIndex = 0;
+        selectedFusion = 0;
         fusions.Clear();
         foreach(var button in previewButtons)
         {
@@ -41,8 +43,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         }
         UIManager.main.ItemSelector.Show("Select Programs", PersistantData.main.inventory.Programs, user, this);
         gameObject.SetActive(true);
-        confirmButton.SetCost(cost);
-        confirmButton.SetInteractable(false);
+        costDisplay.Setup(cost);
     }
 
     public void Hide()
@@ -57,19 +58,21 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         gameObject.SetActive(false);
     }
 
-    public void Confirm()
+    private void SelectFusion(int index)
     {
+        selectedFusion = index;
         PopupManager.main.ShowInputPopup(OnNamingComplete, null, 16, false, "Name Your Creation");
     }
 
     private void OnNamingComplete(string programName)
     {
+        // Finalize Fusion
+        var program = programFuser.FusePrograms(transform, fusionArguments[0].Program, fusionArguments[1].Program, fusions[selectedFusion].shape);
         // Name program
-        foreach(var program in fusions)
-        {
-            program.SetDisplayName(programName);
-            program.SetActionNames(programName);
-        }
+        program.SetDisplayName(programName);
+        program.SetActionNames(programName);
+        // Add program to inventory
+        PersistantData.main.inventory.AddProgram(program);
         // Remove fusion arguments from inventory
         foreach (var button in fusionArguments)
         {
@@ -77,11 +80,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         }
         // Spend cost
         PersistantData.main.inventory.Money -= cost;
-        // Generate Program loot
-        var progDraws = new LootData<Program>();
-        progDraws.Add(fusions, "Fused Program", 0);
-        HideUI();
-        PersistantData.main.loot.UI.ShowUI(PersistantData.main.inventory, progDraws, null, System.Array.Empty<LootUI.MoneyData>(), OnComplete);
+        Hide();
     }
 
     private void OnComplete()
@@ -151,12 +150,12 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         {
             button.Hide();
         }
-        confirmButton.SetInteractable(false);
         ClearFusions();
     }
 
     private void FusionReady()
     {
+        bool canAfford = PersistantData.main.inventory.CanAfford(cost);
         fusions.Clear();
         fusions.AddRange(programFuser.GetFusionPreviews(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue));
         for (int i = 0; i < fusions.Count; ++i)
@@ -165,13 +164,24 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
             {
                 previewButtons.Add(Instantiate(previewButtonPrefab, previewButtonContainer));
             }
-            previewButtons[i].Setup(fusions[i], null, user);
+            if (canAfford)
+            {
+                int index = i;
+                void Select()
+                {
+                    SelectFusion(index);
+                }
+                previewButtons[i].Setup(fusions[i], Select, user);
+            }
+            else
+            {
+                previewButtons[i].Setup(fusions[i], null, user);
+            }
         }
         for (int i = fusions.Count; i < previewButtons.Count; i++)
         {
             previewButtons[i].Hide();
         }
-        confirmButton.SetInteractable(true);
     }
 
     private void ClearFusions()
