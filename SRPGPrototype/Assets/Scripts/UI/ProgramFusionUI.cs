@@ -57,12 +57,6 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         gameObject.SetActive(false);
     }
 
-    private void OnComplete()
-    {
-        UIManager.main.BattleUI?.SetUIEnabled(true);
-        UIManager.main.TopBarUI.EndTempTitleText();
-    }
-
     public void Confirm()
     {
         PopupManager.main.ShowInputPopup(OnNamingComplete, null, 16, false, "Name Your Creation");
@@ -88,6 +82,13 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         progDraws.Add(fusions, "Fused Program", 0);
         HideUI();
         PersistantData.main.loot.UI.ShowUI(PersistantData.main.inventory, progDraws, null, System.Array.Empty<LootUI.MoneyData>(), OnComplete);
+    }
+
+    private void OnComplete()
+    {
+        UIManager.main.BattleUI?.SetUIEnabled(true);
+        UIManager.main.TopBarUI.EndTempTitleText();
+        ClearFusions();
     }
 
     public bool TrySelectItem(object item)
@@ -151,8 +152,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
             button.Hide();
         }
         confirmButton.SetInteractable(false);
-        fusions.Clear();
-        previewProgramContainer.DestroyAllChildren();
+        ClearFusions();
     }
 
     private void FusionReady()
@@ -172,5 +172,11 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
             previewButtons[i].Hide();
         }
         confirmButton.SetInteractable(true);
+    }
+
+    private void ClearFusions()
+    {
+        fusions.Clear();
+        previewProgramContainer.DestroyAllChildren();
     }
 }
