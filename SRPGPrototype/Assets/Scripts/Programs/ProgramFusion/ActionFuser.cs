@@ -19,8 +19,9 @@ public class ActionFuser : MonoBehaviour
         var subActions = new List<SubAction>();
         int sumBaseAp = 0;
         var highestSlowdownType = Action.Trigger.TurnStart;
-        int sumSlowdown = 0;
-        int slowdownCount = 0;
+        int sumSlowdownInterval = 0;
+        int slowdownIntervalCount = 0;
+        int maxSlowdown = 0;
         for(int i = 0; i < actions.Count; ++i)
         {
             var action = actions[i];
@@ -29,34 +30,39 @@ public class ActionFuser : MonoBehaviour
                 action.transform.SetParent(fusedAction.transform);
             }
             subActions.AddRange(action.SubActions);
-            sumBaseAp += action.BaseAPCost;
             description += i < actions.Count - 1 ? $"{action.DisplayName}, then " : $"{action.DisplayName}.";
+            sumBaseAp += action.BaseAPCost;
             if(action.SlowdownReset == Action.Trigger.Never)
             {
                 if(highestSlowdownType != Action.Trigger.Never)
                 {
                     highestSlowdownType = Action.Trigger.Never;
-                    slowdownCount = 1;
-                    sumSlowdown = action.SlowdownInterval;
+                    slowdownIntervalCount = 1;
+                    sumSlowdownInterval = action.SlowdownInterval;
                 }
             }
             else if(action.SlowdownReset == Action.Trigger.EncounterStart && highestSlowdownType == Action.Trigger.TurnStart)
             {
                 highestSlowdownType = Action.Trigger.EncounterStart;
-                slowdownCount = 1;
-                sumSlowdown = action.SlowdownInterval;
+                slowdownIntervalCount = 1;
+                sumSlowdownInterval = action.SlowdownInterval;
             }
             else if(action.SlowdownReset == highestSlowdownType)
             {
-                ++slowdownCount;
-                sumSlowdown += action.SlowdownInterval;
+                ++slowdownIntervalCount;
+                sumSlowdownInterval += action.SlowdownInterval;
+            }
+            if(action.Slowdown > maxSlowdown)
+            {
+                maxSlowdown = action.Slowdown;
             }
         }
         fusedAction.SetDescription(description);
         fusedAction.SetSubActions(subActions);
         fusedAction.BaseAPCost = System.Math.Max(0, sumBaseAp - 1);
         fusedAction.SlowdownReset = highestSlowdownType;
-        fusedAction.SlowdownInterval = slowdownCount > 0 ? sumSlowdown / slowdownCount : 0; 
+        fusedAction.SlowdownInterval = slowdownIntervalCount > 0 ? sumSlowdownInterval / slowdownIntervalCount : 0;
+        fusedAction.Slowdown = maxSlowdown;
         return fusedAction;
     }
 }
