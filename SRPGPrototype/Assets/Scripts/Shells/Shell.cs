@@ -367,13 +367,6 @@ public class Shell : MonoBehaviour, ILootable
             Compiled = false;
             return false;
         }
-        // Check number of actions
-        if(compileData.actions.Count <= 0)
-        {
-            Debug.LogWarning("Compile Error: No Actions");
-            Compiled = false;
-            return false;
-        }
         // Check capacity
         if (compileData.capacity < CapacityThresholds[Level])
         {
