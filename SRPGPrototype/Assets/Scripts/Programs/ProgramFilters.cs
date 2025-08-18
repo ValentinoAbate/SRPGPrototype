@@ -94,5 +94,7 @@ public static class ProgramFilters
 
     public static bool HasAttributes(Program p, Program.Attributes attributes) => p.attributes.HasFlag(attributes);
 
+    public static bool IsSoulCore(Program p) => HasAttributes(p, Program.Attributes.SoulCore);
+
     public static bool IsGamble(Program p) => HasAttributes(p, Program.Attributes.Gamble);
 }

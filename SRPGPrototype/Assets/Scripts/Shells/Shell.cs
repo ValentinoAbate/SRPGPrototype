@@ -385,7 +385,7 @@ public class Shell : MonoBehaviour, ILootable
             }
         }
         // Check num soul cores
-        if(programs.Count((p) => p.program.attributes.HasFlag(Program.Attributes.SoulCore)) > 1)
+        if(programs.Count(IsInstallSoulCore) > 1)
         {
             Debug.LogWarning("Compile Error: More than one soul core installed");
             Compiled = false;
@@ -415,6 +415,8 @@ public class Shell : MonoBehaviour, ILootable
         Compiled = true;
         return true;
     }
+
+    private static bool IsInstallSoulCore(InstalledProgram p) => ProgramFilters.IsSoulCore(p.program);
 
     public class CompileData
     {
