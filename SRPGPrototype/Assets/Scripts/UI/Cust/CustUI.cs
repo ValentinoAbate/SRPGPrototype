@@ -258,7 +258,7 @@ public class CustUI : MonoBehaviour
             var prog = grid.Get(pos);
             if (prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
             {
-                Shell.Uninstall(prog, prog.Pos);
+                Shell.Uninstall(prog);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
                 UpdateCompileData();
@@ -352,7 +352,7 @@ public class CustUI : MonoBehaviour
             if(!prog.attributes.HasFlag(Program.Attributes.Fixed))
             {
                 AddProgramButton(prog);
-                Shell.Uninstall(prog, prog.Pos);
+                Shell.Uninstall(prog);
                 grid.Remove(prog);
                 inventory.AddProgram(prog);
             }

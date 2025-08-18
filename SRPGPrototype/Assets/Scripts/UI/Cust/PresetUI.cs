@@ -142,7 +142,7 @@ public class PresetUI : MonoBehaviour
         foreach (var install in installs)
         {
             var prog = install.program;
-            Shell.Uninstall(prog, prog.Pos);
+            Shell.Uninstall(prog);
             Grid.Remove(prog);
         }
         // Set shell to proper Level

@@ -134,36 +134,36 @@ public class Shell : MonoBehaviour, ILootable
         Compiled = false;
     }
 
-    public void Uninstall(Program program, Vector2Int location)
+    public void Uninstall(Program program)
     {
-        Uninstall(program, location, false);
+        Uninstall(program, false);
     }
 
-    private void Uninstall(Program program, Vector2Int location, bool destroy, BattleGrid grid = null, Unit user = null)
+    private void Uninstall(Program program, bool destroy, BattleGrid grid = null, Unit user = null)
     {
         if (program.Shell != this)
             return;
+        // Confirm program is actually in shell and record index for later removal
+        int index = GetProgramIndex(program);
+        if (index == -1)
+            return;
         program.Shell = null;
-        var ind = programs.FindIndex((iProg) => iProg.program.DisplayName == program.DisplayName && iProg.location == location);
-        if (ind >= 0)
+        var positions = program.shape.OffsetsShifted(program.Pos, false);
+        foreach (var pos in positions)
+            InstallMap[pos.x, pos.y] = null;
+        InstallPositions.Remove(program);
+        if (destroy)
         {
-            var positions = program.shape.OffsetsShifted(location, false);
-            foreach (var pos in positions)
-                InstallMap[pos.x, pos.y] = null;
-            InstallPositions.Remove(program);
-            if (destroy)
-            {
-                OnProgramDestroyed?.Invoke(program, grid, user);
-                Destroy(program.gameObject);
-            }
-            programs.RemoveAt(ind);
-            Compiled = false;
+            OnProgramDestroyed?.Invoke(program, grid, user);
+            Destroy(program.gameObject);
         }
+        programs.RemoveAt(index);
+        Compiled = false;
     }
 
-    public void DestroyProgram(Program program, Vector2Int location, BattleGrid grid, Unit user)
+    public void DestroyProgram(Program program, BattleGrid grid, Unit user)
     {
-        Uninstall(program, location, true, grid, user);
+        Uninstall(program, true, grid, user);
         if (!Compile())
         {
             Debug.LogError("Destroyed program has caused shell compile error");
@@ -175,6 +175,18 @@ public class Shell : MonoBehaviour, ILootable
         if (!location.IsBoundedBy(CustArea.Dimensions))
             return null;
         return InstallMap[location.x, location.y];
+    }
+
+    private int GetProgramIndex(Program program)
+    {
+        for (int i = 0; i < programs.Count; i++)
+        {
+            if (programs[i].program == program)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     #region Leveling Code

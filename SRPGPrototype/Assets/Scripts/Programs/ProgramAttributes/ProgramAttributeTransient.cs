@@ -13,7 +13,7 @@ public class ProgramAttributeTransient : ProgramAttribute
     {
         if(++Uses >= MaxUses)
         {
-            program.Shell.DestroyProgram(program, program.Pos, grid, user);
+            program.Shell.DestroyProgram(program, grid, user);
         }
     }
 }
