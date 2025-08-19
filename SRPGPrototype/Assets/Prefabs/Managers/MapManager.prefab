@@ -45,5 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMaps:
   - {fileID: 11400000, guid: 09428bb0dc4d50543af908f70e8f35af, type: 2}
-  - {fileID: 11400000, guid: 0e44c36f83f65ab4aa5492b50068ca98, type: 2}
   - {fileID: 11400000, guid: efbbc9274be2b554580ef932a109a664, type: 2}
