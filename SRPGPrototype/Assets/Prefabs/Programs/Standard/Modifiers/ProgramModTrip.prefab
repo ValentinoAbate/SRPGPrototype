@@ -18,7 +18,7 @@ MonoBehaviour:
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1
-  subTypes: 090000000a0000000b0000000c0000000d0000000e000000
+  subTypes: 090000000a0000000b0000000c0000000d0000000e00000001000000
   actionEffectContainer: {fileID: 0}
 --- !u!114 &3810536140382234709
 MonoBehaviour:
@@ -49,21 +49,22 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   targetStat: 0
   damage:
     min: -2147483648
     max: 2147483647
-    constant: 1
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    constant: 1
     unitNumber:
       min: -2147483648
       max: 2147483647
-      constant: 1
       baseAmount: -2
       modifier: 0
       multiplier: 1
+      constant: 1
       type: 3
     type: 7
 --- !u!1001 &6707852538196646759
