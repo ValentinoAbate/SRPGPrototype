@@ -1,38 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3242289543970737022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202993979176963460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef34704685337844952f32eed10d6c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timing: 0
-  subTypes: 07000000
-  stat: 7
-  number:
-    min: -2147483648
-    max: 2147483647
-    constant: 1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 1
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      constant: 1
-      baseAmount: 0
-      modifier: 0
-      multiplier: 1
-      type: 0
-    type: 0
-  abilityName: Add 1 Break to enemy on reposition
-  affectedTeams: 01000000
 --- !u!114 &-1288943963236124991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +28,39 @@ MonoBehaviour:
     dimensions: {x: 1, y: 3}
   useWeights: 0
   weights: []
+--- !u!114 &9062747721058979369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202993979176963460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d2b2d8c0d78d848b0b11006f3f0ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timing: 0
+  subTypes: 07000000
+  stat: 7
+  number:
+    min: -2147483648
+    max: 2147483647
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    constant: 1
+    unitNumber:
+      min: -2147483648
+      max: 2147483647
+      baseAmount: 0
+      modifier: 0
+      multiplier: 1
+      constant: 1
+      type: 0
+    type: 0
+  abilityName: Add 1 Break to enemy on reposition
+  affectedTeams: 01000000
 --- !u!1001 &1592762870832421066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[0]
       value: 
-      objectReference: {fileID: -3242289543970737022}
+      objectReference: {fileID: 9062747721058979369}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size
