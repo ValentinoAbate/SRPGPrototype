@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Long ranged or diagonally ranged attack for {dmg} damage then pull
-        youself towards the target. '
+        yourself towards the target. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 4fff035d3e5f1b24db39136788b9f680,
         type: 3}

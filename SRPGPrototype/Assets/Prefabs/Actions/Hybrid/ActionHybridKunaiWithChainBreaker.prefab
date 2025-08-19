@@ -15,6 +15,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   stat: 7
   number:
     min: -2147483648
@@ -44,7 +45,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Ranged or diagonally ranged attack for {dmg} damage and 2 Break, then
-        pull youself towards the target. '
+        pull yourself towards the target. '
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: 4fff035d3e5f1b24db39136788b9f680,
         type: 3}
