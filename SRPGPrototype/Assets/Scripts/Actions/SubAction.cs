@@ -35,6 +35,7 @@ public class SubAction : MonoBehaviour
         SkipUpgradeCheck = 1,
         ApplyToLastTargets = 2,
         RangeBasedOnLastSelectorPos = 4,
+        AlsoApplySubtypeToSelf = 8,
     }
 
     // Sub-action Metadata
@@ -173,16 +174,17 @@ public class SubAction : MonoBehaviour
         GetTargetsAndTargetPositions(grid, user, selectedPos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
         if (effects.Length <= 0)
             return;
+        List<Unit> userList = null;
         if(subtype == Type.OverrideByEffects)
         {
             foreach (var effect in effects)
             {
                 if(effect.StandaloneSubActionType != Type.None)
                 {
-                    user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
+                    OnBeforeSubAction(grid, action, user, targets, ref userList, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                     UsedPower |= effect.UsesPower && !user.Power.IsZero;
                     ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
-                    user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
+                    OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                 }
                 else
                 {
@@ -193,13 +195,31 @@ public class SubAction : MonoBehaviour
         }
         else
         {
-            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options);
+            OnBeforeSubAction(grid, action, user, targets, ref userList, targetPositions, options);
             UsedPower = UsesPower && !user.Power.IsZero;
             foreach (var effect in effects)
             {
                 ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
             }
-            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options);
+            OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, options);
+        }
+    }
+
+    private void OnBeforeSubAction(BattleGrid grid, Action action, Unit user, List<Unit> targets, ref List<Unit> userList, List<Vector2Int> targetPositions, Options options, Type subTypeOverride = Type.None)
+    {
+        user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options, subTypeOverride);
+        if (options.HasFlag(Options.AlsoApplySubtypeToSelf))
+        {
+            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, userList ??= new List<Unit>() { user }, targetPositions, options, subTypeOverride);
+        }
+    }
+
+    private void OnAfterSubAction(BattleGrid grid, Action action, Unit user, List<Unit> targets, ref List<Unit> userList, List<Vector2Int> targetPositions, Options options, Type subTypeOverride = Type.None)
+    {
+        user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options, subTypeOverride);
+        if (options.HasFlag(Options.AlsoApplySubtypeToSelf))
+        {
+            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, userList ??= new List<Unit>() { user }, targetPositions, options, subTypeOverride);
         }
     }
 
