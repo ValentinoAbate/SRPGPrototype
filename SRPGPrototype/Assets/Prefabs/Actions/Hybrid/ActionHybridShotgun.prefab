@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 7
-  standaloneSubActionOptions: 1
+  standaloneSubActionOptions: 25
   affectUser: 1
   ignoreInValidRangeCalcs: 1
   numSpaces: 1

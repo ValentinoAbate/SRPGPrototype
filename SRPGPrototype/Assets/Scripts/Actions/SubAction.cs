@@ -35,7 +35,8 @@ public class SubAction : MonoBehaviour
         SkipUpgradeCheck = 1,
         ApplyToLastTargets = 2,
         RangeBasedOnLastSelectorPos = 4,
-        AlsoApplySubtypeToSelf = 8,
+        ApplySubtypeToSelf = 8,
+        DontApplySubtypeToTargets = 16,
     }
 
     // Sub-action Metadata
@@ -207,8 +208,11 @@ public class SubAction : MonoBehaviour
 
     private void OnBeforeSubAction(BattleGrid grid, Action action, Unit user, List<Unit> targets, ref List<Unit> userList, List<Vector2Int> targetPositions, Options options, Type subTypeOverride = Type.None)
     {
-        user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options, subTypeOverride);
-        if (options.HasFlag(Options.AlsoApplySubtypeToSelf))
+        if (!options.HasFlag(Options.DontApplySubtypeToTargets))
+        {
+            user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options, subTypeOverride);
+        }
+        if (options.HasFlag(Options.ApplySubtypeToSelf))
         {
             user.OnBeforeSubActionFn?.Invoke(grid, action, this, user, userList ??= new List<Unit>() { user }, targetPositions, options, subTypeOverride);
         }
@@ -216,8 +220,11 @@ public class SubAction : MonoBehaviour
 
     private void OnAfterSubAction(BattleGrid grid, Action action, Unit user, List<Unit> targets, ref List<Unit> userList, List<Vector2Int> targetPositions, Options options, Type subTypeOverride = Type.None)
     {
-        user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options, subTypeOverride);
-        if (options.HasFlag(Options.AlsoApplySubtypeToSelf))
+        if (!options.HasFlag(Options.DontApplySubtypeToTargets))
+        {
+            user.OnAfterSubActionFn?.Invoke(grid, action, this, user, targets, targetPositions, options, subTypeOverride);
+        }
+        if (options.HasFlag(Options.ApplySubtypeToSelf))
         {
             user.OnAfterSubActionFn?.Invoke(grid, action, this, user, userList ??= new List<Unit>() { user }, targetPositions, options, subTypeOverride);
         }
