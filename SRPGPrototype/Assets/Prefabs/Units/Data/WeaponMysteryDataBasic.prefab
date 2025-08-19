@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87256832218fc2d4d8cd9f825c332d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropName: Weapon Program Data (Basic)
+  dropName: Weapon Program Data (B)
   declineBonusOverride: -2147483648
 --- !u!1001 &4868043337213040873
 PrefabInstance:
@@ -34,7 +34,7 @@ PrefabInstance:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
       propertyPath: displayName
-      value: Weapon Program Data (Basic)
+      value: Weapon Program Data (B)
       objectReference: {fileID: 0}
     - target: {fileID: 1068486978419434115, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}

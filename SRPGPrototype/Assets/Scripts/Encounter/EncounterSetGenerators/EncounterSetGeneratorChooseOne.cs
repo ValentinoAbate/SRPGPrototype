@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class EncounterSetGeneratorChooseOne : EncounterSetGeneratorRandomWeighted
 {
-    protected override IReadOnlyList<Encounter> GenerateEncountersInternal(string mapSymbol, int encounterNumber)
+    protected override IReadOnlyList<Encounter> GenerateEncountersInternal(string mapSymbol, int encounterNumber, Metadata metadata)
     {
         int numEncounters = Mathf.Clamp(RandomU.instance.Choice(numEncountersSet), minEncounters, maxEncounters);
         var encounterGenerator = RandomU.instance.Choice(generatorSet);
         var output = new List<Encounter>(numEncounters);
         for (int i = 0; i < numEncounters; i++)
         {
-            output.Add(encounterGenerator.Generate(mapSymbol, encounterNumber));
+            output.Add(encounterGenerator.Generate(mapSymbol, encounterNumber, metadata));
         }
         return output;
     }

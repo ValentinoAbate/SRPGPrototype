@@ -34,6 +34,22 @@ public static class ProgramFilters
         return false;
     }
 
+    public static bool GivesActionOfAnyType(Program p, params Action.Type[] types)
+    {
+        foreach (var effect in p.Effects)
+        {
+            if (effect is ProgramEffectAddAction addActionEffect)
+            {
+                foreach(var type in types)
+                {
+                    if (addActionEffect.action.ActionType == type)
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static bool GivesActionOfSubType(Program p, SubAction.Type subType)
     {
         foreach (var effect in p.Effects)

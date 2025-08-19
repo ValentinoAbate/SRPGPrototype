@@ -247,5 +247,7 @@ public abstract class EncounterGeneratorStep : ScriptableObject
     public class Metadata
     {
         public float targetDifficulty;
+        public WeightedSet<Unit> primaryNPCs;
+        public WeightedSet<Unit> secondaryNPCs;
     }
 }

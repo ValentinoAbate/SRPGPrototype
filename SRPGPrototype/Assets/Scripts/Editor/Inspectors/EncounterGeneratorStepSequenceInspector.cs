@@ -13,10 +13,11 @@ public class EncounterGeneratorStepSequenceInspector : Editor
         var data = target as EncounterGeneratorStepSequence;
         if(GUILayout.Button(new GUIContent("Generate Target Difficulty")))
         {
+            var metadata = new EncounterSetGenerator.Metadata();
             float sum = 0;
             for(int i = 0; i < targetDifficultyGenerationIterations; ++i)
             {
-                sum += data.Generate(string.Empty, 0).Difficulty;
+                sum += data.Generate(string.Empty, 0, metadata).Difficulty;
             }
             data.targetDifficulty = Mathf.Floor(sum / targetDifficultyGenerationIterations);
             EditorUtility.SetDirty(data);

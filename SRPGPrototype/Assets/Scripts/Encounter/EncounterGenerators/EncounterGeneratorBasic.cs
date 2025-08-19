@@ -35,7 +35,7 @@ public class EncounterGeneratorBasic : EncounterGenerator
     [Header("Seed Properties")]
     public Encounter seed = null;
 
-    public override Encounter Generate(string mapSymbol, int encounterNumber)
+    public override Encounter Generate(string mapSymbol, int encounterNumber, EncounterSetGenerator.Metadata metadata)
     {
         InitializeEncounter(mapSymbol, encounterNumber, out var positions, out var encounter);
         int numEnemiesChoice = RandomU.instance.Choice(numEnemies, numEnemiesWeights);

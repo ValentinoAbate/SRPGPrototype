@@ -21,6 +21,7 @@ public abstract class EncounterSetGenerator : ScriptableObject
 
     [SerializeField] private List<int> numEncounterOptions = new List<int>();
     [SerializeField] private List<float> numEncounterWeights = new List<float>();
+    [SerializeField] private NPCSet npcSet;
 
     [NonSerialized] protected IReadOnlyCollection<KeyValuePair<int, float>> numEncountersSet;
     [NonSerialized] private bool initialized = false;
@@ -44,8 +45,26 @@ public abstract class EncounterSetGenerator : ScriptableObject
             initialized = true;
             Initialize();
         }
-        return GenerateEncountersInternal(mapSymbol, encounterNumber);
+        return GenerateEncountersInternal(mapSymbol, encounterNumber, GenerateMetadata());
     }
 
-    protected abstract IReadOnlyList<Encounter> GenerateEncountersInternal(string mapSymbol, int encounterNumber);
+    protected abstract IReadOnlyList<Encounter> GenerateEncountersInternal(string mapSymbol, int encounterNumber, Metadata metadata);
+
+    protected Metadata GenerateMetadata()
+    {
+        var metadata = new Metadata();
+        if(npcSet != null)
+        {
+            npcSet.GetNPCs(ref metadata.primaryNPCs, ref metadata.secondaryNPCs);
+        }
+        return metadata;
+    }
+
+
+
+    public class Metadata
+    {
+        public WeightedSet<Unit> primaryNPCs = null;
+        public WeightedSet<Unit> secondaryNPCs = null;
+    }
 }

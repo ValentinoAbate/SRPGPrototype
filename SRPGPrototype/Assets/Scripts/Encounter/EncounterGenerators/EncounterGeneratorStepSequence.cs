@@ -9,17 +9,19 @@ public class EncounterGeneratorStepSequence : EncounterGenerator
     [SerializeField] private List<EncounterGeneratorStep> steps;
     [Header("Seed Properties")]
     [SerializeField] private Encounter seed;
-    public override Encounter Generate(string mapSymbol, int encounterNumber)
+    public override Encounter Generate(string mapSymbol, int encounterNumber, EncounterSetGenerator.Metadata metadata)
     {
-        var metadata = new EncounterGeneratorStep.Metadata()
+        var stepMetadata = new EncounterGeneratorStep.Metadata()
         {
             targetDifficulty = targetDifficulty,
+            primaryNPCs = metadata.primaryNPCs,
+            secondaryNPCs = metadata.secondaryNPCs,
         };
         InitializeEncounter(mapSymbol, encounterNumber, out var positions, out var encounter);
         ApplySeed(seed, ref encounter, ref positions);
         foreach(var step in steps)
         {
-            step.Apply(metadata, ref encounter, ref positions);
+            step.Apply(stepMetadata, ref encounter, ref positions);
         }
         return encounter;
     }

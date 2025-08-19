@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a983a827159f784aa467a11cdb1a727, type: 3}
-  m_Name: ProtoV2Encounter2-8Set
+  m_Name: ProtoV2Encounter1-4Set
   m_EditorClassIdentifier: 
   numEncounterOptions: 010000000200000003000000
   numEncounterWeights:
-  - 1
-  - 8
-  - 1
+  - 1.5
+  - 18
+  - 0.5
+  npcSet: {fileID: 11400000, guid: 1d107f2336fd17544a6e534c15fd0556, type: 2}
   generators:
-  - {fileID: 11400000, guid: 0a3362e213393d14997d45565ade405f, type: 2}
+  - {fileID: 11400000, guid: 268cd7237f524c04fb7c543de89ca9b3, type: 2}
   generatorWeights: []

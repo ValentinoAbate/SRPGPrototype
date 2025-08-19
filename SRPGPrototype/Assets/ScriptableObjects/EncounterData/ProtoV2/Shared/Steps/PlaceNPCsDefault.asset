@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a983a827159f784aa467a11cdb1a727, type: 3}
-  m_Name: ProtoV2Encounter3-4Set
+  m_Script: {fileID: 11500000, guid: 8bac4fce3f7d91a48b84ad2adb86064e, type: 3}
+  m_Name: PlaceNPCsDefault
   m_EditorClassIdentifier: 
-  numEncounterOptions: 010000000200000003000000
-  numEncounterWeights:
+  numNPCs: 010000000200000003000000
+  numNPCsWeights:
   - 1
-  - 8
+  - 38
   - 1
-  generators:
-  - {fileID: 11400000, guid: 9e43d4a9329433d4c90b89148f108c20, type: 2}
-  generatorWeights: []

@@ -36,7 +36,7 @@ public abstract class EncounterGenerator : ScriptableObject
     [SerializeField] private Type encounterType;
     [SerializeField] private Vector2Int dimensions = new Vector2Int(8, 8);
 
-    public abstract Encounter Generate(string mapSymbol, int encounterNumber);
+    public abstract Encounter Generate(string mapSymbol, int encounterNumber, EncounterSetGenerator.Metadata metadata);
 
     protected void InitializeEncounter(string mapSymbol, int encounterNumber, out HashSet<Vector2Int> positions, out Encounter encounter)
     {
