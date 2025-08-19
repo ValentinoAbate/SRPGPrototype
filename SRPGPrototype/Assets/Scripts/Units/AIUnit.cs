@@ -65,6 +65,7 @@ public abstract class AIUnit : Unit
 
     public Transform ActionTransform => actionTransform;
     [SerializeField] private Transform actionTransform = null;
+    [SerializeField] private Action[] contextActions;
 
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
@@ -109,6 +110,10 @@ public abstract class AIUnit : Unit
         {
             onPhaseEnd += effect.Ability;
         }
+        for (int i = 0; i < contextActions.Length; i++)
+        {
+            contextActions[i] = contextActions[i].Validate(ActionTransform);
+        }
     }
 
     public Coroutine DoTurn(BattleGrid grid)
@@ -134,5 +139,10 @@ public abstract class AIUnit : Unit
         foreach (var reward in moneyRewards)
             manager.GenerateMoneyLoot += reward.GenerateMoneyData;
         return null;
+    }
+
+    public override IReadOnlyCollection<Action> GetContextualActions(Unit user, BattleGrid grid)
+    {
+        return contextActions.Length > 0 && grid.IsAdjacent(this, user) ? contextActions : System.Array.Empty<Action>();
     }
 }

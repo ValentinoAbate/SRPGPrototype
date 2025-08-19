@@ -41,7 +41,8 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         {
             button.Hide();
         }
-        UIManager.main.ItemSelector.Show("Select Programs", PersistantData.main.inventory.Programs, user, this);
+        var programs = new List<Program>(PersistantData.main.inventory.AllRemovablePrograms);
+        UIManager.main.ItemSelector.Show("Select Programs", programs, user, this);
         gameObject.SetActive(true);
         costDisplay.Setup(cost);
     }
@@ -74,9 +75,26 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         // Add program to inventory
         PersistantData.main.inventory.AddProgram(program);
         // Remove fusion arguments from inventory
+        var shell1 = fusionArguments[0].Program.Shell;
+        var shell2 = fusionArguments[1].Program.Shell;
         foreach (var button in fusionArguments)
         {
-            PersistantData.main.inventory.RemoveProgram(button.Program, false);
+            if(button.Program.Shell != null)
+            {
+                button.Program.Shell.Uninstall(button.Program);
+            }
+            else
+            {
+                PersistantData.main.inventory.RemoveProgram(button.Program, false);
+            }
+        }
+        if (shell1 != null)
+        {
+            shell1.Compile();
+        }
+        if(shell2 != null && shell2 != shell1)
+        {
+            shell2.Compile();
         }
         // Spend cost
         PersistantData.main.inventory.Money -= cost;

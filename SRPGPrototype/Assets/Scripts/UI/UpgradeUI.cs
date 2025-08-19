@@ -30,11 +30,19 @@ public class UpgradeUI : MonoBehaviour
     {
         var inv = PersistantData.main.inventory;
         // Count programs in the inventory
-        int upgradeCount = inv.Programs.Count((p) => p.Triggers.Any((t) => t.Condition.Completed));
-        // Count programs in installed shells
-        upgradeCount += inv.Shells.Sum((s) => s.Programs.Count((p) => p.program.Triggers.Any((t) => t.Condition.Completed)));
+        int upgradeCount = inv.AllPrograms.Count(HasReadyUpgrade);
         // Set button text
         showButtonText.text = "Upgrades (" + upgradeCount + ")";
+    }
+
+    private static bool HasReadyUpgrade(Program p)
+    {
+        foreach(var trigger in p.Triggers)
+        {
+            if (trigger.Condition.Completed)
+                return true;
+        }
+        return false;
     }
 
     public void EnterProgramSelectionUI(bool setTempTitle)
@@ -44,18 +52,22 @@ public class UpgradeUI : MonoBehaviour
         readyProgramContainer.DestroyAllChildren();
         notReadyProgramContainer.DestroyAllChildren();
         var inv = PersistantData.main.inventory;
-        var readyPrograms = new List<System.Tuple<Program, int>>(inv.Programs.Count);
-        var notReadyPrograms = new List<System.Tuple<Program, int>>(inv.Programs.Count);
-        // Start with programs in inventories
-        var programs = new List<Program>(inv.Programs);
-        // Add programs installed in shells
-        programs.AddRange(inv.Shells.SelectMany((s) => s.Programs.Select((p) => p.program)));
+        // Get all programs
+        var programs = new List<Program>(inv.AllPrograms);
+        // Setup program lists
+        var readyPrograms = new List<System.Tuple<Program, int>>(programs.Count);
+        var notReadyPrograms = new List<System.Tuple<Program, int>>(programs.Count);
         // Separate ready and non-ready programs
         foreach (var prog in programs)
         {
             if (prog.Triggers.Length <= 0)
                 continue;
-            int completed = prog.Triggers.Count((t) => t.Condition.Completed);
+            int completed = 0;
+            foreach(var trigger in prog.Triggers)
+            {
+                if (trigger.Condition.Completed)
+                    ++completed;
+            }
             if(completed > 0)
             {
                 readyPrograms.Add(new System.Tuple<Program, int>(prog, completed));
@@ -66,11 +78,13 @@ public class UpgradeUI : MonoBehaviour
             }
         }
         // Initialize program select buttons
-        readyPrograms.Sort((p1, p2) => p1.Item1.DisplayName.CompareTo(p2.Item1.DisplayName));
+        readyPrograms.Sort(ProgramDisplayOrderComparer);
         InitializeProgramSelectButtons(readyPrograms, readyProgramContainer);
-        notReadyPrograms.Sort((p1, p2) => p1.Item1.DisplayName.CompareTo(p2.Item1.DisplayName));
+        notReadyPrograms.Sort(ProgramDisplayOrderComparer);
         InitializeProgramSelectButtons(notReadyPrograms, notReadyProgramContainer);
     }
+
+    private static int ProgramDisplayOrderComparer(System.Tuple<Program, int> p1, System.Tuple<Program, int> p2) => p1.Item1.DisplayName.CompareTo(p2.Item1.DisplayName);
 
     private void InitializeProgramSelectButtons(List<System.Tuple<Program, int>> programs, Transform parent)
     {

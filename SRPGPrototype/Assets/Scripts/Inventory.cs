@@ -51,6 +51,43 @@ public class Inventory : MonoBehaviour
     }
     public IReadOnlyList<Shell> Shells => shells;
     public IReadOnlyList<Program> Programs => programs;
+    public IEnumerable<Program> AllPrograms
+    {
+        get
+        {
+            foreach (var program in Programs)
+                yield return program;
+            foreach (var shell in Shells)
+            {
+                foreach (var install in shell.Programs)
+                {
+                    yield return install.program;
+                }
+            }
+        }
+    }
+    // Get all programs, including programs that could be removed from current shells
+    public IEnumerable<Program> AllRemovablePrograms
+    {
+        get
+        {
+            foreach (var program in Programs)
+                yield return program;
+            var forbiddenAttributes = Program.Attributes.Fixed | Program.Attributes.SoulCore;
+            foreach (var shell in Shells)
+            {
+                foreach(var install in shell.Programs)
+                {
+                    if (ProgramFilters.HasAnyAttributes(install.program, forbiddenAttributes))
+                        continue;
+                    var capacityMod = install.program.GetComponent<ProgramEffectModifyCapacity>();
+                    if (capacityMod != null && capacityMod.amount > 0)
+                        continue;
+                    yield return install.program;
+                }
+            }
+        }
+    }
 
     private readonly List<Program> programs = new List<Program>();
     private readonly List<Shell> shells = new List<Shell>();
@@ -80,8 +117,7 @@ public class Inventory : MonoBehaviour
     {
         foreach (var prog in startingPrograms)
             AddProgram(prog, true);
-        foreach (var shell in startingShells)
-            AddShell(shell, true);
+        AddShells(startingShells, true);
         Money = startingMoney;
     }
 
@@ -112,7 +148,24 @@ public class Inventory : MonoBehaviour
         return programs.Contains(p);
     }
 
+    public void AddShells(IEnumerable<Shell> shells, bool fromAsset = false)
+    {
+        if (!shells.Any())
+            return;
+        foreach(var shell in shells)
+        {
+            AddShellInternal(shell, fromAsset);
+        }
+        SortShells();
+    }
+
     public void AddShell(Shell s, bool fromAsset = false)
+    {
+        AddShellInternal(s, fromAsset);
+        SortShells();
+    }
+
+    private void AddShellInternal(Shell s, bool fromAsset)
     {
         Shell addedShell;
         if (fromAsset)
@@ -125,10 +178,26 @@ public class Inventory : MonoBehaviour
             s.transform.SetParent(shellContainer.transform);
         }
         shells.Add(addedShell);
-        if(EquippedShell == null)
+        if (EquippedShell == null)
         {
             EquippedShell = addedShell;
         }
+    }
+
+    private void SortShells()
+    {
+        shells.Sort(ShellComparer);
+    }
+
+    private int ShellComparer(Shell s1, Shell s2)
+    {
+        if (s1 == s2)
+            return 0;
+        if (s1 == EquippedShell)
+            return -1;
+        if (s1 == EquippedShell)
+            return 1;
+        return s1.HasSoulCore.CompareTo(s2.HasSoulCore);
     }
 
     public void RemoveShell(Shell s, bool destroy = false)

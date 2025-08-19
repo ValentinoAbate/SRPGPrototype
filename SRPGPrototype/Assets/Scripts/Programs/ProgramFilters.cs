@@ -92,6 +92,8 @@ public static class ProgramFilters
 
     public static bool IsColor(Program p, Program.Color color) => p.color == color && p.GetComponent<ProgramVariantColor>() == null;
 
+    public static bool HasAnyAttributes(Program p, Program.Attributes attributes) => (attributes & p.attributes) > 0;
+
     public static bool HasAttributes(Program p, Program.Attributes attributes) => p.attributes.HasFlag(attributes);
 
     public static bool IsSoulCore(Program p) => HasAttributes(p, Program.Attributes.SoulCore);
