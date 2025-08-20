@@ -15,6 +15,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   targetStat: 0
   damage: 1
 --- !u!114 &3797450329308082281
@@ -35,7 +36,7 @@ MonoBehaviour:
   filterByActionType: 1
   actionTypes: 0100000002000000
   filterBySubType: 1
-  subTypes: 090000000a0000000b0000000c0000000d0000000e000000
+  subTypes: 090000000a0000000b0000000c0000000d0000000e00000001000000
   actionEffectContainer: {fileID: 0}
 --- !u!114 &3810536140382234709
 MonoBehaviour:
