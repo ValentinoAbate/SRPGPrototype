@@ -8,12 +8,12 @@ public class ActionEffectMoveTractorBeam : ActionEffectMove
     {
         if (target == null)
             return;
-        var direction = target.Pos.DirectionTo(user.Pos);
-        var goal = user.Pos - direction;
-        while (target.Pos != goal)
-        {
-            if (!Move(grid, target, direction))
-                break;
-        }
+        var goal = user.Pos - target.Pos.DirectionTo(user.Pos);
+        SetPosition(grid, user, target, goal);
+    }
+
+    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
+        return target != null && target.Movable && (target.Pos + target.Pos.DirectionTo(user.Pos) != user.Pos);
     }
 }

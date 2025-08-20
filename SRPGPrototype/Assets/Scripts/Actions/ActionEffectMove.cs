@@ -13,39 +13,91 @@ public abstract class ActionEffectMove : ActionEffect
     /// If unit exists in the destination square, tries to move it in the same direction (recursive).
     /// If any move in the chain fails, the whole move fails
     /// </summary>
-    protected bool Move(BattleGrid grid, Unit target, Vector2Int direction)
+    protected bool Move(BattleGrid grid, Unit source, Unit target, Vector2Int direction, int distance = 1)
     {
-        if (!target.Movable)
-            return false;
-        Vector2Int destination = target.Pos + direction;
-        if (!grid.IsLegal(destination))
-            return false;
-        var unitAtDestination = grid.Get(destination);
-        if(unitAtDestination == null)
-        {
-            // Do move
-            return EnactMove(grid, target, destination);
-        }
-        else if(Move(grid, unitAtDestination, direction))
-        {
-            // Do move
-            return EnactMove(grid, target, destination);
-        }
-        return false;
+        return target != null && TryMove(grid, source, target, direction, distance) > 0;
     }
 
-    protected bool SetPosition(BattleGrid grid, Unit target, Vector2Int position)
+    protected bool CanMove(BattleGrid grid, Unit source, Unit target, Vector2Int direction, int distance = 1)
+    {
+        if (target == null || !target.Movable)
+        {
+            return false;
+        }
+        var destination = target.Pos + direction;
+        if (!grid.IsLegal(destination))
+        {
+            return false;
+        }
+        var blocker = grid.Get(destination);
+        return blocker == null || CanMove(grid, source, blocker, direction, distance);
+    }
+
+    private int TryMove(BattleGrid grid, Unit source, Unit target, Vector2Int direction, int distance)
+    {
+        if (!target.Movable)
+        {
+            return 0;
+        }
+        for (int i = 0; i < distance; ++i)
+        {
+            var destination = target.Pos + (direction * (i + 1));
+            if (!grid.IsLegal(destination))
+            {
+                return TryEnactMoveAtDistance(grid, source, target, direction, i);
+            }
+            var blocker = grid.Get(destination);
+            if (blocker != null)
+            {
+                int blockerDistanceMoved = TryMove(grid, source, blocker, direction, distance - i);
+                return TryEnactMoveAtDistance(grid, source, target, direction, i + blockerDistanceMoved);
+            }
+        }
+        return TryEnactMoveAtDistance(grid, source, target, direction, distance);
+    }
+
+    private int TryEnactMoveAtDistance(BattleGrid grid, Unit source, Unit target, Vector2Int direction, int distance)
+    {
+        if(distance <= 0)
+        {
+            return 0;
+        }
+        return EnactMove(grid, source, target, target.Pos + (direction * distance)) ? distance : 0;
+    }
+
+    protected bool SetPosition(BattleGrid grid, Unit source, Unit target, Vector2Int position)
     {
         if (!target.Movable)
             return false;
-        return EnactMove(grid, target, position);
+        return EnactMove(grid, source, target, position);
+    }
+
+    protected bool Swap(BattleGrid grid, Unit source, Unit target1, Unit target2)
+    {
+        if (!target1.Movable && target2.Movable)
+            return false;
+        grid.SwapAndSetWorldPos(target1, target2);
+        DoReposition(grid, source, target1);
+        DoReposition(grid, source, target2);
+        return true;
     }
 
     /// <summary>
     /// Actually moves a unit, and shows any applicable visualizations
     /// </summary>
-    private bool EnactMove(BattleGrid grid, Unit target, Vector2Int destination)
+    private bool EnactMove(BattleGrid grid, Unit source, Unit target, Vector2Int destination)
     {
-        return grid.MoveAndSetWorldPos(target, destination);
+        if(grid.MoveAndSetWorldPos(target, destination))
+        {
+            DoReposition(grid, source, target);
+            return true;
+        }
+        return false;
+    }
+
+    private void DoReposition(BattleGrid grid, Unit source, Unit target)
+    {
+        source.OnRepositionOther?.Invoke(grid, source, target);
+        target.OnRepositionedFn?.Invoke(grid, source, target);
     }
 }

@@ -39,6 +39,8 @@ public abstract class AIUnit : Unit
     private OnDamaged onDamagedFn = null;
     public override IncomingDamageMod IncomingDamageMods => incomingDamageMods;
     private IncomingDamageMod incomingDamageMods = null;
+    public override OnRepositioned OnRepositionedFn { get; }
+    public override OnRepositioned OnRepositionOther { get; }
     public override OnBattleStartDel OnBattleStartFn { get; }
     public override OnPhaseStartDel OnPhaseStartFn { get; }
     public override OnPhaseEndDel OnPhaseEndFn => onPhaseEnd;

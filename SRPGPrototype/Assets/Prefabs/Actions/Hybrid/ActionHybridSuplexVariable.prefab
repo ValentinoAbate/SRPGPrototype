@@ -11,7 +11,8 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Pick up an adjacent or diagonally adjacent unit and slam it down on
-        the other side of you, dealing {dmg,0,1} damage.
+        the other side of you, dealing {dmg,0,1} damage and pushing any unit previously
+        occupying the target tile away.
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: bb10b911ba869994f92f7b488b3b3924,
         type: 3}

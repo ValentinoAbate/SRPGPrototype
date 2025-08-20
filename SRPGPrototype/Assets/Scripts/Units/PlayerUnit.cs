@@ -32,6 +32,8 @@ public class PlayerUnit : Unit
     public override OnDeath OnDeathFn => Shell.OnDeath;
     public override OnDamaged OnDamagedFn => Shell.OnDamaged;
     public override IncomingDamageMod IncomingDamageMods => Shell.IncomingDamageMods;
+    public override OnRepositioned OnRepositionedFn => Shell.OnRepositioned;
+    public override OnRepositioned OnRepositionOther => Shell.OnRepositionOther;
     public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
     public override OnPhaseStartDel OnPhaseStartFn => Shell.OnPhaseStart;
     public override OnPhaseEndDel OnPhaseEndFn => Shell.OnPhaseEnd;

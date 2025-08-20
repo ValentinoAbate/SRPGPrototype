@@ -9,7 +9,7 @@ public class Shell : MonoBehaviour, ILootable
 {
     public const int baseLinkOutThreshold = 2;
     public enum Progression
-    { 
+    {
         Small,
         Standard,
         Large,
@@ -70,6 +70,8 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnDeath OnDeath { get; private set; }
     public Unit.OnDamaged OnDamaged { get; private set; }
     public Unit.IncomingDamageMod IncomingDamageMods { get; private set; }
+    public Unit.OnRepositioned OnRepositioned { get; private set; }
+public Unit.OnRepositioned OnRepositionOther { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
     public Unit.OnPhaseEndDel OnPhaseEnd { get; private set; }
@@ -404,6 +406,8 @@ public class Shell : MonoBehaviour, ILootable
         OnDeath = compileData.onDeath;
         OnDamaged = compileData.onDamaged;
         IncomingDamageMods = compileData.incomingDamageMods;
+        OnRepositioned = compileData.onRepositioned;
+        OnRepositionOther = compileData.onRepositionOther;
         OnBattleStart = compileData.onBattleStart;
         OnPhaseStart = compileData.onPhaseStart;
         OnPhaseEnd = compileData.onPhaseEnd;
@@ -431,6 +435,8 @@ public class Shell : MonoBehaviour, ILootable
         public Unit.OnDeath onDeath = null;
         public Unit.OnDamaged onDamaged = null;
         public Unit.IncomingDamageMod incomingDamageMods = null;
+        public Unit.OnRepositioned onRepositioned = null;
+        public Unit.OnRepositioned onRepositionOther = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public Unit.OnPhaseStartDel onPhaseStart = null;
         public Unit.OnPhaseEndDel onPhaseEnd = null;

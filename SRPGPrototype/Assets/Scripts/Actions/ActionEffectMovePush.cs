@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectMovePush : ActionEffectMove
+public class ActionEffectMovePush : ActionEffectMoveDirectionBasic
 {
-    [SerializeField] private int numSpaces = 1;
-    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override Vector2Int GetDirection(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        if (target == null)
-            return;
-        for(int i = 0; i < numSpaces; ++i)
-        {
-            Move(grid, target, user.Pos.DirectionTo(targetData.targetPos));
-        }
+        return user.Pos.DirectionTo(targetData.targetPos);
     }
 }

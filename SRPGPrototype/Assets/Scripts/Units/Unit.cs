@@ -21,6 +21,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public delegate int IncomingDamageMod(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat, bool simulation);
 
+    public delegate void OnRepositioned(BattleGrid grid, Unit source, Unit target);
+
     public enum Team
     { 
         None,
@@ -82,6 +84,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract OnDeath OnDeathFn { get; }
     public abstract OnDamaged OnDamagedFn { get; }
     public abstract IncomingDamageMod IncomingDamageMods { get; }
+    public abstract OnRepositioned OnRepositionedFn { get; }
+    public abstract OnRepositioned OnRepositionOther { get; }
     public abstract OnBattleStartDel OnBattleStartFn { get; }
     public abstract OnPhaseStartDel OnPhaseStartFn { get; }
     public abstract OnPhaseEndDel OnPhaseEndFn { get; }

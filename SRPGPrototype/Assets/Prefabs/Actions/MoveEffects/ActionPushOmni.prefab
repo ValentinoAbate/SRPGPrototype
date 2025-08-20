@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210b91bd3081c7644aa5e1a88dcb2411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   numSpaces: 1
 --- !u!1001 &4973033437914695441
 PrefabInstance:

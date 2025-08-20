@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectMoveGrapplingHook : ActionEffectMove
+public class ActionEffectMoveUserTowardsTarget : ActionEffectMove
 {
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        if (target == null)
+        if (target == null || !user.Movable)
             return;
-        var goal = targetData.selectedPos - target.Pos.DirectionTo(targetData.selectedPos);
-        SetPosition(grid, user, user, goal);
+        Move(grid, user, user, user.Pos.DirectionTo(target.Pos));
     }
 
     protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        return target != null && target.Movable && (target.Pos + target.Pos.DirectionTo(targetData.selectedPos) != targetData.selectedPos);
+        if (target == null || !user.Movable)
+            return false;
+        return CanMove(grid, user, user, user.Pos.DirectionTo(target.Pos));
     }
 }

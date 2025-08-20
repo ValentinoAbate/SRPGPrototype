@@ -36,6 +36,9 @@ public class CompileDataProxyUnit : Unit
 
     public override OnDamaged OnDamagedFn => CompileData.onDamaged;
 
+    public override OnRepositioned OnRepositionedFn => CompileData.onRepositioned;
+    public override OnRepositioned OnRepositionOther => CompileData.onRepositionOther;
+
     public override IncomingDamageMod IncomingDamageMods => CompileData.incomingDamageMods;
 
     public override OnBattleStartDel OnBattleStartFn => CompileData.onBattleStart;

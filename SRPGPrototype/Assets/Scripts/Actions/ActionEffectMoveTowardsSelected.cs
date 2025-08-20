@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectMoveTowardsSelected : ActionEffectMove
+public class ActionEffectMoveTowardsSelected : ActionEffectMoveDirectionBasic
 {
-    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    protected override Vector2Int GetDirection(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        if (target == null)
-            return;
-        Move(grid, target, target.Pos.DirectionTo(targetData.selectedPos));
+        return target.Pos.DirectionTo(targetData.selectedPos);
     }
 }
