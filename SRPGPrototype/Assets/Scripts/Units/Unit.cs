@@ -93,7 +93,6 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract string Description { get; }
     protected virtual int HybridFailurePenalty => 2;
     public abstract UnitUI UI { get; }
-
     public abstract Shell Shell { get; }
 
     public abstract IEnumerable<Action> Actions { get; }
@@ -101,6 +100,9 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     {
         return System.Array.Empty<Action>();
     }
+
+    public Transform FxContainer => fxContainer;
+    [SerializeField] private Transform fxContainer;
 
     public void ModifyHp(BattleGrid grid, int amount, Unit source)
     {

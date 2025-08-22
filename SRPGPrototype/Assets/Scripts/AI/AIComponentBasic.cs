@@ -20,11 +20,13 @@ public class AIComponentBasic : AIComponent<AIUnit>
     }
     [SerializeField] private Action moveAction;
     [SerializeField] private Action standardAction;
-    [SerializeField] private Options options;
+    [SerializeField] private Action secondaryAction;
+    [SerializeField] protected Options options;
     [SerializeField] private List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
     [SerializeField] private List<Unit.Team> runAwayFromTeams = new List<Unit.Team> { Unit.Team.Player };
 
     protected virtual Action StandardAction => standardAction;
+    protected virtual Action SecondaryAction => secondaryAction;
 
     public override IEnumerable<Action> Actions
     {
@@ -32,6 +34,11 @@ public class AIComponentBasic : AIComponent<AIUnit>
         {
             yield return StandardAction;
             yield return moveAction;
+            var secondary = SecondaryAction;
+            if (secondary != null)
+            {
+                yield return secondary;
+            }
         }
     }
 
@@ -39,6 +46,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
     {
         moveAction = moveAction.Validate(self.ActionTransform);
         standardAction = standardAction.Validate(self.ActionTransform);
+        if(secondaryAction != null)
+        {
+            secondaryAction = secondaryAction.Validate(self.ActionTransform);
+        }
     }
 
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
@@ -71,6 +82,20 @@ public class AIComponentBasic : AIComponent<AIUnit>
             }
             yield break;
         }
+        // Check for seconday action target in range
+        if(SecondaryAction != null && self.CanUseAction(SecondaryAction))
+        {
+            tPos = GetBestValidTargetPosInRange(grid, self, SecondaryAction, IsUnitTarget);
+            if (tPos != BattleGrid.OutOfBounds)
+            {
+                yield return StartCoroutine(AttackUntilExhausted(grid, self, SecondaryAction, tPos));
+                if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
+                {
+                    yield return runRoutine;
+                }
+                yield break;
+            }
+        }
         // Attempt to move into range
         // If we don't have enough AP to move, end early
         if (!self.CanUseAction(moveAction))
@@ -83,21 +108,27 @@ public class AIComponentBasic : AIComponent<AIUnit>
         // If a path was found, take it
         if(paths.Count > 0)
         {
-            TargetPath path;
-            if (options.HasFlag(Options.PrioritizeDistance))
-            {
-                path = GetTargetPathPrioritizeDistance(grid, self, paths);
-            }
-            else
-            {
-                path = paths[0];
-            }
-            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, path));
+            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, ChoosePath(grid, self, paths)));
             if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
             {
                 yield return runRoutine;
             }
             yield break;
+        }
+        // Check valid paths for secondary action
+        if(SecondaryAction != null && self.CanUseAction(SecondaryAction))
+        {
+            // Find Paths to target range
+            paths = PathsToTargetRange(grid, self, moveAction, SecondaryAction, targetUnits);
+            if (paths.Count > 0)
+            {
+                yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, SecondaryAction, ChoosePath(grid, self, paths)));
+                if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
+                {
+                    yield return runRoutine;
+                }
+                yield break;
+            }
         }
         // Predicate for determining if a unit is an ally
         bool IsUnitAlly(Unit other) => other.UnitTeam == self.UnitTeam;
@@ -262,6 +293,18 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
         // Nothing to be done
         yield break;
+    }
+
+    private TargetPath ChoosePath(BattleGrid grid, AIUnit self, List<TargetPath> paths)
+    {
+        if (options.HasFlag(Options.PrioritizeDistance))
+        {
+            return GetTargetPathPrioritizeDistance(grid, self, paths);
+        }
+        else
+        {
+            return paths[0];
+        }
     }
 
     private TargetPath GetTargetPathPrioritizeDistance(BattleGrid grid, AIUnit self, List<TargetPath> paths)

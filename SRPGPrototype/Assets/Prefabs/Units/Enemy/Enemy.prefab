@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  fxContainer: {fileID: 5090329943644456548}
   team: 1
   interferenceLevel: 1
   priorityLevel: 4
@@ -57,6 +58,7 @@ MonoBehaviour:
   displayName: Enemy
   description: 
   actionTransform: {fileID: 3827073035875608505}
+  contextActions: []
   unitUI: {fileID: 5273064424718646244}
   incomingDamageModifierAbilities: []
   onPhaseEndAbilities: []
