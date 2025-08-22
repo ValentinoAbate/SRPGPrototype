@@ -26,26 +26,26 @@ public class CompileDataProxyUnit : Unit
 
     public override CenterStat Break => CompileData.stats.Break;
 
-    public override OnSubAction OnBeforeSubActionFn => CompileData.onBeforeSubAction;
+    public override OnSubAction OnBeforeSubActionFn { get => CompileData.onBeforeSubAction; set { } }
 
-    public override OnSubAction OnAfterSubActionFn => CompileData.onAfterSubAction;
+    public override OnSubAction OnAfterSubActionFn { get => CompileData.onAfterSubAction; set { } }
 
-    public override OnAfterAction OnAfterActionFn => CompileData.onAfterAction;
+    public override OnAfterAction OnAfterActionFn { get => CompileData.onAfterAction; set { } }
 
-    public override OnDeath OnDeathFn => CompileData.onDeath;
+    public override OnDeath OnDeathFn { get => CompileData.onDeath; set { } }
 
-    public override OnDamaged OnDamagedFn => CompileData.onDamaged;
+    public override OnDamaged OnDamagedFn { get => CompileData.onDamaged; set { } }
 
-    public override OnRepositioned OnRepositionedFn => CompileData.onRepositioned;
-    public override OnRepositioned OnRepositionOther => CompileData.onRepositionOther;
+    public override OnRepositioned OnRepositionedFn { get => CompileData.onRepositioned; set { } }
+    public override OnRepositioned OnRepositionOther { get => CompileData.onRepositionOther; set { } }
 
-    public override IncomingDamageMod IncomingDamageMods => CompileData.incomingDamageMods;
+    public override IncomingDamageMod IncomingDamageMods { get => CompileData.incomingDamageMods; set { } }
 
-    public override OnBattleStartDel OnBattleStartFn => CompileData.onBattleStart;
+    public override OnBattleStartDel OnBattleStartFn { get => CompileData.onBattleStart; set { } }
 
-    public override OnPhaseStartDel OnPhaseStartFn => CompileData.onPhaseStart;
+    public override OnPhaseStartDel OnPhaseStartFn { get => CompileData.onPhaseStart; set { } }
 
-    public override OnPhaseEndDel OnPhaseEndFn => CompileData.onPhaseEnd;
+    public override OnPhaseEndDel OnPhaseEndFn { get => CompileData.onPhaseEnd; set { } }
 
     public override string DisplayName => Shell.DisplayName;
 

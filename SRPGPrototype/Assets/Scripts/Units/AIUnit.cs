@@ -30,21 +30,17 @@ public abstract class AIUnit : Unit
     public override int Repair { get; set; }
     public override int BaseRepair { get; }
 
-    public override OnSubAction OnBeforeSubActionFn { get; }
-    public override OnSubAction OnAfterSubActionFn { get; }
-    public override OnAfterAction OnAfterActionFn { get; }
-    public override OnDeath OnDeathFn { get => onDeathFn; }
-    private OnDeath onDeathFn = null;
-    public override OnDamaged OnDamagedFn { get => onDamagedFn; }
-    private OnDamaged onDamagedFn = null;
-    public override IncomingDamageMod IncomingDamageMods => incomingDamageMods;
-    private IncomingDamageMod incomingDamageMods = null;
-    public override OnRepositioned OnRepositionedFn { get; }
-    public override OnRepositioned OnRepositionOther { get; }
-    public override OnBattleStartDel OnBattleStartFn { get; }
-    public override OnPhaseStartDel OnPhaseStartFn { get; }
-    public override OnPhaseEndDel OnPhaseEndFn => onPhaseEnd;
-    private OnPhaseEndDel onPhaseEnd;
+    public override OnSubAction OnBeforeSubActionFn { get; set; }
+    public override OnSubAction OnAfterSubActionFn { get; set; }
+    public override OnAfterAction OnAfterActionFn { get; set; }
+    public override OnDeath OnDeathFn { get; set; }
+    public override OnDamaged OnDamagedFn { get; set; }
+    public override IncomingDamageMod IncomingDamageMods { get; set; }
+    public override OnRepositioned OnRepositionedFn { get; set; }
+    public override OnRepositioned OnRepositionOther { get; set; }
+    public override OnBattleStartDel OnBattleStartFn { get; set; }
+    public override OnPhaseStartDel OnPhaseStartFn { get; set; }
+    public override OnPhaseEndDel OnPhaseEndFn { get; set; }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -97,20 +93,20 @@ public abstract class AIUnit : Unit
         var onDeathEffects = GetComponents<ProgramEffectAddOnDeathAbility>();
         foreach (var effect in onDeathEffects)
         {
-            onDeathFn += effect.Ability;
+            OnDeathFn += effect.Ability;
         }
         var onDamagedEffects = GetComponents<ProgramEffectAddOnDamagedAbility>();
         foreach (var effect in onDamagedEffects)
         {
-            onDamagedFn += effect.Ability;
+            OnDamagedFn += effect.Ability;
         }
         foreach(var effect in incomingDamageModifierAbilities)
         {
-            incomingDamageMods += effect.Ability;
+            IncomingDamageMods += effect.Ability;
         }
         foreach(var effect in onPhaseEndAbilities)
         {
-            onPhaseEnd += effect.Ability;
+            OnPhaseEndFn += effect.Ability;
         }
         for (int i = 0; i < contextActions.Length; i++)
         {

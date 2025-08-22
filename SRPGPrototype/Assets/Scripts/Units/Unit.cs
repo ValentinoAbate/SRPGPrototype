@@ -78,17 +78,17 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract CenterStat Power { get; }
     public abstract CenterStat Speed { get; }
     public abstract CenterStat Break { get; }
-    public abstract OnSubAction OnBeforeSubActionFn { get; }
-    public abstract OnSubAction OnAfterSubActionFn { get; }
-    public abstract OnAfterAction OnAfterActionFn { get; }
-    public abstract OnDeath OnDeathFn { get; }
-    public abstract OnDamaged OnDamagedFn { get; }
-    public abstract IncomingDamageMod IncomingDamageMods { get; }
-    public abstract OnRepositioned OnRepositionedFn { get; }
-    public abstract OnRepositioned OnRepositionOther { get; }
-    public abstract OnBattleStartDel OnBattleStartFn { get; }
-    public abstract OnPhaseStartDel OnPhaseStartFn { get; }
-    public abstract OnPhaseEndDel OnPhaseEndFn { get; }
+    public abstract OnSubAction OnBeforeSubActionFn { get; set; }
+    public abstract OnSubAction OnAfterSubActionFn { get; set; }
+    public abstract OnAfterAction OnAfterActionFn { get; set; }
+    public abstract OnDeath OnDeathFn { get; set; }
+    public abstract OnDamaged OnDamagedFn { get; set; }
+    public abstract IncomingDamageMod IncomingDamageMods { get; set; }
+    public abstract OnRepositioned OnRepositionedFn { get; set; }
+    public abstract OnRepositioned OnRepositionOther { get; set; }
+    public abstract OnBattleStartDel OnBattleStartFn { get; set; }
+    public abstract OnPhaseStartDel OnPhaseStartFn { get; set; }
+    public abstract OnPhaseEndDel OnPhaseEndFn { get; set; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
     protected virtual int HybridFailurePenalty => 2;

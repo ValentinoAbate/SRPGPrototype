@@ -26,17 +26,17 @@ public class PlayerUnit : Unit
 
     #endregion
 
-    public override OnSubAction OnBeforeSubActionFn => Shell.OnBeforeSubAction;
-    public override OnSubAction OnAfterSubActionFn => Shell.OnAfterSubAction;
-    public override OnAfterAction OnAfterActionFn => Shell.OnAfterAction;
-    public override OnDeath OnDeathFn => Shell.OnDeath;
-    public override OnDamaged OnDamagedFn => Shell.OnDamaged;
-    public override IncomingDamageMod IncomingDamageMods => Shell.IncomingDamageMods;
-    public override OnRepositioned OnRepositionedFn => Shell.OnRepositioned;
-    public override OnRepositioned OnRepositionOther => Shell.OnRepositionOther;
-    public override OnBattleStartDel OnBattleStartFn => Shell.OnBattleStart;
-    public override OnPhaseStartDel OnPhaseStartFn => Shell.OnPhaseStart;
-    public override OnPhaseEndDel OnPhaseEndFn => Shell.OnPhaseEnd;
+    public override OnSubAction OnBeforeSubActionFn { get => Shell.OnBeforeSubAction; set { } }
+    public override OnSubAction OnAfterSubActionFn { get => Shell.OnAfterSubAction; set { } }
+    public override OnAfterAction OnAfterActionFn { get => Shell.OnAfterAction; set { } }
+    public override OnDeath OnDeathFn { get => Shell.OnDeath; set { } }
+    public override OnDamaged OnDamagedFn { get => Shell.OnDamaged; set { } }
+    public override IncomingDamageMod IncomingDamageMods { get => Shell.IncomingDamageMods; set { } }
+    public override OnRepositioned OnRepositionedFn { get => Shell.OnRepositioned; set { } }
+    public override OnRepositioned OnRepositionOther { get => Shell.OnRepositionOther; set { } }
+    public override OnBattleStartDel OnBattleStartFn { get => Shell.OnBattleStart; set { } }
+    public override OnPhaseStartDel OnPhaseStartFn { get => Shell.OnPhaseStart; set { } }
+    public override OnPhaseEndDel OnPhaseEndFn { get => Shell.OnPhaseEnd; set { } }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;
