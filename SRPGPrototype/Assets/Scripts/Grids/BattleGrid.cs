@@ -58,15 +58,6 @@ public class BattleGrid : Grid.Grid<Unit>
         Initialize();
     }
 
-    public override bool Add(Vector2Int pos, Unit obj)
-    {
-        if(base.Add(pos, obj))
-        {
-            return true;
-        }
-        return false;
-    }
-
     public IEnumerable<Unit> FindUnitsWithTags(Unit.Tags tags, BooleanOperator op = BooleanOperator.AND)
     {
         foreach(var unit in this)
