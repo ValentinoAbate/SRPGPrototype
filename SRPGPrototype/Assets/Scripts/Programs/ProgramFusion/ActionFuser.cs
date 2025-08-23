@@ -17,7 +17,8 @@ public class ActionFuser : MonoBehaviour
         fusedAction.ActionType = Action.Type.Hybrid;
         string description = "Use ";
         var subActions = new List<SubAction>();
-        int sumBaseAp = 0;
+        int sumBaseAP = 0;
+        int maxAPCost = 0;
         var highestSlowdownType = Action.Trigger.TurnStart;
         int sumSlowdownInterval = 0;
         int slowdownIntervalCount = 0;
@@ -31,7 +32,11 @@ public class ActionFuser : MonoBehaviour
             }
             subActions.AddRange(action.SubActions);
             description += i < actions.Count - 1 ? $"{action.DisplayName}, then " : $"{action.DisplayName}.";
-            sumBaseAp += action.BaseAPCost;
+            sumBaseAP += action.BaseAPCost;
+            if(action.BaseAPCost > maxAPCost)
+            {
+                maxAPCost = action.BaseAPCost;
+            }
             if(action.SlowdownReset == Action.Trigger.Never)
             {
                 if(highestSlowdownType != Action.Trigger.Never)
@@ -59,9 +64,13 @@ public class ActionFuser : MonoBehaviour
         }
         fusedAction.SetDescription(description);
         fusedAction.SetSubActions(subActions);
-        fusedAction.BaseAPCost = System.Math.Max(0, sumBaseAp - 1);
+        fusedAction.BaseAPCost = System.Math.Max(0, sumBaseAP - 1);
         fusedAction.SlowdownReset = highestSlowdownType;
         fusedAction.SlowdownInterval = slowdownIntervalCount > 0 ? sumSlowdownInterval / slowdownIntervalCount : 0;
+        if (fusedAction.BaseAPCost < maxAPCost)
+        {
+            fusedAction.SlowdownInterval = Mathf.Min(fusedAction.SlowdownInterval, 2 + fusedAction.BaseAPCost); 
+        }
         fusedAction.Slowdown = maxSlowdown;
         return fusedAction;
     }
