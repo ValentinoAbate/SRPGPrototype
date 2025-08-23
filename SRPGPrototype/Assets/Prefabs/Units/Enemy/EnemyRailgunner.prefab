@@ -16,6 +16,7 @@ MonoBehaviour:
     type: 3}
   standardAction: {fileID: 4415060608083833614, guid: 3506c094420494a45ad215449ffc4a87,
     type: 3}
+  secondaryAction: {fileID: 0}
   options: -1
   targetTeams: 02000000
   runAwayFromTeams: 02000000
@@ -34,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: maxHP
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
