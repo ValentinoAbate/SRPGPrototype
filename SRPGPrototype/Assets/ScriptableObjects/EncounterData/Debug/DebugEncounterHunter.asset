@@ -15,7 +15,7 @@ MonoBehaviour:
   encounterType: 0
   dimensions: {x: 8, y: 6}
   lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
-  targetDifficulty: 4
+  targetDifficulty: 32
   numSpawnPositions: 5
   numEnemies: 0200000003000000
   numEnemiesWeights:

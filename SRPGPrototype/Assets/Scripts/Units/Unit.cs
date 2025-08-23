@@ -59,7 +59,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         None = 0,
         Explosive = 1,
         C4 = 2,
-        PlaceHolder = 4, // So unity doesn't serialize as "everything"
+        Boss = 4,
+        PlaceHolder = 8, // So unity doesn't serialize as "everything"
     }
 
     public int HotkeyIndex { get; set; } = -1;

@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class ProgramEffectAddOnAfterActionAbility : ProgramEffectAddAbility
 {
     [SerializeField] private string abilityName;
-    protected override string AbilityName => abilityName;
+    public override string AbilityName => abilityName;
 
     protected override void AddAbility(ref Shell.CompileData data)
     {

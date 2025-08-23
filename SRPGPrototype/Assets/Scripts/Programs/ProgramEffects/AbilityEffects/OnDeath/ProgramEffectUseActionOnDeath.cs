@@ -10,7 +10,7 @@
     public Action action;
     public bool triggerOnSelfDestruct = true;
 
-    protected override string AbilityName => "Use " + action.DisplayName + "when destroyed";
+    public override string AbilityName => "Use " + action.DisplayName + "when destroyed";
 
     public Action DetonateAction => action;
 

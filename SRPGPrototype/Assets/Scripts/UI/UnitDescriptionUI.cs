@@ -20,7 +20,7 @@ public class UnitDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         // Name and description
         nameText.text = unit.DisplayName + " (" + unit.UnitTeam.ToString() + ")";
-        descText.text = unit.Description;
+        descText.text = TextMacros.ApplyUnitTextMacros(unit.Description, unit);
         // Interference
         interferenceText.text = unit.InterferenceLevel.ToString();
         // Stats

@@ -1,47 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1474172497301562810
+--- !u!114 &2984107169156729321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4074569529001780107}
+  m_GameObject: {fileID: 6476051698243455025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d4b8fa7465b3f4ea63cb0bc87e3a7e, type: 3}
+  m_Script: {fileID: 11500000, guid: db92b9044800682408a8fc3ed410ac22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
+  stat: 3
+  number:
+    min: -2147483648
+    max: 2147483647
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    constant: 1
+    type: 0
+  abilityName: Gain 1 Max AP on phase end.
+--- !u!114 &8786571425028276543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476051698243455025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
-  standardAction: {fileID: 8616228202451974398, guid: 03d4d57e959ee8d44b07c3c25332b524,
+  standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
     type: 3}
-  secondaryAction: {fileID: 4415060608083833614, guid: 6136df66c9838254b877439babeeaf09,
-    type: 3}
-  options: 0
+  secondaryAction: {fileID: 0}
+  options: 2
   targetTeams: 02000000
   runAwayFromTeams: 02000000
-  barrierEffect: {fileID: 7898497713666056822}
-  summonAction: {fileID: 4415060608083833614, guid: 976a947a99a04b64696576e218cb890f,
-    type: 3}
-  reinforcementAmount: 2
---- !u!114 &7898497713666056822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4074569529001780107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8301fa4655809e246ab464139b3fb7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: 
-  numTurns: 3
-  barrierPrefab: {fileID: 8494998462610096465, guid: 1f961e2366c4de840ae3662a4b4761e5,
-    type: 3}
---- !u!1001 &3918061688902517000
+--- !u!1001 &6272258139745151666
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -51,12 +52,7 @@ PrefabInstance:
     - target: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Name
-      value: EnemyHunter
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: tags
-      value: 4
+      value: EnemyHuntersWolf
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -66,39 +62,34 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: maxHP
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent/Diagonal. Attack: Ranged/Long Ranged (3 damage) OR Adjacent/Diagonal
-        (3 damage + 1 AP Damage). {ability}.'
+      value: 'Move: Adjacent. Attack: Adjacent (2 damage). Gains 1 Max AP at the
+        end of the Enemy Phase. Runs away after attacking.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: displayName
-      value: Hunter
+      value: Hunting Wolf
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: priorityLevel
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: interferenceLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
-        type: 3}
-      propertyPath: incomingDamageModifierAbilities.Array.size
+      propertyPath: onPhaseEndAbilities.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
-      propertyPath: incomingDamageModifierAbilities.Array.data[0]
+      propertyPath: onPhaseEndAbilities.Array.data[0]
       value: 
-      objectReference: {fileID: 7898497713666056822}
+      objectReference: {fileID: 2984107169156729321}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_RootOrder
@@ -158,17 +149,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a52d76ce90e9ed247bd96a9d51e639a0,
+      objectReference: {fileID: 21300000, guid: c7a03d28ea7f2334fbb90c43ecf718fe,
         type: 3}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.76862746
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -178,13 +169,13 @@ PrefabInstance:
     - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: challengeRating
-      value: 20
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
---- !u!1 &4074569529001780107 stripped
+--- !u!1 &6476051698243455025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
     type: 3}
-  m_PrefabInstance: {fileID: 3918061688902517000}
+  m_PrefabInstance: {fileID: 6272258139745151666}
   m_PrefabAsset: {fileID: 0}

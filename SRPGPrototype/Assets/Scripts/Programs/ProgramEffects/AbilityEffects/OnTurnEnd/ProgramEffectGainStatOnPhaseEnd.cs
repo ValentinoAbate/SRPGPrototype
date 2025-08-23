@@ -6,7 +6,7 @@ public class ProgramEffectGainStatOnPhaseEnd : ProgramEffectAddOnPhaseEndAbility
 {
     public Stats.StatName stat;
     public UnitNumber number;
-    protected override string AbilityName => abilityName;
+    public override string AbilityName => abilityName;
     [SerializeField] private string abilityName = string.Empty;
     public override void Ability(BattleGrid grid, Unit unit)
     {

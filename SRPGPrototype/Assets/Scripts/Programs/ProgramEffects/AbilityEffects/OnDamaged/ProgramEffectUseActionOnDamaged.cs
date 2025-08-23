@@ -13,7 +13,7 @@ public class ProgramEffectUseActionOnDamaged : ProgramEffectAddOnDamagedAbility
 
     public Target target;
     public Action action;
-    protected override string AbilityName => "Use " + action.DisplayName + "when damaged";
+    public override string AbilityName => "Use " + action.DisplayName + "when damaged";
 
     public override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
     {

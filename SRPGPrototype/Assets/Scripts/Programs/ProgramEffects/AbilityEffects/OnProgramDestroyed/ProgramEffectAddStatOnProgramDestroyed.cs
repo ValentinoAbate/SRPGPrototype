@@ -6,7 +6,7 @@ public class ProgramEffectAddStatOnProgramDestroyed : ProgramEffectAddOnProgramD
 {
     public Stats.StatName stat;
     public UnitNumber number;
-    protected override string AbilityName => abilityName;
+    public override string AbilityName => abilityName;
     [SerializeField] private string abilityName = string.Empty;
 
     protected override void Ability(Program p, BattleGrid grid, Unit user)

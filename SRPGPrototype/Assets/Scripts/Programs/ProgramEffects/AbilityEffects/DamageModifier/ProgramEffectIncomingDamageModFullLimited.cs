@@ -8,7 +8,7 @@ public class ProgramEffectIncomingDamageModFullLimited : ProgramEffectAddIncomin
     [SerializeField] private SubAction.Type[] subTypeFilter = new SubAction.Type[0];
     [SerializeField] private UseLimiter limiter;
 
-    protected override string AbilityName => $"{base.AbilityName} {limiter.DisplayName}";
+    public override string AbilityName => $"{base.AbilityName} {limiter.DisplayName}";
 
     public override void ApplyEffect(ref Shell.CompileData data)
     {

@@ -7,7 +7,7 @@ public class ProgramEffectAddStatToTargetSubActionAbility : ProgramEffectAddSubA
 {
     public Stats.StatName stat;
     public ActionNumber number;
-    protected override string AbilityName => abilityName;
+    public override string AbilityName => abilityName;
     [SerializeField] private string abilityName = string.Empty;
 
     [SerializeField] private Unit.Team[] affectedTeams = new Unit.Team[] { Unit.Team.Enemy };

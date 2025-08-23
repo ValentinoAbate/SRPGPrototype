@@ -24,6 +24,7 @@ public static class TextMacros
 
 	private delegate string ActionMacro(string[] args, Action action, Unit user);
 	private delegate string ProgramMacro(string[] args, Program program, Unit user);
+	private delegate string UnitMacro(string[] args, Unit unit);
 
 	private static string ApplyMacros(string text, System.Func<string, string[], string> applyMacro)
 	{
@@ -156,6 +157,44 @@ public static class TextMacros
 			int dmg = dmgMod.BasicDamageMod(ActionEffectDamage.TargetStat.HP, null, user);
 			return dmg >= 0 ? $"+{dmg}" : dmg.ToString();
         }
+		return errorString;
+	}
+
+	#endregion
+
+	#region UnitMacros
+
+	private const string abilityMacro = "ability";
+	private static readonly Dictionary<string, UnitMacro> unitMacroMap = new Dictionary<string, UnitMacro>
+	{
+		{ abilityMacro, UnitMacroAbility },
+	};
+
+	public static string ApplyUnitTextMacros(string text, Unit unit)
+	{
+		string ApplyMacro(string macroName, string[] args)
+		{
+			if (unitMacroMap.TryGetValue(macroName, out var macro))
+			{
+				return macro(args, unit);
+			}
+			Debug.LogError(MacroErrorText(macroName, "unit"));
+			return errorString;
+		}
+		return ApplyMacros(text, ApplyMacro);
+	}
+
+	private static string UnitMacroAbility(string[] args, Unit unit)
+	{
+		var abilities = unit.GetComponents<ProgramEffectAddAbility>();
+		if (abilities.Length <= 0)
+			return errorString;
+		var indices = GetIndices(abilityMacro, args);
+		int index = indices.Count > 0 ? indices.Dequeue() : 0;
+		if(index < abilities.Length)
+        {
+			return abilities[index].AbilityName;
+		}
 		return errorString;
 	}
 

@@ -10,7 +10,7 @@ public class ProgramEffectAddStatOnGambleStreak : ProgramEffectAddSubActionAbili
     [SerializeField] private int streakRequired;
 
     private int streak = 0;
-    protected override string AbilityName => $"Gain {quantity} {stat} after a {streakRequired} Gamble {(success ? "Success" : "Failure")} streak ({streak}/{streakRequired})";
+    public override string AbilityName => $"Gain {quantity} {stat} after a {streakRequired} Gamble {(success ? "Success" : "Failure")} streak ({streak}/{streakRequired})";
 
     public override void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {

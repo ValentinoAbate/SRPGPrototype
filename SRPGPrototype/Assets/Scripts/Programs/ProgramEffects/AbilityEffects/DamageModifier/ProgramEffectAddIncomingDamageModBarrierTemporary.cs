@@ -8,9 +8,17 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
     [SerializeField] private int numTurns;
     [SerializeField] private GameObject barrierPrefab;
 
-    protected override string AbilityName => TurnsLeft <= 0 ? string.Empty : $"Invulnerable to all damage for {TurnsLeft} turns";
+    public override string AbilityName => TurnsLeft == 0 ? "Vulnerable" : $"Invulnerable to all damage for {TurnsText}";
+    private string TurnsText
+    {
+        get
+        {
+            int turnsCount = (TurnsLeft < 0 ? numTurns : TurnsLeft);
+            return turnsCount == 1 ? "1 turn" : $"{turnsCount} turns";
+        }
+    }
 
-    public int TurnsLeft { get; private set; }
+    public int TurnsLeft { get; private set; } = -1;
     private GameObject barrierObject = null;
 
     protected override void AddAbility(ref Shell.CompileData data)

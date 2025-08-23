@@ -8,5 +8,5 @@
 
     protected abstract void AddAbility(ref Shell.CompileData data);
 
-    protected abstract string AbilityName { get; }
+    public abstract string AbilityName { get; }
 }
