@@ -42,7 +42,6 @@ public class ProgramFuser : MonoBehaviour
             p1.transform.SetParent(fusedProgram.transform);
             p2.transform.SetParent(fusedProgram.transform);
         }
-        fusedProgram.color = Program.Color.Yellow;
         int maxTransientUses = 0;
         int currentTransientUses = 0;
         var actions = new List<Action>();
@@ -62,6 +61,7 @@ public class ProgramFuser : MonoBehaviour
             transientAttribute.MaxUses = maxTransientUses;
             transientAttribute.Uses = currentTransientUses;
         }
+        fusedProgram.color = FuseColors(p1.color, p2.color, actions.Count > 1);
         fusedProgram.attributes = p1.attributes | p2.attributes;
         fusedProgram.SetEffects(effects);
         fusedProgram.SetModifiers(modifiers);
@@ -89,6 +89,20 @@ public class ProgramFuser : MonoBehaviour
             maxTransientUses += trAttr.MaxUses;
             currentTransientUses += trAttr.Uses;
         }
+    }
+
+    private Program.Color FuseColors(Program.Color c1, Program.Color c2, bool hybridActionCreated)
+    {
+        if (hybridActionCreated)
+            return Program.Color.Yellow;
+        if (c1 == c2)
+            return c1;
+        if (c1 == Program.Color.White)
+            return c2;
+        if (c2 == Program.Color.White)
+            return c1;
+        // If c1 || c2 is Gray, return Gray
+        return Program.Color.Yellow;
     }
 
     private Pattern FusePatterns(Pattern p1, Pattern p2)
