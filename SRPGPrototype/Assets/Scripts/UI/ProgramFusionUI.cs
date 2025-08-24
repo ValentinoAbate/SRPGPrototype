@@ -71,7 +71,13 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         var program = programFuser.FusePrograms(transform, fusionArguments[0].Program, fusionArguments[1].Program, fusions[selectedFusion].shape);
         // Name program
         program.SetDisplayName(programName);
-        program.SetActionNames(programName);
+        foreach(var effect in program.Effects)
+        {
+            if(effect is ProgramEffectAddAction actionEffect && actionEffect.action.DisplayName == ActionFuser.fusedActionDefaultName)
+            {
+                actionEffect.action.DisplayName = programName;
+            }
+        }
         // Add program to inventory
         PersistantData.main.inventory.AddProgram(program);
         // Remove fusion arguments from inventory

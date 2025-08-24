@@ -44,38 +44,38 @@ public class ProgramFuser : MonoBehaviour
         }
         int maxTransientUses = 0;
         int currentTransientUses = 0;
-        var actions = new List<Action>();
         var effects = new List<ProgramEffect>(p1.Effects.Length + p2.Effects.Length);
         var modifiers = new List<ProgramModifier>(p1.ModifierEffects.Length + p2.ModifierEffects.Length);
-        ProcessProgram(p1, ref actions, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
-        ProcessProgram(p2, ref actions, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
-        if (actions.Count >= 1)
-        {
-            var fusedAction = fusedProgram.gameObject.AddComponent<ProgramEffectAddAction>();
-            fusedAction.action = actionFuser.Fuse(fusedProgram.transform, actions, preview);
-            effects.Add(fusedAction);
-        }
+        var p1ActionEffects = new List<ProgramEffectAddAction>();
+        ProcessProgram(p1, ref p1ActionEffects, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
+        var p2ActionEffects = new List<ProgramEffectAddAction>();
+        ProcessProgram(p2, ref p2ActionEffects, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
+        // Process Actions
+        bool fusionActionCreated = ProcessActions(fusedProgram.gameObject, p1ActionEffects, p2ActionEffects, ref effects, preview);
+        // Fuse Colors
+        fusedProgram.color = FuseColors(p1.color, p2.color, fusionActionCreated);
+        // Fuse Attributes
+        fusedProgram.attributes = p1.attributes | p2.attributes;
         if (maxTransientUses > 0)
         {
             var transientAttribute = fusedProgram.gameObject.AddComponent<ProgramAttributeTransient>();
             transientAttribute.MaxUses = maxTransientUses;
             transientAttribute.Uses = currentTransientUses;
         }
-        fusedProgram.color = FuseColors(p1.color, p2.color, actions.Count > 1);
-        fusedProgram.attributes = p1.attributes | p2.attributes;
+        // Set effects and modifiers
         fusedProgram.SetEffects(effects);
         fusedProgram.SetModifiers(modifiers);
         fusedProgram.SetDescription($"{p1.DisplayName} + {p2.DisplayName}");
         return fusedProgram;
     }
 
-    private void ProcessProgram(Program program, ref List<Action> actions, ref List<ProgramEffect> effects, ref List<ProgramModifier> modifiers, ref int maxTransientUses, ref int currentTransientUses)
+    private void ProcessProgram(Program program, ref List<ProgramEffectAddAction> actionEffects, ref List<ProgramEffect> effects, ref List<ProgramModifier> modifiers, ref int maxTransientUses, ref int currentTransientUses)
     {
         foreach (var effect in program.Effects)
         {
             if (effect is ProgramEffectAddAction addActionEffect)
             {
-                actions.Add(addActionEffect.action);
+                actionEffects.Add(addActionEffect);
             }
             else
             {
@@ -91,9 +91,92 @@ public class ProgramFuser : MonoBehaviour
         }
     }
 
-    private Program.Color FuseColors(Program.Color c1, Program.Color c2, bool hybridActionCreated)
+    private bool ProcessActions(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool preview)
     {
-        if (hybridActionCreated)
+        // If either action effect list is empty, pass through the other's actions (if any)
+        if (CheckEmptyActionEffects(actionEffects1, actionEffects2, ref effects) || CheckEmptyActionEffects(actionEffects2, actionEffects1, ref effects))
+        {
+            return false;
+        }
+        if (actionEffects1.Count == actionEffects2.Count)
+        {
+            FuseActionsSimple(container, actionEffects1, actionEffects2, ref effects, preview);
+            return true;
+        }
+        FuseActionsAsymmetrical(container, actionEffects1, actionEffects2, ref effects, preview);
+        return true;
+    }
+
+    private static bool CheckEmptyActionEffects(List<ProgramEffectAddAction> actionEffects, List<ProgramEffectAddAction> actionEffectsOther, ref List<ProgramEffect> effects)
+    {
+        if (actionEffects.Count <= 0)
+        {
+            effects.AddRange(actionEffectsOther);
+            return true;
+        }
+        return false;
+    }
+
+    private void FuseActionsSimple(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool preview)
+    {
+        var actions = new List<Action>(2);
+        for (int i = 0; i < actionEffects1.Count; i++)
+        {
+            actions.Add(actionEffects1[i].action);
+            actions.Add(actionEffects2[i].action);
+            effects.Add(CreateFusedAction(container, actions, preview));
+            actions.Clear();
+        }
+    }
+
+    private void FuseActionsAsymmetrical(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool preview)
+    {
+        int greaterCount = Mathf.Max(actionEffects1.Count, actionEffects2.Count);
+        int lesserCount = Mathf.Min(actionEffects1.Count, actionEffects2.Count);
+        int ratio = greaterCount / lesserCount;
+        if (greaterCount % lesserCount != 0)
+            ++ratio;
+        int index1 = 0;
+        int index2 = 0;
+        bool e1Greater = actionEffects1.Count > actionEffects2.Count;
+        var actions = new List<Action>(ratio + 1);
+        for (int i = 0; i < lesserCount; i++)
+        {
+            if (e1Greater)
+            {
+                AddActions(actionEffects1, ratio, ref index1, ref actions);
+                actions.Add(actionEffects2[index2++].action);
+            }
+            else
+            {
+                actions.Add(actionEffects1[index1++].action);
+                AddActions(actionEffects2, ratio, ref index2, ref actions);
+            }
+            effects.Add(CreateFusedAction(container, actions, preview));
+            actions.Clear();
+        }
+    }
+
+    private static void AddActions(List<ProgramEffectAddAction> actionEffects, int num, ref int index, ref List<Action> actions)
+    {
+        for (int i = 0; i < num; ++i)
+        {
+            if (index >= actionEffects.Count)
+                break;
+            actions.Add(actionEffects[index++].action);
+        }
+    }
+
+    private ProgramEffectAddAction CreateFusedAction(GameObject container, IReadOnlyList<Action> actions, bool preview)
+    {
+        var fusedAction = container.AddComponent<ProgramEffectAddAction>();
+        fusedAction.action = actionFuser.Fuse(container.transform, actions, preview);
+        return fusedAction;
+    }
+
+    private Program.Color FuseColors(Program.Color c1, Program.Color c2, bool fusionActionCreated)
+    {
+        if (fusionActionCreated)
             return Program.Color.Yellow;
         if (c1 == c2)
             return c1;

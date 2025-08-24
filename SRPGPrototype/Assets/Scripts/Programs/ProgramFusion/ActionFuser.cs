@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActionFuser : MonoBehaviour
 {
+    public const string fusedActionDefaultName = "Fused Action";
     [SerializeField] private Action actionTemplatePrefab;
 
     public Action Fuse(Transform container, IReadOnlyList<Action> actions, bool preview)
@@ -13,7 +14,7 @@ public class ActionFuser : MonoBehaviour
         if (actions.Count == 1)
             return actions[0];
         var fusedAction = actionTemplatePrefab.Validate(container);
-        fusedAction.DisplayName = "Fused Action";
+        fusedAction.DisplayName = fusedActionDefaultName;
         fusedAction.ActionType = Action.Type.Hybrid;
         string description = "Use ";
         var subActions = new List<SubAction>();
