@@ -47,11 +47,14 @@ public class ProgramFuser : MonoBehaviour
         var effects = new List<ProgramEffect>(p1.Effects.Length + p2.Effects.Length);
         var modifiers = new List<ProgramModifier>(p1.ModifierEffects.Length + p2.ModifierEffects.Length);
         var p1ActionEffects = new List<ProgramEffectAddAction>();
-        ProcessProgram(p1, ref p1ActionEffects, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
+        var p1ActionEffectsSecondary = new List<ProgramEffectAddAction>();
+        ProcessProgram(p1, ref p1ActionEffects, ref p1ActionEffectsSecondary, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
         var p2ActionEffects = new List<ProgramEffectAddAction>();
-        ProcessProgram(p2, ref p2ActionEffects, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
+        var p2ActionEffectsSecondary = new List<ProgramEffectAddAction>();
+        ProcessProgram(p2, ref p2ActionEffects, ref p2ActionEffectsSecondary, ref effects, ref modifiers, ref maxTransientUses, ref currentTransientUses);
         // Process Actions
-        bool fusionActionCreated = ProcessActions(fusedProgram.gameObject, p1ActionEffects, p2ActionEffects, ref effects, preview);
+        bool fusionActionCreated = ProcessActions(fusedProgram.gameObject, p1ActionEffects, p2ActionEffects, ref effects, false, preview);
+        fusionActionCreated |= ProcessActions(fusedProgram.gameObject, p1ActionEffectsSecondary, p2ActionEffectsSecondary, ref effects, true, preview);
         // Fuse Colors
         fusedProgram.color = FuseColors(p1.color, p2.color, fusionActionCreated);
         // Fuse Attributes
@@ -69,13 +72,20 @@ public class ProgramFuser : MonoBehaviour
         return fusedProgram;
     }
 
-    private void ProcessProgram(Program program, ref List<ProgramEffectAddAction> actionEffects, ref List<ProgramEffect> effects, ref List<ProgramModifier> modifiers, ref int maxTransientUses, ref int currentTransientUses)
+    private void ProcessProgram(Program program, ref List<ProgramEffectAddAction> actionEffects, ref List<ProgramEffectAddAction> actionEffectsSecondary, ref List<ProgramEffect> effects, ref List<ProgramModifier> modifiers, ref int maxTransientUses, ref int currentTransientUses)
     {
         foreach (var effect in program.Effects)
         {
             if (effect is ProgramEffectAddAction addActionEffect)
             {
-                actionEffects.Add(addActionEffect);
+                if (addActionEffect.isSecondary)
+                {
+                    actionEffectsSecondary.Add(addActionEffect);
+                }
+                else
+                {
+                    actionEffects.Add(addActionEffect);
+                }
             }
             else
             {
@@ -91,7 +101,7 @@ public class ProgramFuser : MonoBehaviour
         }
     }
 
-    private bool ProcessActions(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool preview)
+    private bool ProcessActions(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool isSecondary, bool preview)
     {
         // If either action effect list is empty, pass through the other's actions (if any)
         if (CheckEmptyActionEffects(actionEffects1, actionEffects2, ref effects) || CheckEmptyActionEffects(actionEffects2, actionEffects1, ref effects))
@@ -100,10 +110,10 @@ public class ProgramFuser : MonoBehaviour
         }
         if (actionEffects1.Count == actionEffects2.Count)
         {
-            FuseActionsSimple(container, actionEffects1, actionEffects2, ref effects, preview);
+            FuseActionsSimple(container, actionEffects1, actionEffects2, ref effects, isSecondary, preview);
             return true;
         }
-        FuseActionsAsymmetrical(container, actionEffects1, actionEffects2, ref effects, preview);
+        FuseActionsAsymmetrical(container, actionEffects1, actionEffects2, ref effects, isSecondary, preview);
         return true;
     }
 
@@ -117,19 +127,19 @@ public class ProgramFuser : MonoBehaviour
         return false;
     }
 
-    private void FuseActionsSimple(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool preview)
+    private void FuseActionsSimple(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool isSecondary, bool preview)
     {
         var actions = new List<Action>(2);
         for (int i = 0; i < actionEffects1.Count; i++)
         {
             actions.Add(actionEffects1[i].action);
             actions.Add(actionEffects2[i].action);
-            effects.Add(CreateFusedAction(container, actions, preview));
+            effects.Add(CreateFusedAction(container, actions, isSecondary, preview));
             actions.Clear();
         }
     }
 
-    private void FuseActionsAsymmetrical(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool preview)
+    private void FuseActionsAsymmetrical(GameObject container, List<ProgramEffectAddAction> actionEffects1, List<ProgramEffectAddAction> actionEffects2, ref List<ProgramEffect> effects, bool isSecondary, bool preview)
     {
         int greaterCount = Mathf.Max(actionEffects1.Count, actionEffects2.Count);
         int lesserCount = Mathf.Min(actionEffects1.Count, actionEffects2.Count);
@@ -152,7 +162,7 @@ public class ProgramFuser : MonoBehaviour
                 actions.Add(actionEffects1[index1++].action);
                 AddActions(actionEffects2, ratio, ref index2, ref actions);
             }
-            effects.Add(CreateFusedAction(container, actions, preview));
+            effects.Add(CreateFusedAction(container, actions, isSecondary, preview));
             actions.Clear();
         }
     }
@@ -167,10 +177,11 @@ public class ProgramFuser : MonoBehaviour
         }
     }
 
-    private ProgramEffectAddAction CreateFusedAction(GameObject container, IReadOnlyList<Action> actions, bool preview)
+    private ProgramEffectAddAction CreateFusedAction(GameObject container, IReadOnlyList<Action> actions, bool isSecondary, bool preview)
     {
         var fusedAction = container.AddComponent<ProgramEffectAddAction>();
         fusedAction.action = actionFuser.Fuse(container.transform, actions, preview);
+        fusedAction.isSecondary = isSecondary;
         return fusedAction;
     }
 

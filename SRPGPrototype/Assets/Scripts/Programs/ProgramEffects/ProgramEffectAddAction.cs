@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProgramEffectAddAction : ProgramEffect
 {
     public Action action;
+    public bool isSecondary;
 
     public override void Initialize(Program program)
     {
