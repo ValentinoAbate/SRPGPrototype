@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Program : GridObject, ILootable
 {
+    public const string actionOnlyDescription = "Action";
     private const string highlightTileUIProp = "BoolHighlight";
     public enum Color
     { 

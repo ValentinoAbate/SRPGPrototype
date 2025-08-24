@@ -1,10 +1,12 @@
 using RandomUtils;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class ProgramFuser : MonoBehaviour
 {
+    private const string descFilterRegex = @"Adds Actions:[\s\S]*\.";
     [SerializeField] private Program programTemplate;
     [SerializeField] private ActionFuser actionFuser;
 
@@ -68,7 +70,7 @@ public class ProgramFuser : MonoBehaviour
         // Set effects and modifiers
         fusedProgram.SetEffects(effects);
         fusedProgram.SetModifiers(modifiers);
-        fusedProgram.SetDescription($"{p1.DisplayName} + {p2.DisplayName}");
+        fusedProgram.SetDescription(FuseDescriptions(p1, p2, fusedProgram, fusionActionCreated));
         return fusedProgram;
     }
 
@@ -250,5 +252,88 @@ public class ProgramFuser : MonoBehaviour
                 targetSizeOptions.Add(option);
         }
         return targetSizeOptions.Count > 0;
+    }
+
+    private string FuseDescriptions(Program p1, Program p2, Program fusedProgram, bool fusionActionCreated)
+    {
+        if (p1.Description == p2.Description)
+            return p1.Description;
+        if (fusionActionCreated)
+        {
+            int fusedProgramActionCount = 0;
+            foreach(var effect in fusedProgram.Effects)
+            {
+                if(effect is ProgramEffectAddAction)
+                {
+                    ++fusedProgramActionCount;
+                }
+            }
+            if (fusedProgramActionCount == 1)
+            {
+                return CombineDescriptionsFiltered(p1, p2, string.Empty);
+            }
+            string desc = "Adds Actions: ";
+            bool firstAction = true;
+            foreach (var effect in fusedProgram.Effects)
+            {
+                if (effect is ProgramEffectAddAction addAction)
+                {
+                    if (firstAction)
+                    {
+                        desc += addAction.action.DisplayName;
+                        firstAction = false;
+                    }
+                    else
+                    {
+                        desc += $", and {addAction.action.DisplayName}";
+                    }
+                }
+            }
+            desc += ".";
+            return CombineDescriptionsFiltered(p1, p2, desc);
+        }
+        else
+        {
+            return CombineDescriptionsBasic(p1, p2);
+        }
+
+    }
+
+    private string CombineDescriptionsBasic(Program p1, Program p2)
+    {
+        if (p1.Description == Program.actionOnlyDescription)
+        {
+            return p2.Description;
+        }
+        else if (p2.Description == Program.actionOnlyDescription)
+        {
+            return p1.Description;
+        }
+        else
+        {
+            return p1.Description + " " + p2.Description;
+        }
+    }
+
+    private string CombineDescriptionsFiltered(Program p1, Program p2, string desc)
+    {
+        if (p1.Description != Program.actionOnlyDescription)
+        {
+            string keep = Regex.Replace(p1.Description, descFilterRegex, string.Empty);
+            if (!string.IsNullOrWhiteSpace(keep))
+            {
+                desc += " " + p1.Description;
+            }
+
+        }
+        else if (p2.Description != Program.actionOnlyDescription)
+        {
+            string keep = Regex.Replace(p2.Description, descFilterRegex, string.Empty);
+            if (!string.IsNullOrWhiteSpace(keep))
+            {
+                desc += " " + p2.Description;
+            }
+        }
+        return string.IsNullOrWhiteSpace(desc) ? Program.actionOnlyDescription : desc;
     }
 }
