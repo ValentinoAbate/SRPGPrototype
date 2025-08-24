@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 3759252872410653552, guid: 6cc16be365254ce45b1841e53b6ed92f, type: 3}
+  isSecondary: 0
 --- !u!114 &8740160371526549812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,19 +29,16 @@ MonoBehaviour:
   variantChance: 0.75
   patterns:
   - patternOffsets:
-    - {x: 1, y: 1}
     - {x: 1, y: 0}
-    - {x: 0, y: 1}
-    dimensions: {x: 2, y: 2}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 1}
   - patternOffsets:
     - {x: 1, y: 1}
-    - {x: 1, y: 0}
     - {x: 0, y: 0}
     dimensions: {x: 2, y: 2}
   - patternOffsets:
     - {x: 1, y: 0}
     - {x: 0, y: 1}
-    - {x: 0, y: 0}
     dimensions: {x: 2, y: 2}
   useWeights: 0
   weights: []
@@ -89,7 +87,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -104,12 +102,12 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -119,7 +117,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[1].y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
