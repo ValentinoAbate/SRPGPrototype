@@ -19,6 +19,7 @@ public class ActionFuser : MonoBehaviour
         string description = "Use ";
         var subActions = new List<SubAction>();
         int sumBaseAP = 0;
+        int zeroApCostActions = 0;
         int maxAPCost = 0;
         var highestSlowdownType = Action.Trigger.TurnStart;
         int sumSlowdownInterval = 0;
@@ -34,6 +35,10 @@ public class ActionFuser : MonoBehaviour
             subActions.AddRange(action.SubActions);
             description += i < actions.Count - 1 ? $"{action.DisplayName}, then " : $"{action.DisplayName}.";
             sumBaseAP += action.BaseAPCost;
+            if(action.BaseAPCost == 0)
+            {
+                zeroApCostActions++;
+            }
             if(action.BaseAPCost > maxAPCost)
             {
                 maxAPCost = action.BaseAPCost;
@@ -65,7 +70,7 @@ public class ActionFuser : MonoBehaviour
         }
         fusedAction.SetDescription(description);
         fusedAction.SetSubActions(subActions);
-        fusedAction.BaseAPCost = System.Math.Max(0, sumBaseAP - 1);
+        fusedAction.BaseAPCost = System.Math.Max(0, sumBaseAP - (actions.Count - 1) + Mathf.Max(0, zeroApCostActions - 1));
         fusedAction.SlowdownReset = highestSlowdownType;
         fusedAction.SlowdownInterval = slowdownIntervalCount > 0 ? sumSlowdownInterval / slowdownIntervalCount : 0;
         if (fusedAction.BaseAPCost < maxAPCost)
