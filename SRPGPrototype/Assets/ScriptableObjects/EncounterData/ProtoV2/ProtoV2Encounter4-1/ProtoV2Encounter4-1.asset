@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95894705adac3db43acf64bd02fba487, type: 3}
+  m_Name: ProtoV2Encounter4-1
+  m_EditorClassIdentifier: 
+  encounterType: 0
+  dimensions: {x: 9, y: 6}
+  targetDifficulty: 37
+  steps:
+  - {fileID: 11400000, guid: eac470d1a69b11144931f6e738c95145, type: 2}
+  - {fileID: 11400000, guid: f8358e468b5dd82429a5325c2800023d, type: 2}
+  - {fileID: 11400000, guid: 9468e072c2cd8bd4ab0889bdb9bf7c5b, type: 2}
+  - {fileID: 11400000, guid: d711ba0e345b5bb45a11b8dca4d51d95, type: 2}
+  - {fileID: 11400000, guid: 30928bcc66cf1274fa4fda3dadb0740a, type: 2}
+  seed:
+    nameOverride: 
+    dimensions: {x: 0, y: 0}
+    units: []
+    ambushUnits: []
+    spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0

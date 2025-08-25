@@ -10,18 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
-  m_Name: PrototypeMapDataV2-3
+  m_Name: PrototypeMapDataV2-4
   m_EditorClassIdentifier: 
   mapName: Prototype V2
-  mapSymbol: 3
-  nextMap: {fileID: 11400000, guid: a0ba03dd6aaae4b4f82fe5ccfc87a346, type: 2}
+  mapSymbol: 4
+  nextMap: {fileID: 0}
   encounterSetGenerators:
-  - {fileID: 11400000, guid: 4de92b3f7d4233a48bf313a2e5af935e, type: 2}
-  - {fileID: 11400000, guid: 3f199d03b54f13e4d8f33c89c4215c66, type: 2}
-  - {fileID: 11400000, guid: 8dacb2489491860478edd3226b46449f, type: 2}
+  - {fileID: 11400000, guid: d2205856617056d40b857ac262d48e22, type: 2}
   - {fileID: 11400000, guid: df1c718ed1c324c478ececfeb8d88142, type: 2}
-  - {fileID: 11400000, guid: edeeb59825e061447a64672aca110807, type: 2}
-  - {fileID: 11400000, guid: 8a60135a335f2bd4c92678582d0d3f3a, type: 2}
-  - {fileID: 11400000, guid: b3d764a2a79155e4295de602791e84db, type: 2}
   - {fileID: 11400000, guid: df1c718ed1c324c478ececfeb8d88142, type: 2}
   encounterData: []
