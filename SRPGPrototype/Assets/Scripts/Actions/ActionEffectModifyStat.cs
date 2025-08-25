@@ -30,7 +30,7 @@ public class ActionEffectModifyStat : ActionEffect, IDamagingActionEffect
         return target != null;
     }
 
-    public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
+    public int ActionMacroDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         return DealsDamage ? number.BaseValue(action, user) : 0;
     }

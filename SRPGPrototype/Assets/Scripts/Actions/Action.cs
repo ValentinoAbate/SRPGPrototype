@@ -106,7 +106,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     }
     [SerializeField] private string displayName = string.Empty;
 
-    public string GetDescription(Unit user) => TextMacros.ApplyActionTextMacros(description, this, user);
+    public string GetDescription(Unit user, BattleGrid grid) => TextMacros.ApplyActionTextMacros(description, this, user, grid);
     public string SetDescription(string newDescription) => description = newDescription;
     [SerializeField] [TextArea(1, 3)] private string description = string.Empty;
 

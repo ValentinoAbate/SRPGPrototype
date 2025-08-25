@@ -19,12 +19,12 @@ public class ActionDescriptionUI : MonoBehaviour
     public Color textColor;
     public Color modifiedTextColor;
 
-    public void Show(Action action, Unit user = null)
+    public void Show(Action action, Unit user = null, BattleGrid grid = null)
     {
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = action.FullName;
-        descText.text = action.GetDescription(user);
+        descText.text = action.GetDescription(user, grid);
         // Program attributes
         if(action.Program != null)
         {
@@ -73,7 +73,7 @@ public class ActionDescriptionUI : MonoBehaviour
 
     }
 
-    public void ShowHidden(Action action, Unit user = null)
+    public void ShowHidden(Action action, Unit user = null, BattleGrid grid = null)
     {
         const string hiddenChar = "?";
         const string hiddenPattern = @"[^\s]";
@@ -81,7 +81,7 @@ public class ActionDescriptionUI : MonoBehaviour
         gameObject.SetActive(true);
         // Name and action type
         nameText.text = Hide(action.DisplayName) + " (" + Hide(action.ActionType.ToString()) + ")";
-        descText.text = Hide(action.GetDescription(user)); // add description later
+        descText.text = Hide(action.GetDescription(user, grid)); // add description later
         attributesText.text = action.Program != null ? Hide(action.Program.AttributesText) : string.Empty; // this is also for later
         if (user == null || user.Speed.IsZero)
         {

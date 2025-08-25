@@ -22,7 +22,7 @@ public static class TextMacros
 		return $"Invalid argument macro ({index}) in {macroName}: expected {expectedType}";
 	}
 
-	private delegate string ActionMacro(string[] args, Action action, Unit user);
+	private delegate string ActionMacro(string[] args, Action action, Unit user, BattleGrid grid);
 	private delegate string ProgramMacro(string[] args, Program program, Unit user);
 	private delegate string UnitMacro(string[] args, Unit unit);
 
@@ -58,13 +58,13 @@ public static class TextMacros
 		{ chanceMacro, ActionMacroGambleChance },
 	};
 
-	public static string ApplyActionTextMacros(string text, Action action, Unit user)
+	public static string ApplyActionTextMacros(string text, Action action, Unit user, BattleGrid grid)
 	{
 		string ApplyMacro(string macroName, string[] args)
 		{
 			if (actionMacroMap.TryGetValue(macroName, out var macro))
 			{
-				return macro(args, action, user);
+				return macro(args, action, user, grid);
 			}
 			Debug.LogError(MacroErrorText(macroName, "action"));
 			return errorString;
@@ -72,17 +72,17 @@ public static class TextMacros
 		return ApplyMacros(text, ApplyMacro);
 	}
 
-	private static string ActionMacroDamage(string[] args, Action action, Unit user)
+	private static string ActionMacroDamage(string[] args, Action action, Unit user, BattleGrid grid)
 	{
 		var indices = GetIndices(dmgMacro, args);
 		if (!TryGetSubAction(action, indices, out var sub))
 		{
 			return errorString;
 		}
-		return sub.ActionMacroDamage(action, user, indices).ToString();
+		return sub.ActionMacroDamage(grid, action, user, indices).ToString();
 	}
 
-	private static string ActionMacroGambleChance(string[] args, Action action, Unit user)
+	private static string ActionMacroGambleChance(string[] args, Action action, Unit _, BattleGrid _2)
     {
 		var indices = GetIndices(dmgMacro, args);
 		if (!TryGetSubAction(action, indices, out var sub))

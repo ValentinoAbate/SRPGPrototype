@@ -106,14 +106,27 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
 
     public abstract int BasicDamage(Action action, Unit user);
 
-    public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
+    public int ActionMacroDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Queue<int> indices)
     {
-        baseDamage = BasicDamage(action, user);
-        // Apply modifier base damage
-        foreach (var modifier in GetApplicableMods(action, sub))
+        if(grid == null)
         {
-            baseDamage += modifier.BasicDamageMod(targetStat, action, user);
+            baseDamage = BasicDamage(action, user);
+            // Apply modifier base damage
+            foreach (var modifier in GetApplicableMods(action, sub))
+            {
+                baseDamage += modifier.BasicDamageMod(targetStat, action, user);
+            }
+            return baseDamage;
         }
-        return baseDamage;
+        else
+        {
+            baseDamage = BaseDamage(grid, action, user, System.Array.Empty<Vector2Int>());
+            // Apply modifier base damage
+            foreach (var modifier in GetApplicableMods(action, sub))
+            {
+                baseDamage += modifier.BaseDamageMod(targetStat, grid, action, user, System.Array.Empty<Vector2Int>());
+            }
+            return baseDamage;
+        }
     }
 }

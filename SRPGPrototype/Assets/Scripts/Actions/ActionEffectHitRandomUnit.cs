@@ -46,11 +46,11 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
         return grid.FindAll(OnTargetTeam).Count > 0;
     }
 
-    public int ActionMacroDamage(Action action, SubAction sub, Unit user, Queue<int> indices)
+    public int ActionMacroDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Queue<int> indices)
     {
         if (effectToApply is IDamagingActionEffect damageEffect)
         {
-            return damageEffect.ActionMacroDamage(action, sub, user, indices);
+            return damageEffect.ActionMacroDamage(grid, action, sub, user, indices);
         }
         return 0;
     }
