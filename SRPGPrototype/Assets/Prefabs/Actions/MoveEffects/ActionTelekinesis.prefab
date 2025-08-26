@@ -433,7 +433,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Pick up a unit in a circular range and move it to any adjacent or diagonally
-        adjacent square.
+        adjacent tile.
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}

@@ -312,8 +312,8 @@ PrefabInstance:
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
       propertyPath: description
-      value: Pick up a unit next to you and throw it up to two squares in any direction
-        or 1 square diagonally.
+      value: Pick up a unit next to you and throw it up to two tiles in any direction
+        or 1 tile diagonally.
       objectReference: {fileID: 0}
     - target: {fileID: 3177280841968069487, guid: 13a4b5b327a7af44db8175e4a8ce50b1,
         type: 3}
