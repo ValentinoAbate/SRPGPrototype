@@ -33,6 +33,21 @@ namespace Grid
                 }
             }
         }
+
+        public IEnumerable<Vector2Int> AllPositions
+        {
+            get
+            {
+                for (int x = 0; x < Dimensions.x; ++x)
+                {
+                    for (int y = 0; y < Dimensions.y; ++y)
+                    {
+                        yield return new Vector2Int(x, y);
+                    }
+                }
+            }
+        }
+
         public Vector2 CenterToVextexOffset => new Vector2((cellSize.x + skewXOffset) * 0.5f, cellSize.y * 0.5f);
 
         [Header("Grid")]

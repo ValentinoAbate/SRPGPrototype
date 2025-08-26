@@ -106,6 +106,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public Transform FxContainer => fxContainer;
     [SerializeField] private Transform fxContainer;
 
+    public Vector2Int StartingPos { get; private set; }
+
     public void ModifyHp(BattleGrid grid, int amount, Unit source)
     {
         if (amount > 0)
@@ -295,6 +297,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         {
             action.ResetUses(Action.Trigger.TurnStart);
         }
+        StartingPos = Pos;
         return null;
     }
 
