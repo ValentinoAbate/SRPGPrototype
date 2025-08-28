@@ -10,7 +10,7 @@ public class EncounterStepPlaceUnitsWeightedDistanceFromUnitWithTags : Encounter
     [SerializeField] private BooleanOperator tagComparison = BooleanOperator.AND; 
     [SerializeField] private float weightExponent = 2;
 
-    protected override void PlaceUnits(int numUnits, WeightedSet<Unit> units, ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
+    protected override void PlaceUnits(int numUnits, WeightedSet<Unit> units, Metadata metadata, ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
     {
         PlaceUnitsWeighted(numUnits, units, PositionWeight, encounter, ref validPositions);
     }

@@ -11,6 +11,11 @@ namespace Extensions.VectorIntDimensionUtils
             return vec.x >= 0 && vec.y >= 0 && vec.x < bounds.x && vec.y < bounds.y;
         }
 
+        public static bool IsOnEdge(this Vector2Int vec, Vector2Int dimensions)
+        {
+            return vec.x == 0 || vec.y == 0 || vec.x == dimensions.x - 1 || vec.y == dimensions.y - 1;
+        }
+
         public static IEnumerable<Vector2Int> Enumerate(this Vector2Int dimensions)
         {
             for (int x = 0; x < dimensions.x; ++x)

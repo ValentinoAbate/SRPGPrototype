@@ -246,8 +246,25 @@ public abstract class EncounterGeneratorStep : ScriptableObject
 
     public class Metadata
     {
+        [System.Flags]
+        public enum PointsOfInterest
+        {
+            None = 0,
+            PlaceHolder = 2,
+            RoomInterior = 4,
+        }
         public float targetDifficulty;
         public WeightedSet<Unit> primaryNPCs;
         public WeightedSet<Unit> secondaryNPCs;
+        public Dictionary<Vector2Int, PointsOfInterest> pointsOfInterest = new Dictionary<Vector2Int, PointsOfInterest>();
+        public void SetPointOfInterest(Vector2Int position, PointsOfInterest type)
+        {
+            if (!pointsOfInterest.ContainsKey(position))
+            {
+                pointsOfInterest.Add(position, type);
+                return;
+            }
+            pointsOfInterest[position] |= type;
+        }
     }
 }

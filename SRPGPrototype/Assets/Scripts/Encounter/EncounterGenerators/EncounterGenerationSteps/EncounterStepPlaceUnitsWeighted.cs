@@ -14,8 +14,8 @@ public abstract class EncounterStepPlaceUnitsWeighted : EncounterGeneratorStep
     {
         int numUnitsChoice = RandomU.instance.ChoiceWeightsOptional(numUnits, numUnitsWeights);
         var unitSet = WeightedSetUtils.GetSetWeightsOptional(units, unitChoiceWeights);
-        PlaceUnits(numUnitsChoice, unitSet, ref encounter, ref validPositions);
+        PlaceUnits(numUnitsChoice, unitSet, metadata, ref encounter, ref validPositions);
     }
 
-    protected abstract void PlaceUnits(int numUnits, WeightedSet<Unit> units, ref Encounter encounter, ref HashSet<Vector2Int> validPositions);
+    protected abstract void PlaceUnits(int numUnits, WeightedSet<Unit> units, Metadata metadata, ref Encounter encounter, ref HashSet<Vector2Int> validPositions);
 }

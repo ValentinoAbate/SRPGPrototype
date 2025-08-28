@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounterType: 0
   dimensions: {x: 9, y: 6}
-  targetDifficulty: 37
+  targetDifficulty: 47
   steps:
-  - {fileID: 11400000, guid: eac470d1a69b11144931f6e738c95145, type: 2}
+  - {fileID: 11400000, guid: d2f5d46f98edcca498c788c8d40f06e6, type: 2}
+  - {fileID: 11400000, guid: 919101e8ffde76040adfe0a2e40c298b, type: 2}
   - {fileID: 11400000, guid: f8358e468b5dd82429a5325c2800023d, type: 2}
   - {fileID: 11400000, guid: 9468e072c2cd8bd4ab0889bdb9bf7c5b, type: 2}
   - {fileID: 11400000, guid: d711ba0e345b5bb45a11b8dca4d51d95, type: 2}
