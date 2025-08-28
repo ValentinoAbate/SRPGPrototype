@@ -65,7 +65,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     }
 
     public int HotkeyIndex { get; set; } = -1;
-    public virtual bool Movable => true;
+    public virtual bool Movable => movable;
+    [SerializeField] private bool movable = true;
     public abstract Team UnitTeam { get; }
     public abstract Jamming InterferenceLevel { get; }
     public abstract Priority PriorityLevel { get; }
