@@ -70,6 +70,13 @@ public class ProgramFuser : MonoBehaviour
         // Set effects and modifiers
         fusedProgram.SetEffects(effects);
         fusedProgram.SetModifiers(modifiers);
+        if (!preview)
+        {
+            foreach(var mod in GetComponentsInChildren<Modifier>())
+            {
+                mod.Program = fusedProgram;
+            }
+        }
         fusedProgram.SetDescription(FuseDescriptions(p1, p2, fusedProgram, fusionActionCreated));
         return fusedProgram;
     }

@@ -37,6 +37,10 @@ public abstract class Modifier : MonoBehaviour
             }
             return program;
         }
+        set
+        {
+            program = value;
+        }
     }
     private Program program;
 
