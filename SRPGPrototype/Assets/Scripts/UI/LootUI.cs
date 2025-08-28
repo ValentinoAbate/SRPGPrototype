@@ -29,6 +29,14 @@ public class LootUI : MonoBehaviour
 
     [SerializeField] private bool allowLootSkipping = true;
 
+    private bool inLootSelection = false;
+
+    private void Update()
+    {
+        if (inLootSelection && Input.GetMouseButtonDown(1))
+            ReturnToMainMenu();
+    }
+
     public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, ICollection<MoneyData> moneyData, UnityAction onLootClose)
     {
         if(programDraws.Draws.Count <= 0 && shellDraws.Draws.Count <= 0 && moneyData.Count <= 0)
@@ -96,6 +104,7 @@ public class LootUI : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        inLootSelection = false;
         menuUI.SetActive(true);
         programDrawUI.SetActive(false);
         shellDrawUI.SetActive(false);
@@ -128,6 +137,7 @@ public class LootUI : MonoBehaviour
         }
         CreateDeclineButton(data.DeclineBonus, shellDrawButtonContainer, menuButton);
         shellDrawUI.SetActive(true);
+        inLootSelection = true;
     }
 
     public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> programs, LootData<Program>.Data data)
@@ -149,6 +159,7 @@ public class LootUI : MonoBehaviour
         }
         CreateDeclineButton(data.DeclineBonus, programDrawButtonContainer, menuButton);
         programDrawUI.SetActive(true);
+        inLootSelection = true;
     }
 
     private void CreateDeclineButton(int bonus, Transform container, Button drawButton)
