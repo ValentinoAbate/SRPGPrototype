@@ -22,7 +22,7 @@ MonoBehaviour:
   - 8
   - 2
   enemies:
-  - {fileID: 266703525309771305, guid: 66e56d0e1116b0b4dbda2eb79c76527a, type: 3}
+  - {fileID: 2574736499964866167, guid: 98de48518f9512d499f9fd4d2d4d9dc4, type: 3}
   - {fileID: 5064112337391898495, guid: 5c8cec4488c5d2a4a92050b11d114b5e, type: 3}
   - {fileID: 5064112337391898495, guid: af50a86aa069e8f419c717d68a3c786f, type: 3}
   baseEnemyWeights:
