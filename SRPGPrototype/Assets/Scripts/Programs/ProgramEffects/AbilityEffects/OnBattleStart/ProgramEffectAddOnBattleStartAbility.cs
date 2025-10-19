@@ -5,5 +5,10 @@
         data.onBattleStart += Ability;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        unit.OnBattleStartFn += Ability;
+    }
+
     public abstract void Ability(BattleGrid grid, Unit unit);
 }

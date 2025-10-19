@@ -11,4 +11,9 @@ public class ProgramEffectAddRepairAbility : ProgramEffectAddAbility
     {
         data.stats.RepairAbilityFlags |= abilities;
     }
+
+    protected override void AddAbility(Unit unit)
+    {
+        return;
+    }
 }

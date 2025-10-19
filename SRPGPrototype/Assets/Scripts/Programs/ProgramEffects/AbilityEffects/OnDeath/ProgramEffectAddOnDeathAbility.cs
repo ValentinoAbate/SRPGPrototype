@@ -9,5 +9,10 @@ public abstract class ProgramEffectAddOnDeathAbility : ProgramEffectAddAbility
         data.onDeath += Ability;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        unit.OnDeathFn += Ability;
+    }
+
     public abstract void Ability(BattleGrid grid, Unit self, Unit killedBy);
 }

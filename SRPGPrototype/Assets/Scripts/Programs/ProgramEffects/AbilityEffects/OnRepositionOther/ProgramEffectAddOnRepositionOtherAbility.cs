@@ -10,5 +10,10 @@ public abstract class ProgramEffectAddOnRepositionOtherAbility : ProgramEffectAd
         data.onRepositionOther += Ability;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        unit.OnRepositionOther += Ability;
+    }
+
     public abstract void Ability(BattleGrid grid, Unit source, Unit target);
 }

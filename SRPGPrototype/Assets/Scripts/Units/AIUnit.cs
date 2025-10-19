@@ -76,6 +76,7 @@ public abstract class AIUnit : Unit
 
     [SerializeField] private ProgramEffectAddIncomingDamageModifierAbility[] incomingDamageModifierAbilities;
     [SerializeField] private ProgramEffectAddOnPhaseEndAbility[] onPhaseEndAbilities;
+    [SerializeField] private ProgramEffectAddAbility[] abilities;
 
     // Start is called before the first frame update
     void Start()
@@ -111,6 +112,10 @@ public abstract class AIUnit : Unit
         for (int i = 0; i < contextActions.Length; i++)
         {
             contextActions[i] = contextActions[i].Validate(ActionTransform);
+        }
+        foreach(var ability in abilities)
+        {
+            ability.ApplyEffect(this);
         }
     }
 

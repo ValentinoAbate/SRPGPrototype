@@ -9,5 +9,7 @@ public abstract class ProgramEffectAddOnProgramDestroyedAbility : ProgramEffectA
         data.onProgramDestroyed += Ability;
     }
 
+    protected override void AddAbility(Unit unit) { }
+
     protected abstract void Ability(Program p, BattleGrid grid, Unit user);
 }

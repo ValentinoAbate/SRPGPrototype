@@ -13,5 +13,10 @@ public abstract class ProgramEffectAddIncomingDamageModifierAbility : ProgramEff
         data.incomingDamageMods += Ability;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        unit.IncomingDamageMods += Ability;
+    }
+
     public abstract int Ability(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat, bool simulation);
 }

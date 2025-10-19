@@ -5,5 +5,10 @@
         data.onPhaseEnd += Ability;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        unit.OnPhaseEndFn += Ability;
+    }
+
     public abstract void Ability(BattleGrid grid, Unit unit);
 }

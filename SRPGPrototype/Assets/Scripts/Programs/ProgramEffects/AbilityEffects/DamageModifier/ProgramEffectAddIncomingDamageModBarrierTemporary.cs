@@ -28,6 +28,13 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
         data.onBattleStart += OnBattleStart;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        base.AddAbility(unit);
+        unit.OnPhaseEndFn += OnPhaseEnd;
+        unit.OnBattleStartFn += OnBattleStart;
+    }
+
     public override int Ability(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat, bool simulation)
     {
         if (TurnsLeft <= 0)

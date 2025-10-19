@@ -23,6 +23,18 @@ public abstract class ProgramEffectAddSubActionAbility : ProgramEffectAddAbility
         }
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        if (timing == Timing.BeforeSubAction)
+        {
+            unit.OnBeforeSubActionFn += Ability;
+        }
+        else
+        {
+            unit.OnAfterSubActionFn += Ability;
+        }
+    }
+
     public virtual void Ability(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions, SubAction.Options options, SubAction.Type overrideSubType = SubAction.Type.None)
     {
         if (!HasAppicableSubType(subAction, overrideSubType))

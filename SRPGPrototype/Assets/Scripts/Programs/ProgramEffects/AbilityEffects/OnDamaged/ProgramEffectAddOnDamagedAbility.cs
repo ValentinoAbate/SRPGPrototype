@@ -10,5 +10,10 @@ public abstract class ProgramEffectAddOnDamagedAbility : ProgramEffectAddAbility
         data.onDamaged += Ability;
     }
 
+    protected override void AddAbility(Unit unit)
+    {
+        unit.OnDamagedFn += Ability;
+    }
+
     public abstract void Ability(BattleGrid grid, Unit self, Unit source, int amount);
 }
