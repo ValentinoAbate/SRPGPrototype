@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -23,7 +22,10 @@ public class Pattern
     public IEnumerable<Vector2Int> OffsetsShifted(Vector2Int shift, bool center = true)
     {
         var modShift = center ? shift - Center : shift;
-        return Offsets.Select((o) => o + modShift);
+        foreach(var offset in Offsets)
+        {
+            yield return offset + modShift;
+        }
     }
 
     public void AddOffset(Vector2Int offset)
