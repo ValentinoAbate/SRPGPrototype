@@ -81,6 +81,8 @@ public class RangePattern
                 return 2;
             case Type.RangedDiagonal:
                 return 4;
+            case Type.RangedBoth:
+                return 4;
             case Type.Pattern:
                 return Mathf.Max(pattern.Dimensions.x, pattern.Dimensions.y);
             case Type.Generated:
