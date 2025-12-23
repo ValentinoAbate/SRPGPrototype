@@ -68,7 +68,7 @@ public class ProgramFuser : MonoBehaviour
             transientAttribute.Uses = currentTransientUses;
         }
         // Set effects and modifiers
-        fusedProgram.SetEffects(effects);
+        fusedProgram.SetEffects(effects, !preview);
         fusedProgram.SetModifiers(modifiers);
         if (!preview)
         {
@@ -331,7 +331,6 @@ public class ProgramFuser : MonoBehaviour
             {
                 desc += " " + p1.Description;
             }
-
         }
         else if (p2.Description != Program.actionOnlyDescription)
         {
