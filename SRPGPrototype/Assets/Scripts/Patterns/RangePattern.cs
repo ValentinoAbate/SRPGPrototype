@@ -28,32 +28,21 @@ public class RangePattern
 
     public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int origin, Unit user)
     {
-        switch (patternType)
+        return patternType switch
         {
-            case Type.Self:
-                return new Vector2Int[] { origin };
-            case Type.Adjacent:
-                return origin.Adjacent();
-            case Type.AdjacentDiagonal:
-                return origin.AdjacentDiagonal();
-            case Type.AdjacentBoth:
-                return origin.AdjacentBoth();
-            case Type.Ranged:
-                return origin.Adjacent(2);
-            case Type.RangedDiagonal:
-                return origin.AdjacentDiagonal(2);
-            case Type.Pattern:
-                return pattern.OffsetsShifted(origin);
-            case Type.Generated:
-                return generator.Generate(grid, origin, user);
-            case Type.Horizontal:
-                return new Vector2Int[] { origin + Vector2Int.left, origin + Vector2Int.right };
-            case Type.Vertical:
-                return new Vector2Int[] { origin + Vector2Int.up, origin + Vector2Int.down };
-            case Type.RangedBoth:
-                return origin.AdjacentBoth(2);
-        }
-        throw new System.Exception("Range Pattern Error: Invalid pattern type");
+            Type.Self => new Vector2Int[] { origin },
+            Type.Adjacent => origin.Adjacent(),
+            Type.AdjacentDiagonal => origin.AdjacentDiagonal(),
+            Type.AdjacentBoth => origin.AdjacentBoth(),
+            Type.Ranged => origin.Adjacent(2),
+            Type.RangedDiagonal => origin.AdjacentDiagonal(2),
+            Type.Pattern => pattern.OffsetsShifted(origin),
+            Type.Generated => generator.Generate(grid, origin, user),
+            Type.Horizontal => new Vector2Int[] { origin + Vector2Int.left, origin + Vector2Int.right },
+            Type.Vertical => new Vector2Int[] { origin + Vector2Int.up, origin + Vector2Int.down },
+            Type.RangedBoth => origin.AdjacentBoth(2),
+            _ => throw new System.Exception("Range Pattern Error: Invalid pattern type"),
+        };
     }
 
     public IEnumerable<Vector2Int> ReverseRange(BattleGrid grid, Vector2Int targetPos, Unit user)
@@ -67,31 +56,20 @@ public class RangePattern
 
     public int MaxDistance(BattleGrid grid)
     {
-        switch (patternType)
+        return patternType switch
         {
-            case Type.Self:
-                return 0;
-            case Type.Adjacent:
-                return 1;
-            case Type.AdjacentDiagonal:
-                return 2;
-            case Type.AdjacentBoth:
-                return 2;
-            case Type.Ranged:
-                return 2;
-            case Type.RangedDiagonal:
-                return 4;
-            case Type.RangedBoth:
-                return 4;
-            case Type.Pattern:
-                return Mathf.Max(pattern.Dimensions.x, pattern.Dimensions.y);
-            case Type.Generated:
-                return generator.MaxDistance(grid);
-            case Type.Horizontal:
-                return 1;
-            case Type.Vertical:
-                return 1;
-        }
-        throw new System.Exception("Range Pattern Error: Invalid pattern type");
+            Type.Self => 0,
+            Type.Adjacent => 1,
+            Type.AdjacentDiagonal => 2,
+            Type.AdjacentBoth => 2,
+            Type.Ranged => 2,
+            Type.RangedDiagonal => 4,
+            Type.RangedBoth => 4,
+            Type.Pattern => Mathf.Max(pattern.Dimensions.x, pattern.Dimensions.y),
+            Type.Generated => generator.MaxDistance(grid),
+            Type.Horizontal => 1,
+            Type.Vertical => 1,
+            _ => throw new System.Exception("Range Pattern Error: Invalid pattern type"),
+        };
     }
 }
