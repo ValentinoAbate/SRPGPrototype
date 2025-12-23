@@ -92,13 +92,16 @@ public class Program : GridObject, ILootable
     // Effect Properties
     public ProgramEffect[] Effects => IsUpgraded ? Upgrade.ProgramEffects : effects;
     [SerializeField] private ProgramEffect[] effects;
-    public void SetEffects(IReadOnlyList<ProgramEffect> newEffects)
+    public void SetEffects(IReadOnlyList<ProgramEffect> newEffects, bool initialize)
     {
         effects = new ProgramEffect[newEffects.Count];
         for (int i = 0; i < newEffects.Count; i++)
         {
             effects[i] = newEffects[i];
-            effects[i].Initialize(this);
+            if (initialize)
+            {
+                effects[i].Initialize(this);
+            }
         }
     }
     // Trigger / upgrade properties
