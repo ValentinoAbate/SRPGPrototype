@@ -20,6 +20,9 @@ public abstract class Modifier : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(displayNameOverride))
                 return displayNameOverride;
+            var originalProg = OriginalProgram;
+            if (originalProg != null)
+                return originalProg.DisplayName;
             var prog = Program;
             if (prog == null)
                 return string.Empty;
@@ -43,6 +46,18 @@ public abstract class Modifier : MonoBehaviour
         }
     }
     private Program program;
+    public Program OriginalProgram
+    {
+        get
+        {
+            if (originalProgram == null)
+            {
+                originalProgram = GetComponent<Program>();
+            }
+            return originalProgram;
+        }
+    }
+    private Program originalProgram;
 
     public bool AppliesTo(Program p)
     {
