@@ -9,6 +9,7 @@ public static class PatternUtils
         var overlaps = new List<Pattern>();
         var maxDimensions = new Vector2Int(pattern1.Dimensions.x + pattern2.Dimensions.x - 1, pattern1.Dimensions.y + pattern2.Dimensions.y - 1);
         var visitedOffsets = new HashSet<Vector2Int>();
+        var overlapSet = new HashSet<Vector2Int>();
         foreach(var p1 in ValidPositionsWithinGrid(pattern1.Dimensions, maxDimensions))
         {
             foreach(var p2 in ValidPositionsWithinGrid(pattern2.Dimensions, maxDimensions))
@@ -17,20 +18,28 @@ public static class PatternUtils
                 if (visitedOffsets.Contains(offset))
                     continue;
                 visitedOffsets.Add(offset);
-                var overlap = new Pattern();
-                overlap.AddOffsets(pattern1.OffsetsShifted(p1, false));
-                var offsetsSet = overlap.OffsetsSet;
-                foreach(var pos in pattern2.OffsetsShifted(p2, false))
+                // Overlap patterns
+                overlapSet.Clear();
+                foreach(var pos in pattern1.OffsetsShifted(p1, false))
                 {
-                    if (offsetsSet.Contains(pos))
-                        continue;
-                    overlap.AddOffset(pos);
-                    offsetsSet.Add(pos);
+                    overlapSet.Add(pos);
                 }
+                foreach (var pos in pattern2.OffsetsShifted(p2, false))
+                {
+                    if (overlapSet.Contains(pos))
+                        continue;
+                    overlapSet.Add(pos);
+                }
+                // 0 overlap, continue
+                if (overlapSet.Count == (pattern1.Offsets.Count + pattern2.Offsets.Count))
+                    continue;
+                // Create actual ovelap pattern
+                var overlap = new Pattern();
+                overlap.AddOffsets(overlapSet);
                 int xDim = System.Math.Max(p1.x + pattern1.Dimensions.x, p2.x + pattern2.Dimensions.x);
                 int yDim = System.Math.Max(p1.y + pattern1.Dimensions.y, p2.y + pattern2.Dimensions.y);
                 overlap.Dimensions = new Vector2Int(xDim, yDim);
-                if (HasDuplicate(overlaps, overlap, offsetsSet))
+                if (HasDuplicate(overlaps, overlap, overlapSet))
                     continue;
                 overlaps.Add(overlap);
             }
