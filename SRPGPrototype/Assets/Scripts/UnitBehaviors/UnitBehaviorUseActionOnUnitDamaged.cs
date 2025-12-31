@@ -10,6 +10,8 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
     [SerializeField] private List<Unit.Team> damagedTeams;
     [SerializeField] private List<Unit.Team> targetTeams;
 
+    public bool TriggersOnBleed => damagedTeams.Contains(Unit.Team.Player);
+
     void Start()
     {
         action = action.Validate(self.ActionTransform);
@@ -42,6 +44,11 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
         }
         if (amount <= 0 || !damagedTeams.Contains(damaged.UnitTeam))
             return;
+        Trigger(grid);
+    }
+
+    public void Trigger(BattleGrid grid)
+    {
         // If action targets self, end early
         if (action.SubActions[0].targetPattern.patternType == TargetPattern.Type.Self)
         {
@@ -50,7 +57,7 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
         else if (targetEmptySpaces)
         {
             var tPos = AIComponent<AIUnit>.ChooseRandomEmptyTargetPosition(grid, self, action);
-            if(tPos != BattleGrid.OutOfBounds)
+            if (tPos != BattleGrid.OutOfBounds)
             {
                 action.UseAll(grid, self, tPos, false);
             }

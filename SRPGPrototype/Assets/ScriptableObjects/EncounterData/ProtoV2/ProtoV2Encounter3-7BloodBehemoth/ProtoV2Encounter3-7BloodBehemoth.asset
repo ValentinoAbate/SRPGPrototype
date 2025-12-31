@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95894705adac3db43acf64bd02fba487, type: 3}
+  m_Name: ProtoV2Encounter3-7BloodBehemoth
+  m_EditorClassIdentifier: 
+  encounterType: 2
+  dimensions: {x: 8, y: 6}
+  targetDifficulty: 54
+  steps:
+  - {fileID: 11400000, guid: 7a00c00827858774d9c3ab2cc9f28baf, type: 2}
+  - {fileID: 11400000, guid: 17dd3e0359b7187469f6985be76fe01d, type: 2}
+  - {fileID: 11400000, guid: 54638c5f1fc760d4a8c91fa1b3dc99be, type: 2}
+  - {fileID: 11400000, guid: bc0fea085bffeb640b30bc1c268f83eb, type: 2}
+  - {fileID: 11400000, guid: c7114a14ee218904d9d881f433fdd370, type: 2}
+  - {fileID: 11400000, guid: 2ede0bc4975159f4b8cd76202b4c84fe, type: 2}
+  - {fileID: 11400000, guid: 1f36e04573f56984688e3f800a19e340, type: 2}
+  seed:
+    nameOverride: 
+    dimensions: {x: 0, y: 0}
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: b5beabdc29a34be46ba52226d12d26b1,
+        type: 3}
+    ambushUnits: []
+    spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0
