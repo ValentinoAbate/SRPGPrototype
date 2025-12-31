@@ -260,31 +260,26 @@ namespace Grid
 
         public T Find<T>(Predicate<T> pred) where T : Obj
         {
-            //brute force foreach of field; might optimize later
             foreach (var obj in field)
             {
-                if (obj is T)
+                //if object matches the predicate, return it
+                if (obj is T objT && pred(objT))
                 {
-                    var objT = obj as T;
-                    //if object matches the predicate, return it
-                    if (pred(objT))
-                        return objT;
+                    return objT;
                 }
             }
             return null;
         }
 
-        public List<Obj> FindAll(Predicate<Obj> pred = null)
+        public List<Obj> FindAll(Predicate<Obj> pred)
         {
             var objects = new List<Obj>(Dimensions.x * Dimensions.y);
-            //brute force foreach of field; might optimize later
             foreach (var obj in field)
             {
-                if (obj == null)
-                    continue;
-                //if there is no predicate or object matches the predicate, add it to the list
-                if (pred == null || pred(obj))
+                if (obj != null && pred(obj))
+                {
                     objects.Add(obj);
+                }
             }
             return objects;
         }
