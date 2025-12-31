@@ -1,24 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6464810328418194555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4535508650336827781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
-    type: 3}
-  standardAction: {fileID: 4415060608083833614, guid: 63336dfe1d6df1a45bbd48f3c2aee581,
-    type: 3}
-  options: 2
-  targetTeams: 02000000
-  runAwayFromTeams: 02000000
 --- !u!1001 &3469278218771208966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,3 +121,23 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3469278218771208966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6464810328418194555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535508650336827781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
+    type: 3}
+  standardAction: {fileID: 4415060608083833614, guid: 63336dfe1d6df1a45bbd48f3c2aee581,
+    type: 3}
+  secondaryAction: {fileID: 0}
+  options: 2
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000

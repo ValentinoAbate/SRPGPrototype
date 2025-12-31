@@ -74,8 +74,6 @@ public abstract class AIUnit : Unit
 
     public abstract AIComponent<AIUnit> AI { get; }
 
-    [SerializeField] private ProgramEffectAddIncomingDamageModifierAbility[] incomingDamageModifierAbilities;
-    [SerializeField] private ProgramEffectAddOnPhaseEndAbility[] onPhaseEndAbilities;
     [SerializeField] private ProgramEffectAddAbility[] abilities;
 
     // Start is called before the first frame update
@@ -91,24 +89,6 @@ public abstract class AIUnit : Unit
             AI.Initialize(this);
         }
         ResetStats();
-        var onDeathEffects = GetComponents<ProgramEffectAddOnDeathAbility>();
-        foreach (var effect in onDeathEffects)
-        {
-            OnDeathFn += effect.Ability;
-        }
-        var onDamagedEffects = GetComponents<ProgramEffectAddOnDamagedAbility>();
-        foreach (var effect in onDamagedEffects)
-        {
-            OnDamagedFn += effect.Ability;
-        }
-        foreach(var effect in incomingDamageModifierAbilities)
-        {
-            IncomingDamageMods += effect.Ability;
-        }
-        foreach(var effect in onPhaseEndAbilities)
-        {
-            OnPhaseEndFn += effect.Ability;
-        }
         for (int i = 0; i < contextActions.Length; i++)
         {
             contextActions[i] = contextActions[i].Validate(ActionTransform);
@@ -148,4 +128,11 @@ public abstract class AIUnit : Unit
     {
         return contextActions.Length > 0 && grid.IsAdjacent(this, user) ? contextActions : System.Array.Empty<Action>();
     }
+
+#if UNITY_EDITOR
+    public void AttachAbilities()
+    {
+        abilities = GetComponents<ProgramEffectAddAbility>();
+    }
+#endif
 }

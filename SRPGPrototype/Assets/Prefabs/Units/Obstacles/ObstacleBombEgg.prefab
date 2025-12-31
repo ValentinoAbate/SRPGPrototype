@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4477500842389113991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3788600921145412576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee272380e17a3f04fa3ebb3a48a700a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: 0
-  action: {fileID: 8440232327866383202}
-  triggerOnSelfDestruct: 1
 --- !u!1001 &4199561890093148515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,6 +53,16 @@ PrefabInstance:
       propertyPath: displayName
       value: Bomb Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: abilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 4477500842389113991}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_RootOrder
@@ -177,6 +172,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4199561890093148515}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4477500842389113991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788600921145412576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee272380e17a3f04fa3ebb3a48a700a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+  action: {fileID: 8440232327866383202}
+  triggerOnSelfDestruct: 1
 --- !u!1001 &5216514919571540076
 PrefabInstance:
   m_ObjectHideFlags: 0

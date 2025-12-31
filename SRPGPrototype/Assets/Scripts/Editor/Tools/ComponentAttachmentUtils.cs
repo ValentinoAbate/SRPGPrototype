@@ -24,4 +24,23 @@ public static class ComponentAttachmentUtils
         }
 
     }
+
+    [MenuItem("Tools/Attach All Unit Abilities")]
+    public static void AttachAllUnitAbilities()
+    {
+        try
+        {
+            foreach (var unit in AssetUtils.LoadAllAssetsInDirectory<AIUnit>(AssetPaths.unitPath, true))
+            {
+                unit.AttachAbilities();
+                EditorUtility.SetDirty(unit.gameObject);
+            }
+            AssetDatabase.SaveAssets();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Attach All Unit Abilities Exception: {e.Message}");
+        }
+
+    }
 }

@@ -14,8 +14,7 @@ public static class AssetUtils
         {
             if (file.Contains(".meta"))
                 continue;
-            string assetPath = file;
-            T asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+            T asset = AssetDatabase.LoadAssetAtPath<T>(file);
             if(asset != null)
                 ret.Add(asset);
         }

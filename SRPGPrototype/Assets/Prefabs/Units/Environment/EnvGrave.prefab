@@ -1,34 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9202267301434321602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9096273990901133530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b293ebde5f8dccd4e991dc6915da4526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTeams: 00000000
-  standardAction: {fileID: 7215940675169623158}
---- !u!114 &3695701605290961852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9096273990901133530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee272380e17a3f04fa3ebb3a48a700a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: 0
-  action: {fileID: 8603633093943854934}
-  triggerOnSelfDestruct: 1
 --- !u!1001 &5342197747723908184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,6 +216,16 @@ PrefabInstance:
       propertyPath: displayName
       value: Grave
       objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: abilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 3695701605290961852}
     - target: {fileID: 2671863499721434950, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: m_RootOrder
@@ -314,3 +295,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8135878340891071065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-9202267301434321602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096273990901133530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b293ebde5f8dccd4e991dc6915da4526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTeams: 00000000
+  standardAction: {fileID: 7215940675169623158}
+--- !u!114 &3695701605290961852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096273990901133530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee272380e17a3f04fa3ebb3a48a700a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+  action: {fileID: 8603633093943854934}
+  triggerOnSelfDestruct: 1

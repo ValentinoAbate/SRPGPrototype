@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &8267239636157838933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823956966424869125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560a5cab76062dd45bafe8d6818fba37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 2679527008744717267}
-  action: {fileID: 4415060608083833614, guid: b3c9c1168f303944f93be0632bc519bc, type: 3}
-  targetEmptySpaces: 1
-  damagedTeams: 02000000
-  targetTeams: 
 --- !u!1001 &4306966984323521414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,7 +42,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Spawns a Tunnel Shark in an adjacent tile whenever a player unit is
-        damaged.
+        damaged or blood is shed.
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -146,3 +129,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0752e1ba5e6394fb724aef05207904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8267239636157838933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823956966424869125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560a5cab76062dd45bafe8d6818fba37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 2679527008744717267}
+  action: {fileID: 4415060608083833614, guid: b3c9c1168f303944f93be0632bc519bc, type: 3}
+  targetEmptySpaces: 1
+  damagedTeams: 02000000
+  targetTeams: 

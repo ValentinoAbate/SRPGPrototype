@@ -1,46 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1474172497301562810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4074569529001780107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d4b8fa7465b3f4ea63cb0bc87e3a7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
-    type: 3}
-  standardAction: {fileID: 8616228202451974398, guid: 03d4d57e959ee8d44b07c3c25332b524,
-    type: 3}
-  secondaryAction: {fileID: 4415060608083833614, guid: 6136df66c9838254b877439babeeaf09,
-    type: 3}
-  options: 0
-  targetTeams: 02000000
-  runAwayFromTeams: 02000000
-  barrierEffect: {fileID: 7898497713666056822}
-  summonAction: {fileID: 4415060608083833614, guid: 976a947a99a04b64696576e218cb890f,
-    type: 3}
-  reinforcementAmount: 2
---- !u!114 &7898497713666056822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4074569529001780107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8301fa4655809e246ab464139b3fb7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: 
-  numTurns: 3
-  barrierPrefab: {fileID: 8494998462610096465, guid: 1f961e2366c4de840ae3662a4b4761e5,
-    type: 3}
 --- !u!1001 &3918061688902517000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,3 +147,44 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3918061688902517000}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474172497301562810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074569529001780107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d4b8fa7465b3f4ea63cb0bc87e3a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
+    type: 3}
+  standardAction: {fileID: 8616228202451974398, guid: 03d4d57e959ee8d44b07c3c25332b524,
+    type: 3}
+  secondaryAction: {fileID: 4415060608083833614, guid: 6136df66c9838254b877439babeeaf09,
+    type: 3}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
+  barrierEffect: {fileID: 7898497713666056822}
+  summonAction: {fileID: 4415060608083833614, guid: 976a947a99a04b64696576e218cb890f,
+    type: 3}
+  reinforcementAmount: 2
+--- !u!114 &7898497713666056822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074569529001780107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8301fa4655809e246ab464139b3fb7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 
+  numTurns: 3
+  barrierPrefab: {fileID: 8494998462610096465, guid: 1f961e2366c4de840ae3662a4b4761e5,
+    type: 3}

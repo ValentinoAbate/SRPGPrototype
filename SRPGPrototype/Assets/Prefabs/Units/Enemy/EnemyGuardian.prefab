@@ -1,40 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2606508330318053413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2462553441360117241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
-    type: 3}
-  standardAction: {fileID: 4415060608083833614, guid: 4d8a0b319dd392543b2f1b4a8cc751b4,
-    type: 3}
-  secondaryAction: {fileID: 0}
-  options: 0
-  targetTeams: 02000000
-  runAwayFromTeams: 02000000
---- !u!114 &4700624428853275633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2462553441360117241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3fecf6597ef3ac42ad0f9e314f961c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: 
-  barrierPrefab: {fileID: 8494998462610096465, guid: 1f961e2366c4de840ae3662a4b4761e5,
-    type: 3}
 --- !u!1001 &3240542723664338810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,3 +117,38 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3240542723664338810}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2606508330318053413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462553441360117241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
+    type: 3}
+  standardAction: {fileID: 4415060608083833614, guid: 4d8a0b319dd392543b2f1b4a8cc751b4,
+    type: 3}
+  secondaryAction: {fileID: 0}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
+--- !u!114 &4700624428853275633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462553441360117241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fecf6597ef3ac42ad0f9e314f961c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 
+  barrierPrefab: {fileID: 8494998462610096465, guid: 1f961e2366c4de840ae3662a4b4761e5,
+    type: 3}

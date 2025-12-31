@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2596861445514896548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6764646451675230786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e5040c6b7555942839b88df02b7a42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropName: Soul Core Data
-  attributes: 4
-  lootQualities: 050000000500000005000000
 --- !u!1001 &2147300373272971273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,3 +105,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2147300373272971273}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2596861445514896548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764646451675230786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e5040c6b7555942839b88df02b7a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Soul Core Data
+  declineBonusOverride: -2147483648
+  attributes: 4
+  lootQualities: 050000000500000005000000

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  movable: 1
   fxContainer: {fileID: 7478816405458400791}
   team: 3
   interferenceLevel: 0
@@ -60,8 +61,7 @@ MonoBehaviour:
   actionTransform: {fileID: 3422832966320313134}
   contextActions: []
   unitUI: {fileID: 3299968412709591264}
-  incomingDamageModifierAbilities: []
-  onPhaseEndAbilities: []
+  abilities: []
   encounterData: {fileID: 4261383732389681203}
 --- !u!114 &4261383732389681203
 MonoBehaviour:
