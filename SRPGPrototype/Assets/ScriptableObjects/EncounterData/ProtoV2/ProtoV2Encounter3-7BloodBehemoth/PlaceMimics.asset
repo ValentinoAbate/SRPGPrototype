@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0200000003000000
   numWeights:
-  - 1
+  - 3
   - 1

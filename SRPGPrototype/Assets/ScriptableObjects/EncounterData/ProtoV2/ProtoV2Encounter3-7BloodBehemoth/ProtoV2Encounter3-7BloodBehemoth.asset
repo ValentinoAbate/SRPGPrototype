@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounterType: 2
   dimensions: {x: 8, y: 6}
-  targetDifficulty: 54
+  targetDifficulty: 57
   steps:
   - {fileID: 11400000, guid: 7a00c00827858774d9c3ab2cc9f28baf, type: 2}
   - {fileID: 11400000, guid: 17dd3e0359b7187469f6985be76fe01d, type: 2}
