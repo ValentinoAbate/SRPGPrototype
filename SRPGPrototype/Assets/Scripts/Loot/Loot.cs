@@ -121,14 +121,14 @@ public class Loot<T> : LootProvider where T : ILootable
     // Get a custom drop without any respect to rarity
     public T GetDropCustom(System.Predicate<T> filter)
     {
-        var choices = new List<T>();
+        var choices = new WeightedSet<T>();
         foreach(var tableKvp in dropTables)
         {
             foreach(var kvp in tableKvp.Value)
             {
                 if (filter(kvp.Key))
                 {
-                    choices.Add(kvp.Key);
+                    choices.Add(kvp.Key, kvp.Value);
                 }
             }
         }
