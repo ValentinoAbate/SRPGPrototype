@@ -61,6 +61,17 @@ public class Shell : MonoBehaviour, ILootable
     public IReadOnlyList<InstalledProgram> Programs => programs;
     private readonly List<InstalledProgram> programs = new List<InstalledProgram>();
 
+    public IEnumerable<Program> RawPrograms
+    {
+        get
+        {
+            foreach (var prog in programs)
+            {
+                yield return prog.program;
+            }
+        }
+    }
+
     public IReadOnlyList<Action> Actions => actions;
     private readonly List<Action> actions = new List<Action>();
 

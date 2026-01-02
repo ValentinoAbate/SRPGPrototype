@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using Extensions.VectorIntDimensionUtils;
 
 public class ProgramModifier : MonoBehaviour
 {
     public enum Scope
     { 
         Adjacent,
+        Global,
     }
 
     [SerializeField] private Scope scope = Scope.Adjacent;
@@ -38,6 +37,9 @@ public class ProgramModifier : MonoBehaviour
         {
             case Scope.Adjacent:
                 modifiedProgs.AddRange(AdjacentPrograms(shell, program));
+                break;
+            case Scope.Global:
+                modifiedProgs.AddRange(shell.RawPrograms);
                 break;
         }
         var applicableModifiers = new List<Modifier>(modifiers.Length);

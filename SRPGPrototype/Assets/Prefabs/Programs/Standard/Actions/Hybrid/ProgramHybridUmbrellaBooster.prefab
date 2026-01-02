@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: lootWeight
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -45,7 +45,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: Umbrella
+      value: Booster Umbrella
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.dimensions.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -65,22 +65,22 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: shape.patternOffsets.Array.data[1].x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramAttackUmbrella
+      value: ProgramHybridUmbrellaBooster
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -160,17 +160,20 @@ MonoBehaviour:
   variantChance: 0.75
   patterns:
   - patternOffsets:
+    - {x: 0, y: 2}
     - {x: 0, y: 1}
     - {x: 0, y: 0}
-    dimensions: {x: 1, y: 2}
+    dimensions: {x: 1, y: 3}
   - patternOffsets:
-    - {x: 1, y: 0}
-    - {x: 0, y: 1}
-    dimensions: {x: 2, y: 2}
+    - {x: 2, y: 0}
+    - {x: 1, y: 1}
+    - {x: 0, y: 2}
+    dimensions: {x: 3, y: 3}
   - patternOffsets:
+    - {x: 2, y: 2}
     - {x: 1, y: 1}
     - {x: 0, y: 0}
-    dimensions: {x: 2, y: 2}
+    dimensions: {x: 3, y: 3}
   useWeights: 0
   weights: []
 --- !u!114 &2535450298112284130
@@ -185,5 +188,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 4415060608083833614, guid: 59839ec73a004cd4db92b729c5ad4016, type: 3}
+  action: {fileID: 308391873856083614, guid: cab20ebe02852654fb09ae745e9eb7f1, type: 3}
   isSecondary: 0
