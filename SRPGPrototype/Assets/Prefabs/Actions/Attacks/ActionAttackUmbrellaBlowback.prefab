@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standaloneSubActionType: 12
+  standaloneSubActionType: 8
   standaloneSubActionOptions: 0
   affectUser: 0
   ignoreInValidRangeCalcs: 0
