@@ -30,8 +30,8 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent/Diagonal. Attack: Adjacent/Ranged (3 damage). Bleeds
-        when damaged, activating shark burrows (etc.).'
+      value: 'Move: Adjacent. Attack: Adjacent/Ranged (3 damage). Bleeds when damaged,
+        activating shark burrows (etc.).'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: priorityLevel
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
   standardAction: {fileID: 4415060608083833614, guid: b7aa786d3687b2742887bd11a54d5c2d,
     type: 3}
