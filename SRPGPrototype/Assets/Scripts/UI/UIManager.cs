@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour
     public TurnOrderViewerUI TurnOrderUI => turnOrderUI;
     [SerializeField] private TurnOrderViewerUI turnOrderUI;
 
+    public UnitUIViewerUI UnitUIViewer => unitUIViewer;
+    [SerializeField] private UnitUIViewerUI unitUIViewer;
+
     public ItemSelector ItemSelector => itemSelector;
     [SerializeField] private ItemSelector itemSelector;
 

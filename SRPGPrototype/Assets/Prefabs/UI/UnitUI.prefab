@@ -150,6 +150,7 @@ MonoBehaviour:
   apNumberText: {fileID: 474220833275012255}
   numberUI: {fileID: 4598233061373839077}
   numberText: {fileID: 4276090517398277941}
+  canvas: {fileID: 7602358481094829919}
 --- !u!1 &773243182964756342
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,8 @@ public class BattleUI : MonoBehaviour
             cursor.gameObject.SetActive(value);
             UnitSelectionUIEnabled = value;
             UIManager.main.TurnOrderUI.SetInteractable(value);
+            UIManager.main.UnitUIViewer.SetInteractable(value);
+            UIManager.main.UnitUIViewer.HideUI();
         }
     }
     private bool inUnitSelection;
@@ -89,10 +91,12 @@ public class BattleUI : MonoBehaviour
         if (value)
         {
             UIManager.main.TurnOrderUI.Show();
+            UIManager.main.UnitUIViewer.Show();
         }
         else
         {
             UIManager.main.TurnOrderUI.Hide();
+            UIManager.main.UnitUIViewer.Hide();
         }
     }
 
@@ -158,6 +162,7 @@ public class BattleUI : MonoBehaviour
     {
         UIManager.main.HideAllDescriptionUI();
         UIManager.main.TurnOrderUI.Initialize(grid);
+        UIManager.main.UnitUIViewer.Initialize(grid);
         RefreshLinkOutUI();
         SetTopBarOverlayEnabled(true);
         SetGeneralUIEnabled(false);
@@ -201,18 +206,31 @@ public class BattleUI : MonoBehaviour
         UnitSelectionUIEnabled = true;
         cursor.OnClick = SelectUnit;
         cursor.OnCancel = null;
-        cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
-        cursor.OnHighlight = ShowUnitDescription;
+        cursor.OnUnHighlight = UnHighlightUnit;
+        cursor.OnHighlight = HighlightUnit;
     }
 
-    private void ShowUnitDescription(Vector2Int pos)
+    private void HighlightUnit(Vector2Int pos)
     {
         var unit = grid.Get(pos);
         if (unit != null)
         {
             UIManager.main.UnitDescriptionUI.Show(unit);
+            if (!unit.ShowUIByDefault)
+            {
+                unit.UI.SetVisible(true);
+            }
         }
+    }
 
+    private void UnHighlightUnit(Vector2Int pos)
+    {
+        UIManager.main.HideUnitDescriptionUI(pos);
+        var unit = grid.Get(pos);
+        if (unit != null && !unit.ShowUIByDefault)
+        {
+            unit.UI.SetVisible(false);
+        }
     }
 
     private void SelectUnit(Vector2Int pos)

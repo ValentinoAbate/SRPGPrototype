@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7813460689965683176}
   - component: {fileID: 7813460689965683177}
   - component: {fileID: 2387729616807898210}
-  - component: {fileID: 4589513714392657881}
+  - component: {fileID: 577537146216852176}
   m_Layer: 0
-  m_Name: TurnOrderViewer
+  m_Name: UnitUIViewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -480, y: -18}
-  m_SizeDelta: {x: 180, y: 50}
+  m_SizeDelta: {x: 120, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7813460689965683176
 CanvasRenderer:
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
---- !u!114 &4589513714392657881
+--- !u!114 &577537146216852176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7813460689965683156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d19ca02195bfb0242becdba8eab7a3ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 25e0b245efd9044418bc60c9cadbde57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backingImage: {fileID: 7813460689965683177}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Turn Order
+  m_text: Unit UI
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

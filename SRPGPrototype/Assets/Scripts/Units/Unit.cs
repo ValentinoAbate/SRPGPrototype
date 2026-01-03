@@ -95,6 +95,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
     protected virtual int HybridFailurePenalty => 2;
+    public bool ShowUIByDefault => UnitTeam == Team.Enemy || UnitTeam == Team.Player || UnitTeam == Team.Player;
     public abstract UnitUI UI { get; }
     public abstract Shell Shell { get; }
 
