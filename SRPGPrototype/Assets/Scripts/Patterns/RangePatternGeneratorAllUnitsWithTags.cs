@@ -18,14 +18,7 @@ public class RangePatternGeneratorAllUnitsWithTags : RangePatternGenerator
 
     public override IEnumerable<Vector2Int> ReverseGenerate(BattleGrid grid, Vector2Int targetPos, Unit user)
     {
-        if (grid.IsEmpty(targetPos))
-        {
-            yield break;
-        }
-        foreach (var pos in grid.Dimensions.Enumerate())
-        {
-            yield return pos;
-        }
+        return grid.AllPositions;
     }
 
     public override int MaxDistance(BattleGrid grid)
