@@ -10,10 +10,12 @@ public class TargetPatternGeneratorAllUnitsOnTeams : TargetPatternGenerator
     {
         foreach(var unit in grid)
         {
-            if (targetTeams.Contains(unit.UnitTeam) && (includeSelf || unit != user))
+            if (targetTeams.Contains(unit.UnitTeam) && IsTargetValid(grid, user, unit) && (includeSelf || unit != user))
             {
                 yield return unit.Pos;
             }
         }
     }
+
+    protected virtual bool IsTargetValid(BattleGrid grid, Unit user, Unit target) => true;
 }
