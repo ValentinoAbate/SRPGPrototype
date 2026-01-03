@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LootUI : MonoBehaviour
@@ -27,9 +24,8 @@ public class LootUI : MonoBehaviour
     [SerializeField] private Transform itemContainer;
     public Button exitButton;
 
-    [SerializeField] private bool allowLootSkipping = true;
-
     private bool inLootSelection = false;
+    private System.Action onClose;
 
     private void Update()
     {
@@ -37,7 +33,7 @@ public class LootUI : MonoBehaviour
             ReturnToMainMenu();
     }
 
-    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, ICollection<MoneyData> moneyData, UnityAction onLootClose)
+    public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, ICollection<MoneyData> moneyData, System.Action onLootClose)
     {
         if(programDraws.Draws.Count <= 0 && shellDraws.Draws.Count <= 0 && moneyData.Count <= 0)
         {
@@ -56,7 +52,7 @@ public class LootUI : MonoBehaviour
         // Set up exit button
         exitButton.onClick.RemoveAllListeners();
         exitButton.onClick.AddListener(HideUI);
-        exitButton.onClick.AddListener(onLootClose);
+        onClose = onLootClose;
         // Activate menu
         ReturnToMainMenu();
         uiCanvas.gameObject.SetActive(true);
@@ -100,17 +96,23 @@ public class LootUI : MonoBehaviour
         shellDrawButtonContainer.DestroyAllChildren();
         itemContainer.DestroyAllChildren();
         uiCanvas.gameObject.SetActive(false);
+        onClose?.Invoke();
+        onClose = null;
     }
 
     public void ReturnToMainMenu()
     {
+        if (!HasLootRemaining())
+        {
+            HideUI();
+            return;
+        }
         inLootSelection = false;
         menuUI.SetActive(true);
         programDrawUI.SetActive(false);
         shellDrawUI.SetActive(false);
         UIManager.main.HideAllDescriptionUI();
         UIManager.main.TopBarUI.SetTitleText("Loot");
-        RefreshExitButton();
     }
 
     public void FinishLootDraw(Button menuButton)
@@ -191,22 +193,16 @@ public class LootUI : MonoBehaviour
         button.onClick.AddListener(OnClick);
     }
 
-    private void RefreshExitButton()
+    private bool HasLootRemaining()
     {
-        if (allowLootSkipping)
-        {
-            exitButton.interactable = true;
-            return;
-        }
-        foreach(Transform go in menuButtonContainer)
+        foreach (Transform go in menuButtonContainer)
         {
             if (go.gameObject.activeSelf)
             {
-                exitButton.interactable = false;
-                return;
+                return true;
             }
         }
-        exitButton.interactable = true;
+        return false;
     }
 
     public class MoneyData
