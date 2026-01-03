@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Step", menuName = "Validators/Arms Dealer")]
+[CreateAssetMenu(fileName = "ArmsDealerValidator", menuName = "Validators/Unit/Arms Dealer")]
 public class ArmsDealerValidator : UnitValidator
 {
     [SerializeField] private int threshold = 2;
