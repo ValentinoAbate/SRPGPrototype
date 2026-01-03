@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
 
@@ -155,7 +154,27 @@ public class BattleUI : MonoBehaviour
 
     public void OnEndTurnButton()
     {
-        phaseManager.NextPhase();
+        if(grid.CanLinkOut(out _, out _, out _))
+        {
+            PlayerPhaseUIEnabled = false;
+            PopupManager.main.ShowConfirmationPopup(OnEndTurnConfirmed, "Are you sure?", $"You are able to link out.", "End Turn");
+        }
+        else
+        {
+            phaseManager.NextPhase();
+        }
+    }
+
+    private void OnEndTurnConfirmed(bool confirmed)
+    {
+        if (confirmed)
+        {
+            phaseManager.NextPhase();
+        }
+        else
+        {
+            PlayerPhaseUIEnabled = true;
+        }
     }
 
     public void Initialize()
@@ -174,11 +193,11 @@ public class BattleUI : MonoBehaviour
         {
             if(linkOutButton.interactable && Input.GetKeyDown(KeyCode.L))
             {
-                linkOutButton.onClick?.Invoke();
+                OnLinkOutButton();
             }
             else if(endTurnButton.interactable && Input.GetKeyDown(KeyCode.E))
             {
-                endTurnButton.onClick?.Invoke();
+                OnEndTurnButton();
             }
         }
         if (!inUnitSelection)
