@@ -97,17 +97,30 @@ public class MapUI : MonoBehaviour
         InitializePreviewObjects(encounter);
         UIManager.main.TopBarUI.SetTitleText($"{encounter.nameOverride ?? "Encounter"} ({index + 1}/{encounterChoices.Count})");
 
-        cursor.OnHighlight = ShowUnitDescription;
-        cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
+        cursor.OnHighlight = HighlightUnit;
+        cursor.OnUnHighlight = UnHighlightUnit;
     }
 
-    // Enable unit descriptions
-    private void ShowUnitDescription(Vector2Int pos)
+    private void HighlightUnit(Vector2Int pos)
     {
         var unit = previewGrid.Get(pos);
         if (unit != null)
         {
             UIManager.main.UnitDescriptionUI.Show(unit);
+            if (!unit.ShowUIByDefault)
+            {
+                unit.UI.SetVisible(true);
+            }
+        }
+    }
+
+    private void UnHighlightUnit(Vector2Int pos)
+    {
+        UIManager.main.HideUnitDescriptionUI(pos);
+        var unit = previewGrid.Get(pos);
+        if (unit != null && !unit.ShowUIByDefault)
+        {
+            unit.UI.SetVisible(false);
         }
     }
 

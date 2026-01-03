@@ -110,6 +110,19 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public Vector2Int StartingPos { get; private set; }
 
+    private void Awake()
+    {
+        Initialize();
+    }
+
+    protected virtual void Initialize()
+    {
+        if (UI != null)
+        {
+            UI.SetVisible(ShowUIByDefault);
+        }
+    }
+
     public void ModifyHp(BattleGrid grid, int amount, Unit source)
     {
         if (amount > 0)

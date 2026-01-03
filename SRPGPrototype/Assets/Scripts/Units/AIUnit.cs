@@ -72,18 +72,14 @@ public abstract class AIUnit : Unit
     public override CenterStat Speed { get; } = new CenterStat();
     public override CenterStat Break { get; } = new CenterStat();
 
-    public abstract AIComponent<AIUnit> AI { get; }
+    public AIComponent<AIUnit> AI { get; private set; }
 
     [SerializeField] private ProgramEffectAddAbility[] abilities;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Initialize()
     {
-        Initialize();
-    }
-
-    protected virtual void Initialize()
-    {
+        base.Initialize();
+        AI = GetComponent<AIComponent<AIUnit>>();
         if (AI != null)
         {
             AI.Initialize(this);

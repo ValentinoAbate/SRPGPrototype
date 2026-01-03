@@ -35,13 +35,8 @@ public class MysteryDataUnit : AIUnit
     [SerializeField] private Color uncommonColor = Color.white;
     [SerializeField] private Color rareColor = Color.white;
 
-    public override AIComponent<AIUnit> AI => ai;
-
-    private AIComponent<AIUnit> ai;
-
-    private void Awake()
+    protected override void Initialize()
     {
-        ai = GetComponent<AIComponent<AIUnit>>();
         switch (LootQuality)
         {
             case Quality.Common:
@@ -54,6 +49,7 @@ public class MysteryDataUnit : AIUnit
                 frameSprite.color = rareColor;
                 break;
         }
+        base.Initialize();
     }
 
     public override Coroutine OnBattleEnd(EncounterManager manager)
