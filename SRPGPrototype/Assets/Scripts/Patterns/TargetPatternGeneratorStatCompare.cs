@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TargetPatternGeneratorStatCompare : TargetPatternGenerator
@@ -11,13 +10,14 @@ public class TargetPatternGeneratorStatCompare : TargetPatternGenerator
 
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Unit user, Vector2Int targetPos)
     {
+        // Threshold can be a user stat or a constant
         int threshold = userStat == Stats.StatName.None ? constant : user.GetStat(userStat);
-        return grid.Where((u) => UnitPredicate(u, threshold)).Select((u) => u.Pos);
-    }
-
-    private bool UnitPredicate(Unit u, int threshold)
-    {
-        int value = u.GetStat(stat);
-        return comparison.Evaluate(threshold, value);
+        foreach(var unit in grid)
+        {
+            if(comparison.Evaluate(threshold, unit.GetStat(stat)))
+            {
+                yield return unit.Pos;
+            }
+        }
     }
 }
