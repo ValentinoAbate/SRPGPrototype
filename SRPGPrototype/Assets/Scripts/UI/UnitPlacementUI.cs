@@ -76,6 +76,8 @@ public class UnitPlacementUI : MonoBehaviour
             Complete();
             return;
         }
+        cursor.enabled = false;
+        enabled = false;
         PopupManager.main.ShowConfirmationPopup(CompleteOnConfirmation, descriptionText: GetConfirmationDesc());
     }
 
@@ -93,6 +95,11 @@ public class UnitPlacementUI : MonoBehaviour
         if (success)
         {
             Complete();
+        }
+        else
+        {
+            cursor.enabled = true;
+            enabled = true;
         }
     }
 
