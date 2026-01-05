@@ -52,6 +52,28 @@ public class BattleGrid : Grid.Grid<Unit>
         Initialize();
     }
 
+    public override bool Add(Vector2Int pos, Unit obj)
+    {
+        if(base.Add(pos, obj))
+        {
+            if (EncounterEventManager.Ready)
+            {
+                EncounterEventManager.main.OnUnitSpawned?.Invoke(obj);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public override void Remove(Unit obj)
+    {
+        base.Remove(obj);
+        if (EncounterEventManager.Ready)
+        {
+            EncounterEventManager.main.OnUnitRemoved?.Invoke(obj);
+        }
+    }
+
     public void SetDimensions(int x, int y)
     {
         dimensions = new Vector2Int(x, y);

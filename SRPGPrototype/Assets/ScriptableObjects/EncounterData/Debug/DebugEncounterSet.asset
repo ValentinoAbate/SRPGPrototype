@@ -19,5 +19,5 @@ MonoBehaviour:
   - 1
   npcSet: {fileID: 0}
   generators:
-  - {fileID: 11400000, guid: d6cb8cd75bcfbff4b82d4edc0a47c3e5, type: 2}
+  - {fileID: 11400000, guid: 1e595508beb0ef441b712c8021389169, type: 2}
   generatorWeights: []

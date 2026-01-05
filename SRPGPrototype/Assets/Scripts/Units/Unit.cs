@@ -64,6 +64,13 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         PlaceHolder = 16, // So unity doesn't serialize as "everything"
     }
 
+    public enum PassiveEffect
+    {
+        None,
+        Frostbite,
+        Haste,
+    }
+
     public int HotkeyIndex { get; set; } = -1;
     public virtual bool Movable => movable;
     [SerializeField] private bool movable = true;
@@ -85,6 +92,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     public abstract OnSubAction OnAfterSubActionFn { get; set; }
     public abstract OnAfterAction OnAfterActionFn { get; set; }
     public abstract OnDeath OnDeathFn { get; set; }
+    public System.Action<BattleGrid, Unit> OnSpawned { get; set; }
     public abstract OnDamaged OnDamagedFn { get; set; }
     public abstract IncomingDamageMod IncomingDamageMods { get; set; }
     public abstract OnRepositioned OnRepositionedFn { get; set; }
@@ -109,6 +117,42 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     [SerializeField] private Transform fxContainer;
 
     public Vector2Int StartingPos { get; private set; }
+
+    public bool AddPassiveEffect(PassiveEffect effect)
+    {
+        if (effects.ContainsKey(effect))
+        {
+            effects[effect]++;
+            return false;
+        }
+        else
+        {
+            effects.Add(effect, 1);
+            return true;
+        }
+    }
+    public bool RemovePassiveEffect(PassiveEffect effect)
+    {
+        if (!effects.TryGetValue(effect, out int value))
+        {
+            return false;
+        }
+        if(value <= 1)
+        {
+            effects.Remove(effect);
+            return true;
+        }
+        else
+        {
+            effects[effect]--;
+            return false;
+        }
+    }
+    public bool HasEffect(PassiveEffect effect)
+    {
+        return effects.ContainsKey(effect);
+    }
+    private readonly Dictionary<PassiveEffect, int> effects = new Dictionary<PassiveEffect, int>();
 
     private void Awake()
     {

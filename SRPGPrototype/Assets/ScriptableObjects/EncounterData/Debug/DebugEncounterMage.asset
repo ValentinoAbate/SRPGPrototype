@@ -50,6 +50,12 @@ MonoBehaviour:
     - pos: {x: -1, y: -1}
       unit: {fileID: 2747713192606589042, guid: a3afc4e019becee46960b82788138b3e,
         type: 3}
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 2747713192606589042, guid: a3afc4e019becee46960b82788138b3e,
+        type: 3}
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 2747713192606589042, guid: a3afc4e019becee46960b82788138b3e,
+        type: 3}
     ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0

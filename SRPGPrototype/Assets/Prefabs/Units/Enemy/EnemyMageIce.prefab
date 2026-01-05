@@ -20,7 +20,9 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent (Runs Away). Attack: All player units (-1 AP).'
+      value: 'Move: Adjacent (Runs Away). While an Ice Mage is on the field, all
+        Player and Neutral units recieve -1 AP. Destroy all ice mages to return the
+        AP.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -121,13 +123,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2981985294836191615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2747713192606589042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+    type: 3}
+  m_PrefabInstance: {fileID: 2981985294836191615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861515215645996028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5804252d2f4d1ba46a113327605c7233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6841650265260824128 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8615473470323705663, guid: 7ad1ec7a0493cc149835e689342fc184,
     type: 3}
   m_PrefabInstance: {fileID: 2981985294836191615}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6332754291488586876
+--- !u!114 &4315283584347794436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,19 +150,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2861515215645996028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b6f3f21a038ee4ba63af8e871a25b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1429f0a6c98123c449a8aaa049f68b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readyOption: 2
-  standardAction: {fileID: 4415060608083833614, guid: 7d88dad2bf624eb4ea048726d49152e8,
-    type: 3}
-  targetEmptySpaces: 0
-  attackAction: {fileID: 0}
   moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
-  animator: {fileID: 4508877108862989139}
-  targetTeams: 02000000
-  runAwayFromTeams: 02000000
+--- !u!114 &1568969709884290124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861515215645996028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99c55d3b7afeef459cfc8b9dcd77635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 2747713192606589042}
+  effectKey: 1
+  modifier: -1
+  applyToTeams: 0200000005000000
 --- !u!95 &4508877108862989139
 Animator:
   serializedVersion: 5
