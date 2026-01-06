@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &932368499352854308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyRocketBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: maxAP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: maxHP
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: description
+      value: 'Move: Adjacent. Attack: Projectile that explodes in a plus shape at
+        target (3 damage). Spawns a super bomb that explodes in a full row/column
+        at the start of the next enemy phase when destroyed.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: displayName
+      value: Rocket Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: abilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 8708654031822163210}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21985789684536a48882abd187d88d2f,
+        type: 3}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254388976346715284, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: challengeRating
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
+--- !u!1 &154379177311796647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1068486978419434115, guid: 7ad1ec7a0493cc149835e689342fc184,
+    type: 3}
+  m_PrefabInstance: {fileID: 932368499352854308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8565883498664946400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154379177311796647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
+    type: 3}
+  standardAction: {fileID: 4415060608083833614, guid: 217ba2b0cbe21664894695002cd0ed59,
+    type: 3}
+  secondaryAction: {fileID: 0}
+  options: 0
+  targetTeams: 02000000
+  runAwayFromTeams: 02000000
+--- !u!114 &8708654031822163210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154379177311796647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee272380e17a3f04fa3ebb3a48a700a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+  action: {fileID: 4415060608083833614, guid: a98691c7ac9eb8a4aafcf99f74ad9984, type: 3}
+  triggerOnSelfDestruct: 1

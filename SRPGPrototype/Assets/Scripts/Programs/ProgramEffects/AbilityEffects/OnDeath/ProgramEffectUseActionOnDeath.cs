@@ -27,6 +27,6 @@
 
     public void Detonate(BattleGrid grid, Unit self, Unit detonator)
     {
-        Ability(grid, self, detonator);
+        self.Kill(grid, detonator);
     }
 }
