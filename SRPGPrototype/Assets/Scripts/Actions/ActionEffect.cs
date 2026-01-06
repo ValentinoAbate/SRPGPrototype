@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public abstract class ActionEffect : MonoBehaviour
@@ -47,7 +46,15 @@ public abstract class ActionEffect : MonoBehaviour
 
     protected List<Unit> GetTargetList(BattleGrid grid, IReadOnlyList<Vector2Int> targetPositions)
     {
-        return targetPositions.Select((pos) => grid.Get(pos)).Where((c) => c != null).ToList();
+        var targets = new List<Unit>(targetPositions.Count);
+        foreach(var pos in targetPositions)
+        {
+            if(grid.TryGet(pos, out var unit))
+            {
+                targets.Add(unit);
+            }
+        }
+        return targets;
     }
 
 }
