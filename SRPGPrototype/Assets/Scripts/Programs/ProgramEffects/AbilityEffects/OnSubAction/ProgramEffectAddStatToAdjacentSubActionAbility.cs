@@ -15,10 +15,7 @@ public class ProgramEffectAddStatToAdjacentSubActionAbility : ProgramEffectAddSu
     {
         foreach(var pos in user.Pos.Adjacent())
         {
-            if (!grid.IsLegal(pos))
-                continue;
-            var target = grid.Get(pos);
-            if (target == null || !affectedTeams.Contains(target.UnitTeam))
+            if (!grid.TryGet(pos, out var target) || !affectedTeams.Contains(target.UnitTeam))
                 continue;
             int value = number.ActionValue(grid, action, target, targets.Count);
             target.ModifyStat(grid, stat, value, user);

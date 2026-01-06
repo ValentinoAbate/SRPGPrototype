@@ -154,8 +154,7 @@ public class SubAction : MonoBehaviour
         {
             foreach (var position in targetPositions)
             {
-                var target = grid.Get(position);
-                if (target != null)
+                if (grid.TryGet(position, out var target))
                 {
                     targets.Add(target);
                 }

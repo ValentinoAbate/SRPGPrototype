@@ -8,8 +8,7 @@ public class ActionEffectSetPositionReplace : ActionEffect
     {
         if (target == null)
             return;
-        var blocker = grid.Get(targetData.selectedPos);
-        if (blocker == null)
+        if (!grid.TryGet(targetData.selectedPos, out var blocker))
             return;
         blocker.Kill(grid, user);
         grid.MoveAndSetWorldPos(target, targetData.selectedPos);

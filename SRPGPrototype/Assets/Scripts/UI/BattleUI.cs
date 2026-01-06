@@ -231,22 +231,21 @@ public class BattleUI : MonoBehaviour
 
     private void HighlightUnit(Vector2Int pos)
     {
-        var unit = grid.Get(pos);
-        if (unit != null)
+        if (!grid.TryGet(pos, out var unit))
         {
-            UIManager.main.UnitDescriptionUI.Show(unit);
-            if (!unit.ShowUIByDefault)
-            {
-                unit.UI.SetVisible(true);
-            }
+            return;
+        }
+        UIManager.main.UnitDescriptionUI.Show(unit);
+        if (!unit.ShowUIByDefault)
+        {
+            unit.UI.SetVisible(true);
         }
     }
 
     private void UnHighlightUnit(Vector2Int pos)
     {
         UIManager.main.HideUnitDescriptionUI(pos);
-        var unit = grid.Get(pos);
-        if (unit != null && !unit.ShowUIByDefault)
+        if (grid.TryGet(pos, out var unit) && !unit.ShowUIByDefault)
         {
             unit.UI.SetVisible(false);
         }
@@ -259,8 +258,7 @@ public class BattleUI : MonoBehaviour
 
     private void SelectUnit(Vector2Int pos, bool fromHotKey)
     {
-        var unit = grid.Get<Unit>(pos);
-        if (unit != null && unit.UnitTeam == Unit.Team.Player)
+        if (grid.TryGet(pos, out var unit) && unit.UnitTeam == Unit.Team.Player)
         {
             EnterActionMenu(unit, fromHotKey);
         }

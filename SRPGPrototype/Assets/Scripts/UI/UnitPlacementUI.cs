@@ -63,8 +63,7 @@ public class UnitPlacementUI : MonoBehaviour
     // Enable unit descriptions
     private void ShowUnitDescription(Vector2Int pos)
     {
-        var unit = grid.Get(pos);
-        if (unit != null)
+        if (grid.TryGet(pos, out var unit))
         {
             UIManager.main.UnitDescriptionUI.Show(unit);
         }

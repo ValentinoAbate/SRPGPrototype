@@ -9,7 +9,7 @@ public class ActionEffectDamageAdjacent : ActionEffectDamage
     [SerializeField] private int modifier = 1;
     public override int BaseDamage(BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
     {
-        bool ValidPos(Vector2Int p) => grid.IsLegal(p) && !grid.IsEmpty(p) && teams.Contains(grid.Get(p).UnitTeam);
+        bool ValidPos(Vector2Int p) => grid.TryGet(p, out var unit) && teams.Contains(unit.UnitTeam);
         if (directions.HasFlag(AdjacencyDirections.Both))
             return user.Pos.AdjacentBoth().Count(ValidPos) * modifier;
         if (directions.HasFlag(AdjacencyDirections.HorizontalVertical))

@@ -11,8 +11,7 @@ public class ActionEffectMoveOverhead : ActionEffectMove
         var targetPos = user.Pos - (target.Pos - user.Pos);
         if (!grid.IsLegal(targetPos))
             return;
-        var blocker = grid.Get(targetPos);
-        if (blocker != null && !Move(grid, user, blocker, user.Pos.DirectionTo(blocker.Pos)))
+        if (grid.TryGet(targetPos, out var blocker) && !Move(grid, user, blocker, user.Pos.DirectionTo(blocker.Pos)))
             return;
         SetPosition(grid, user, target, targetPos);
     }
@@ -24,7 +23,6 @@ public class ActionEffectMoveOverhead : ActionEffectMove
         var targetPos = user.Pos - (target.Pos - user.Pos);
         if (!grid.IsLegal(targetPos))
             return false;
-        var blocker = grid.Get(targetPos);
-        return blocker == null || CanMove(grid, user, blocker, user.Pos.DirectionTo(blocker.Pos));
+        return !grid.TryGet(targetPos, out var blocker) || CanMove(grid, user, blocker, user.Pos.DirectionTo(blocker.Pos));
     }
 }

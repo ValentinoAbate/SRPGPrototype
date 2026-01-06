@@ -29,8 +29,7 @@ public abstract class ActionEffectMove : ActionEffect
         {
             return false;
         }
-        var blocker = grid.Get(destination);
-        return blocker == null || CanMove(grid, source, blocker, direction, distance);
+        return !grid.TryGet(destination, out var blocker) || CanMove(grid, source, blocker, direction, distance);
     }
 
     private int TryMove(BattleGrid grid, Unit source, Unit target, Vector2Int direction, int distance)
@@ -46,8 +45,7 @@ public abstract class ActionEffectMove : ActionEffect
             {
                 return TryEnactMoveAtDistance(grid, source, target, direction, i);
             }
-            var blocker = grid.Get(destination);
-            if (blocker != null)
+            if (grid.TryGet(destination, out var blocker))
             {
                 int blockerDistanceMoved = TryMove(grid, source, blocker, direction, distance - i);
                 return TryEnactMoveAtDistance(grid, source, target, direction, i + blockerDistanceMoved);

@@ -296,8 +296,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
             int score = 0;
             foreach (var tPos in standardAction.GetTargets(grid, self, pos))
             {
-                var unit = grid.Get(tPos);
-                if (unit == null)
+                if (!grid.TryGet(tPos, out var unit))
                     continue;
                 if (isTarget(unit))
                 {

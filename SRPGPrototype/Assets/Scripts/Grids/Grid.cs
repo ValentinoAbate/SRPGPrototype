@@ -242,12 +242,15 @@ namespace Grid
 
         public bool NotEmpty(Vector2Int pos) => field[pos.x, pos.y] != null;
 
-        /// <summary>
-        /// Return the object of type T at the given grid position, or null if the position is empty or filled with an object that is not of type T
-        /// </summary>
-        public T Get<T>(Vector2Int pos) where T : Obj
+        public bool TryGet(Vector2Int pos, out Obj obj)
         {
-            return Get(pos) as T;
+            if (!IsLegal(pos) || field[pos.x, pos.y] == null)
+            {
+                obj = null;
+                return false;
+            }
+            obj = field[pos.x, pos.y];
+            return true;
         }
 
         public Obj Get(Vector2Int pos)

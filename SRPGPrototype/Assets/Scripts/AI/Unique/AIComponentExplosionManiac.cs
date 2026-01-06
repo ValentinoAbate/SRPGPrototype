@@ -121,8 +121,7 @@ public class AIComponentExplosionManiac : AIComponent<AIUnit>
         // Unclumping factor
         foreach(var adjPos in pos.Adjacent())
         {
-            var unit = grid.Get(adjPos);
-            if(unit != null && unit.UnitTeam == self.UnitTeam)
+            if(grid.TryGet(adjPos, out var unit) && unit.UnitTeam == self.UnitTeam)
             {
                 score *= 0.25f;
             }
@@ -145,8 +144,7 @@ public class AIComponentExplosionManiac : AIComponent<AIUnit>
         var targetPositions = new List<Vector2Int>(detonateAction.GetTargets(grid, target, target.Pos));
         foreach (var pos in targetPositions)
         {
-            var unit = grid.Get(pos);
-            if (unit == null || (hitUnits.TryGetValue(unit, out int dmgTaken) && dmgTaken >= unit.HP))
+            if (!grid.TryGet(pos, out var unit) || (hitUnits.TryGetValue(unit, out int dmgTaken) && dmgTaken >= unit.HP))
                 continue;
             int simDamage = ActionUtils.SimulateDamageCalc(grid, detonateAction, detonateAction.SubActions[0], target, unit, new ActionEffect.PositionData(target.Pos, target.Pos), 0, targetPositions);
             score += DetonationHitWeighting(pos, self, unit, simDamage);

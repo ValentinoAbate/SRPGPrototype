@@ -210,9 +210,8 @@ public class CustUI : MonoBehaviour
 
     public void HighlightProgram(Vector2Int pos)
     {
-        if (grid.IsLegal(pos) && !grid.IsEmpty(pos))
+        if (grid.TryGet(pos, out var prog))
         {
-            var prog = grid.Get(pos);
             prog.Highlight();
             ShowProgramDescriptionWindow(prog, true);
         }
@@ -224,9 +223,9 @@ public class CustUI : MonoBehaviour
 
     public void UnHighlightProgram(Vector2Int pos)
     {
-        if (grid.IsLegal(pos) && !grid.IsEmpty(pos))
+        if (grid.TryGet(pos, out var prog))
         {
-            grid.Get(pos).UnHighlight();
+            prog.UnHighlight();
         }
     }
 
@@ -253,19 +252,16 @@ public class CustUI : MonoBehaviour
 
     public void PickupProgramFromGrid(Vector2Int pos)
     {
-        if (grid.IsLegal(pos))
+
+        if (grid.TryGet(pos, out var prog) && !prog.attributes.HasFlag(Program.Attributes.Fixed))
         {
-            var prog = grid.Get(pos);
-            if (prog != null && !prog.attributes.HasFlag(Program.Attributes.Fixed))
-            {
-                Shell.Uninstall(prog);
-                grid.Remove(prog);
-                inventory.AddProgram(prog);
-                UpdateCompileData();
-                UpdateCompileButtonColor();
-                var progButtonComponent = AddProgramButton(prog);
-                progButtonComponent.button.onClick.Invoke();
-            }
+            Shell.Uninstall(prog);
+            grid.Remove(prog);
+            inventory.AddProgram(prog);
+            UpdateCompileData();
+            UpdateCompileButtonColor();
+            var progButtonComponent = AddProgramButton(prog);
+            progButtonComponent.button.onClick.Invoke();
         }
     }
 

@@ -103,22 +103,21 @@ public class MapUI : MonoBehaviour
 
     private void HighlightUnit(Vector2Int pos)
     {
-        var unit = previewGrid.Get(pos);
-        if (unit != null)
+        if (!previewGrid.TryGet(pos, out var unit))
         {
-            UIManager.main.UnitDescriptionUI.Show(unit);
-            if (!unit.ShowUIByDefault)
-            {
-                unit.UI.SetVisible(true);
-            }
+            return;
+        }
+        UIManager.main.UnitDescriptionUI.Show(unit);
+        if (!unit.ShowUIByDefault)
+        {
+            unit.UI.SetVisible(true);
         }
     }
 
     private void UnHighlightUnit(Vector2Int pos)
     {
         UIManager.main.HideUnitDescriptionUI(pos);
-        var unit = previewGrid.Get(pos);
-        if (unit != null && !unit.ShowUIByDefault)
+        if (previewGrid.TryGet(pos, out var unit) && !unit.ShowUIByDefault)
         {
             unit.UI.SetVisible(false);
         }

@@ -20,8 +20,7 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
 
     private void SpawnUnit(BattleGrid grid, Vector2Int pos)
     {
-        var previousUnit = grid.Get(pos);
-        if(previousUnit != null)
+        if(grid.TryGet(pos, out var previousUnit))
         {
             if (previousUnit.Dead)
             {
