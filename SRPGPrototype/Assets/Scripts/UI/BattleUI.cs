@@ -297,7 +297,7 @@ public class BattleUI : MonoBehaviour
         cursor.OnCancel = () => CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnClick = (pos) => SelectActionTarget(pos, action, unit, ref currAction, ref targetRangeEntries);
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction);
-        cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntries);
+        cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntries, true);
         var currentPos = cursor.HighlightedPosition;
         if (grid.IsLegal(currentPos))
         {
@@ -309,7 +309,7 @@ public class BattleUI : MonoBehaviour
     {
         if(entries != null)
         {
-            HideManyTiles(entries);
+            HideManyTiles(entries, false);
             cursor.OnUnHighlight?.Invoke(unit.Pos);
             entries.Clear();
         }
@@ -335,7 +335,7 @@ public class BattleUI : MonoBehaviour
         lastTargets.Clear();
         lastTargets.AddRange(targets);
         lastSelectedPos = pos;
-        HideManyTiles(entries);
+        HideManyTiles(entries, false);
         cursor.OnUnHighlight?.Invoke(pos);
         if (++currAction >= action.SubActions.Count)
         {
@@ -399,6 +399,10 @@ public class BattleUI : MonoBehaviour
         foreach (var pos in p.Target(grid, user, target))
         {
             ret.Add(grid.SpawnTileUI(pos, TileUI.Type.TargetPattern));
+            if (grid.TryGet(pos, out var unit) && !unit.ShowUIByDefault)
+            {
+                unit.UI.SetVisible(true);
+            }
         }
         return ret;
     }
@@ -419,10 +423,14 @@ public class BattleUI : MonoBehaviour
         return entries.Count > 0;
     }
 
-    public void HideManyTiles(IList<TileUI.Entry> entries)
+    public void HideManyTiles(IList<TileUI.Entry> entries, bool hideUnitUI)
     {
         foreach (var entry in entries)
         {
+            if (hideUnitUI && grid.TryGet(entry.pos, out var unit) && !unit.ShowUIByDefault)
+            {
+                unit.UI.SetVisible(false);
+            }
             grid.RemoveTileUI(entry);
         }
         entries.Clear();
