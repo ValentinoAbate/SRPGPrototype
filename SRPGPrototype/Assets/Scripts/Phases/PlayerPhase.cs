@@ -30,10 +30,10 @@ public class PlayerPhase : Phase
         {
             if (!unit.Dead)
             {
-                var phaseStartCr = unit.OnPhaseEnd(Grid);
-                if (phaseStartCr != null)
+                var phaseEndCr = unit.OnPhaseEnd(Grid);
+                if (phaseEndCr != null)
                 {
-                    yield return phaseStartCr;
+                    yield return phaseEndCr;
                 }
             }
         }
