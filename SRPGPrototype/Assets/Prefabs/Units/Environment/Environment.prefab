@@ -52,7 +52,7 @@ MonoBehaviour:
   fxContainer: {fileID: 7478816405458400791}
   team: 3
   interferenceLevel: 0
-  priorityLevel: 4
+  priorityLevel: 9
   tags: 0
   maxHP: 5
   maxAP: 0

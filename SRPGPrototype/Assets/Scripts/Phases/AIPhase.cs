@@ -8,7 +8,6 @@ public class AIPhase : Phase
     public const float nextTurnDelay = 0.025f;
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
 
-    [SerializeField] private Unit.Team team = Unit.Team.None;
     [SerializeField] private bool canEndBattle = false;
 
     public override IEnumerator OnPhaseStart()
@@ -54,7 +53,7 @@ public class AIPhase : Phase
 
     protected override bool UnitPredicate(Unit unit)
     {
-        return unit.UnitTeam == team;
+        return unit.UnitTeam != Unit.Team.Player;
     }
 
     public override IEnumerator OnPhaseEnd()

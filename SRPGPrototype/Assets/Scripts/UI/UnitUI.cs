@@ -11,14 +11,14 @@ public class UnitUI : MonoBehaviour
     [SerializeField] private Transform numberUI = null;
     [SerializeField] private TextMeshProUGUI numberText = null;
 
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private CanvasGroup mainUI;
 
     public int Hp { set => hpNumberText.text = value.ToString(); }
     public int AP { set => apNumberText.text = value.ToString(); }
 
     public void SetVisible(bool visible)
     {
-        canvas.enabled = visible;
+        mainUI.alpha = visible ? 1 : 0;
     }
 
     public void SetNumberText(string text)

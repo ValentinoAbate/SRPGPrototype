@@ -57,17 +57,17 @@ public class TurnOrderViewerUI : MonoBehaviour
     {
         foreach(var unit in grid)
         {
-            if(unit.UnitTeam == Unit.Team.Player)
+            if (unit.UnitTeam == Unit.Team.Player)
             {
                 if (UIManager.main.BattleUI.UnitSelectionUIEnabled)
                 {
                     unit.UI.SetNumberActive(true);
                 }
-                continue;
             }
-            if (unit.UnitTeam != Unit.Team.Enemy)
-                continue;
-            unit.UI.SetNumberActive(false);
+            else if (unit.PriorityLevel != Unit.Priority.Environment)
+            {
+                unit.UI.SetNumberActive(false);
+            }
         }
     }
 
@@ -83,12 +83,12 @@ public class TurnOrderViewerUI : MonoBehaviour
             if (unit.UnitTeam == Unit.Team.Player)
             {
                 unit.UI.SetNumberActive(false);
-                continue;
             }
-            if (unit.UnitTeam != Unit.Team.Enemy)
-                continue;
-            unit.UI.SetNumberText((++orderCounter).ToString());
-            unit.UI.SetNumberActive(true);
+            else if (unit.PriorityLevel != Unit.Priority.Environment)
+            {
+                unit.UI.SetNumberText((++orderCounter).ToString());
+                unit.UI.SetNumberActive(true);
+            }
         }
     }
 }

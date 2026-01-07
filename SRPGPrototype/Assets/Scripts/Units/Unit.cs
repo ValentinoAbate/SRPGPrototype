@@ -50,7 +50,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
         Late,
         Later,
         Latest,
-        Last
+        Last,
+        Environment,
     }
 
     [System.Flags]
@@ -383,10 +384,6 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public int CompareTo(Unit other)
     {
-        if(UnitTeam != other.UnitTeam)
-        {
-            return UnitTeam.CompareTo(other.UnitTeam);
-        }
         return PriorityLevel.CompareTo(other.PriorityLevel);
     }
 }
