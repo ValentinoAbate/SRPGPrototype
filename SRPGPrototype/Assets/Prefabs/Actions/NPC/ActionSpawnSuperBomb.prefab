@@ -156,5 +156,5 @@ MonoBehaviour:
   standaloneSubActionOptions: 0
   affectUser: 0
   ignoreInValidRangeCalcs: 0
-  unitPrefab: {fileID: 5064112337391898495, guid: 79a730741d5e04f43ac20e3541536bf1,
+  unitPrefab: {fileID: 7927054458215739916, guid: 2ea103673e0f8374f85cc0124dfac9d5,
     type: 3}
