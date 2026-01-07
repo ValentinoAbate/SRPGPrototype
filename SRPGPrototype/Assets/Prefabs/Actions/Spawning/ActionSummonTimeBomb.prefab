@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3087228992401528925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5128981422723771322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ac9a53a4e276e4488a803d930e9299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standaloneSubActionType: 0
-  standaloneSubActionOptions: 0
-  affectUser: 0
-  unitPrefab: {fileID: 7927054458215739916, guid: 0830af9dd32f2bd44ab972c833272918,
-    type: 3}
 --- !u!1001 &8756941603298927365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Summons a 3 HP time bomb that explodes into adjacent tiles for 4 damage
+      value: Summons a 2 HP time bomb that explodes into adjacent tiles for 4 damage
         when destroyed into an adjacent tile. Loses 1 HP every turn.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
@@ -123,3 +106,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8756941603298927365}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3087228992401528925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128981422723771322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ac9a53a4e276e4488a803d930e9299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  unitPrefab: {fileID: 7927054458215739916, guid: 0830af9dd32f2bd44ab972c833272918,
+    type: 3}
