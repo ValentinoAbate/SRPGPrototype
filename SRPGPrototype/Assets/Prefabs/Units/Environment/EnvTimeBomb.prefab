@@ -112,18 +112,23 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: maxHP
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: description
       value: Explodes when destroyed, dealing 4 damage to adjacent units. Attacks
-        self for 1 damage every turn.
+        self for 1 damage at the start of each enemy phase.
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: displayName
       value: Time Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: priorityLevel
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
