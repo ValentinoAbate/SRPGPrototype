@@ -1,146 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1748646646058662853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6475933237435813653}
-  - component: {fileID: 4389978272695912174}
-  m_Layer: 0
-  m_Name: DataPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6475933237435813653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748646646058662853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 9000679795036505837}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4389978272695912174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748646646058662853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Data Phase
-  phaseTransitionPrefab: {fileID: 0}
-  team: 4
-  canEndBattle: 0
---- !u!1 &4579212744982086466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8110177947060202813}
-  - component: {fileID: 4392656099242186402}
-  m_Layer: 0
-  m_Name: EnvironmentPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8110177947060202813
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4579212744982086466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 9000679795036505837}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4392656099242186402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4579212744982086466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Obstacle Phase
-  phaseTransitionPrefab: {fileID: 0}
-  team: 3
-  canEndBattle: 0
---- !u!1 &7082317253198069879
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2976097943661217170}
-  - component: {fileID: 925140223472066027}
-  m_Layer: 0
-  m_Name: NeutralPhase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2976097943661217170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7082317253198069879}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 9000679795036505837}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &925140223472066027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7082317253198069879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Neutral Phase
-  phaseTransitionPrefab: {fileID: 0}
-  team: 5
-  canEndBattle: 0
 --- !u!1 &9000679795036505836
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,9 +30,6 @@ Transform:
   m_Children:
   - {fileID: 9000679796554413381}
   - {fileID: 9000679797043164279}
-  - {fileID: 8110177947060202813}
-  - {fileID: 6475933237435813653}
-  - {fileID: 2976097943661217170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,9 +48,6 @@ MonoBehaviour:
   phases:
   - {fileID: 9000679796554413402}
   - {fileID: 217700102656053474}
-  - {fileID: 4392656099242186402}
-  - {fileID: 4389978272695912174}
-  - {fileID: 925140223472066027}
   grid: {fileID: 0}
   battleUI: {fileID: 0}
 --- !u!1 &9000679796554413380
@@ -253,7 +106,7 @@ GameObject:
   - component: {fileID: 9000679797043164279}
   - component: {fileID: 217700102656053474}
   m_Layer: 0
-  m_Name: EnemyPhase
+  m_Name: AIPhase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aecd8d8b16c3c24297c0c324e3fc94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Enemy Phase
+  displayName: AI Phase
   phaseTransitionPrefab: {fileID: 0}
-  team: 1
   canEndBattle: 1
