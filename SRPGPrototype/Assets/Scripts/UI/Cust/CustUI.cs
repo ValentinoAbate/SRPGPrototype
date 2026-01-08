@@ -58,6 +58,12 @@ public class CustUI : MonoBehaviour
     {
         HideProgramDescriptionWindow(descEnabledFromGrid);
         inventory = PersistantData.main.inventory;
+#if DEBUG
+        if (inventory.EquippedShell != null && !inventory.EquippedShell.Compiled)
+        {
+            inventory.EquippedShell.Compile();
+        }
+#endif
         shellInfoDisplayUI.Initialize(LevelUp, LevelDown);
         EnterShellMenu();
     }
