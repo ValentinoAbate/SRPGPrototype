@@ -56,6 +56,7 @@ public class BattleGrid : Grid.Grid<Unit>
     {
         if(base.Add(pos, obj))
         {
+            obj.OnSpawned?.Invoke(this, obj);
             if (EncounterEventManager.Ready)
             {
                 EncounterEventManager.main.OnUnitSpawned?.Invoke(obj);
