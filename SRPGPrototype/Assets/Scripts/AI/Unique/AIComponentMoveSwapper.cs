@@ -8,10 +8,9 @@ public class AIComponentMoveSwapper : AIComponentBasic
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private Color[] colors;
     [SerializeField] private Action[] actions;
+    [SerializeField] private bool state;
 
     protected override Action MoveAction => state ? actions[1] : actions[0];
-
-    private bool state;
 
     public override void Initialize(AIUnit self)
     {
@@ -20,7 +19,6 @@ public class AIComponentMoveSwapper : AIComponentBasic
         {
             actions[i] = actions[i].Validate(self.ActionTransform);
         }
-        state = RandomUtils.RandomU.instance.RandomBool();
         SetData();
         self.OnDamagedFn += OnDamaged;
         self.OnPhaseEndFn += OnPhaseEnd;
