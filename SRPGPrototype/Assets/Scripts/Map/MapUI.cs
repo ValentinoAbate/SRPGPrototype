@@ -7,17 +7,11 @@ using UnityEngine.UI;
 
 public class MapUI : MonoBehaviour
 {
-    public string encounterSceneName = "Encounter";
-    [Header("Choice UI References")]
-    public GameObject choiceUI;
-    public Transform eventButtonContainer;
-    public GameObject eventButtonPrefab;
     [Header("Preview UI References")]
     public GameObject previewUI;
     public BattleGrid previewGrid;
     public Transform previewObjContainer;
     public Button confirmEncounterButton;
-    public Button backToEncounterSelectionButton;
     public Button nextEncounterButton;
     public Button prevEncounterButton;
     public GameObject spawnPointPrefab;
@@ -29,13 +23,8 @@ public class MapUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        backToEncounterSelectionButton.onClick.AddListener(HideEncounterPreview);
-        backToEncounterSelectionButton.onClick.AddListener(ShowChoiceUI);
-        HideEncounterPreview();
-        HideChoiceUI();
         encounterChoices.Clear();
         encounterChoices.AddRange(PersistantData.main.mapManager.NextEncounters);
-        InitializeChoiceButtons();
         ShowEncounterPreview(encounterChoices[0], 0);
         UIManager.main.HideAllDescriptionUI();
     }
@@ -54,33 +43,6 @@ public class MapUI : MonoBehaviour
         }
     }
 
-    private void InitializeChoiceButtons()
-    {
-        for(int index = 0; index < encounterChoices.Count; ++index)
-        {
-            var encounter = encounterChoices[index];
-            var button = Instantiate(eventButtonPrefab, eventButtonContainer).GetComponent<Button>();
-            var buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = encounter.nameOverride;
-            button.onClick.AddListener(HideChoiceUI);
-            int displayIndex = index;
-            button.onClick.AddListener(() => ShowEncounterPreview(encounter, displayIndex));
-        }
-    }
-
-    private void ShowChoiceUI()
-    {
-        choiceUI.SetActive(true);
-        UIManager.main.TopBarUI.SetTitleText("Choose an Encounter");
-        UIManager.main.UnitDescriptionUI.Hide();
-        cursor.NullAllActions();
-    }
-
-    private void HideChoiceUI()
-    {
-        choiceUI.SetActive(false);
-    }
-
     private void ShowEncounterPreview(Encounter encounter, int index)
     {
         currentPreviewEncounter = encounter;
@@ -88,14 +50,22 @@ public class MapUI : MonoBehaviour
         previewGrid.SetDimensions(dimensions.x, dimensions.y);
         previewGrid.CenterAtPosition(BattleGrid.DefaultCenter);
         previewUI.SetActive(true);
+
         confirmEncounterButton.onClick.RemoveAllListeners();
         confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(encounter));
         nextEncounterButton.onClick.RemoveAllListeners();
         nextEncounterButton.onClick.AddListener(() => NextEncounter(encounter));
         prevEncounterButton.onClick.RemoveAllListeners();
         prevEncounterButton.onClick.AddListener(() => NextEncounter(encounter, true));
+
         InitializePreviewObjects(encounter);
         UIManager.main.TopBarUI.SetTitleText($"{encounter.nameOverride ?? "Encounter"} ({index + 1}/{encounterChoices.Count})");
+        UIManager.main.TurnOrderUI.Initialize(previewGrid);
+        UIManager.main.UnitUIViewer.Initialize(previewGrid);
+        UIManager.main.UnitUIViewer.Show();
+        UIManager.main.UnitUIViewer.SetInteractable(true);
+        UIManager.main.TurnOrderUI.Show();
+        UIManager.main.TurnOrderUI.SetInteractable(true);
 
         cursor.OnHighlight = HighlightUnit;
         cursor.OnUnHighlight = UnHighlightUnit;
@@ -165,6 +135,13 @@ public class MapUI : MonoBehaviour
     {
         PersistantData.main.mapManager.CurrentEncounter = encounter;
         UIManager.main.TopBarUI.SetTitleText(encounter.nameOverride ?? "Encounter");
-        SceneTransitionManager.main.TransitionToScene(encounterSceneName);
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
+    }
+
+    public void ReturnToCust()
+    {
+        UIManager.main.UnitUIViewer.Hide();
+        UIManager.main.TurnOrderUI.Hide();
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 }

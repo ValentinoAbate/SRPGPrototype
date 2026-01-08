@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
+    public const string EncounterSceneName = "Encounter";
+    public const string CustSceneName = "Cust";
     public static SceneTransitionManager main;
 
     private void Awake()
