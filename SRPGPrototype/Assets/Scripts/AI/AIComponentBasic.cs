@@ -27,13 +27,14 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     protected virtual Action StandardAction => standardAction;
     protected virtual Action SecondaryAction => secondaryAction;
+    protected virtual Action MoveAction => moveAction;
 
     public override IEnumerable<Action> Actions
     {
         get
         {
             yield return StandardAction;
-            yield return moveAction;
+            yield return MoveAction;
             var secondary = SecondaryAction;
             if (secondary != null)
             {
@@ -98,17 +99,17 @@ public class AIComponentBasic : AIComponent<AIUnit>
         }
         // Attempt to move into range
         // If we don't have enough AP to move, end early
-        if (!self.CanUseAction(moveAction))
+        if (!self.CanUseAction(MoveAction))
             yield break;
         // If there are no available moves (all moves are illegal or blocked), end early
-        if (!MovePositions(grid, self.Pos, moveAction.SubActions[0].Range).Any())
+        if (!MovePositions(grid, self.Pos, MoveAction.SubActions[0].Range).Any())
             yield break;
         // Find Paths to target range
-        var paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits);
+        var paths = PathsToTargetRange(grid, self, MoveAction, StandardAction, targetUnits);
         // If a path was found, take it
         if(paths.Count > 0)
         {
-            yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, ChoosePath(grid, self, paths)));
+            yield return StartCoroutine(PathThenAttackIfAble(grid, self, MoveAction, StandardAction, ChoosePath(grid, self, paths)));
             if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
             {
                 yield return runRoutine;
@@ -119,10 +120,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
         if(SecondaryAction != null && self.CanUseAction(SecondaryAction))
         {
             // Find Paths to target range
-            paths = PathsToTargetRange(grid, self, moveAction, SecondaryAction, targetUnits);
+            paths = PathsToTargetRange(grid, self, MoveAction, SecondaryAction, targetUnits);
             if (paths.Count > 0)
             {
-                yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, SecondaryAction, ChoosePath(grid, self, paths)));
+                yield return StartCoroutine(PathThenAttackIfAble(grid, self, MoveAction, SecondaryAction, ChoosePath(grid, self, paths)));
                 if (TryRunAwayAfterAttack(grid, self, out var runRoutine))
                 {
                     yield return runRoutine;
@@ -136,7 +137,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         var allyUnits = grid.FindAll(IsUnitAlly);
         if(allyUnits.Count > 0)
         {
-            paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits, IsUnitAlly);
+            paths = PathsToTargetRange(grid, self, MoveAction, StandardAction, targetUnits, IsUnitAlly);
             // If path to target range through allies exists
             if(paths.Count > 0)
             {
@@ -153,7 +154,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 // Sort to find the lowest target path distance
                 shortenedPathsByTargetDist.Sort((p1, p2) => p1.value.CompareTo(p2.value));
                 // Move along the path
-                yield return StartCoroutine(MoveAlongPath(grid, self, moveAction, shortenedPathsByTargetDist[0].path));
+                yield return StartCoroutine(MoveAlongPath(grid, self, MoveAction, shortenedPathsByTargetDist[0].path));
                 // End the turn
                 yield break;
             }
@@ -164,7 +165,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
         // (If obstacles exist) Get path to target range through obstacles
         if (obstacleUnits.Count > 0)
         {
-            paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetUnits, IsUnitObstacle);
+            paths = PathsToTargetRange(grid, self, MoveAction, StandardAction, targetUnits, IsUnitObstacle);
             // If path to target range through obstacles exists
             if (paths.Count > 0)
             {
@@ -183,10 +184,10 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 foreach(var tPathWithValue in pathsByObjNum)
                 {
                     var targetObstacles = tPathWithValue.tPath.path.Where(grid.NotEmpty).Select(grid.Get);
-                    paths = PathsToTargetRange(grid, self, moveAction, StandardAction, targetObstacles);
+                    paths = PathsToTargetRange(grid, self, MoveAction, StandardAction, targetObstacles);
                     if(paths.Count > 0)
                     {
-                        yield return StartCoroutine(PathThenAttackIfAble(grid, self, moveAction, StandardAction, paths[0]));
+                        yield return StartCoroutine(PathThenAttackIfAble(grid, self, MoveAction, StandardAction, paths[0]));
                         yield break;
                     }
                 }
@@ -201,7 +202,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
             {
                 return u == targetUnit || IsUnitAlly(u);
             }
-            var path = Path(grid, self, moveAction, targetUnit.Pos, CanPassThroughTarget);
+            var path = Path(grid, self, MoveAction, targetUnit.Pos, CanPassThroughTarget);
             if (path != null)
             {
                 var shortenedPath = path.TakeWhile(grid.IsEmpty).ToList();
@@ -214,7 +215,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
             if (pathsToPositions[0].Count > 0)
             {
                 // Move along the path
-                yield return MoveAlongPath(grid, self, moveAction, pathsToPositions[0]);
+                yield return MoveAlongPath(grid, self, MoveAction, pathsToPositions[0]);
             }
             else
             {
@@ -243,7 +244,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 }
                 foreach (var closePos in positionsToCheck)
                 {
-                    var path = Path(grid, self, moveAction, closePos, IsUnitAlly);
+                    var path = Path(grid, self, MoveAction, closePos, IsUnitAlly);
                     if (path != null)
                     {
                         var shortenedPath = path.TakeWhile(grid.IsEmpty).ToList();
@@ -257,7 +258,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
                 if (pathsToPositions[0].Count > 0)
                 {
                     // Move along the path
-                    yield return MoveAlongPath(grid, self, moveAction, pathsToPositions[0]);
+                    yield return MoveAlongPath(grid, self, MoveAction, pathsToPositions[0]);
                 }
             }
         }
@@ -277,7 +278,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
             return minDist;
         }
         // Get reachable positions with target manhattan distance
-        var reachablePosData = Reachable(grid, self, moveAction, self.Pos);
+        var reachablePosData = Reachable(grid, self, MoveAction, self.Pos);
         var reachablePositions = new List<ReachablePositionData>(reachablePosData.Count);
         foreach(var reachablePosDatum in reachablePosData)
         {
@@ -287,8 +288,8 @@ public class AIComponentBasic : AIComponent<AIUnit>
         // If we can get closer, do so
         if (reachablePositions[0].pos != self.Pos)
         {
-            var pathToClosePos = Path(grid, self, moveAction, reachablePositions[0].pos);
-            yield return StartCoroutine(MoveAlongPath(grid, self, moveAction, pathToClosePos));
+            var pathToClosePos = Path(grid, self, MoveAction, reachablePositions[0].pos);
+            yield return StartCoroutine(MoveAlongPath(grid, self, MoveAction, pathToClosePos));
         }
 
         // Nothing to be done
@@ -309,7 +310,7 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     private TargetPath GetTargetPathPrioritizeDistance(BattleGrid grid, AIUnit self, List<TargetPath> paths)
     {
-        int moves = moveAction.MaxUses(self.AP - standardAction.APCost);
+        int moves = MoveAction.MaxUses(self.AP - standardAction.APCost);
         var reachablePaths = new List<TargetPath>(paths.Count);
         foreach (var path in paths)
         {
@@ -340,12 +341,12 @@ public class AIComponentBasic : AIComponent<AIUnit>
 
     private bool TryRunAwayAfterAttack(BattleGrid grid, AIUnit self, out Coroutine routine)
     {
-        if(!options.HasFlag(Options.RunAwayAfterAttacking) || !self.CanUseAction(moveAction))
+        if(!options.HasFlag(Options.RunAwayAfterAttacking) || !self.CanUseAction(MoveAction))
         {
             routine = null;
             return false;
         }
-        routine = RunAway(grid, self, moveAction, RunAwayFromUnit);
+        routine = RunAway(grid, self, MoveAction, RunAwayFromUnit);
         return routine != null;
     }
 
