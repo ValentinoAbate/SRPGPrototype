@@ -1065,6 +1065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6257891029177114045}
   - component: {fileID: 6257891029177114044}
+  - component: {fileID: 8150087523289701387}
   m_Layer: 0
   m_Name: MapUI
   m_TagString: Untagged
@@ -1116,6 +1117,18 @@ MonoBehaviour:
   spawnPointPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
     type: 3}
   cursor: {fileID: 4493979177579945040}
+--- !u!114 &8150087523289701387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6257891029177114042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0538d74bda3894c85d0f8a709a06cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6257891029223179886
 GameObject:
   m_ObjectHideFlags: 0
