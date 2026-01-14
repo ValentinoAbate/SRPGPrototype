@@ -91,14 +91,11 @@ public class UnitPlacementUI : MonoBehaviour
 
     private void CompleteOnConfirmation(bool success)
     {
+        cursor.enabled = true;
+        enabled = true;
         if (success)
         {
             Complete();
-        }
-        else
-        {
-            cursor.enabled = true;
-            enabled = true;
         }
     }
 
