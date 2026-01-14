@@ -45,6 +45,8 @@ public class EncounterStepPlaceRooms : EncounterGeneratorStep
             {
                 for (int j = 1; j < roomSize; j++)
                 {
+                    if (adjacentTiles.Count <= 0)
+                        break;
                     var pos = RandomU.instance.Choice(adjacentTiles);
                     adjacentTiles.Remove(pos);
                     roomInterior.Add(pos);

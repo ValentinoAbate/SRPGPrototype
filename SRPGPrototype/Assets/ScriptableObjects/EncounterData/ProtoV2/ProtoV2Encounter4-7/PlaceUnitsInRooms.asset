@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468990c595d407c46b4de1f036ae8d6d, type: 3}
   m_Name: PlaceUnitsInRooms
   m_EditorClassIdentifier: 
-  numUnits: 0100000002000000
+  numUnits: 02000000
   numUnitsWeights: []
   units:
-  - {fileID: 2679527008744717267, guid: 548f20339b2d2e741b7c18c1d639d344, type: 3}
+  - {fileID: 266703525309771305, guid: 7f18a33ce88c1b34695db5d2d015e368, type: 3}
   unitChoiceWeights: []
   pointsOfInterest: 4
   booleanOperator: 0

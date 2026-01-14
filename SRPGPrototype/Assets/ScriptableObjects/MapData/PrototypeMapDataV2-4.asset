@@ -17,6 +17,10 @@ MonoBehaviour:
   nextMap: {fileID: 0}
   encounterSetGenerators:
   - {fileID: 11400000, guid: d2205856617056d40b857ac262d48e22, type: 2}
+  - {fileID: 11400000, guid: 38164dd45e3de9b4d81b9f57e197526f, type: 2}
+  - {fileID: 11400000, guid: 9b726498ab389d041b659d8bb683f679, type: 2}
   - {fileID: 11400000, guid: df1c718ed1c324c478ececfeb8d88142, type: 2}
-  - {fileID: 11400000, guid: df1c718ed1c324c478ececfeb8d88142, type: 2}
+  - {fileID: 11400000, guid: c1063e7b32b4fde4c83c90b532025c84, type: 2}
+  - {fileID: 11400000, guid: f92fc0584db0c8d4581338e9f44de530, type: 2}
+  - {fileID: 11400000, guid: b0425d2e3aabacf45a38e4b7ff69ca15, type: 2}
   encounterData: []
