@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: SRPGPrototype
   productName: SRPGPrototype
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -154,7 +154,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.SRPGPrototype
+    Standalone: com.SRPGPrototype.SRPGPrototype
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -569,7 +569,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: DOTWEEN
+    1: DOTWEEN;SSSOFTWARE
     4: DOTWEEN
     7: DOTWEEN
     13: DOTWEEN
