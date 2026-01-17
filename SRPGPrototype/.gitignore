@@ -68,4 +68,7 @@ crashlytics-build.properties
 [Aa]ssets/Local
 [Aa]ssets/Local.meta
 
+# User Settings
+[Uu]serSettings/
+
 
