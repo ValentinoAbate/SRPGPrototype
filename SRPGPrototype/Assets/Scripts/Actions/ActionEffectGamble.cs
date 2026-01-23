@@ -13,24 +13,9 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
     public float SuccessChance => successChance;
     [Range(0, 1)]
     [SerializeField] private float successChance = 0.5f;
-    [SerializeField] private GameObject successEffectsObj = null;
-    [SerializeField] private GameObject failureEffectsObj = null;
     [SerializeField] private bool allowFailureEffectsForValidTargetPosChecks = false;
-    private ActionEffect[] successEffects;
-    private ActionEffect[] failureEffects;
-
-    private void Awake()
-    {
-        successEffects = successEffectsObj.GetComponents<ActionEffect>();
-        if(failureEffectsObj != null)
-        {
-            failureEffects = failureEffectsObj.GetComponents<ActionEffect>();
-        }
-        else
-        {
-            failureEffects = System.Array.Empty<ActionEffect>();;
-        }
-    }
+    [SerializeField] private ActionEffect[] successEffects;
+    [SerializeField] private ActionEffect[] failureEffects;
 
     public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
     {

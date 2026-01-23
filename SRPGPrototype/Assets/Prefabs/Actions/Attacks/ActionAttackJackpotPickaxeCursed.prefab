@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7477099311473771956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342279156107461064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dae90bf37a9c141add66664413f783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standaloneSubActionType: 0
-  standaloneSubActionOptions: 0
-  affectUser: 0
-  ignoreInValidRangeCalcs: 1
-  effect: {fileID: 1394482864294072678}
-  multiplier: 2
 --- !u!1001 &333117625485856242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,6 +34,11 @@ PrefabInstance:
       propertyPath: slowdownInterval
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5451953465001285454, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
+        type: 3}
+      propertyPath: failureEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 7477099311473771956}
     - target: {fileID: 5639408088848563140, guid: cc0cb8b22c923e24b87f84d48aeeaf4b,
         type: 3}
       propertyPath: m_Name
@@ -138,3 +125,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 333117625485856242}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7477099311473771956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342279156107461064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dae90bf37a9c141add66664413f783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 1
+  effect: {fileID: 1394482864294072678}
+  multiplier: 2

@@ -47,6 +47,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
 --- !u!114 &8443925619452982778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +63,7 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   stat: 2
   number:
     min: -2147483648
@@ -80,24 +82,6 @@ MonoBehaviour:
       type: 0
     type: 1
   usesPower: 0
---- !u!114 &5451953465001285454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5639408088848563140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standaloneSubActionType: 0
-  standaloneSubActionOptions: 0
-  affectUser: 0
-  successChance: 0.6
-  successEffectsObj: {fileID: 4593714877553315412}
-  failureEffectsObj: {fileID: 0}
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -480,3 +464,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8135780589257601915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5451953465001285454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639408088848563140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  successChance: 0.6
+  allowFailureEffectsForValidTargetPosChecks: 0
+  successEffects:
+  - {fileID: 4023268642861156449}
+  failureEffects: []

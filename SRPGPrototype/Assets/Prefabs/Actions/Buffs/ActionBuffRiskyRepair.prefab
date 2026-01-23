@@ -43,55 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3041d4536af5bd34aaf8714a3e7d5254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   damage: 2
---- !u!114 &5451953465001285454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5639408088848563140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectUser: 0
-  successChance: 0.5
-  successEffectsObj: {fileID: 4593714877553315412}
-  failureEffectsObj: {fileID: 0}
---- !u!114 &8048655953966885315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5639408088848563140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectUser: 0
-  stat: 4
-  number:
-    min: -2147483648
-    max: 2147483647
-    constant: -1
-    baseAmount: 0
-    modifier: 0
-    multiplier: 1
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      constant: 1
-      baseAmount: 0
-      modifier: 0
-      multiplier: 1
-      type: 0
-    type: 0
-  usesPower: 0
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,3 +200,58 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8135780589257601915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5451953465001285454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639408088848563140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df284c8adb24a047811ba913d376b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  successChance: 0.5
+  allowFailureEffectsForValidTargetPosChecks: 0
+  successEffects:
+  - {fileID: 6228555703520121803}
+  failureEffects: []
+--- !u!114 &8048655953966885315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639408088848563140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1e65745037cec43b67372afa75eb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  stat: 4
+  number:
+    min: -2147483648
+    max: 2147483647
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    constant: -1
+    unitNumber:
+      min: -2147483648
+      max: 2147483647
+      baseAmount: 0
+      modifier: 0
+      multiplier: 1
+      constant: 1
+      type: 0
+    type: 0
+  usesPower: 0
