@@ -82,7 +82,7 @@ public class Shell : MonoBehaviour, ILootable
     public Unit.OnDamaged OnDamaged { get; private set; }
     public Unit.IncomingDamageMod IncomingDamageMods { get; private set; }
     public Unit.OnRepositioned OnRepositioned { get; private set; }
-public Unit.OnRepositioned OnRepositionOther { get; private set; }
+    public Unit.OnRepositioned OnRepositionOther { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
     public Unit.OnPhaseEndDel OnPhaseEnd { get; private set; }
