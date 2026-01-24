@@ -513,9 +513,12 @@ public class Shell : MonoBehaviour, ILootable
     }
 
 #if UNITY_EDITOR
+    private const string std = "Standard";
+    private const string lrg = "Large";
+    private const string sml = "Small";
     public bool GenerateKey()
     {
-        if (string.IsNullOrEmpty(key))
+        if (string.IsNullOrEmpty(key) || key == std || key == lrg || key == sml)
         {
             key = name.Replace("Shell", string.Empty);
             return true;
