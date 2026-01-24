@@ -569,7 +569,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: DOTWEEN;SSSOFTWARE
+    1: DOTWEEN
     4: DOTWEEN
     7: DOTWEEN
     13: DOTWEEN
