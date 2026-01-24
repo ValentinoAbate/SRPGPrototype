@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
+      propertyPath: key
+      value: SummonMine
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
       propertyPath: color
       value: 3
       objectReference: {fileID: 0}

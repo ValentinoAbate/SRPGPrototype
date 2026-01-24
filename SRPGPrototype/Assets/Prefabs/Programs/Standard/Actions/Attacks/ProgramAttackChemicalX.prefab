@@ -78,52 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 1274298888490378228, guid: c313cb660c4c8514db25e49fadc2a8dd, type: 3}
---- !u!114 &2535450298112284130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7, type: 3}
---- !u!114 &4603620746896046662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variantChance: 0.5
-  patterns:
-  - patternOffsets:
-    - {x: 2, y: 0}
-    - {x: 0, y: 2}
-    dimensions: {x: 3, y: 3}
-  useWeights: 0
-  weights: []
---- !u!114 &5934967466326504547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae26d699b04fb9442a32fd90e4562b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxUses: 7
+  isSecondary: 0
 --- !u!1 &3915843875595356226
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 1274298888490378228, guid: c313cb660c4c8514db25e49fadc2a8dd, type: 3}
+  isSecondary: 0
 --- !u!1 &6240695064151524932
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 1561018151909741592, guid: 0c4db82d303d07f438c6145d0f52311f, type: 3}
+  isSecondary: 0
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -287,6 +244,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: AttackChemicalX
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -436,3 +398,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2535450298112284130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4415060608083833614, guid: 491d2cfd3b1e5a340a27893acff0f3f7, type: 3}
+  isSecondary: 0
+--- !u!114 &4603620746896046662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.5
+  patterns:
+  - patternOffsets:
+    - {x: 2, y: 0}
+    - {x: 0, y: 2}
+    dimensions: {x: 3, y: 3}
+  useWeights: 0
+  weights: []
+--- !u!114 &5934967466326504547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae26d699b04fb9442a32fd90e4562b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 7

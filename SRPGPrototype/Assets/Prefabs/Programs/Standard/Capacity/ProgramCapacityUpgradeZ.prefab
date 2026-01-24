@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7841879069295552892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5493816a4d64a234a8cc29b767cf3062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timing: 0
-  subTypes: 020000000400000003000000
-  stat: 2
-  number:
-    min: -2147483648
-    max: 2147483647
-    baseAmount: 0
-    modifier: 0
-    multiplier: 1
-    constant: 1
-    unitNumber:
-      min: -2147483648
-      max: 2147483647
-      baseAmount: 0
-      modifier: 0
-      multiplier: 1
-      constant: 1
-      type: 0
-    type: 0
-  abilityName: Gain 1 AP after using a move action (once/turn)
-  limiter:
-    frequency: 1
-    limit: 1
---- !u!114 &2536850600167629781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 2
 --- !u!1001 &6724310523622875936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: CapacityUpgradeZ
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: pos.x
@@ -209,3 +166,51 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6724310523622875936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7841879069295552892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5493816a4d64a234a8cc29b767cf3062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timing: 0
+  subTypes: 020000000400000003000000
+  stat: 2
+  number:
+    min: -2147483648
+    max: 2147483647
+    baseAmount: 0
+    modifier: 0
+    multiplier: 1
+    constant: 1
+    unitNumber:
+      min: -2147483648
+      max: 2147483647
+      baseAmount: 0
+      modifier: 0
+      multiplier: 1
+      constant: 1
+      type: 0
+    type: 0
+  abilityName: Gain 1 AP after using a move action (once/turn)
+  limiter:
+    frequency: 1
+    limit: 1
+--- !u!114 &2536850600167629781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 2

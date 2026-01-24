@@ -1,64 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6368903224679806949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 3759252872410653552, guid: 6a511d02d30b0314b9e3fe6649d40b26, type: 3}
-  isSecondary: 0
---- !u!114 &-162883700382508325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variantChance: 0.75
-  patterns:
-  - patternOffsets:
-    - {x: 1, y: 1}
-    - {x: 1, y: 0}
-    - {x: 0, y: 1}
-    dimensions: {x: 2, y: 2}
-  - patternOffsets:
-    - {x: 1, y: 1}
-    - {x: 1, y: 0}
-    - {x: 0, y: 0}
-    dimensions: {x: 2, y: 2}
-  - patternOffsets:
-    - {x: 1, y: 0}
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 2, y: 2}
-  useWeights: 0
-  weights: []
---- !u!114 &2535450298112284130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 2041599559974176785, guid: 0707d96352ede7c448010bee6588fb58, type: 3}
-  isSecondary: 1
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: TravelStone
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -221,3 +167,62 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6368903224679806949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 3759252872410653552, guid: 6a511d02d30b0314b9e3fe6649d40b26, type: 3}
+  isSecondary: 0
+--- !u!114 &-162883700382508325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.75
+  patterns:
+  - patternOffsets:
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    dimensions: {x: 2, y: 2}
+  - patternOffsets:
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 2}
+  - patternOffsets:
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 2}
+  useWeights: 0
+  weights: []
+--- !u!114 &2535450298112284130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 2041599559974176785, guid: 0707d96352ede7c448010bee6588fb58, type: 3}
+  isSecondary: 1

@@ -66,6 +66,7 @@ public class CustUI : MonoBehaviour
 #endif
         shellInfoDisplayUI.Initialize(LevelUp, LevelDown);
         EnterShellMenu();
+        SaveManager.Save();
     }
 
     private void LateUpdate()

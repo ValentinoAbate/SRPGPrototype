@@ -1,46 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2535450298112284130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 4415060608083833614, guid: d151dc333df7cc64e84cc466b5f3093c, type: 3}
---- !u!114 &5704306376981741477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variantChance: 0.75
-  patterns:
-  - patternOffsets:
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 1, y: 2}
-  - patternOffsets:
-    - {x: 1, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 2, y: 2}
-  - patternOffsets:
-    - {x: 1, y: 0}
-    - {x: 0, y: 1}
-    dimensions: {x: 2, y: 2}
-  useWeights: 0
-  weights: []
 --- !u!1 &5344517985069264443
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 6930682385617686682, guid: e8ceaad3ba96dab49a2f6a75f70a6879, type: 3}
+  isSecondary: 0
 --- !u!1 &6253284250396064978
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 5472490329322195380, guid: fa9bcd9a67562ae41b7919806eb46c39, type: 3}
+  isSecondary: 0
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +161,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: MoveBlink
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -344,3 +310,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2535450298112284130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4415060608083833614, guid: d151dc333df7cc64e84cc466b5f3093c, type: 3}
+  isSecondary: 0
+--- !u!114 &5704306376981741477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.75
+  patterns:
+  - patternOffsets:
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 1, y: 2}
+  - patternOffsets:
+    - {x: 1, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 2}
+  - patternOffsets:
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    dimensions: {x: 2, y: 2}
+  useWeights: 0
+  weights: []

@@ -22,7 +22,33 @@ public static class ComponentAttachmentUtils
         {
             Debug.LogError($"Attach All Program Effects Exception: {e.Message}");
         }
+    }
 
+    [MenuItem("Tools/Generate Asset Keys")]
+    public static void GenerateProgramKeys()
+    {
+        try
+        {
+            foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
+            {
+                if (program.GenerateKey())
+                {
+                    EditorUtility.SetDirty(program.gameObject);
+                }
+            }
+            foreach (var shell in AssetUtils.LoadAllAssetsInDirectory<Shell>(AssetPaths.shellPath, true))
+            {
+                if (shell.GenerateKey())
+                {
+                    EditorUtility.SetDirty(shell.gameObject);
+                }
+            }
+            AssetDatabase.SaveAssets();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Generate Asset Keys Exception: {e.Message}");
+        }
     }
 
     [MenuItem("Tools/Attach All Unit Abilities")]

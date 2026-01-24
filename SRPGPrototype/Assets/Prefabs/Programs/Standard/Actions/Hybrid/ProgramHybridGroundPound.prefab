@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 2146078506686672809, guid: 454a0afed20bbd84bb9826a40d398512, type: 3}
+  isSecondary: 0
 --- !u!114 &3988411084869775173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,19 +79,6 @@ MonoBehaviour:
   resetTrigger: 2
   comparison: 5
   threshold: 3
---- !u!114 &2535450298112284130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 308391873856083614, guid: 697604b93008f804091d4b4364609e1f, type: 3}
 --- !u!1 &4746936023186005868
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 2146078506686672809, guid: 454a0afed20bbd84bb9826a40d398512, type: 3}
+  isSecondary: 0
 --- !u!114 &5376140083304076145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 2146078506686672809, guid: 454a0afed20bbd84bb9826a40d398512, type: 3}
+  isSecondary: 0
 --- !u!114 &3813216957881656313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +244,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: HybridGroundPound
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -428,3 +423,17 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2535450298112284130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 308391873856083614, guid: 697604b93008f804091d4b4364609e1f, type: 3}
+  isSecondary: 0

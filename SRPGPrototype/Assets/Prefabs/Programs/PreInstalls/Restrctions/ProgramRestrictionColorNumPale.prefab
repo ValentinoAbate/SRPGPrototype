@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7556412008596097885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2438211451447782650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fd972db0c20cb14b8d643aaa5c2ffb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  number: 4
 --- !u!1001 &6069385401371376052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: RestrictionColorNumPale
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -124,3 +116,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6069385401371376052}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7556412008596097885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438211451447782650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd972db0c20cb14b8d643aaa5c2ffb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 4

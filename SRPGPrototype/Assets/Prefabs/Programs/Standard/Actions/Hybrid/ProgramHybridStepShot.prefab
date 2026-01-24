@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 3838203570915594004, guid: a55abcd3cabdd4041b43c38188dd2884, type: 3}
+  isSecondary: 0
 --- !u!1 &2718583661330665712
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,40 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 3675755545257224361, guid: 939abdc9f72cd1d4eb6891d7a325e3c4, type: 3}
---- !u!114 &-7526030302699133966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variantChance: 0.5
-  patterns:
-  - patternOffsets:
-    - {x: 2, y: 2}
-    - {x: 1, y: 2}
-    - {x: 0, y: 0}
-    dimensions: {x: 3, y: 3}
-  useWeights: 0
-  weights: []
---- !u!114 &2535450298112284130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 308391873856083614, guid: 6f4e1b235412c0d47936121e880aaf72, type: 3}
+  isSecondary: 0
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,6 +163,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: HybridStepShot
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -344,3 +317,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7526030302699133966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.5
+  patterns:
+  - patternOffsets:
+    - {x: 2, y: 2}
+    - {x: 1, y: 2}
+    - {x: 0, y: 0}
+    dimensions: {x: 3, y: 3}
+  useWeights: 0
+  weights: []
+--- !u!114 &2535450298112284130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 308391873856083614, guid: 6f4e1b235412c0d47936121e880aaf72, type: 3}
+  isSecondary: 0

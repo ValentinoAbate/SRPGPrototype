@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
+      propertyPath: key
+      value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
       propertyPath: rarity
       value: 2
       objectReference: {fileID: 0}
@@ -990,7 +995,7 @@ PrefabInstance:
     - target: {fileID: 6665655161741394638, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: m_Name
-      value: HalfEmptyShell
+      value: BlockShell
       objectReference: {fileID: 0}
     - target: {fileID: 6665655161741394639, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}

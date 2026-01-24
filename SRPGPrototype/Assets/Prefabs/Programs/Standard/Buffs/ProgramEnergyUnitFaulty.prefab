@@ -1,72 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2352224493106189751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154198845788369258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAPModifier: 1
-  maxHpModifier: -2
-  repairModifier: -2
---- !u!114 &680711163297011974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154198845788369258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variantChance: 0.86
-  patterns:
-  - patternOffsets:
-    - {x: 2, y: 1}
-    - {x: 2, y: 0}
-    - {x: 1, y: 0}
-    - {x: 0, y: 0}
-    dimensions: {x: 3, y: 2}
-  - patternOffsets:
-    - {x: 2, y: 1}
-    - {x: 1, y: 1}
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 3, y: 2}
-  - patternOffsets:
-    - {x: 1, y: 2}
-    - {x: 0, y: 2}
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 2, y: 3}
-  - patternOffsets:
-    - {x: 1, y: 2}
-    - {x: 1, y: 1}
-    - {x: 1, y: 0}
-    - {x: 0, y: 0}
-    dimensions: {x: 2, y: 3}
-  - patternOffsets:
-    - {x: 3, y: 0}
-    - {x: 2, y: 0}
-    - {x: 1, y: 0}
-    - {x: 0, y: 0}
-    dimensions: {x: 4, y: 1}
-  - patternOffsets:
-    - {x: 0, y: 3}
-    - {x: 0, y: 2}
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 1, y: 4}
-  useWeights: 0
-  weights: []
 --- !u!1001 &6785089121717232676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: EnergyUnitFaulty
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -212,3 +150,70 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6785089121717232676}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2352224493106189751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154198845788369258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAPModifier: 1
+  maxHpModifier: -2
+  repairModifier: -2
+--- !u!114 &680711163297011974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154198845788369258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.86
+  patterns:
+  - patternOffsets:
+    - {x: 2, y: 1}
+    - {x: 2, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    dimensions: {x: 3, y: 2}
+  - patternOffsets:
+    - {x: 2, y: 1}
+    - {x: 1, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 3, y: 2}
+  - patternOffsets:
+    - {x: 1, y: 2}
+    - {x: 0, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 3}
+  - patternOffsets:
+    - {x: 1, y: 2}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    dimensions: {x: 2, y: 3}
+  - patternOffsets:
+    - {x: 3, y: 0}
+    - {x: 2, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    dimensions: {x: 4, y: 1}
+  - patternOffsets:
+    - {x: 0, y: 3}
+    - {x: 0, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 1, y: 4}
+  useWeights: 0
+  weights: []

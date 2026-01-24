@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 2753589274867588443, guid: 3efdae4d52ec4704fba3a23ef2a70deb, type: 3}
+  isSecondary: 0
 --- !u!114 &2850066547506850999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,47 +78,6 @@ MonoBehaviour:
   number: 8
   resetTrigger: 0
   teams: 01000000
---- !u!114 &1507228574610157520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variantChance: 0.66
-  patterns:
-  - patternOffsets:
-    - {x: 3, y: 0}
-    - {x: 2, y: 0}
-    - {x: 1, y: 0}
-    - {x: 0, y: 0}
-    dimensions: {x: 4, y: 1}
-  - patternOffsets:
-    - {x: 0, y: 3}
-    - {x: 0, y: 2}
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    dimensions: {x: 1, y: 4}
-  useWeights: 0
-  weights: []
---- !u!114 &2535450298112284130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: {fileID: 4415060608083833614, guid: 87ebb2961b8335643b8a6aa71cdba585, type: 3}
 --- !u!1 &6705502700179398177
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 2993639122543412026, guid: 14d59530f5fa74045897ba2f34cff7d6, type: 3}
+  isSecondary: 0
 --- !u!1001 &4735758370244977225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +164,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: AttackHammer
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
@@ -352,3 +318,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4735758370244977225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507228574610157520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1e42052d1390148ae8f74998356dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variantChance: 0.66
+  patterns:
+  - patternOffsets:
+    - {x: 3, y: 0}
+    - {x: 2, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    dimensions: {x: 4, y: 1}
+  - patternOffsets:
+    - {x: 0, y: 3}
+    - {x: 0, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    dimensions: {x: 1, y: 4}
+  useWeights: 0
+  weights: []
+--- !u!114 &2535450298112284130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770716430420670215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 4415060608083833614, guid: 87ebb2961b8335643b8a6aa71cdba585, type: 3}
+  isSecondary: 0

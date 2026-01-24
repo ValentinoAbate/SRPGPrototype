@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6033324569408216844, guid: dc28f7de967c99d409af82f066a70094,
         type: 3}
+      propertyPath: key
+      value: Minimal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: dc28f7de967c99d409af82f066a70094,
+        type: 3}
       propertyPath: rarity
       value: 2
       objectReference: {fileID: 0}

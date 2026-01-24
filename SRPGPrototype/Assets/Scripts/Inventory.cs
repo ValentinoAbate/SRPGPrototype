@@ -210,4 +210,47 @@ public class Inventory : MonoBehaviour
     }
 
     public bool CanAfford(int cost) => Money >= cost;
+
+    public SaveManager.InventoryData Save()
+    {
+        var invData = new SaveManager.InventoryData()
+        {
+            money = Money,
+            progs = new List<SaveManager.ProgramData>(Programs.Count),
+            shells = new List<SaveManager.ShellData>(Shells.Count),
+        };
+        foreach (var program in Programs)
+        {
+            invData.progs.Add(program.Save());
+        }
+        foreach (var shell in Shells)
+        {
+            invData.shells.Add(shell.Save());
+        }
+        return invData;
+    }
+
+    public void Load(SaveManager.InventoryData data, SaveManager.Loader loader)
+    {
+        Money = data.money;
+        foreach (var programData in data.progs)
+        {
+            if (loader.CreateProgram(programData, out var program))
+            {
+                AddProgram(program);
+            }
+        }
+        foreach (var shellData in data.shells)
+        {
+            if (loader.CreateShell(shellData, out var shell))
+            {
+                AddShellInternal(shell, false);
+            }
+        }
+        SortShells();
+        if (loader.LoadedShells.TryGetValue(data.equipShId, out var equippedShell))
+        {
+            EquippedShell = equippedShell;
+        }
+    }
 }

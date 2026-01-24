@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9033226230207985360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAPModifier: 1
-  maxHpModifier: 0
-  repairModifier: -2
---- !u!114 &2536850600167629781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 2
 --- !u!1001 &6724310523622875936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: CapacityUpgradeY
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: pos.x
@@ -168,3 +145,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6724310523622875936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-9033226230207985360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9e131bb7a30ea468f3b9d5916a6248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAPModifier: 1
+  maxHpModifier: 0
+  repairModifier: -2
+--- !u!114 &2536850600167629781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 2

@@ -47,10 +47,14 @@ public class Program : GridObject, ILootable
         { Color.Yellow, new UnityEngine.Color(0xFB, 0xFF, 0, 0xFF) },
     };
 
+    public int Id { get; private set; }
+    public string Key => key;
+    [SerializeField] private string key;
     public UnityEngine.Color ColorValue => colorValues[color];
     public UnityEngine.Color ContrastColorValue => color == Color.Blue ? UnityEngine.Color.white : UnityEngine.Color.black;
 
     public Shell Shell { get; set; }
+
     // Modifier properties
     public IReadOnlyList<Modifier> ModifiedBy
     {
@@ -194,6 +198,7 @@ public class Program : GridObject, ILootable
 
     private void Awake()
     {
+        Id = PersistantData.main.NewId;
         var trigList = new List<ProgramTrigger>();
         foreach(Transform t in transform)
         {
@@ -262,11 +267,56 @@ public class Program : GridObject, ILootable
         }
     }
 
+    public SaveManager.ProgramData Save()
+    {
+        var data = new SaveManager.ProgramData()
+        {
+            id = Id,
+            key = Key,
+        };
+        if (attributes.HasFlag(Attributes.Transient))
+        {
+            var transient = GetComponent<ProgramAttributeTransient>();
+            data.usesLeft = transient != null ? transient.UsesLeft : -1;
+        }
+        else
+        {
+            data.usesLeft = -1;
+        }
+        // TODO: Upgrade triggers / state
+        // TODO: effect data
+        return data;
+    }
+
+    public void Load(SaveManager.ProgramData data, SaveManager.Loader objectData)
+    {
+        Id = data.id;
+        objectData.LoadedPrograms.Add(Id, this);
+        if(data.usesLeft >= 0)
+        {
+            var transient = GetComponent<ProgramAttributeTransient>();
+            if(transient != null)
+            {
+                transient.SetUsesLeft(data.usesLeft);
+            }
+        }
+    }
+
 #if UNITY_EDITOR
     public void SetEffects()
     {
         modifiers = GetComponents<ProgramModifier>();
         effects = GetComponents<ProgramEffect>();
+    }
+
+    public bool GenerateKey()
+    {
+        if (string.IsNullOrEmpty(key))
+        {
+            key = name.Replace("Program", string.Empty);
+            return true;
+        }
+        return false;
     }
 #endif
 }

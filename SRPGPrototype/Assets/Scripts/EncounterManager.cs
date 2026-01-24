@@ -61,6 +61,7 @@ public class EncounterManager : MonoBehaviour
             phaseManager.StartActiveEncounter(EndEncounter);
         }
         unitPlacementUI.Initialize(grid, encounter.spawnPositions, OnUnitPlacementComplete);
+        SaveManager.Save();
     }
 
     private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> ambushUnitEntries, IReadOnlyCollection<Encounter.UnitEntry> entries)

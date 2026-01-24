@@ -28,6 +28,10 @@ public class Shell : MonoBehaviour, ILootable
         { Progression.Full, new List<int>{ 0, 2, 4, 6, 8} },
     };
 
+    public int Id { get; private set; }
+    public string Key => key;
+    [SerializeField] private string key;
+
     public int MaxLevel => CapacityThresholds.Count - 1;
 
     public List<int> CapacityThresholds => levelThresholds[Type];
@@ -100,8 +104,11 @@ public class Shell : MonoBehaviour, ILootable
     // Current compile data. May not reflect a shell that can actually compile
     public CompileData LatestCompileData { get; private set; }
 
+    public int SaveId { get; private set; } = 0;
+
     private void Awake()
     {
+        Id = PersistantData.main.NewId;
         InstallMap = new Program[CustArea.Dimensions.x, CustArea.Dimensions.y];
         var positionsSet = CustArea.OffsetsSet;
         foreach (var install in preInstalledPrograms)
@@ -127,7 +134,7 @@ public class Shell : MonoBehaviour, ILootable
     public void Install(Program program, Vector2Int location, bool fromAsset = false)
     {
         Program prog;
-        if(fromAsset)
+        if (fromAsset)
         {
             prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
         }
@@ -240,11 +247,11 @@ public class Shell : MonoBehaviour, ILootable
         var newInstallMap = new Program[CustArea.Dimensions.x + sizeDelta.x, CustArea.Dimensions.y + sizeDelta.y];
         // Copy shifted install positions from old install map
         var shiftBy = Vector2Int.zero;
-        if(deltaDirection.x < 0)
+        if (deltaDirection.x < 0)
         {
             shiftBy.x = sizeDelta.x;
         }
-        if(deltaDirection.y < 0)
+        if (deltaDirection.y < 0)
         {
             shiftBy.y = sizeDelta.y;
         }
@@ -286,8 +293,8 @@ public class Shell : MonoBehaviour, ILootable
                     return false;
             // Left Column
             for (int y = 0; y < CustArea.Dimensions.y; ++y)
-                    if (InstallMap[CustArea.Dimensions.x - 1, y] != null)
-                        return false;
+                if (InstallMap[CustArea.Dimensions.x - 1, y] != null)
+                    return false;
         }
         else // Level is even, check top row and left column
         {
@@ -390,7 +397,7 @@ public class Shell : MonoBehaviour, ILootable
         // Check restirctions
         foreach (var restriction in compileData.restrictions)
         {
-            if(restriction(this, out string errorMessage))
+            if (restriction(this, out string errorMessage))
             {
                 Debug.LogWarning(errorMessage);
                 Compiled = false;
@@ -398,7 +405,7 @@ public class Shell : MonoBehaviour, ILootable
             }
         }
         // Check num soul cores
-        if(programs.Count(IsInstallSoulCore) > 1)
+        if (programs.Count(IsInstallSoulCore) > 1)
         {
             Debug.LogWarning("Compile Error: More than one soul core installed");
             Compiled = false;
@@ -429,6 +436,32 @@ public class Shell : MonoBehaviour, ILootable
         actions.AddRange(compileData.actions);
         Compiled = true;
         return true;
+    }
+
+    public SaveManager.ShellData Save()
+    {
+        var shellData = new SaveManager.ShellData()
+        {
+            id = Id,
+            key = Key,
+            hp = Stats.HP,
+            level = Level,
+            progs = new List<SaveManager.InstalledProgramData>(Programs.Count)
+        };
+        foreach (var prog in Programs)
+        {
+            shellData.progs.Add(new SaveManager.InstalledProgramData()
+            {
+                pos = prog.location,
+                prog = prog.program.Save(),
+            });
+        }
+        return shellData;
+    }
+
+    public void Load(SaveManager.ShellData data)
+    {
+        Id = data.id;
     }
 
     private static bool IsInstallSoulCore(InstalledProgram p) => ProgramFilters.IsSoulCore(p.program);
@@ -475,7 +508,19 @@ public class Shell : MonoBehaviour, ILootable
     {
         public const string defaultName = "Empty";
         public string DisplayName { get; set; } = defaultName;
-        public List<InstalledProgram> Programs { get; set; } = new List<InstalledProgram>(); 
+        public List<InstalledProgram> Programs { get; set; } = new List<InstalledProgram>();
         public int Level { get; set; }
     }
+
+#if UNITY_EDITOR
+    public bool GenerateKey()
+    {
+        if (string.IsNullOrEmpty(key))
+        {
+            key = name.Replace("Shell", string.Empty);
+            return true;
+        }
+        return false;
+    }
+#endif
 }

@@ -1,70 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9115011850715386238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635ca3ab24307494f89a89ba32b176e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scope: 0
-  modifierContainer: {fileID: 0}
---- !u!114 &-4870809641846824306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standaloneSubActionType: 0
-  standaloneSubActionOptions: 0
-  affectUser: 0
-  ignoreInValidRangeCalcs: 0
-  targetStat: 0
-  damage: 2
---- !u!114 &2129807858573188564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ce69ec60368d34fb0cda76806f6ab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributeFilterMode: 0
-  attributes: 0
-  displayNameOverride: +Damage
-  filterByActionType: 1
-  actionTypes: 0100000002000000
-  filterBySubType: 0
-  subTypes: 
-  actionEffectContainer: {fileID: 0}
---- !u!114 &2536850600167629781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935504127033964142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 2
 --- !u!1001 &6724310523622875936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: key
+      value: CapacityUpgradeF
+      objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: pos.x
@@ -210,3 +150,68 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6724310523622875936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-9115011850715386238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635ca3ab24307494f89a89ba32b176e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  modifierContainer: {fileID: 0}
+--- !u!114 &-4870809641846824306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  targetStat: 0
+  damage: 2
+--- !u!114 &2129807858573188564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ce69ec60368d34fb0cda76806f6ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributeFilterMode: 0
+  attributes: 0
+  displayNameOverride: +Damage
+  filterByActionType: 1
+  actionTypes: 0100000002000000
+  filterBySubType: 0
+  subTypes: 
+  actionEffectContainer: {fileID: 0}
+--- !u!114 &2536850600167629781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935504127033964142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b54947749b48a4fa8986c84eb0185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 2

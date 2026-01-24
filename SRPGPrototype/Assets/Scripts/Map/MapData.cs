@@ -7,6 +7,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MapData", menuName = "Map Generation Data")]
 public class MapData : ScriptableObject
 {
+    public string Id => id;
+    [SerializeField] private string id;
     public string MapName => mapName;
     [SerializeField] private string mapName;
     [SerializeField] private string mapSymbol;

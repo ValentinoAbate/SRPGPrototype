@@ -15,6 +15,9 @@ public class PersistantData : MonoBehaviour
     public ShopManager shopManager;
     public LootManager loot;
 
+    public int CurrentId { get; private set; } = 0;
+    public int NewId => ++CurrentId;
+
     private void Awake()
     {
         if(main == null)
@@ -38,5 +41,19 @@ public class PersistantData : MonoBehaviour
         inventory.Clear();
         inventory.Initialize();
         shopManager.Initialize();
+        CurrentId = 0;
+    }
+
+    public void SaveRunData(SaveManager.RunData runData)
+    {
+        runData.currId = CurrentId;
+        runData.inv = inventory.Save();
+    }
+
+    public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader)
+    {
+        ResetRunData();
+        inventory.Load(data.inv, loader);
+        CurrentId = data.currId;
     }
 }
