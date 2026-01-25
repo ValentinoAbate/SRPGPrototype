@@ -39,7 +39,11 @@ public class SaveManager : MonoBehaviour
         try
         {
             //convert to JSON, then to bytes
+#if DEBUG
             string jsonData = JsonUtility.ToJson(saveData, true);
+#else
+            string jsonData = JsonUtility.ToJson(saveData, false);
+#endif
             byte[] jsonByte = Encoding.ASCII.GetBytes(jsonData);
 
             //create the save directory if it doesn't exist
