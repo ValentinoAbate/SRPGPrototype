@@ -85,7 +85,7 @@ public class SaveManager : MonoBehaviour
             if (PersistantData.main.loot.TryGetShell(data.key, out var prefab))
             {
                 shell = Create<Shell>(prefab.gameObject, parent);
-                shell.Load(data);
+                shell.Load(data, this);
                 LoadedShells.Add(shell.Id, shell);
                 return true;
             }

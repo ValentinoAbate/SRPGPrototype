@@ -181,6 +181,20 @@ public class Shell : MonoBehaviour, ILootable
         Compiled = false;
     }
 
+    private void ClearPrograms()
+    {
+        foreach(var kvp in InstallPositions)
+        {
+            Destroy(kvp.Key.gameObject);
+            foreach(var pos in kvp.Value)
+            {
+                InstallMap[pos.x, pos.y] = null;
+            }
+        }
+        InstallPositions.Clear();
+        programs.Clear();
+    }
+
     public void DestroyProgram(Program program, BattleGrid grid, Unit user)
     {
         Uninstall(program, true, grid, user);
@@ -459,9 +473,20 @@ public class Shell : MonoBehaviour, ILootable
         return shellData;
     }
 
-    public void Load(SaveManager.ShellData data)
+    public void Load(SaveManager.ShellData data, SaveManager.Loader loader)
     {
         Id = data.id;
+        Level = data.level;
+        Stats.HP = data.hp;
+        ClearPrograms();
+        foreach(var programData in data.progs)
+        {
+            if(loader.CreateProgram(programData.prog, out Program program))
+            {
+                Install(program, programData.pos);
+            }
+        }
+        Compile();
     }
 
     private static bool IsInstallSoulCore(InstalledProgram p) => ProgramFilters.IsSoulCore(p.program);
