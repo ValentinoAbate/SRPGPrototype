@@ -58,7 +58,29 @@ public class MapManager : MonoBehaviour
         return;
     }
 
-    private class MapDataEntry
+    public SaveManager.MapManagerData Save()
+    {
+        return new SaveManager.MapManagerData()
+        {
+            depth = BaseMapDepth,
+            maps = new List<MapDataEntry>(mapStack),
+            next = new List<Encounter>(NextEncounters)
+        };
+    }
+
+    public void Load(SaveManager.MapManagerData data)
+    {
+        NextEncounters = data.next;
+        BaseMapDepth = data.depth;
+        mapStack.Clear();
+        for (int i = data.maps.Count - 1; i >= 0; --i)
+        {
+            mapStack.Push(data.maps[i]);
+        }
+    }
+
+    [System.Serializable]
+    public class MapDataEntry
     {
         public MapData data;
         public int progress = 0;
@@ -68,6 +90,10 @@ public class MapManager : MonoBehaviour
         {
             this.data = data;
             this.isBaseMap = isBaseMap;
+        }
+        public MapDataEntry(MapData data, bool isBaseMap, int progress) : this(data, isBaseMap)
+        {
+            this.progress = progress;
         }
     }
 }

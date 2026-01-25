@@ -47,12 +47,14 @@ public class PersistantData : MonoBehaviour
     {
         runData.currId = CurrentId;
         runData.inv = inventory.Save();
+        runData.map = mapManager.Save();
     }
 
     public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader)
     {
         ResetRunData();
         inventory.Load(data.inv, loader);
+        mapManager.Load(data.map);
         CurrentId = data.currId;
     }
 }

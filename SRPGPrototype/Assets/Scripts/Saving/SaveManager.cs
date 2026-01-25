@@ -130,11 +130,20 @@ public class SaveManager : MonoBehaviour
     {
         public int currId;
         public InventoryData inv;
+        public MapManagerData map;
 
         // Presets
         // Map data
         // Shops
         // Battle State
+    }
+
+    [Serializable]
+    public class MapManagerData
+    {
+        public int depth;
+        public List<MapManager.MapDataEntry> maps;
+        public List<Encounter> next;
     }
 
     [Serializable]
