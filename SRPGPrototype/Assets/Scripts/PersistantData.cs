@@ -39,8 +39,8 @@ public class PersistantData : MonoBehaviour
     {
         presetManager.Clear();
         inventory.Clear();
-        shopManager.Initialize();
         CurrentId = 0;
+        shopManager.Initialize();
     }
 
     public void SaveRunData(SaveManager.RunData runData)
@@ -48,13 +48,14 @@ public class PersistantData : MonoBehaviour
         runData.currId = CurrentId;
         runData.inv = inventory.Save();
         runData.map = mapManager.Save();
+        runData.shops = shopManager.Save();
     }
 
     public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader)
     {
-        ResetRunData();
         inventory.Load(data.inv, loader);
         mapManager.Load(data.map);
+        shopManager.Load(data.shops, loader);
         CurrentId = data.currId;
     }
 }

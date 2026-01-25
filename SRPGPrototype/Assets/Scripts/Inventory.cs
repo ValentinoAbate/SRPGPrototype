@@ -219,6 +219,7 @@ public class Inventory : MonoBehaviour
 
     public void Load(SaveManager.InventoryData data, SaveManager.Loader loader)
     {
+        Clear();
         Money = data.money;
         foreach (var programData in data.progs)
         {

@@ -131,9 +131,9 @@ public class SaveManager : MonoBehaviour
         public int currId;
         public InventoryData inv;
         public MapManagerData map;
+        public List<ShopData> shops;
 
         // Presets
-        // Map data
         // Shops
         // Battle State
     }
@@ -209,5 +209,13 @@ public class SaveManager : MonoBehaviour
         public int usedTurn;
         public int usedTurnFree;
         public List<string> effectData;
+    }
+
+    [Serializable]
+    public class ShopData
+    {
+        public ShopManager.ShopID id;
+        public List<ShellData> shells;
+        public List<ProgramData> programs;
     }
 }

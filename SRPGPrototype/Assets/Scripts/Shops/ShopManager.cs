@@ -58,6 +58,53 @@ public class ShopManager : MonoBehaviour
         };
     }
 
+    public List<SaveManager.ShopData> Save()
+    {
+        var list = new List<SaveManager.ShopData>(data.Count);
+        foreach(var kvp in data)
+        {
+            var shop = new SaveManager.ShopData() { id = kvp.Key };
+            var programs = kvp.Value.Programs;
+            shop.programs = new List<SaveManager.ProgramData>(programs.Count);
+            foreach (var program in programs)
+            {
+                shop.programs.Add(program.Save());
+            }
+            var shells = kvp.Value.Shells;
+            shop.shells = new List<SaveManager.ShellData>(shells.Count);
+            foreach (var shell in shells)
+            {
+                shop.shells.Add(shell.Save());
+            }
+            list.Add(shop);
+        }
+        return list;
+    }
+
+    public void Load(List<SaveManager.ShopData> saveData, SaveManager.Loader loader)
+    {
+        Clear();
+        foreach(var savedShop in saveData)
+        {
+            var shop = new ShopData();
+            foreach(var programData in savedShop.programs)
+            {
+                if(loader.CreateProgram(programData, out var program))
+                {
+                    shop.AddProgram(program);
+                }
+            }
+            foreach (var shellData in savedShop.shells)
+            {
+                if (loader.CreateShell(shellData, out var shell))
+                {
+                    shop.AddShell(shell);
+                }
+            }
+            data.Add(savedShop.id, shop);
+        }
+    }
+
     public class ShopData
     {
         private const string defaultShopName = "Shop";
