@@ -68,7 +68,7 @@ public class LootUI : MonoBehaviour
             var instantiatedDraw = new List<T>(draw.Count);
             foreach (var item in draw)
             {
-                instantiatedDraw.Add(Instantiate(item.gameObject, itemContainer).GetComponent<T>());
+                instantiatedDraw.Add(item.InstantiateWithVariants(itemContainer));
             }
             var button = Instantiate(buttonPrefab, menuButtonContainer).GetComponent<Button>();
             void OnClick()

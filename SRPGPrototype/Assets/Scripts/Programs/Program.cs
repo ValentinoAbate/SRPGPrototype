@@ -194,6 +194,8 @@ public class Program : GridObject, ILootable
     public Attributes attributes;
     public Pattern shape;
 
+    [SerializeField] private ProgramVariant[] variants;
+
     private readonly List<TileUI.Entry> uiEntries = new List<TileUI.Entry>();
 
     private void Awake()
@@ -212,6 +214,14 @@ public class Program : GridObject, ILootable
         foreach(var effect in effects)
         {
             effect.Initialize(this);
+        }
+    }
+
+    public void ApplyVariants()
+    {
+        foreach (var variant in variants)
+        {
+            variant.ApplyVariant(this);
         }
     }
 
@@ -267,6 +277,9 @@ public class Program : GridObject, ILootable
         }
     }
 
+    private const int usesId = 0;
+    private const int variantId = 1;
+
     public SaveManager.ProgramData Save()
     {
         var data = new SaveManager.ProgramData()
@@ -277,12 +290,17 @@ public class Program : GridObject, ILootable
         if (attributes.HasFlag(Attributes.Transient))
         {
             var transient = GetComponent<ProgramAttributeTransient>();
-            data.usesLeft = transient != null ? transient.UsesLeft : -1;
+            if(transient != null)
+            {
+                data.AddData(usesId, transient.Uses.ToString());
+            }
         }
-        else
+        // Variants
+        foreach(var variant in variants)
         {
-            data.usesLeft = -1;
+            data.AddData(variantId, variant.Save());
         }
+
         // TODO: Upgrade triggers / state
         // TODO: effect data
         return data;
@@ -291,21 +309,40 @@ public class Program : GridObject, ILootable
     public void Load(SaveManager.ProgramData data)
     {
         Id = data.id;
-        if(data.usesLeft >= 0)
+        int typeIndex = 0;
+        int type = -1;
+        foreach(var pair in data.data)
         {
-            var transient = GetComponent<ProgramAttributeTransient>();
-            if(transient != null)
+            if(type != pair.t)
             {
-                transient.SetUsesLeft(data.usesLeft);
+                typeIndex = 0;
+                type = pair.t;
             }
+            if(type == usesId)
+            {
+                if(int.TryParse(pair.v, out int uses))
+                {
+                    var transient = GetComponent<ProgramAttributeTransient>();
+                    if (transient != null)
+                    {
+                        transient.Uses = uses;
+                    }
+                }
+            }
+            else if(type == variantId)
+            {
+                variants[typeIndex].Load(this, pair.v);
+            }
+            ++typeIndex;
         }
     }
 
 #if UNITY_EDITOR
-    public void SetEffects()
+    public void LinkComponents()
     {
         modifiers = GetComponents<ProgramModifier>();
         effects = GetComponents<ProgramEffect>();
+        variants = GetComponents<ProgramVariant>();
     }
 
     public bool GenerateKey()

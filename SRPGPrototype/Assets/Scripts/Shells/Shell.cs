@@ -104,8 +104,6 @@ public class Shell : MonoBehaviour, ILootable
     // Current compile data. May not reflect a shell that can actually compile
     public CompileData LatestCompileData { get; private set; }
 
-    public int SaveId { get; private set; } = 0;
-
     private void Awake()
     {
         Id = PersistantData.main.NewId;
@@ -131,12 +129,15 @@ public class Shell : MonoBehaviour, ILootable
         Stats.RestoreHpToMax();
     }
 
+    // No shell variants yet
+    public void ApplyVariants() { }
+
     public void Install(Program program, Vector2Int location, bool fromAsset = false)
     {
         Program prog;
         if (fromAsset)
         {
-            prog = Instantiate(program.gameObject, transform).GetComponent<Program>();
+            prog = program.InstantiateWithVariants(transform);
         }
         else
         {

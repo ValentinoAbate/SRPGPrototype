@@ -112,7 +112,7 @@ public class Inventory : MonoBehaviour
     {
         if(fromAsset)
         {
-            programs.Add(Instantiate(p.gameObject, programContainer.transform).GetComponent<Program>());
+            programs.Add(p.InstantiateWithVariants(programContainer.transform));
         }
         else
         {

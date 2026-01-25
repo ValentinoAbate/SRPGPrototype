@@ -6,25 +6,25 @@ using System;
 
 public static class ComponentAttachmentUtils
 {
-    [MenuItem("Tools/Attach All Program Effects")]
+    [MenuItem("Tools/Asset/Attach All Program Components")]
     public static void AttachAllProgramEffects()
     {
         try
         {
             foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
             {
-                program.SetEffects();
+                program.LinkComponents();
                 EditorUtility.SetDirty(program.gameObject);
             }
             AssetDatabase.SaveAssets();
         }
         catch(Exception e)
         {
-            Debug.LogError($"Attach All Program Effects Exception: {e.Message}");
+            Debug.LogError($"Link All Program Components Exception: {e.Message}");
         }
     }
 
-    [MenuItem("Tools/Generate Asset Keys")]
+    [MenuItem("Tools/Asset/Generate Asset Keys")]
     public static void GenerateProgramKeys()
     {
         try
@@ -51,7 +51,7 @@ public static class ComponentAttachmentUtils
         }
     }
 
-    [MenuItem("Tools/Attach All Unit Abilities")]
+    [MenuItem("Tools/Asset/Attach All Unit Abilities")]
     public static void AttachAllUnitAbilities()
     {
         try

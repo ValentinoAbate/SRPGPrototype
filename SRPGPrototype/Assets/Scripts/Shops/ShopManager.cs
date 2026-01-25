@@ -70,7 +70,7 @@ public class ShopManager : MonoBehaviour
 
         public void AddProgramFromAsset(Program program, Transform container)
         {
-            programs.Add(Instantiate(program.gameObject, container).GetComponent<Program>());
+            programs.Add(program.InstantiateWithVariants(container));
         }
         public void AddProgramFromAsset(IEnumerable<Program> programs, Transform container)
         {

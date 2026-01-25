@@ -16,8 +16,4 @@ public class ProgramAttributeTransient : ProgramAttribute
             program.Shell.DestroyProgram(program, grid, user);
         }
     }
-    public void SetUsesLeft(int usesLeft)
-    {
-        Uses = MaxUses - usesLeft;
-    }
 }

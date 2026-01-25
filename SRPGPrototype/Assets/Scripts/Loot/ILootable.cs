@@ -6,4 +6,5 @@ public interface ILootable
 {
     Rarity Rarity { get; }
     float LootWeight { get; }
+    public void ApplyVariants();
 }

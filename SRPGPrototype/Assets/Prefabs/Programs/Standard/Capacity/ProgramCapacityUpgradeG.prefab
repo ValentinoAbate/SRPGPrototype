@@ -62,12 +62,12 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[0]
       value: 
-      objectReference: {fileID: 2536850600167629781}
+      objectReference: {fileID: -3029230464127665563}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: effects.Array.data[1]
       value: 
-      objectReference: {fileID: -3029230464127665563}
+      objectReference: {fileID: 2536850600167629781}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: effects.Array.data[2]

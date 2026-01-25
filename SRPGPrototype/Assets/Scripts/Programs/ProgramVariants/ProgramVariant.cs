@@ -7,13 +7,7 @@ public abstract class ProgramVariant : MonoBehaviour
 {
     public abstract void ApplyVariant(Program p);
 
-    protected void Initialize()
-    {
-        ApplyVariant(GetComponent<Program>());
-    }
+    public abstract string Save();
 
-    private void Awake()
-    {
-        Initialize();
-    }
+    public abstract void Load(Program p, string savedData);
 }

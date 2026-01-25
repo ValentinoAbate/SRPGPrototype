@@ -136,6 +136,23 @@ namespace RandomUtils
             }
             throw new Exception("No item chosen");
         }
+
+        /// <summary> Returns a weighted random choice from the given items and float weights </summary> 
+        public T Choice<T>(IReadOnlyList<T> items, IReadOnlyList<float> weights, out int selectedIndex)
+        {
+            float totalWeight = weights.Sum();
+            float randomNumber = (float)rand.NextDouble() * totalWeight;
+            for (int i = 0; i < items.Count; ++i)
+            {
+                if (randomNumber < weights[i])
+                {
+                    selectedIndex = i;
+                    return items[i];
+                }
+                randomNumber -= weights[i];
+            }
+            throw new Exception("No item chosen");
+        }
         /// <summary> Returns a weighted random choice from the given items and float weights </summary> 
         public T Choice<T>(IEnumerable<T> items, IEnumerable<float> weights)
         {

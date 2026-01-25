@@ -164,9 +164,25 @@ public class SaveManager : MonoBehaviour
     {
         public int id;
         public string key;
-        public int usesLeft;
-        public List<string> effectData;
+        public List<DataPair> data = new List<DataPair>();
         // TODO: updrade data
+
+        public void AddData(int id, string value)
+        {
+            data.Add(new DataPair(id, value));
+        }
+    }
+
+    [Serializable]
+    public class DataPair
+    {
+        public int t; // type
+        public string v; // value
+        public DataPair(int id, string value)
+        {
+            t = id;
+            v = value;
+        }
     }
 
     [Serializable]
