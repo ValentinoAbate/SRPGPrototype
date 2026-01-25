@@ -476,10 +476,10 @@ public class Shell : MonoBehaviour, ILootable
     public void Load(SaveManager.ShellData data, SaveManager.Loader loader)
     {
         Id = data.id;
-        Level = data.level;
         Stats.HP = data.hp;
         ClearPrograms();
-        foreach(var programData in data.progs)
+        SetLevel(data.level);
+        foreach (var programData in data.progs)
         {
             if(loader.CreateProgram(programData.prog, out Program program))
             {
