@@ -100,7 +100,7 @@ public class SaveManager : MonoBehaviour
             if(PersistantData.main.loot.TryGetProgram(data.key, out var prefab))
             {
                 program = Create<Program>(prefab.gameObject, parent);
-                program.Load(data, this);
+                program.Load(data);
                 LoadedPrograms.Add(program.Id, program);
                 return true;
             }
