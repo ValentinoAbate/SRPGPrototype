@@ -24,6 +24,16 @@ public class SaveManager : MonoBehaviour
         PersistantData.main.LoadRunData(runData, loader);
     }
 
+    public static void ClearRunData()
+    {
+        File.Delete(RunFilePath());
+    }
+
+    public static bool HasRunData()
+    {
+        return File.Exists(RunFilePath());
+    }
+
     public static void SaveFile(object saveData, string path)
     {
         try

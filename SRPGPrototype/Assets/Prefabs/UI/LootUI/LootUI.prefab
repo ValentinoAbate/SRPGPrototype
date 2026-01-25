@@ -384,7 +384,6 @@ MonoBehaviour:
   shellDrawButtonContainer: {fileID: 3364482286650478870}
   itemContainer: {fileID: 6501910619076977828}
   exitButton: {fileID: 7788089143340120972}
-  allowLootSkipping: 1
 --- !u!1 &3024933504776548132
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +433,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3024933504776548132}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}

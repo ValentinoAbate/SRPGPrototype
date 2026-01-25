@@ -33,11 +33,6 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform programContainer = null;
 
-    [Header("Initial Values")]
-    [SerializeField] private Shell[] startingShells = new Shell[1];
-    [SerializeField] private Program[] startingPrograms = new Program[2];
-    [SerializeField] private int startingMoney = 0;
-
     public IEnumerable<Shell> DroneShells
     {
         get
@@ -111,14 +106,6 @@ public class Inventory : MonoBehaviour
         shellContainer.DestroyAllChildren();
         programContainer.DestroyAllChildren();
         Money = 0;
-    }
-
-    public void Initialize()
-    {
-        foreach (var prog in startingPrograms)
-            AddProgram(prog, true);
-        AddShells(startingShells, true);
-        Money = startingMoney;
     }
 
     public void AddProgram(Program p, bool fromAsset = false)

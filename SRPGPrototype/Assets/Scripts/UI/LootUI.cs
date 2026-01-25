@@ -55,7 +55,7 @@ public class LootUI : MonoBehaviour
         onClose = onLootClose;
         // Activate menu
         ReturnToMainMenu();
-        uiCanvas.gameObject.SetActive(true);
+        uiCanvas.enabled = true;
     }
 
     private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>, LootData<T>.Data> onClick) where T : MonoBehaviour, ILootable
@@ -95,7 +95,7 @@ public class LootUI : MonoBehaviour
         programDrawButtonContainer.DestroyAllChildren();
         shellDrawButtonContainer.DestroyAllChildren();
         itemContainer.DestroyAllChildren();
-        uiCanvas.gameObject.SetActive(false);
+        uiCanvas.enabled = false;
         onClose?.Invoke();
         onClose = null;
     }

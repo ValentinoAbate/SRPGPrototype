@@ -39,7 +39,6 @@ public class PersistantData : MonoBehaviour
     {
         presetManager.Clear();
         inventory.Clear();
-        inventory.Initialize();
         shopManager.Initialize();
         CurrentId = 0;
     }

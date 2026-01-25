@@ -288,10 +288,9 @@ public class Program : GridObject, ILootable
         return data;
     }
 
-    public void Load(SaveManager.ProgramData data, SaveManager.Loader objectData)
+    public void Load(SaveManager.ProgramData data)
     {
         Id = data.id;
-        objectData.LoadedPrograms.Add(Id, this);
         if(data.usesLeft >= 0)
         {
             var transient = GetComponent<ProgramAttributeTransient>();
