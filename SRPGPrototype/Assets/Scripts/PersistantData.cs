@@ -49,6 +49,7 @@ public class PersistantData : MonoBehaviour
         runData.inv = inventory.Save();
         runData.map = mapManager.Save();
         runData.shops = shopManager.Save();
+        runData.presets = presetManager.Save();
     }
 
     public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader)
@@ -56,6 +57,7 @@ public class PersistantData : MonoBehaviour
         inventory.Load(data.inv, loader);
         mapManager.Load(data.map);
         shopManager.Load(data.shops, loader);
+        presetManager.Load(data.presets, loader);
         CurrentId = data.currId;
     }
 }

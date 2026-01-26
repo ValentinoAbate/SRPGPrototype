@@ -132,9 +132,7 @@ public class SaveManager : MonoBehaviour
         public InventoryData inv;
         public MapManagerData map;
         public List<ShopData> shops;
-
-        // Presets
-        // Shops
+        public List<PresetData> presets;
         // Battle State
     }
 
@@ -217,5 +215,23 @@ public class SaveManager : MonoBehaviour
         public ShopManager.ShopID id;
         public List<ShellData> shells;
         public List<ProgramData> programs;
+    }
+
+    [Serializable]
+    public class PresetData
+    {
+        public string key;
+        public bool load;
+        public string name;
+        public int lv;
+        public int ind;
+        public List<InstalledProgramId> progs;
+    }
+
+    [Serializable]
+    public class InstalledProgramId
+    {
+        public Vector2Int pos;
+        public int id;
     }
 }
