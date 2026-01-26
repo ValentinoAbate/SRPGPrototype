@@ -3,7 +3,7 @@ using System.Linq;
 
 using UnityEngine;
 
-public class Program : GridObject, ILootable
+public class Program : GridObject, ILootable, IHasKey
 {
     public const string actionOnlyDescription = "Action";
     private const string highlightTileUIProp = "BoolHighlight";
@@ -345,11 +345,12 @@ public class Program : GridObject, ILootable
         variants = GetComponents<ProgramVariant>();
     }
 
+    private const string removeWord = "Program";
     public bool GenerateKey()
     {
         if (string.IsNullOrEmpty(key))
         {
-            key = name.Replace("Program", string.Empty);
+            key = name.Replace(removeWord, string.Empty);
             return true;
         }
         return false;

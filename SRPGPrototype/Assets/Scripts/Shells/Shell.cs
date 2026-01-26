@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Shell : MonoBehaviour, ILootable
+public class Shell : MonoBehaviour, ILootable, IHasKey
 {
     public const int baseLinkOutThreshold = 2;
     public enum Progression
@@ -542,11 +542,12 @@ public class Shell : MonoBehaviour, ILootable
     private const string std = "Standard";
     private const string lrg = "Large";
     private const string sml = "Small";
+    private const string removeWord = "Shell";
     public bool GenerateKey()
     {
         if (string.IsNullOrEmpty(key) || key == std || key == lrg || key == sml)
         {
-            key = name.Replace("Shell", string.Empty);
+            key = name.Replace(removeWord, string.Empty);
             return true;
         }
         return false;

@@ -69,6 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462558509915415869, guid: edec4a06881e32e46bf78f32a029e66a,
         type: 3}
+      propertyPath: key
+      value: AbilityDataUncommon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462558509915415869, guid: edec4a06881e32e46bf78f32a029e66a,
+        type: 3}
       propertyPath: maxHP
       value: 3
       objectReference: {fileID: 0}

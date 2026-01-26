@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1068486978419434115, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: m_Name
-      value: EnvTurretPlayer
+      value: EnvTurretFriendly
       objectReference: {fileID: 0}
     - target: {fileID: 1215119150226470895, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
@@ -32,6 +32,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
+      propertyPath: key
+      value: TurretFriendly
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}

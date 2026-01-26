@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
         type: 3}
+      propertyPath: key
+      value: BossData
+      objectReference: {fileID: 0}
+    - target: {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897,
+        type: 3}
       propertyPath: maxHP
       value: 9
       objectReference: {fileID: 0}

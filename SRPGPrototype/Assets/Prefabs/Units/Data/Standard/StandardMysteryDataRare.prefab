@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}
+      propertyPath: key
+      value: StandardDataRare
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184012089328148833, guid: c0e1ef933e3f5474cac0ca77288efcf1,
+        type: 3}
       propertyPath: maxHP
       value: 2
       objectReference: {fileID: 0}

@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyClockworkBot2
       objectReference: {fileID: 0}
+    - target: {fileID: 2961591517791626650, guid: 76e93912aae717f49993860793054ff7,
+        type: 3}
+      propertyPath: key
+      value: ClockworkBot2
+      objectReference: {fileID: 0}
     - target: {fileID: 6105728398043768758, guid: 76e93912aae717f49993860793054ff7,
         type: 3}
       propertyPath: state

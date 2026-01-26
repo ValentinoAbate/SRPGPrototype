@@ -69,6 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
         type: 3}
+      propertyPath: key
+      value: Knight+
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568531750757968395, guid: d345da8490b83a84c81da463ce895bdc,
+        type: 3}
       propertyPath: maxAP
       value: 3
       objectReference: {fileID: 0}

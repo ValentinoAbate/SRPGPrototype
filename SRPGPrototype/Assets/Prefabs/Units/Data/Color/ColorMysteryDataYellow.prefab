@@ -19,6 +19,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1298886888759046285, guid: 04d9b7364542e004d912bddfc88cadca,
         type: 3}
+      propertyPath: key
+      value: ColorDataYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298886888759046285, guid: 04d9b7364542e004d912bddfc88cadca,
+        type: 3}
       propertyPath: description
       value: Drops a Yellow Program at the end of the encounter.
       objectReference: {fileID: 0}

@@ -50,6 +50,7 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   movable: 1
   fxContainer: {fileID: 7478816405458400791}
+  key: Obstacle
   team: 3
   interferenceLevel: 0
   priorityLevel: 9

@@ -77,7 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  movable: 1
   fxContainer: {fileID: 7478816405458400791}
+  key: Player
   displayName: Player
   description: The player. Click or use the hotkey to use an action!
   unitUI: {fileID: 5059411519126010243}

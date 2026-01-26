@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public abstract class Unit : GridObject, System.IComparable<Unit>
+public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 {
     public delegate void OnBattleStartDel(BattleGrid grid, Unit unit);
 
@@ -116,6 +116,9 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
 
     public Transform FxContainer => fxContainer;
     [SerializeField] private Transform fxContainer;
+
+    public string Key => key;
+    [SerializeField] private string key;
 
     public Vector2Int StartingPos { get; private set; }
 
@@ -386,4 +389,37 @@ public abstract class Unit : GridObject, System.IComparable<Unit>
     {
         return PriorityLevel.CompareTo(other.PriorityLevel);
     }
+
+#if UNITY_EDITOR
+    private static readonly List<string> removeWords = new List<string>()
+    {
+        "Enemy",
+        "Env",
+        "Obstacle",
+        "Mystery",
+        "Player"
+    };
+
+    public bool GenerateKey()
+    {
+        if (true || string.IsNullOrEmpty(key))
+        {
+            var temp = name;
+            foreach(var word in removeWords)
+            {
+                temp = temp.Replace(word, string.Empty);
+            }
+            if (string.IsNullOrEmpty(temp))
+            {
+                key = name;
+            }
+            else
+            {
+                key = temp;
+            }
+            return true;
+        }
+        return false;
+    }
+#endif
 }

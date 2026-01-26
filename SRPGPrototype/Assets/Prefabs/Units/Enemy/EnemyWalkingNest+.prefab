@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
         type: 3}
+      propertyPath: key
+      value: WalkingNest+
+      objectReference: {fileID: 0}
+    - target: {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d,
+        type: 3}
       propertyPath: maxHP
       value: 5
       objectReference: {fileID: 0}

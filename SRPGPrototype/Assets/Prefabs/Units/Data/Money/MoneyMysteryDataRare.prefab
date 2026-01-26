@@ -79,6 +79,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3158759833475231485, guid: 25796ec6f882c9d4187c26690b5b921a,
         type: 3}
+      propertyPath: key
+      value: MoneyDataRare
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158759833475231485, guid: 25796ec6f882c9d4187c26690b5b921a,
+        type: 3}
       propertyPath: quality
       value: 2
       objectReference: {fileID: 0}

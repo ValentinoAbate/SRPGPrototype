@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
+      propertyPath: key
+      value: MageTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
       propertyPath: maxHP
       value: 12
       objectReference: {fileID: 0}
@@ -140,20 +145,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2981985294836191615}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6956644316172781215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2861515215645996028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1429f0a6c98123c449a8aaa049f68b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
-    type: 3}
 --- !u!114 &166405034403514253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +161,20 @@ MonoBehaviour:
   effectKey: 2
   modifier: 1
   applyToTeams: 01000000
+--- !u!114 &6956644316172781215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861515215645996028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1429f0a6c98123c449a8aaa049f68b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
+    type: 3}
 --- !u!95 &4508877108862989139
 Animator:
   serializedVersion: 5

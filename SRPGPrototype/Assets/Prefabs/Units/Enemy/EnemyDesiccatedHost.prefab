@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
+      propertyPath: key
+      value: DesiccatedHost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
       propertyPath: maxAP
       value: 3
       objectReference: {fileID: 0}
@@ -150,6 +155,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5804252d2f4d1ba46a113327605c7233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1460511006058991137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154379177311796647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4728b36e036eb4da80204424e9b886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 266703525309771305}
+  teams: 01000000
+  amount: 2
 --- !u!114 &8565883498664946400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,18 +205,3 @@ MonoBehaviour:
   target: 0
   action: {fileID: 4415060608083833614, guid: 5a6286a2e3b3aa244a41c1faefbefe98, type: 3}
   triggerOnSelfDestruct: 1
---- !u!114 &1460511006058991137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154379177311796647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4728b36e036eb4da80204424e9b886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 266703525309771305}
-  teams: 01000000
-  amount: 2

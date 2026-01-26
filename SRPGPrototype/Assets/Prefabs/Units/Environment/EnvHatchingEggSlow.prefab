@@ -64,6 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7927054458215739916, guid: c6c7bc975abb2864c98ce08e4752f0f1,
         type: 3}
+      propertyPath: key
+      value: HatchingEggSlow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7927054458215739916, guid: c6c7bc975abb2864c98ce08e4752f0f1,
+        type: 3}
       propertyPath: maxHP
       value: 6
       objectReference: {fileID: 0}

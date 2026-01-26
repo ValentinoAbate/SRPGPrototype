@@ -35,6 +35,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
+      propertyPath: key
+      value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
+        type: 3}
       propertyPath: maxAP
       value: 1
       objectReference: {fileID: 0}

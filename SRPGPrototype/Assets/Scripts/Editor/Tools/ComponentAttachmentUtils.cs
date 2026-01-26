@@ -6,6 +6,40 @@ using System;
 
 public static class ComponentAttachmentUtils
 {
+    [MenuItem("Tools/Asset/Generate Asset Keys")]
+    public static void GenerateAssetKeys()
+    {
+        try
+        {
+            foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
+            {
+                UpdateKey(program);
+            }
+            foreach (var shell in AssetUtils.LoadAllAssetsInDirectory<Shell>(AssetPaths.shellPath, true))
+            {
+                UpdateKey(shell);
+            }
+            foreach (var unit in AssetUtils.LoadAllAssetsInDirectory<Unit>(AssetPaths.unitPath, true))
+            {
+                UpdateKey(unit);
+            }
+            AssetDatabase.SaveAssets();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Generate Asset Keys Exception: {e.Message}");
+        }
+    }
+
+    private static void UpdateKey<T>(T item) where T : UnityEngine.Object, IHasKey
+    {
+        if(item.GenerateKey())
+        {
+            PrefabUtility.RecordPrefabInstancePropertyModifications(item);
+            EditorUtility.SetDirty(item);
+        }
+    }
+
     [MenuItem("Tools/Asset/Attach All Program Components")]
     public static void AttachAllProgramEffects()
     {
@@ -18,36 +52,9 @@ public static class ComponentAttachmentUtils
             }
             AssetDatabase.SaveAssets();
         }
-        catch(Exception e)
-        {
-            Debug.LogError($"Link All Program Components Exception: {e.Message}");
-        }
-    }
-
-    [MenuItem("Tools/Asset/Generate Asset Keys")]
-    public static void GenerateProgramKeys()
-    {
-        try
-        {
-            foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
-            {
-                if (program.GenerateKey())
-                {
-                    EditorUtility.SetDirty(program.gameObject);
-                }
-            }
-            foreach (var shell in AssetUtils.LoadAllAssetsInDirectory<Shell>(AssetPaths.shellPath, true))
-            {
-                if (shell.GenerateKey())
-                {
-                    EditorUtility.SetDirty(shell.gameObject);
-                }
-            }
-            AssetDatabase.SaveAssets();
-        }
         catch (Exception e)
         {
-            Debug.LogError($"Generate Asset Keys Exception: {e.Message}");
+            Debug.LogError($"Link All Program Components Exception: {e.Message}");
         }
     }
 
