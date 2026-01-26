@@ -48,6 +48,7 @@ public static class ComponentAttachmentUtils
             foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
             {
                 program.LinkComponents();
+                PrefabUtility.RecordPrefabInstancePropertyModifications(program);
                 EditorUtility.SetDirty(program.gameObject);
             }
             AssetDatabase.SaveAssets();
@@ -66,6 +67,7 @@ public static class ComponentAttachmentUtils
             foreach (var unit in AssetUtils.LoadAllAssetsInDirectory<AIUnit>(AssetPaths.unitPath, true))
             {
                 unit.AttachAbilities();
+                PrefabUtility.RecordPrefabInstancePropertyModifications(unit);
                 EditorUtility.SetDirty(unit.gameObject);
             }
             AssetDatabase.SaveAssets();
