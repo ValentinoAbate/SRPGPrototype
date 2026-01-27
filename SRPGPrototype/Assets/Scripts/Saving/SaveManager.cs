@@ -141,7 +141,27 @@ public class SaveManager : MonoBehaviour
     {
         public int depth;
         public List<MapManager.MapDataEntry> maps;
-        public List<Encounter> next;
+        public List<EncounterData> next;
+    }
+
+    [Serializable]
+    public class EncounterData
+    {
+        public string name = string.Empty;
+        public Vector2Int dim;
+        public List<GridPrefab> units;
+        public List<GridPrefab> ambush;
+        public List<Vector2Int> spawns;
+        public bool money;
+        public int moneyBase;
+        public int moneyVar;
+    }
+
+    [Serializable]
+    public class GridPrefab
+    {
+        public string key;
+        public Vector2Int pos;
     }
 
     [Serializable]

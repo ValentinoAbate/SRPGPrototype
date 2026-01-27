@@ -8,7 +8,8 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public Encounter CurrentEncounter { get; set; }
-    public IReadOnlyList<Encounter> NextEncounters { get; private set; }
+    public IReadOnlyList<Encounter> NextEncounters => nextEncounters;
+    private readonly List<Encounter> nextEncounters = new List<Encounter>();
     public int BaseMapDepth { get; private set; }
     public bool SkipMapSelection { get; set; } = false;
     public IReadOnlyList<MapData> StartingMaps => startingMaps;
@@ -41,7 +42,8 @@ public class MapManager : MonoBehaviour
             {
                 ++BaseMapDepth;
                 ++mapEntry.progress;
-                NextEncounters = encounters;
+                nextEncounters.Clear();
+                nextEncounters.AddRange(encounters);
                 return;
             }
             mapStack.Pop();
@@ -54,23 +56,35 @@ public class MapManager : MonoBehaviour
                 mapStack.Push(new MapDataEntry(map.NextMap, mapEntry.isBaseMap));
             }
         }
-        NextEncounters = System.Array.Empty<Encounter>();
+        nextEncounters.Clear();
         return;
     }
 
     public SaveManager.MapManagerData Save()
     {
-        return new SaveManager.MapManagerData()
+        var data = new SaveManager.MapManagerData()
         {
             depth = BaseMapDepth,
             maps = new List<MapDataEntry>(mapStack),
-            next = new List<Encounter>(NextEncounters)
+            next = new List<SaveManager.EncounterData>(NextEncounters.Count)
         };
+        foreach(var encounter in NextEncounters)
+        {
+            data.next.Add(encounter.Save());
+        }
+        return data;
     }
 
     public void Load(SaveManager.MapManagerData data)
     {
-        NextEncounters = data.next;
+        nextEncounters.Clear();
+        nextEncounters.EnsureCapacity(data.next.Count);
+        foreach(var encounterData in data.next)
+        {
+            var encounter = new Encounter();
+            encounter.Load(encounterData);
+            nextEncounters.Add(encounter);
+        }
         BaseMapDepth = data.depth;
         mapStack.Clear();
         for (int i = data.maps.Count - 1; i >= 0; --i)

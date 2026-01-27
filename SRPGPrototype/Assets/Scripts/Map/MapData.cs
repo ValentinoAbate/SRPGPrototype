@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapData", menuName = "Map Generation Data")]
-public class MapData : ScriptableObject
+public class MapData : ScriptableObject, IHasKey
 {
-    public string Id => id;
-    [SerializeField] private string id;
+    public string Key => key;
+    [SerializeField] private string key;
     public string MapName => mapName;
     [SerializeField] private string mapName;
     [SerializeField] private string mapSymbol;
@@ -36,4 +36,12 @@ public class MapData : ScriptableObject
         public List<EncounterGeneratorBasic> data = new List<EncounterGeneratorBasic>();
         public List<float> weights = new List<float>();
     }
+
+#if UNITY_EDITOR
+
+    public bool GenerateKey()
+    {
+        return false; 
+    }
+#endif
 }
