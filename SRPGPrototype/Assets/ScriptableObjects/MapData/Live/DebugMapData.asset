@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: DebugMapData
   m_EditorClassIdentifier: 
+  key: Debug
   mapName: Debug
   mapSymbol: 1
   nextMap: {fileID: 11400000, guid: a0ba03dd6aaae4b4f82fe5ccfc87a346, type: 2}

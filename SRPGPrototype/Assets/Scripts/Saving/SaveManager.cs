@@ -140,7 +140,7 @@ public class SaveManager : MonoBehaviour
     public class MapManagerData
     {
         public int depth;
-        public List<MapManager.MapDataEntry> maps;
+        public List<SavedMap> maps;
         public List<EncounterData> next;
     }
 
@@ -155,6 +155,14 @@ public class SaveManager : MonoBehaviour
         public bool money;
         public int moneyBase;
         public int moneyVar;
+    }
+
+    [Serializable]
+    public class SavedMap
+    {
+        public string key;
+        public int depth;
+        public bool isBase;
     }
 
     [Serializable]

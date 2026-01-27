@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
   m_Name: PrototypeMapDataV2-1
   m_EditorClassIdentifier: 
+  key: 1
   mapName: Prototype V2
   mapSymbol: 1
   nextMap: {fileID: 11400000, guid: f73d7f79715b1bc4b826f29b0e13be75, type: 2}

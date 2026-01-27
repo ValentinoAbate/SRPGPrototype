@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69afb4d2271045e4bb640cc58d9c636d, type: 3}
+  m_Name: MapBundle
+  m_EditorClassIdentifier: 
+  assetPaths:
+  - Assets/ScriptableObjects/MapData/Live
+  keys:
+  - Debug
+  - 1
+  - 2
+  - 3
+  - 4
+  items:
+  - {fileID: 11400000, guid: 09428bb0dc4d50543af908f70e8f35af, type: 2}
+  - {fileID: 11400000, guid: efbbc9274be2b554580ef932a109a664, type: 2}
+  - {fileID: 11400000, guid: f73d7f79715b1bc4b826f29b0e13be75, type: 2}
+  - {fileID: 11400000, guid: 72adf84960a4337408ef8dae6dd26364, type: 2}
+  - {fileID: 11400000, guid: a0ba03dd6aaae4b4f82fe5ccfc87a346, type: 2}

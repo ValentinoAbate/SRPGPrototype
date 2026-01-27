@@ -65,9 +65,18 @@ public class MapManager : MonoBehaviour
         var data = new SaveManager.MapManagerData()
         {
             depth = BaseMapDepth,
-            maps = new List<MapDataEntry>(mapStack),
+            maps = new List<SaveManager.SavedMap>(mapStack.Count),
             next = new List<SaveManager.EncounterData>(NextEncounters.Count)
         };
+        foreach(var mapEntry in mapStack)
+        {
+            data.maps.Add(new SaveManager.SavedMap()
+            {
+                key = mapEntry.data.Key,
+                depth = mapEntry.progress,
+                isBase = mapEntry.isBaseMap,
+            });
+        }
         foreach(var encounter in NextEncounters)
         {
             data.next.Add(encounter.Save());
@@ -89,7 +98,11 @@ public class MapManager : MonoBehaviour
         mapStack.Clear();
         for (int i = data.maps.Count - 1; i >= 0; --i)
         {
-            mapStack.Push(data.maps[i]);
+            var mapData = data.maps[i];
+            if(Lookup.TryGetMap(mapData.key, out var map))
+            {
+                mapStack.Push(new MapDataEntry(map, mapData.isBase, mapData.depth));
+            }
         }
     }
 
