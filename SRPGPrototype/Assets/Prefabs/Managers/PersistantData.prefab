@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521fb633c4b7acf4f918a22de272d3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  programs: {fileID: 11400000, guid: 89eea064f6b305c458271564af0cbc32, type: 2}
+  shells: {fileID: 11400000, guid: 0a12d3133e764fc48960eaf4359926a3, type: 2}
   units: {fileID: 11400000, guid: 6536827b5d2ae2b429703f7fb3d8c6d8, type: 2}
   maps: {fileID: 11400000, guid: 57e42da817f41974f89db50eecd3a166, type: 2}
 --- !u!1 &4248664083197221016

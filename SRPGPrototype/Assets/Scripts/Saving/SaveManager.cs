@@ -86,7 +86,7 @@ public class SaveManager : MonoBehaviour
 
         public bool CreateShell(ShellData data, Transform parent, out Shell shell)
         {
-            if (PersistantData.main.loot.TryGetShell(data.key, out var prefab))
+            if (Lookup.TryGetShell(data.key, out var prefab))
             {
                 shell = Create<Shell>(prefab.gameObject, parent);
                 shell.Load(data, this);
@@ -101,7 +101,7 @@ public class SaveManager : MonoBehaviour
 
         public bool CreateProgram(ProgramData data, Transform parent, out Program program)
         {
-            if(PersistantData.main.loot.TryGetProgram(data.key, out var prefab))
+            if(Lookup.TryGetProgram(data.key, out var prefab))
             {
                 program = Create<Program>(prefab.gameObject, parent);
                 program.Load(data);
