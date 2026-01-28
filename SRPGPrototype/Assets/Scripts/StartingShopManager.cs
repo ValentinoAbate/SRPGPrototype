@@ -36,6 +36,6 @@ public class StartingShopManager : MonoBehaviour
 
     public void EndScene()
     {
-        SceneTransitionManager.main.TransitionToScene("Cust");
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 }

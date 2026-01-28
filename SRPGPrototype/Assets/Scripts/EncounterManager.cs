@@ -157,13 +157,13 @@ public class EncounterManager : MonoBehaviour
     public void EndScene()
     {
         PersistantData.main.mapManager.GenerateNextEncounters();
-        SceneTransitionManager.main.TransitionToScene("Cust");
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 
     public void GameOver()
     {
         PersistantData.main.ResetRunData();
-        SceneTransitionManager.main.TransitionToScene("StartingShop");
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.TitleScene);
     }
 
 }
