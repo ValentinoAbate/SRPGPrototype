@@ -162,6 +162,7 @@ public class EncounterManager : MonoBehaviour
 
     public void GameOver()
     {
+        SaveManager.ClearRunData();
         PersistantData.main.ResetRunData();
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.TitleScene);
     }
