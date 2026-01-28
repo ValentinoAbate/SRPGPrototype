@@ -296,31 +296,31 @@ public class Program : GridObject, ILootable, IHasKey
             }
         }
         // Variants
-        foreach(var variant in variants)
+        if(variants.Length > 0)
         {
-            data.AddData(variantId, variant.Save());
+            var variantData = new List<string>(variants.Length);
+            foreach (var variant in variants)
+            {
+                variantData.Add(variant.Save());
+            }
+            data.AddData(variantId, variantData);
         }
+
 
         // TODO: Upgrade triggers / state
         // TODO: effect data
         return data;
     }
 
-    public void Load(SaveManager.ProgramData data)
+    public void Load(SaveManager.ProgramData programData)
     {
-        Id = data.id;
-        int typeIndex = 0;
-        int type = -1;
-        foreach(var pair in data.data)
+        Id = programData.id;
+        foreach(var data in programData.data)
         {
-            if(type != pair.t)
-            {
-                typeIndex = 0;
-                type = pair.t;
-            }
+            var type = data.t;
             if(type == usesId)
             {
-                if(int.TryParse(pair.v, out int uses))
+                if(data.Count > 0 && int.TryParse(data[1], out int uses))
                 {
                     var transient = GetComponent<ProgramAttributeTransient>();
                     if (transient != null)
@@ -331,9 +331,13 @@ public class Program : GridObject, ILootable, IHasKey
             }
             else if(type == variantId)
             {
-                variants[typeIndex].Load(this, pair.v);
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (i >= variants.Length)
+                        break;
+                    variants[i].Load(this, data[i]);
+                }
             }
-            ++typeIndex;
         }
     }
 

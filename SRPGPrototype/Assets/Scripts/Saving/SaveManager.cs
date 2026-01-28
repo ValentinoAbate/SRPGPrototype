@@ -203,24 +203,46 @@ public class SaveManager : MonoBehaviour
     {
         public int id;
         public string key;
-        public List<DataPair> data = new List<DataPair>();
-        // TODO: updrade data
+        public List<DataEntry> data = new List<DataEntry>();
 
-        public void AddData(int id, string value)
+        public void AddData(int type, params string[] args)
         {
-            data.Add(new DataPair(id, value));
+            data.Add(new DataEntry() 
+            {
+                t = type,
+                d = new List<string>(args)
+            });
         }
+
+        public void AddData(int type, List<string> data)
+        {
+            this.data.Add(new DataEntry()
+            {
+                t = type,
+                d = data
+            });
+        }
+        // TODO: upgrade data
     }
 
     [Serializable]
-    public class DataPair
+    public class DataEntry : IReadOnlyList<string>
     {
+        public int Count => d.Count;
+
         public int t; // type
-        public string v; // value
-        public DataPair(int id, string value)
+        public List<string> d; // data
+
+        public string this[int index] => d[index];
+
+        public IEnumerator<string> GetEnumerator()
         {
-            t = id;
-            v = value;
+            return d.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return d.GetEnumerator();
         }
     }
 
