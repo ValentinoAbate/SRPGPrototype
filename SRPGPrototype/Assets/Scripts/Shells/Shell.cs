@@ -377,7 +377,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
             {
                 effect.ApplyEffect(ref compileData);
             }
-            foreach (var trigger in program.Triggers)
+            foreach (var trigger in program.Upgrades)
             {
                 trigger.Condition.LinkEffect(program, ref compileData);
             }

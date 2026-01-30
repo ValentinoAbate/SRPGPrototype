@@ -20,45 +20,37 @@ public class UpgradeDisplayUI : MonoBehaviour
 
     public void Show(Program p)
     {
-        if(p.Triggers.Length <= 0)
+        if(p.Upgrades.Count <= 0)
         {
             ShowNone();
             return;
         }
         for (int i = 0; i < upgradeTexts.Length; ++i)
         {
-            if (i >= p.Triggers.Length)
+            if (i >= p.Upgrades.Count)
             {
                 upgradeTexts[i].text = string.Empty;
                 continue;
             }
-            upgradeTexts[i].text = p.Triggers[i].TriggerName + " - " + p.Triggers[i].Condition.ConditionText;
-            if (p.Triggers[i] is ProgramHatch)
-            {
-                upgradeTexts[i].text += "(Hatch)";
-            }
+            upgradeTexts[i].text = p.Upgrades[i].TriggerName + " - " + p.Upgrades[i].Condition.ConditionText;
         }
     }
 
     public void ShowHidden(Program p)
     {
-        if (p.Triggers.Length <= 0)
+        if (p.Upgrades.Count <= 0)
         {
             ShowNone();
             return;
         }
         for (int i = 0; i < upgradeTexts.Length; ++i)
         {
-            if (i >= p.Triggers.Length)
+            if (i >= p.Upgrades.Count)
             {
                 upgradeTexts[i].text = string.Empty;
                 continue;
             }
-            upgradeTexts[i].text = ProgramDescriptionUI.Hide(p.Triggers[i].TriggerName) + " - " + ProgramDescriptionUI.Hide(p.Triggers[i].Condition.ConditionText);
-            if (p.Triggers[i] is ProgramHatch)
-            {
-                upgradeTexts[i].text += "(Hatch)";
-            }
+            upgradeTexts[i].text = ProgramDescriptionUI.Hide(p.Upgrades[i].TriggerName) + " - " + ProgramDescriptionUI.Hide(p.Upgrades[i].Condition.ConditionText);
         }
     }
 }

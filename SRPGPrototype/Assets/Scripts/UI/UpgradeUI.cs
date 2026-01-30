@@ -37,7 +37,7 @@ public class UpgradeUI : MonoBehaviour
 
     private static bool HasReadyUpgrade(Program p)
     {
-        foreach(var trigger in p.Triggers)
+        foreach(var trigger in p.Upgrades)
         {
             if (trigger.Condition.Completed)
                 return true;
@@ -60,10 +60,10 @@ public class UpgradeUI : MonoBehaviour
         // Separate ready and non-ready programs
         foreach (var prog in programs)
         {
-            if (prog.Triggers.Length <= 0)
+            if (prog.Upgrades.Count <= 0)
                 continue;
             int completed = 0;
-            foreach(var trigger in prog.Triggers)
+            foreach(var trigger in prog.Upgrades)
             {
                 if (trigger.Condition.Completed)
                     ++completed;
@@ -123,7 +123,7 @@ public class UpgradeUI : MonoBehaviour
         var inv = PersistantData.main.inventory;
         upgradeButtonContainer.DestroyAllChildren();
         upgradeUI.SetActive(true);
-        foreach(var trigger in p.Triggers)
+        foreach(var trigger in p.Upgrades)
         {
             var upgradeButton = Instantiate(upgradeButtonPrefab, upgradeButtonContainer).GetComponent<Button>();
             var buttonText = upgradeButton.GetComponentInChildren<TextMeshProUGUI>();

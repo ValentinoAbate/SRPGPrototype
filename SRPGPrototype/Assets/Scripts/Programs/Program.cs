@@ -111,8 +111,8 @@ public class Program : GridObject, ILootable, IHasKey
     // Trigger / upgrade properties
     public ProgramUpgrade Upgrade { get; set; }
     public bool IsUpgraded => Upgrade != null;
-    public ProgramTrigger[] Triggers => IsUpgraded ? Upgrade.Upgrades : triggers;
-    private ProgramTrigger[] triggers;
+    public IReadOnlyList<ProgramUpgrade> Upgrades => IsUpgraded ? Upgrade.Upgrades : upgrades;
+    private List<ProgramUpgrade> upgrades;
         
     public string DisplayName => IsUpgraded ? Upgrade.DisplayName : displayName;
     [SerializeField] private string displayName = string.Empty;
@@ -201,16 +201,16 @@ public class Program : GridObject, ILootable, IHasKey
     private void Awake()
     {
         Id = PersistantData.main.NewId;
-        var trigList = new List<ProgramTrigger>();
+        var upgradeList = new List<ProgramUpgrade>();
         foreach(Transform t in transform)
         {
-            trigList.AddRange(t.GetComponents<ProgramTrigger>());
+            upgradeList.AddRange(t.GetComponents<ProgramUpgrade>());
         }
-        foreach(var trigger in trigList)
+        foreach(var upgrade in upgradeList)
         {
-            trigger.Initialize(this);
+            upgrade.Initialize(this);
         }
-        triggers = trigList.ToArray();
+        upgrades = upgradeList;
         foreach(var effect in effects)
         {
             effect.Initialize(this);
