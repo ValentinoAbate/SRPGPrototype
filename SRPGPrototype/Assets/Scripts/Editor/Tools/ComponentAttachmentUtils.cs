@@ -59,6 +59,29 @@ public static class ComponentAttachmentUtils
         }
     }
 
+    [MenuItem("Tools/Asset/Generate Program Upgrade Keys")]
+    public static void GenerateProgramUpgradeKeys()
+    {
+        try
+        {
+            foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
+            {
+                var upgrades = program.gameObject.GetComponentsInChildren<ProgramUpgrade>(true);
+                foreach(var upgrade in upgrades)
+                {
+                    upgrade.GenerateKey();
+                }
+                PrefabUtility.RecordPrefabInstancePropertyModifications(program);
+                EditorUtility.SetDirty(program.gameObject);
+            }
+            AssetDatabase.SaveAssets();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Link All Program Components Exception: {e.Message}");
+        }
+    }
+
     [MenuItem("Tools/Asset/Attach All Unit Abilities")]
     public static void AttachAllUnitAbilities()
     {

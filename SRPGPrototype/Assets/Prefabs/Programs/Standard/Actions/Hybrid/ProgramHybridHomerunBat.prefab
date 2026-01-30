@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: Nail
   hidden: 0
   displayName: Nail Bat
   description: Action
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: GrandSlam
   hidden: 0
   displayName: Grand Slam
   description: Action
@@ -201,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: Corked
   hidden: 0
   displayName: Corked Bat
   description: Action

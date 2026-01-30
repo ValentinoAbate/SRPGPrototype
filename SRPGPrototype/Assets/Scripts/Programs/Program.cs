@@ -305,9 +305,9 @@ public class Program : GridObject, ILootable, IHasKey
             }
             data.AddData(variantId, variantData);
         }
+        data.up = IsUpgraded ? Upgrade.Key : string.Empty;
+        // Upgrade triggers
 
-
-        // TODO: Upgrade triggers / state
         // TODO: effect data
         return data;
     }
@@ -315,6 +315,10 @@ public class Program : GridObject, ILootable, IHasKey
     public void Load(SaveManager.ProgramData programData)
     {
         Id = programData.id;
+        if (!string.IsNullOrEmpty(programData.up))
+        {
+            LoadUpgrade(programData.up)
+        }
         foreach(var data in programData.data)
         {
             var type = data.t;
@@ -339,6 +343,32 @@ public class Program : GridObject, ILootable, IHasKey
                 }
             }
         }
+    }
+
+    private void LoadUpgrade(string upgradeKey)
+    {
+        foreach(var upgrade in upgrades)
+        {
+            if(LoadUpgradeRecursive(upgrade, upgradeKey))
+            {
+                return;
+            }
+        }
+    }
+
+    private bool LoadUpgradeRecursive(ProgramUpgrade upgrade, string upgradeKey)
+    {
+        if (upgrade.Key == upgradeKey)
+        {
+            Upgrade = upgrade;
+            return true;
+        }
+        foreach (var u in upgrade.Upgrades)
+        {
+            if (LoadUpgradeRecursive(u, upgradeKey))
+                return true;
+        }
+        return false;
     }
 
 #if UNITY_EDITOR

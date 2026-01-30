@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: StepCannon
   hidden: 0
   displayName: Step Cannon
   description: Action
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: StepShot+
   hidden: 0
   displayName: Step Shot+
   description: Action

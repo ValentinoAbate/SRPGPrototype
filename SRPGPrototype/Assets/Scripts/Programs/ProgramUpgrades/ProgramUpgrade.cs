@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProgramUpgrade : MonoBehaviour
+public class ProgramUpgrade : MonoBehaviour, IHasKey
 {
     public ProgramTriggerCondition Condition => GetComponent<ProgramTriggerCondition>();
 
+    public string Key => key;
+    [SerializeField] private string key;
     public bool Hidden { get => hidden; }
     [SerializeField] private bool hidden = false;
     public string TriggerName { get => Hidden ? ProgramDescriptionUI.Hide(displayName) : displayName; }
@@ -35,4 +37,20 @@ public class ProgramUpgrade : MonoBehaviour
             effect.Initialize(program);
         }
     }
+
+#if UNITY_EDITOR
+    public bool GenerateKey()
+    {
+        string newKey = name.Replace("Upgrade", string.Empty);
+        if (key == newKey)
+            return false;
+        key = newKey;
+        if (string.IsNullOrEmpty(key))
+        {
+            key = "x";
+            Debug.LogError(key);
+        }
+        return true;
+    }
+#endif
 }

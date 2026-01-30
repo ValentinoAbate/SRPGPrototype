@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
+    private static readonly 
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
     public static void Save()
@@ -203,6 +204,7 @@ public class SaveManager : MonoBehaviour
     {
         public int id;
         public string key;
+        public string up;
         public List<DataEntry> data = new List<DataEntry>();
 
         public void AddData(int type, params string[] args)

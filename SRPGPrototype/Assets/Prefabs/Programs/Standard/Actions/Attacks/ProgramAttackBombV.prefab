@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: FalconBomb2
   hidden: 0
   displayName: Falcon Bomb
   description: Action
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: VBomb+
   hidden: 0
   displayName: V-Bomb+
   description: Action
@@ -202,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc199b3ec7c8d748a943d265c17e6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: FalconBomb
   hidden: 0
   displayName: Falcon Bomb
   description: Action
