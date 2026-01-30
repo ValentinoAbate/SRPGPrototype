@@ -63,9 +63,9 @@ public class UpgradeUI : MonoBehaviour
             if (prog.Upgrades.Count <= 0)
                 continue;
             int completed = 0;
-            foreach(var trigger in prog.Upgrades)
+            foreach(var upgrade in prog.Upgrades)
             {
-                if (trigger.Condition.Completed)
+                if (upgrade.Condition.Completed)
                     ++completed;
             }
             if(completed > 0)
