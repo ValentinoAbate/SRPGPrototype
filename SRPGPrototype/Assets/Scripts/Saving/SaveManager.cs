@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
-    private static readonly 
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
     public static void Save()
