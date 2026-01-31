@@ -317,7 +317,7 @@ public class Program : GridObject, ILootable, IHasKey
         Id = programData.id;
         if (!string.IsNullOrEmpty(programData.up))
         {
-            LoadUpgrade(programData.up)
+            LoadUpgrade(programData.up);
         }
         foreach(var data in programData.data)
         {
