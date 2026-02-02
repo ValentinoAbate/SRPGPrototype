@@ -57,20 +57,17 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
     }
     private void CheckResetUses()
     {
-        if (resetTrigger == Action.Trigger.TurnStart && actions.Sum(ActionUsesTurn) != turnUses)
+        if (resetTrigger == Action.Trigger.TurnStart && actions.Sum(ActionUtils.UsesTurn) != turnUses)
         {
             turnUses = 0;
             Progress = 0;
         }
-        else if (resetTrigger == Action.Trigger.EncounterStart && actions.Sum(ActionUsesEncounter) != encounterUses)
+        else if (resetTrigger == Action.Trigger.EncounterStart && actions.Sum(ActionUtils.UsesEncounter) != encounterUses)
         {
             encounterUses = 0;
             Progress = 0;
         }
     }
-
-    private static int ActionUsesTurn(Action a) => a.TimesUsedThisTurn;
-    private static int ActionUsesEncounter(Action a) => a.TimesUsedThisBattle;
 
     private void UpdateUses(BattleGrid grid, Action action, Unit user, int cost)
     {

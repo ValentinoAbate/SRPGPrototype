@@ -22,4 +22,8 @@ public static class ActionUtils
         }
         return damageTotal;
     }
+
+    public static int Uses(Action a) => a.TimesUsed;
+    public static int UsesTurn(Action a) => a.TimesUsedThisTurn;
+    public static int UsesEncounter(Action a) => a.TimesUsedThisBattle;
 }

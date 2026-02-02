@@ -20,11 +20,11 @@ public class ProgramTriggerConditionUses : ProgramTriggerCondition
             switch (resetCount)
             {
                 case Action.Trigger.Never:
-                    return actions.Max((a) => a.TimesUsed);
+                    return actions.Max(ActionUtils.Uses);
                 case Action.Trigger.TurnStart:
-                    return actions.Max((a) => a.TimesUsedThisTurn);
+                    return actions.Max(ActionUtils.UsesTurn);
                 case Action.Trigger.EncounterStart:
-                    return actions.Max((a) => a.TimesUsedThisBattle);               
+                    return actions.Max(ActionUtils.UsesEncounter);               
             }
             return 0;
         }
