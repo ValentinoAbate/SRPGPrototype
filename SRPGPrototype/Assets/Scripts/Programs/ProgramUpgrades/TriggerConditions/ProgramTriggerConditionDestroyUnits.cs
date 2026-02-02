@@ -11,6 +11,12 @@ public class ProgramTriggerConditionDestroyUnits : ProgramTriggerConditionResetT
 
     protected override int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
-        return targets.Where((t) => t.Dead && teams.Contains(t.UnitTeam)).Count();
+        int progressGained = 0;
+        foreach(var target in targets)
+        {
+            if (target.Dead && teams.Contains(target.UnitTeam))
+                ++progressGained;
+        }
+        return progressGained;
     }
 }

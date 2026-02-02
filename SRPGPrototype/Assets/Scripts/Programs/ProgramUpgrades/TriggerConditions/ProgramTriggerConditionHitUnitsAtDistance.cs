@@ -13,15 +13,15 @@ public class ProgramTriggerConditionHitUnitsAtDistance : ProgramTriggerCondition
 
     protected override int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {
-        int count = 0;
+        int progressGained = 0;
         foreach(var target in targets)
         {
             if (!teams.Contains(target.UnitTeam))
                 continue;
             int distance = Math.Max(Math.Abs(user.Pos.x - target.Pos.x), Math.Abs(user.Pos.y - target.Pos.y));
             if(distance >= threshold)
-                ++count;
+                ++progressGained;
         }
-        return count;
+        return progressGained;
     }
 }
