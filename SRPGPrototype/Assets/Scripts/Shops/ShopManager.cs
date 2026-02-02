@@ -58,7 +58,7 @@ public class ShopManager : MonoBehaviour
         };
     }
 
-    public List<SaveManager.ShopData> Save()
+    public List<SaveManager.ShopData> Save(ref List<SaveManager.ProgramData> fArgs)
     {
         var list = new List<SaveManager.ShopData>(data.Count);
         foreach(var kvp in data)
@@ -68,13 +68,13 @@ public class ShopManager : MonoBehaviour
             shop.programs = new List<SaveManager.ProgramData>(programs.Count);
             foreach (var program in programs)
             {
-                shop.programs.Add(program.Save());
+                shop.programs.Add(program.Save(ref fArgs));
             }
             var shells = kvp.Value.Shells;
             shop.shells = new List<SaveManager.ShellData>(shells.Count);
             foreach (var shell in shells)
             {
-                shop.shells.Add(shell.Save());
+                shop.shells.Add(shell.Save(ref fArgs));
             }
             list.Add(shop);
         }

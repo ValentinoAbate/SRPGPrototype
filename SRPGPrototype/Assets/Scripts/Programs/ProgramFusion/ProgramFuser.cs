@@ -10,16 +10,32 @@ public class ProgramFuser : MonoBehaviour
     [SerializeField] private Program programTemplate;
     [SerializeField] private ActionFuser actionFuser;
 
-    public Program FusePrograms(Transform container, Program p1, Program p2, Pattern pattern = null)
+    public Program FusePrograms(Transform container, Program p1, Program p2, Pattern pattern, string fusionName)
     {
-        var fusedProgram = FuseProgramsInternal(container, p1, p2, false);
-        fusedProgram.shape = pattern ?? FusePatterns(p1.shape, p2.shape);
+        return FusePrograms(Instantiate(programTemplate.gameObject, container).GetComponent<Program>(), p1, p2, pattern, fusionName);
+    }
+
+    public Program FusePrograms(Program fusionTemplate, Program p1, Program p2, Pattern pattern, string fusionName)
+    {
+        var fusedProgram = FuseProgramsInternal(fusionTemplate, p1, p2, false);
+        // Set pattern
+        fusedProgram.shape = pattern;
+        // Name fusion
+        fusedProgram.SetDisplayName(fusionName);
+        foreach (var effect in fusedProgram.Effects)
+        {
+            if (effect is ProgramEffectAddAction actionEffect && actionEffect.action.DisplayName == ActionFuser.fusedActionDefaultName)
+            {
+                actionEffect.action.DisplayName = fusionName;
+            }
+        }
         return fusedProgram;
     }
 
     public IReadOnlyList<Program> GetFusionPreviews(Transform container, Program p1, Program p2, int maxFusions, int maxFallbackFusions)
     {
-        var fusedProgramTemplate = FuseProgramsInternal(container, p1, p2, true);
+
+        var fusedProgramTemplate = FuseProgramsInternal(Instantiate(programTemplate.gameObject, container).GetComponent<Program>(), p1, p2, true);
         var patterns = FusePatterns(p1.shape, p2.shape, maxFusions, maxFallbackFusions);
         if (patterns.Count <= 0)
         {
@@ -36,9 +52,11 @@ public class ProgramFuser : MonoBehaviour
         return fusions;
     }
 
-    private Program FuseProgramsInternal(Transform container, Program p1, Program p2, bool preview)
+    private Program FuseProgramsInternal(Program fusionTemplate, Program p1, Program p2, bool preview)
     {
-        var fusedProgram = Instantiate(programTemplate.gameObject, container.transform).GetComponent<Program>();
+        var fusedProgram = fusionTemplate;
+        fusedProgram.FusionArg1 = p1;
+        fusedProgram.FusionArg2 = p2;
         if (!preview)
         {
             p1.transform.SetParent(fusedProgram.transform);

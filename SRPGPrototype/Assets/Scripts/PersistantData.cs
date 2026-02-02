@@ -14,6 +14,7 @@ public class PersistantData : MonoBehaviour
     public PresetManager presetManager;
     public ShopManager shopManager;
     public LootManager loot;
+    public ProgramFuser programFuser;
 
     public int CurrentId { get; private set; } = 0;
     public int NewId => ++CurrentId;
@@ -46,9 +47,9 @@ public class PersistantData : MonoBehaviour
     public void SaveRunData(SaveManager.RunData runData)
     {
         runData.currId = CurrentId;
-        runData.inv = inventory.Save();
+        runData.inv = inventory.Save(ref runData.fArgs);
         runData.map = mapManager.Save();
-        runData.shops = shopManager.Save();
+        runData.shops = shopManager.Save(ref runData.fArgs);
         runData.presets = presetManager.Save();
     }
 

@@ -8,7 +8,6 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     [SerializeField] private ProgramItemButton previewButtonPrefab;
     [SerializeField] private Transform previewProgramContainer;
     [SerializeField] private List<ProgramItemButton> fusionArguments;
-    [SerializeField] private ProgramFuser programFuser;
     [SerializeField] private CostDisplay costDisplay;
 
     private readonly List<ProgramItemButton> previewButtons = new List<ProgramItemButton>();
@@ -68,16 +67,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     private void OnNamingComplete(string programName)
     {
         // Finalize Fusion
-        var program = programFuser.FusePrograms(transform, fusionArguments[0].Program, fusionArguments[1].Program, fusions[selectedFusion].shape);
-        // Name program
-        program.SetDisplayName(programName);
-        foreach(var effect in program.Effects)
-        {
-            if(effect is ProgramEffectAddAction actionEffect && actionEffect.action.DisplayName == ActionFuser.fusedActionDefaultName)
-            {
-                actionEffect.action.DisplayName = programName;
-            }
-        }
+        var program = PersistantData.main.programFuser.FusePrograms(transform, fusionArguments[0].Program, fusionArguments[1].Program, fusions[selectedFusion].shape, programName);
         // Add program to inventory
         PersistantData.main.inventory.AddProgram(program);
         // Remove fusion arguments from inventory
@@ -181,7 +171,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
     {
         bool canAfford = PersistantData.main.inventory.CanAfford(cost);
         fusions.Clear();
-        fusions.AddRange(programFuser.GetFusionPreviews(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue));
+        fusions.AddRange(PersistantData.main.programFuser.GetFusionPreviews(previewProgramContainer, fusionArguments[0].Program, fusionArguments[1].Program, int.MaxValue, int.MaxValue));
         for (int i = 0; i < fusions.Count; ++i)
         {
             if (i >= previewButtons.Count)

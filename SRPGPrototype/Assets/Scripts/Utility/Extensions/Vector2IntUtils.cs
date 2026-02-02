@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using System.Linq;
 
-public static class Vector2IntExtensions
+public static class Vector2IntUtils
 {
+    public const char separator = '_';
     private const float sqrt2 = 1.4142135623746f;
     private const float negSqrt2 = -sqrt2;
     /// <summary>
@@ -104,5 +103,18 @@ public static class Vector2IntExtensions
     public static int GridDistance(this Vector2Int pos, Vector2Int other)
     {
         return System.Math.Abs(pos.x - other.x) + System.Math.Abs(pos.y - other.y);
+    }
+
+    public static string Save(this Vector2Int pos)
+    {
+        return $"{pos.x}{separator}{pos.y}";
+    }
+
+    public static Vector2Int FromString(string data)
+    {
+        var args = data.Split(separator);
+        if (args.Length < 2 || !int.TryParse(args[0], out int x) || !int.TryParse(args[1], out int y))
+            return Vector2Int.zero;
+        return new Vector2Int(x, y);
     }
 }

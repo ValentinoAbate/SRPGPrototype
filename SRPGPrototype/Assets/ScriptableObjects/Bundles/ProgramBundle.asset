@@ -15,7 +15,7 @@ MonoBehaviour:
   assetPaths:
   - Assets/Prefabs/Programs
   keys:
-  - FusionTemplate
+  - Fusion
   - AbilityBlastPaddingCore
   - AbilityBlazeOfGloryCore
   - AbilityGamblerCore

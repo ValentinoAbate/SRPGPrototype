@@ -37,4 +37,38 @@ public class Pattern
     {
         patternOffsets.AddRange(offsets);
     }
+
+    public string Save()
+    {
+        var builder = new System.Text.StringBuilder();
+        builder.Append(dimensions.Save());
+        builder.Append(SaveManager.separator);
+        if(patternOffsets.Count > 0)
+        {
+            for (int i = 0; i < patternOffsets.Count - 1; i++)
+            {
+                Vector2Int offset = patternOffsets[i];
+                builder.Append(offset.Save());
+                builder.Append(SaveManager.separator);
+            }
+            builder.Append(patternOffsets[patternOffsets.Count - 1].Save());
+        }
+        return builder.ToString();
+    }
+
+    public void Load(string data)
+    {
+        var args = data.Split(SaveManager.separator);
+        patternOffsets.Clear();
+        if(args.Length <= 0)
+        {
+            dimensions = Vector2Int.zero;
+            return;
+        }
+        dimensions = Vector2IntUtils.FromString(args[0]);
+        for (int i = 1; i < args.Length; i++)
+        {
+            patternOffsets.Add(Vector2IntUtils.FromString(args[i]));
+        }
+    }
 }

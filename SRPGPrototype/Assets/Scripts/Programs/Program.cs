@@ -50,6 +50,10 @@ public class Program : GridObject, ILootable, IHasKey
     public int Id { get; private set; }
     public string Key => key;
     [SerializeField] private string key;
+
+    public bool IsFusion => isFusion;
+    [SerializeField] private bool isFusion = false;
+
     public UnityEngine.Color ColorValue => colorValues[color];
     public UnityEngine.Color ContrastColorValue => color == Color.Blue ? UnityEngine.Color.white : UnityEngine.Color.black;
 
@@ -190,6 +194,9 @@ public class Program : GridObject, ILootable, IHasKey
         }
     }
 
+    public Program FusionArg1 { get; set; }
+    public Program FusionArg2 { get; set; }
+
     public Program.Color color;
     public Attributes attributes;
     public Pattern shape;
@@ -280,8 +287,9 @@ public class Program : GridObject, ILootable, IHasKey
     private const int usesId = 0;
     private const int variantId = 1;
     private const int upgradeId = 2;
+    public const int fusionId = 3;
 
-    public SaveManager.ProgramData Save()
+    public SaveManager.ProgramData Save(ref List<SaveManager.ProgramData> fArgs)
     {
         var data = new SaveManager.ProgramData()
         {
@@ -316,7 +324,14 @@ public class Program : GridObject, ILootable, IHasKey
             }
             data.AddData(upgradeId, upgradeData);
         }
-        // Upgrade triggers
+        if(FusionArg1 != null && FusionArg2 != null)
+        {
+            var p1 = FusionArg1.Save(ref fArgs);
+            var p2 = FusionArg2.Save(ref fArgs);
+            fArgs.Add(p1);
+            fArgs.Add(p2);
+            data.AddData(fusionId, p1.id.ToString(), p2.id.ToString(), DisplayName, shape.Save());
+        }
 
         // TODO: effect data
         return data;

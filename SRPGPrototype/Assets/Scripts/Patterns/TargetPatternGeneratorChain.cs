@@ -25,15 +25,15 @@ public class TargetPatternGeneratorChain : TargetPatternGenerator
         // Get targets
         if(adjacency == Adjacency.Horizontal)
         {
-            GetChainTargets(targetPos, grid, Vector2IntExtensions.Adjacent, ref targets);
+            GetChainTargets(targetPos, grid, Vector2IntUtils.Adjacent, ref targets);
         }
         else if(adjacency == Adjacency.Diagonal)
         {
-            GetChainTargets(targetPos, grid, Vector2IntExtensions.AdjacentDiagonal, ref targets);
+            GetChainTargets(targetPos, grid, Vector2IntUtils.AdjacentDiagonal, ref targets);
         }
         else if(adjacency == Adjacency.Both)
         {
-            GetChainTargets(targetPos, grid, Vector2IntExtensions.AdjacentBoth, ref targets);
+            GetChainTargets(targetPos, grid, Vector2IntUtils.AdjacentBoth, ref targets);
         }
         else if(adjacency == Adjacency.HorizontalRange2)
         {

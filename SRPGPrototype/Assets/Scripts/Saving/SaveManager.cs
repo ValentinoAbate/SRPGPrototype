@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public static class SaveManager
 {
     public const char separator = ',';
+    public const string fusionKey = "Fusion";
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
     public static void Save()
@@ -21,7 +22,7 @@ public static class SaveManager
     public static void Load()
     {
         var runData = LoadFile<RunData>(RunFilePath());
-        var loader = new Loader();
+        var loader = new Loader(runData);
         PersistantData.main.LoadRunData(runData, loader);
     }
 
@@ -82,6 +83,15 @@ public static class SaveManager
         public Dictionary<int, Shell> LoadedShells { get; } = new Dictionary<int, Shell>();
         public Dictionary<int, Program> LoadedPrograms { get; } = new Dictionary<int, Program>();
         public Dictionary<int, Action> LoadedActions { get; } = new Dictionary<int, Action>();
+        public Dictionary<int, ProgramData> FusionArgs { get; } = new Dictionary<int, ProgramData>();
+
+        public Loader(RunData data)
+        {
+            foreach(var fusionArg in data.fArgs)
+            {
+                FusionArgs.Add(fusionArg.id, fusionArg);
+            }
+        }
 
         public bool CreateShell(ShellData data, out Shell shell) => CreateShell(data, null, out shell);
 
@@ -105,11 +115,45 @@ public static class SaveManager
             if(Lookup.TryGetProgram(data.key, out var prefab))
             {
                 program = Create<Program>(prefab.gameObject, parent);
+                if (program.IsFusion)
+                {
+                    CreateFusion(program, data, parent);
+                }
                 program.Load(data);
                 LoadedPrograms.Add(program.Id, program);
                 return true;
             }
             program = null;
+            return false;
+        }
+
+        private bool CreateFusion(Program fusion, ProgramData data, Transform parent)
+        {
+            if (!data.TryFindEntry(Program.fusionId, out var entry))
+                return false;
+            int pid1;
+            int pid2;
+            string fusionName;
+            Pattern fusionPattern;
+            try
+            {
+                pid1 = int.Parse(entry.d[0]);
+                pid2 = int.Parse(entry.d[1]);
+                fusionName = entry.d[2];
+                fusionPattern = new Pattern();
+                fusionPattern.Load(entry.d[3]);
+            }
+            catch 
+            {
+                return false;
+            }
+            if (!FusionArgs.TryGetValue(pid1, out var pData1) || !FusionArgs.TryGetValue(pid2, out var pData2))
+                return false;
+            if (CreateProgram(pData1, parent, out var p1) && CreateProgram(pData2, parent, out var p2))
+            {
+                PersistantData.main.programFuser.FusePrograms(fusion, p1, p2, fusionPattern, fusionName);
+                return true;
+            }
             return false;
         }
 
@@ -134,6 +178,7 @@ public static class SaveManager
         public MapManagerData map;
         public List<ShopData> shops;
         public List<PresetData> presets;
+        public List<ProgramData> fArgs = new List<ProgramData>();
         // Battle State
     }
 
@@ -224,7 +269,20 @@ public static class SaveManager
                 d = data
             });
         }
-        // TODO: upgrade data
+
+        public bool TryFindEntry(int type, out DataEntry entry)
+        {
+            foreach(var d in data)
+            {
+                if(d.t == type)
+                {
+                    entry = d;
+                    return true;
+                }
+            }
+            entry = null;
+            return false;
+        }
     }
 
     [Serializable]

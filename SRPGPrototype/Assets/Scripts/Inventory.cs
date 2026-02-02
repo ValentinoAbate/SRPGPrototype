@@ -198,7 +198,7 @@ public class Inventory : MonoBehaviour
 
     public bool CanAfford(int cost) => Money >= cost;
 
-    public SaveManager.InventoryData Save()
+    public SaveManager.InventoryData Save(ref List<SaveManager.ProgramData> fArgs)
     {
         var invData = new SaveManager.InventoryData()
         {
@@ -208,11 +208,11 @@ public class Inventory : MonoBehaviour
         };
         foreach (var program in Programs)
         {
-            invData.progs.Add(program.Save());
+            invData.progs.Add(program.Save(ref fArgs));
         }
         foreach (var shell in Shells)
         {
-            invData.shells.Add(shell.Save());
+            invData.shells.Add(shell.Save(ref fArgs));
         }
         return invData;
     }

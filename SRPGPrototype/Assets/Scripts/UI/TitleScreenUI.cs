@@ -10,6 +10,7 @@ public class TitleScreenUI : MonoBehaviour
     [SerializeField] private GameObject debugButton;
     [SerializeField] private List<Program> debugPrograms;
     [SerializeField] private List<Shell> debugShells;
+    [SerializeField] private int debugMoney;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class TitleScreenUI : MonoBehaviour
         {
             PersistantData.main.inventory.AddProgram(program, true);
         }
+        PersistantData.main.inventory.Money = debugMoney;
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 

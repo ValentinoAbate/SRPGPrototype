@@ -54,6 +54,8 @@ GameObject:
   - component: {fileID: 1966410172860045962}
   - component: {fileID: 924881669996203}
   - component: {fileID: 8909098679415148985}
+  - component: {fileID: 5245326678310767564}
+  - component: {fileID: 1786793599945798245}
   m_Layer: 0
   m_Name: PersistantData
   m_TagString: Untagged
@@ -97,6 +99,7 @@ MonoBehaviour:
   presetManager: {fileID: 8003615109978583862}
   shopManager: {fileID: 3056097875218154066}
   loot: {fileID: 1167390746313740813}
+  programFuser: {fileID: 5245326678310767564}
 --- !u!114 &8909098679415148985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +116,35 @@ MonoBehaviour:
   shells: {fileID: 11400000, guid: 0a12d3133e764fc48960eaf4359926a3, type: 2}
   units: {fileID: 11400000, guid: 6536827b5d2ae2b429703f7fb3d8c6d8, type: 2}
   maps: {fileID: 11400000, guid: 57e42da817f41974f89db50eecd3a166, type: 2}
+--- !u!114 &5245326678310767564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966410172860045965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791de79467e01624f92535db0b88e3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  programTemplate: {fileID: 1602797817249399522, guid: 512b276fb1ebc744cb177e60b68c90df,
+    type: 3}
+  actionFuser: {fileID: 1786793599945798245}
+--- !u!114 &1786793599945798245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966410172860045965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e341e37d9bc247f4d9ac5e00e1f08022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionTemplatePrefab: {fileID: 3177280841968069487, guid: 5960b91913985914882d25980f7b28d8,
+    type: 3}
 --- !u!1 &4248664083197221016
 GameObject:
   m_ObjectHideFlags: 0

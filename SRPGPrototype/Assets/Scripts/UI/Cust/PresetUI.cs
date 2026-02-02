@@ -155,7 +155,7 @@ public class PresetUI : MonoBehaviour
         foreach (var prog in preset.Programs)
         {
             int progInd = installs.FindIndex((i) => i.program == prog.program);
-            // Add from uninstalled programs if applicable
+            // Add from installed programs if applicable
             if (progInd != -1)
             {
                 Shell.Install(prog.program, prog.location);

@@ -453,7 +453,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         return true;
     }
 
-    public SaveManager.ShellData Save()
+    public SaveManager.ShellData Save(ref List<SaveManager.ProgramData> fArgs)
     {
         var shellData = new SaveManager.ShellData()
         {
@@ -468,7 +468,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
             shellData.progs.Add(new SaveManager.InstalledProgramData()
             {
                 pos = prog.location,
-                prog = prog.program.Save(),
+                prog = prog.program.Save(ref fArgs),
             });
         }
         return shellData;
