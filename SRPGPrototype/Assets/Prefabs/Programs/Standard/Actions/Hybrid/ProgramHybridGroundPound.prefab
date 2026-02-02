@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Ground Pound+
   description: Action
+  condition: {fileID: 3988411084869775173}
 --- !u!114 &7279481045596303270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Ground Pound+
   description: Action
+  condition: {fileID: 5376140083304076145}
 --- !u!114 &7992182929572152648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +211,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Ground Pound+
   description: Action
+  condition: {fileID: 3813216957881656313}
 --- !u!114 &4117894623460324250
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Tele-Suplex
   description: Action
+  condition: {fileID: 7755837224236478765}
 --- !u!114 &7755837224236478765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Variable Suplex
   description: Action
+  condition: {fileID: 8574707399085778745}
 --- !u!114 &8574707399085778745
 MonoBehaviour:
   m_ObjectHideFlags: 0

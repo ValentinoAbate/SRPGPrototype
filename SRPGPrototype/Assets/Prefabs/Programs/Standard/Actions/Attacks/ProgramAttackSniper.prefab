@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Anti-Material Rifle
   description: Action
+  condition: {fileID: 3107076512963170479}
 --- !u!114 &3107076512963170479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Scout Rifle
   description: Action
+  condition: {fileID: 2844631981823459306}
 --- !u!114 &2844631981823459306
 MonoBehaviour:
   m_ObjectHideFlags: 0

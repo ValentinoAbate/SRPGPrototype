@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Double Barrel
   description: Action
+  condition: {fileID: 1780677090220954288}
 --- !u!114 &1780677090220954288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Assault Shotgun
   description: Action
+  condition: {fileID: 8898072172279978900}
 --- !u!114 &8898072172279978900
 MonoBehaviour:
   m_ObjectHideFlags: 0

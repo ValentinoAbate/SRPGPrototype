@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Airborne Plague
   description: Action
+  condition: {fileID: 5060419030709137318}
 --- !u!114 &5060419030709137318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Plague+
   description: Action
+  condition: {fileID: 6489767625893220364}
 --- !u!114 &6489767625893220364
 MonoBehaviour:
   m_ObjectHideFlags: 0

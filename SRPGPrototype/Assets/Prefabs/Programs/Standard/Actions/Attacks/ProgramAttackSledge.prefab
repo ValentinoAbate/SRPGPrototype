@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Sledge+
   description: Action
+  condition: {fileID: 8975363638440135278}
 --- !u!114 &8975363638440135278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Sledge+
   description: Action
+  condition: {fileID: 8288357104440776793}
 --- !u!114 &8288357104440776793
 MonoBehaviour:
   m_ObjectHideFlags: 0

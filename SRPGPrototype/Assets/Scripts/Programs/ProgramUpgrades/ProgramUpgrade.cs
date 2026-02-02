@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ProgramUpgrade : MonoBehaviour, IHasKey
 {
-    public ProgramTriggerCondition Condition => GetComponent<ProgramTriggerCondition>();
-
     public string Key => key;
     [SerializeField] private string key;
     public bool Hidden { get => hidden; }
@@ -20,6 +18,9 @@ public class ProgramUpgrade : MonoBehaviour, IHasKey
     public string Description => description;
     [SerializeField] [TextArea(2, 4)] private string description = string.Empty;
     public string DisplayName { get => displayName; }
+
+    public ProgramTriggerCondition Condition => condition;
+    [SerializeField] private ProgramTriggerCondition condition;
 
     public void Initialize(Program program)
     {
@@ -39,6 +40,10 @@ public class ProgramUpgrade : MonoBehaviour, IHasKey
     }
 
 #if UNITY_EDITOR
+    public void LinkCondition()
+    {
+        condition = GetComponent<ProgramTriggerCondition>();
+    }
     public bool GenerateKey()
     {
         string newKey = name.Replace("Upgrade", string.Empty);

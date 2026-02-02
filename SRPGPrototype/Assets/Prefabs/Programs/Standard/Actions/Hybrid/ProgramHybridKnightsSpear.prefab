@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Knight's Lance
   description: Action
+  condition: {fileID: 4548161759135223248}
 --- !u!114 &131502316649569150
 MonoBehaviour:
   m_ObjectHideFlags: 0

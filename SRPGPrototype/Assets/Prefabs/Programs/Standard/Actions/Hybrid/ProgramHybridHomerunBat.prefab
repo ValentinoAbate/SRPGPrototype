@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Nail Bat
   description: Action
+  condition: {fileID: 9151461296679518613}
 --- !u!114 &9151461296679518613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Grand Slam
   description: Action
+  condition: {fileID: 3413283479869876486}
 --- !u!114 &3413283479869876486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +209,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Corked Bat
   description: Action
+  condition: {fileID: 8898072172279978900}
 --- !u!114 &8898072172279978900
 MonoBehaviour:
   m_ObjectHideFlags: 0

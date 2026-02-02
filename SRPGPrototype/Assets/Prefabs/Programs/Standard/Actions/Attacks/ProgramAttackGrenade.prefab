@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Holy Grenade
   description: Action
+  condition: {fileID: 6282490578827685861}
 --- !u!114 &6282490578827685861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Holy Grenade
   description: Action
+  condition: {fileID: 6465485442563659486}
 --- !u!114 &6465485442563659486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Grenade+
   description: Action
+  condition: {fileID: 2072111827263162147}
 --- !u!114 &2072111827263162147
 MonoBehaviour:
   m_ObjectHideFlags: 0

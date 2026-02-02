@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Double or Nothing+
   description: Action
+  condition: {fileID: 6356307570398573788}
 --- !u!114 &6356307570398573788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Triple or Nothing
   description: Action
+  condition: {fileID: 5880631440042898222}
 --- !u!114 &5880631440042898222
 MonoBehaviour:
   m_ObjectHideFlags: 0

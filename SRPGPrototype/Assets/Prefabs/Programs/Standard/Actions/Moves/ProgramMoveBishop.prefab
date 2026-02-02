@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Move (Bishop+)
   description: Action
+  condition: {fileID: 6387990213924931901}
 --- !u!114 &6387990213924931901
 MonoBehaviour:
   m_ObjectHideFlags: 0

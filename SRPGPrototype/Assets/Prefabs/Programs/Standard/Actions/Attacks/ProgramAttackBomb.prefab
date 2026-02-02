@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Variable Bomb
   description: Action
+  condition: {fileID: 4927937510930912351}
 --- !u!114 &2148177162018221747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Bomb+
   description: Action
+  condition: {fileID: 7677551651957370067}
 --- !u!114 &43767686289667869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +210,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Variable Bomb
   description: Action
+  condition: {fileID: 3632538577995383369}
 --- !u!114 &4844893108731473444
 MonoBehaviour:
   m_ObjectHideFlags: 0

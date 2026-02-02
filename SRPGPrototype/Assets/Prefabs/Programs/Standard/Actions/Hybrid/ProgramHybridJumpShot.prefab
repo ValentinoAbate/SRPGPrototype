@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Jump Cannon
   description: Action
+  condition: {fileID: 49626117618781208}
 --- !u!114 &49626117618781208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Jump Shot+
   description: Action
+  condition: {fileID: 5318953114936811125}
 --- !u!114 &5318953114936811125
 MonoBehaviour:
   m_ObjectHideFlags: 0

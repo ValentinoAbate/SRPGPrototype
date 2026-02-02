@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Coin Toss+
   description: Action
+  condition: {fileID: 7356424466121278278}
 --- !u!114 &7356424466121278278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Coin Toss+
   description: Action
+  condition: {fileID: 95118761967658544}
 --- !u!114 &95118761967658544
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Atomic X
   description: Action
+  condition: {fileID: 6196789400164367110}
 --- !u!114 &6196789400164367110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Atomic X
   description: Action
+  condition: {fileID: 7582810995046772993}
 --- !u!114 &7582810995046772993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Chemical X+
   description: Action
+  condition: {fileID: 7617799793979824227}
 --- !u!114 &7617799793979824227
 MonoBehaviour:
   m_ObjectHideFlags: 0

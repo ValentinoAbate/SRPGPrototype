@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Lance Charge
   description: Action
+  condition: {fileID: 5986006944455727050}
 --- !u!114 &5986006944455727050
 MonoBehaviour:
   m_ObjectHideFlags: 0

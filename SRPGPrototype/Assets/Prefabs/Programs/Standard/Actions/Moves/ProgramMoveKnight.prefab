@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Move (Knight+)
   description: Action
+  condition: {fileID: 8976919455222615236}
 --- !u!114 &8976919455222615236
 MonoBehaviour:
   m_ObjectHideFlags: 0

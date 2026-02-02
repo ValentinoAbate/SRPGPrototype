@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Hammer+
   description: Action
+  condition: {fileID: 2850066547506850999}
 --- !u!114 &512558635254789944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Throwing Hammer
   description: Action
+  condition: {fileID: 265354881553805237}
 --- !u!114 &265354881553805237
 MonoBehaviour:
   m_ObjectHideFlags: 0

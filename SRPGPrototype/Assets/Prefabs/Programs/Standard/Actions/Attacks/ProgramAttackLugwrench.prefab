@@ -64,6 +64,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Lugwrench+
   description: Action
+  condition: {fileID: 5759485484314325585}
 --- !u!114 &5055829788363044792
 MonoBehaviour:
   m_ObjectHideFlags: 0

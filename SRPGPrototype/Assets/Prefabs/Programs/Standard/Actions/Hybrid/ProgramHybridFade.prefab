@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Fadeout
   description: Action
+  condition: {fileID: 4308162608417582209}
 --- !u!114 &4308162608417582209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Fade+
   description: Action
+  condition: {fileID: 7637809239299722280}
 --- !u!114 &7637809239299722280
 MonoBehaviour:
   m_ObjectHideFlags: 0

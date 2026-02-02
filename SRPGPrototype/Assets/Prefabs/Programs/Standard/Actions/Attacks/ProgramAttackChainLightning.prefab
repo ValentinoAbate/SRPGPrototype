@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Chain Lightning+
   description: Action
+  condition: {fileID: 371670691687292184}
 --- !u!114 &371670691687292184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Arc Lightning
   description: Action
+  condition: {fileID: 3249063408934996450}
 --- !u!114 &3249063408934996450
 MonoBehaviour:
   m_ObjectHideFlags: 0

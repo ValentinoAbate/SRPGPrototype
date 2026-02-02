@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Falcon Bomb
   description: Action
+  condition: {fileID: 6308647651389922825}
 --- !u!114 &8998423529888046819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: V-Bomb+
   description: Action
+  condition: {fileID: 264962085631520671}
 --- !u!114 &2720343938092491837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +210,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Falcon Bomb
   description: Action
+  condition: {fileID: 1535077128090741386}
 --- !u!114 &3357268966852135361
 MonoBehaviour:
   m_ObjectHideFlags: 0

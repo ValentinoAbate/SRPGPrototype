@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Duelist's Advance+
   description: Action
+  condition: {fileID: 5407407084783209905}
 --- !u!114 &5407407084783209905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Duelist's Ambush
   description: Action
+  condition: {fileID: 4866090832599633701}
 --- !u!114 &4866090832599633701
 MonoBehaviour:
   m_ObjectHideFlags: 0

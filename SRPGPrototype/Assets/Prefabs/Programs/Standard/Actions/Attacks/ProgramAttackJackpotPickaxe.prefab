@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Cursed Jackpot Pick
   description: Action
+  condition: {fileID: 7845206764594091264}
 --- !u!114 &7845206764594091264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Golden Jackpot Pick
   description: Action
+  condition: {fileID: 3953991632397280975}
 --- !u!114 &3953991632397280975
 MonoBehaviour:
   m_ObjectHideFlags: 0

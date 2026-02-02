@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Move (Rook+)
   description: Action
+  condition: {fileID: 2531611466475000155}
 --- !u!114 &2531611466475000155
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Rifle
   description: Action
+  condition: {fileID: 8684391282483348648}
 --- !u!114 &8684391282483348648
 MonoBehaviour:
   m_ObjectHideFlags: 0

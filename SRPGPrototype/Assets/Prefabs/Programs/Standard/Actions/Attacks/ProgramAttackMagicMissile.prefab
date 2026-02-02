@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Magic Missile (x2)
   description: Action
+  condition: {fileID: 8446345291723644388}
 --- !u!114 &8446345291723644388
 MonoBehaviour:
   m_ObjectHideFlags: 0

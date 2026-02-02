@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 1
   displayName: Heavy Machgun
   description: Action
+  condition: {fileID: 5675377563622438890}
 --- !u!114 &5675377563622438890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 1
   displayName: Chaingun
   description: Action
+  condition: {fileID: 2076719866320639591}
 --- !u!114 &2076719866320639591
 MonoBehaviour:
   m_ObjectHideFlags: 0

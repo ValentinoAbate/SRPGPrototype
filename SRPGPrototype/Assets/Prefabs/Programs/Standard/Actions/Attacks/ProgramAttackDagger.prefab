@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Throwing Dagger
   description: Action
+  condition: {fileID: 7190323297417325153}
 --- !u!114 &7190323297417325153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 1
   displayName: Assassin's Dagger
   description: Action
+  condition: {fileID: 7038870363699113436}
 --- !u!114 &7038870363699113436
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Lightning Strike
   description: Action
+  condition: {fileID: 523426519340831002}
 --- !u!114 &523426519340831002
 MonoBehaviour:
   m_ObjectHideFlags: 0

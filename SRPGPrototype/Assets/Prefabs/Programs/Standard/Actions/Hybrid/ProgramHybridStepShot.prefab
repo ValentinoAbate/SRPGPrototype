@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Step Cannon
   description: Action
+  condition: {fileID: 371528162095546990}
 --- !u!114 &371528162095546990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Step Shot+
   description: Action
+  condition: {fileID: 6726043298700984069}
 --- !u!114 &6726043298700984069
 MonoBehaviour:
   m_ObjectHideFlags: 0

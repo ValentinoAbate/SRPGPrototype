@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Lance Reach
   description: Action
+  condition: {fileID: 7545764636546473464}
 --- !u!114 &7545764636546473464
 MonoBehaviour:
   m_ObjectHideFlags: 0

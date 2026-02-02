@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Trident+
   description: Action
+  condition: {fileID: 6712642934548543819}
 --- !u!114 &6712642934548543819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Trident+
   description: Action
+  condition: {fileID: 5548328528921320769}
 --- !u!114 &5548328528921320769
 MonoBehaviour:
   m_ObjectHideFlags: 0

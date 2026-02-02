@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 1
   displayName: Greatsword
   description: Action
+  condition: {fileID: 1529702658918472401}
 --- !u!114 &1529702658918472401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 1
   displayName: Shortsword
   description: Action
+  condition: {fileID: 3510960080092537771}
 --- !u!114 &3510960080092537771
 MonoBehaviour:
   m_ObjectHideFlags: 0

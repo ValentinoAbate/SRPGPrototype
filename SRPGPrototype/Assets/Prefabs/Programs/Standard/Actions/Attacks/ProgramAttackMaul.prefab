@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Maul+
   description: Action
+  condition: {fileID: 4384817286705626210}
 --- !u!114 &4384817286705626210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Maul+
   description: Action
+  condition: {fileID: 6095200183220848893}
 --- !u!114 &6095200183220848893
 MonoBehaviour:
   m_ObjectHideFlags: 0

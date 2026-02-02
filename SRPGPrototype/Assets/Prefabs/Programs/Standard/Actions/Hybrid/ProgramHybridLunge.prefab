@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Duelist's Feint
   description: Action
+  condition: {fileID: 8055104982005016146}
 --- !u!114 &8055104982005016146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Duelist's Lunge+
   description: Action
+  condition: {fileID: 4893823249667001601}
 --- !u!114 &4893823249667001601
 MonoBehaviour:
   m_ObjectHideFlags: 0

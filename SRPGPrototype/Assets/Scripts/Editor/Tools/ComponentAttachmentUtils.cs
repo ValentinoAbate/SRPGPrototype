@@ -31,6 +31,29 @@ public static class ComponentAttachmentUtils
         }
     }
 
+    [MenuItem("Tools/Asset/Generate Program Upgrade Keys")]
+    public static void GenerateProgramUpgradeKeys()
+    {
+        try
+        {
+            foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
+            {
+                var upgrades = program.gameObject.GetComponentsInChildren<ProgramUpgrade>(true);
+                foreach (var upgrade in upgrades)
+                {
+                    upgrade.GenerateKey();
+                }
+                PrefabUtility.RecordPrefabInstancePropertyModifications(program);
+                EditorUtility.SetDirty(program.gameObject);
+            }
+            AssetDatabase.SaveAssets();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Link All Program Components Exception: {e.Message}");
+        }
+    }
+
     private static void UpdateKey<T>(T item) where T : UnityEngine.Object, IHasKey
     {
         if(item.GenerateKey())
@@ -59,17 +82,17 @@ public static class ComponentAttachmentUtils
         }
     }
 
-    [MenuItem("Tools/Asset/Generate Program Upgrade Keys")]
-    public static void GenerateProgramUpgradeKeys()
+    [MenuItem("Tools/Asset/Attach All Program Upgrade Components")]
+    public static void LinkProgramUpgradeComponents()
     {
         try
         {
             foreach (var program in AssetUtils.LoadAllAssetsInDirectory<Program>(AssetPaths.programPath, true))
             {
                 var upgrades = program.gameObject.GetComponentsInChildren<ProgramUpgrade>(true);
-                foreach(var upgrade in upgrades)
+                foreach (var upgrade in upgrades)
                 {
-                    upgrade.GenerateKey();
+                    upgrade.LinkCondition();
                 }
                 PrefabUtility.RecordPrefabInstancePropertyModifications(program);
                 EditorUtility.SetDirty(program.gameObject);

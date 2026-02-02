@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Quake Hammer+
   description: Action
+  condition: {fileID: 4910985888612830606}
 --- !u!114 &4910985888612830606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Shockwave Hammer
   description: Action
+  condition: {fileID: 1652369465387076123}
 --- !u!114 &1652369465387076123
 MonoBehaviour:
   m_ObjectHideFlags: 0

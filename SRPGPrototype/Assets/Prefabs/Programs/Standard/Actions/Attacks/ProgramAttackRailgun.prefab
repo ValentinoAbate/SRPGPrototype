@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Variable Railgun
   description: Action
+  condition: {fileID: 3838697467059769499}
 --- !u!114 &2081913843912185447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Railgun+
   description: Action
+  condition: {fileID: 269134046118613559}
 --- !u!114 &269134046118613559
 MonoBehaviour:
   m_ObjectHideFlags: 0

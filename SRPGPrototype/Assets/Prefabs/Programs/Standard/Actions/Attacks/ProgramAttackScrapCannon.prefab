@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Heavy Scrap Cannon
   description: Action
+  condition: {fileID: 940351079680179740}
 --- !u!114 &940351079680179740
 MonoBehaviour:
   m_ObjectHideFlags: 0

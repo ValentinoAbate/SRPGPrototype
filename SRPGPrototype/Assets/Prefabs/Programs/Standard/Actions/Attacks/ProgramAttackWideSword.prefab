@@ -49,6 +49,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Widesword+
   description: Action
+  condition: {fileID: 853943022434922691}
 --- !u!114 &853943022434922691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hidden: 0
   displayName: Widesword+
   description: Action
+  condition: {fileID: 1617107381897788476}
 --- !u!114 &1617107381897788476
 MonoBehaviour:
   m_ObjectHideFlags: 0
