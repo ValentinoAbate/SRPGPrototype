@@ -72,8 +72,5 @@ public class ActionNumber : DynamicNumber
             return 0;
         // Type is targetStat
         return Value(unitNumber.Value(target));
-
     }
-
-
 }
