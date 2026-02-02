@@ -54,4 +54,14 @@ public class ProgramTriggerConditionUses : ProgramTriggerCondition
             return;
         completed = Progress >= number;
     }
+
+    public override string Save()
+    {
+        return completed.ToString();
+    }
+
+    public override void Load(string data)
+    {
+        bool.TryParse(data, out completed);
+    }
 }

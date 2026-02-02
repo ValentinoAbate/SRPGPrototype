@@ -30,4 +30,7 @@ public abstract class ProgramTriggerCondition : MonoBehaviour
                 return "times";
         }
     }
+
+    public abstract string Save();
+    public abstract void Load(string data);
 }

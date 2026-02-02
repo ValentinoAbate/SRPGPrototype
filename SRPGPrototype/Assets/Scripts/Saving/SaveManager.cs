@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public static class SaveManager
 {
+    public const char separator = ',';
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
     public static void Save()

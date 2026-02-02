@@ -39,6 +39,16 @@ public class ProgramUpgrade : MonoBehaviour, IHasKey
         }
     }
 
+    public string Save()
+    {
+        return condition.Save();
+    }
+
+    public void Load(string data)
+    {
+        condition.Load(data);
+    }
+
 #if UNITY_EDITOR
     public void LinkCondition()
     {

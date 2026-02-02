@@ -79,4 +79,28 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
         ++turnUses;
         ++encounterUses;
     }
+
+    public override string Save()
+    {
+        return $"{completed},{Progress},{turnUses},{encounterUses}";
+    }
+
+    public override void Load(string data)
+    {
+        var args = data.Split(SaveManager.separator);
+        try
+        {
+            bool.TryParse(args[0], out completed);
+            if(int.TryParse(args[1], out int progress))
+            {
+                Progress = progress;
+            }
+            int.TryParse(args[2], out turnUses);
+            int.TryParse(args[3], out encounterUses);
+        }
+        catch(System.Exception e)
+        {
+            Debug.LogError($"ProgramTriggerConditionResetTrigger Load Error: {e}");
+        }
+    }
 }

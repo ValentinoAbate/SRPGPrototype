@@ -279,6 +279,7 @@ public class Program : GridObject, ILootable, IHasKey
 
     private const int usesId = 0;
     private const int variantId = 1;
+    private const int upgradeId = 2;
 
     public SaveManager.ProgramData Save()
     {
@@ -306,6 +307,15 @@ public class Program : GridObject, ILootable, IHasKey
             data.AddData(variantId, variantData);
         }
         data.up = IsUpgraded ? Upgrade.Key : string.Empty;
+        if(Upgrades.Count > 0)
+        {
+            var upgradeData = new List<string>(Upgrades.Count);
+            foreach(var upgrade in Upgrades)
+            {
+                upgradeData.Add(upgrade.Save());
+            }
+            data.AddData(upgradeId, upgradeData);
+        }
         // Upgrade triggers
 
         // TODO: effect data
@@ -340,6 +350,15 @@ public class Program : GridObject, ILootable, IHasKey
                     if (i >= variants.Length)
                         break;
                     variants[i].Load(this, data[i]);
+                }
+            }
+            else if(type == upgradeId)
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (i >= Upgrades.Count)
+                        break;
+                    Upgrades[i].Load(data[i]);
                 }
             }
         }
