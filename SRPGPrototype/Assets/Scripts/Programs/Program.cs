@@ -324,7 +324,7 @@ public class Program : GridObject, ILootable, IHasKey
             var type = data.t;
             if(type == usesId)
             {
-                if(data.Count > 0 && int.TryParse(data[1], out int uses))
+                if(data.Count > 0 && int.TryParse(data[0], out int uses))
                 {
                     var transient = GetComponent<ProgramAttributeTransient>();
                     if (transient != null)
