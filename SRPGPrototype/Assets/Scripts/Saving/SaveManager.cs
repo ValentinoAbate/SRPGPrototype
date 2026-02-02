@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveManager : MonoBehaviour
+public static class SaveManager
 {
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
@@ -116,11 +116,11 @@ public class SaveManager : MonoBehaviour
         {
             if(parent == null)
             {
-                return Instantiate(prefab).GetComponent<T>();
+                return UnityEngine.Object.Instantiate(prefab).GetComponent<T>();
             }
             else
             {
-                return Instantiate(prefab, parent).GetComponent<T>();
+                return UnityEngine.Object.Instantiate(prefab, parent).GetComponent<T>();
             }
         }
     }
