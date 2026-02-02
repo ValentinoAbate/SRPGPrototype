@@ -35,7 +35,13 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
     {
         actions.Clear();
         // Log actions from the program
-        actions.AddRange(program.Effects.Where((e) => e is ProgramEffectAddAction).Select((e) => (e as ProgramEffectAddAction).action));
+        foreach(var effect in program.Effects)
+        {
+            if(effect is ProgramEffectAddAction addAction)
+            {
+                actions.Add(addAction.action);
+            }
+        }
         // Add the check
         data.onAfterSubAction += Check;
         data.onAfterAction += UpdateUses;
@@ -51,17 +57,21 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
     }
     private void CheckResetUses()
     {
-        if (resetTrigger == Action.Trigger.TurnStart && actions.Sum((a) => a.TimesUsedThisTurn) != turnUses)
+        if (resetTrigger == Action.Trigger.TurnStart && actions.Sum(ActionUsesTurn) != turnUses)
         {
             turnUses = 0;
             Progress = 0;
         }
-        else if (resetTrigger == Action.Trigger.EncounterStart && actions.Sum((a) => a.TimesUsedThisBattle) != encounterUses)
+        else if (resetTrigger == Action.Trigger.EncounterStart && actions.Sum(ActionUsesEncounter) != encounterUses)
         {
             encounterUses = 0;
             Progress = 0;
         }
     }
+
+    private static int ActionUsesTurn(Action a) => a.TimesUsedThisTurn;
+    private static int ActionUsesEncounter(Action a) => a.TimesUsedThisBattle;
+
     private void UpdateUses(BattleGrid grid, Action action, Unit user, int cost)
     {
         if (completed || !actions.Contains(action))
