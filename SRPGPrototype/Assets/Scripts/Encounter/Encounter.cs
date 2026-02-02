@@ -91,8 +91,8 @@ public class Encounter
     {
         return new SaveManager.GridPrefab()
         {
-            key = entry.unit.Key,
-            pos = entry.pos,
+            k = entry.unit.Key,
+            p = entry.pos,
         };
     }
 
@@ -115,9 +115,9 @@ public class Encounter
         container.EnsureCapacity(data.Count);
         foreach (var unitData in data)
         {
-            if (Lookup.TryGetUnit(unitData.key, out var unit))
+            if (Lookup.TryGetUnit(unitData.k, out var unit))
             {
-                container.Add(new UnitEntry(unit, unitData.pos));
+                container.Add(new UnitEntry(unit, unitData.p));
             }
         }
     }

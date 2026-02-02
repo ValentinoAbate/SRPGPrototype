@@ -294,7 +294,7 @@ public class Program : GridObject, ILootable, IHasKey
         var data = new SaveManager.ProgramData()
         {
             id = Id,
-            key = Key,
+            k = Key,
         };
         if (attributes.HasFlag(Attributes.Transient))
         {
@@ -314,7 +314,7 @@ public class Program : GridObject, ILootable, IHasKey
             }
             data.AddData(variantId, variantData);
         }
-        data.up = IsUpgraded ? Upgrade.Key : string.Empty;
+        data.u = IsUpgraded ? Upgrade.Key : string.Empty;
         if(Upgrades.Count > 0)
         {
             var upgradeData = new List<string>(Upgrades.Count);
@@ -340,11 +340,11 @@ public class Program : GridObject, ILootable, IHasKey
     public void Load(SaveManager.ProgramData programData)
     {
         Id = programData.id;
-        if (!string.IsNullOrEmpty(programData.up))
+        if (!string.IsNullOrEmpty(programData.u))
         {
-            LoadUpgrade(programData.up);
+            LoadUpgrade(programData.u);
         }
-        foreach(var data in programData.data)
+        foreach(var data in programData.d)
         {
             var type = data.t;
             if(type == usesId)

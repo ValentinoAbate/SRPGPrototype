@@ -203,16 +203,16 @@ public class Inventory : MonoBehaviour
         var invData = new SaveManager.InventoryData()
         {
             money = Money,
-            progs = new List<SaveManager.ProgramData>(Programs.Count),
-            shells = new List<SaveManager.ShellData>(Shells.Count),
+            prs = new List<SaveManager.ProgramData>(Programs.Count),
+            shs = new List<SaveManager.ShellData>(Shells.Count),
         };
         foreach (var program in Programs)
         {
-            invData.progs.Add(program.Save(ref fArgs));
+            invData.prs.Add(program.Save(ref fArgs));
         }
         foreach (var shell in Shells)
         {
-            invData.shells.Add(shell.Save(ref fArgs));
+            invData.shs.Add(shell.Save(ref fArgs));
         }
         return invData;
     }
@@ -221,14 +221,14 @@ public class Inventory : MonoBehaviour
     {
         Clear();
         Money = data.money;
-        foreach (var programData in data.progs)
+        foreach (var programData in data.prs)
         {
             if (loader.CreateProgram(programData, out var program))
             {
                 AddProgram(program);
             }
         }
-        foreach (var shellData in data.shells)
+        foreach (var shellData in data.shs)
         {
             if (loader.CreateShell(shellData, out var shell))
             {

@@ -72,7 +72,7 @@ public class MapManager : MonoBehaviour
         {
             data.maps.Add(new SaveManager.SavedMap()
             {
-                key = mapEntry.data.Key,
+                k = mapEntry.data.Key,
                 depth = mapEntry.progress,
                 isBase = mapEntry.isBaseMap,
             });
@@ -99,7 +99,7 @@ public class MapManager : MonoBehaviour
         for (int i = data.maps.Count - 1; i >= 0; --i)
         {
             var mapData = data.maps[i];
-            if(Lookup.TryGetMap(mapData.key, out var map))
+            if(Lookup.TryGetMap(mapData.k, out var map))
             {
                 mapStack.Push(new MapDataEntry(map, mapData.isBase, mapData.depth));
             }

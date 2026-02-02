@@ -57,11 +57,11 @@ public class ProgramTriggerConditionUses : ProgramTriggerCondition
 
     public override string Save()
     {
-        return completed.ToString();
+        return BoolUtils.ToStringInt(completed);
     }
 
     public override void Load(string data)
     {
-        bool.TryParse(data, out completed);
+        completed = BoolUtils.FromStringInt(data);
     }
 }

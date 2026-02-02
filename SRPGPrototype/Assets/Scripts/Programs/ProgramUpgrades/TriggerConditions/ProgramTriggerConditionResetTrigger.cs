@@ -79,7 +79,7 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
 
     public override string Save()
     {
-        return $"{(completed ? 1 : 0)},{Progress},{turnUses},{encounterUses}";
+        return $"{BoolUtils.ToStringInt(completed)},{Progress},{turnUses},{encounterUses}";
     }
 
     public override void Load(string data)
@@ -87,10 +87,7 @@ public abstract class ProgramTriggerConditionResetTrigger : ProgramTriggerCondit
         var args = data.Split(SaveManager.separator);
         try
         {
-            if(int.TryParse(args[0], out int completedInt))
-            {
-                completed = completedInt != 0;
-            }
+            completed = BoolUtils.FromStringInt(args[0]);
             if(int.TryParse(args[1], out int progress))
             {
                 Progress = progress;

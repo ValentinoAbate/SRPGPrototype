@@ -72,19 +72,19 @@ public class PresetManager : MonoBehaviour
                     continue;
                 var savedPreset = new SaveManager.PresetData()
                 {
-                    key = kvp.Key,
+                    k = kvp.Key,
                     name = preset.DisplayName,
                     lv = preset.Level,
                     load = loadedPresets.TryGetValue(kvp.Key, out int ind) && ind == i,
                     ind = i,
-                    progs = new List<SaveManager.InstalledProgramId>(preset.Programs.Count),
+                    prs = new List<SaveManager.InstalledProgramId>(preset.Programs.Count),
                 };
                 foreach(var prog in preset.Programs)
                 {
-                    savedPreset.progs.Add(new SaveManager.InstalledProgramId()
+                    savedPreset.prs.Add(new SaveManager.InstalledProgramId()
                     {
                         id = prog.program.Id,
-                        pos = prog.location,
+                        p = prog.location,
                     });
                 }
                 data.Add(savedPreset);
@@ -104,19 +104,19 @@ public class PresetManager : MonoBehaviour
                 Level = savedPreset.lv,
             };
             // Load programs
-            foreach(var savedProgram in savedPreset.progs)
+            foreach(var savedProgram in savedPreset.prs)
             {
                 if (loader.LoadedPrograms.TryGetValue(savedProgram.id, out var program))
                 {
-                    preset.Programs.Add(new Shell.InstalledProgram(program, savedProgram.pos));
+                    preset.Programs.Add(new Shell.InstalledProgram(program, savedProgram.p));
                 }
             }
             // Setup preset
-            var presets = GetPresets(savedPreset.key);
+            var presets = GetPresets(savedPreset.k);
             presets[savedPreset.ind] = preset;
             if (savedPreset.load)
             {
-                SetLoadedPreset(savedPreset.key, savedPreset.ind);
+                SetLoadedPreset(savedPreset.k, savedPreset.ind);
             }
         }
     }

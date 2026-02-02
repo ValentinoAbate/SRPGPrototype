@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public static class SaveManager
 {
     public const char separator = ',';
-    public const string fusionKey = "Fusion";
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
     public static void Save()
@@ -97,7 +95,7 @@ public static class SaveManager
 
         public bool CreateShell(ShellData data, Transform parent, out Shell shell)
         {
-            if (Lookup.TryGetShell(data.key, out var prefab))
+            if (Lookup.TryGetShell(data.k, out var prefab))
             {
                 shell = Create<Shell>(prefab.gameObject, parent);
                 shell.Load(data, this);
@@ -112,7 +110,7 @@ public static class SaveManager
 
         public bool CreateProgram(ProgramData data, Transform parent, out Program program)
         {
-            if(Lookup.TryGetProgram(data.key, out var prefab))
+            if(Lookup.TryGetProgram(data.k, out var prefab))
             {
                 program = Create<Program>(prefab.gameObject, parent);
                 if (program.IsFusion)
@@ -206,7 +204,7 @@ public static class SaveManager
     [Serializable]
     public class SavedMap
     {
-        public string key;
+        public string k;
         public int depth;
         public bool isBase;
     }
@@ -214,8 +212,8 @@ public static class SaveManager
     [Serializable]
     public class GridPrefab
     {
-        public string key;
-        public Vector2Int pos;
+        public string k;
+        public Vector2Int p;
     }
 
     [Serializable]
@@ -223,38 +221,38 @@ public static class SaveManager
     {
         public int money;
         public int equipShId;
-        public List<ShellData> shells;
-        public List<ProgramData> progs;
+        public List<ShellData> shs;
+        public List<ProgramData> prs;
     }
 
     [Serializable]
     public class ShellData
     {
         public int id;
-        public string key;
-        public int level;
+        public string k;
+        public int lv;
         public int hp;
-        public List<InstalledProgramData> progs;
+        public List<InstalledProgramData> prs;
     }
 
     [Serializable]
     public class InstalledProgramData
     {
-        public ProgramData prog;
-        public Vector2Int pos;
+        public ProgramData pr;
+        public Vector2Int p;
     }
 
     [Serializable]
     public class ProgramData
     {
         public int id;
-        public string key;
-        public string up;
-        public List<DataEntry> data = new List<DataEntry>();
+        public string k;
+        public string u;
+        public List<DataEntry> d = new List<DataEntry>();
 
         public void AddData(int type, params string[] args)
         {
-            data.Add(new DataEntry() 
+            d.Add(new DataEntry() 
             {
                 t = type,
                 d = new List<string>(args)
@@ -263,7 +261,7 @@ public static class SaveManager
 
         public void AddData(int type, List<string> data)
         {
-            this.data.Add(new DataEntry()
+            this.d.Add(new DataEntry()
             {
                 t = type,
                 d = data
@@ -272,7 +270,7 @@ public static class SaveManager
 
         public bool TryFindEntry(int type, out DataEntry entry)
         {
-            foreach(var d in data)
+            foreach(var d in d)
             {
                 if(d.t == type)
                 {
@@ -323,25 +321,25 @@ public static class SaveManager
     public class ShopData
     {
         public ShopManager.ShopID id;
-        public List<ShellData> shells;
-        public List<ProgramData> programs;
+        public List<ShellData> shs;
+        public List<ProgramData> prs;
     }
 
     [Serializable]
     public class PresetData
     {
-        public string key;
+        public string k;
         public bool load;
         public string name;
         public int lv;
         public int ind;
-        public List<InstalledProgramId> progs;
+        public List<InstalledProgramId> prs;
     }
 
     [Serializable]
     public class InstalledProgramId
     {
-        public Vector2Int pos;
+        public Vector2Int p;
         public int id;
     }
 }

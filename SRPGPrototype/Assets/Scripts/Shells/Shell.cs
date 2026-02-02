@@ -458,17 +458,17 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         var shellData = new SaveManager.ShellData()
         {
             id = Id,
-            key = Key,
+            k = Key,
             hp = Stats.HP,
-            level = Level,
-            progs = new List<SaveManager.InstalledProgramData>(Programs.Count)
+            lv = Level,
+            prs = new List<SaveManager.InstalledProgramData>(Programs.Count)
         };
         foreach (var prog in Programs)
         {
-            shellData.progs.Add(new SaveManager.InstalledProgramData()
+            shellData.prs.Add(new SaveManager.InstalledProgramData()
             {
-                pos = prog.location,
-                prog = prog.program.Save(ref fArgs),
+                p = prog.location,
+                pr = prog.program.Save(ref fArgs),
             });
         }
         return shellData;
@@ -479,12 +479,12 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         Id = data.id;
         Stats.HP = data.hp;
         ClearPrograms();
-        SetLevel(data.level);
-        foreach (var programData in data.progs)
+        SetLevel(data.lv);
+        foreach (var programData in data.prs)
         {
-            if(loader.CreateProgram(programData.prog, out Program program))
+            if(loader.CreateProgram(programData.pr, out Program program))
             {
-                Install(program, programData.pos);
+                Install(program, programData.p);
             }
         }
         Compile();
