@@ -47,7 +47,7 @@ MonoBehaviour:
   standaloneSubActionOptions: 0
   affectUser: 0
   ignoreInValidRangeCalcs: 1
-  effect: {fileID: 1712857086706031764}
+  effect: {fileID: 1144756214210063138}
   modifier: 4
 --- !u!1 &4593714877553315412
 GameObject:
@@ -58,7 +58,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8916043604375117652}
-  - component: {fileID: 1712857086706031764}
+  - component: {fileID: 1144756214210063138}
   - component: {fileID: 1718355617303149668}
   m_Layer: 0
   m_Name: SuccessEffects
@@ -81,7 +81,7 @@ Transform:
   m_Father: {fileID: 5639408088848563143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1712857086706031764
+--- !u!114 &1144756214210063138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4593714877553315412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7afccd8b58f9033438a957c3b4e9ff23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   standaloneSubActionOptions: 0
   affectUser: 0
   ignoreInValidRangeCalcs: 1
-  effect: {fileID: 1712857086706031764}
+  effect: {fileID: 1144756214210063138}
   value: 4
 --- !u!1001 &8135780589257601915
 PrefabInstance:
@@ -279,7 +279,7 @@ MonoBehaviour:
   successChance: 0.25
   allowFailureEffectsForValidTargetPosChecks: 0
   successEffects:
-  - {fileID: 1712857086706031764}
+  - {fileID: 1144756214210063138}
   - {fileID: 1718355617303149668}
   failureEffects:
   - {fileID: 6673738864349571074}

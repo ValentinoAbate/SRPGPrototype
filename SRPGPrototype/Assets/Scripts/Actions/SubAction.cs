@@ -293,4 +293,49 @@ public class SubAction : MonoBehaviour
     {
         return subTypes.Count <= 0 || HasAnySubType(subTypes);
     }
+
+    private const char separator = '-';
+
+    public bool CanSave(bool isBattle)
+    {
+        foreach(var effect in effects)
+        {
+            if (effect.CanSave(isBattle))
+                return true;
+        }
+        return false;
+    }
+
+    public string Save(bool isBattle)
+    {
+        System.Text.StringBuilder builder = null;
+        foreach(var effect in effects)
+        {
+            if (effect.CanSave(isBattle))
+            {
+                builder ??= new System.Text.StringBuilder();
+                builder.Append(effect.Save(isBattle));
+                builder.Append(separator);
+            }
+        }
+        if (builder == null)
+            return string.Empty;
+        builder.Remove(builder.Length - 1, 1);
+        return builder.ToString();
+    }
+
+    public void Load(string data, bool isBattle)
+    {
+        int effectInd = 0;
+        int argInd = 0;
+        var args = data.Split(separator);
+        while(effectInd < effects.Length && argInd < args.Length)
+        {
+            var effect = effects[effectInd++];
+            if (effect.CanSave(isBattle))
+            {
+                effect.Load(args[argInd++], isBattle);
+            }
+        }
+    }
 }

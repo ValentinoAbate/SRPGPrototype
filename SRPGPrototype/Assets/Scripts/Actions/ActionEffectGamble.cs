@@ -96,4 +96,56 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
     {
         return 0; //unable to simulate
     }
+
+    public override bool CanSave(bool isBattle)
+    {
+        foreach(var effect in successEffects)
+        {
+            if (effect.CanSave(isBattle))
+                return true;
+        }
+        foreach (var effect in failureEffects)
+        {
+            if (effect.CanSave(isBattle))
+                return true;
+        }
+        return false;
+    }
+
+    public override string Save(bool isBattle)
+    {
+        // TODO: allow multiple savables
+        foreach (var effect in successEffects)
+        {
+            if (effect.CanSave(isBattle))
+                return effect.Save(isBattle);
+        }
+        foreach (var effect in failureEffects)
+        {
+            if (effect.CanSave(isBattle))
+                return effect.Save(isBattle);
+        }
+        return string.Empty;
+    }
+
+    public override void Load(string data, bool isBattle)
+    {
+        // TODO: allow multiple savables
+        foreach (var effect in successEffects)
+        {
+            if (effect.CanSave(isBattle))
+            {
+                effect.Load(data, isBattle);
+                return;
+            }
+        }
+        foreach (var effect in failureEffects)
+        {
+            if (effect.CanSave(isBattle))
+            {
+                effect.Load(data, isBattle);
+                return;
+            }
+        }
+    }
 }

@@ -16,4 +16,19 @@ public class ProgramEffectAddStatAfterActionAbilityTurnLimit : ProgramEffectAddS
     {
         return base.AppliesToAction(action, cost, user, out baseValue) && useLimiter.TryUse();
     }
+
+    public override bool CanSave(bool isBattle) => isBattle;
+
+    public override string Save(bool isBattle)
+    {
+        return isBattle ? useLimiter.Save() : string.Empty;
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        if (isBattle)
+        {
+            useLimiter.Load(data);
+        }
+    }
 }

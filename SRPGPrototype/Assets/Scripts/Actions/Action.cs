@@ -320,4 +320,85 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         }
         return ActionType.CompareTo(other.ActionType);
     }
+
+    private const char separator = '_';
+
+    public string Save(bool isBattle)
+    {
+        var ret = new System.Text.StringBuilder();
+        ret.Append(TimesUsed);
+        ret.Append(separator);
+        ret.Append(FreeUses);
+        ret.Append(separator);
+        if (isBattle)
+        {
+            ret.Append(TimesUsedThisBattle);
+            ret.Append(separator);
+            ret.Append(FreeUsesThisBattle);
+            ret.Append(separator);
+            ret.Append(TimesUsedThisTurn);
+            ret.Append(separator);
+            ret.Append(FreeUsesThisTurn);
+            ret.Append(separator);
+        }
+        foreach(var sub in SubActions)
+        {
+            if (sub.CanSave(isBattle))
+            {
+                ret.Append(sub.Save(isBattle));
+                ret.Append(separator);
+            }
+        }
+        ret.Remove(ret.Length - 1, 1);
+        return ret.ToString();
+    }
+
+    public void Load(string data, bool isBattle)
+    {
+        var args = data.Split(separator);
+        int ind = 0;
+        try
+        {
+            if(int.TryParse(args[ind++], out int timesUsed))
+            {
+                TimesUsed = timesUsed;
+            }
+            if(int.TryParse(args[ind++], out int freeUses))
+            {
+                FreeUses = freeUses;
+            }
+            if (isBattle)
+            {
+                if (int.TryParse(args[ind++], out int timesUsedThisBattle))
+                {
+                    TimesUsedThisBattle = timesUsedThisBattle;
+                }
+                if (int.TryParse(args[ind++], out int freeUsesThisBattle))
+                {
+                    FreeUsesThisBattle = freeUsesThisBattle;
+                }
+                if (int.TryParse(args[ind++], out int timesUsedThisTurn))
+                {
+                    TimesUsedThisTurn = timesUsedThisTurn;
+                }
+                if (int.TryParse(args[ind++], out int freeUsesThisTurn))
+                {
+                    FreeUsesThisTurn = freeUsesThisTurn;
+                }
+            }
+        }
+        catch
+        {
+            return;
+        }
+        int subInd = 0;
+        while(ind < args.Length && subInd < subActions.Length)
+        {
+            var sub = subActions[subInd++];
+            if (sub.CanSave(isBattle))
+            {
+                sub.Load(args[ind++], isBattle);
+            }
+        }
+    }
 }

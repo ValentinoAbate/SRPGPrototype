@@ -44,7 +44,12 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
 
     public void OnBattleStart(BattleGrid grid, Unit unit)
     {
-        TurnsLeft = numTurns;
+        Activate(numTurns, unit);
+    }
+
+    private void Activate(int turns, Unit unit)
+    {
+        TurnsLeft = turns;
         barrierObject = Instantiate(barrierPrefab, unit.FxContainer);
     }
 
@@ -57,6 +62,28 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
                 Destroy(barrierObject);
             }
         }
+    }
 
+    public override bool CanSave(bool isBattle) => isBattle;
+
+    public override string Save(bool isBattle)
+    {
+        if (!isBattle)
+            return string.Empty;
+        return TurnsLeft.ToString();
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        if (!isBattle || unit == null)
+            return;
+        if(int.TryParse(data, out int savedTurnsLeft))
+        {
+            TurnsLeft = savedTurnsLeft;
+            if(TurnsLeft > 0)
+            {
+                Activate(TurnsLeft, unit);
+            }
+        }
     }
 }

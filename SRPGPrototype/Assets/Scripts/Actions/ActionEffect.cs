@@ -57,4 +57,15 @@ public abstract class ActionEffect : MonoBehaviour
         return targets;
     }
 
+    public virtual bool CanSave(bool isBattle) => false;
+
+    public virtual string Save(bool isBattle)
+    {
+        return string.Empty;
+    }
+
+    public virtual void Load(string data, bool isBattle)
+    {
+
+    }
 }

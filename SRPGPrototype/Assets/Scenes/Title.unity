@@ -595,7 +595,7 @@ PrefabInstance:
     - target: {fileID: 49778638252763750, guid: ffd14c1a1c680a644a254eb4f8a0b459,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 750
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 49778638252763750, guid: ffd14c1a1c680a644a254eb4f8a0b459,
         type: 3}
@@ -1475,18 +1475,8 @@ MonoBehaviour:
   - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
   - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
   - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
-  - {fileID: 4551076113953349650, guid: 8604679681ead8043a1a8bf03bcf6057, type: 3}
-  - {fileID: 4551076113953349650, guid: 3893de096c8bc4d488b3b317b675a709, type: 3}
-  - {fileID: 4551076113953349650, guid: 4fa8bc833e4c1c547842fcf19c05b474, type: 3}
-  - {fileID: 4551076113953349650, guid: d95d9c446325ea448baf4e5cc4f7a5f4, type: 3}
-  - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
-  - {fileID: 4551076113953349650, guid: 93d8e6e8d5dfa914299a0c37f2b8b592, type: 3}
-  - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
-  - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
-  - {fileID: 4551076113953349650, guid: 87845b6b57a3f89449f0e44dc84dc512, type: 3}
-  - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
-  - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
-  - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
+  - {fileID: 4551076113953349650, guid: ab296612cd4d7a64484cadc576714018, type: 3}
+  - {fileID: 4551076113953349650, guid: b17b9c1b66df34f44af5a0870e48c0f4, type: 3}
   debugShells:
   - {fileID: 2078634837081122101, guid: b76e122ca843eac4386d39de1ae59877, type: 3}
   debugMoney: 99999

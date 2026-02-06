@@ -288,6 +288,7 @@ public class Program : GridObject, ILootable, IHasKey
     private const int variantId = 1;
     private const int upgradeId = 2;
     public const int fusionId = 3;
+    private const int effectId = 4;
 
     public SaveManager.ProgramData Save(ref List<SaveManager.ProgramData> fArgs)
     {
@@ -332,8 +333,23 @@ public class Program : GridObject, ILootable, IHasKey
             fArgs.Add(p2);
             data.AddData(fusionId, p1.id.ToString(), p2.id.ToString(), DisplayName, shape.Save());
         }
-
-        // TODO: effect data
+        if(effects.Length > 0)
+        {
+            List<string> effectData = null;
+            for (int i = 0; i < effects.Length; i++)
+            {
+                var effect = effects[i];
+                if (effect.CanSave(false))
+                {
+                    effectData ??= new List<string>(effects.Length - i);
+                    effectData.Add(effect.Save(false));
+                }
+            }
+            if(effectData != null)
+            {
+                data.AddData(effectId, effectData);
+            }
+        }
         return data;
     }
 
@@ -374,6 +390,22 @@ public class Program : GridObject, ILootable, IHasKey
                     if (i >= Upgrades.Count)
                         break;
                     Upgrades[i].Load(data[i]);
+                }
+            }
+            else if(type == effectId)
+            {
+                if(data.Count > 0)
+                {
+                    int index = 0;
+                    foreach (var effect in effects)
+                    {
+                        if (effect.CanSave(false))
+                        {
+                            effect.Load(data[index++], false, null);
+                            if (index >= data.Count)
+                                break;
+                        }
+                    }
                 }
             }
         }

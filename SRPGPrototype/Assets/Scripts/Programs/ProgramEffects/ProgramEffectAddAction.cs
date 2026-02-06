@@ -18,4 +18,16 @@ public class ProgramEffectAddAction : ProgramEffect
     {
         data.actions.Add(action);
     }
+
+    public override bool CanSave(bool isBattle) => true;
+
+    public override string Save(bool isBattle)
+    {
+        return action.Save(isBattle);
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        action.Load(data, isBattle);
+    }
 }

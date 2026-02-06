@@ -20,4 +20,19 @@ public class ProgramEffectAddStatOnDamagedLimited : ProgramEffectAddStatOnDamage
         }
         base.Ability(grid, self, source, amount);
     }
+
+    public override bool CanSave(bool isBattle) => isBattle;
+
+    public override string Save(bool isBattle)
+    {
+        return isBattle ? limiter.Save() : string.Empty;
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        if (isBattle)
+        {
+            limiter.Load(data);
+        }
+    }
 }

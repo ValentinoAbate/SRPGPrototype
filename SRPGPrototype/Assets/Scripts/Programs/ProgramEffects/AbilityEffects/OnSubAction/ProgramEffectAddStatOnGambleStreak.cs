@@ -33,4 +33,19 @@ public class ProgramEffectAddStatOnGambleStreak : ProgramEffectAddSubActionAbili
             }
         }
     }
+
+    public override bool CanSave(bool isBattle) => true;
+
+    public override string Save(bool isBattle)
+    {
+        return streak.ToString();
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        if(int.TryParse(data, out int savedStreak))
+        {
+            streak = savedStreak;
+        }
+    }
 }

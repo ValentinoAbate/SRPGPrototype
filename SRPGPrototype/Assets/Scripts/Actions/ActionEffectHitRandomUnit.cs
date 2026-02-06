@@ -63,4 +63,10 @@ public class ActionEffectHitRandomUnit : ActionEffect, IDamagingActionEffect, IG
         }
         return 0;
     }
+
+    public override bool CanSave(bool isBattle) => effectToApply.CanSave(isBattle);
+
+    public override string Save(bool isBattle) => effectToApply.Save(isBattle);
+
+    public override void Load(string data, bool isBattle) => effectToApply.Load(data, isBattle);
 }

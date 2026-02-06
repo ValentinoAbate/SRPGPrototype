@@ -36,13 +36,37 @@ public class ProgramEffectAddIncomingDamageModBarrierOnHit : ProgramEffectIncomi
 
     private void OnDamaged(BattleGrid grid, Unit self, Unit source, int amount)
     {
-        active = true;
-        barrierObject = Instantiate(barrierPrefab, self.FxContainer);
+        Activate(self);
     }
 
     public void OnPhaseEnd(BattleGrid grid, Unit unit)
     {
         active = false;
         Destroy(barrierObject);
+    }
+
+    private void Activate(Unit self)
+    {
+        active = true;
+        barrierObject = Instantiate(barrierPrefab, self.FxContainer);
+    }
+
+    public override bool CanSave(bool isBattle) => isBattle;
+
+    public override string Save(bool isBattle)
+    {
+        if (!isBattle)
+            return string.Empty;
+        return BoolUtils.ToStringInt(active);
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        if (!isBattle || unit == null)
+            return;
+        if (active = BoolUtils.FromStringInt(data))
+        {
+            Activate(unit);
+        }
     }
 }

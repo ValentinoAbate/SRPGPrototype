@@ -26,4 +26,21 @@ public class ProgramEffectIncomingDamageModFullLimited : ProgramEffectAddIncomin
         }
         return -damage;
     }
+
+    public override bool CanSave(bool isBattle) => isBattle;
+
+    public override string Save(bool isBattle)
+    {
+        if (!isBattle)
+            return string.Empty;
+        return limiter.Save();
+    }
+
+    public override void Load(string data, bool isBattle, Unit unit)
+    {
+        if (isBattle)
+        {
+            limiter.Load(data);
+        }
+    }
 }

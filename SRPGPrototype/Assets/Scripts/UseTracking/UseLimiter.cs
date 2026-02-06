@@ -45,4 +45,17 @@ public class UseLimiter
     {
         currUses = 0;
     }
+
+    public string Save()
+    {
+        return currUses.ToString();
+    }
+
+    public void Load(string data)
+    {
+        if(int.TryParse(data, out int uses))
+        {
+            currUses = uses;
+        }
+    }
 }
