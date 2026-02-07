@@ -333,15 +333,16 @@ public class Program : GridObject, ILootable, IHasKey
             fArgs.Add(p2);
             data.AddData(fusionId, p1.id.ToString(), p2.id.ToString(), DisplayName, shape.Save());
         }
-        if(effects.Length > 0)
+        var currentEffects = Effects;
+        if (currentEffects.Length > 0)
         {
             List<string> effectData = null;
-            for (int i = 0; i < effects.Length; i++)
+            for (int i = 0; i < currentEffects.Length; i++)
             {
-                var effect = effects[i];
+                var effect = currentEffects[i];
                 if (effect.CanSave(false))
                 {
-                    effectData ??= new List<string>(effects.Length - i);
+                    effectData ??= new List<string>(currentEffects.Length - i);
                     effectData.Add(effect.Save(false));
                 }
             }
@@ -397,7 +398,7 @@ public class Program : GridObject, ILootable, IHasKey
                 if(data.Count > 0)
                 {
                     int index = 0;
-                    foreach (var effect in effects)
+                    foreach (var effect in Effects)
                     {
                         if (effect.CanSave(false))
                         {
