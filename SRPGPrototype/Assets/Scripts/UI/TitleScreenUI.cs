@@ -53,7 +53,6 @@ public class TitleScreenUI : MonoBehaviour
     public void ContinueRun()
     {
         SaveManager.Load();
-        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 
     public void Quit()

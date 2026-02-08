@@ -453,7 +453,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         return true;
     }
 
-    public SaveManager.ShellData Save(ref List<SaveManager.ProgramData> fArgs)
+    public SaveManager.ShellData Save(bool isBattle, ref List<SaveManager.ProgramData> fArgs)
     {
         var shellData = new SaveManager.ShellData()
         {
@@ -468,13 +468,13 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
             shellData.prs.Add(new SaveManager.InstalledProgramData()
             {
                 p = prog.location,
-                pr = prog.program.Save(ref fArgs),
+                pr = prog.program.Save(isBattle, ref fArgs),
             });
         }
         return shellData;
     }
 
-    public void Load(SaveManager.ShellData data, SaveManager.Loader loader)
+    public void Load(SaveManager.ShellData data, SaveManager.Loader loader, bool isBattle)
     {
         Id = data.id;
         Stats.HP = data.hp;
@@ -482,7 +482,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         SetLevel(data.lv);
         foreach (var programData in data.prs)
         {
-            if(loader.CreateProgram(programData.pr, out Program program))
+            if(loader.CreateProgram(programData.pr, isBattle, out Program program))
             {
                 Install(program, programData.p);
             }

@@ -290,7 +290,7 @@ public class Program : GridObject, ILootable, IHasKey
     public const int fusionId = 3;
     private const int effectId = 4;
 
-    public SaveManager.ProgramData Save(ref List<SaveManager.ProgramData> fArgs)
+    public SaveManager.ProgramData Save(bool isBattle, ref List<SaveManager.ProgramData> fArgs)
     {
         var data = new SaveManager.ProgramData()
         {
@@ -327,8 +327,8 @@ public class Program : GridObject, ILootable, IHasKey
         }
         if(FusionArg1 != null && FusionArg2 != null)
         {
-            var p1 = FusionArg1.Save(ref fArgs);
-            var p2 = FusionArg2.Save(ref fArgs);
+            var p1 = FusionArg1.Save(isBattle, ref fArgs);
+            var p2 = FusionArg2.Save(isBattle, ref fArgs);
             fArgs.Add(p1);
             fArgs.Add(p2);
             data.AddData(fusionId, p1.id.ToString(), p2.id.ToString(), DisplayName, shape.Save());
@@ -354,7 +354,7 @@ public class Program : GridObject, ILootable, IHasKey
         return data;
     }
 
-    public void Load(SaveManager.ProgramData programData)
+    public void Load(SaveManager.ProgramData programData, bool isBattle)
     {
         Id = programData.id;
         if (!string.IsNullOrEmpty(programData.u))

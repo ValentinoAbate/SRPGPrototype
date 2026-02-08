@@ -10,10 +10,22 @@ public static class SaveManager
     public const char separator = ',';
     private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
     public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
-    public static void Save()
+
+    public enum State
     {
-        var runData = new RunData();
-        PersistantData.main.SaveRunData(runData);
+        Cust,
+        UnitPlacement,
+        Battle,
+        Loot,
+    }
+
+    public static void Save(State state)
+    {
+        var runData = new RunData()
+        {
+            state = state,
+        };
+        PersistantData.main.SaveRunData(runData, state == State.Battle);
         SaveFile(runData, RunFilePath());
     }
 
@@ -21,7 +33,15 @@ public static class SaveManager
     {
         var runData = LoadFile<RunData>(RunFilePath());
         var loader = new Loader(runData);
-        PersistantData.main.LoadRunData(runData, loader);
+        PersistantData.main.LoadRunData(runData, loader, runData.state == State.Battle);
+        if(runData.state == State.UnitPlacement)
+        {
+            SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
+        }
+        else
+        {
+            SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
+        }
     }
 
     public static void ClearRunData()
@@ -91,14 +111,14 @@ public static class SaveManager
             }
         }
 
-        public bool CreateShell(ShellData data, out Shell shell) => CreateShell(data, null, out shell);
+        public bool CreateShell(ShellData data, bool isBattle, out Shell shell) => CreateShell(data, null, isBattle, out shell);
 
-        public bool CreateShell(ShellData data, Transform parent, out Shell shell)
+        public bool CreateShell(ShellData data, Transform parent, bool isBattle, out Shell shell)
         {
             if (Lookup.TryGetShell(data.k, out var prefab))
             {
                 shell = Create<Shell>(prefab.gameObject, parent);
-                shell.Load(data, this);
+                shell.Load(data, this, isBattle);
                 LoadedShells.Add(shell.Id, shell);
                 return true;
             }
@@ -106,18 +126,18 @@ public static class SaveManager
             return false;
         }
 
-        public bool CreateProgram(ProgramData data, out Program program) => CreateProgram(data, null, out program);
+        public bool CreateProgram(ProgramData data, bool isBattle, out Program program) => CreateProgram(data, null, isBattle, out program);
 
-        public bool CreateProgram(ProgramData data, Transform parent, out Program program)
+        public bool CreateProgram(ProgramData data, Transform parent, bool isBattle, out Program program)
         {
             if(Lookup.TryGetProgram(data.k, out var prefab))
             {
                 program = Create<Program>(prefab.gameObject, parent);
                 if (program.IsFusion)
                 {
-                    CreateFusion(program, data, parent);
+                    CreateFusion(program, data, parent, isBattle);
                 }
-                program.Load(data);
+                program.Load(data, isBattle);
                 LoadedPrograms.Add(program.Id, program);
                 return true;
             }
@@ -125,7 +145,7 @@ public static class SaveManager
             return false;
         }
 
-        private bool CreateFusion(Program fusion, ProgramData data, Transform parent)
+        private bool CreateFusion(Program fusion, ProgramData data, Transform parent, bool isBattle)
         {
             if (!data.TryFindEntry(Program.fusionId, out var entry))
                 return false;
@@ -147,7 +167,7 @@ public static class SaveManager
             }
             if (!FusionArgs.TryGetValue(pid1, out var pData1) || !FusionArgs.TryGetValue(pid2, out var pData2))
                 return false;
-            if (CreateProgram(pData1, parent, out var p1) && CreateProgram(pData2, parent, out var p2))
+            if (CreateProgram(pData1, parent, isBattle, out var p1) && CreateProgram(pData2, parent, isBattle, out var p2))
             {
                 PersistantData.main.programFuser.FusePrograms(fusion, p1, p2, fusionPattern, fusionName);
                 return true;
@@ -171,6 +191,7 @@ public static class SaveManager
     [Serializable]
     public class RunData
     {
+        public State state;
         public int currId;
         public InventoryData inv;
         public MapManagerData map;
@@ -185,6 +206,7 @@ public static class SaveManager
     {
         public int depth;
         public List<SavedMap> maps;
+        public int sInd;
         public List<EncounterData> next;
     }
 

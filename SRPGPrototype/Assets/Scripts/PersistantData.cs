@@ -44,18 +44,18 @@ public class PersistantData : MonoBehaviour
         shopManager.Initialize();
     }
 
-    public void SaveRunData(SaveManager.RunData runData)
+    public void SaveRunData(SaveManager.RunData runData, bool isBattle)
     {
         runData.currId = CurrentId;
-        runData.inv = inventory.Save(ref runData.fArgs);
+        runData.inv = inventory.Save(isBattle, ref runData.fArgs);
         runData.map = mapManager.Save();
         runData.shops = shopManager.Save(ref runData.fArgs);
         runData.presets = presetManager.Save();
     }
 
-    public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader)
+    public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader, bool isBattle)
     {
-        inventory.Load(data.inv, loader);
+        inventory.Load(data.inv, loader, isBattle);
         mapManager.Load(data.map);
         shopManager.Load(data.shops, loader);
         presetManager.Load(data.presets, loader);

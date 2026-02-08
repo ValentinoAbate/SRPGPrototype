@@ -198,7 +198,7 @@ public class Inventory : MonoBehaviour
 
     public bool CanAfford(int cost) => Money >= cost;
 
-    public SaveManager.InventoryData Save(ref List<SaveManager.ProgramData> fArgs)
+    public SaveManager.InventoryData Save(bool isBattle, ref List<SaveManager.ProgramData> fArgs)
     {
         var invData = new SaveManager.InventoryData()
         {
@@ -208,29 +208,29 @@ public class Inventory : MonoBehaviour
         };
         foreach (var program in Programs)
         {
-            invData.prs.Add(program.Save(ref fArgs));
+            invData.prs.Add(program.Save(isBattle, ref fArgs));
         }
         foreach (var shell in Shells)
         {
-            invData.shs.Add(shell.Save(ref fArgs));
+            invData.shs.Add(shell.Save(isBattle, ref fArgs));
         }
         return invData;
     }
 
-    public void Load(SaveManager.InventoryData data, SaveManager.Loader loader)
+    public void Load(SaveManager.InventoryData data, SaveManager.Loader loader, bool isBattle)
     {
         Clear();
         Money = data.money;
         foreach (var programData in data.prs)
         {
-            if (loader.CreateProgram(programData, out var program))
+            if (loader.CreateProgram(programData, isBattle, out var program))
             {
                 AddProgram(program);
             }
         }
         foreach (var shellData in data.shs)
         {
-            if (loader.CreateShell(shellData, out var shell))
+            if (loader.CreateShell(shellData, isBattle, out var shell))
             {
                 AddShellInternal(shell, false);
             }

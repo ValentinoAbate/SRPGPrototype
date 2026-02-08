@@ -68,13 +68,13 @@ public class ShopManager : MonoBehaviour
             shop.prs = new List<SaveManager.ProgramData>(programs.Count);
             foreach (var program in programs)
             {
-                shop.prs.Add(program.Save(ref fArgs));
+                shop.prs.Add(program.Save(false, ref fArgs));
             }
             var shells = kvp.Value.Shells;
             shop.shs = new List<SaveManager.ShellData>(shells.Count);
             foreach (var shell in shells)
             {
-                shop.shs.Add(shell.Save(ref fArgs));
+                shop.shs.Add(shell.Save(false, ref fArgs));
             }
             list.Add(shop);
         }
@@ -89,14 +89,14 @@ public class ShopManager : MonoBehaviour
             var shop = new ShopData();
             foreach(var programData in savedShop.prs)
             {
-                if(loader.CreateProgram(programData, objectContainer, out var program))
+                if(loader.CreateProgram(programData, objectContainer, false, out var program))
                 {
                     shop.AddProgram(program);
                 }
             }
             foreach (var shellData in savedShop.shs)
             {
-                if (loader.CreateShell(shellData, objectContainer, out var shell))
+                if (loader.CreateShell(shellData, objectContainer, false, out var shell))
                 {
                     shop.AddShell(shell);
                 }

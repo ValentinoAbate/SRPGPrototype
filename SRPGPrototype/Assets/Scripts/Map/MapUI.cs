@@ -18,7 +18,7 @@ public class MapUI : MonoBehaviour
     public BattleCursor cursor;
 
     private readonly List<Encounter> encounterChoices = new List<Encounter>();
-    private Encounter currentPreviewEncounter = null;
+    private int currIndex = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -27,37 +27,37 @@ public class MapUI : MonoBehaviour
         encounterChoices.AddRange(PersistantData.main.mapManager.NextEncounters);
         ShowEncounterPreview(encounterChoices[0], 0);
         UIManager.main.HideAllDescriptionUI();
-        SaveManager.Save();
+        SaveManager.Save(SaveManager.State.Cust);
     }
 
     private void Update()
     {
-        if (currentPreviewEncounter == null)
+        if (currIndex < 0)
             return;
         if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Tab))
         {
-            NextEncounter(currentPreviewEncounter);
+            NextEncounter(currIndex);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            NextEncounter(currentPreviewEncounter, true);
+            NextEncounter(currIndex, true);
         }
     }
 
     private void ShowEncounterPreview(Encounter encounter, int index)
     {
-        currentPreviewEncounter = encounter;
+        currIndex = index;
         var dimensions = encounter.dimensions;
         previewGrid.SetDimensions(dimensions.x, dimensions.y);
         previewGrid.CenterAtPosition(BattleGrid.DefaultCenter);
         previewUI.SetActive(true);
 
         confirmEncounterButton.onClick.RemoveAllListeners();
-        confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(encounter));
+        confirmEncounterButton.onClick.AddListener(() => ConfirmEncounter(index));
         nextEncounterButton.onClick.RemoveAllListeners();
-        nextEncounterButton.onClick.AddListener(() => NextEncounter(encounter));
+        nextEncounterButton.onClick.AddListener(() => NextEncounter(index));
         prevEncounterButton.onClick.RemoveAllListeners();
-        prevEncounterButton.onClick.AddListener(() => NextEncounter(encounter, true));
+        prevEncounterButton.onClick.AddListener(() => NextEncounter(index, true));
 
         InitializePreviewObjects(encounter);
         UIManager.main.TopBarUI.SetTitleText($"{encounter.nameOverride ?? "Encounter"} ({index + 1}/{encounterChoices.Count})");
@@ -94,9 +94,8 @@ public class MapUI : MonoBehaviour
         }
     }
 
-    private void NextEncounter(Encounter current, bool backwards = false)
+    private void NextEncounter(int index, bool backwards = false)
     {
-        int index = encounterChoices.IndexOf(current);
         if (backwards)
         {
             if (--index < 0)
@@ -132,10 +131,10 @@ public class MapUI : MonoBehaviour
         }
     }
 
-    private void ConfirmEncounter(Encounter encounter)
+    private void ConfirmEncounter(int index)
     {
-        PersistantData.main.mapManager.CurrentEncounter = encounter;
-        UIManager.main.TopBarUI.SetTitleText(encounter.nameOverride ?? "Encounter");
+        PersistantData.main.mapManager.SelectedEncounterIndex = index;
+        UIManager.main.TopBarUI.SetTitleText(PersistantData.main.mapManager.CurrentEncounter.nameOverride ?? "Encounter");
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
     }
 

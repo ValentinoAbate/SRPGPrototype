@@ -7,7 +7,8 @@ using UnityEngine;
 /// </summary>
 public class MapManager : MonoBehaviour
 {
-    public Encounter CurrentEncounter { get; set; }
+    public Encounter CurrentEncounter => NextEncounters[SelectedEncounterIndex];
+    public int SelectedEncounterIndex { get; set; }
     public IReadOnlyList<Encounter> NextEncounters => nextEncounters;
     private readonly List<Encounter> nextEncounters = new List<Encounter>();
     public int BaseMapDepth { get; private set; }
@@ -34,7 +35,8 @@ public class MapManager : MonoBehaviour
 
     public void GenerateNextEncounters()
     {
-        while(mapStack.Count > 0)
+        SelectedEncounterIndex = -1;
+        while (mapStack.Count > 0)
         {
             var mapEntry = mapStack.Peek();
             var map = mapEntry.data;
@@ -66,6 +68,7 @@ public class MapManager : MonoBehaviour
         {
             depth = BaseMapDepth,
             maps = new List<SaveManager.SavedMap>(mapStack.Count),
+            sInd = SelectedEncounterIndex,
             next = new List<SaveManager.EncounterData>(NextEncounters.Count)
         };
         foreach(var mapEntry in mapStack)
@@ -94,6 +97,7 @@ public class MapManager : MonoBehaviour
             encounter.Load(encounterData);
             nextEncounters.Add(encounter);
         }
+        SelectedEncounterIndex = data.sInd;
         BaseMapDepth = data.depth;
         mapStack.Clear();
         for (int i = data.maps.Count - 1; i >= 0; --i)
