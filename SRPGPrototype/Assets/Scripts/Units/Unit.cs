@@ -390,6 +390,39 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         return PriorityLevel.CompareTo(other.PriorityLevel);
     }
 
+    public virtual SaveManager.UnitData Save()
+    {
+        var data = new SaveManager.UnitData()
+        {
+            k = Key,
+            p = Pos,
+            hp = HP,
+            mHp = MaxHP,
+            ap = AP,
+            mAp = MaxAP,
+            r = Repair,
+            brk = Break.Value,
+            pow = Power.Value,
+            hk = HotkeyIndex,
+            sp = StartingPos,
+        };
+        return data;
+    }
+
+    public virtual void Load(SaveManager.UnitData data, SaveManager.Loader loader)
+    {
+        Pos = data.p;
+        MaxHP = data.mHp;
+        HP = data.hp;
+        MaxAP = data.mAp;
+        AP = data.ap;
+        Repair = data.r;
+        Break.Value = data.brk;
+        Power.Value = data.pow;
+        HotkeyIndex = data.hk;
+        StartingPos = data.sp;
+    }
+
 #if UNITY_EDITOR
     private static readonly List<string> removeWords = new List<string>()
     {

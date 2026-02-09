@@ -26,4 +26,25 @@ public class PlayerDroneUnit : PlayerUnit
         inventory.RemoveShell(Shell, true);
         shell = null;
     }
+
+    protected override List<string> SaveArgs()
+    {
+        var args = base.SaveArgs();
+        args.Add(shell.Id.ToString());
+        return args;
+    }
+
+    protected override void LoadArgs(Queue<string> args, SaveManager.Loader loader)
+    {
+        base.LoadArgs(args, loader);
+        if (args.Count <= 0)
+        {
+            return;
+        }
+        var shidStr = args.Dequeue();
+        if(int.TryParse(shidStr, out int shid) && loader.LoadedShells.TryGetValue(shid, out var sh))
+        {
+            SetShell(sh);
+        }
+    }
 }

@@ -364,6 +364,7 @@ public class BattleUI : MonoBehaviour
         if (!playerPhase.CheckEndBattle())
         {
             EnterUnitSelection();
+            SaveManager.Save(SaveManager.State.Battle);
         }
     }
 

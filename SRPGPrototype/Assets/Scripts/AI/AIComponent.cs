@@ -376,4 +376,8 @@ public abstract class AIComponent : MonoBehaviour
     }
 
     private static int ShortestTargetPathComparer(TargetPath p1, TargetPath p2) => p1.path.Count.CompareTo(p2.path.Count);
+
+    public virtual bool CanSave => false;
+    public virtual string Save() => string.Empty;
+    public virtual void Load(string data) { }
 }

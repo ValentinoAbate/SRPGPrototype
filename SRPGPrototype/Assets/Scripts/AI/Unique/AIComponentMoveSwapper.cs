@@ -55,4 +55,17 @@ public class AIComponentMoveSwapper : AIComponentBasic
         sprite.sprite = sprites[index];
         sprite.color = colors[index];
     }
+
+    public override bool CanSave => true;
+
+    public override string Save()
+    {
+        return BoolUtils.ToStringInt(state);
+    }
+
+    public override void Load(string data)
+    {
+        state = BoolUtils.FromStringInt(data);
+        SetData();
+    }
 }

@@ -60,4 +60,15 @@ public class AIComponentSpawner : AIComponent
             StandardAction.UseAll(grid, self, tPos);
         }
     }
+
+    public override bool CanSave => true;
+    public override string Save()
+    {
+        return BoolUtils.ToStringInt(skipTurn);
+    }
+    public override void Load(string data)
+    {
+        skipTurn = BoolUtils.FromStringInt(data);
+        animator.SetBool(readyHash, skipTurn);
+    }
 }

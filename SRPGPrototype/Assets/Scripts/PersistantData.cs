@@ -8,6 +8,19 @@ using UnityEngine;
 //[ExecuteAlways]
 public class PersistantData : MonoBehaviour
 {
+    public int CurrentId { get; private set; } = 0;
+    public int NewId => ++CurrentId;
+    public Encounter CurrentEncounter
+    {
+        get
+        {
+            if (BattleData.SelectedEncounterIndex < 0 || BattleData.SelectedEncounterIndex >= mapManager.NextEncounters.Count)
+                return null;
+            return mapManager.NextEncounters[BattleData.SelectedEncounterIndex];
+        }
+    }
+    public BattleInitializationData BattleData { get; } = new BattleInitializationData();
+
     public static PersistantData main;
     public Inventory inventory;
     public MapManager mapManager;
@@ -15,9 +28,6 @@ public class PersistantData : MonoBehaviour
     public ShopManager shopManager;
     public LootManager loot;
     public ProgramFuser programFuser;
-
-    public int CurrentId { get; private set; } = 0;
-    public int NewId => ++CurrentId;
 
     private void Awake()
     {
@@ -44,21 +54,50 @@ public class PersistantData : MonoBehaviour
         shopManager.Initialize();
     }
 
-    public void SaveRunData(SaveManager.RunData runData, bool isBattle)
+    public void SaveRunData(SaveManager.RunData runData, SaveManager.State state)
     {
+        bool isBattle = state == SaveManager.State.Battle;
         runData.currId = CurrentId;
         runData.inv = inventory.Save(isBattle, ref runData.fArgs);
         runData.map = mapManager.Save();
         runData.shops = shopManager.Save(ref runData.fArgs);
         runData.presets = presetManager.Save();
+        runData.bInd = BattleData.SelectedEncounterIndex;
+        if (isBattle)
+        {
+            runData.battle = EncounterManager.main.Save();
+        }
     }
 
-    public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader, bool isBattle)
+    public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader, SaveManager.State state)
     {
+        bool isBattle = state == SaveManager.State.Battle;
         inventory.Load(data.inv, loader, isBattle);
         mapManager.Load(data.map);
         shopManager.Load(data.shops, loader);
         presetManager.Load(data.presets, loader);
+        LoadBattleData(data.battle, loader);
+        BattleData.SelectedEncounterIndex = data.bInd;
         CurrentId = data.currId;
+    }
+
+    private void LoadBattleData(SaveManager.BattleEncounterData battleData, SaveManager.Loader loader)
+    {
+        BattleData.LoadedUnits.Clear();
+        if (battleData.data == null)
+            return;
+        foreach (var unitData in battleData.data)
+        {
+            if(loader.CreateUnit(unitData, transform, out var unit))
+            {
+                BattleData.LoadedUnits.Add(unit);
+            }
+        }
+    }
+
+    public class BattleInitializationData
+    {
+        public int SelectedEncounterIndex { get; set; }
+        public List<Unit> LoadedUnits { get; } = new List<Unit>();
     }
 }

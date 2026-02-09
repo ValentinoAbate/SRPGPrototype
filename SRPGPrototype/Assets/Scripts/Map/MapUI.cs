@@ -133,8 +133,8 @@ public class MapUI : MonoBehaviour
 
     private void ConfirmEncounter(int index)
     {
-        PersistantData.main.mapManager.SelectedEncounterIndex = index;
-        UIManager.main.TopBarUI.SetTitleText(PersistantData.main.mapManager.CurrentEncounter.nameOverride ?? "Encounter");
+        PersistantData.main.BattleData.SelectedEncounterIndex = index;
+        UIManager.main.TopBarUI.SetTitleText(PersistantData.main.CurrentEncounter.nameOverride ?? "Encounter");
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
+    public static EncounterManager main;
     [SerializeField] private PhaseManager phaseManager;
     public BattleGrid Grid => grid;
     [SerializeField] private BattleGrid grid;
@@ -17,6 +18,18 @@ public class EncounterManager : MonoBehaviour
     public LootData<Shell>.GenerateLootFunction GenerateShellLoot { get; set; }
     public System.Func<LootUI.MoneyData> GenerateMoneyLoot { get; set; }
 
+    private void Awake()
+    {
+        if(main == null)
+        {
+            main = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         Initialize();
@@ -25,7 +38,7 @@ public class EncounterManager : MonoBehaviour
     private void Initialize()
     {
         // Get the encounter from the map
-        var encounter = PersistantData.main.mapManager.CurrentEncounter;
+        var encounter = PersistantData.main.CurrentEncounter;
         // Setup Money Drop (if applicable)
         if (encounter.giveCompletionMoney)
         {
@@ -34,34 +47,59 @@ public class EncounterManager : MonoBehaviour
         // Initialize Grid
         grid.SetDimensions(encounter.dimensions.x, encounter.dimensions.y);
         grid.CenterAtPosition(BattleGrid.DefaultCenter);
-        // Instantiate and add units to the grid
-        var units = InitializeUnits(encounter.ambushUnits, encounter.Units);
-        // Instantiate spawn position objects
-        var spawnPositionObjects = new List<GameObject>(encounter.spawnPositions.Count);
-        foreach(var pos in encounter.spawnPositions)
+
+        // Load battle, else initialize from next encounters
+        if (PersistantData.main.BattleData.LoadedUnits.Count > 0)
         {
-            var spawnPosObj = Instantiate(spawnPositionPrefab);
-            spawnPosObj.transform.position = grid.GetSpace(pos);
-            spawnPositionObjects.Add(spawnPosObj);
-        }
-        // Initialize Battle UI
-        ui.Initialize();
-        void OnUnitPlacementComplete(IEnumerable<Unit> spawnedUnits)
-        {
-            spawnPositionObjects.ForEach(Destroy);
-            spawnPositionObjects.Clear();
-            units.AddRange(spawnedUnits);
-            units.Sort();
-            foreach(var unit in units)
+            // Load units
+            foreach(var unit in PersistantData.main.BattleData.LoadedUnits)
             {
-                unit.OnBattleStart(this);
+                unit.transform.SetParent(transform);
+                Grid.Add(unit.Pos, unit);
+                unit.transform.position = Grid.GetSpace(unit.Pos);
             }
+            PersistantData.main.BattleData.LoadedUnits.Clear();
+
+            // Initialize Battle UI
+            ui.Initialize();
             ui.SetGeneralUIEnabled(true);
+            // Hide unit placement UI
+            unitPlacementUI.Hide();
             // Start the active encounter
-            phaseManager.StartActiveEncounter(EndEncounter);
+            phaseManager.StartActiveEncounter(EndEncounter, false);
+            ui.BeginPlayerTurn();
         }
-        unitPlacementUI.Initialize(grid, encounter.spawnPositions, OnUnitPlacementComplete);
-        SaveManager.Save(SaveManager.State.UnitPlacement);
+        else
+        {
+            // Instantiate and add units to the grid
+            var units = InitializeUnits(encounter.ambushUnits, encounter.Units);
+            // Instantiate spawn position objects
+            var spawnPositionObjects = new List<GameObject>(encounter.spawnPositions.Count);
+            foreach (var pos in encounter.spawnPositions)
+            {
+                var spawnPosObj = Instantiate(spawnPositionPrefab);
+                spawnPosObj.transform.position = grid.GetSpace(pos);
+                spawnPositionObjects.Add(spawnPosObj);
+            }
+            // Initialize Battle UI
+            ui.Initialize();
+            void OnUnitPlacementComplete(IEnumerable<Unit> spawnedUnits)
+            {
+                spawnPositionObjects.ForEach(Destroy);
+                spawnPositionObjects.Clear();
+                units.AddRange(spawnedUnits);
+                units.Sort();
+                foreach (var unit in units)
+                {
+                    unit.OnBattleStart(this);
+                }
+                ui.SetGeneralUIEnabled(true);
+                // Start the active encounter
+                phaseManager.StartActiveEncounter(EndEncounter, true);
+            }
+            unitPlacementUI.Initialize(grid, encounter.spawnPositions, OnUnitPlacementComplete);
+            SaveManager.Save(SaveManager.State.UnitPlacement);
+        }
     }
 
     private List<Unit> InitializeUnits(IReadOnlyCollection<Encounter.UnitEntry> ambushUnitEntries, IReadOnlyCollection<Encounter.UnitEntry> entries)
@@ -167,4 +205,16 @@ public class EncounterManager : MonoBehaviour
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.TitleScene);
     }
 
+    public SaveManager.BattleEncounterData Save()
+    {
+        var data = new SaveManager.BattleEncounterData()
+        {
+            data = new List<SaveManager.UnitData>()
+        };
+        foreach (var unit in Grid)
+        {
+            data.data.Add(unit.Save());
+        }
+        return data;
+    }
 }

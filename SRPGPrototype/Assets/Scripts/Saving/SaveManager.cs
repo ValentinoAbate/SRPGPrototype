@@ -25,7 +25,7 @@ public static class SaveManager
         {
             state = state,
         };
-        PersistantData.main.SaveRunData(runData, state == State.Battle);
+        PersistantData.main.SaveRunData(runData, state);
         SaveFile(runData, RunFilePath());
     }
 
@@ -33,8 +33,8 @@ public static class SaveManager
     {
         var runData = LoadFile<RunData>(RunFilePath());
         var loader = new Loader(runData);
-        PersistantData.main.LoadRunData(runData, loader, runData.state == State.Battle);
-        if(runData.state == State.UnitPlacement)
+        PersistantData.main.LoadRunData(runData, loader, runData.state);
+        if(runData.state == State.UnitPlacement || runData.state == State.Battle)
         {
             SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
         }
@@ -175,6 +175,20 @@ public static class SaveManager
             return false;
         }
 
+        public bool CreateUnit(UnitData data, out Unit unit) => CreateUnit(data, null, out unit);
+
+        public bool CreateUnit(UnitData data, Transform parent, out Unit unit)
+        {
+            if (Lookup.TryGetUnit(data.k, out var prefab))
+            {
+                unit = Create<Unit>(prefab.gameObject, parent);
+                unit.Load(data, this);
+                return true;
+            }
+            unit = null;
+            return false;
+        }
+
         private T Create<T>(GameObject prefab, Transform parent) where T : MonoBehaviour
         {
             if(parent == null)
@@ -193,11 +207,13 @@ public static class SaveManager
     {
         public State state;
         public int currId;
+        public int bInd;
         public InventoryData inv;
         public MapManagerData map;
         public List<ShopData> shops;
         public List<PresetData> presets;
         public List<ProgramData> fArgs = new List<ProgramData>();
+        public BattleEncounterData battle;
         // Battle State
     }
 
@@ -206,7 +222,6 @@ public static class SaveManager
     {
         public int depth;
         public List<SavedMap> maps;
-        public int sInd;
         public List<EncounterData> next;
     }
 
@@ -239,6 +254,28 @@ public static class SaveManager
     }
 
     [Serializable]
+    public class BattleEncounterData
+    {
+        public List<UnitData> data;
+    }
+
+    [Serializable]
+    public class UnitData : HasData
+    {
+        public string k;
+        public Vector2Int p;
+        public int hp;
+        public int mHp;
+        public int ap;
+        public int mAp;
+        public int r;
+        public int brk;
+        public int pow;
+        public int hk;
+        public Vector2Int sp;
+    }
+
+    [Serializable]
     public class InventoryData
     {
         public int money;
@@ -265,16 +302,21 @@ public static class SaveManager
     }
 
     [Serializable]
-    public class ProgramData
+    public class ProgramData : HasData
     {
         public int id;
         public string k;
         public string u;
+    }
+
+    [Serializable]
+    public class HasData
+    {
         public List<DataEntry> d = new List<DataEntry>();
 
         public void AddData(int type, params string[] args)
         {
-            d.Add(new DataEntry() 
+            d.Add(new DataEntry()
             {
                 t = type,
                 d = new List<string>(args)
@@ -292,9 +334,9 @@ public static class SaveManager
 
         public bool TryFindEntry(int type, out DataEntry entry)
         {
-            foreach(var d in d)
+            foreach (var d in d)
             {
-                if(d.t == type)
+                if (d.t == type)
                 {
                     entry = d;
                     return true;

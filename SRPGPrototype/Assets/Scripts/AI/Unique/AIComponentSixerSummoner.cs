@@ -48,4 +48,19 @@ public class AIComponentSixerSummoner : AIComponentMage
             ++actionIndex;
         }
     }
+
+    public override bool CanSave => true;
+
+    public override string Save()
+    {
+        return actionIndex.ToString();
+    }
+
+    public override void Load(string data)
+    {
+        if (int.TryParse(data, out int savedInd))
+        {
+            actionIndex = savedInd;
+        }
+    }
 }

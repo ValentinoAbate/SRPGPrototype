@@ -69,12 +69,6 @@ public class PlayerUnit : Unit
         Break.Value = 0;
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        ResetStats();
-    }
-
     public override void DoRepair()
     {
         Shell.Stats.DoRepair();
@@ -87,5 +81,43 @@ public class PlayerUnit : Unit
             action.ResetUses(Action.Trigger.EncounterStart);
         DoRepair();
         return null;
+    }
+
+    private const int pdId = 0;
+
+    public override SaveManager.UnitData Save()
+    {
+        var data = base.Save();
+        data.AddData(pdId, SaveArgs());
+        return data;
+    }
+
+    public override void Load(SaveManager.UnitData data, SaveManager.Loader loader)
+    {
+        // Load Shell
+        foreach (var d in data.d)
+        {
+            if (d.t == pdId && d.Count > 0)
+            {
+                var stack = new Queue<string>(d);
+                LoadArgs(stack, loader);
+                break;
+            }
+        }
+        base.Load(data, loader);
+    }
+
+    protected virtual List<string> SaveArgs()
+    {
+        var args = new List<string>();
+        args.Add(BoolUtils.ToStringInt(IsMain));
+        return args;
+    }
+
+    protected virtual void LoadArgs(Queue<string> args, SaveManager.Loader loader)
+    {
+        if (args.Count <= 0)
+            return;
+        IsMain = BoolUtils.FromStringInt(args.Dequeue());
     }
 }

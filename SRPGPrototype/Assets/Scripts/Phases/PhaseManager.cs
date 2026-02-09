@@ -32,7 +32,7 @@ public class PhaseManager : MonoBehaviour, IPausable
     /// <summary>
     /// Initialize the turn count, run the battle start coroutine, and start the first phase
     /// </summary>
-    public void StartActiveEncounter(System.Action onEnd)
+    public void StartActiveEncounter(System.Action onEnd, bool start)
     {
         // Initialize Phases
         foreach(var phase in phases)
@@ -43,7 +43,15 @@ public class PhaseManager : MonoBehaviour, IPausable
         Turn = 1;
         EncounterActive = true;
         OnActiveEncounterEnd += onEnd;
-        StartCoroutine(StartEncounterCR());
+        if (start)
+        {
+            Transitioning = true;
+            StartCoroutine(StartEncounterCR());
+        }
+        else
+        {
+            Transitioning = false;
+        }
     }
 
     private IEnumerator StartEncounterCR()

@@ -11,6 +11,7 @@ public class PlayerPhase : Phase
     {
         if (CheckEndBattle())
             yield break;
+        SaveManager.Save(SaveManager.State.Battle);
         foreach (var unit in GetUnits<Unit>())
         {
             if (!unit.Dead)

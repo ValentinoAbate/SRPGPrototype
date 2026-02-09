@@ -125,6 +125,67 @@ public abstract class AIUnit : Unit
         return contextActions.Length > 0 && grid.IsAdjacent(this, user) ? contextActions : System.Array.Empty<Action>();
     }
 
+    private const int aiId = 0;
+    private const int abilityInd = 1;
+
+    public override SaveManager.UnitData Save()
+    {
+        var data = base.Save();
+        if (AI != null && AI.CanSave)
+        {
+            data.AddData(aiId, AI.Save());
+        }
+        if (abilities.Length > 0)
+        {
+            List<string> effectData = null;
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                var ability = abilities[i];
+                if (ability.CanSave(true))
+                {
+                    effectData ??= new List<string>(abilities.Length - i);
+                    effectData.Add(ability.Save(true));
+                }
+            }
+            if (effectData != null)
+            {
+                data.AddData(abilityInd, effectData);
+            }
+        }
+        return data;
+    }
+
+    public override void Load(SaveManager.UnitData data, SaveManager.Loader loader)
+    {
+        base.Load(data, loader);
+        foreach(var d in data.d)
+        {
+            if(d.t == aiId)
+            {
+                if (d.Count > 0)
+                {
+                    AI.Load(d.d[0]);
+                }
+            }
+            else if(d.t == abilityInd)
+            {
+                if (d.Count > 0)
+                {
+                    int index = 0;
+                    foreach (var ability in abilities)
+                    {
+                        if (ability.CanSave(true))
+                        {
+                            ability.Load(d[index++], true, this);
+                            if (index >= d.Count)
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 #if UNITY_EDITOR
     public void AttachAbilities()
     {

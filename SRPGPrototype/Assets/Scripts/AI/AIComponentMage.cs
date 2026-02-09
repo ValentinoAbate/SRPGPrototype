@@ -126,4 +126,17 @@ public class AIComponentMage : AIComponent
             SetCastReady(true);
         }
     }
+
+    public override bool CanSave => true;
+
+    public override string Save()
+    {
+        return BoolUtils.ToStringInt(readyToCast);
+    }
+
+    public override void Load(string data)
+    {
+        readyToCast = BoolUtils.FromStringInt(data);
+        SetCastReady(readyToCast);
+    }
 }

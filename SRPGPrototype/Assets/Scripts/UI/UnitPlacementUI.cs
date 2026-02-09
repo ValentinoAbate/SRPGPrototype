@@ -37,11 +37,13 @@ public class UnitPlacementUI : MonoBehaviour
             var droneShell = droneShells[i];
             var droneUnit = Instantiate(droneShell.SoulCoreUnitPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerDroneUnit>();
             droneUnit.SetShell(droneShell);
+            droneUnit.ResetStats();
             droneUnit.HotkeyIndex = i + 1;
             unitsToSpawn.Push(droneUnit);
         }
         // Add the player to the spawn stack
         var player = Instantiate(playerPrefab, outOfBoundsPos.position, Quaternion.identity).GetComponent<PlayerUnit>();
+        player.ResetStats();
         player.HotkeyIndex = 0;
         player.IsMain = true;
         unitsToSpawn.Push(player);
@@ -106,6 +108,12 @@ public class UnitPlacementUI : MonoBehaviour
         canvas.enabled = false;
         enabled = false;
         onComplete?.Invoke(spawnedUnits);
+    }
+
+    public void Hide()
+    {
+        canvas.enabled = false;
+        enabled = false;
     }
 
     public void PlaceUnit(Vector2Int pos)
