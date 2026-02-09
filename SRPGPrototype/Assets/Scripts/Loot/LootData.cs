@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootData<T> where T : ILootable
+public class LootData<T> where T : MonoBehaviour, ILootable
 {
     public delegate List<T> GenerateLootFunction(Loot<T> loot, out string lootName, out int declineBonus);
     public IReadOnlyList<Data> Draws => draws;
@@ -28,6 +28,21 @@ public class LootData<T> where T : ILootable
     {
         var items = generator(loot, out var lootName, out int declineBonus);
         Add(items, lootName, declineBonus);
+    }
+
+    public void Instantiate(Transform parent)
+    {
+        var temp = new List<T>();
+        foreach (var draw in Draws)
+        {
+            temp.Clear();
+            temp.AddRange(draw);
+            draw.Clear();
+            foreach(var item in temp)
+            {
+                draw.Add(item.InstantiateWithVariants(parent));
+            }
+        }
     }
 
     public class Data : List<T>

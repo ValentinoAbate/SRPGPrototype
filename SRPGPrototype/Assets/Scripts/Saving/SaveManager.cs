@@ -33,15 +33,32 @@ public static class SaveManager
     {
         var runData = LoadFile<RunData>(RunFilePath());
         var loader = new Loader(runData);
+        foreach(var prog in runData.tPr)
+        {
+            loader.CreateProgram(prog, false, out _);
+        }
+        foreach(var shell in runData.tSh)
+        {
+            loader.CreateShell(shell, false, out _);
+        }
         PersistantData.main.LoadRunData(runData, loader, runData.state);
         if(runData.state == State.UnitPlacement || runData.state == State.Battle)
         {
             SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
         }
+        else if(runData.state == State.Loot)
+        {
+            PersistantData.main.loot.ShowSaved(PersistantData.main.inventory, GoToCust);
+        }
         else
         {
             SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
         }
+    }
+
+    private static void GoToCust()
+    {
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 
     public static void ClearRunData()
@@ -214,6 +231,9 @@ public static class SaveManager
         public List<PresetData> presets;
         public List<ProgramData> fArgs = new List<ProgramData>();
         public BattleEncounterData battle;
+        public List<ProgramData> tPr = new List<ProgramData>();
+        public List<ShellData> tSh = new List<ShellData>();
+        public List<LootData> loot;
         // Battle State
     }
 
@@ -405,5 +425,13 @@ public static class SaveManager
     {
         public Vector2Int p;
         public int id;
+    }
+
+    [Serializable]
+    public class LootData
+    {
+        public string n;
+        public List<int> d;
+        public int m;
     }
 }

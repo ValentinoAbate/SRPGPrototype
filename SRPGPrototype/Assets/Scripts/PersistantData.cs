@@ -63,6 +63,7 @@ public class PersistantData : MonoBehaviour
         runData.shops = shopManager.Save(ref runData.fArgs);
         runData.presets = presetManager.Save();
         runData.bInd = BattleData.SelectedEncounterIndex;
+        runData.loot = loot.Save(ref runData.tPr, ref runData.tSh, ref runData.fArgs);
         if (isBattle)
         {
             runData.battle = EncounterManager.main.Save();
@@ -74,6 +75,7 @@ public class PersistantData : MonoBehaviour
         bool isBattle = state == SaveManager.State.Battle;
         inventory.Load(data.inv, loader, isBattle);
         mapManager.Load(data.map);
+        loot.Load(data.loot, loader);
         shopManager.Load(data.shops, loader);
         presetManager.Load(data.presets, loader);
         LoadBattleData(data.battle, loader);

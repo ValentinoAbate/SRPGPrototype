@@ -21,7 +21,6 @@ public class LootUI : MonoBehaviour
     public Transform menuButtonContainer;
     public Transform programDrawButtonContainer;
     public Transform shellDrawButtonContainer;
-    [SerializeField] private Transform itemContainer;
     public Button exitButton;
 
     private bool inLootSelection = false;
@@ -35,7 +34,7 @@ public class LootUI : MonoBehaviour
 
     public void ShowUI(Inventory inv, LootData<Program> programDraws, LootData<Shell> shellDraws, ICollection<MoneyData> moneyData, System.Action onLootClose)
     {
-        if(programDraws.Draws.Count <= 0 && shellDraws.Draws.Count <= 0 && moneyData.Count <= 0)
+        if((programDraws?.Draws.Count ?? 0) <= 0 && (shellDraws?.Draws.Count ?? 0) <= 0 && (moneyData?.Count ?? 0) <= 0)
         {
             onLootClose?.Invoke();
             return;
@@ -58,22 +57,17 @@ public class LootUI : MonoBehaviour
         uiCanvas.enabled = true;
     }
 
-    private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, IEnumerable<T>, LootData<T>.Data> onClick) where T : MonoBehaviour, ILootable
+    private void SetupDraws<T>(Inventory inv, LootData<T> lootData, GameObject buttonPrefab, System.Action<Inventory, Button, LootData<T>.Data> onClick) where T : MonoBehaviour, ILootable
     {
-        if (lootData == null)
+        if (lootData == null || lootData.Draws.Count <= 0)
             return;
         // Setup Program Draws
         foreach (var draw in lootData.Draws)
         {
-            var instantiatedDraw = new List<T>(draw.Count);
-            foreach (var item in draw)
-            {
-                instantiatedDraw.Add(item.InstantiateWithVariants(itemContainer));
-            }
             var button = Instantiate(buttonPrefab, menuButtonContainer).GetComponent<Button>();
             void OnClick()
             {
-                onClick(inv, button, instantiatedDraw, draw);
+                onClick(inv, button, draw);
                 UIManager.main.TopBarUI.SetTitleText(string.IsNullOrEmpty(draw.Name) ? "Choose Loot" : draw.Name, false);
             }
             button.onClick.AddListener(OnClick);
@@ -94,7 +88,6 @@ public class LootUI : MonoBehaviour
         menuButtonContainer.DestroyAllChildren();
         programDrawButtonContainer.DestroyAllChildren();
         shellDrawButtonContainer.DestroyAllChildren();
-        itemContainer.DestroyAllChildren();
         uiCanvas.enabled = false;
         onClose?.Invoke();
         onClose = null;
@@ -121,11 +114,11 @@ public class LootUI : MonoBehaviour
         ReturnToMainMenu();
     }
 
-    public void ShowShellDraw(Inventory inv, Button menuButton, IEnumerable<Shell> shells, LootData<Shell>.Data data)
+    public void ShowShellDraw(Inventory inv, Button menuButton, LootData<Shell>.Data data)
     {
         menuUI.SetActive(false);
         shellDrawButtonContainer.DestroyAllChildren();
-        foreach (var shell in shells)
+        foreach (var shell in data)
         {
             var lootButtonUI = Instantiate(shellButtonPrefab, shellDrawButtonContainer).GetComponent<LootButtonUI>();
             lootButtonUI.nameText.text = shell.DisplayName;
@@ -142,11 +135,11 @@ public class LootUI : MonoBehaviour
         inLootSelection = true;
     }
 
-    public void ShowProgDraw(Inventory inv, Button menuButton, IEnumerable<Program> programs, LootData<Program>.Data data)
+    public void ShowProgDraw(Inventory inv, Button menuButton, LootData<Program>.Data data)
     {
         menuUI.SetActive(false);
         programDrawButtonContainer.DestroyAllChildren();
-        foreach (var prog in programs)
+        foreach (var prog in data)
         {
             var lootButtonUI = Instantiate(programButtonPrefab, programDrawButtonContainer).GetComponent<LootButtonUI>();
             lootButtonUI.icon.color = prog.ColorValue;

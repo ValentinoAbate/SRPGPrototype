@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-public class DropComponentProgramColor: DropComponent<Program>
+public class DropComponentProgramColor : DropComponent<Program>
 {
     public Program.Color color;
     public LootProvider.LootQuality[] lootQualities = new LootProvider.LootQuality[3];

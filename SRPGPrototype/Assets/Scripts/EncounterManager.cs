@@ -152,6 +152,12 @@ public class EncounterManager : MonoBehaviour
                 yield return battleEndCr;
             }
         }
+        FinishEncounter();
+    }
+
+    private void FinishEncounter()
+    {
+        PersistantData.main.mapManager.GenerateNextEncounters();
         GenerateAndShowLoot();
     }
 
@@ -161,40 +167,50 @@ public class EncounterManager : MonoBehaviour
         var loot = PersistantData.main.loot;
 
         // Generate Shell Loot
-        var shellDraws = new LootData<Shell>();
+        LootData<Shell> shellDraws = null;
         if (GenerateShellLoot != null)
         {
-            foreach (LootData<Shell>.GenerateLootFunction shellLootGenerator in GenerateShellLoot.GetInvocationList())
+            var invocationList = GenerateShellLoot.GetInvocationList();
+            shellDraws = new LootData<Shell>(invocationList.Length);
+            foreach (LootData<Shell>.GenerateLootFunction shellLootGenerator in invocationList)
             {
                 shellDraws.Add(loot.ShellLoot, shellLootGenerator);
             }
-
         }
         // Generate Program loot
-        var progDraws = new LootData<Program>();
+        LootData<Program> progDraws = null;
         if (GenerateProgramLoot != null)
         {
-            foreach (LootData<Program>.GenerateLootFunction progLootGenerator in GenerateProgramLoot.GetInvocationList())
+            var invocationList = GenerateProgramLoot.GetInvocationList();
+            progDraws = new LootData<Program>(invocationList.Length);
+            foreach (LootData<Program>.GenerateLootFunction progLootGenerator in invocationList)
             {
                 progDraws.Add(loot.ProgramLoot, progLootGenerator);
             }
         }
-
-        var moneyData = new List<LootUI.MoneyData>();
+        // Generate money drops
+        ICollection<LootUI.MoneyData> moneyDrops;
         if(GenerateMoneyLoot != null)
         {
-            foreach(System.Func<LootUI.MoneyData> moneyLootGenerator in GenerateMoneyLoot.GetInvocationList())
+            var invocationList = GenerateMoneyLoot.GetInvocationList();
+            var moneyData = new List<LootUI.MoneyData>(invocationList.Length);
+            foreach (System.Func<LootUI.MoneyData> moneyLootGenerator in invocationList)
             {
                 moneyData.Add(moneyLootGenerator());
             }
+            moneyDrops = moneyData;
+        }
+        else
+        {
+            moneyDrops = System.Array.Empty<LootUI.MoneyData>();
         }
 
-        loot.UI.ShowUI(inv, progDraws, shellDraws, moneyData, EndScene);
+        // Show loot UI
+        loot.ShowUI(inv, progDraws, shellDraws, moneyDrops, GoToCust);
     }
 
-    public void EndScene()
+    public void GoToCust()
     {
-        PersistantData.main.mapManager.GenerateNextEncounters();
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 
