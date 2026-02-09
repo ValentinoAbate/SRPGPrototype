@@ -17,6 +17,7 @@ public static class SaveManager
         UnitPlacement,
         Battle,
         Loot,
+        Map,
     }
 
     public static void Save(State state)
@@ -49,6 +50,10 @@ public static class SaveManager
         else if(runData.state == State.Loot)
         {
             PersistantData.main.loot.ShowSaved(PersistantData.main.inventory, GoToCust);
+        }
+        else if(runData.state == State.Map)
+        {
+            SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.MapSceneName);
         }
         else
         {

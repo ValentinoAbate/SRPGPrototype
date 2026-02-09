@@ -8,6 +8,7 @@ public class SceneTransitionManager : MonoBehaviour
     public const string EncounterSceneName = "Encounter";
     public const string CustSceneName = "Cust";
     public const string StartingShopSceneName = "StartingShop";
+    public const string MapSceneName = "Map";
     public const string TitleScene = "Title";
     public const string LootScene = "LootLoad";
     public static SceneTransitionManager main;
