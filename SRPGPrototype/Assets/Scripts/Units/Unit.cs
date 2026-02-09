@@ -390,6 +390,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         return PriorityLevel.CompareTo(other.PriorityLevel);
     }
 
+    private const int effectsId = 90;
     public virtual SaveManager.UnitData Save()
     {
         var data = new SaveManager.UnitData()
@@ -406,6 +407,15 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
             hk = HotkeyIndex,
             sp = StartingPos,
         };
+        if(effects.Count > 0)
+        {
+            var savedEffects = new List<string>(effects.Count);
+            foreach(var effect in effects)
+            {
+                savedEffects.Add($"{(int)effect.Key}{SaveManager.separator}{effect.Value}");
+            }
+            data.AddData(effectsId, savedEffects);
+        }
         return data;
     }
 
@@ -421,6 +431,20 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         Power.Value = data.pow;
         HotkeyIndex = data.hk;
         StartingPos = data.sp;
+        foreach(var d in data.d)
+        {
+            if(d.t == effectsId)
+            {
+                effects.Clear();
+                foreach(var savedEffects in d.d)
+                {
+                    var args = savedEffects.Split(SaveManager.separator);
+                    if (args.Length < 2 || !int.TryParse(args[0], out int eff) || !int.TryParse(args[1], out int count))
+                        continue;
+                    effects.Add((PassiveEffect)eff, count);
+                }
+            }
+        }
     }
 
 #if UNITY_EDITOR
