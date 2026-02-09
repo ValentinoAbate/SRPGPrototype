@@ -53,7 +53,7 @@ MonoBehaviour:
   key: Data
   team: 4
   interferenceLevel: 0
-  priorityLevel: 4
+  priorityLevel: 9
   tags: 0
   maxHP: 4
   maxAP: 0
