@@ -58,6 +58,7 @@ public class ShopUI : MonoBehaviour
     {
         shopEntries.RemoveAt(index);
         UIManager.main.HideAllDescriptionUI();
+        SaveManager.Save(SaveManager.State.Battle);
         Refresh();
     }
 

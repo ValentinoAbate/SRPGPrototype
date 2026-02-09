@@ -94,6 +94,7 @@ public class ProgramFusionUI : MonoBehaviour, ISelectableItemHandler
         }
         // Spend cost
         PersistantData.main.inventory.Money -= cost;
+        SaveManager.Save(SaveManager.State.Battle);
         Hide();
     }
 
