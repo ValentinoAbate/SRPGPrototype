@@ -39,6 +39,8 @@ public class EncounterManager : MonoBehaviour
     {
         // Get the encounter from the map
         var encounter = PersistantData.main.CurrentEncounter;
+        // Set title name
+        UIManager.main.TopBarUI.SetTitleText(encounter.nameOverride ?? "Encounter");
         // Setup Money Drop (if applicable)
         if (encounter.giveCompletionMoney)
         {
