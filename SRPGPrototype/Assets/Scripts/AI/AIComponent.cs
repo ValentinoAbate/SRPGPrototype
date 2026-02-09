@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
+public abstract class AIComponent : MonoBehaviour
 {
     // amount of time to pause for each square moved
     private const float moveDelayTime = 0.25f;
@@ -15,11 +15,11 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
 
     public abstract IEnumerable<Action> Actions { get; }
 
-    public abstract void Initialize(T self);
+    public abstract void Initialize(AIUnit self);
 
-    public abstract IEnumerator DoTurn(BattleGrid grid, T self);
+    public abstract IEnumerator DoTurn(BattleGrid grid, AIUnit self);
 
-    protected IEnumerator MoveAlongPath(BattleGrid grid, T self, Action moveAction, List<Vector2Int> path)
+    protected IEnumerator MoveAlongPath(BattleGrid grid, AIUnit self, Action moveAction, List<Vector2Int> path)
     {
         // Move along the path
         foreach (var pos in path)
@@ -32,7 +32,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         }
     }
 
-    protected Coroutine RunAway(BattleGrid grid, T self, Action moveAction, System.Predicate<Unit> runAwayFrom, int apToSave = 0)
+    protected Coroutine RunAway(BattleGrid grid, AIUnit self, Action moveAction, System.Predicate<Unit> runAwayFrom, int apToSave = 0)
     {
         var reachable = Reachable(grid, self, moveAction, self.Pos, apToSave);
         if (reachable.Count == 0)
@@ -65,7 +65,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return score;
     }
 
-    protected IEnumerator AttackUntilExhausted(BattleGrid grid, T self, Action standardAction, Vector2Int tPos)
+    protected IEnumerator AttackUntilExhausted(BattleGrid grid, AIUnit self, Action standardAction, Vector2Int tPos)
     {
         while (!self.Dead && self.CanUseAction(standardAction))
         {
@@ -75,7 +75,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         }
     }
 
-    protected Coroutine AttackFirstUnitInRange(BattleGrid grid, T self, Action standardAction, System.Predicate<Unit> isUnitTarget)
+    protected Coroutine AttackFirstUnitInRange(BattleGrid grid, AIUnit self, Action standardAction, System.Predicate<Unit> isUnitTarget)
     {
         // Find all targets
         var targetUnits = grid.FindAll(isUnitTarget);
@@ -92,7 +92,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return null;
     }
 
-    protected Coroutine AttackBestPositionInRange(BattleGrid grid, T self, Action standardAction, System.Predicate<Unit> isUnitTarget)
+    protected Coroutine AttackBestPositionInRange(BattleGrid grid, AIUnit self, Action standardAction, System.Predicate<Unit> isUnitTarget)
     {
         // Check for target in range
         var tPos = GetBestValidTargetPosInRange(grid, self, standardAction, isUnitTarget);
@@ -104,7 +104,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return null;
     }
 
-    protected IEnumerator PathThenAttackIfAble(BattleGrid grid, T self, Action moveAction, Action standardAction, TargetPath tPath)
+    protected IEnumerator PathThenAttackIfAble(BattleGrid grid, AIUnit self, Action moveAction, Action standardAction, TargetPath tPath)
     {
         // Move along the path
         foreach (var pos in tPath.path)
@@ -128,7 +128,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return u1.HP.CompareTo(u2.HP) <= 0 ? u1 : u2;
     }
 
-    protected List<Vector2Int> Path(BattleGrid grid, T self, Action moveAction, Vector2Int goal, System.Predicate<Unit> canMoveThroughTarget = null)
+    protected List<Vector2Int> Path(BattleGrid grid, AIUnit self, Action moveAction, Vector2Int goal, System.Predicate<Unit> canMoveThroughTarget = null)
     {
         var moveRange = moveAction.SubActions[0].Range;
         // Calculate the maximum manhattan distance of the move action
@@ -169,7 +169,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return null;
     }
 
-    protected List<TargetPath> PathsToTargetRange(BattleGrid grid, T self, Action moveAction, Action standardAction, IEnumerable<Unit> targets, System.Predicate<Unit> canMoveThroughTarget = null)
+    protected List<TargetPath> PathsToTargetRange(BattleGrid grid, AIUnit self, Action moveAction, Action standardAction, IEnumerable<Unit> targets, System.Predicate<Unit> canMoveThroughTarget = null)
     {
         var positions = new Dictionary<TargetData, Unit>();
         // Get relevant ranges
@@ -220,7 +220,7 @@ public abstract class AIComponent<T> : MonoBehaviour where T : AIUnit
         return paths;
     }
 
-    public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, T self, Action moveAction, Vector2Int startPos, int apToSave = 0)
+    public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, AIUnit self, Action moveAction, Vector2Int startPos, int apToSave = 0)
     {
         int range = self.ActionUsesUntilNoAP(moveAction, apToSave);
         return Reachable(grid, moveAction, startPos, range);

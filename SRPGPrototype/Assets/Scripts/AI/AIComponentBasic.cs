@@ -9,7 +9,7 @@ using UnityEngine;
 /// Only works with single-action actions currently.
 /// Assumes that the unit will move to any tile targeted by a move action
 /// </summary>
-public class AIComponentBasic : AIComponent<AIUnit>
+public class AIComponentBasic : AIComponent
 {
     [System.Flags]
     public enum Options

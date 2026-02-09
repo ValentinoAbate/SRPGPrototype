@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIComponentDoNothing : AIComponent<AIUnit>
+public class AIComponentDoNothing : AIComponent
 {
     public override IEnumerable<Action> Actions
     {

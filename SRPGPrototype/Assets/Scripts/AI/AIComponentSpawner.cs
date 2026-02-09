@@ -9,7 +9,7 @@ using UnityEngine;
 /// Only works with single-action actions currently.
 /// Assumes that the unit will move to any tile targeted by a move action
 /// </summary>
-public class AIComponentSpawner : AIComponent<AIUnit>
+public class AIComponentSpawner : AIComponent
 {
     protected virtual Action StandardAction => standardAction;
     [SerializeField] private Action standardAction;

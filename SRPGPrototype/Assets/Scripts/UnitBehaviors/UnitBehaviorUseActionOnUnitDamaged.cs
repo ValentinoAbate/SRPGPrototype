@@ -56,7 +56,7 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
         }
         else if (targetEmptySpaces)
         {
-            var tPos = AIComponent<AIUnit>.ChooseRandomEmptyTargetPosition(grid, self, action);
+            var tPos = AIComponent.ChooseRandomEmptyTargetPosition(grid, self, action);
             if (tPos != BattleGrid.OutOfBounds)
             {
                 action.UseAll(grid, self, tPos, false);
@@ -67,7 +67,7 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
             var targets = grid.FindAll(IsUnitTarget);
             if (targets.Count <= 0)
                 return;
-            var tPos = AIComponent<AIUnit>.GetFirstValidTargetPosInRange(grid, self, action, targets);
+            var tPos = AIComponent.GetFirstValidTargetPosInRange(grid, self, action, targets);
             if (tPos == BattleGrid.OutOfBounds)
                 return;
             action.UseAll(grid, self, tPos, false);

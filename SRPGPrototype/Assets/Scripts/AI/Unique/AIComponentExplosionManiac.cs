@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AIComponentExplosionManiac : AIComponent<AIUnit>
+public class AIComponentExplosionManiac : AIComponent
 {
     public override IEnumerable<Action> Actions
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AIComponentMage : AIComponent<AIUnit>
+public class AIComponentMage : AIComponent
 {
     private enum ReadyOption
     {

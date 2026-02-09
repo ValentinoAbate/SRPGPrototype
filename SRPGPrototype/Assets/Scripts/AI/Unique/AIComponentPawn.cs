@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIComponentPawn : AIComponent<AIUnit>
+public class AIComponentPawn : AIComponent
 {
     public override IEnumerable<Action> Actions
     {

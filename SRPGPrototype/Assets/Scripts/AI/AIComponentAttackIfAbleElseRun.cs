@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIComponentAttackIfAbleElseRun : AIComponent<AIUnit>
+public class AIComponentAttackIfAbleElseRun : AIComponent
 {
     public override IEnumerable<Action> Actions
     {

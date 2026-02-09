@@ -72,14 +72,14 @@ public abstract class AIUnit : Unit
     public override CenterStat Speed { get; } = new CenterStat();
     public override CenterStat Break { get; } = new CenterStat();
 
-    public AIComponent<AIUnit> AI { get; private set; }
+    public AIComponent AI { get; private set; }
 
     [SerializeField] private ProgramEffectAddAbility[] abilities;
 
     protected override void Initialize()
     {
         base.Initialize();
-        AI = GetComponent<AIComponent<AIUnit>>();
+        AI = GetComponent<AIComponent>();
         if (AI != null)
         {
             AI.Initialize(this);
