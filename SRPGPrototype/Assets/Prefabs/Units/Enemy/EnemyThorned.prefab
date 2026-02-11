@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14398ac38d75c6244948af2475dc77d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: 7f03d01492fbecd48bd7d81abb637dcb,
+  moveAction: {fileID: 4415060608083833614, guid: 4ae3bfee6ef76fa42b015d19b5b8a0da,
     type: 3}
   standardAction: {fileID: 4415060608083833614, guid: 9a547fbdb98e19342811114bedaa5222,
     type: 3}
