@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a983a827159f784aa467a11cdb1a727, type: 3}
   m_Name: ProtoV2Encounter4-5Set
   m_EditorClassIdentifier: 
-  numEncounterOptions: 07000000
+  numEncounterOptions: 
   numEncounterWeights: []
   npcSet: {fileID: 0}
   generators:
