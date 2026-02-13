@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class ProgramEffectAddOnGambleAbility : ProgramEffectAddAbility
 {
-    public override string AbilityName => throw new System.NotImplementedException();
-
     protected override void AddAbility(ref Shell.CompileData data)
     {
         data.onGamble += OnGamble;
