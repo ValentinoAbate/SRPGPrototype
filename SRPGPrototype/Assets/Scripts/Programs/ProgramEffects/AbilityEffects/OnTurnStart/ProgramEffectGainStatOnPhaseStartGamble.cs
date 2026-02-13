@@ -14,10 +14,12 @@ public class ProgramEffectGainStatOnPhaseStartGamble : ProgramEffectGainStatOnPh
         if (RandomUtils.RandomU.instance.RollSuccess(successChance))
         {
             base.Ability(grid, unit);
+            unit.OnGambleFn?.Invoke(grid, null, unit, true);
         }
         else
         {
             unit.ModifyStat(grid, failureStat, failureNumber.Value(unit), unit);
+            unit.OnGambleFn?.Invoke(grid, null, unit, false);
         }
     }
 }
