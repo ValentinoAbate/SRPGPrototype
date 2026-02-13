@@ -203,6 +203,7 @@ public class Inventory : MonoBehaviour
         var invData = new SaveManager.InventoryData()
         {
             money = Money,
+            equipShId = EquippedShell != null ? EquippedShell.Id : -1,
             prs = new List<SaveManager.ProgramData>(Programs.Count),
             shs = new List<SaveManager.ShellData>(Shells.Count),
         };
@@ -235,10 +236,10 @@ public class Inventory : MonoBehaviour
                 AddShellInternal(shell, false);
             }
         }
-        SortShells();
         if (loader.LoadedShells.TryGetValue(data.equipShId, out var equippedShell))
         {
             EquippedShell = equippedShell;
         }
+        SortShells();
     }
 }
