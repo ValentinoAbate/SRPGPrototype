@@ -2,21 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgramTriggerConditionGambles : ProgramTriggerConditionResetTrigger
+public class ProgramTriggerConditionGambles : PorgramTriggerConditionOnGamble
 {
-    [SerializeField] private bool success;
-    protected override string ProgressConditionText => $"{(success ? "Succeed at" : "Fail")} gambles";
+    public override string RevealedConditionText => $"{(success ? "Succeed at" : "Fail")} {number} gambles ({(Completed ? "Done" : progress + "/" + number)})";
 
-    protected override int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
+    public override bool Completed => progress >= number;
+
+    [SerializeField] private bool success;
+    [SerializeField] private int number;
+
+    protected int progress;
+
+    protected override void OnGamble(BattleGrid grid, Action action, Unit unit, bool gambleSuccess)
     {
-        int progressGained = 0;
-        foreach(var effect in subAction.Effects)
+        if (gambleSuccess == success)
         {
-            if(effect is IGambleActionEffect gambleEffect && gambleEffect.GambleSuccess.HasValue && gambleEffect.GambleSuccess.Value == success)
-            {
-                ++progressGained;
-            }
+            ++progress;
         }
-        return progressGained;
+    }
+
+    public override string Save()
+    {
+        return progress.ToString();
+    }
+
+    public override void Load(string data)
+    {
+        if (int.TryParse(data, out int savedProgress))
+        {
+            progress = savedProgress;
+        }
     }
 }

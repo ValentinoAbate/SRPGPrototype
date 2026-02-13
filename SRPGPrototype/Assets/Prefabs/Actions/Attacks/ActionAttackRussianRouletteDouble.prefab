@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4139702830016351478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054012530647957000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671b23d3c29035147a98504b018764fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standaloneSubActionType: 0
-  standaloneSubActionOptions: 0
-  affectUser: 0
-  effectToApply: {fileID: 8230138623743390278}
-  teams: 0100000002000000
-  gambleFailOnHitAlly: 1
 --- !u!1001 &5963436903778780620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31,8 +13,8 @@ PrefabInstance:
       value: 'Hit two random player or enemy units for the AP Cost of this action
         times 5 ({dmg}).
 
-        Counts as a gamble failure if a player unit is
-        hit.'
+        Counts as a gamble success if an enemy unit is
+        hit or a gamble failure if a player unit is hit (for each hit).'
       objectReference: {fileID: 0}
     - target: {fileID: 4415060608083833614, guid: f616c00871c3d824b81cea1251c2fc45,
         type: 3}
@@ -119,3 +101,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4310eb9be826b7c458081b271eef04d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4139702830016351478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054012530647957000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671b23d3c29035147a98504b018764fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  effectToApply: {fileID: 8230138623743390278}
+  teams: 0100000002000000
+  desiredTeams: 01000000

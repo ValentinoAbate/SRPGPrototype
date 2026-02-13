@@ -38,6 +38,7 @@ public class CompileDataProxyUnit : Unit
 
     public override OnRepositioned OnRepositionedFn { get => CompileData.onRepositioned; set { } }
     public override OnRepositioned OnRepositionOther { get => CompileData.onRepositionOther; set { } }
+    public override OnGamble OnGambleFn { get => CompileData.onGamble; set { } }
 
     public override IncomingDamageMod IncomingDamageMods { get => CompileData.incomingDamageMods; set { } }
 

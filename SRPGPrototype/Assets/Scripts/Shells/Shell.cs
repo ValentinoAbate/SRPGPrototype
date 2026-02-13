@@ -87,6 +87,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
     public Unit.IncomingDamageMod IncomingDamageMods { get; private set; }
     public Unit.OnRepositioned OnRepositioned { get; private set; }
     public Unit.OnRepositioned OnRepositionOther { get; private set; }
+    public Unit.OnGamble OnGamble { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
     public Unit.OnPhaseEndDel OnPhaseEnd { get; private set; }
@@ -441,6 +442,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         IncomingDamageMods = compileData.incomingDamageMods;
         OnRepositioned = compileData.onRepositioned;
         OnRepositionOther = compileData.onRepositionOther;
+        OnGamble = compileData.onGamble;
         OnBattleStart = compileData.onBattleStart;
         OnPhaseStart = compileData.onPhaseStart;
         OnPhaseEnd = compileData.onPhaseEnd;
@@ -507,6 +509,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         public Unit.IncomingDamageMod incomingDamageMods = null;
         public Unit.OnRepositioned onRepositioned = null;
         public Unit.OnRepositioned onRepositionOther = null;
+        public Unit.OnGamble onGamble = null;
         public Unit.OnBattleStartDel onBattleStart = null;
         public Unit.OnPhaseStartDel onPhaseStart = null;
         public Unit.OnPhaseEndDel onPhaseEnd = null;

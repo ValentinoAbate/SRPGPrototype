@@ -44,7 +44,13 @@ public class ProgramTriggerConditionUses : ProgramTriggerCondition
     {
         actions.Clear();
         // Log actions from the program
-        actions.AddRange(program.Effects.Where((e) => e is ProgramEffectAddAction).Select((e) => (e as ProgramEffectAddAction).action));
+        foreach(var effect in program.Effects)
+        {
+            if(effect is ProgramEffectAddAction addActionEffect)
+            {
+                actions.Add(addActionEffect.action);
+            }
+        }
         data.onAfterAction += Check;
     }
 

@@ -34,6 +34,7 @@ public class PlayerUnit : Unit
     public override IncomingDamageMod IncomingDamageMods { get => Shell.IncomingDamageMods; set { } }
     public override OnRepositioned OnRepositionedFn { get => Shell.OnRepositioned; set { } }
     public override OnRepositioned OnRepositionOther { get => Shell.OnRepositionOther; set { } }
+    public override OnGamble OnGambleFn { get => Shell.OnGamble; set { } }
     public override OnBattleStartDel OnBattleStartFn { get => Shell.OnBattleStart; set { } }
     public override OnPhaseStartDel OnPhaseStartFn { get => Shell.OnPhaseStart; set { } }
     public override OnPhaseEndDel OnPhaseEndFn { get => Shell.OnPhaseEnd; set { } }

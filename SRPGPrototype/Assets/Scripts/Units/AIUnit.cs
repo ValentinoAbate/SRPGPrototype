@@ -38,6 +38,7 @@ public abstract class AIUnit : Unit
     public override IncomingDamageMod IncomingDamageMods { get; set; }
     public override OnRepositioned OnRepositionedFn { get; set; }
     public override OnRepositioned OnRepositionOther { get; set; }
+    public override OnGamble OnGambleFn { get; set; }
     public override OnBattleStartDel OnBattleStartFn { get; set; }
     public override OnPhaseStartDel OnPhaseStartFn { get; set; }
     public override OnPhaseEndDel OnPhaseEndFn { get; set; }

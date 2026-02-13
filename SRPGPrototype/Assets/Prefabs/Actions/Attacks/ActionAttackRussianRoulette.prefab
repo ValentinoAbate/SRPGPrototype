@@ -46,41 +46,24 @@ MonoBehaviour:
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 0
+  ignoreInValidRangeCalcs: 0
   targetStat: 0
   damage:
     min: -2147483648
     max: 2147483647
-    constant: 1
     baseAmount: 0
     modifier: 0
     multiplier: 5
+    constant: 1
     unitNumber:
       min: -2147483648
       max: 2147483647
-      constant: 1
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      constant: 1
       type: 0
     type: 1
---- !u!114 &8074052730611303905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5639408088848563140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671b23d3c29035147a98504b018764fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standaloneSubActionType: 0
-  standaloneSubActionOptions: 0
-  affectUser: 0
-  effectToApply: {fileID: 2374858519024433034}
-  teams: 0100000002000000
-  gambleFailOnHitAlly: 1
 --- !u!1001 &8135780589257601915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,7 +237,8 @@ PrefabInstance:
       value: 'Hit a random player or enemy unit for the AP Cost of this action times
         5 ({dmg}).
 
-        Counts as a gamble failure if a player unit is hit.'
+        Counts as a gamble success if an enemy unit is hit or
+        a gamble failure if a player unit is hit.'
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -285,3 +269,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8135780589257601915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8074052730611303905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639408088848563140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671b23d3c29035147a98504b018764fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standaloneSubActionType: 0
+  standaloneSubActionOptions: 0
+  affectUser: 0
+  ignoreInValidRangeCalcs: 0
+  effectToApply: {fileID: 2374858519024433034}
+  teams: 0100000002000000
+  desiredTeams: 01000000

@@ -2,30 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgramTriggerConditionGamblesStreak : ProgramTriggerConditionResetTrigger
+public class ProgramTriggerConditionGamblesStreak : PorgramTriggerConditionOnGamble
 {
+    public override string RevealedConditionText => $"{(success ? "Succeed at" : "Fail")} {number} gambles in a row ({(Completed ? "Done" : progress + "/" + number)})";
+
+    public override bool Completed => progress >= number;
+
     [SerializeField] private bool success;
+    [SerializeField] private int number;
 
-    protected override string ProgressConditionText => $"{(success ? "Succeed at" : "Fail")} gambles in a row";
+    private int progress;
 
-    protected override int ProgressChange(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
+    protected override void OnGamble(BattleGrid grid, Action action, Unit unit, bool gambleSuccess)
     {
-        int progressGained = 0;
-        foreach(var effect in subAction.Effects)
+        if(gambleSuccess == success)
         {
-            if (!(effect is IGambleActionEffect gambleEffect && gambleEffect.GambleSuccess.HasValue))
-            {
-                continue;
-            }
-            if (gambleEffect.GambleSuccess.Value == success)
-            {
-                ++progressGained;
-            }
-            else
-            {
-                return -Progress;
-            }
+            ++progress;
         }
-        return progressGained;
+        else
+        {
+            progress = 0;
+        }
+    }
+
+    public override string Save()
+    {
+        return progress.ToString();
+    }
+
+    public override void Load(string data)
+    {
+        if(int.TryParse(data, out int savedProgress))
+        {
+            progress = savedProgress;
+        }
     }
 }

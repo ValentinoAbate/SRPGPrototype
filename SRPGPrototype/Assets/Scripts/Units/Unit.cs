@@ -23,6 +23,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     public delegate void OnRepositioned(BattleGrid grid, Unit source, Unit target);
 
+    public delegate void OnGamble(BattleGrid grid, Action action, Unit unit, bool success);
+
     public enum Team
     { 
         None,
@@ -98,6 +100,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public abstract IncomingDamageMod IncomingDamageMods { get; set; }
     public abstract OnRepositioned OnRepositionedFn { get; set; }
     public abstract OnRepositioned OnRepositionOther { get; set; }
+    public abstract OnGamble OnGambleFn { get; set; }
     public abstract OnBattleStartDel OnBattleStartFn { get; set; }
     public abstract OnPhaseStartDel OnPhaseStartFn { get; set; }
     public abstract OnPhaseEndDel OnPhaseEndFn { get; set; }

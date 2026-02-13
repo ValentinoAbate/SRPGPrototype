@@ -4,9 +4,8 @@ using UnityEngine;
 using RandomUtils;
 using System.Linq;
 
-public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleActionEffect
+public class ActionEffectGamble : ActionEffect, IDamagingActionEffect
 {
-    public bool? GambleSuccess { get; private set; } = null;
     public override bool UsesPower => usedPower;
     private bool usedPower = false;
     public bool DealsDamage => successEffects.Any((e) => e.CanDealDamage) || failureEffects.Any((e) => e.CanDealDamage);
@@ -38,7 +37,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
                 effect.ApplyEffect(grid, action, sub, user, target, targetData);
             }
             usedPower = successEffects.Any(ActionEffectUsesPower);
-            GambleSuccess = true;
+            user.OnGambleFn?.Invoke(grid, action, user, true);
         }
         else
         {
@@ -47,7 +46,7 @@ public class ActionEffectGamble : ActionEffect, IDamagingActionEffect, IGambleAc
                 effect.ApplyEffect(grid, action, sub, user, target, targetData);
             }
             usedPower = failureEffects.Length > 0 && failureEffects.Any(ActionEffectUsesPower);
-            GambleSuccess = false;
+            user.OnGambleFn?.Invoke(grid, action, user, false);
         }
     }
 

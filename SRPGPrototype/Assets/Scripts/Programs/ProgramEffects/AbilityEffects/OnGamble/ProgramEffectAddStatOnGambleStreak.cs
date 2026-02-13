@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgramEffectAddStatOnGambleStreak : ProgramEffectAddSubActionAbility
+public class ProgramEffectAddStatOnGambleStreak : ProgramEffectAddOnGambleAbility
 {
     [SerializeField] private Stats.StatName stat;
     [SerializeField] private int quantity;
@@ -12,25 +12,19 @@ public class ProgramEffectAddStatOnGambleStreak : ProgramEffectAddSubActionAbili
     private int streak = 0;
     public override string AbilityName => $"Gain {quantity} {stat} after a {streakRequired} Gamble {(success ? "Success" : "Failure")} streak ({streak}/{streakRequired})";
 
-    public override void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
+    protected override void OnGamble(BattleGrid grid, Action action, Unit unit, bool succeeded)
     {
-        foreach(var effect in subAction.Effects)
+        if (succeeded == success)
         {
-            if (effect is IGambleActionEffect gambleActionEffect && gambleActionEffect.GambleSuccess.HasValue)
+            if (++streak >= streakRequired)
             {
-                if(gambleActionEffect.GambleSuccess.Value == success)
-                {
-                    if (++streak >= streakRequired)
-                    {
-                        streak = 0;
-                        user.ModifyStat(grid, stat, quantity, user);
-                    }
-                }
-                else
-                {
-                    streak = 0;
-                }
+                streak = 0;
+                unit.ModifyStat(grid, stat, quantity, unit);
             }
+        }
+        else
+        {
+            streak = 0;
         }
     }
 
