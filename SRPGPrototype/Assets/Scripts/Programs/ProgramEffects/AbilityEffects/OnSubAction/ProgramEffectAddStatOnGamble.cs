@@ -7,7 +7,7 @@ public class ProgramEffectAddStatOnGamble : ProgramEffectAddSubActionAbility
     [SerializeField] private Stats.StatName stat;
     [SerializeField] private int quantity;
     [SerializeField] private bool success;
-    public override string AbilityName => $"Add {quantity} {stat} after Gamble {(success ? "Success" : "Fail")}.";
+    public override string AbilityName => $"Add {quantity} {stat} after Gamble {(success ? "Success" : "Fail")}";
 
     public override void OnSubAction(BattleGrid grid, Action action, SubAction subAction, Unit user, List<Unit> targets, List<Vector2Int> targetPositions)
     {

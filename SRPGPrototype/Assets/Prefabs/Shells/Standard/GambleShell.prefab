@@ -47,25 +47,25 @@ PrefabInstance:
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[0].program
       value: 
-      objectReference: {fileID: 3015378823072566748, guid: baefe16da2d92f14db65c8af0f92cabf,
+      objectReference: {fileID: 3074455946635918319, guid: 8fe442b1ccb8d654c875eeb8a3293a9e,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[1].program
       value: 
-      objectReference: {fileID: 3015378823072566748, guid: b3bbaedcae786f04fbec143eec353f90,
+      objectReference: {fileID: 7533046481697725073, guid: 9bf88cf18b301b4439ecd9cfa5052810,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[2].program
       value: 
-      objectReference: {fileID: 3074455946635918319, guid: 8fe442b1ccb8d654c875eeb8a3293a9e,
+      objectReference: {fileID: 3074455946635918319, guid: ae0ecc9c03c8355459db329695df60e9,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[3].program
       value: 
-      objectReference: {fileID: 7533046481697725073, guid: 9bf88cf18b301b4439ecd9cfa5052810,
+      objectReference: {fileID: 3015378823072566748, guid: b3bbaedcae786f04fbec143eec353f90,
         type: 3}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -80,8 +80,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
+      propertyPath: preInstalledPrograms.Array.data[0].location.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
+        type: 3}
       propertyPath: preInstalledPrograms.Array.data[1].location.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
@@ -96,17 +101,17 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[2].location.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[3].location.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: preInstalledPrograms.Array.data[3].location.y
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}

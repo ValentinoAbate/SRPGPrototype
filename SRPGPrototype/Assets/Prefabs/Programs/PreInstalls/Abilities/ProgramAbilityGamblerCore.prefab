@@ -30,10 +30,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: 'Gain 1 Power after failing a gamble.
-
-        Gain 1 AP after failing
-        2 gambles in a row.'
+      value: Gain 1 AP after a successful gamble. Gain 1 Power after a failed gamble.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -59,7 +56,7 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[0]
       value: 
-      objectReference: {fileID: -899729614002044310}
+      objectReference: {fileID: 8427218149238927426}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: effects.Array.data[1]
@@ -173,24 +170,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1592762870832421066}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-899729614002044310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202993979176963460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27264fabfe7bc6a409ccad60c7154bd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timing: 0
-  subTypes: 
-  stat: 2
-  quantity: 1
-  success: 0
-  streakRequired: 2
 --- !u!114 &-441191696820384588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +187,20 @@ MonoBehaviour:
   stat: 5
   quantity: 1
   success: 0
+--- !u!114 &8427218149238927426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202993979176963460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6568fb0b98a4d6e4b824b59823c3fdf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timing: 0
+  subTypes: 
+  stat: 2
+  quantity: 1
+  success: 1
