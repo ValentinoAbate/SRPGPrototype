@@ -340,10 +340,10 @@ public class Program : GridObject, ILootable, IHasKey
             for (int i = 0; i < currentEffects.Length; i++)
             {
                 var effect = currentEffects[i];
-                if (effect.CanSave(false))
+                if (effect.CanSave(isBattle))
                 {
                     effectData ??= new List<string>(currentEffects.Length - i);
-                    effectData.Add(effect.Save(false));
+                    effectData.Add(effect.Save(isBattle));
                 }
             }
             if(effectData != null)
@@ -400,9 +400,9 @@ public class Program : GridObject, ILootable, IHasKey
                     int index = 0;
                     foreach (var effect in Effects)
                     {
-                        if (effect.CanSave(false))
+                        if (effect.CanSave(isBattle))
                         {
-                            effect.Load(data[index++], false, null);
+                            effect.Load(data[index++], isBattle, null); // TODO: hookup unit
                             if (index >= data.Count)
                                 break;
                         }
