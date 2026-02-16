@@ -484,4 +484,5 @@ MonoBehaviour:
   allowFailureEffectsForValidTargetPosChecks: 0
   successEffects:
   - {fileID: 4023268642861156449}
+  - {fileID: 8443925619452982778}
   failureEffects: []
