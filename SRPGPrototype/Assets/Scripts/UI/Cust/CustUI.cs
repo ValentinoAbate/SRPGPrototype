@@ -274,36 +274,54 @@ public class CustUI : MonoBehaviour
 
     public void PlaceProgram(ProgramButton button, Program p, Vector2Int pos)
     {
-        if (grid.IsLegal(pos) && grid.CanAdd(pos, p))
+        if (!grid.IsLegal(pos))
+            return;
+        if (ProgramFilters.HasAnyAttributes(p, Program.Attributes.Expander))
         {
-            if(ProgramFilters.HasAttributes(p, Program.Attributes.Fixed))
+            if(grid.CanAddExpander(pos, p))
             {
-                void OnConfirmationPopupComplete(bool success)
-                {
-                    if (success)
-                    {
-                        PlaceProgramInternal(p, pos);
-                    }
-                    else
-                    {
-                        cursor.OnCancel = () => CancelProgramPlacement(p, button);
-                        cursor.OnClick = (pos) => PlaceProgram(button, p, pos);
-                        heldProgramUI.Show(p.shape, programPatternIconPrefab, p.ColorValue);
-                        heldProgramUI.gameObject.SetActive(true);
-                    }
-                }
+                grid.Expand(pos, p);
+                inventory.RemoveProgram(p);
+                Destroy(pButton.gameObject);
+                programButtonRect.sizeDelta = new Vector2(programButtonRect.sizeDelta.x, programButtonContainer.childCount * buttonContentSize);
                 cursor.OnClick = null;
-                cursor.OnCancel = null;
+                cursor.OnCancel = () => PickupProgramFromGrid(GetMouseGridPos());
                 heldProgramUI.Hide();
                 heldProgramUI.gameObject.SetActive(false);
-                PopupManager.main.ShowConfirmationPopup(OnConfirmationPopupComplete, "Warning!", $"{p.DisplayName} is fixed. You will not be able to remove it after installing it.", "Install");
             }
-            else
+            return;
+        }
+        if (!grid.CanAdd(pos, p))
+            return;
+        if (ProgramFilters.HasAttributes(p, Program.Attributes.Fixed))
+        {
+            void OnConfirmationPopupComplete(bool success)
             {
-                PlaceProgramInternal(p, pos);
+                if (success)
+                {
+                    PlaceProgramInternal(p, pos);
+                }
+                else
+                {
+                    cursor.OnCancel = () => CancelProgramPlacement(p, button);
+                    cursor.OnClick = (pos) => PlaceProgram(button, p, pos);
+                    heldProgramUI.Show(p.shape, programPatternIconPrefab, p.ColorValue);
+                    heldProgramUI.gameObject.SetActive(true);
+                }
             }
+            cursor.OnClick = null;
+            cursor.OnCancel = null;
+            heldProgramUI.Hide();
+            heldProgramUI.gameObject.SetActive(false);
+            PopupManager.main.ShowConfirmationPopup(OnConfirmationPopupComplete, "Warning!", $"{p.DisplayName} is fixed. You will not be able to remove it after installing it.", "Install");
+        }
+        else
+        {
+            PlaceProgramInternal(p, pos);
         }
     }
+
+
 
     private void PlaceProgramInternal(Program p, Vector2Int pos)
     {

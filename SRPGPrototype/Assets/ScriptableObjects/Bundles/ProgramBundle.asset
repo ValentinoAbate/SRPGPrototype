@@ -15,6 +15,7 @@ MonoBehaviour:
   assetPaths:
   - Assets/Prefabs/Programs
   keys:
+  - Expander
   - Fusion
   - AbilityBlastPaddingCore
   - AbilityBlazeOfGloryCore
@@ -272,6 +273,7 @@ MonoBehaviour:
   - TestAddStatTestActions
   - TestDmgUP
   items:
+  - {fileID: 4874606781514838521, guid: a8f664aa897356e40a4d65e33fcf7bfd, type: 3}
   - {fileID: 1602797817249399522, guid: 512b276fb1ebc744cb177e60b68c90df, type: 3}
   - {fileID: 7533046481697725073, guid: 56415939334d1c148afc4fef9fe7d9c9, type: 3}
   - {fileID: 7533046481697725073, guid: c679d4f79eecd564a9d2c2c2ecd48dc0, type: 3}

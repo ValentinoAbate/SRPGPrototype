@@ -55,29 +55,38 @@ public class CustGrid : Grid.Grid<Program>
     private Shell shell = null;
     public override Vector2Int Dimensions => Shell.CustArea.Dimensions;
 
-    protected override void OnDrawGizmos()
-    {
-        if (PersistantData.main == null)
-            return;
-
-        //base.OnDrawGizmos();
-        //shell = PersistantData.main.inventory.EquippedShell;
-        //var offsetsSet = shell.CustArea.OffsetsSet;
-        //for (int x = 0; x < Dimensions.x; ++x)
-        //{
-        //    for (int y = 0; y < Dimensions.y; ++y)
-        //    {
-        //        var pos = new Vector2Int(x, y);
-        //        if (!offsetsSet.Contains(pos))
-        //            Gizmos.DrawIcon(GetSpace(pos), "CollabError", true);
-        //    }
-        //}
-    }
-
     private void Start()
     {
         shell = null;
         Shell = PersistantData.main.inventory.EquippedShell;
+    }
+
+    public bool CanAddExpander(Vector2Int addPos, Program obj)
+    {
+        var shellPositions = Shell.CustArea.OffsetsSet;
+        foreach (var pos in obj.shape.OffsetsShifted(addPos, false))
+        {
+            if (!IsLegal(pos) || shellPositions.Contains(pos))
+            {
+                Debug.LogWarning("Program: " + obj.DisplayName + " attempted to be added to an illegal pos:  " + pos.ToString());
+                return false;
+            }
+            if (!IsEmpty(pos))
+            {
+                Debug.LogWarning("Program: " + obj.DisplayName + " overlaps another program at " + pos.ToString());
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void Expand(Vector2Int expandPos, Program expander)
+    {
+        foreach (var pos in expander.shape.OffsetsShifted(expandPos, false))
+        {
+            Shell.Expand(pos);
+        }
+        ResetShell();
     }
 
     public bool CanAdd(Vector2Int addPos, Program obj)

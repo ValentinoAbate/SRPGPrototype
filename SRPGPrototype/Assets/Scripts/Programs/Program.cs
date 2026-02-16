@@ -25,6 +25,7 @@ public class Program : GridObject, ILootable, IHasKey
         SoulCore = 4,
         Gamble = 8,
         Starter = 16,
+        Expander = 32,
     }
 
     private static readonly Dictionary<Color, TileUI.Type> tileTypes = new Dictionary<Color, TileUI.Type>()

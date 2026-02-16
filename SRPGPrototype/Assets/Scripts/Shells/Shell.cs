@@ -78,6 +78,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
 
     public IReadOnlyList<Action> Actions => actions;
     private readonly List<Action> actions = new List<Action>();
+    private readonly List<Vector2Int> expansions = new List<Vector2Int>();
 
     public Unit.OnSubAction OnBeforeSubAction { get; private set; }
     public Unit.OnSubAction OnAfterSubAction { get; private set; }
@@ -225,6 +226,66 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
             }
         }
         return -1;
+    }
+
+    public void Expand(Vector2Int expansionPos)
+    {
+        var pos = expansionPos;
+        for(int i = Level; i >= 0; --i)
+        {
+            var pattern = patterns[i];
+            if (pos.IsBoundedBy(pattern.Dimensions))
+            {
+                patterns[i].AddOffset(pos);
+            }
+            if (i == 0)
+            {
+                expansions.Add(pos);
+            }
+            else
+            {
+                pos = ShiftDown(pos, i);
+            }
+        }
+        if(Level + 1 < patterns.Count)
+        {
+            pos = ShiftUp(expansionPos, Level);
+            for (int i = Level + 1; i < patterns.Count; ++i)
+            {
+                var pattern = patterns[i];
+                if (pos.IsBoundedBy(pattern.Dimensions))
+                {
+                    patterns[i].AddOffset(pos);
+                }
+                pos = ShiftUp(pos, i);
+            }
+        }
+    }
+
+    private Vector2Int ShiftUp(Vector2Int pos, int currentLevel)
+    {
+        // Level is even, expand into bottom right
+        if (currentLevel % 2 == 0)
+        {
+            return pos + Vector2Int.up;
+        }
+        else // Level is odd, expand into top left
+        {
+            return pos + Vector2Int.right;
+        }
+    }
+
+    private Vector2Int ShiftDown(Vector2Int pos, int currentLevel)
+    {
+        // Level is odd, contract from bottom right
+        if (currentLevel % 2 == 1)
+        {
+            return pos + Vector2Int.down;
+        }
+        else // Level is even, contract from top left
+        {
+            return pos + Vector2Int.left;
+        }
     }
 
     #region Leveling Code
@@ -467,6 +528,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
             k = Key,
             hp = Stats.HP,
             lv = Level,
+            ex = expansions,
             prs = new List<SaveManager.InstalledProgramData>(Programs.Count)
         };
         foreach (var prog in Programs)
@@ -485,6 +547,11 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         Id = data.id;
         Stats.HP = data.hp;
         ClearPrograms();
+        SetLevel(0);
+        foreach(var expansion in data.ex)
+        {
+            Expand(expansion);
+        }
         SetLevel(data.lv);
         foreach (var programData in data.prs)
         {

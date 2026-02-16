@@ -10,4 +10,5 @@
     Debug,
     SoulCore,
     Fusion,
+    Shop,
 }

@@ -352,6 +352,7 @@ public static class SaveManager
         public string k;
         public int lv;
         public int hp;
+        public List<Vector2Int> ex;
         public List<InstalledProgramData> prs;
     }
 
