@@ -107,8 +107,8 @@ public class PlayerUnit : Unit
                 break;
             }
         }
-        base.Load(data, loader);
         loader.LoadUnloadedShell(Shell.Id, true, this);
+        base.Load(data, loader);
     }
 
     protected virtual List<string> SaveArgs()
