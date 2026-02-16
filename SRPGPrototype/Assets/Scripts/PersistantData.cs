@@ -73,13 +73,16 @@ public class PersistantData : MonoBehaviour
     public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader, SaveManager.State state)
     {
         bool isBattle = state == SaveManager.State.Battle;
+
         inventory.Load(data.inv, loader, isBattle);
         mapManager.Load(data.map);
-        loot.Load(data.loot, loader);
-        shopManager.Load(data.shops, loader);
-        presetManager.Load(data.presets, loader);
         LoadBattleData(data.battle, loader);
         BattleData.SelectedEncounterIndex = data.bInd;
+        inventory.FinishLoading(data.inv, loader, isBattle);
+        presetManager.Load(data.presets, loader);
+        loot.Load(data.loot, loader);
+        shopManager.Load(data.shops, loader);
+
         CurrentId = data.currId;
     }
 
@@ -90,7 +93,7 @@ public class PersistantData : MonoBehaviour
             return;
         foreach (var unitData in battleData.data)
         {
-            if(loader.CreateUnit(unitData, transform, out var unit))
+            if(loader.LoadUnit(unitData, transform, out var unit))
             {
                 BattleData.LoadedUnits.Add(unit);
             }

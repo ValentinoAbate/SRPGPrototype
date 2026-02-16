@@ -36,11 +36,11 @@ public static class SaveManager
         var loader = new Loader(runData);
         foreach(var prog in runData.tPr)
         {
-            loader.CreateProgram(prog, false, out _);
+            loader.LoadProgram(prog, false, null, out _);
         }
         foreach(var shell in runData.tSh)
         {
-            loader.CreateShell(shell, false, out _);
+            loader.LoadShell(shell, false, null, out _);
         }
         PersistantData.main.LoadRunData(runData, loader, runData.state);
         if(runData.state == State.UnitPlacement || runData.state == State.Battle)
@@ -121,9 +121,11 @@ public static class SaveManager
     public class Loader
     {
         public Dictionary<int, Shell> LoadedShells { get; } = new Dictionary<int, Shell>();
+        public Dictionary<int, UnloadedShell> UnloadedShells { get; } = new Dictionary<int, UnloadedShell>();
         public Dictionary<int, Program> LoadedPrograms { get; } = new Dictionary<int, Program>();
         public Dictionary<int, Action> LoadedActions { get; } = new Dictionary<int, Action>();
         public Dictionary<int, ProgramData> FusionArgs { get; } = new Dictionary<int, ProgramData>();
+
 
         public Loader(RunData data)
         {
@@ -133,14 +135,37 @@ public static class SaveManager
             }
         }
 
-        public bool CreateShell(ShellData data, bool isBattle, out Shell shell) => CreateShell(data, null, isBattle, out shell);
+        public bool CreateUnloadedShell(ShellData data, out Shell shell) => CreateUnloadedShell(data, null, out shell);
 
-        public bool CreateShell(ShellData data, Transform parent, bool isBattle, out Shell shell)
+        public bool CreateUnloadedShell(ShellData data, Transform parent, out Shell shell)
         {
             if (Lookup.TryGetShell(data.k, out var prefab))
             {
                 shell = Create<Shell>(prefab.gameObject, parent);
-                shell.Load(data, this, isBattle);
+                UnloadedShells.Add(data.id, new UnloadedShell(shell, data));
+                return true;
+            }
+            shell = null;
+            return false;
+        }
+
+        public void LoadUnloadedShell(int id, bool isBattle, Unit unit)
+        {
+            if (!UnloadedShells.TryGetValue(id, out var unloadedShell))
+                return;
+            unloadedShell.Shell.Load(unloadedShell.Data, this, isBattle, unit);
+            UnloadedShells.Remove(id);
+            LoadedShells.Add(id, unloadedShell.Shell);
+        }
+
+        public bool LoadShell(ShellData data, bool isBattle, Unit unit, out Shell shell) => LoadShell(data, null, isBattle, unit, out shell);
+
+        public bool LoadShell(ShellData data, Transform parent, bool isBattle, Unit unit, out Shell shell)
+        {
+            if (Lookup.TryGetShell(data.k, out var prefab))
+            {
+                shell = Create<Shell>(prefab.gameObject, parent);
+                shell.Load(data, this, isBattle, unit);
                 LoadedShells.Add(shell.Id, shell);
                 return true;
             }
@@ -148,18 +173,18 @@ public static class SaveManager
             return false;
         }
 
-        public bool CreateProgram(ProgramData data, bool isBattle, out Program program) => CreateProgram(data, null, isBattle, out program);
+        public bool LoadProgram(ProgramData data, bool isBattle, Unit unit, out Program program) => LoadProgram(data, null, isBattle, unit, out program);
 
-        public bool CreateProgram(ProgramData data, Transform parent, bool isBattle, out Program program)
+        public bool LoadProgram(ProgramData data, Transform parent, bool isBattle, Unit unit, out Program program)
         {
             if(Lookup.TryGetProgram(data.k, out var prefab))
             {
                 program = Create<Program>(prefab.gameObject, parent);
                 if (program.IsFusion)
                 {
-                    CreateFusion(program, data, parent, isBattle);
+                    LoadFusion(program, data, parent, isBattle, unit);
                 }
-                program.Load(data, isBattle);
+                program.Load(data, isBattle, unit);
                 LoadedPrograms.Add(program.Id, program);
                 return true;
             }
@@ -167,7 +192,7 @@ public static class SaveManager
             return false;
         }
 
-        private bool CreateFusion(Program fusion, ProgramData data, Transform parent, bool isBattle)
+        private bool LoadFusion(Program fusion, ProgramData data, Transform parent, bool isBattle, Unit unit)
         {
             if (!data.TryFindEntry(Program.fusionId, out var entry))
                 return false;
@@ -189,7 +214,7 @@ public static class SaveManager
             }
             if (!FusionArgs.TryGetValue(pid1, out var pData1) || !FusionArgs.TryGetValue(pid2, out var pData2))
                 return false;
-            if (CreateProgram(pData1, parent, isBattle, out var p1) && CreateProgram(pData2, parent, isBattle, out var p2))
+            if (LoadProgram(pData1, parent, isBattle, unit, out var p1) && LoadProgram(pData2, parent, isBattle, unit, out var p2))
             {
                 PersistantData.main.programFuser.FusePrograms(fusion, p1, p2, fusionPattern, fusionName);
                 return true;
@@ -197,9 +222,9 @@ public static class SaveManager
             return false;
         }
 
-        public bool CreateUnit(UnitData data, out Unit unit) => CreateUnit(data, null, out unit);
+        public bool LoadUnit(UnitData data, out Unit unit) => LoadUnit(data, null, out unit);
 
-        public bool CreateUnit(UnitData data, Transform parent, out Unit unit)
+        public bool LoadUnit(UnitData data, Transform parent, out Unit unit)
         {
             if (Lookup.TryGetUnit(data.k, out var prefab))
             {
@@ -220,6 +245,17 @@ public static class SaveManager
             else
             {
                 return UnityEngine.Object.Instantiate(prefab, parent).GetComponent<T>();
+            }
+        }
+
+        public class UnloadedShell
+        {
+            public Shell Shell { get; set; }
+            public ShellData Data { get; set; }
+            public UnloadedShell(Shell shell, ShellData data)
+            {
+                Shell = shell;
+                Data = data;
             }
         }
     }

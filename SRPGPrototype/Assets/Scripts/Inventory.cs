@@ -224,21 +224,29 @@ public class Inventory : MonoBehaviour
         Money = data.money;
         foreach (var programData in data.prs)
         {
-            if (loader.CreateProgram(programData, isBattle, out var program))
+            if (loader.LoadProgram(programData, isBattle, null, out var program))
             {
                 AddProgram(program);
             }
         }
         foreach (var shellData in data.shs)
         {
-            if (loader.CreateShell(shellData, isBattle, out var shell))
+            if (loader.CreateUnloadedShell(shellData, out var shell))
             {
                 AddShellInternal(shell, false);
             }
         }
-        if (loader.LoadedShells.TryGetValue(data.equipShId, out var equippedShell))
+        if (loader.UnloadedShells.TryGetValue(data.equipShId, out var equippedShell))
         {
-            EquippedShell = equippedShell;
+            EquippedShell = equippedShell.Shell;
+        }
+    }
+
+    public void FinishLoading(SaveManager.InventoryData data, SaveManager.Loader loader, bool isBattle)
+    {
+        foreach (var shellData in data.shs)
+        {
+            loader.LoadUnloadedShell(shellData.id, isBattle, null);
         }
         SortShells();
     }

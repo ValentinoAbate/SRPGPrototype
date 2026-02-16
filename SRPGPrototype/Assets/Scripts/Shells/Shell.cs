@@ -480,7 +480,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         return shellData;
     }
 
-    public void Load(SaveManager.ShellData data, SaveManager.Loader loader, bool isBattle)
+    public void Load(SaveManager.ShellData data, SaveManager.Loader loader, bool isBattle, Unit unit)
     {
         Id = data.id;
         Stats.HP = data.hp;
@@ -488,7 +488,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         SetLevel(data.lv);
         foreach (var programData in data.prs)
         {
-            if(loader.CreateProgram(programData.pr, isBattle, out Program program))
+            if(loader.LoadProgram(programData.pr, isBattle, unit, out Program program))
             {
                 Install(program, programData.p);
             }

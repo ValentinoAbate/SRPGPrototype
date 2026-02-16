@@ -354,7 +354,7 @@ public class Program : GridObject, ILootable, IHasKey
         return data;
     }
 
-    public void Load(SaveManager.ProgramData programData, bool isBattle)
+    public void Load(SaveManager.ProgramData programData, bool isBattle, Unit unit)
     {
         Id = programData.id;
         if (!string.IsNullOrEmpty(programData.u))
@@ -402,7 +402,7 @@ public class Program : GridObject, ILootable, IHasKey
                     {
                         if (effect.CanSave(isBattle))
                         {
-                            effect.Load(data[index++], isBattle, null); // TODO: hookup unit
+                            effect.Load(data[index++], isBattle, unit);
                             if (index >= data.Count)
                                 break;
                         }

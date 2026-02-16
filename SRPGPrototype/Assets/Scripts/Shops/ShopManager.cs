@@ -89,14 +89,14 @@ public class ShopManager : MonoBehaviour
             var shop = new ShopData();
             foreach(var programData in savedShop.prs)
             {
-                if(loader.CreateProgram(programData, objectContainer, false, out var program))
+                if(loader.LoadProgram(programData, objectContainer, false, null, out var program))
                 {
                     shop.AddProgram(program);
                 }
             }
             foreach (var shellData in savedShop.shs)
             {
-                if (loader.CreateShell(shellData, objectContainer, false, out var shell))
+                if (loader.LoadShell(shellData, objectContainer, false, null, out var shell))
                 {
                     shop.AddShell(shell);
                 }

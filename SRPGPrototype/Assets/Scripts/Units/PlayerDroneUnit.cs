@@ -42,9 +42,9 @@ public class PlayerDroneUnit : PlayerUnit
             return;
         }
         var shidStr = args.Dequeue();
-        if(int.TryParse(shidStr, out int shid) && loader.LoadedShells.TryGetValue(shid, out var sh))
+        if(int.TryParse(shidStr, out int shid) && loader.UnloadedShells.TryGetValue(shid, out var sh))
         {
-            SetShell(sh);
+            SetShell(sh.Shell);
         }
     }
 }
