@@ -42,6 +42,9 @@ public class CompileDataProxyUnit : Unit
 
     public override IncomingDamageMod IncomingDamageMods { get => CompileData.incomingDamageMods; set { } }
 
+    public override System.Action<BattleGrid, Unit> OnSpawned { get => CompileData.onSpawned; set { } }
+    public override System.Action<BattleGrid, Unit> OnRemoved { get => CompileData.onRemoved; set { } }
+
     public override OnBattleStartDel OnBattleStartFn { get => CompileData.onBattleStart; set { } }
 
     public override OnPhaseStartDel OnPhaseStartFn { get => CompileData.onPhaseStart; set { } }

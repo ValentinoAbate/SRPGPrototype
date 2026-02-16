@@ -39,6 +39,8 @@ public abstract class AIUnit : Unit
     public override OnRepositioned OnRepositionedFn { get; set; }
     public override OnRepositioned OnRepositionOther { get; set; }
     public override OnGamble OnGambleFn { get; set; }
+    public override System.Action<BattleGrid, Unit> OnSpawned { get; set; }
+    public override System.Action<BattleGrid, Unit> OnRemoved { get; set; }
     public override OnBattleStartDel OnBattleStartFn { get; set; }
     public override OnPhaseStartDel OnPhaseStartFn { get; set; }
     public override OnPhaseEndDel OnPhaseEndFn { get; set; }

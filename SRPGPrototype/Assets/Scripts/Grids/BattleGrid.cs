@@ -69,6 +69,7 @@ public class BattleGrid : Grid.Grid<Unit>
     public override void Remove(Unit obj)
     {
         base.Remove(obj);
+        obj.OnRemoved?.Invoke(this, obj);
         if (EncounterEventManager.Ready)
         {
             EncounterEventManager.main.OnUnitRemoved?.Invoke(obj);

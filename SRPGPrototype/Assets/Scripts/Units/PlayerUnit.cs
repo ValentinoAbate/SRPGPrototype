@@ -35,6 +35,8 @@ public class PlayerUnit : Unit
     public override OnRepositioned OnRepositionedFn { get => Shell.OnRepositioned; set { } }
     public override OnRepositioned OnRepositionOther { get => Shell.OnRepositionOther; set { } }
     public override OnGamble OnGambleFn { get => Shell.OnGamble; set { } }
+    public override System.Action<BattleGrid, Unit> OnSpawned { get => Shell.OnSpawned; set { } }
+    public override System.Action<BattleGrid, Unit> OnRemoved { get => Shell.OnRemoved; set { } }
     public override OnBattleStartDel OnBattleStartFn { get => Shell.OnBattleStart; set { } }
     public override OnPhaseStartDel OnPhaseStartFn { get => Shell.OnPhaseStart; set { } }
     public override OnPhaseEndDel OnPhaseEndFn { get => Shell.OnPhaseEnd; set { } }

@@ -95,12 +95,13 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public abstract OnSubAction OnAfterSubActionFn { get; set; }
     public abstract OnAfterAction OnAfterActionFn { get; set; }
     public abstract OnDeath OnDeathFn { get; set; }
-    public System.Action<BattleGrid, Unit> OnSpawned { get; set; }
     public abstract OnDamaged OnDamagedFn { get; set; }
     public abstract IncomingDamageMod IncomingDamageMods { get; set; }
     public abstract OnRepositioned OnRepositionedFn { get; set; }
     public abstract OnRepositioned OnRepositionOther { get; set; }
     public abstract OnGamble OnGambleFn { get; set; }
+    public abstract System.Action<BattleGrid, Unit> OnSpawned { get; set; }
+    public abstract System.Action<BattleGrid, Unit> OnRemoved { get; set; }
     public abstract OnBattleStartDel OnBattleStartFn { get; set; }
     public abstract OnPhaseStartDel OnPhaseStartFn { get; set; }
     public abstract OnPhaseEndDel OnPhaseEndFn { get; set; }
