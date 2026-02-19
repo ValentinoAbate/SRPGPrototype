@@ -17,7 +17,7 @@ public class ProgramNumberDrawer : PropertyDrawer
             numAdditionalControls += 1;
         }
         if (type != ProgramNumber.Type.Constant)
-            numAdditionalControls += 5;
+            numAdditionalControls += 6;
         return (EditorGUIUtility.singleLineHeight + 1) * (2 + numAdditionalControls);
     }
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -71,6 +71,8 @@ public class ProgramNumberDrawer : PropertyDrawer
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("modifier"));
             UIRect.y += lineHeight;
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("multiplier"));
+            UIRect.y += lineHeight;
+            EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("negateNumber"));
             UIRect.y += lineHeight;
         }
 

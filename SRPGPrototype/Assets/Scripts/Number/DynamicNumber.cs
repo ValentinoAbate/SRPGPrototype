@@ -15,10 +15,17 @@ public class DynamicNumber
     private int modifier = 0;
     [SerializeField]
     private int multiplier = 1;
+    [SerializeField]
+    private bool negateNumber;
 
     public int Value(int number)
     {
-        int modNumber = baseAmount + ((number + modifier) * multiplier);
+        int modNumber = number;
+        if (negateNumber)
+        {
+            modNumber *= -1;
+        }
+        modNumber = baseAmount + ((modNumber + modifier) * multiplier);
         return Mathf.Clamp(modNumber, min, max);
     }
 }

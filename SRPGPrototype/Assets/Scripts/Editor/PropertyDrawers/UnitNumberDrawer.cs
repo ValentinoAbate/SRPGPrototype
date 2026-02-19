@@ -17,7 +17,7 @@ public class UnitNumberDrawer : PropertyDrawer
         }
         else
         {
-            numAdditionalControls += 5;
+            numAdditionalControls += 6;
         }
         return (EditorGUIUtility.singleLineHeight + 1) * (2 + numAdditionalControls) + addedHeight;
     }
@@ -56,6 +56,8 @@ public class UnitNumberDrawer : PropertyDrawer
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("modifier"));
             UIRect.y += lineHeight;
             EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("multiplier"));
+            UIRect.y += lineHeight;
+            EditorGUI.PropertyField(UIRect, property.FindPropertyRelative("negateNumber"));
             UIRect.y += lineHeight;
         }
 
