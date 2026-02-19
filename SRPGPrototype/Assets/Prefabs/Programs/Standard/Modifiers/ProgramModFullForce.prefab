@@ -21,7 +21,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Adds damage equal to your shell dimension minus the number of empty
-        shell tiles minus 4 ({modDmg}) to adjacent weapons (except umbrellas).
+        shell tiles minus 3 ({modDmg}) to adjacent weapons (except umbrellas).
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -246,7 +246,7 @@ MonoBehaviour:
   damage:
     min: -2147483648
     max: 2147483647
-    baseAmount: -4
+    baseAmount: -3
     modifier: 0
     multiplier: -1
     constant: 1
