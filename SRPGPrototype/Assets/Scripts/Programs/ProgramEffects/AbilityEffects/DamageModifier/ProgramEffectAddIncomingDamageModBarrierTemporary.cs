@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIncomingDamageModBarrier
 {
+    private const int uninitializedTurns = -1;
     [SerializeField] private int numTurns;
     [SerializeField] private GameObject barrierPrefab;
 
@@ -18,21 +19,21 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
         }
     }
 
-    public int TurnsLeft { get; private set; } = -1;
+    public int TurnsLeft { get; private set; } = uninitializedTurns;
     private GameObject barrierObject = null;
 
     protected override void AddAbility(ref Shell.CompileData data)
     {
         base.AddAbility(ref data);
         data.onPhaseEnd += OnPhaseEnd;
-        data.onBattleStart += OnBattleStart;
+        data.onSpawned += OnSpawned;
     }
 
     protected override void AddAbility(Unit unit)
     {
         base.AddAbility(unit);
         unit.OnPhaseEndFn += OnPhaseEnd;
-        unit.OnBattleStartFn += OnBattleStart;
+        unit.OnSpawned += OnSpawned;
     }
 
     public override int Ability(BattleGrid grid, Action action, SubAction sub, Unit self, Unit source, int damage, ActionEffectDamage.TargetStat targetStat, bool simulation)
@@ -42,9 +43,12 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
         return base.Ability(grid, action, sub, self, source, damage, targetStat, simulation);
     }
 
-    public void OnBattleStart(BattleGrid grid, Unit unit)
+    public void OnSpawned(BattleGrid grid, Unit unit)
     {
-        Activate(numTurns, unit);
+        if(numTurns > 0 && TurnsLeft == uninitializedTurns)
+        {
+            Activate(numTurns, unit);
+        }
     }
 
     private void Activate(int turns, Unit unit)

@@ -8,11 +8,14 @@ public class AIComponentHunter : AIComponentBasic
     [SerializeField] private ProgramEffectAddIncomingDamageModBarrierTemporary barrierEffect;
     [SerializeField] private Action summonAction;
     [SerializeField] private int reinforcementAmount = 2;
+    private Unit self;
     public override void Initialize(AIUnit self)
     {
+        this.self = self;
         base.Initialize(self);
         self.OnPhaseEndFn += OnPhaseEnd;
-        self.OnBattleStartFn += barrierEffect.OnBattleStart;
+        self.OnSpawned += barrierEffect.OnSpawned;
+        self.IncomingDamageMods += barrierEffect.Ability;
         summonAction = summonAction.Validate(self.ActionTransform);
     }
 
@@ -41,5 +44,15 @@ public class AIComponentHunter : AIComponentBasic
                 break;
             summonAction.UseAll(grid, self, tPos, false);
         }
+    }
+
+    public override bool CanSave => barrierEffect.CanSave(true);
+    public override string Save()
+    {
+        return barrierEffect.Save(true);
+    }
+    public override void Load(string data)
+    {
+        barrierEffect.Load(data, true, self);
     }
 }
