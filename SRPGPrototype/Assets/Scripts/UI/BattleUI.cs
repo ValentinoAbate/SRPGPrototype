@@ -271,8 +271,8 @@ public class BattleUI : MonoBehaviour
         menu.Show(grid, this, unit, fromHotKey);
         cursor.OnClick = null;
         cursor.OnCancel = CancelActionMenu;
-        cursor.OnUnHighlight = null;
-        cursor.OnHighlight = null;
+        cursor.OnUnHighlight = UnHighlightUnit;
+        cursor.OnHighlight = HighlightUnit;
     }
 
     private void CancelActionMenu()
