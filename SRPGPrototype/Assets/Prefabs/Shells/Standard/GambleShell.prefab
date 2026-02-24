@@ -20,8 +20,8 @@ PrefabInstance:
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
       propertyPath: description
-      value: Feeling Lucky? Can only use Gamble, Transient, and Fixed actions but
-        has high Max AP and the Gambler ability.
+      value: Feeling Lucky? Gain 1 AP on gamble success and 1 Power on gamble fail,
+        but warp to a random tile on turn start.
       objectReference: {fileID: 0}
     - target: {fileID: 6033324569408216844, guid: cc0b6a8beff46344cb62e875be591e12,
         type: 3}
