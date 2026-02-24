@@ -8,7 +8,7 @@ public class TargetPatternGeneratorAllUnitsWithStat : TargetPatternGeneratorAllU
     [SerializeField] private int constant = 1;
     [SerializeField] private ComparisonOperator comparison;
 
-    protected override bool IsTargetValid(BattleGrid grid, Unit user, Unit target)
+    protected override bool IsTargetValid(BattleGrid grid, Unit user, Unit target, Vector2Int targetPos)
     {
         // Threshold can be a user stat or a constant
         int threshold = userStat == Stats.StatName.None ? constant : user.GetStat(userStat);
