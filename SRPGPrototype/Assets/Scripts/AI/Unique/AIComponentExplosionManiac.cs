@@ -82,7 +82,7 @@ public class AIComponentExplosionManiac : AIComponent
                 applyAPCost = false;
             }
             // Throw units next
-            int numUnits = RandomU.instance.RollSuccess((1 - ((double)self.HP / self.MaxHP)) + 0.2) ? 2 : 3;
+            int numUnits = RandomU.instance.RollSuccess(((double)self.HP / self.MaxHP) + 0.5) ? 2 : 1;
             for (int i = 0; i < numUnits; i++)
             {
                 positionWeights.Clear();

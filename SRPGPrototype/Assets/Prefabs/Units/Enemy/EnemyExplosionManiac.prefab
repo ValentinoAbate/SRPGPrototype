@@ -30,9 +30,9 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent/Jump. Attack: Special. Detonates an explosive unit (from
-        any range) if it will damage a player unit. Then, runs away and summons several
-        explosive units. Takes -3 Damage from Explosives.'
+      value: 'Move: Adjacent/Diagonal. Attack: Special. Detonates an explosive unit
+        (from any range) if it will damage a player unit. Then, runs away and summons
+        several explosive units. Takes -3 Damage from Explosives.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045db6f9279a70d448e69beb1ce6cf42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction: {fileID: 4415060608083833614, guid: b8e7015d4f273ee48acb9f7a934d38ec,
+  moveAction: {fileID: 4415060608083833614, guid: 4ade3e928f22d7241b69a104a7f4f5ef,
     type: 3}
   detonateAction: {fileID: 625623200089507684, guid: d55d1dc9433b90644a1ba7e9e5075cea,
     type: 3}
