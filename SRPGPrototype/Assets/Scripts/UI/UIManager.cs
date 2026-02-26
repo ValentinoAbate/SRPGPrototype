@@ -32,7 +32,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ProgramFusionUI programFusionUI;
 
     [SerializeField] private ShellViewerControllerUI shellViewerController;
+    [SerializeField] private GameObject floatTextPrefab;
+    [SerializeField] private Transform fxContainer;
 
+    private PrefabPool<FloatText> floatTextPool;
 
     public BattleUI BattleUI 
     {
@@ -51,6 +54,7 @@ public class UIManager : MonoBehaviour
         if(main == null)
         {
             main = this;
+            floatTextPool = new PrefabPool<FloatText>(floatTextPrefab, fxContainer, 5);
             DontDestroyOnLoad(transform);
         }
         else
@@ -95,5 +99,17 @@ public class UIManager : MonoBehaviour
         ProgramDescriptionUI.Hide();
         ActionDescriptionUI.Hide();
         UnitDescriptionUI.Hide();
+    }
+
+    private const float floatTime = 0.5f;
+    public void PlayFloatText(Vector2 pos, string text, Color color, System.Action onComplete = null)
+    {
+        var floatText = floatTextPool.Get();
+        void OnComplete()
+        {
+            floatTextPool.Release(floatText);
+            onComplete?.Invoke();
+        }
+        floatText.Play(Camera.main.WorldToScreenPoint(pos), text, color, floatTime, OnComplete);
     }
 }

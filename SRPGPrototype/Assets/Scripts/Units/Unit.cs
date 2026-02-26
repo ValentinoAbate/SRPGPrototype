@@ -188,18 +188,28 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         if (Dead || amount <= 0)
             return;
         HP = Mathf.Min(HP + amount, MaxHP);
+        UIManager.main.PlayFloatText(transform.position, $"+{amount}", Color.green);
     }
 
     public virtual void Damage(BattleGrid grid, int amount, Unit source)
     {
-        if (Dead || amount <= 0)
+        if (Dead)
+        {
             return;
+        }
+        if(amount <= 0)
+        {
+            UIManager.main.PlayFloatText(transform.position, "0", Color.white);
+            return;
+        }
+
         int damage = amount;
         if(!Break.IsZero)
         {
             damage += Break.Value;
             Break.Use();
         }
+        UIManager.main.PlayFloatText(transform.position, amount.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
         if (damage >= HP)
         {
             Kill(grid, source);
