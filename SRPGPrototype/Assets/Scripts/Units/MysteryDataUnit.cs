@@ -51,22 +51,4 @@ public class MysteryDataUnit : AIUnit
         }
         base.Initialize();
     }
-
-    public override Coroutine OnBattleEnd(EncounterManager manager)
-    {
-        if (Dead)
-        {
-            return null;
-        }
-        var progDrops = GetComponentsInChildren<DropComponent<Program>>(true);
-        foreach (var drop in progDrops)
-            manager.GenerateProgramLoot += drop.GenerateDrop;
-        var shellDrops = GetComponentsInChildren<DropComponent<Shell>>(true);
-        foreach (var drop in shellDrops)
-            manager.GenerateShellLoot += drop.GenerateDrop;
-        var moneyRewards = GetComponentsInChildren<MoneyRewardComponent>(true);
-        foreach (var reward in moneyRewards)
-            manager.GenerateMoneyLoot += reward.GenerateMoneyData;
-        return null;
-    }
 }
