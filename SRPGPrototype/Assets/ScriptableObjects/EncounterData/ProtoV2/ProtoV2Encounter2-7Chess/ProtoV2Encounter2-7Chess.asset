@@ -23,10 +23,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8da2fd1dad4b06e47a0ff66d3fe26f09, type: 2}
   - {fileID: 11400000, guid: 9f79d1e8d0dc489479f66f83c5edbd47, type: 2}
   - {fileID: 11400000, guid: bb8a85931c7a39748a75f2c1922004d7, type: 2}
+  - {fileID: 11400000, guid: 674a5d6d088d23c45a20be71f8dabdf1, type: 2}
   seed:
     nameOverride: 
     dimensions: {x: 0, y: 0}
     units: []
+    ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0
     baseCompletionMoney: 0
