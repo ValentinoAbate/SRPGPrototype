@@ -23,6 +23,7 @@ public class TitleScreenUI : MonoBehaviour
 #if DEBUG
         debugButton.SetActive(true);
 #endif
+        UIManager.main.TopBarUI.SetTitleText("Title");
     }
 
     public void NewRun()

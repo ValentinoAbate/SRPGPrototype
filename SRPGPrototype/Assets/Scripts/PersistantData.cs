@@ -52,6 +52,7 @@ public class PersistantData : MonoBehaviour
         inventory.Clear();
         CurrentId = 0;
         shopManager.Initialize();
+        UIManager.main.UpdateShellViewerController();
     }
 
     public void SaveRunData(SaveManager.RunData runData, SaveManager.State state)
