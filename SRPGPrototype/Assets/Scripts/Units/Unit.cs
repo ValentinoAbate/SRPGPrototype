@@ -209,7 +209,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
             damage += Break.Value;
             Break.Use();
         }
-        UIManager.main.PlayFloatText(transform.position, amount.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
+        UIManager.main.PlayFloatText(transform.position, damage.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
         if (damage >= HP)
         {
             Kill(grid, source);
