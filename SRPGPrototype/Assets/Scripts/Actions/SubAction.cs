@@ -54,8 +54,6 @@ public class SubAction : MonoBehaviour
             return false;
         }
     }
-    public bool UsesPower => effects.Any((e) => e.UsesPower);
-    public bool UsedPower { get; private set; } = false;
 
     // Sub-action data
     public string SubTypeText
@@ -91,11 +89,6 @@ public class SubAction : MonoBehaviour
         {
             effects = GetComponents<ActionEffect>();
         }
-    }
-
-    public void Initialize()
-    {
-        UsedPower = false;
     }
 
     public IEnumerable<Vector2Int> GetValidRangePositions(BattleGrid grid, Action action, Vector2Int origin, Unit user, IReadOnlyList<Unit> lastTargets)
@@ -182,13 +175,11 @@ public class SubAction : MonoBehaviour
                 if(effect.StandaloneSubActionType != Type.None)
                 {
                     OnBeforeSubAction(grid, action, user, targets, ref userList, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
-                    UsedPower |= effect.UsesPower && !user.Power.IsZero;
                     ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
                     OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                 }
                 else
                 {
-                    UsedPower |= effect.UsesPower && !user.Power.IsZero;
                     ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
                 }
             }
@@ -196,7 +187,6 @@ public class SubAction : MonoBehaviour
         else
         {
             OnBeforeSubAction(grid, action, user, targets, ref userList, targetPositions, options);
-            UsedPower = UsesPower && !user.Power.IsZero;
             foreach (var effect in effects)
             {
                 ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
@@ -257,7 +247,7 @@ public class SubAction : MonoBehaviour
             int baseDamage = damageEffect.ActionMacroDamage(grid, action, this, user, indices);
             if(user != null && damageEffect.UsesPower)
             {
-                baseDamage += user.Power.Value;
+                baseDamage += user.Power;
             }
             return baseDamage;
         }

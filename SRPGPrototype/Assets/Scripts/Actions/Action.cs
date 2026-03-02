@@ -23,19 +23,6 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         EncounterStart,
     }
 
-    public bool UsedPower
-    {
-        get
-        {
-            foreach (var sub in SubActions)
-            {
-                if (sub.UsedPower)
-                    return true;
-            }
-            return false;
-        }
-    }
-
     public Program Program { get; set; }
 
     public Type ActionType
@@ -231,11 +218,8 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         return baseAp + Slowdown * ((baseUsage + uses) / SlowdownInterval);
     }
 
-    private bool zeroSpeed = false;
-
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
     {
-        StartAction(user);
         var lastTargets = new List<Unit>();
         foreach (var sub in SubActions)
         {
@@ -246,35 +230,17 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         FinishAction(grid, user, applyAPCost);
     }
 
-    public void StartAction(Unit user)
-    {
-        zeroSpeed = user.Speed.IsZero;
-        foreach (var sub in SubActions)
-        {
-            sub.Initialize();
-        }
-    }
-
     public void FinishAction(BattleGrid grid, Unit user, bool applyAPCost = true)
     {
         int cost = 0;
         if(applyAPCost)
         {
             cost = APCost;
-            if(!zeroSpeed)
-            {
-                cost -= user.Speed.Value;
-                user.Speed.Use();
-            }
             user.AP -= Mathf.Max(cost, 0);
         }
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
-        if (UsedPower)
-        {
-            user.Power.Use();
-        }
         if(Program != null)
         {
             var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();

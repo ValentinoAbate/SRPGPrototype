@@ -146,7 +146,7 @@ public class AIComponentExplosionManiac : AIComponent
         {
             if (!grid.TryGet(pos, out var unit) || (hitUnits.TryGetValue(unit, out int dmgTaken) && dmgTaken >= unit.HP))
                 continue;
-            int simDamage = ActionUtils.SimulateDamageCalc(grid, detonateAction, detonateAction.SubActions[0], target, unit, new ActionEffect.PositionData(target.Pos, target.Pos), 0, targetPositions);
+            int simDamage = ActionUtils.SimulateDamageCalc(grid, detonateAction, detonateAction.SubActions[0], target, unit, new ActionEffect.PositionData(target.Pos, target.Pos), targetPositions);
             score += DetonationHitWeighting(pos, self, unit, simDamage);
             if (hitUnits.ContainsKey(unit))
             {

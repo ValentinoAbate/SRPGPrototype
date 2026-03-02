@@ -12,7 +12,6 @@ public class UnitDescriptionUI : MonoBehaviour
     public TextMeshProUGUI apNumberText;
     public TextMeshProUGUI repairNumberText;
     public TextMeshProUGUI powerNumberText;
-    public TextMeshProUGUI speedNumberText;
     public TextMeshProUGUI breakNumberText;
 
     public void Show(Unit unit)
@@ -27,9 +26,8 @@ public class UnitDescriptionUI : MonoBehaviour
         hpNumberText.text = unit.HP.ToString() + "/" + unit.MaxHP.ToString();
         apNumberText.text = unit.AP.ToString() + "/" + unit.MaxAP.ToString();
         repairNumberText.text = unit.Repair.ToString();
-        powerNumberText.text = unit.Power.Value.ToString();
-        speedNumberText.text = unit.Speed.Value.ToString();
-        breakNumberText.text = unit.Break.Value.ToString();
+        powerNumberText.text = unit.Power.ToString();
+        breakNumberText.text = unit.Break.ToString();
     }
 
     public void Hide()

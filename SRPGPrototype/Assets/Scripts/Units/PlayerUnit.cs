@@ -20,9 +20,16 @@ public class PlayerUnit : Unit
     private int ap = 0;
     public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
     public override int BaseRepair => Stats.BaseRepair;
-    public override CenterStat Power => Stats.Power;
-    public override CenterStat Speed => Stats.Speed;
-    public override CenterStat Break => Stats.Break;
+    public override int Power
+    {
+        get => Stats.Power;
+        set => Stats.Power = value;
+    }
+    public override int Break
+    {
+        get => Stats.Break;
+        set => Stats.Break = value;
+    }
 
     #endregion
 
@@ -66,10 +73,7 @@ public class PlayerUnit : Unit
             HP = MaxHP;
         // Make sure UI gets updated
         HP = HP;
-        // Reset center stats
-        Power.Value = 0;
-        Speed.Value = 0;
-        Break.Value = 0;
+        ResetTemporaryStats();
     }
 
     public override void DoRepair()

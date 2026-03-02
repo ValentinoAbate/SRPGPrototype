@@ -15,7 +15,7 @@ public class ActionEffectModifyStat : ActionEffect, IDamagingActionEffect
     {
         actionValue = number.ActionValue(grid, action, user, GetTargetList(grid, targetPositions).Count);
         if (UsesPower)
-            actionValue += user.Power.Value;
+            actionValue += user.Power;
     }
 
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)

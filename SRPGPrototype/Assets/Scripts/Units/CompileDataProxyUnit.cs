@@ -20,11 +20,16 @@ public class CompileDataProxyUnit : Unit
 
     public override int BaseRepair => CompileData.stats.Repair;
 
-    public override CenterStat Power => CompileData.stats.Power;
-
-    public override CenterStat Speed => CompileData.stats.Speed;
-
-    public override CenterStat Break => CompileData.stats.Break;
+    public override int Power
+    {
+        get => CompileData.stats.Power;
+        set => CompileData.stats.Power = value;
+    }
+    public override int Break
+    {
+        get => CompileData.stats.Break;
+        set => CompileData.stats.Break = value;
+    }
 
     public override OnSubAction OnBeforeSubActionFn { get => CompileData.onBeforeSubAction; set { } }
 

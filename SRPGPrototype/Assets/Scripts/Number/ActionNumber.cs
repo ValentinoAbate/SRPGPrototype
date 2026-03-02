@@ -61,9 +61,7 @@ public class ActionNumber : DynamicNumber
     {
         if (action == null)
             return 0;
-        if (user == null)
-            return action.APCost;
-        return action.APCost - user.Speed.Value;
+        return action.APCost;
     }
 
     public int TargetValue(BattleGrid grid, Action action, Unit user, Unit target, ActionEffect.PositionData targetData)

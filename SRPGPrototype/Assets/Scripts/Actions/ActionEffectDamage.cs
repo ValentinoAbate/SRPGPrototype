@@ -81,7 +81,7 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
         int damage = baseDamage + TargetModifier(grid, action, user, target, targetData);
         if (UsesPower)
         {
-            damage += user.Power.Value;
+            damage += user.Power;
         }
         // Apply effect modifier target values
         foreach (var modifier in modifiers)

@@ -23,7 +23,7 @@ public class Stats
         MaxAP,
         Repair,
         Power,
-        Speed,
+        Unused,
         Break,
     }
 
@@ -55,9 +55,8 @@ public class Stats
 
     private int repair;
 
-    public CenterStat Power { get; set; } = new CenterStat();
-    public CenterStat Speed { get; set; } = new CenterStat();
-    public CenterStat Break { get; set; } = new CenterStat();
+    public int Power { get; set; } = 0;
+    public int Break { get; set; } = 0;
 
     public void RestoreHpToMax() => HP = MaxHP;
 

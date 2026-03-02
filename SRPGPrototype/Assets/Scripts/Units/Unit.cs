@@ -88,9 +88,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public abstract int AP { get; set; }
     public abstract int Repair { get; set; }
     public abstract int BaseRepair { get; }
-    public abstract CenterStat Power { get; }
-    public abstract CenterStat Speed { get; }
-    public abstract CenterStat Break { get; }
+    public abstract int Power { get; set; }
+    public abstract int Break { get; set; }
     public abstract OnSubAction OnBeforeSubActionFn { get; set; }
     public abstract OnSubAction OnAfterSubActionFn { get; set; }
     public abstract OnAfterAction OnAfterActionFn { get; set; }
@@ -197,17 +196,11 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         {
             return;
         }
-        if(amount <= 0)
+        int damage = amount + Break;
+        if (amount <= 0)
         {
             UIManager.main.PlayFloatText(transform.position, "0", Color.white);
             return;
-        }
-
-        int damage = amount;
-        if(!Break.IsZero)
-        {
-            damage += Break.Value;
-            Break.Use();
         }
         UIManager.main.PlayFloatText(transform.position, damage.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
         if (damage >= HP)
@@ -252,9 +245,13 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     {
         HP = MaxHP;
         AP = MaxAP;
-        Power.Value = 0;
-        Speed.Value = 0;
-        Break.Value = 0;
+        ResetTemporaryStats();
+    }
+
+    public void ResetTemporaryStats() 
+    {
+        Power = 0;
+        Break = 0;
     }
 
     public void ModifyStat(BattleGrid grid, Stats.StatName stat, int value, Unit source)
@@ -277,13 +274,10 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
                 Repair += value;
                 break;
             case Stats.StatName.Power:
-                Power.Value += value;
-                break;
-            case Stats.StatName.Speed:
-                Speed.Value += value;
+                Power += value;
                 break;
             case Stats.StatName.Break:
-                Break.Value += value;
+                Break += value;
                 break;
         }
     }
@@ -303,11 +297,9 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
             case Stats.StatName.Repair:
                 return Repair;
             case Stats.StatName.Power:
-                return Power.Value;
-            case Stats.StatName.Speed:
-                return Speed.Value;
+                return Power;
             case Stats.StatName.Break:
-                return Break.Value;
+                return Break;
         }
         throw new System.Exception("Attempt to get invalid stat: " + stat.ToString());
     }
@@ -332,20 +324,17 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
                 Repair = value;
                 break;
             case Stats.StatName.Power:
-                Power.Value = value;
-                break;
-            case Stats.StatName.Speed:
-                Speed.Value = value;
+                Power = value;
                 break;
             case Stats.StatName.Break:
-                Break.Value = value;
+                Break = value;
                 break;
         }
     }
 
     public bool CanUseAction(Action action)
     {
-        return AP >= (action.APCost - Speed.Value);
+        return AP >= action.APCost;
     }
 
     public int ActionUsesUntilNoAP(Action action, int apToSave = 0)
@@ -353,13 +342,13 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         int apBudget = AP - apToSave;
         if (apBudget <= 0)
             return 0;
-        int cost = action.APCost - Speed.Value;
+        int cost = action.APCost;
         if (cost > apBudget)
             return 0;
         int uses = 1;
         while(uses < 100)
         {
-            cost += action.APCostAfterXUses(uses) - Speed.ValueAfterXUses(uses);
+            cost += action.APCostAfterXUses(uses);
             if (cost > apBudget)
                 break;
             ++uses;
@@ -382,9 +371,6 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     {
         OnPhaseEndFn?.Invoke(grid, this);
         AP = MaxAP;
-        Power.Value = 0;
-        Speed.Value = 0;
-        Break.Value = 0;
         return null;
     }
 
@@ -416,8 +402,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
             ap = AP,
             mAp = MaxAP,
             r = Repair,
-            brk = Break.Value,
-            pow = Power.Value,
+            brk = Break,
+            pow = Power,
             hk = HotkeyIndex,
             sp = StartingPos,
         };
@@ -441,8 +427,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         MaxAP = data.mAp;
         AP = data.ap;
         Repair = data.r;
-        Break.Value = data.brk;
-        Power.Value = data.pow;
+        Break = data.brk;
+        Power = data.pow;
         HotkeyIndex = data.hk;
         StartingPos = data.sp;
         foreach(var d in data.d)

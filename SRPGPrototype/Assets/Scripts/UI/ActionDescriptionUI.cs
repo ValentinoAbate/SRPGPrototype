@@ -36,17 +36,8 @@ public class ActionDescriptionUI : MonoBehaviour
             attributesText.text = string.Empty;
             upgradeDisplay.ShowNone();
         }
-        if(user == null || user.Speed.IsZero)
-        {
-            apCostNumberText.text = action.APCost.ToString();
-            apCostNumberText.color = textColor;
-        }
-        else
-        {
-            int cost = Mathf.Max(0, action.APCost - user.Speed.Value);
-            apCostNumberText.text = cost.ToString();
-            apCostNumberText.color = modifiedTextColor;
-        }
+        apCostNumberText.text = action.APCost.ToString();
+        apCostNumberText.color = textColor;
         slowdownAmountNumberText.text = action.Slowdown.ToString();
         slowdownResetText.text = action.SlowdownReset.ToString();
         int timesUsed = 0;
@@ -83,17 +74,8 @@ public class ActionDescriptionUI : MonoBehaviour
         nameText.text = Hide(action.DisplayName) + " (" + Hide(action.ActionType.ToString()) + ")";
         descText.text = Hide(action.GetDescription(user, grid)); // add description later
         attributesText.text = action.Program != null ? Hide(action.Program.AttributesText) : string.Empty; // this is also for later
-        if (user == null || user.Speed.IsZero)
-        {
-            apCostNumberText.text = Hide(action.APCost.ToString());
-            apCostNumberText.color = textColor;
-        }
-        else
-        {
-            int cost = Mathf.Max(0, action.APCost - user.Speed.Value);
-            apCostNumberText.text = Hide(cost.ToString());
-            apCostNumberText.color = modifiedTextColor;
-        }
+        apCostNumberText.text = Hide(action.APCost.ToString());
+        apCostNumberText.color = textColor;
         slowdownAmountNumberText.text = Hide(action.Slowdown.ToString());
         slowdownResetText.text = Hide(action.SlowdownReset.ToString());
         int timesUsed = 0;

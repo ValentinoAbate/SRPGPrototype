@@ -11,6 +11,10 @@ public class PlayerPhase : Phase
     {
         if (CheckEndBattle())
             yield break;
+        foreach(var unit in Grid)
+        {
+            unit.ResetTemporaryStats();
+        }
         SaveManager.Save(SaveManager.State.Battle);
         foreach (var unit in GetUnits<Unit>())
         {

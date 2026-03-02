@@ -287,7 +287,6 @@ public class BattleUI : MonoBehaviour
         int currAction = 0;
         lastTargets.Clear();
         lastSelectedPos = Vector2Int.zero;
-        action.StartAction(unit);
         if (!ShowRangePattern(action, action.SubActions[currAction], unit, out var targetRangeEntries))
         {
             CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);

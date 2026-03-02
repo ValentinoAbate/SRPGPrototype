@@ -15,7 +15,7 @@ public abstract class ActionEffectHeal : ActionEffect
     {
         if (target == null)
             return;
-        int damage = Mathf.Max(baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power.Value, 0);
+        int damage = Mathf.Max(baseDamage + TargetModifier(grid, action, user, target, targetData) + user.Power, 0);
         Debug.Log(target.DisplayName + " heals " + damage.ToString() + " damage and is now at " + (target.HP + damage) + " HP");
         target.Heal(damage, user);
     }

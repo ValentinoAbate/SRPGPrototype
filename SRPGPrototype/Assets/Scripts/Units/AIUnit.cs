@@ -71,9 +71,8 @@ public abstract class AIUnit : Unit
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
 
-    public override CenterStat Power { get; } = new CenterStat();
-    public override CenterStat Speed { get; } = new CenterStat();
-    public override CenterStat Break { get; } = new CenterStat();
+    public override int Power { get; set; } = 0;
+    public override int Break { get; set; } = 0;
 
     public AIComponent AI { get; private set; }
 
