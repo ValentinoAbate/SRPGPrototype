@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UnitPlacementUI : MonoBehaviour
 {
@@ -59,17 +60,33 @@ public class UnitPlacementUI : MonoBehaviour
         cursor.OnClick += PlaceUnit;
         cursor.OnCancel += CancelUnitPlacement;
         cursor.OnHighlight = ShowUnitDescription;
-        cursor.OnUnHighlight = UIManager.main.HideUnitDescriptionUI;
+        cursor.OnUnHighlight = HideUnitDescription;
     }
+
+
 
     // Enable unit descriptions
     private void ShowUnitDescription(Vector2Int pos)
     {
         if (grid.TryGet(pos, out var unit))
         {
+            if (!unit.ShowUIByDefault)
+            {
+                unit.UI.SetVisible(true);
+            }
             UIManager.main.UnitDescriptionUI.Show(unit);
         }
     }
+
+    private void HideUnitDescription(Vector2Int pos)
+    {
+        UIManager.main.UnitDescriptionUI.Hide();
+        if (grid.TryGet(pos, out var unit) && !unit.ShowUIByDefault)
+        {
+            unit.UI.SetVisible(false);
+        }
+    }
+
     public void FinishUnitPlacement()
     {
         if(unitsToSpawn.Count <= 0)
