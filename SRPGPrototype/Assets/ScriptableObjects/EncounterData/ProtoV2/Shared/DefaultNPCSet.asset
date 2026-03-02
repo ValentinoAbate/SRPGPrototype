@@ -25,3 +25,7 @@ MonoBehaviour:
     validator: {fileID: 0}
     weight: 1
     isPrimary: 1
+  - unit: {fileID: 6241129000377480468, guid: 9d6187d4dbe5b8749a74b042e80b7371, type: 3}
+    validator: {fileID: 0}
+    weight: 1
+    isPrimary: 1

@@ -90,8 +90,6 @@ public static class ProgramFilters
 
     public static bool GivesCapacity(Program p) => HasEffect<ProgramEffectModifyCapacity>(p);
 
-    public static bool IsExpander(Program p) => HasAttributes(p, Program.Attributes.Expander);
-
     public static bool HasEffect<T>(Program p) where T : ProgramEffect
     {
         foreach (var effect in p.Effects)
@@ -117,4 +115,8 @@ public static class ProgramFilters
     public static bool IsSoulCore(Program p) => HasAttributes(p, Program.Attributes.SoulCore);
 
     public static bool IsGamble(Program p) => HasAttributes(p, Program.Attributes.Gamble);
+
+    public static bool IsExpander(Program p) => HasAttributes(p, Program.Attributes.Expander);
+
+    public static bool IsTransient(Program p) => HasAttributes(p, Program.Attributes.Transient);
 }

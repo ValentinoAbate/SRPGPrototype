@@ -12,6 +12,7 @@ public class ShopManager : MonoBehaviour
         Debug,
         Standard,
         ShellUpgrade,
+        Random,
     }
 
     [SerializeField] private ShopUI ui;
@@ -57,6 +58,11 @@ public class ShopManager : MonoBehaviour
             ShopID.Debug => debugShopData,
             _ => data.ContainsKey(id) ? data[id] : EmptyShopData,
         };
+    }
+
+    public void UpdateShop(ShopGenerator generator)
+    {
+        data[generator.ShopID] = generator.GenerateShopData(objectContainer);
     }
 
     public List<SaveManager.ShopData> Save(ref List<SaveManager.ProgramData> fArgs)

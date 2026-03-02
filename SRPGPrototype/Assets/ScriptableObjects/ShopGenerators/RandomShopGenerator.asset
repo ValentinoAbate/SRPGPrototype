@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3694557f0e4e6d449a888fb8a890a7b, type: 3}
-  m_Name: DebugMapData
+  m_Script: {fileID: 11500000, guid: ac064e00115d9c94994280f31ac179d9, type: 3}
+  m_Name: RandomShopGenerator
   m_EditorClassIdentifier: 
-  key: Debug
-  mapName: Debug
-  mapSymbol: 1
-  nextMap: {fileID: 11400000}
-  encounterSetGenerators:
-  - {fileID: 11400000, guid: 00c59b80cd8ccdb478f51ca41c31d23f, type: 2}
-  encounterData: []
+  shopID: 4

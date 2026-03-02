@@ -122,6 +122,7 @@ MonoBehaviour:
   - Pillar
   - SharkBurrow
   - ShopKiosk
+  - ShopKioskRandom
   - ShopKioskShellUpgrade
   - Toolbox
   - TravelStone
@@ -237,6 +238,7 @@ MonoBehaviour:
   - {fileID: 193806825012982144, guid: 009994165b07eb34594d12de6f66bd6c, type: 3}
   - {fileID: 2679527008744717267, guid: 548f20339b2d2e741b7c18c1d639d344, type: 3}
   - {fileID: 6241129000377480468, guid: b64219cb9182d7944ae76f4caafd657c, type: 3}
+  - {fileID: 6241129000377480468, guid: 9d6187d4dbe5b8749a74b042e80b7371, type: 3}
   - {fileID: 6241129000377480468, guid: 7f9d94b0644bf6648985db0bb4086169, type: 3}
   - {fileID: 5593980168300560687, guid: 623976d1319491145960d75a348b3c5a, type: 3}
   - {fileID: 5132225929935089415, guid: 0ef9c0ba61c9c804394fca6d4a20b450, type: 3}
