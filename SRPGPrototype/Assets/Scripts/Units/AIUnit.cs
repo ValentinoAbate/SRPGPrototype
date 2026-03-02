@@ -71,8 +71,10 @@ public abstract class AIUnit : Unit
     public override UnitUI UI => unitUI;
     [SerializeField] private UnitUI unitUI;
 
-    public override int Power { get; set; } = 0;
-    public override int Break { get; set; } = 0;
+    public override int Power { get => pow; set { pow = value; UI.Power = value; } }
+    private int pow = 0;
+    public override int Break { get => brk; set { brk = value; UI.Break = value; } }
+    private int brk = 0;
 
     public AIComponent AI { get; private set; }
 

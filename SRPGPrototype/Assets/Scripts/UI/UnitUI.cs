@@ -10,11 +10,15 @@ public class UnitUI : MonoBehaviour
 
     [SerializeField] private Transform numberUI = null;
     [SerializeField] private TextMeshProUGUI numberText = null;
+    [SerializeField] private StatIconUI breakUI;
+    [SerializeField] private StatIconUI powerUI;
 
     [SerializeField] private CanvasGroup mainUI;
 
     public int Hp { set => hpNumberText.text = value.ToString(); }
     public int AP { set => apNumberText.text = value.ToString(); }
+    public int Break { set => breakUI.SetValue(value); }
+    public int Power { set => powerUI.SetValue(value); }
 
     public void SetVisible(bool visible)
     {

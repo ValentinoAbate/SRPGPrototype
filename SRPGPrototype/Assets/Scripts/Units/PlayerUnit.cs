@@ -20,16 +20,8 @@ public class PlayerUnit : Unit
     private int ap = 0;
     public override int Repair { get => Stats.Repair; set => Stats.Repair = value; }
     public override int BaseRepair => Stats.BaseRepair;
-    public override int Power
-    {
-        get => Stats.Power;
-        set => Stats.Power = value;
-    }
-    public override int Break
-    {
-        get => Stats.Break;
-        set => Stats.Break = value;
-    }
+    public override int Power { get => Stats.Power; set { Stats.Power = value; UI.Power = value; } }
+    public override int Break { get => Stats.Break; set { Stats.Break = value; UI.Break = value; } }
 
     #endregion
 
