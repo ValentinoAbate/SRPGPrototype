@@ -11,4 +11,5 @@
     SoulCore,
     Fusion,
     Shop,
+    ShopShellUpgrade,
 }

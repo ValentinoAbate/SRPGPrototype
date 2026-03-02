@@ -95,6 +95,28 @@ public class Loot<T> : LootProvider where T : ILootable
         return RandomU.instance.Choice<T>(choices);
     }
 
+    public IEnumerable<T> GetDropsCustom(Rarity rarity, int num, System.Predicate<T> filter)
+    {
+        var dropTable = dropTables[rarity];
+        var choices = new List<KeyValuePair<T, float>>(dropTable.Count);
+        foreach (var kvp in dropTable)
+        {
+            if (filter(kvp.Key))
+            {
+                choices.Add(kvp);
+            }
+        }
+        if (choices.Count <= 0)
+        {
+            Debug.LogError("No applicable loot found");
+            yield return GetDropStandard(LootQuality.Standard);
+        }
+        for (int i = 0; i < num; i++)
+        {
+            yield return RandomU.instance.Choice<T>(choices);
+        }
+    }
+
     public List<T> GetDropsCustomNoDuplicates(Rarity rarity, int drops, System.Predicate<T> filter = null)
     {
         T Generator(int index, System.Predicate<T> innerFilter)

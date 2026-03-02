@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour
         None,
         Debug,
         Standard,
+        ShellUpgrade,
     }
 
     [SerializeField] private ShopUI ui;

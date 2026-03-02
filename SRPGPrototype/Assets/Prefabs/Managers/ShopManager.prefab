@@ -81,6 +81,7 @@ MonoBehaviour:
   objectContainer: {fileID: 7412034487563423132}
   shopGenerators:
   - {fileID: 11400000, guid: 46ce8c878a1e4194e8580fc0d3e71d22, type: 2}
+  - {fileID: 11400000, guid: c4a9d79c55fdd75448f92f9e36263c47, type: 2}
 --- !u!1001 &8029213259724980073
 PrefabInstance:
   m_ObjectHideFlags: 0

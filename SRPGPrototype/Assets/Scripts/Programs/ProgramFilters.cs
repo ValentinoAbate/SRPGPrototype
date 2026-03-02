@@ -90,6 +90,8 @@ public static class ProgramFilters
 
     public static bool GivesCapacity(Program p) => HasEffect<ProgramEffectModifyCapacity>(p);
 
+    public static bool IsExpander(Program p) => HasAttributes(p, Program.Attributes.Expander);
+
     public static bool HasEffect<T>(Program p) where T : ProgramEffect
     {
         foreach (var effect in p.Effects)
