@@ -10,7 +10,8 @@ public class ShellUpgradeShopGenerator : ShopGenerator
     {
         var loot = PersistantData.main.loot;
         var data = new ShopData();
-        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandard(LootProvider.LootQuality.Standard, 3, ProgramFilters.GivesCapacity), objectContainer);
+        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandard(LootProvider.LootQuality.Standard, 2, ProgramFilters.GivesCapacity), objectContainer);
+        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandard(LootProvider.LootQuality.High, 1, ProgramFilters.GivesCapacity), objectContainer);
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropsCustom(Rarity.ShopShellUpgrade, 3, ProgramFilters.IsExpander), objectContainer);
         return data;
     }
