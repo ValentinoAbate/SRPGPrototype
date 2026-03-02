@@ -56,17 +56,23 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
         // Apply damage
         if (targetStat == TargetStat.HP)
         {
+#if DEBUG
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + (target.HP - damage) + " HP");
+#endif
             target.Damage(grid, damage, user);
         }
         else if(targetStat == TargetStat.AP) // Target stat is AP
         {
+#if DEBUG
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " AP damage and is now at " + (target.AP - damage) + " AP");
+#endif
             target.AP -= damage;
         }
         else
         {
+#if DEBUG
             Debug.Log(target.DisplayName + " heals " + damage.ToString() + " damage and is now at " + (target.HP + damage) + " HP");
+#endif
             target.Heal(damage, user);
         }
     }
