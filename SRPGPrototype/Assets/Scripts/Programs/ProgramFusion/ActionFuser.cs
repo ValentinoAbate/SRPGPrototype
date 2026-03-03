@@ -47,19 +47,19 @@ public class ActionFuser : MonoBehaviour
                 {
                     highestSlowdownType = Action.Trigger.Never;
                     slowdownIntervalCount = 1;
-                    sumSlowdownInterval = action.SlowdownInterval;
+                    sumSlowdownInterval = action.BaseSlowdownInterval;
                 }
             }
             else if(action.SlowdownReset == Action.Trigger.EncounterStart && highestSlowdownType == Action.Trigger.TurnStart)
             {
                 highestSlowdownType = Action.Trigger.EncounterStart;
                 slowdownIntervalCount = 1;
-                sumSlowdownInterval = action.SlowdownInterval;
+                sumSlowdownInterval = action.BaseSlowdownInterval;
             }
             else if(action.SlowdownReset == highestSlowdownType)
             {
                 ++slowdownIntervalCount;
-                sumSlowdownInterval += action.SlowdownInterval;
+                sumSlowdownInterval += action.BaseSlowdownInterval;
             }
             if(action.Slowdown > maxSlowdown)
             {
@@ -70,10 +70,10 @@ public class ActionFuser : MonoBehaviour
         fusedAction.SetSubActions(subActions);
         fusedAction.BaseAPCost = maxAPCost;
         fusedAction.SlowdownReset = highestSlowdownType;
-        fusedAction.SlowdownInterval = (slowdownIntervalCount > 0 ? sumSlowdownInterval / slowdownIntervalCount : 0) + zeroApCostActions;
+        fusedAction.BaseSlowdownInterval = (slowdownIntervalCount > 0 ? sumSlowdownInterval / slowdownIntervalCount : 0) + zeroApCostActions;
         if (fusedAction.BaseAPCost < maxAPCost)
         {
-            fusedAction.SlowdownInterval = Mathf.Min(fusedAction.SlowdownInterval, 2 + fusedAction.BaseAPCost); 
+            fusedAction.BaseSlowdownInterval = Mathf.Min(fusedAction.BaseSlowdownInterval, 2 + fusedAction.BaseAPCost); 
         }
         fusedAction.Slowdown = maxSlowdown;
         return fusedAction;

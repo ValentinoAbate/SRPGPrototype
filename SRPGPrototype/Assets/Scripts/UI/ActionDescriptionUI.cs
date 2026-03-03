@@ -53,13 +53,14 @@ public class ActionDescriptionUI : MonoBehaviour
                 timesUsed = action.TimesUsedThisBattle - action.FreeUsesThisBattle;
                 break;
         }
-        if(action.SlowdownInterval == 0)
+        int interval = action.SlowdownInterval;
+        if(interval == 0)
         {
             slowdownUsesNumberText.text = "N/A";
         }
         else
         {
-            slowdownUsesNumberText.text = $"{timesUsed % action.SlowdownInterval}/{action.SlowdownInterval}";
+            slowdownUsesNumberText.text = $"{timesUsed % interval}/{interval}";
         }
 
     }
@@ -91,7 +92,8 @@ public class ActionDescriptionUI : MonoBehaviour
                 timesUsed = action.TimesUsedThisBattle;
                 break;
         }
-        slowdownUsesNumberText.text = Hide((timesUsed % action.SlowdownInterval).ToString()) + "/" + Hide(action.SlowdownInterval.ToString());
+        int interval = action.SlowdownInterval;
+        slowdownUsesNumberText.text = Hide((timesUsed % interval).ToString()) + "/" + Hide(interval.ToString());
     }
 
     public void Hide()

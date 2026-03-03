@@ -20,7 +20,7 @@ public abstract class ModifierAction : Modifier
         return false;
     }
 
-    public bool AppliesTo(Action a)
+    public virtual bool AppliesTo(Action a)
     {
         return ActionFilters.IsTypeAndHasSubTypeCustom(a, filterByActionType, actionTypes, filterBySubType, subTypes, AppliesTo);
     }

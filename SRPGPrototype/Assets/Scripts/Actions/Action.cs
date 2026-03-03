@@ -37,14 +37,15 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     {
         get
         {
-            if (SlowdownInterval == 0)
+            int interval = SlowdownInterval;
+            if (interval == 0)
                 return baseAp;
             int usage = TimesUsed - FreeUses;
             if (SlowdownReset == Trigger.TurnStart)
                 usage = TimesUsedThisTurn - FreeUsesThisTurn;
             else if (SlowdownReset == Trigger.EncounterStart)
                 usage = TimesUsedThisBattle - FreeUsesThisBattle;
-            return baseAp + Slowdown * (usage / SlowdownInterval);
+            return baseAp + Slowdown * (usage / interval);
         }
     }
     public int BaseAPCost
@@ -63,6 +64,19 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     [SerializeField] private int slowdown = 1;
 
     public int SlowdownInterval
+    {
+        get
+        {
+            float interval = slowdownInterval;
+            foreach(var mult in Program.ModifiedByType<ModifierActionSlowdownMult>())
+            {
+                interval *= mult.Multiplier;
+            }
+            return Mathf.FloorToInt(interval);
+        }
+    }
+
+    public int BaseSlowdownInterval
     {
         get => slowdownInterval;
         set => slowdownInterval = value;
@@ -208,14 +222,15 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
 
     public int APCostAfterXUses(int uses)
     {
-        if (SlowdownInterval == 0)
+        int interval = SlowdownInterval;
+        if (interval == 0)
             return baseAp;
         int baseUsage = TimesUsed;
         if (SlowdownReset == Trigger.TurnStart)
             baseUsage = TimesUsedThisTurn;
         else if (SlowdownReset == Trigger.EncounterStart)
             baseUsage = TimesUsedThisBattle;
-        return baseAp + Slowdown * ((baseUsage + uses) / SlowdownInterval);
+        return baseAp + Slowdown * ((baseUsage + uses) / interval);
     }
 
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
