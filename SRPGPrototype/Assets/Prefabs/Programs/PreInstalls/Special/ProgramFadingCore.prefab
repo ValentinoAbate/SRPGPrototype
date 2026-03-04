@@ -32,7 +32,7 @@ PrefabInstance:
       propertyPath: description
       value: "Deals 2 damage to you at the end of the player phase.\nInstalling adjacent
         programs of the same color will cause a compile error. \nGives +3 Max AP,
-        +10 Max HP, and +2 Base Repair"
+        +10 Max HP, and +2 Base Repair."
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -173,6 +173,7 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: -2
     type: 0
   abilityName: -2 HP On Phase End

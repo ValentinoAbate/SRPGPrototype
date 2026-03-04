@@ -33,7 +33,7 @@ PrefabInstance:
       value: 'Warp to a random tile at the start of each turn.
 
         Gives +3
-        Max AP, +10 Max HP, and +2 Base Repair'
+        Max AP, +10 Max HP, and +2 Base Repair.'
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
