@@ -27,7 +27,7 @@ public class EncounterStepPlaceNPCs : EncounterGeneratorStep
                 // If secondary is not available, primary must be available
                 Choose(metadata.primaryNPCs, ref encounter, ref validPositions);
             }
-            else
+            else if(secondaryAvailable)
             {
                 // Secondary must be available to hit this branch
                 Choose(metadata.secondaryNPCs, ref encounter, ref validPositions);
