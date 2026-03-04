@@ -40,6 +40,7 @@ MonoBehaviour:
   - Heart
   - Helmet
   - House
+  - Hybrid
   - I
   - Key
   - Lock
@@ -97,6 +98,7 @@ MonoBehaviour:
   - {fileID: 1505403471156986943, guid: b7301664b82e3a745a503ba32af75fbd, type: 3}
   - {fileID: 3484490041322598433, guid: ef73618a8b0070f42949e90a4e2cfb03, type: 3}
   - {fileID: 4588945415803009702, guid: cd86db16f2fb5bb44910f77e0c4e2e76, type: 3}
+  - {fileID: 4588945415803009702, guid: 615c4050db31dfb40bf9fe095608cac3, type: 3}
   - {fileID: 3115628017269848556, guid: 6266e58b83afd85429b2ddb191e8b174, type: 3}
   - {fileID: 2254264249248245465, guid: 74a14314f81222e47bb7fb168a0edc62, type: 3}
   - {fileID: 2393503753665168858, guid: cb9fe385abe83004c9471fdd789056fe, type: 3}

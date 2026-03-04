@@ -106,7 +106,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public abstract OnPhaseEndDel OnPhaseEndFn { get; set; }
     public abstract string DisplayName { get; }
     public abstract string Description { get; }
-    protected virtual int HybridFailurePenalty => 2;
+    public virtual bool CanApplyHybridFailurePenalty { get; set; } = true;
+    protected int HybridFailurePenalty => 2;
     public bool ShowUIByDefault => UnitTeam == Team.Enemy || UnitTeam == Team.Player || UnitTeam == Team.Player;
     public abstract UnitUI UI { get; }
     public abstract Shell Shell { get; }
@@ -238,7 +239,10 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     public void ApplyHybridFailurePenaly(BattleGrid grid)
     {
-        Damage(grid, HybridFailurePenalty, this);
+        if (CanApplyHybridFailurePenalty)
+        {
+            Damage(grid, HybridFailurePenalty, this);
+        }
     }
 
     public virtual void ResetStats()

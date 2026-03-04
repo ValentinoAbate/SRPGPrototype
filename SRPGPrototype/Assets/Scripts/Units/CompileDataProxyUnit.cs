@@ -55,6 +55,7 @@ public class CompileDataProxyUnit : Unit
     public override OnPhaseStartDel OnPhaseStartFn { get => CompileData.onPhaseStart; set { } }
 
     public override OnPhaseEndDel OnPhaseEndFn { get => CompileData.onPhaseEnd; set { } }
+    public override bool CanApplyHybridFailurePenalty { get => CompileData.applyHybridFailurePenalty; set { } }
 
     public override string DisplayName => Shell.DisplayName;
 

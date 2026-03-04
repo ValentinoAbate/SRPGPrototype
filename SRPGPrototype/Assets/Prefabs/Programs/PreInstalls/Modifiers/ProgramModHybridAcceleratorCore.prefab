@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4735758370244977225
+--- !u!1001 &6707852538196646759
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,16 +10,11 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: key
-      value: HybridUmbrellaBooster
+      value: ModHybridAcceleratorCore
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: color
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: colors
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
@@ -29,68 +24,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: tileType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: lootWeight
+      propertyPath: attributes
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Action
+      value: Doubles the slowdown interval of all Hybrid actions.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: Booster Umbrella
+      value: +Hybrid Accelerator (Core)
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: effects.Array.size
+      propertyPath: modifiers.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
-      propertyPath: shape.dimensions.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: variants.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: effects.Array.data[0]
+      propertyPath: modifiers.Array.data[0]
       value: 
-      objectReference: {fileID: 2535450298112284130}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: variants.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: shape.patternOffsets.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: shape.patternOffsets.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
-        type: 3}
-      propertyPath: shape.patternOffsets.Array.data[1].x
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3810536140382234709}
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramHybridUmbrellaBooster
+      value: ProgramModHybridAcceleratorCore
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -149,23 +109,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3be8752a4b0e247a6d0bd5d67ae765, type: 3}
---- !u!1 &3770716430420670215 stripped
+--- !u!1 &2953123168284495401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
     type: 3}
-  m_PrefabInstance: {fileID: 4735758370244977225}
+  m_PrefabInstance: {fileID: 6707852538196646759}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2535450298112284130
+--- !u!114 &3810536140382234709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3770716430420670215}
+  m_GameObject: {fileID: 2953123168284495401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4691ff665c9e348bfe385c7ecff245, type: 3}
+  m_Script: {fileID: 11500000, guid: 635ca3ab24307494f89a89ba32b176e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 308391873856083614, guid: cab20ebe02852654fb09ae745e9eb7f1, type: 3}
-  isSecondary: 0
+  scope: 1
+  modifierContainer: {fileID: 0}
+--- !u!114 &8087474522126955737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953123168284495401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d857aaa1a2fe56443b72bffa88414cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributeFilterMode: 0
+  attributes: 0
+  displayNameOverride: +Hybrid Accelerator
+  filterByActionType: 1
+  actionTypes: 02000000
+  filterBySubType: 0
+  subTypes: 
+  multiplier: 2

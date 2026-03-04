@@ -95,6 +95,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
     public Unit.OnPhaseStartDel OnPhaseStart { get; private set; }
     public Unit.OnPhaseEndDel OnPhaseEnd { get; private set; }
     public OnProgramDestroyedDel OnProgramDestroyed { get; private set; }
+    public bool ApplyHybridFailurePenalty { get; private set; } = false;
 
     public Stats Stats { get; } = new Stats();
     public Dictionary<Program, List<Modifier>> ModifierMap { get; private set; }
@@ -105,6 +106,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
     public bool HasSoulCore => SoulCoreUnitPrefab != null;
     public GameObject SoulCoreUnitPrefab { get; private set; }
     public int LinkOutThreshold { get; private set; } = baseLinkOutThreshold;
+
     // Current compile data. May not reflect a shell that can actually compile
     public CompileData LatestCompileData { get; private set; }
 
@@ -512,6 +514,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         OnPhaseStart = compileData.onPhaseStart;
         OnPhaseEnd = compileData.onPhaseEnd;
         OnProgramDestroyed = compileData.onProgramDestroyed;
+        ApplyHybridFailurePenalty = compileData.applyHybridFailurePenalty;
         // Apply compiled changes to actions and stats
         Stats.SetShellValues(compileData.stats);
         actions.Clear();
@@ -589,6 +592,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         public OnProgramDestroyedDel onProgramDestroyed = null;
         public GameObject soulCoreUnitPrefab = null;
         public Dictionary<Program, List<Modifier>> modifierMap = new Dictionary<Program, List<Modifier>>();
+        public bool applyHybridFailurePenalty = true;
         public int capacity = 0;
     }
 

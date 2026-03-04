@@ -8,7 +8,7 @@ public class ModifierActionSlowdownMult : ModifierAction
     [SerializeField] private float multiplier;
     public override bool AppliesTo(Action a)
     {
-        return a.SlowdownReset != Action.Trigger.Never;
+        return a.SlowdownReset != Action.Trigger.Never && base.AppliesTo(a);
     }
 
     public override bool AppliesTo(SubAction sub)

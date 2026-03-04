@@ -39,6 +39,7 @@ public class PlayerUnit : Unit
     public override OnBattleStartDel OnBattleStartFn { get => Shell.OnBattleStart; set { } }
     public override OnPhaseStartDel OnPhaseStartFn { get => Shell.OnPhaseStart; set { } }
     public override OnPhaseEndDel OnPhaseEndFn { get => Shell.OnPhaseEnd; set { } }
+    public override bool CanApplyHybridFailurePenalty { get => Shell.ApplyHybridFailurePenalty; set { } }
 
     public override string DisplayName => displayName;
     [SerializeField] private string displayName = string.Empty;

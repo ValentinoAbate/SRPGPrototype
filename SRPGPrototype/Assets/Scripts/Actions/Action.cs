@@ -67,7 +67,11 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     {
         get
         {
-            float interval = slowdownInterval;
+            if(Program == null)
+            {
+                return BaseSlowdownInterval;
+            }
+            float interval = BaseSlowdownInterval;
             foreach(var mult in Program.ModifiedByType<ModifierActionSlowdownMult>())
             {
                 interval *= mult.Multiplier;
