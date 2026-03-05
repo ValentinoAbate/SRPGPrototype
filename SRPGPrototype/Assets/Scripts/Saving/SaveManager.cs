@@ -8,8 +8,15 @@ using UnityEngine;
 public static class SaveManager
 {
     public const char separator = ',';
-    private static string RunFilePath() => Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
-    public static string GlobalSaveFilePath() => Path.Combine(Application.persistentDataPath, "globalSaveData.dat");
+#if DEBUG
+    private static readonly string snapshotFolderPath = Path.Combine(Application.persistentDataPath, $"Snapshots");
+    private static readonly string snapshotInfoPath = Path.Combine(snapshotFolderPath, "snapshotInfo.txt");
+    private static string GetSnapshotFilePath(string fileName) => Path.Combine(snapshotFolderPath, fileName);
+    private static int snapshotIndex;
+#endif
+    private static readonly string runSaveFilePath = Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
+
+
 
     public enum State
     {
@@ -27,12 +34,12 @@ public static class SaveManager
             state = state,
         };
         PersistantData.main.SaveRunData(runData, state);
-        SaveFile(runData, RunFilePath());
+        SaveFile(runData, runSaveFilePath);
     }
 
     public static void Load()
     {
-        var runData = LoadFile<RunData>(RunFilePath());
+        var runData = LoadFile<RunData>(runSaveFilePath);
         var loader = new Loader(runData);
         foreach(var prog in runData.tPr)
         {
@@ -68,12 +75,12 @@ public static class SaveManager
 
     public static void ClearRunData()
     {
-        File.Delete(RunFilePath());
+        File.Delete(runSaveFilePath);
     }
 
     public static bool HasRunData()
     {
-        return File.Exists(RunFilePath());
+        return File.Exists(runSaveFilePath);
     }
 
     public static void SaveFile(object saveData, string path)
@@ -116,6 +123,60 @@ public static class SaveManager
             }
         }
         return default;
+    }
+
+    [System.Diagnostics.Conditional("DEBUG")]
+    public static void TryAutoSnapshot()
+    {
+        var mapManager = PersistantData.main.mapManager;
+        var mapData = mapManager.CurrentMap;
+        if (mapData == null)
+            return;
+        if (mapData.progress != mapData.data.SnapshotProgress)
+            return;
+        SaveSnapshot(State.Cust, $"Act{mapData.data.MapSymbol}");
+    }
+
+    [System.Diagnostics.Conditional("DEBUG")]
+    public static void SaveSnapshot(State state, string name)
+    {
+        var runData = new RunData()
+        {
+            state = state,
+        };
+        PersistantData.main.SaveRunData(runData, state);
+        SaveFile(runData, GetSnapshotFilePath($"snapshot{snapshotIndex}-{name}.dat"));
+    }
+
+    [System.Diagnostics.Conditional("DEBUG")]
+    public static void IncrementSnapshotIndex()
+    {
+        if (!File.Exists(snapshotInfoPath))
+        {
+            snapshotIndex = 1;
+            SaveFile(new SnapshotInfo() { ind = 1}, snapshotInfoPath);
+            return;
+        }
+        var snapshotInfo = LoadFile<SnapshotInfo>(snapshotInfoPath);
+        snapshotIndex = ++snapshotInfo.ind;
+        SaveFile(snapshotInfo, snapshotInfoPath);
+    }
+
+    [System.Diagnostics.Conditional("DEBUG")]
+    public static void LoadSnapshotIndex()
+    {
+        if (!File.Exists(snapshotInfoPath))
+        {
+            snapshotIndex = 0;
+            return;
+        }
+        snapshotIndex = LoadFile<SnapshotInfo>(snapshotInfoPath).ind;
+    }
+
+    [Serializable]
+    private class SnapshotInfo
+    {
+        public int ind;
     }
 
     public class Loader

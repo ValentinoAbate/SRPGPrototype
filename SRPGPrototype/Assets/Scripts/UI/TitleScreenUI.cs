@@ -48,11 +48,13 @@ public class TitleScreenUI : MonoBehaviour
     {
         var mapManager = PersistantData.main.mapManager;
         SaveManager.ClearRunData();
+        SaveManager.IncrementSnapshotIndex();
         mapManager.Setup(data);
     }
 
     public void ContinueRun()
     {
+        SaveManager.LoadSnapshotIndex();
         SaveManager.Load();
     }
 

@@ -11,10 +11,14 @@ public class MapData : ScriptableObject, IHasKey
     [SerializeField] private string key;
     public string MapName => mapName;
     [SerializeField] private string mapName;
+    public string MapSymbol => mapSymbol;
     [SerializeField] private string mapSymbol;
     public MapData NextMap => nextMap;
     [SerializeField] private MapData nextMap;
     [SerializeField] private List<EncounterSetGenerator> encounterSetGenerators;
+    public int SnapshotProgress => snapshotProgress;
+    [Header("Debug")]
+    [SerializeField] private int snapshotProgress = -1;
     [Header("Legacy")]
     [SerializeField] private List<Entry> encounterData = new List<Entry>(10);
 

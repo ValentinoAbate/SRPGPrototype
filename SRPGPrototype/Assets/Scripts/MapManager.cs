@@ -9,26 +9,17 @@ public class MapManager : MonoBehaviour
 {
     public IReadOnlyList<Encounter> NextEncounters => nextEncounters;
     private readonly List<Encounter> nextEncounters = new List<Encounter>();
+    public MapDataEntry CurrentMap => mapStack.Count > 0 ? mapStack.Peek() : null;
     public int BaseMapDepth { get; private set; }
-    public bool SkipMapSelection { get; set; } = false;
-    public IReadOnlyList<MapData> StartingMaps => startingMaps;
-    [SerializeField] private MapData[] startingMaps = null;
 
-    private MapData lastStartingMapData;
     private readonly Stack<MapDataEntry> mapStack = new Stack<MapDataEntry>();
 
     public void Setup(MapData startingMap)
     {
-        lastStartingMapData = startingMap;
         mapStack.Clear();
         BaseMapDepth = 0;
         mapStack.Push(new MapDataEntry(startingMap, true));
         GenerateNextEncounters();
-    }
-
-    public void Restart()
-    {
-        Setup(lastStartingMapData);
     }
 
     public void GenerateNextEncounters()

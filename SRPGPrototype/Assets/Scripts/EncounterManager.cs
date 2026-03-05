@@ -213,6 +213,7 @@ public class EncounterManager : MonoBehaviour
 
     public void GoToCust()
     {
+        SaveManager.TryAutoSnapshot();
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 

@@ -25,4 +25,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1f5ddae0f1594a479a73a49b6f7c632, type: 2}
   - {fileID: 11400000, guid: ef44a12f36db128468e99725819f7220, type: 2}
   - {fileID: 11400000, guid: df1c718ed1c324c478ececfeb8d88142, type: 2}
+  snapshotProgress: 8
   encounterData: []
