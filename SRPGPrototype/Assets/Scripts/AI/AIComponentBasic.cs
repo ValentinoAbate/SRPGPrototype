@@ -97,13 +97,6 @@ public class AIComponentBasic : AIComponent
                 yield break;
             }
         }
-        // Attempt to move into range
-        // If we don't have enough AP to move, end early
-        if (!self.CanUseAction(MoveAction))
-            yield break;
-        // If there are no available moves (all moves are illegal or blocked), end early
-        if (!MovePositions(grid, self.Pos, MoveAction.SubActions[0].Range).Any())
-            yield break;
         // Find Paths to target range
         var paths = PathsToTargetRange(grid, self, MoveAction, StandardAction, targetUnits);
         // If a path was found, take it
