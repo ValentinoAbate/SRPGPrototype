@@ -22,14 +22,13 @@ public class EncounterStepPlaceNPCs : EncounterGeneratorStep
             --num;
         for (int i = 0; i < num; i++)
         {
-            if (!secondaryAvailable || RandomU.instance.RollSuccess(PrimaryChance(i)))
+            if (primaryAvailable && (!secondaryAvailable || RandomU.instance.RollSuccess(PrimaryChance(i))))
             {
                 // If secondary is not available, primary must be available
                 Choose(metadata.primaryNPCs, ref encounter, ref validPositions);
             }
             else if(secondaryAvailable)
             {
-                // Secondary must be available to hit this branch
                 Choose(metadata.secondaryNPCs, ref encounter, ref validPositions);
             }
             if (validPositions.Count <= 0)
@@ -50,5 +49,5 @@ public class EncounterStepPlaceNPCs : EncounterGeneratorStep
         encounter.AddUnit(unit, pos);
     }
 
-    private static double PrimaryChance(int index) => index <= 1 ? 0.95 : 0.05;
+    private static double PrimaryChance(int index) => index < 1 ? 0.95 : 0.05;
 }
