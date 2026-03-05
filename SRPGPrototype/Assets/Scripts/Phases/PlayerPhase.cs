@@ -7,13 +7,16 @@ public class PlayerPhase : Phase
 {
     public override PauseHandle PauseHandle { get; set; } = new PauseHandle();
 
-    public override IEnumerator OnPhaseStart()
+    public override IEnumerator OnPhaseStart(bool isBattleStart)
     {
         if (CheckEndBattle())
             yield break;
-        foreach(var unit in Grid)
+        if (!isBattleStart)
         {
-            unit.ResetTemporaryStats();
+            foreach (var unit in Grid)
+            {
+                unit.ResetTemporaryStats();
+            }
         }
         SaveManager.Save(SaveManager.State.Battle);
         foreach (var unit in GetUnits<Unit>())

@@ -56,7 +56,7 @@ public class PhaseManager : MonoBehaviour, IPausable
 
     private IEnumerator StartEncounterCR()
     {
-        yield return StartCoroutine(ActivePhase.OnPhaseStart());
+        yield return StartCoroutine(ActivePhase.OnPhaseStart(true));
         Transitioning = false;
     }
 
@@ -99,7 +99,7 @@ public class PhaseManager : MonoBehaviour, IPausable
         }
         yield return waitWhilePaused;
         Transitioning = false;
-        yield return StartCoroutine(ActivePhase.OnPhaseStart());
+        yield return StartCoroutine(ActivePhase.OnPhaseStart(false));
         yield return waitWhilePaused;
     }
 

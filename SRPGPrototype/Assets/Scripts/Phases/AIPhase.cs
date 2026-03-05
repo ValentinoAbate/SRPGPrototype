@@ -10,7 +10,7 @@ public class AIPhase : Phase
 
     [SerializeField] private bool canEndBattle = false;
 
-    public override IEnumerator OnPhaseStart()
+    public override IEnumerator OnPhaseStart(bool isBattleStart)
     {
         if (CheckEndBattle())
             yield break;

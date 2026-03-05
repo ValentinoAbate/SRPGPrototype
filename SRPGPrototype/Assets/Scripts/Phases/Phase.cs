@@ -29,7 +29,7 @@ public abstract class Phase : MonoBehaviour, IPausable
         Manager = manager;
     }
 
-    public abstract IEnumerator OnPhaseStart();
+    public abstract IEnumerator OnPhaseStart(bool isBattleStart);
     public abstract IEnumerator OnPhaseEnd();
 
     protected abstract bool UnitPredicate(Unit unit);
