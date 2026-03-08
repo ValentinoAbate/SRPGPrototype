@@ -83,7 +83,7 @@ public class PersistantData : MonoBehaviour
         presetManager.Load(data.presets, loader);
         loot.Load(data.loot, loader);
         shopManager.Load(data.shops, loader);
-
+        UIManager.main.UpdateShellViewerController();
         CurrentId = data.currId;
     }
 
