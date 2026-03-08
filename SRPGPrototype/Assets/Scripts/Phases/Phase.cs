@@ -7,13 +7,15 @@ public abstract class Phase : MonoBehaviour, IPausable
     public const bool playTransitionGrahics = true;
     public abstract PauseHandle PauseHandle { get; set; }
 
-    protected IEnumerable<T> GetUnits<T>()
+    protected List<T> GetUnits<T>()
     {
+        var units = new List<T>();
         foreach (var unit in Manager.Grid)
         {
             if (unit != null && !unit.Dead && UnitPredicate(unit) && unit is T tUnit)
-                yield return tUnit;
+                units.Add(tUnit);
         }
+        return units;
     }
 
     public string DisplayName => displayName;

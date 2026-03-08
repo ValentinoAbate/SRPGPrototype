@@ -14,7 +14,7 @@ public class AIPhase : Phase
     {
         if (CheckEndBattle())
             yield break;
-        var units = new List<AIUnit>(GetUnits<AIUnit>());
+        var units = GetUnits<AIUnit>();
         units.Sort();
         foreach (var unit in units)
         {
@@ -60,7 +60,7 @@ public class AIPhase : Phase
     {
         if (CheckEndBattle())
             yield break;
-        var units = new List<AIUnit>(GetUnits<AIUnit>());
+        var units = GetUnits<AIUnit>();
         units.Sort();
         foreach (var unit in units)
         {
