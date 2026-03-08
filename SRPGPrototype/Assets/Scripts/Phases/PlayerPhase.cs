@@ -18,7 +18,6 @@ public class PlayerPhase : Phase
                 unit.ResetTemporaryStats();
             }
         }
-        SaveManager.Save(SaveManager.State.Battle);
         foreach (var unit in GetUnits<Unit>())
         {
             if (!unit.Dead)
@@ -27,6 +26,7 @@ public class PlayerPhase : Phase
                 yield return phaseStartCr;
             }
         }
+        SaveManager.Save(SaveManager.State.Battle);
         BattleUI.BeginPlayerTurn();
     }
 
