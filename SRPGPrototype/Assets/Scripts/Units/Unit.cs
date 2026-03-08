@@ -362,12 +362,12 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     public virtual Coroutine OnPhaseStart(BattleGrid grid)
     {
+        StartingPos = Pos;
         OnPhaseStartFn?.Invoke(grid, this);
         foreach (var action in Actions)
         {
             action.ResetUses(Action.Trigger.TurnStart);
         }
-        StartingPos = Pos;
         return null;
     }
 
