@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public static class Vector2IntUtils
@@ -116,5 +115,32 @@ public static class Vector2IntUtils
         if (args.Length < 2 || !int.TryParse(args[0], out int x) || !int.TryParse(args[1], out int y))
             return Vector2Int.zero;
         return new Vector2Int(x, y);
+    }
+
+    public static Vector2Int UpRight => new Vector2Int(1, 1);
+    public static Vector2Int DownRight => new Vector2Int(1, -1);
+    public static Vector2Int DownLeft => new Vector2Int(-1, -1);
+    public static Vector2Int UpLeft => new Vector2Int(-1, 1);
+    public static int ClockwiseLength => clockwiseArray.Length;
+
+    private static readonly Vector2Int[] clockwiseArray = new Vector2Int[]
+    {
+        Vector2Int.up,
+        UpRight,
+        Vector2Int.right,
+        DownRight,
+        Vector2Int.down,
+        DownLeft,
+        Vector2Int.left,
+        UpLeft,
+    };
+
+    public static Vector2Int Clockwise(int index)
+    {
+        if(index < 0)
+        {
+            return Vector2Int.zero;
+        }
+        return clockwiseArray[index % clockwiseArray.Length];
     }
 }

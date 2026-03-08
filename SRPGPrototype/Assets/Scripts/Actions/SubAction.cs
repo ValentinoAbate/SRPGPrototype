@@ -193,6 +193,10 @@ public class SubAction : MonoBehaviour
             }
             OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, options);
         }
+        if(Range.patternType == RangePattern.Type.Generated)
+        {
+            Range.generator.OnUsed();
+        }
     }
 
     private void OnBeforeSubAction(BattleGrid grid, Action action, Unit user, List<Unit> targets, ref List<Unit> userList, List<Vector2Int> targetPositions, Options options, Type subTypeOverride = Type.None)
@@ -288,6 +292,8 @@ public class SubAction : MonoBehaviour
 
     public bool CanSave(bool isBattle)
     {
+        if (Range.patternType == RangePattern.Type.Generated && Range.generator.CanSave(isBattle))
+            return true;
         foreach(var effect in effects)
         {
             if (effect.CanSave(isBattle))
@@ -299,7 +305,13 @@ public class SubAction : MonoBehaviour
     public string Save(bool isBattle)
     {
         System.Text.StringBuilder builder = null;
-        foreach(var effect in effects)
+        if (Range.patternType == RangePattern.Type.Generated && Range.generator.CanSave(isBattle))
+        {
+            builder ??= new System.Text.StringBuilder();
+            builder.Append(Range.generator.Save(isBattle));
+            builder.Append(separator);
+        }
+        foreach (var effect in effects)
         {
             if (effect.CanSave(isBattle))
             {
@@ -319,7 +331,11 @@ public class SubAction : MonoBehaviour
         int effectInd = 0;
         int argInd = 0;
         var args = data.Split(separator);
-        while(effectInd < effects.Length && argInd < args.Length)
+        if (Range.patternType == RangePattern.Type.Generated && Range.generator.CanSave(isBattle))
+        {
+            Range.generator.Load(args[argInd++], isBattle);
+        }
+        while (effectInd < effects.Length && argInd < args.Length)
         {
             var effect = effects[effectInd++];
             if (effect.CanSave(isBattle))

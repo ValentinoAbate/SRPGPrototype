@@ -10,5 +10,11 @@ public abstract class RangePatternGenerator : MonoBehaviour
         return Generate(grid, targetPos, user);
     }
 
+    public virtual void OnUsed() { }
+
     public abstract int MaxDistance(BattleGrid grid);
+
+    public virtual bool CanSave(bool isBattle) => false;
+    public virtual string Save(bool isBattle) => string.Empty;
+    public virtual void Load(string data, bool isBattle) { }
 }

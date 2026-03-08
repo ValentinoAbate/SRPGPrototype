@@ -52,10 +52,14 @@ public static class TextMacros
 
 	private const string dmgMacro = "dmg";
 	private const string chanceMacro = "chance";
+	private const string actionEffectMacro = "effect";
+	private const string rangeMacro = "range";
 	private static readonly Dictionary<string, ActionMacro> actionMacroMap = new Dictionary<string, ActionMacro>
 	{
 		{ dmgMacro, ActionMacroDamage },
 		{ chanceMacro, ActionMacroGambleChance },
+		{ actionEffectMacro, ActionMacroActionEffect },
+		{ rangeMacro, ActionMacroRangeGenerator },
 	};
 
 	public static string ApplyActionTextMacros(string text, Action action, Unit user, BattleGrid grid)
@@ -95,6 +99,34 @@ public static class TextMacros
         }
 		int percent = Mathf.RoundToInt(effect.SuccessChance * 100);
 		return $"{percent}%";
+	}
+
+	private static string ActionMacroActionEffect(string[] args, Action action, Unit unit, BattleGrid grid)
+	{
+		var indices = GetIndices(dmgMacro, args);
+		if (!TryGetSubAction(action, indices, out var sub))
+		{
+			return errorString;
+		}
+		if (!TryGetActionEffect(sub, indices, out IActionMacroTextProvider effect))
+		{
+			return errorString;
+		}
+		return effect.GetText(indices, unit, grid);
+	}
+
+	private static string ActionMacroRangeGenerator(string[] args, Action action, Unit unit, BattleGrid grid)
+	{
+		var indices = GetIndices(dmgMacro, args);
+		if (!TryGetSubAction(action, indices, out var sub))
+		{
+			return errorString;
+		}
+		if (sub.Range.patternType != RangePattern.Type.Generated || !(sub.Range.generator is IActionMacroTextProvider textProvider))
+		{
+			return errorString;
+		}
+		return textProvider.GetText(indices, unit, grid);
 	}
 
 	private static bool TryGetSubAction(Action action, Queue<int> indices, out SubAction sub)
