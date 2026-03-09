@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Encounter.unity
     guid: 17569e58988da5449b853f7038e7829a
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 92cbe5c5372c02f41986829476514d6b
   m_configObjects: {}

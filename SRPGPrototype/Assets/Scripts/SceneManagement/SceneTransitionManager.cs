@@ -10,7 +10,7 @@ public class SceneTransitionManager : MonoBehaviour
     public const string StartingShopSceneName = "StartingShop";
     public const string MapSceneName = "Map";
     public const string TitleScene = "Title";
-    public const string LootScene = "LootLoad";
+    public const string WinSceneName = "Win";
     public static SceneTransitionManager main;
 
     private void Awake()

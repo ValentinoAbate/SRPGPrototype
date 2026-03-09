@@ -9,12 +9,14 @@ public static class SaveManager
 {
     public const char separator = ',';
 #if DEBUG
-    private static readonly string snapshotFolderPath = Path.Combine(Application.persistentDataPath, $"Snapshots");
+    private static readonly string snapshotFolderPath = Path.Combine(Application.persistentDataPath, "Snapshots");
     private static readonly string snapshotInfoPath = Path.Combine(snapshotFolderPath, "snapshotInfo.txt");
     private static string GetSnapshotFilePath(string fileName) => Path.Combine(snapshotFolderPath, fileName);
     private static int snapshotIndex;
 #endif
-    private static readonly string runSaveFilePath = Path.Combine(Application.persistentDataPath, $"runSaveData.dat");
+    private static readonly string runSaveFilePath = Path.Combine(Application.persistentDataPath, "runSaveData.dat");
+    private static string GetCompletionFilePath(string fileName) => Path.Combine(completionFilePath, $"completion-{fileName}.dat");
+    private static readonly string completionFilePath = Path.Combine(Application.persistentDataPath, "Completions");
 
 
 
@@ -35,6 +37,16 @@ public static class SaveManager
         };
         PersistantData.main.SaveRunData(runData, state);
         SaveFile(runData, runSaveFilePath);
+    }
+
+    public static void SaveCompletion(string name)
+    {
+        var runData = new RunData()
+        {
+            state = State.Cust,
+        };
+        PersistantData.main.SaveRunData(runData, State.Cust);
+        SaveFile(runData, GetCompletionFilePath(name));
     }
 
     public static void Load()

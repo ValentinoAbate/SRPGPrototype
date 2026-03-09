@@ -208,13 +208,20 @@ public class EncounterManager : MonoBehaviour
         }
 
         // Show loot UI
-        loot.ShowUI(inv, progDraws, shellDraws, moneyDrops, GoToCust);
+        loot.ShowUI(inv, progDraws, shellDraws, moneyDrops, EndScene);
     }
 
-    public void GoToCust()
+    public void EndScene()
     {
         SaveManager.TryAutoSnapshot();
-        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
+        if(PersistantData.main.mapManager.NextEncounters.Count <= 0)
+        {
+            SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.WinSceneName);
+        }
+        else
+        {
+            SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
+        }
     }
 
     public void GameOver()
