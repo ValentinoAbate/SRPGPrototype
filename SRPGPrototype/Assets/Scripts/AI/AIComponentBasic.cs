@@ -23,6 +23,7 @@ public class AIComponentBasic : AIComponent
     [SerializeField] private Action secondaryAction;
     [SerializeField] protected Options options;
     [SerializeField] private List<Unit.Team> targetTeams = new List<Unit.Team> { Unit.Team.Player };
+    [SerializeField] private List<Unit.Team> secondaryTargetTeams = new List<Unit.Team>();
     [SerializeField] private List<Unit.Team> runAwayFromTeams = new List<Unit.Team> { Unit.Team.Player };
 
     protected virtual Action StandardAction => standardAction;
@@ -68,11 +69,23 @@ public class AIComponentBasic : AIComponent
         }
         // Find all targets
         var targetUnits = grid.FindAll(IsUnitTarget);
+        System.Predicate<Unit> targetFilter = IsUnitTarget;
         // Exit early if there are no targets
         if (targetUnits.Count <= 0)
-            yield break;
+        {
+            if(secondaryTargetTeams.Count <= 0)
+            {
+                yield break;
+            }
+            targetUnits = grid.FindAll(IsUnitSecondaryTarget);
+            targetFilter = IsUnitSecondaryTarget;
+            if(targetUnits.Count <= 0)
+            {
+                yield break;
+            }
+        }
         // Check for target in range
-        var tPos = GetBestValidTargetPosInRange(grid, self, StandardAction, IsUnitTarget);
+        var tPos = GetBestValidTargetPosInRange(grid, self, StandardAction, targetFilter);
         // Use standard action until exhausted if target is found, then end turn
         if (tPos != BattleGrid.OutOfBounds)
         {
@@ -86,7 +99,7 @@ public class AIComponentBasic : AIComponent
         // Check for seconday action target in range
         if(SecondaryAction != null && self.CanUseAction(SecondaryAction))
         {
-            tPos = GetBestValidTargetPosInRange(grid, self, SecondaryAction, IsUnitTarget);
+            tPos = GetBestValidTargetPosInRange(grid, self, SecondaryAction, targetFilter);
             if (tPos != BattleGrid.OutOfBounds)
             {
                 yield return StartCoroutine(AttackUntilExhausted(grid, self, SecondaryAction, tPos));
@@ -153,7 +166,7 @@ public class AIComponentBasic : AIComponent
             }
         }
         // Predicate for determining if unit is an obstacle
-        bool IsUnitObstacle(Unit other) => !IsUnitAlly(other) && !IsUnitTarget(other);
+        bool IsUnitObstacle(Unit other) => !IsUnitAlly(other) && !targetFilter(other);
         var obstacleUnits = grid.FindAll(IsUnitObstacle);
         // (If obstacles exist) Get path to target range through obstacles
         if (obstacleUnits.Count > 0)
@@ -329,6 +342,7 @@ public class AIComponentBasic : AIComponent
     }
 
     private bool IsUnitTarget(Unit other) => targetTeams.Contains(other.UnitTeam);
+    private bool IsUnitSecondaryTarget(Unit other) =>  secondaryTargetTeams.Contains(other.UnitTeam);
 
     private bool RunAwayFromUnit(Unit other) => runAwayFromTeams.Contains(other.UnitTeam);
 

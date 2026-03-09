@@ -113,7 +113,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Move: Adjacent. Attack: Adjacent (3 damage). Targets obstacle units
-        instead of the player.'
+        instead of player units. Targets player units if there are no obstacles.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -239,4 +239,5 @@ MonoBehaviour:
   secondaryAction: {fileID: 0}
   options: 0
   targetTeams: 03000000
+  secondaryTargetTeams: 02000000
   runAwayFromTeams: 02000000
