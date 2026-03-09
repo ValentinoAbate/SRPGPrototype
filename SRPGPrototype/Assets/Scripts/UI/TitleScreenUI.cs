@@ -28,6 +28,7 @@ public class TitleScreenUI : MonoBehaviour
 
     public void NewRun()
     {
+        SaveManager.IncrementSnapshotIndex();
         NewRunInternal(mainMap);
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.StartingShopSceneName);
     }
@@ -48,7 +49,6 @@ public class TitleScreenUI : MonoBehaviour
     {
         var mapManager = PersistantData.main.mapManager;
         SaveManager.ClearRunData();
-        SaveManager.IncrementSnapshotIndex();
         mapManager.Setup(data);
     }
 
