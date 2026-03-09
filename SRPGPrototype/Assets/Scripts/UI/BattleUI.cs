@@ -290,6 +290,7 @@ public class BattleUI : MonoBehaviour
         if (!ShowRangePattern(action, action.SubActions[currAction], unit, out var targetRangeEntries))
         {
             CancelTargetSelection(action, unit, ref currAction, ref targetRangeEntries);
+            UIManager.main.PlayFloatText(unit.transform.position, "No Targets!", Color.white);
             return;
         }
         UIManager.main.ActionDescriptionUI.Hide();

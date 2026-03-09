@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
+    private const int damageNumberFontSize = 64;
+    private const int textFontSize = 48;
     public static UIManager main;
 
     public TopBarUI TopBarUI => topBarUI;
@@ -104,12 +106,22 @@ public class UIManager : MonoBehaviour
     private const float floatTime = 0.5f;
     public void PlayFloatText(Vector2 pos, string text, Color color, System.Action onComplete = null)
     {
+        PlayFloatTextInternal(pos, text, color, textFontSize, onComplete);
+    }
+
+    public void PlayDamageNumber(Vector2 pos, string text, Color color, System.Action onComplete = null)
+    {
+        PlayFloatTextInternal(pos, text, color, damageNumberFontSize, onComplete);
+    }
+
+    private void PlayFloatTextInternal(Vector2 pos, string text, Color color, int fontSize, System.Action onComplete)
+    {
         var floatText = floatTextPool.Get();
         void OnComplete()
         {
             floatTextPool.Release(floatText);
             onComplete?.Invoke();
         }
-        floatText.Play(Camera.main.WorldToScreenPoint(pos), text, color, floatTime, OnComplete);
+        floatText.Play(Camera.main.WorldToScreenPoint(pos), text, color, floatTime, fontSize, OnComplete);
     }
 }

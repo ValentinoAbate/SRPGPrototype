@@ -9,10 +9,12 @@ public class FloatText : MonoBehaviour
     private const float showHideTime = 0.075f;
     [SerializeField] private TextMeshProUGUI textUI;
     [SerializeField] private CanvasGroup group;
-    public void Play(Vector2 pos, string text, Color color, float time, TweenCallback onComplete = null)
+
+    public void Play(Vector2 pos, string text, Color color, float time, int fontSize, TweenCallback onComplete = null)
     {
         transform.position = pos;
         transform.localScale = Vector3.zero;
+        textUI.fontSize = fontSize;
         textUI.text = text;
         textUI.color = color;
         group.alpha = 0;

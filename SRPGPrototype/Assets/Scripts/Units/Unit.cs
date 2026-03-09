@@ -188,7 +188,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         if (Dead || amount <= 0)
             return;
         HP = Mathf.Min(HP + amount, MaxHP);
-        UIManager.main.PlayFloatText(transform.position, $"+{amount}", Color.green);
+        UIManager.main.PlayDamageNumber(transform.position, $"+{amount}", Color.green);
     }
 
     public virtual void Damage(BattleGrid grid, int amount, Unit source)
@@ -200,10 +200,10 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         int damage = amount + Break;
         if (amount <= 0)
         {
-            UIManager.main.PlayFloatText(transform.position, "0", Color.white);
+            UIManager.main.PlayDamageNumber(transform.position, "0", Color.white);
             return;
         }
-        UIManager.main.PlayFloatText(transform.position, damage.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
+        UIManager.main.PlayDamageNumber(transform.position, damage.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
         if (damage >= HP)
         {
             Kill(grid, source);
