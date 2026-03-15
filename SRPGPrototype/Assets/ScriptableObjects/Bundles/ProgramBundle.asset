@@ -258,6 +258,7 @@ MonoBehaviour:
   - ModRepair
   - ModRiskyShot
   - ModScrapRage
+  - ModSpearExtender
   - ModTeamwork
   - ModTrip
   - ModYellowStrategy
@@ -528,6 +529,7 @@ MonoBehaviour:
   - {fileID: 2560143424604166460, guid: 75790633885064c4db0be0e2c2c37a18, type: 3}
   - {fileID: 2560143424604166460, guid: bfbfcd8c12e6e6b4a9090e674fc035f1, type: 3}
   - {fileID: 2560143424604166460, guid: d024e083ff4472645b98ec827f86eb0e, type: 3}
+  - {fileID: 2560143424604166460, guid: 402bb6ff4a8488f4282ae93ac8537bb1, type: 3}
   - {fileID: 2560143424604166460, guid: 6d221491fbbfaa942a3d301fdf1a11e5, type: 3}
   - {fileID: 2560143424604166460, guid: a8971fc6692bab643a501457da69efee, type: 3}
   - {fileID: 2560143424604166460, guid: c40e0e649cb74464eb6e07586bcaa854, type: 3}
