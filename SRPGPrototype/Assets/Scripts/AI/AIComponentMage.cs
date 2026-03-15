@@ -68,7 +68,7 @@ public class AIComponentMage : AIComponent
         {
 
             // If action targets self, end early
-            if (StandardAction.SubActions[0].targetPattern.patternType == TargetPattern.Type.Self)
+            if (StandardAction.SubActions[0].TargetType == TargetPattern.Type.Self)
             {
                 SetCastReady(false);
                 yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));

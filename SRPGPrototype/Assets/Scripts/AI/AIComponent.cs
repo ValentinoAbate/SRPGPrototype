@@ -175,7 +175,6 @@ public abstract class AIComponent : MonoBehaviour
         // Get relevant ranges
         var moveRange = moveAction.SubActions[0].Range;
         var targetRange = standardAction.SubActions[0].Range;
-        var targetPattern = standardAction.SubActions[0].targetPattern;
         // Target position is valid if is legal and is empty, self or passes the canMoveThrough pred
         bool ValidPos(Vector2Int p)
         {
@@ -185,7 +184,7 @@ public abstract class AIComponent : MonoBehaviour
         // Calculate possible target positions
         foreach (var target in targets)
         {
-            foreach(var potentialTargetPos in targetPattern.ReverseTarget(grid, target.Pos))
+            foreach(var potentialTargetPos in standardAction.SubActions[0].ReverseTarget(grid, target.Pos))
             {
                 foreach(var potentialUnitPos in targetRange.ReverseRange(grid, potentialTargetPos, self))
                 {

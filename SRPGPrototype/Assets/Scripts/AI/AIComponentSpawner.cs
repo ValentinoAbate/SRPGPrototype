@@ -44,7 +44,7 @@ public class AIComponentSpawner : AIComponent
         }
         var subAction = StandardAction.SubActions[0];
         // If action targets self, end early
-        if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
+        if (subAction.TargetType == TargetPattern.Type.Self)
         {
             yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
             yield break;

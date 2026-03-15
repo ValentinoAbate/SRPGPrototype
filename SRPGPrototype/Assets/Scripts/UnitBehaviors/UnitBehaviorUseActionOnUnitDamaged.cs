@@ -50,7 +50,7 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
     public void Trigger(BattleGrid grid)
     {
         // If action targets self, end early
-        if (action.SubActions[0].targetPattern.patternType == TargetPattern.Type.Self)
+        if (action.SubActions[0].TargetType == TargetPattern.Type.Self)
         {
             action.UseAll(grid, self, self.Pos, false);
         }

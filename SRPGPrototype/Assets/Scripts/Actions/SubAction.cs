@@ -79,7 +79,8 @@ public class SubAction : MonoBehaviour
     [SerializeField] private Options options = Options.None;
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
-    public TargetPattern targetPattern;
+    public TargetPattern.Type TargetType => targetPattern.patternType;
+    [SerializeField] private TargetPattern targetPattern;
     public IReadOnlyList<ActionEffect> Effects => effects;
     [SerializeField] private ActionEffect[] effects;
 
@@ -91,6 +92,29 @@ public class SubAction : MonoBehaviour
         }
     }
 
+    public IEnumerable<Vector2Int> Target(BattleGrid grid, Action action, Vector2Int selectedPos, Unit user)
+    {
+        if(action.Program == null)
+        {
+            foreach(var pos in targetPattern.Target(grid, user, selectedPos))
+            {
+                if (grid.IsLegal(pos))
+                    yield return pos;
+            }
+            yield break;
+        }
+        foreach (var pos in targetPattern.TargetWithMods(action.Program.ModifiedByTypeSubAction<ModifierTargetPattern>(this), grid, user, selectedPos))
+        {
+            if (grid.IsLegal(pos))
+                yield return pos;
+        }
+    }
+
+    public IEnumerable<Vector2Int> ReverseTarget(BattleGrid grid, Vector2Int targetPos)
+    {
+        return targetPattern.ReverseTarget(grid, targetPos); // TODO: mod compat
+    }
+
     public IEnumerable<Vector2Int> GetValidRangePositions(BattleGrid grid, Action action, Vector2Int origin, Unit user, IReadOnlyList<Unit> lastTargets)
     {
         var targetPositions = new List<Vector2Int>();
@@ -98,7 +122,7 @@ public class SubAction : MonoBehaviour
         var emptyTargetPositions = new List<Vector2Int>();
         foreach(var pos in Range.GetPositions(grid, origin, user))
         {
-            GetTargetsAndTargetPositions(grid, user, pos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
+            GetTargetsAndTargetPositions(grid, action, user, pos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
             foreach(var effect in effects)
             {
                 if (effect.IgnoreInValidRangeCalcs)
@@ -131,11 +155,11 @@ public class SubAction : MonoBehaviour
         return false;
     }
 
-    private void GetTargetsAndTargetPositions(BattleGrid grid, Unit user, Vector2Int selectedPos, IReadOnlyList<Unit> lastTargets, ref List<Vector2Int> targetPositions, ref List<Unit> targets, ref List<Vector2Int> emptyTargetPositions)
+    private void GetTargetsAndTargetPositions(BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, IReadOnlyList<Unit> lastTargets, ref List<Vector2Int> targetPositions, ref List<Unit> targets, ref List<Vector2Int> emptyTargetPositions)
     {
         // Get target positions
         targetPositions.Clear();
-        targetPositions.AddRange(targetPattern.Target(grid, user, selectedPos).Where(grid.IsLegal));
+        targetPositions.AddRange(Target(grid, action, selectedPos, user));
         // Prepare target lists
         emptyTargetPositions.Clear();
         targets.Clear();
@@ -164,7 +188,7 @@ public class SubAction : MonoBehaviour
         var targetPositions = new List<Vector2Int>();
         var emptyTargetPositions = new List<Vector2Int>();
         targets = new List<Unit>();
-        GetTargetsAndTargetPositions(grid, user, selectedPos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
+        GetTargetsAndTargetPositions(grid, action, user, selectedPos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
         if (effects.Length <= 0)
             return;
         List<Unit> userList = null;

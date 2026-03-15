@@ -22,6 +22,15 @@ public class TargetPattern
     public Pattern pattern;
     public TargetPatternGenerator generator = null;
 
+    public IEnumerable<Vector2Int> TargetWithMods(IEnumerable<ModifierTargetPattern> mods, BattleGrid grid, Unit user, Vector2Int targetPos)
+    {
+        if(!mods.Any())
+        {
+            return Target(grid, user, targetPos);
+        }
+        return mods.First().Modify(this, grid, user, targetPos); // TODO: multiple mod support
+    }
+
     public IEnumerable<Vector2Int> Target(BattleGrid grid, Unit user, Vector2Int targetPos)
     {
         if(patternType == Type.Self)

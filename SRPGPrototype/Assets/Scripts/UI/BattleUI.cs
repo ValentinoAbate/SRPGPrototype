@@ -322,7 +322,7 @@ public class BattleUI : MonoBehaviour
         if (!GetRangePositions(action, subAction, unit).Contains(pos))
             return;
         targetPatternEntries.Clear();
-        targetPatternEntries.AddRange(ShowTargetPattern(subAction.targetPattern, unit, pos));
+        targetPatternEntries.AddRange(ShowTargetPattern(action, subAction, unit, pos));
     }
 
 
@@ -394,10 +394,10 @@ public class BattleUI : MonoBehaviour
         return ret;
     }
 
-    public List<TileUI.Entry> ShowTargetPattern(TargetPattern p, Unit user, Vector2Int target)
+    public List<TileUI.Entry> ShowTargetPattern(Action action, SubAction sub, Unit user, Vector2Int target)
     {
         var ret = new List<TileUI.Entry>();
-        foreach (var pos in p.Target(grid, user, target))
+        foreach (var pos in sub.Target(grid, action, target, user))
         {
             ret.Add(grid.SpawnTileUI(pos, TileUI.Type.TargetPattern));
             if (grid.TryGet(pos, out var unit) && !unit.ShowUIByDefault)

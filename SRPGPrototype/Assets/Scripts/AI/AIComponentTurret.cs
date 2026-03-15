@@ -32,7 +32,7 @@ public class AIComponentTurret : AIComponent
     {
         var subAction = standardAction.SubActions[0];
         // If action targets self, end early
-        if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
+        if (subAction.TargetType == TargetPattern.Type.Self)
         {
             yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, self.Pos));
             yield break;

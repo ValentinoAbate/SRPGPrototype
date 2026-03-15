@@ -58,7 +58,7 @@ public class AIComponentBasic : AIComponent
     {
         var subAction = StandardAction.SubActions[0];
         // If action targets self, use it on self end early
-        if (subAction.targetPattern.patternType == TargetPattern.Type.Self)
+        if (subAction.TargetType == TargetPattern.Type.Self)
         {
             yield return StartCoroutine(AttackUntilExhausted(grid, self, StandardAction, self.Pos));
             if (TryRunAwayAfterAttack(grid, self, out var runRoutine))

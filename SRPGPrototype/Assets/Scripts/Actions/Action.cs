@@ -182,7 +182,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     {
         if (subActionIndex < 0 || subActionIndex >= SubActions.Count)
             return Array.Empty<Vector2Int>();
-        return subActions[subActionIndex].targetPattern.Target(grid, user, targetPos);
+        return subActions[subActionIndex].Target(grid, this, targetPos, user);
     }
 
     public Action Validate(Transform parent)
