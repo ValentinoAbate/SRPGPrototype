@@ -21,6 +21,7 @@ MonoBehaviour:
   - SquareLarge
   - Minimal
   - Small
+  - Accel
   - Block
   - Bomb
   - Bowtie
@@ -79,6 +80,7 @@ MonoBehaviour:
   - {fileID: 6303910307515564200, guid: 1e87afe993b424646b653f1842553cfe, type: 3}
   - {fileID: 21559596057029269, guid: e66cf439ec2097c4a8bd7a0a2bffb3c1, type: 3}
   - {fileID: 6033324569408216844, guid: dc28f7de967c99d409af82f066a70094, type: 3}
+  - {fileID: 923236613131716177, guid: ad7c4a26d404bef4b82d99c26dd00dad, type: 3}
   - {fileID: 3058652778266872358, guid: bf1641cc4ac0b7743a596c2c16413580, type: 3}
   - {fileID: 3429446919288165383, guid: 23634b5f8c326e64f960ed065c097282, type: 3}
   - {fileID: 1577337797665800004, guid: d7528f22c309f40499dbb69dfbcc1bf9, type: 3}
