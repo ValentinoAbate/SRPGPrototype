@@ -10,9 +10,4 @@ public class ModifierActionSlowdownMult : ModifierAction
     {
         return a.SlowdownReset != Action.Trigger.Never && base.AppliesTo(a);
     }
-
-    public override bool AppliesTo(SubAction sub)
-    {
-        return true;
-    }
 }

@@ -6,9 +6,4 @@ public class ModifierActionFreeTransientChance : ModifierAction
 {
     public float Chance => chance;
     [Range(0, 1)] [SerializeField] private float chance = 1;
-
-    public override bool AppliesTo(SubAction sub)
-    {
-        return true;
-    }
 }

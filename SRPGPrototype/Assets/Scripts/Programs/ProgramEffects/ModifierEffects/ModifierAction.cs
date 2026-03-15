@@ -22,8 +22,18 @@ public abstract class ModifierAction : Modifier
 
     public virtual bool AppliesTo(Action a)
     {
-        return ActionFilters.IsTypeAndHasSubTypeCustom(a, filterByActionType, actionTypes, filterBySubType, subTypes, AppliesTo);
+        if (filterByActionType && !ActionFilters.IsAnyType(a, actionTypes))
+            return false;
+        foreach(var sub in a.SubActions)
+        {
+            if (AppliesTo(sub))
+                return true;
+        }
+        return false;
     }
 
-    public abstract bool AppliesTo(SubAction sub);
+    public virtual bool AppliesTo(SubAction sub)
+    {
+        return !filterBySubType || sub.HasAnySubTypeOptional(subTypes);
+    }
 }

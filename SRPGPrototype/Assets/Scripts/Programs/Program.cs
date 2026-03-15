@@ -88,6 +88,17 @@ public class Program : GridObject, ILootable, IHasKey
             }
         }
     }
+
+    public IEnumerable<T> ModifiedByTypeSubAction<T>(SubAction sub) where T : ModifierAction
+    {
+        foreach (var m in ModifiedBy)
+        {
+            if (m is T t && t.AppliesTo(sub))
+            {
+                yield return t;
+            }
+        }
+    }
     public ProgramModifier[] ModifierEffects => IsUpgraded ? Upgrade.ModifierEffects : modifiers;
     [SerializeField] private ProgramModifier[] modifiers;
     public void SetModifiers(IReadOnlyList<ProgramModifier> newModifiers)

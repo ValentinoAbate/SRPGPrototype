@@ -25,34 +25,4 @@ public static class ActionFilters
     {
         return IsAnyTypeOptional(action, types) && sub.HasAnySubTypeOptional(subTypes);
     }
-
-    public static bool IsTypeAndHasSubType(Action action, bool filterByType, IEnumerable<Action.Type> types, bool filterBySubtype, IEnumerable<SubAction.Type> subTypes)
-    {
-        if (filterByType && !IsAnyType(action, types))
-            return false;
-        if (!filterBySubtype)
-            return true;
-        foreach (var sub in action.SubActions)
-        {
-            if (sub.HasAnySubType(subTypes))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static bool IsTypeAndHasSubTypeCustom(Action action, bool filterByType, IEnumerable<Action.Type> types, bool filterBySubtype, IEnumerable<SubAction.Type> subTypes, System.Predicate<SubAction> filter)
-    {
-        if (filterByType && !IsAnyType(action, types))
-            return false;
-        foreach (var sub in action.SubActions)
-        {
-            if (filter(sub) && (!filterBySubtype || sub.HasAnySubType(subTypes)))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 }

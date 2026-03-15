@@ -23,7 +23,7 @@ public class ModifierActionDamage : ModifierAction
 
     public override bool AppliesTo(SubAction sub)
     {
-        return sub.DealsDamage;
+        return base.AppliesTo(sub) && sub.DealsDamage;
     }
 
     public int BaseDamageMod(ActionEffectDamage.TargetStat targetStat, BattleGrid grid, Action action, Unit user, IReadOnlyList<Vector2Int> targetPositions)
