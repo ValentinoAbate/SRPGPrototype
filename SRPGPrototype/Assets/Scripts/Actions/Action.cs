@@ -72,11 +72,15 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
                 return BaseSlowdownInterval;
             }
             float interval = BaseSlowdownInterval;
-            foreach(var mult in Program.ModifiedByType<ModifierActionSlowdownMult>())
+            foreach (var add in Program.ModifiedByType<ModifierActionSlowdownAdd>())
+            {
+                interval += add.Amount;
+            }
+            foreach (var mult in Program.ModifiedByType<ModifierActionSlowdownMult>())
             {
                 interval *= mult.Multiplier;
             }
-            return Mathf.FloorToInt(interval);
+            return Mathf.Max(1, Mathf.FloorToInt(interval));
         }
     }
 
