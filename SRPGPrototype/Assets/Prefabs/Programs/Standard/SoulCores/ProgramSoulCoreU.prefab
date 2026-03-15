@@ -31,7 +31,8 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Any shell with a Soul Core installed is deployable as a unit during
-        an encounter, but cannot be equipped. Gives +3 damage to all umbrellas.
+        an encounter, but cannot be equipped. Gives +3 damage and +1 slowdown interval
+        to all umbrellas.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -282,3 +283,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitPrefab: {fileID: 1068486978419434115, guid: d2fc5584c9758b644b05ef9ebd1fe74c,
     type: 3}
+--- !u!114 &2802606835945304003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343724877902909770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef921f3ed5c30d42b049790899e57c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributeFilterMode: 0
+  attributes: 0
+  displayNameOverride: +Umbrella Accel
+  filterByActionType: 0
+  actionTypes: 01000000
+  filterBySubType: 1
+  subTypes: 08000000
+  amount: 1
