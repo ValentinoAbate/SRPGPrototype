@@ -15,7 +15,8 @@ MonoBehaviour:
   key: Debug
   mapName: Debug
   mapSymbol: 1
-  nextMap: {fileID: 11400000}
+  nextMap: {fileID: 0}
   encounterSetGenerators:
   - {fileID: 11400000, guid: 00c59b80cd8ccdb478f51ca41c31d23f, type: 2}
+  snapshotProgress: -1
   encounterData: []

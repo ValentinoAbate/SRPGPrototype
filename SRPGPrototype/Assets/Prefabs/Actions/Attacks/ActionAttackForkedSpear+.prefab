@@ -15,12 +15,12 @@ PrefabInstance:
     - target: {fileID: 4415060608083833614, guid: 1b61da56b45a90b41b561990c27127c1,
         type: 3}
       propertyPath: displayName
-      value: Trident+
+      value: Forked Spear+
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563140, guid: 1b61da56b45a90b41b561990c27127c1,
         type: 3}
       propertyPath: m_Name
-      value: ActionAttackTrident+
+      value: ActionAttackForkedSpear+
       objectReference: {fileID: 0}
     - target: {fileID: 5639408088848563143, guid: 1b61da56b45a90b41b561990c27127c1,
         type: 3}
