@@ -4,26 +4,16 @@ using UnityEngine;
 
 public class ModifierTargetPatternMirror : ModifierTargetPattern
 {
-    public override IEnumerable<Vector2Int> Modify(TargetPattern t, BattleGrid grid, Unit user, Vector2Int targetPos)
+    public override IEnumerable<Vector2Int> Modify(TargetPattern t, BattleGrid grid, Unit user, Vector2Int targetPos, RangePattern range)
     {
-        var visited = new HashSet<Vector2Int>();
-        foreach (var pos in t.Target(grid, user, targetPos))
+        Vector2Int Selector(Vector2Int pos) => user.Pos - (pos - user.Pos);
+        foreach (var pos in UniqueWithSelector(t.Target(grid, user, targetPos), Selector))
         {
-            if (!visited.Contains(pos))
-            {
-                visited.Add(pos);
-                yield return pos;
-            }
-            var modPos = user.Pos - (pos - user.Pos);
-            if (!visited.Contains(modPos))
-            {
-                visited.Add(modPos);
-                yield return modPos;
-            }
+            yield return pos;
         }
     }
 
-    protected override bool AppliesToPattern(TargetPattern.Type t)
+    protected override bool AppliesToPattern(TargetPattern.Type t, TargetPatternGenerator generator)
     {
         return t != TargetPattern.Type.Self;
     }

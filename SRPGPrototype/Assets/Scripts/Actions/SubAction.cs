@@ -80,6 +80,7 @@ public class SubAction : MonoBehaviour
     public RangePattern Range => rangePattern;
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern.Type TargetType => targetPattern.patternType;
+    public TargetPatternGenerator TargetPatternGenerator => targetPattern.generator;
     [SerializeField] private TargetPattern targetPattern;
     public IReadOnlyList<ActionEffect> Effects => effects;
     [SerializeField] private ActionEffect[] effects;
@@ -103,7 +104,7 @@ public class SubAction : MonoBehaviour
             }
             yield break;
         }
-        foreach (var pos in targetPattern.TargetWithMods(action.Program.ModifiedByTypeSubAction<ModifierTargetPattern>(this), grid, user, selectedPos))
+        foreach (var pos in targetPattern.TargetWithMods(action.Program.ModifiedByTypeSubAction<ModifierTargetPattern>(this), grid, user, selectedPos, Range))
         {
             if (grid.IsLegal(pos))
                 yield return pos;

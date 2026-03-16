@@ -254,6 +254,7 @@ MonoBehaviour:
   - ModLightweight
   - ModLongshot
   - ModMultiPower
+  - ModPiercingRounds
   - ModRainbowPower
   - ModRedRage
   - ModRepair
@@ -281,6 +282,7 @@ MonoBehaviour:
   - DebugExtender
   - DebugFusion
   - DebugMirror
+  - DebugPierce
   - DebugShop
   - SoulCoreTest
   - TestAddKillActions
@@ -528,6 +530,7 @@ MonoBehaviour:
   - {fileID: 2560143424604166460, guid: f59730329ce298c4d873f7d5a519167b, type: 3}
   - {fileID: 2560143424604166460, guid: 6b6d5bcb26d62114484229779c9d7e4b, type: 3}
   - {fileID: 2560143424604166460, guid: 87e880e49c745644a874262d5f90d96d, type: 3}
+  - {fileID: 2560143424604166460, guid: 6d4a96dce92a47a4da9c9502df1ce9d8, type: 3}
   - {fileID: 2560143424604166460, guid: 0bbd0537f5e85d743b41710ef77dad8c, type: 3}
   - {fileID: 2560143424604166460, guid: db79fcef04d8fe74faa7b19ed9ef6ef7, type: 3}
   - {fileID: 2560143424604166460, guid: 75790633885064c4db0be0e2c2c37a18, type: 3}
@@ -555,6 +558,7 @@ MonoBehaviour:
   - {fileID: 2560143424604166460, guid: d3e82c97112d8db4a9b316dd5a79a0ae, type: 3}
   - {fileID: 6013885685804664415, guid: 4d8d9ba97f97b5b45b600d756ed07300, type: 3}
   - {fileID: 2560143424604166460, guid: 21121fcf5dee7da40b5598b6c3a2e6a3, type: 3}
+  - {fileID: 2560143424604166460, guid: 06e1539db60fc904aaa0454204534b9e, type: 3}
   - {fileID: 6013885685804664415, guid: ebda1d5c05ccf9941ba32671aa4ae3fc, type: 3}
   - {fileID: 6013885685804664415, guid: 1e042d24e19c5ac4fbaed4faa9b03de1, type: 3}
   - {fileID: 2576600437051023739, guid: 3f62d878ca9781846aeb2db67a7f41c0, type: 3}

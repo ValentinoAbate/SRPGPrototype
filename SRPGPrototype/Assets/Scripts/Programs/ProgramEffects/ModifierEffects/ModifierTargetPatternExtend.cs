@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModifierTargetPatternExtend : ModifierTargetPattern
 {
-    public override IEnumerable<Vector2Int> Modify(TargetPattern t, BattleGrid grid, Unit user, Vector2Int targetPos)
+    public override IEnumerable<Vector2Int> Modify(TargetPattern t, BattleGrid grid, Unit user, Vector2Int targetPos, RangePattern range)
     {
         if(t.patternType == TargetPattern.Type.Simple)
         {
@@ -13,26 +13,11 @@ public class ModifierTargetPatternExtend : ModifierTargetPattern
         }
         if(t.patternType == TargetPattern.Type.Pattern)
         {
-            var visited = new HashSet<Vector2Int>();
-            foreach (var pos in t.Target(grid, user, targetPos))
+            Vector2Int Selector(Vector2Int pos) => pos + targetPos.DirectionTo(pos);
+            bool Predicate(Vector2Int pos) => pos != targetPos;
+            foreach (var pos in UniqueWithSelector(t.Target(grid, user, targetPos), Selector, Predicate))
             {
-                if (pos == targetPos)
-                {
-                    visited.Add(pos);
-                    yield return pos;
-                    continue;
-                }
-                if (!visited.Contains(pos))
-                {
-                    visited.Add(pos);
-                    yield return pos;
-                }
-                var modPos = pos + targetPos.DirectionTo(pos);
-                if (!visited.Contains(modPos))
-                {
-                    visited.Add(modPos);
-                    yield return modPos;
-                }
+                yield return pos;
             }
         }
         else if(t.patternType == TargetPattern.Type.DirectionalPattern || t.patternType == TargetPattern.Type.DirectionalPatternShift1 || t.patternType == TargetPattern.Type.DirectionalPatternAndSelf)
@@ -120,7 +105,7 @@ public class ModifierTargetPatternExtend : ModifierTargetPattern
         }
     }
 
-    protected override bool AppliesToPattern(TargetPattern.Type t)
+    protected override bool AppliesToPattern(TargetPattern.Type t, TargetPatternGenerator generator)
     {
         return t == TargetPattern.Type.DirectionalPattern
             || t == TargetPattern.Type.DirectionalPatternShift1
