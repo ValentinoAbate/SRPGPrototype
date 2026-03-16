@@ -232,7 +232,7 @@ public class AIComponentBasic : AIComponent
         // Else no meaningful path to target exists, just try and get close to a tile adjacent to a target
         // Find all shortest paths to positions adjacent to targets
         pathsToPositions.Clear();
-        var attackRangeType = StandardAction.SubActions[0].Range.patternType;
+        var attackRangeType = StandardAction.SubActions[0].RangeType;
         // If attack range type is adjacent both, then we already tried this, break
         if (attackRangeType != RangePattern.Type.AdjacentBoth)
         {

@@ -118,9 +118,15 @@ public abstract class AIComponent : MonoBehaviour
         yield return StartCoroutine(AttackUntilExhausted(grid, self, standardAction, tPath.targetPos));
     }
 
-    protected IEnumerable<Vector2Int> MovePositions(BattleGrid grid, Vector2Int pos, RangePattern pattern)
+    protected IEnumerable<Vector2Int> MovePositions(BattleGrid grid, Vector2Int pos, Action action, SubAction sub)
     {
-        return pattern.GetPositions(grid, pos, null).Where((p) => grid.IsLegalAndEmpty(p));
+        foreach(var p in sub.Range(grid, action, pos, null))
+        {
+            if (grid.IsEmpty(p))
+            {
+                yield return p;
+            }
+        }
     }
 
     protected Unit TargetPriority(Unit u1, Unit u2)
@@ -130,16 +136,16 @@ public abstract class AIComponent : MonoBehaviour
 
     protected List<Vector2Int> Path(BattleGrid grid, AIUnit self, Action moveAction, Vector2Int goal, System.Predicate<Unit> canMoveThroughTarget = null)
     {
-        var moveRange = moveAction.SubActions[0].Range;
+        var moveSub = moveAction.SubActions[0];
         // Calculate the maximum manhattan distance of the move action
-        int maxMoveDist = moveRange.MaxDistance(grid);
+        int maxMoveDist = moveSub.MaxRange(grid);
         // Use the manhattan distance to the goal / the maximum manhattan distance of the move action as the heuristic
         float Heur(Vector2Int pos, Vector2Int goalPos) => ((int)Vector2Int.Distance(pos, goalPos)) / maxMoveDist;
         // No predicate, use basic adjacency
         if (canMoveThroughTarget == null)
         {
             // Use the move range and a legality / emptiness check for the adjacency function
-            IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveRange);
+            IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction, moveSub);
             var path = Pathfinding.AStar.Pathfind(self.Pos, goal, NodeAdj, (p, pAdj) => 1, Heur);
             if (path != null)
             {
@@ -153,7 +159,7 @@ public abstract class AIComponent : MonoBehaviour
             // Use the move range, a legality check, and an emptiness / predicate check for the adjacency function
             IEnumerable<Vector2Int> NodeAdj(Vector2Int p)
             {
-                return moveRange.GetPositions(grid, p, null).Where((p2) => grid.IsLegal(p2) && (grid.IsEmpty(p2) || canMoveThroughTarget(grid.Get(p2))));
+                return moveSub.Range(grid, moveAction, p, null).Where((p2) => grid.IsLegal(p2) && (grid.IsEmpty(p2) || canMoveThroughTarget(grid.Get(p2))));
             }
             // Use 1 as the cost if the pos is empty, else use the number of grid positions (so paths will always prefer going through less things)
             int numGridPositions = grid.Dimensions.x * grid.Dimensions.y;
@@ -172,9 +178,6 @@ public abstract class AIComponent : MonoBehaviour
     protected List<TargetPath> PathsToTargetRange(BattleGrid grid, AIUnit self, Action moveAction, Action standardAction, IEnumerable<Unit> targets, System.Predicate<Unit> canMoveThroughTarget = null)
     {
         var positions = new Dictionary<TargetData, Unit>();
-        // Get relevant ranges
-        var moveRange = moveAction.SubActions[0].Range;
-        var targetRange = standardAction.SubActions[0].Range;
         // Target position is valid if is legal and is empty, self or passes the canMoveThrough pred
         bool ValidPos(Vector2Int p)
         {
@@ -186,7 +189,7 @@ public abstract class AIComponent : MonoBehaviour
         {
             foreach(var potentialTargetPos in standardAction.SubActions[0].ReverseTarget(grid, target.Pos))
             {
-                foreach(var potentialUnitPos in targetRange.ReverseRange(grid, potentialTargetPos, self))
+                foreach(var potentialUnitPos in standardAction.SubActions[0].ReverseRange(grid, potentialTargetPos, self))
                 {
                     if (!ValidPos(potentialUnitPos))
                     {
@@ -228,7 +231,7 @@ public abstract class AIComponent : MonoBehaviour
     public Dictionary<Vector2Int, int> Reachable(BattleGrid grid, Action moveAction, Vector2Int startPos, int range)
     {
         // Use the move range and a legality / emptiness check for the adjacency function
-        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction.SubActions[0].Range);
+        IEnumerable<Vector2Int> NodeAdj(Vector2Int p) => MovePositions(grid, p, moveAction, moveAction.SubActions[0]);
         // Initialize distances with the startPosition
         var distances = new Dictionary<Vector2Int, int> { { startPos, 0 } };
 

@@ -122,7 +122,7 @@ public static class TextMacros
 		{
 			return errorString;
 		}
-		if (sub.Range.patternType != RangePattern.Type.Generated || !(sub.Range.generator is IActionMacroTextProvider textProvider))
+		if (sub.RangeType != RangePattern.Type.Generated || !(sub.RangeGenerator is IActionMacroTextProvider textProvider))
 		{
 			return errorString;
 		}

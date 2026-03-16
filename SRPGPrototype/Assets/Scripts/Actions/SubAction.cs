@@ -77,7 +77,9 @@ public class SubAction : MonoBehaviour
     [SerializeField] private Type subtype = Type.None;
     public Options OptionFlags => options;
     [SerializeField] private Options options = Options.None;
-    public RangePattern Range => rangePattern;
+    public RangePattern.Type RangeType => rangePattern.patternType;
+    public RangePatternGenerator RangeGenerator => rangePattern.generator;
+    public int MaxRange(BattleGrid grid) => rangePattern.MaxDistance(grid);
     [SerializeField]  private RangePattern rangePattern = new RangePattern();
     public TargetPattern.Type TargetType => targetPattern.patternType;
     public TargetPatternGenerator TargetPatternGenerator => targetPattern.generator;
@@ -104,7 +106,7 @@ public class SubAction : MonoBehaviour
             }
             yield break;
         }
-        foreach (var pos in targetPattern.TargetWithMods(action.Program.ModifiedByTypeSubAction<ModifierTargetPattern>(this), grid, user, selectedPos, Range))
+        foreach (var pos in targetPattern.TargetWithMods(action.Program.ModifiedByTypeSubAction<ModifierTargetPattern>(this), grid, user, selectedPos, rangePattern))
         {
             if (grid.IsLegal(pos))
                 yield return pos;
@@ -116,12 +118,35 @@ public class SubAction : MonoBehaviour
         return targetPattern.ReverseTarget(grid, targetPos); // TODO: mod compat
     }
 
+    public IEnumerable<Vector2Int> Range(BattleGrid grid, Action action, Vector2Int origin, Unit user)
+    {
+        if (action.Program == null)
+        {
+            foreach (var pos in rangePattern.GetPositions(grid, origin, user))
+            {
+                if (grid.IsLegal(pos))
+                    yield return pos;
+            }
+            yield break;
+        }
+        foreach (var pos in rangePattern.GetPositionsWithMods(action.Program.ModifiedByTypeSubAction<ModifierRange>(this), grid, origin, user))
+        {
+            if (grid.IsLegal(pos))
+                yield return pos;
+        }
+    }
+
+    public IEnumerable<Vector2Int> ReverseRange(BattleGrid grid, Vector2Int targetPos, Unit user)
+    {
+        return rangePattern.ReverseRange(grid, targetPos, user); // TODO: mod compat
+    }
+
     public IEnumerable<Vector2Int> GetValidRangePositions(BattleGrid grid, Action action, Vector2Int origin, Unit user, IReadOnlyList<Unit> lastTargets)
     {
         var targetPositions = new List<Vector2Int>();
         var targets = new List<Unit>();
         var emptyTargetPositions = new List<Vector2Int>();
-        foreach(var pos in Range.GetPositions(grid, origin, user))
+        foreach(var pos in Range(grid, action, origin, user))
         {
             GetTargetsAndTargetPositions(grid, action, user, pos, lastTargets, ref targetPositions, ref targets, ref emptyTargetPositions);
             foreach(var effect in effects)
@@ -218,9 +243,9 @@ public class SubAction : MonoBehaviour
             }
             OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, options);
         }
-        if(Range.patternType == RangePattern.Type.Generated)
+        if(rangePattern.patternType == RangePattern.Type.Generated)
         {
-            Range.generator.OnUsed();
+            rangePattern.generator.OnUsed();
         }
     }
 
@@ -317,7 +342,7 @@ public class SubAction : MonoBehaviour
 
     public bool CanSave(bool isBattle)
     {
-        if (Range.patternType == RangePattern.Type.Generated && Range.generator.CanSave(isBattle))
+        if (rangePattern.patternType == RangePattern.Type.Generated && rangePattern.generator.CanSave(isBattle))
             return true;
         foreach(var effect in effects)
         {
@@ -330,10 +355,10 @@ public class SubAction : MonoBehaviour
     public string Save(bool isBattle)
     {
         System.Text.StringBuilder builder = null;
-        if (Range.patternType == RangePattern.Type.Generated && Range.generator.CanSave(isBattle))
+        if (rangePattern.patternType == RangePattern.Type.Generated && rangePattern.generator.CanSave(isBattle))
         {
             builder ??= new System.Text.StringBuilder();
-            builder.Append(Range.generator.Save(isBattle));
+            builder.Append(rangePattern.generator.Save(isBattle));
             builder.Append(separator);
         }
         foreach (var effect in effects)
@@ -356,9 +381,9 @@ public class SubAction : MonoBehaviour
         int effectInd = 0;
         int argInd = 0;
         var args = data.Split(separator);
-        if (Range.patternType == RangePattern.Type.Generated && Range.generator.CanSave(isBattle))
+        if (rangePattern.patternType == RangePattern.Type.Generated && rangePattern.generator.CanSave(isBattle))
         {
-            Range.generator.Load(args[argInd++], isBattle);
+            rangePattern.generator.Load(args[argInd++], isBattle);
         }
         while (effectInd < effects.Length && argInd < args.Length)
         {

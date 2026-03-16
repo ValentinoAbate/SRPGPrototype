@@ -20,7 +20,7 @@ public class ModifierTargetPatternPierce : ModifierTargetPattern
                 return pos + user.Pos.DirectionTo(pos);
             }
         }
-        foreach (var pos in UniqueWithSelector(t.Target(grid, user, targetPos), Selector, Predicate))
+        foreach (var pos in Vector2IntUtils.UniqueWithSelector(t.Target(grid, user, targetPos), Selector, Predicate))
         {
             yield return pos;
         }

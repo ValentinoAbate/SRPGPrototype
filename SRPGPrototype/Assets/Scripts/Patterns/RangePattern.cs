@@ -26,6 +26,15 @@ public class RangePattern
     public Pattern pattern;
     public RangePatternGenerator generator = null;
 
+    public IEnumerable<Vector2Int> GetPositionsWithMods(IEnumerable<ModifierRange> mods, BattleGrid grid, Vector2Int origin, Unit user)
+    {
+        if (!mods.Any())
+        {
+            return GetPositions(grid, origin, user);
+        }
+        return mods.First().Modify(this, grid, user, origin); // TODO: multiple mod support
+    }
+
     public IEnumerable<Vector2Int> GetPositions(BattleGrid grid, Vector2Int origin, Unit user)
     {
         return patternType switch

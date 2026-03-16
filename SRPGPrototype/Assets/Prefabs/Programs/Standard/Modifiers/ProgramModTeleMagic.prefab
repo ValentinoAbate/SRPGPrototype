@@ -10,23 +10,27 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: key
-      value: DebugExtender
+      value: ModTelemagic
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: rarity
-      value: 7
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
+        type: 3}
+      propertyPath: lootWeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Extends the target pattern of adjacent weapons with simple, directional,
-        or pattern-based target patterns by 1.
+      value: Add +1 range to adjacent spells and summons.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: displayName
-      value: +Extender (Debug)
+      value: +Telemagic
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -41,7 +45,7 @@ PrefabInstance:
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramDebugExtender
+      value: ProgramModTeleMagic
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -106,7 +110,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6707852538196646759}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2515834231651795758
+--- !u!114 &2937435813945235043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,16 +119,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2953123168284495401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbd0eae6e76a854eba221fc44cddb59, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cecb15046bd0cc4c93b08969a8ed376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attributeFilterMode: 0
   attributes: 0
-  displayNameOverride: +Extender
-  filterByActionType: 1
-  actionTypes: 01000000
-  filterBySubType: 0
-  subTypes: 
+  displayNameOverride: 
+  filterByActionType: 0
+  actionTypes: 
+  filterBySubType: 1
+  subTypes: 0e00000006000000
 --- !u!114 &3810536140382234709
 MonoBehaviour:
   m_ObjectHideFlags: 0

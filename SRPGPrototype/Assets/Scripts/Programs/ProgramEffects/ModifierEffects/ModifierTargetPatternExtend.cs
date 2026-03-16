@@ -15,7 +15,7 @@ public class ModifierTargetPatternExtend : ModifierTargetPattern
         {
             Vector2Int Selector(Vector2Int pos) => pos + targetPos.DirectionTo(pos);
             bool Predicate(Vector2Int pos) => pos != targetPos;
-            foreach (var pos in UniqueWithSelector(t.Target(grid, user, targetPos), Selector, Predicate))
+            foreach (var pos in Vector2IntUtils.UniqueWithSelector(t.Target(grid, user, targetPos), Selector, Predicate))
             {
                 yield return pos;
             }

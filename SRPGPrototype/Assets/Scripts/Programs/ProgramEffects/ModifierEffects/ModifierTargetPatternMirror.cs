@@ -7,7 +7,7 @@ public class ModifierTargetPatternMirror : ModifierTargetPattern
     public override IEnumerable<Vector2Int> Modify(TargetPattern t, BattleGrid grid, Unit user, Vector2Int targetPos, RangePattern range)
     {
         Vector2Int Selector(Vector2Int pos) => user.Pos - (pos - user.Pos);
-        foreach (var pos in UniqueWithSelector(t.Target(grid, user, targetPos), Selector))
+        foreach (var pos in Vector2IntUtils.UniqueWithSelector(t.Target(grid, user, targetPos), Selector))
         {
             yield return pos;
         }
