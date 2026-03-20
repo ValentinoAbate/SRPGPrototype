@@ -257,6 +257,7 @@ MonoBehaviour:
   - ModHeavyweight
   - ModHp
   - ModLightweight
+  - ModLongArm
   - ModLongshot
   - ModMultiPower
   - ModPiercingRounds
@@ -542,6 +543,7 @@ MonoBehaviour:
   - {fileID: 2560143424604166460, guid: 683894bfc44184e419b6ded36a0b7556, type: 3}
   - {fileID: 2560143424604166460, guid: 10be17e9960a40f4bbd5f089f2f086ee, type: 3}
   - {fileID: 2560143424604166460, guid: f59730329ce298c4d873f7d5a519167b, type: 3}
+  - {fileID: 2560143424604166460, guid: 29f078fb5b683c143b1ba9461e746686, type: 3}
   - {fileID: 2560143424604166460, guid: 6b6d5bcb26d62114484229779c9d7e4b, type: 3}
   - {fileID: 2560143424604166460, guid: 87e880e49c745644a874262d5f90d96d, type: 3}
   - {fileID: 2560143424604166460, guid: 6d4a96dce92a47a4da9c9502df1ce9d8, type: 3}
