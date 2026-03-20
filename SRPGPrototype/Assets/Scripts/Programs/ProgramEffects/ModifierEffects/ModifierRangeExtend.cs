@@ -6,7 +6,7 @@ public class ModifierRangeExtend : ModifierRange
 {
     public override IEnumerable<Vector2Int> Modify(RangePattern r, BattleGrid grid, Unit user, Vector2Int origin)
     {
-        Vector2Int Selector(Vector2Int pos) => pos + user.Pos.DirectionTo(pos);
+        Vector2Int Selector(Vector2Int pos) => pos + origin.DirectionTo(pos);
         bool Predicate(Vector2Int pos) => pos != user.Pos;
         foreach (var pos in Vector2IntUtils.UniqueWithSelector(r.GetPositions(grid, origin, user), Selector, Predicate))
         {
