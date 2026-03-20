@@ -17,6 +17,7 @@ public class ActionMenu : MonoBehaviour
     private bool showing = false;
     private bool skipInput = false;
     private readonly List<ActionButton> buttons = new List<ActionButton>();
+    private readonly List<Action> actions = new List<Action>();
 
     private void Awake()
     {
@@ -62,7 +63,8 @@ public class ActionMenu : MonoBehaviour
     public void Show(BattleGrid grid, BattleUI ui, Unit unit, bool fromHotKey)
     {
         // Action Buttons
-        var actions = new List<Action>(unit.Actions);
+        actions.Clear();
+        actions.AddRange(unit.Actions);
         actions.Sort();
         foreach(var otherUnit in grid)
         {
