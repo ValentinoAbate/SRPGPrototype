@@ -158,11 +158,12 @@ MonoBehaviour:
   ignoreInValidRangeCalcs: 0
   targetStat: 0
   damage:
-    min: -2147483648
+    min: 0
     max: 2147483647
     baseAmount: -1
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 1
     unitNumber:
       min: -2147483648
@@ -170,6 +171,7 @@ MonoBehaviour:
       baseAmount: -2
       modifier: 0
       multiplier: 1
+      negateNumber: 0
       constant: 1
       type: 3
     type: 2
