@@ -4,20 +4,20 @@ using UnityEngine;
 
 public abstract class ActionEffectMoveDirection : ActionEffectMove
 {
-    protected abstract int GetNumSpaces();
+    protected abstract int GetNumSpaces(Unit target, PositionData targetData);
     protected abstract Vector2Int GetDirection(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData);
 
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null || !target.Movable)
             return;
-        Move(grid, user, target, GetDirection(grid, action, sub, user, target, targetData), GetNumSpaces());
+        Move(grid, user, target, GetDirection(grid, action, sub, user, target, targetData), GetNumSpaces(target, targetData));
     }
 
     protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null || !target.Movable)
             return false;
-        return CanMove(grid, user, target, GetDirection(grid, action, sub, user, target, targetData), GetNumSpaces());
+        return CanMove(grid, user, target, GetDirection(grid, action, sub, user, target, targetData), GetNumSpaces(target, targetData));
     }
 }

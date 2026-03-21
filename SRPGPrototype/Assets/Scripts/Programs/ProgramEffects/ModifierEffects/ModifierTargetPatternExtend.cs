@@ -27,7 +27,7 @@ public class ModifierTargetPatternExtend : ModifierTargetPattern
             var positions = new List<Vector2Int>(t.Target(grid, user, targetPos));
             int Comparer(Vector2Int v1, Vector2Int v2)
             {
-                return user.Pos.GridDistance(v1).CompareTo(user.Pos.GridDistance(v2));
+                return user.Pos.ManhattanDistance(v1).CompareTo(user.Pos.ManhattanDistance(v2));
             }
             positions.Sort(Comparer);
             var lookup = new HashSet<Vector2Int>();

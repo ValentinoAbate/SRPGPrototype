@@ -99,9 +99,14 @@ public static class Vector2IntUtils
         yield return pos + ((Vector2Int.up + Vector2Int.left) * distance);
     }
 
-    public static int GridDistance(this Vector2Int pos, Vector2Int other)
+    public static int ManhattanDistance(this Vector2Int pos, Vector2Int other)
     {
         return System.Math.Abs(pos.x - other.x) + System.Math.Abs(pos.y - other.y);
+    }
+
+    public static int ChebyshevDistance(this Vector2Int pos, Vector2Int other)
+    {
+        return System.Math.Max(System.Math.Abs(pos.x - other.x), System.Math.Abs(pos.y - other.y));
     }
 
     public static string Save(this Vector2Int pos)

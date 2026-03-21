@@ -23,7 +23,7 @@ public class EncounterStepPlaceUnitsWeightedDistanceFromUnitWithTags : Encounter
         {
             if(tagComparison.Evaluate(unit.unit.UnitTags, tags))
             {
-                score += (encounter.dimensions.x - 1) + (encounter.dimensions.y - 1) - pos.GridDistance(unit.pos);
+                score += (encounter.dimensions.x - 1) + (encounter.dimensions.y - 1) - pos.ManhattanDistance(unit.pos);
                 bossUnitFound = true;
             }
         }

@@ -378,6 +378,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 819742805619387228}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1826780936145188287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350723602529910315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299b6b8c697a5c64dadfe78206bfae7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTeams: 02000000
+  includeSelf: 1
 --- !u!114 &7103641872082730972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,20 +408,6 @@ MonoBehaviour:
   standaloneSubActionOptions: 0
   affectUser: 0
   ignoreInValidRangeCalcs: 0
---- !u!114 &1826780936145188287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350723602529910315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299b6b8c697a5c64dadfe78206bfae7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTeams: 02000000
-  includeSelf: 1
 --- !u!114 &2391878626862187174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,3 +425,4 @@ MonoBehaviour:
   affectUser: 0
   ignoreInValidRangeCalcs: 0
   numSpaces: 1
+  scale: 1
