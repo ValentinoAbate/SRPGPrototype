@@ -89,6 +89,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
     public Unit.OnRepositioned OnRepositioned { get; private set; }
     public Unit.OnRepositioned OnRepositionOther { get; private set; }
     public Unit.OnGamble OnGamble { get; private set; }
+    public Unit.OnSummon OnSummon { get; private set; }
     public Action<BattleGrid, Unit> OnSpawned { get; private set; }
     public Action<BattleGrid, Unit> OnRemoved { get; private set; }
     public Unit.OnBattleStartDel OnBattleStart { get; private set; }
@@ -584,6 +585,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         public Unit.OnRepositioned onRepositioned = null;
         public Unit.OnRepositioned onRepositionOther = null;
         public Unit.OnGamble onGamble = null;
+        public Unit.OnSummon onSummon = null;
         public System.Action<BattleGrid, Unit> onSpawned = null;
         public System.Action<BattleGrid, Unit> onRemoved = null;
         public Unit.OnBattleStartDel onBattleStart = null;

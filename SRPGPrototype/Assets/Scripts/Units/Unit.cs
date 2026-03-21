@@ -25,6 +25,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     public delegate void OnGamble(BattleGrid grid, Action action, Unit unit, bool success);
 
+    public delegate void OnSummon(BattleGrid grid, Unit self, Unit summoned);
+
     public enum Team
     { 
         None,
@@ -99,6 +101,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public abstract OnRepositioned OnRepositionedFn { get; set; }
     public abstract OnRepositioned OnRepositionOther { get; set; }
     public abstract OnGamble OnGambleFn { get; set; }
+    public abstract OnSummon OnSummonFn { get; set; }
     public abstract System.Action<BattleGrid, Unit> OnSpawned { get; set; }
     public abstract System.Action<BattleGrid, Unit> OnRemoved { get; set; }
     public abstract OnBattleStartDel OnBattleStartFn { get; set; }

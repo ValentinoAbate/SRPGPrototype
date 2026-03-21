@@ -8,7 +8,7 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
     {
         if (!IsValidTargetInternal(grid, action, sub, user, target, targetData))
             return;
-        SpawnUnit(grid, targetData.targetPos);
+        SpawnUnit(grid, action, sub, targetData.targetPos, user);
     }
 
     protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
@@ -18,7 +18,7 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
 
     protected abstract GameObject GetUnitPrefab();
 
-    private void SpawnUnit(BattleGrid grid, Vector2Int pos)
+    private void SpawnUnit(BattleGrid grid, Action action, SubAction sub, Vector2Int pos, Unit spawner)
     {
         if(grid.TryGet(pos, out var previousUnit))
         {
@@ -36,6 +36,14 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
         // Add Unit to the grid
         grid.Add(pos, unit);
         unit.transform.position = grid.GetSpace(unit.Pos);
+        if (action.Program != null)
+        {
+            foreach (var mod in action.Program.ModifiedByTypeSubAction<ModifierActionSummonEffect>(sub))
+            {
+                mod.OnSummonEffect(grid, spawner, unit);
+            }
+        }
+        spawner.OnSummonFn?.Invoke(grid, spawner, unit);
         if (unit.UnitTeam is Unit.Team.Player)
         {
             int maxHotkeyIndex = -1;
