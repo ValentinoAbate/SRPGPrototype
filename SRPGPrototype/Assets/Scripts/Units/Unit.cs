@@ -124,10 +124,12 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public Transform FxContainer => fxContainer;
     [SerializeField] private Transform fxContainer;
 
+    public int Id { get; private set; }
     public string Key => key;
     [SerializeField] private string key;
 
     public Vector2Int StartingPos { get; private set; }
+    public Unit Summoner { get; set; }
 
     public bool AddPassiveEffect(PassiveEffect effect)
     {
@@ -172,6 +174,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     protected virtual void Initialize()
     {
+        Id = PersistantData.main.NewId;
         if (UI != null)
         {
             UI.SetVisible(ShowUIByDefault);
@@ -402,6 +405,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     {
         var data = new SaveManager.UnitData()
         {
+            id = Id,
             k = Key,
             p = Pos,
             hp = HP,
@@ -413,6 +417,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
             pow = Power,
             hk = HotkeyIndex,
             sp = StartingPos,
+            sumId = Summoner != null ? Summoner.Id : -1,
         };
         if(effects.Count > 0)
         {
@@ -428,6 +433,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     public virtual void Load(SaveManager.UnitData data, SaveManager.Loader loader)
     {
+        Id = data.id;
         Pos = data.p;
         MaxHP = data.mHp;
         HP = data.hp;
@@ -438,6 +444,10 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         Power = data.pow;
         HotkeyIndex = data.hk;
         StartingPos = data.sp;
+        if(data.sumId >= 0 && loader.LoadedUnits.ContainsKey(data.sumId))
+        {
+            Summoner = loader.LoadedUnits[data.sumId];
+        }
         foreach(var d in data.d)
         {
             if(d.t == effectsId)

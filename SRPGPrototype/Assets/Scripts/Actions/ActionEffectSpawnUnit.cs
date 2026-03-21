@@ -33,6 +33,8 @@ public abstract class ActionEffectSpawnUnit : ActionEffect
         }
         // Spawn Unit
         var unit = Instantiate(GetUnitPrefab()).GetComponent<Unit>();
+        // Link summoner
+        unit.Summoner = spawner;
         // Add Unit to the grid
         grid.Add(pos, unit);
         unit.transform.position = grid.GetSpace(unit.Pos);

@@ -197,6 +197,7 @@ public static class SaveManager
         public Dictionary<int, UnloadedShell> UnloadedShells { get; } = new Dictionary<int, UnloadedShell>();
         public Dictionary<int, Program> LoadedPrograms { get; } = new Dictionary<int, Program>();
         public Dictionary<int, Action> LoadedActions { get; } = new Dictionary<int, Action>();
+        public Dictionary<int, Unit> LoadedUnits { get; } = new Dictionary<int, Unit>();
         public Dictionary<int, ProgramData> FusionArgs { get; } = new Dictionary<int, ProgramData>();
 
 
@@ -303,10 +304,31 @@ public static class SaveManager
             {
                 unit = Create<Unit>(prefab.gameObject, parent);
                 unit.Load(data, this);
+                LoadedUnits.Add(unit.Id, unit);
                 return true;
             }
             unit = null;
             return false;
+        }
+
+        public IEnumerable<Unit> LoadUnits(IReadOnlyCollection<UnitData> unitData, Transform parent)
+        {
+            foreach(var data in unitData)
+            {
+                if (Lookup.TryGetUnit(data.k, out var prefab))
+                {
+                    var unit = Create<Unit>(prefab.gameObject, parent);
+                    LoadedUnits.Add(data.id, unit);
+                }
+            }
+            foreach(var data in unitData)
+            {
+                if(LoadedUnits.TryGetValue(data.id, out var unit))
+                {
+                    unit.Load(data, this);
+                    yield return unit;
+                }
+            }
         }
 
         private T Create<T>(GameObject prefab, Transform parent) where T : MonoBehaviour
@@ -396,6 +418,7 @@ public static class SaveManager
     [Serializable]
     public class UnitData : HasData
     {
+        public int id;
         public string k;
         public Vector2Int p;
         public int hp;
@@ -407,6 +430,7 @@ public static class SaveManager
         public int pow;
         public int hk;
         public Vector2Int sp;
+        public int sumId;
     }
 
     [Serializable]

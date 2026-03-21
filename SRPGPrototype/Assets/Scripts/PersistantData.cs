@@ -92,13 +92,7 @@ public class PersistantData : MonoBehaviour
         BattleData.LoadedUnits.Clear();
         if (battleData.data == null)
             return;
-        foreach (var unitData in battleData.data)
-        {
-            if(loader.LoadUnit(unitData, transform, out var unit))
-            {
-                BattleData.LoadedUnits.Add(unit);
-            }
-        }
+        BattleData.LoadedUnits.AddRange(loader.LoadUnits(battleData.data, transform));
     }
 
     public class BattleInitializationData
