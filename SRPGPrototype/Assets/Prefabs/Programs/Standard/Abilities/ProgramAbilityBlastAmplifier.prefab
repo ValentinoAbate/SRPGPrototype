@@ -193,7 +193,7 @@ MonoBehaviour:
     constant: 2
     type: 0
   targetTeams: 
-  abilityName: Add 2 Power to explosives on reposition
+  abilityName: +2 Power to explosives on reposition
   requiredTags: 1
   op: 0
 --- !u!114 &-1288943963236124991

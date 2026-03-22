@@ -189,9 +189,10 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 2
     type: 0
-  abilityName: Gain 2 AP on battle start
+  abilityName: +2 AP on battle start
 --- !u!114 &6608428150645800180
 MonoBehaviour:
   m_ObjectHideFlags: 0

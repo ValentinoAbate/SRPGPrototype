@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b625574922c023241b4cf2b6aa027508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Take -3 damage from Explosives
+  abilityName: -3 damage from Explosives
   actionTypeFilter: 
   subTypeFilter: 0d000000
   damageMod: {fileID: -3755304063010105539}

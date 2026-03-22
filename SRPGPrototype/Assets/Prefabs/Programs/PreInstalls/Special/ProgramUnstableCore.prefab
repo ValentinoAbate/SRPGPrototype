@@ -155,5 +155,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00a5c874ea813240ac62834dc3b7fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Warp Randomly on Turn Start
+  abilityName: Warp randomly on turn start
   action: {fileID: 2041599559974176785, guid: f2e334e966408be4c9e82dd0bcd0f853, type: 3}

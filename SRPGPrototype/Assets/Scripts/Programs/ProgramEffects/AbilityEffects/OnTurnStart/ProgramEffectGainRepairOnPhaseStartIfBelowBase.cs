@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProgramEffectGainRepairOnPhaseStartIfBelowBase : ProgramEffectAddOnPhaseStartAbility
 {
-    public override string AbilityName => "Gain 1 Repair on turn start if below Base";
+    public override string AbilityName => "+1 Repair on turn start if below Base";
 
     public override void Ability(BattleGrid grid, Unit unit)
     {

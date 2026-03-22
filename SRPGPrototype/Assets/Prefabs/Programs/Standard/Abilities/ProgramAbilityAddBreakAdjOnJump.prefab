@@ -219,6 +219,7 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 2
     unitNumber:
       min: -2147483648
@@ -226,8 +227,9 @@ MonoBehaviour:
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      negateNumber: 0
       constant: 1
       type: 0
     type: 0
-  abilityName: Add 2 to adjacent enemy Break after jump
+  abilityName: +2 Break to adj enemy after jump
   affectedTeams: 01000000

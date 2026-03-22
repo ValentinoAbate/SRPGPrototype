@@ -138,7 +138,7 @@ MonoBehaviour:
   subTypes: 
   stat: 2
   teams: 0100000002000000
-  abilityName: +1 AP on Destroy Enemy/Player
+  abilityName: +1 AP on destroy enemy/player
 --- !u!114 &6491170409376152335
 MonoBehaviour:
   m_ObjectHideFlags: 0

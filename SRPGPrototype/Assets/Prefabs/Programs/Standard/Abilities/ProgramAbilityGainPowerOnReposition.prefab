@@ -217,7 +217,8 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 1
     type: 0
   targetTeams: 02000000
-  abilityName: Add 1 Power to player units on reposition
+  abilityName: +1 Power to players on reposition

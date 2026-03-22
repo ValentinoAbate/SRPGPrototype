@@ -203,5 +203,5 @@ MonoBehaviour:
       constant: 1
       type: 0
     type: 0
-  abilityName: Lower adjacent enemy AP before warp
+  abilityName: -1 AP to adj enemy before warp
   affectedTeams: 01000000

@@ -212,6 +212,7 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 1
     unitNumber:
       min: -2147483648
@@ -219,7 +220,8 @@ MonoBehaviour:
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      negateNumber: 0
       constant: 1
       type: 0
     type: 0
-  abilityName: Gain 1 power after moves (except warps and jumps)
+  abilityName: +1 Power after moves (except warps and jumps)

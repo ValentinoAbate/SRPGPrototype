@@ -184,6 +184,7 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 3
     type: 0
-  abilityName: Gain 3 AP after a program is destroyed
+  abilityName: +3 AP after a program is destroyed

@@ -192,6 +192,7 @@ MonoBehaviour:
     baseAmount: 0
     modifier: -2
     multiplier: 1
+    negateNumber: 0
     constant: 1
     unitNumber:
       min: -2147483648
@@ -199,10 +200,11 @@ MonoBehaviour:
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      negateNumber: 0
       constant: 1
       type: 0
     type: 2
-  abilityName: Gain AP on multi-hit
+  abilityName: +AP on multi-hit 3+
 --- !u!114 &2552383690902883462
 MonoBehaviour:
   m_ObjectHideFlags: 0

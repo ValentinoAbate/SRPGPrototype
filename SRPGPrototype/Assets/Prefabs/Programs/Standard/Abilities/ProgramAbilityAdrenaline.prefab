@@ -189,9 +189,10 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 1
     type: 0
-  abilityName: Gain 1 AP when damaged
+  abilityName: +1 AP when damaged
 --- !u!114 &2847572640555002391
 MonoBehaviour:
   m_ObjectHideFlags: 0

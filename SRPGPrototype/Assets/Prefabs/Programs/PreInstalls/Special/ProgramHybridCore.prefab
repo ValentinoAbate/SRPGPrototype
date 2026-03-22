@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bf7d59177b1624eb0d4d22ccdf5663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Take -2 HP after using non-Hybrid action
+  abilityName: -2 HP after using non-Hybrid action
   stat: 0
   number:
     min: -2147483648

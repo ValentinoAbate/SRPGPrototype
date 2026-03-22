@@ -189,10 +189,11 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 1
     type: 0
   targetTeams: 01000000
-  abilityName: Add 1 Break to enemy on reposition
+  abilityName: +1 Break to enemy on reposition
 --- !u!114 &-1288943963236124991
 MonoBehaviour:
   m_ObjectHideFlags: 0

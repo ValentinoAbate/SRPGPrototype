@@ -204,7 +204,7 @@ MonoBehaviour:
       constant: 1
       type: 0
     type: 2
-  abilityName: Gain Power on multi-hit
+  abilityName: +Power on multi-hit
 --- !u!114 &-1288943963236124991
 MonoBehaviour:
   m_ObjectHideFlags: 0
