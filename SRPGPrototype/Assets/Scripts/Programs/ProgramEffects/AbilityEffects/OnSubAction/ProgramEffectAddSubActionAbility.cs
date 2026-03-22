@@ -11,7 +11,7 @@ public abstract class ProgramEffectAddSubActionAbility : ProgramEffectAddAbility
     }
     [SerializeField] private Timing timing;
     [SerializeField] private SubAction.Type[] subTypes = new SubAction.Type[0];
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         if (timing == Timing.BeforeSubAction)
         {

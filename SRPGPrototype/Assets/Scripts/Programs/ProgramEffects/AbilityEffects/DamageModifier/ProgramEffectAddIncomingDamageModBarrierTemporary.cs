@@ -22,9 +22,9 @@ public class ProgramEffectAddIncomingDamageModBarrierTemporary : ProgramEffectIn
     public int TurnsLeft { get; private set; } = uninitializedTurns;
     private GameObject barrierObject = null;
 
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
-        base.AddAbility(ref data);
+        base.AddAbility(data);
         data.onPhaseEnd += OnPhaseEnd;
         data.onSpawned += OnSpawned;
     }

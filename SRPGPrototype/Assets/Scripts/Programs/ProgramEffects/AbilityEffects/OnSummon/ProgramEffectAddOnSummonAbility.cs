@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ProgramEffectAddOnSummonAbility : ProgramEffectAddAbility
 {
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         data.onSummon += OnSummon;
     }

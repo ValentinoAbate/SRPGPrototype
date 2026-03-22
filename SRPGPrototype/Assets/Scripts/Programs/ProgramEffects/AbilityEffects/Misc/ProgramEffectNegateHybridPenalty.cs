@@ -6,7 +6,7 @@ public class ProgramEffectNegateHybridPenalty : ProgramEffectAddAbility
 {
     public override string AbilityName => "Hybrid penalty immunity";
 
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         data.applyHybridFailurePenalty = false;
     }

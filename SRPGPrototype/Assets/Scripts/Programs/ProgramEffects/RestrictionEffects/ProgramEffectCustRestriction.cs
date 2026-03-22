@@ -1,7 +1,7 @@
 ﻿public abstract class ProgramEffectCustRestriction : ProgramEffect
 {
     public const string noErrorMessage = "No Compile Error";
-    public override void ApplyEffect(ref Shell.CompileData data)
+    public override void ApplyEffect(Shell.CompileData data)
     {
         data.restrictions.Add(Restriction);
         data.restrictionNames.Add(RestrictionName);

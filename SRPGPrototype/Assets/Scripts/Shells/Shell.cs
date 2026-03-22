@@ -432,6 +432,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
     {
         var compileData = new CompileData
         {
+            shell = this,
             modifierMap = GetModifierMap()
         };
         // If the shell is an asset, generate compile data from pre-installs
@@ -442,7 +443,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
             var program = install.program;
             foreach (var effect in program.Effects)
             {
-                effect.ApplyEffect(ref compileData);
+                effect.ApplyEffect(compileData);
             }
             foreach (var trigger in program.Upgrades)
             {
@@ -571,6 +572,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
 
     public class CompileData
     {
+        public Shell shell;
         public Stats stats = new Stats();
         public List<Action> actions = new List<Action>();
         public List<string> restrictionNames = new List<string>();

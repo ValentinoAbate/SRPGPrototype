@@ -8,7 +8,7 @@ public abstract class ProgramEffectAddOnAfterActionAbility : ProgramEffectAddAbi
     [SerializeField] private string abilityName;
     public override string AbilityName => abilityName;
 
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         data.onAfterAction += Ability;
     }

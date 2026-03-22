@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class ProgramEffectAddOnDamagedAbility : ProgramEffectAddAbility
 {
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         data.onDamaged += Ability;
     }

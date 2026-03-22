@@ -6,9 +6,9 @@ public class ProgramEffectAddStatAfterActionAbilityTurnLimit : ProgramEffectAddS
 {
     [SerializeField] UseLimiter useLimiter;
 
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
-        base.AddAbility(ref data);
+        base.AddAbility(data);
         useLimiter.Attach(data);
     }
 

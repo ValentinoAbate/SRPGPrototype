@@ -1,6 +1,6 @@
 ﻿public abstract class ProgramEffectAddOnPhaseStartAbility : ProgramEffectAddAbility
 {
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         data.onPhaseStart += Ability;
     }

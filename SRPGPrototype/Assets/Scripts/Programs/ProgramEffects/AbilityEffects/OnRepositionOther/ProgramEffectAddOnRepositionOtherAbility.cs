@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class ProgramEffectAddOnRepositionOtherAbility : ProgramEffectAddAbility
 {
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
         data.onRepositionOther += Ability;
     }

@@ -10,9 +10,9 @@ public class ProgramEffectIncomingDamageModFullLimited : ProgramEffectAddIncomin
 
     public override string AbilityName => $"{base.AbilityName} {limiter.DisplayName}";
 
-    public override void ApplyEffect(ref Shell.CompileData data)
+    public override void ApplyEffect(Shell.CompileData data)
     {
-        base.ApplyEffect(ref data);
+        base.ApplyEffect(data);
         limiter.Attach(data);
     }
 

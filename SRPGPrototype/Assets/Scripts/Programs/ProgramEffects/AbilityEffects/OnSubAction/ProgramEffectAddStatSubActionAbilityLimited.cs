@@ -6,9 +6,9 @@ public class ProgramEffectAddStatSubActionAbilityLimited : ProgramEffectAddStatS
 {
     [SerializeField] private UseLimiter limiter;
 
-    protected override void AddAbility(ref Shell.CompileData data)
+    protected override void AddAbility(Shell.CompileData data)
     {
-        base.AddAbility(ref data);
+        base.AddAbility(data);
         limiter.Attach(data);
     }
 
