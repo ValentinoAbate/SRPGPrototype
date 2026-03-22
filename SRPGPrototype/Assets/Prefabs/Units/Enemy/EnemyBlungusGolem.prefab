@@ -25,8 +25,9 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: description
-      value: 'Move: Adjacent. Attack: Adjacent (2 damage). Bleeds when damaged, activating
-        shark burrows (etc.). A blood fungus that has come to life.'
+      value: 'Move: Adjacent. Attack: Adjacent (2 damage). Bleeds when damaged or
+        destroyed, activating shark burrows (etc.). A blood fungus that has come
+        to life.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -36,13 +37,18 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: abilities.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
       objectReference: {fileID: 2696970911565206522}
+    - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
+        type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 6058919173202160269}
     - target: {fileID: 2671863499721434950, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: m_RootOrder
@@ -163,4 +169,17 @@ MonoBehaviour:
   secondaryAction: {fileID: 0}
   options: 0
   targetTeams: 02000000
+  secondaryTargetTeams: 
   runAwayFromTeams: 02000000
+--- !u!114 &6058919173202160269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628319322004894795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee84e595f8c43645af1938f437a2550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

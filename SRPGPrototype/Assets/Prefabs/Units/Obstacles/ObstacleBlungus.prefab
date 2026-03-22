@@ -36,8 +36,8 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: description
-      value: Bleeds when damaged, activating shark burrows (etc.). Also known as
-        Blungus.
+      value: Bleeds when damaged or destroyed, activating shark burrows (etc.). Also
+        known as Blungus.
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
@@ -47,13 +47,18 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: abilities.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
       objectReference: {fileID: 5655418623764167842}
+    - target: {fileID: 2227870287527632981, guid: 8d28da550a5fdc0458224d2b3be8ad66,
+        type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 3395239294996480318}
     - target: {fileID: 2671863499721434950, guid: 8d28da550a5fdc0458224d2b3be8ad66,
         type: 3}
       propertyPath: m_RootOrder
@@ -152,6 +157,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4199561890093148515}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3395239294996480318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788600921145412576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee84e595f8c43645af1938f437a2550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5655418623764167842
 MonoBehaviour:
   m_ObjectHideFlags: 0

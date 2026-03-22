@@ -31,7 +31,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: 'Move: Adjacent. Attack: Adjacent (2 damage). Deals 2 damage to any
-        unit that damages or kills it. No jamming.'
+        unit that damages or destroys it. No jamming.'
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -176,6 +176,7 @@ MonoBehaviour:
   secondaryAction: {fileID: 0}
   options: 0
   targetTeams: 02000000
+  secondaryTargetTeams: 
   runAwayFromTeams: 02000000
 --- !u!114 &8958908972355254890
 MonoBehaviour:
