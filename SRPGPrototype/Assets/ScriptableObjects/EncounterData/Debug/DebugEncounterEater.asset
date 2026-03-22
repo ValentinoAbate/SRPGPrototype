@@ -15,7 +15,7 @@ MonoBehaviour:
   encounterType: 0
   dimensions: {x: 7, y: 6}
   lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
-  targetDifficulty: 4
+  targetDifficulty: 21
   numSpawnPositions: 3
   numEnemies: 0500000006000000
   numEnemiesWeights:
@@ -44,10 +44,7 @@ MonoBehaviour:
   seed:
     nameOverride: 
     dimensions: {x: 0, y: 0}
-    units:
-    - pos: {x: -1, y: -1}
-      unit: {fileID: 5064112337391898495, guid: b733a468635e1b9449b4b8cd148158a6,
-        type: 3}
+    units: []
     ambushUnits: []
     spawnPositions: []
     giveCompletionMoney: 0

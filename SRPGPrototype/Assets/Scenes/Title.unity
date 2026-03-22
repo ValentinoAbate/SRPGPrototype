@@ -1471,12 +1471,7 @@ MonoBehaviour:
   debugMap: {fileID: 11400000, guid: 09428bb0dc4d50543af908f70e8f35af, type: 2}
   continueButton: {fileID: 698718511}
   debugButton: {fileID: 526089267}
-  debugPrograms:
-  - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
-  - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
-  - {fileID: 4551076113953349650, guid: b3ad2df5946e8654e837179cd7aad396, type: 3}
-  - {fileID: 4551076113953349650, guid: ab296612cd4d7a64484cadc576714018, type: 3}
-  - {fileID: 4551076113953349650, guid: b17b9c1b66df34f44af5a0870e48c0f4, type: 3}
+  debugPrograms: []
   debugShells:
   - {fileID: 2078634837081122101, guid: b76e122ca843eac4386d39de1ae59877, type: 3}
   debugMoney: 99999
