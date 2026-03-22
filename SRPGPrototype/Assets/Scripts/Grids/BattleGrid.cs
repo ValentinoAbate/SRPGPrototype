@@ -76,6 +76,19 @@ public class BattleGrid : Grid.Grid<Unit>
         }
     }
 
+    // Remove all units, removing any temporary effects from persistent units
+    public void Cleanup()
+    {
+        // Remove all but player units
+        foreach (var unit in this)
+        {
+            if (unit is PlayerUnit)
+                continue;
+            Remove(unit);
+        }
+        Clear();
+    }
+
     public void Clear()
     {
         foreach(var unit in this)

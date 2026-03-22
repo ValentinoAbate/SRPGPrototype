@@ -159,6 +159,7 @@ public class EncounterManager : MonoBehaviour
 
     private void FinishEncounter()
     {
+        grid.Cleanup();
         PersistantData.main.mapManager.GenerateNextEncounters();
         GenerateAndShowLoot();
     }
