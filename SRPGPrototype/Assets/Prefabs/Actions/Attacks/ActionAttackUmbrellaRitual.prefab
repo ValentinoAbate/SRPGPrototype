@@ -101,7 +101,7 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Attack an adajcent or diagonally adjacent unit for {dmg} damage. If
-        the attack kills the target, gain 1 power.
+        the attack destroys the target, gain 1 power.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -144,6 +144,7 @@ MonoBehaviour:
     baseAmount: 0
     modifier: 0
     multiplier: 1
+    negateNumber: 0
     constant: 1
     unitNumber:
       min: -2147483648
@@ -151,6 +152,7 @@ MonoBehaviour:
       baseAmount: 0
       modifier: 0
       multiplier: 1
+      negateNumber: 0
       constant: 1
       type: 0
     type: 0
