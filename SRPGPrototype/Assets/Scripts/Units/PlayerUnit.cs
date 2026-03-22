@@ -78,6 +78,7 @@ public class PlayerUnit : Unit
 
     public override Coroutine OnBattleEnd(EncounterManager manager)
     {
+        Shell.Compile(); // Reset temporary stat changes
         foreach (var action in Actions)
             action.ResetUses(Action.Trigger.EncounterStart);
         DoRepair();
