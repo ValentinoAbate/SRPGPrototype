@@ -105,13 +105,14 @@ public class MapUI : MonoBehaviour
         {
             index = 0;
         }
-
+        previewGrid.Clear();
         previewObjContainer.DestroyAllChildren();
         ShowEncounterPreview(encounterChoices[index], index);
     }
 
     public void HideEncounterPreview()
     {
+        previewGrid.Clear();
         previewObjContainer.DestroyAllChildren();
         previewUI.SetActive(false);
     }

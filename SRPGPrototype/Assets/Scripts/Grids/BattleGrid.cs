@@ -76,6 +76,14 @@ public class BattleGrid : Grid.Grid<Unit>
         }
     }
 
+    public void Clear()
+    {
+        foreach(var unit in this)
+        {
+            Remove(unit);
+        }
+    }
+
     public void SetDimensions(int x, int y)
     {
         dimensions = new Vector2Int(x, y);

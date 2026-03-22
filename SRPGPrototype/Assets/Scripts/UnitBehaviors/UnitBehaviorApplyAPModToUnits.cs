@@ -14,6 +14,7 @@ public class UnitBehaviorApplyAPModToUnits : UnitBehavior
     {
         self.OnSpawned += OnSpawned;
         self.OnDeathFn += RemoveEffect;
+        self.OnRemoved += RemoveEffect;
         if (EncounterEventManager.Ready)
         {
             EncounterEventManager.main.OnUnitSpawned += TryApplyEffectToUnit;
@@ -28,8 +29,14 @@ public class UnitBehaviorApplyAPModToUnits : UnitBehavior
             TryApplyEffectToUnit(unit);
         }
     }
+
     private void RemoveEffect(BattleGrid grid, Unit self, Unit killedBy)
-    { 
+    {
+        RemoveEffect(grid, self);
+    }
+
+    private void RemoveEffect(BattleGrid grid, Unit self)
+    {
         EncounterEventManager.main.OnUnitSpawned -= TryApplyEffectToUnit;
         EncounterEventManager.main.OnUnitRemoved -= TryRemoveEffectFromUnit;
         foreach (var unit in grid)
