@@ -211,8 +211,12 @@ MonoBehaviour:
   - PushFar
   - PushOnmiCorrupt
   - SummonBomb
+  - SummonDrillBot
   - SummonFadingShield
   - SummonMine
+  - SummonMosquito
+  - SummonPulseBot
+  - SummonReaperBot
   - SummonTimeBomb
   - SummonTurret
   - SummonWall
@@ -502,8 +506,12 @@ MonoBehaviour:
   - {fileID: 4551076113953349650, guid: 3063da08a0cb3614fa3ca17d76ea128b, type: 3}
   - {fileID: 4551076113953349650, guid: 1a2013144dfa70c4e9b9c3965b1c1a33, type: 3}
   - {fileID: 4551076113953349650, guid: 86cb567389277a84db4d50cf12388a99, type: 3}
+  - {fileID: 4551076113953349650, guid: 7582a45318a9a25459ed54dd42480d13, type: 3}
   - {fileID: 4551076113953349650, guid: 553f05f20abdb404781d0efae8b4045d, type: 3}
   - {fileID: 4551076113953349650, guid: dee9da2a5ec80394390136212997903d, type: 3}
+  - {fileID: 4551076113953349650, guid: dec187e41b8c1ce4f8cd1f1a7f0293c3, type: 3}
+  - {fileID: 4551076113953349650, guid: 78c13938e0972d644a4243750626d01c, type: 3}
+  - {fileID: 4551076113953349650, guid: 88c8dd7c7af93174199a15456861b737, type: 3}
   - {fileID: 4551076113953349650, guid: 73da1a60fb82df340838182afbe00404, type: 3}
   - {fileID: 4551076113953349650, guid: 252ec81ef19cdde41be6eac0b25e4896, type: 3}
   - {fileID: 4551076113953349650, guid: d7d6327bd48f28a40b015cc5ee8e29bd, type: 3}

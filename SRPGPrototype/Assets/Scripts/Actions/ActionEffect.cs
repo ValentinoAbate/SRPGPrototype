@@ -36,11 +36,13 @@ public abstract class ActionEffect : MonoBehaviour
         public Vector2Int targetPos;
         // The position that was originally selected as the target for the action
         public Vector2Int selectedPos;
+        public Vector2Int originalUserPos;
 
-        public PositionData(Vector2Int target, Vector2Int selected)
+        public PositionData(Vector2Int target, Vector2Int selected, Vector2Int originalUser)
         {
             targetPos = target;
             selectedPos = selected;
+            originalUserPos = originalUser;
         }
     }
 

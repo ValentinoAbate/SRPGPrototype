@@ -56,8 +56,7 @@ PrefabInstance:
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}
       propertyPath: description
-      value: Controllable turrent that can attack a unit diagonally adjacent or at
-        range for 2 damage.
+      value: Controllable turret.
       objectReference: {fileID: 0}
     - target: {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d,
         type: 3}

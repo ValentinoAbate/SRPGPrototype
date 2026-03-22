@@ -10,11 +10,17 @@ public class ActionEffectApplyEffectOnKill : ActionEffect, IDamagingActionEffect
     [SerializeField] private ActionEffect effect;
     [SerializeField] private Unit.Team[] targetTeams;
 
+    public override void Initialize(BattleGrid grid, Action action, SubAction sub, Unit user, List<Vector2Int> targetPositions)
+    {
+        base.Initialize(grid, action, sub, user, targetPositions);
+        effect.Initialize(grid, action, sub, user, targetPositions);
+    }
+
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null || !target.Dead || !UnitFilters.IsOnTeam(target, targetTeams))
             return;
-        effect.ApplyEffect(grid, action, sub, user, target, targetData);
+        effect.ApplyEffect(grid, action, sub, user, target, new PositionData(targetData.selectedPos, targetData.selectedPos, targetData.originalUserPos));
     }
 
     protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)

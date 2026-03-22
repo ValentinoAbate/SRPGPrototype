@@ -99,6 +99,7 @@ MonoBehaviour:
   - WhiteWolf
   - WorldEater
   - Env
+  - DrillBot
   - FadingShield
   - Grave
   - GraveHost
@@ -106,6 +107,9 @@ MonoBehaviour:
   - HatchingEggFast
   - HatchingEggSlow
   - Mine
+  - MosquitoBot
+  - PulseBot
+  - ReaperBot
   - SuperBomb
   - TimeBomb
   - Turret
@@ -215,6 +219,7 @@ MonoBehaviour:
   - {fileID: 6361471704087255999, guid: 1b020db341f7895479d07128ef67b29c, type: 3}
   - {fileID: 4568531750757968395, guid: 87b366d6c920b784aa3aeba5538f5d86, type: 3}
   - {fileID: 2227870287527632981, guid: 6fe240199f4e4184c8db28664983d99d, type: 3}
+  - {fileID: 1229754312500399323, guid: 7188a563ae5f29e4aa9595860f2d80bb, type: 3}
   - {fileID: 7927054458215739916, guid: 3daef29d661db944385b08492ded9c5a, type: 3}
   - {fileID: 7927054458215739916, guid: c99103dddd43ab8439423c4e35254aa7, type: 3}
   - {fileID: 7927054458215739916, guid: 7376622ea407a8b42a70d116dfb8017e, type: 3}
@@ -222,6 +227,9 @@ MonoBehaviour:
   - {fileID: 2057450463593074828, guid: 7dd1c1b5a40494f4b810791aea4d8c8d, type: 3}
   - {fileID: 2057450463593074828, guid: c6787ea82df0c2b44aa642fea36029bd, type: 3}
   - {fileID: 7927054458215739916, guid: 9a9530f0dcea1894487e03fcc24ac996, type: 3}
+  - {fileID: 1229754312500399323, guid: 4c512658ad25c944c974f97ce796238d, type: 3}
+  - {fileID: 1229754312500399323, guid: d71bab5d142548743888bcb50ec6d6e9, type: 3}
+  - {fileID: 1229754312500399323, guid: 9c9b0dc2d67553044aa1987e05fd7619, type: 3}
   - {fileID: 7927054458215739916, guid: 2ea103673e0f8374f85cc0124dfac9d5, type: 3}
   - {fileID: 7927054458215739916, guid: 0830af9dd32f2bd44ab972c833272918, type: 3}
   - {fileID: 1229754312500399323, guid: 70516652d2abaf64cbe177d56d86332b, type: 3}

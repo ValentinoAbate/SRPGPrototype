@@ -173,4 +173,13 @@ public static class Vector2IntUtils
             }
         }
     }
+
+    // Are both points on a grid column, row, or diagonal?
+    public static bool IsOnGridLine(this Vector2Int pos, Vector2Int pos2)
+    {
+        if (pos.x == pos2.x || pos.y == pos2.y)
+            return true;
+        var diff = pos - pos2;
+        return System.Math.Abs(diff.x) == System.Math.Abs(diff.y);
+    }
 }

@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: subtype
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: effects.Array.data[0]
+      value: 
+      objectReference: {fileID: -3087228992401528925}
     - target: {fileID: 4515749849844402364, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: m_RootOrder
@@ -80,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Summons a 6 HP Mine that explodes if there are any adjacent enemy or
+      value: Summon a 6 HP Mine that explodes if there are any adjacent enemy or
         player units at the beginning of the enemy phase, dealing 4 damage to adjacent
         units. Also explodes when destroyed.
       objectReference: {fileID: 0}

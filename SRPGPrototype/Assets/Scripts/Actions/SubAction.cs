@@ -166,16 +166,16 @@ public class SubAction : MonoBehaviour
     {
         if (effect.AffectUser)
         {
-            return effect.IsValidTarget(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
+            return effect.IsValidTarget(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos, user.Pos));
         }
         foreach (var pos in emptyTargetPositions)
         {
-            if (effect.IsValidTarget(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos)))
+            if (effect.IsValidTarget(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos, user.Pos)))
                 return true;
         }
         foreach (var target in targets)
         {
-            if (effect.IsValidTarget(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos)))
+            if (effect.IsValidTarget(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos, user.Pos)))
                 return true;
         }
         return false;
@@ -220,26 +220,28 @@ public class SubAction : MonoBehaviour
         List<Unit> userList = null;
         if(subtype == Type.OverrideByEffects)
         {
+            var originalPos = user.Pos;
             foreach (var effect in effects)
             {
                 if(effect.StandaloneSubActionType != Type.None)
                 {
                     OnBeforeSubAction(grid, action, user, targets, ref userList, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
-                    ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
+                    ApplyEffect(effect, grid, action, user, selectedPos, originalPos, targets, emptyTargetPositions, targetPositions);
                     OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, effect.SubActionOptions, effect.StandaloneSubActionType);
                 }
                 else
                 {
-                    ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
+                    ApplyEffect(effect, grid, action, user, selectedPos, originalPos, targets, emptyTargetPositions, targetPositions);
                 }
             }
         }
         else
         {
+            var originalPos = user.Pos;
             OnBeforeSubAction(grid, action, user, targets, ref userList, targetPositions, options);
             foreach (var effect in effects)
             {
-                ApplyEffect(effect, grid, action, user, selectedPos, targets, emptyTargetPositions, targetPositions);
+                ApplyEffect(effect, grid, action, user, selectedPos, originalPos, targets, emptyTargetPositions, targetPositions);
             }
             OnAfterSubAction(grid, action, user, targets, ref userList, targetPositions, options);
         }
@@ -273,21 +275,21 @@ public class SubAction : MonoBehaviour
         }
     }
 
-    private void ApplyEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, List<Unit> targets, List<Vector2Int> emptyTargetPositions, List<Vector2Int> targetPositions)
+    private void ApplyEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, Vector2Int originalUserPos, List<Unit> targets, List<Vector2Int> emptyTargetPositions, List<Vector2Int> targetPositions)
     {
         effect.Initialize(grid, action, this, user, targetPositions);
         if (effect.AffectUser)
         {
-            effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos));
+            effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos, originalUserPos));
             return;
         }
         foreach (var pos in emptyTargetPositions)
         {
-            effect.ApplyEffect(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos));
+            effect.ApplyEffect(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos, originalUserPos));
         }
         foreach (var target in targets)
         {
-            effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos));
+            effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos, originalUserPos));
         }
     }
 
