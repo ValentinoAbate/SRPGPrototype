@@ -97,7 +97,7 @@ PrefabInstance:
       propertyPath: description
       value: Summon a controllable 1 HP 2 AP robot that can fly two tiles and and
         a 2-damage attack that summons another Mosquito bot when destroying an Enemy
-        or Player unit but loses 1 HP at the start of each turn.
+        unit but loses 1 HP at the start of each turn.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
