@@ -28,7 +28,7 @@ public class ProgramShopEntry : ShopEntry
         {
             Rarity.Common => 75,
             Rarity.Uncommon => 125,
-            Rarity.Rare => 250,
+            Rarity.Rare => 200,
             Rarity.ShopShellUpgrade => 125,
             _ => 999,
         }));
