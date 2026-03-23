@@ -6,7 +6,7 @@ public class ActionEffectOpenProgramFusion : ActionEffect
 {
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        UIManager.main.ProgramFusionUI.Show(user, 100);
+        UIManager.main.ProgramFusionUI.Show(user, 75);
     }
 
     protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
