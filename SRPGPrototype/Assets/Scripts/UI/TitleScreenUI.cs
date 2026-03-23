@@ -35,13 +35,13 @@ public class TitleScreenUI : MonoBehaviour
 
     public void DebugRun()
     {
-        NewRunInternal(debugMap);
         PersistantData.main.inventory.AddShells(debugShells, true);
         foreach(var program in debugPrograms)
         {
             PersistantData.main.inventory.AddProgram(program, true);
         }
         PersistantData.main.inventory.Money = debugMoney;
+        NewRunInternal(debugMap);
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
     }
 
