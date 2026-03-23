@@ -142,9 +142,11 @@ MonoBehaviour:
   - AttackUmbrellaBlowbackD
   - AttackUmbrellaBreaker
   - AttackUmbrellaGun
+  - AttackUmbrellaHeavy
   - AttackUmbrellaPull
   - AttackUmbrellaPush
   - AttackUmbrellaRitual
+  - AttackUmbrellaSpin
   - AttackWideSword
   - BatonPass
   - CoinToss
@@ -304,6 +306,7 @@ MonoBehaviour:
   - DebugPierce
   - DebugRange
   - DebugShop
+  - DebugTrader
   - SoulCoreTest
   - TestAddKillActions
   - TestAddSpawnTestActions
@@ -438,9 +441,11 @@ MonoBehaviour:
   - {fileID: 4551076113953349650, guid: 3e2ca18aad97e4247ab210ed215a42f9, type: 3}
   - {fileID: 4551076113953349650, guid: 3a9f4f89116af9c4caa367db41b7406c, type: 3}
   - {fileID: 4551076113953349650, guid: 3019e9fdc190eec4d8a84b6191a1c78a, type: 3}
+  - {fileID: 4551076113953349650, guid: 0d9c9807a7da2e74ab66b834dae78e25, type: 3}
   - {fileID: 4551076113953349650, guid: 3a482a93c2f367a49b4696f1fa89e250, type: 3}
   - {fileID: 4551076113953349650, guid: 996b83acf4b9c1049a09b82cf7b11ab9, type: 3}
   - {fileID: 4551076113953349650, guid: cc3b16d236c4cc84996d2326e46c7fe3, type: 3}
+  - {fileID: 4551076113953349650, guid: aeef8bc124201ce429ca676a307d50e6, type: 3}
   - {fileID: 4551076113953349650, guid: f38a96b919f144346b0ab3808f1c7f40, type: 3}
   - {fileID: 4551076113953349650, guid: baf397bc0356724489e69c61854d249f, type: 3}
   - {fileID: 4551076113953349650, guid: 510cdb1998993ef4da4418cc58151602, type: 3}
@@ -600,6 +605,7 @@ MonoBehaviour:
   - {fileID: 2560143424604166460, guid: 06e1539db60fc904aaa0454204534b9e, type: 3}
   - {fileID: 2560143424604166460, guid: 874f5b2c875744e4088804dac6b929c5, type: 3}
   - {fileID: 6013885685804664415, guid: ebda1d5c05ccf9941ba32671aa4ae3fc, type: 3}
+  - {fileID: 6013885685804664415, guid: 515852a318e62704b9caa4f3db557bca, type: 3}
   - {fileID: 6013885685804664415, guid: 1e042d24e19c5ac4fbaed4faa9b03de1, type: 3}
   - {fileID: 2576600437051023739, guid: 3f62d878ca9781846aeb2db67a7f41c0, type: 3}
   - {fileID: 2576600437051023739, guid: 884c5c69cb48eda4382181bd401ed2bc, type: 3}
