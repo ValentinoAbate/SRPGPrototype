@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     public ProgramFusionUI ProgramFusionUI => programFusionUI;
     [SerializeField] private ProgramFusionUI programFusionUI;
 
+    public ProgramTraderUI ProgramTraderUI => programTraderUI;
+    [SerializeField] private ProgramTraderUI programTraderUI;
+
     [SerializeField] private ShellViewerControllerUI shellViewerController;
     [SerializeField] private GameObject floatTextPrefab;
     [SerializeField] private Transform fxContainer;
