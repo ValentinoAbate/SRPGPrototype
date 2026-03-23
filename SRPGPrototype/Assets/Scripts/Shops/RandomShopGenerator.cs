@@ -10,8 +10,12 @@ public class RandomShopGenerator : ShopGenerator
     public override ShopData GenerateShopData(Transform objectContainer)
     {
         var loot = PersistantData.main.loot;
-        var data = new ShopData();
-        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandardNoDuplicates(LootProvider.LootQuality.Standard, 3), objectContainer);
+        var data = new ShopData
+        {
+            CostPercentMultiplier = 60,
+            DisplayName = "Flash Sale!"
+        };
+        data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandardNoDuplicates(LootProvider.LootQuality.Standard, 2), objectContainer);
         data.AddProgramFromAsset(loot.ProgramLoot.GetDropsStandard(LootProvider.LootQuality.High, 1), objectContainer);
         return data;
     }

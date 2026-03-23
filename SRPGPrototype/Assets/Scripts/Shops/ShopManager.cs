@@ -70,7 +70,12 @@ public class ShopManager : MonoBehaviour
         var list = new List<SaveManager.ShopData>(data.Count);
         foreach(var kvp in data)
         {
-            var shop = new SaveManager.ShopData() { id = kvp.Key };
+            var shop = new SaveManager.ShopData() 
+            { 
+                id = kvp.Key, 
+                mult = kvp.Value.CostPercentMultiplier,
+                name = kvp.Value.DisplayName,
+            };
             var programs = kvp.Value.Programs;
             shop.prs = new List<SaveManager.ProgramData>(programs.Count);
             foreach (var program in programs)
@@ -93,7 +98,11 @@ public class ShopManager : MonoBehaviour
         Clear();
         foreach(var savedShop in saveData)
         {
-            var shop = new ShopData();
+            var shop = new ShopData()
+            {
+                CostPercentMultiplier = savedShop.mult,
+                DisplayName = savedShop.name,
+            };
             foreach(var programData in savedShop.prs)
             {
                 if(loader.LoadProgram(programData, objectContainer, false, null, out var program))
@@ -119,6 +128,8 @@ public class ShopManager : MonoBehaviour
         private readonly List<Program> programs = new List<Program>();
         public IReadOnlyList<Shell> Shells => shells;
         private readonly List<Shell> shells = new List<Shell>();
+
+        public int CostPercentMultiplier { get; set; } = 100;
 
         public string DisplayName { get; set; } = defaultShopName;
 

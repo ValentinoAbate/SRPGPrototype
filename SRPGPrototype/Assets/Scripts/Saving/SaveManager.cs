@@ -546,6 +546,8 @@ public static class SaveManager
         public ShopManager.ShopID id;
         public List<ShellData> shs;
         public List<ProgramData> prs;
+        public int mult;
+        public string name;
     }
 
     [Serializable]
