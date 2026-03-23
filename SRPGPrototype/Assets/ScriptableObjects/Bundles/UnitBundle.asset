@@ -17,6 +17,7 @@ MonoBehaviour:
   keys:
   - GambleData
   - Data
+  - ShellDataRecovery
   - WeaponDataBasic
   - AbilityData
   - AbilityDataRare
@@ -137,6 +138,7 @@ MonoBehaviour:
   items:
   - {fileID: 5007995830904770264, guid: 6e3280fe80b0ff746b8d78f0831bbc77, type: 3}
   - {fileID: -8414595866516888121, guid: 0094300eefbb09549b66fbb049403897, type: 3}
+  - {fileID: 5239826272984513838, guid: 41a6d35c1db9ee94bbfe4eecd0cd8589, type: 3}
   - {fileID: 5239826272984513838, guid: 7dc5f25a656e44b4eb14ea42ec1a2893, type: 3}
   - {fileID: 4462558509915415869, guid: edec4a06881e32e46bf78f32a029e66a, type: 3}
   - {fileID: 1753992521485255165, guid: a90917b4e2196524a8622fe4bb6ba503, type: 3}
