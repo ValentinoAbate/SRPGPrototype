@@ -22,11 +22,11 @@ public class ShellShopEntry : ShopEntry
 
     private int GetCost(ShopManager.ShopData shopData, Shell s)
     {
-        return Mathf.CeilToInt((shopData.CostPercentMultiplier / 100f) * (shell.Rarity switch
+        return Mathf.CeilToInt((shopData.CostPercentMultiplier / 100f) * (s.Rarity switch
         {
-            Rarity.Common => 150,
-            Rarity.Uncommon => 200,
-            Rarity.Rare => 250,
+            Rarity.Common => 75,
+            Rarity.Uncommon => 100,
+            Rarity.Rare => 150,
             _ => 999
         }));
     }
