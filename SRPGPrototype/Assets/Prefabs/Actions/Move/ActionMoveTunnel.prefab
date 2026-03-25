@@ -14,6 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
+      propertyPath: effects.Array.data[0]
+      value: 
+      objectReference: {fileID: 431305620366640119}
+    - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
+        type: 3}
       propertyPath: rangePattern.generator
       value: 
       objectReference: {fileID: -3087350243505126079}
@@ -95,8 +105,8 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Move to an adjacent tile, or tunnel under obstacles horizontally or
-        vertically.
+      value: Move to an adjacent tile, or tunnel under obstacles horizontally, vertically,
+        or diagonally.
       objectReference: {fileID: 0}
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
@@ -133,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c23ff1807c3104a8934fdf7bcb7dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions: 1
+  directions: -1
   allowAdjacentPositions: 1
 --- !u!114 &431305620366640119
 MonoBehaviour:
