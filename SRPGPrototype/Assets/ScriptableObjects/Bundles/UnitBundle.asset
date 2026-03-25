@@ -129,6 +129,7 @@ MonoBehaviour:
   - ShopKiosk
   - ShopKioskRandom
   - ShopKioskShellUpgrade
+  - ShopKioskTrader
   - Toolbox
   - TravelStone
   - Wall
@@ -250,6 +251,7 @@ MonoBehaviour:
   - {fileID: 6241129000377480468, guid: b64219cb9182d7944ae76f4caafd657c, type: 3}
   - {fileID: 6241129000377480468, guid: 9d6187d4dbe5b8749a74b042e80b7371, type: 3}
   - {fileID: 6241129000377480468, guid: 7f9d94b0644bf6648985db0bb4086169, type: 3}
+  - {fileID: 6241129000377480468, guid: 8f536ab0aa4a6a849aef3a484d16e226, type: 3}
   - {fileID: 5593980168300560687, guid: 623976d1319491145960d75a348b3c5a, type: 3}
   - {fileID: 5132225929935089415, guid: 0ef9c0ba61c9c804394fca6d4a20b450, type: 3}
   - {fileID: 5132225929935089415, guid: 46fdc0bf0183ba6469e797c230659485, type: 3}

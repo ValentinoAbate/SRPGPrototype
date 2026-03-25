@@ -29,6 +29,10 @@ MonoBehaviour:
     validator: {fileID: 0}
     weight: 1
     isPrimary: 0
+  - unit: {fileID: 6241129000377480468, guid: 8f536ab0aa4a6a849aef3a484d16e226, type: 3}
+    validator: {fileID: 0}
+    weight: 3
+    isPrimary: 0
   - unit: {fileID: 5239826272984513838, guid: 41a6d35c1db9ee94bbfe4eecd0cd8589, type: 3}
     validator: {fileID: 11400000, guid: 4414fa7e91663704191809e463028f60, type: 2}
     weight: 50
