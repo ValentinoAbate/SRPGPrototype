@@ -100,12 +100,12 @@ PrefabInstance:
     - target: {fileID: 5965787398765822326, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}
       propertyPath: lootQualities.Array.data[1]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5965787398765822326, guid: c0e1ef933e3f5474cac0ca77288efcf1,
         type: 3}
       propertyPath: lootQualities.Array.data[2]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e1ef933e3f5474cac0ca77288efcf1, type: 3}

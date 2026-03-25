@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971048254936097021, guid: c21a492318cf85f4185711ef57bb24d9,
         type: 3}
-      propertyPath: lootQualities.Array.data[1]
+      propertyPath: lootQualities.Array.data[2]
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
