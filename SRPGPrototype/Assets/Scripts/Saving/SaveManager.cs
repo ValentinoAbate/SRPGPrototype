@@ -25,6 +25,7 @@ public static class SaveManager
         Cust,
         UnitPlacement,
         Battle,
+        BattleLoot,
         Loot,
         Map,
     }
@@ -70,6 +71,10 @@ public static class SaveManager
         {
             PersistantData.main.loot.ShowSaved(PersistantData.main.inventory, GoToCust);
         }
+        else if(runData.state == State.BattleLoot)
+        {
+            PersistantData.main.loot.ShowSaved(PersistantData.main.inventory, GoToEncounter);
+        }
         else if(runData.state == State.Map)
         {
             SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.MapSceneName);
@@ -83,6 +88,11 @@ public static class SaveManager
     private static void GoToCust()
     {
         SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.CustSceneName);
+    }
+
+    private static void GoToEncounter()
+    {
+        SceneTransitionManager.main.TransitionToScene(SceneTransitionManager.EncounterSceneName);
     }
 
     public static void ClearRunData()

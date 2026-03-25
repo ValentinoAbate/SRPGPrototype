@@ -5,13 +5,31 @@ using UnityEngine;
 
 public class ProgramTraderUI : MonoBehaviour, ISelectableItemHandler
 {
-    [SerializeField] private Transform previewButtonContainer;
-    [SerializeField] private ProgramItemButton previewButtonPrefab;
     [SerializeField] private List<ProgramItemButton> tradeArguments;
+    [SerializeField] private Transform tradeButtonContainer;
+    [SerializeField] private ItemButton tradeButtonPrefab;
+    [SerializeField] private ColorDropData[] colorDrops;
+    [SerializeField] private DropComponent<Program> commonDrop;
+    [SerializeField] private DropComponent<Program> uncommonDrop;
+    [SerializeField] private DropComponent<Program> rareDrop;
+    [SerializeField] private DropComponent<Program> rarePlusDrop;
+    [SerializeField] private DropComponent<Program> gambleDrop;
 
-    private readonly List<ProgramItemButton> previewButtons = new List<ProgramItemButton>();
+    private Dictionary<Program.Color, DropComponent<Program>> colorDict;
+    private readonly List<ItemButton> tradeButtons = new List<ItemButton>();
+    private PrefabPool<ItemButton> tradeButtonPool;
     private int argumentIndex = 0;
     private Unit user;
+
+    private void Awake()
+    {
+        colorDict = new Dictionary<Program.Color, DropComponent<Program>>(colorDrops.Length);
+        foreach(var drop in colorDrops)
+        {
+            colorDict[drop.color] = drop.dropComponent;
+        }
+        tradeButtonPool = new PrefabPool<ItemButton>(tradeButtonPrefab.gameObject, tradeButtonContainer, 10);
+    }
 
     private void Update()
     {
@@ -25,9 +43,10 @@ public class ProgramTraderUI : MonoBehaviour, ISelectableItemHandler
         UIManager.main.BattleUI?.SetUIEnabled(false);
         UIManager.main.TopBarUI.SetTitleText("Program Trader", true);
         argumentIndex = 0;
-        foreach(var button in previewButtons)
+        foreach(var button in tradeButtons)
         {
             button.Hide();
+            tradeButtonPool.Release(button);
         }
         foreach(var button in tradeArguments)
         {
@@ -50,7 +69,13 @@ public class ProgramTraderUI : MonoBehaviour, ISelectableItemHandler
         gameObject.SetActive(false);
     }
 
-    private void SelectTrade(int index)
+    private void OnTradeLootComplete()
+    {
+        SaveManager.Save(SaveManager.State.Battle);
+        Show(user);
+    }
+
+    private void DoTrade()
     {
         // Remove trade arguments from inventory
         var shell1 = tradeArguments[0].Program.Shell;
@@ -74,17 +99,14 @@ public class ProgramTraderUI : MonoBehaviour, ISelectableItemHandler
         {
             shell2.Compile();
         }
-
-        // TODO: award trade item
-        SaveManager.Save(SaveManager.State.Battle);
-        Hide();
+        HideUI();
+        UIManager.main.TopBarUI.EndTempTitleText();
     }
 
     private void OnComplete()
     {
         UIManager.main.BattleUI?.SetUIEnabled(true);
         UIManager.main.TopBarUI.EndTempTitleText();
-        // TODO: cleanup
     }
 
     public bool TrySelectItem(object item)
@@ -143,15 +165,88 @@ public class ProgramTraderUI : MonoBehaviour, ISelectableItemHandler
 
     private void CancelTradeReady()
     {
-        foreach(var button in previewButtons)
+        foreach(var button in tradeButtons)
         {
             button.Hide();
+            tradeButtonPool.Release(button);
         }
-        // TODO: clear offers
     }
 
     private void TradeReady()
     {
-        // TODO: generate and show options
+        var prog1 = tradeArguments[0].Program;
+        var prog2 = tradeArguments[1].Program;
+        // Rarity Option
+        int score = Score(prog1.Rarity) + Score(prog2.Rarity);
+        if(score >= 10)
+        {
+            AddProgramDrop(rarePlusDrop);
+        }
+        else if(score >= 5)
+        {
+            AddProgramDrop(rareDrop);
+        }
+        else if(score >= 3)
+        {
+            AddProgramDrop(uncommonDrop);
+        }
+        else
+        {
+            AddProgramDrop(commonDrop);
+        }
+        // Color Option
+        if(prog1.color == prog2.color && colorDict.TryGetValue(prog1.color, out var colorDrop))
+        {
+            AddProgramDrop(colorDrop);
+        }
+        if(ProgramFilters.HasAttributes(Program.Attributes.Gamble, prog1, prog2))
+        {
+            AddProgramDrop(gambleDrop);
+        }
+        // Money Options
+        AddMoneyDrop(50);
+    }
+
+    private void AddProgramDrop(DropComponent<Program> drop)
+    {
+        var button = tradeButtonPool.Get();
+        button.SetupAsLoot(drop.DisplayName, drop, null, 0, DoTrade, OnTradeLootComplete, true);
+        button.transform.SetAsLastSibling();
+        tradeButtons.Add(button);
+    }
+
+    private void AddMoneyDrop(int amount)
+    {
+        var button = tradeButtonPool.Get();
+        button.SetupAsLoot($"${amount}", null, null, amount, DoTrade, OnTradeLootComplete, true);
+        button.transform.SetAsLastSibling();
+        tradeButtons.Add(button);
+    }
+
+    private int Score(Rarity rarity)
+    {
+        return rarity switch
+        {
+            Rarity.Common => 1,
+            Rarity.Uncommon => 2,
+            Rarity.Rare => 5,
+            Rarity.Elite => 2,
+            Rarity.Boss => 5,
+            Rarity.Unique => 2,
+            Rarity.PreInstall => 1,
+            Rarity.Debug => 1,
+            Rarity.SoulCore => 1,
+            Rarity.Fusion => 3,
+            Rarity.Shop => 1,
+            Rarity.ShopShellUpgrade => 2,
+            _ => 0,
+        };
+    }
+
+    [Serializable]
+    private class ColorDropData
+    {
+        public Program.Color color;
+        public DropComponent<Program> dropComponent;
     }
 }

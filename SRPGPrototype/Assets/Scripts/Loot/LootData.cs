@@ -19,6 +19,11 @@ public class LootData<T> where T : MonoBehaviour, ILootable
         draws.Capacity = capacity;
     }
 
+    public void Add(Data data)
+    {
+        draws.Add(data);
+    }
+
     public void Add(IEnumerable<T> items, string name, int declineBonus)
     {
         draws.Add(new Data(items, name, declineBonus));

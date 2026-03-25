@@ -209,7 +209,7 @@ public class EncounterManager : MonoBehaviour
         }
 
         // Show loot UI
-        loot.ShowUI(inv, progDraws, shellDraws, moneyDrops, EndScene);
+        loot.ShowUI(inv, progDraws, shellDraws, moneyDrops, EndScene, false);
     }
 
     public void EndScene()

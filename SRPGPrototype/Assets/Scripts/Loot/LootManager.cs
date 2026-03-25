@@ -22,14 +22,14 @@ public class LootManager : MonoBehaviour
         ProgramLoot = new Loot<Program>(programs);
     }
 
-    public void ShowUI(Inventory inv, LootData<Program> progLootData, LootData<Shell> shellLootData, ICollection<LootUI.MoneyData> money, System.Action onLootClose)
+    public void ShowUI(Inventory inv, LootData<Program> progLootData, LootData<Shell> shellLootData, ICollection<LootUI.MoneyData> money, System.Action onLootClose, bool midBattle)
     {
         progLootData?.Instantiate(itemContainer);
         shellLootData?.Instantiate(itemContainer);
         programDraws = progLootData;
         shellDraws = shellLootData;
         moneyData = money;
-        SaveManager.Save(SaveManager.State.Loot);
+        SaveManager.Save(midBattle ? SaveManager.State.BattleLoot : SaveManager.State.Loot);
         void Close()
         {
             Clear();

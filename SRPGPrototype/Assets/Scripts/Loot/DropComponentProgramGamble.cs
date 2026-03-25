@@ -54,7 +54,7 @@ public class DropComponentProgramGamble : DropComponent<Program>
         // Extremely Rare: Give the player a program intended only for debugging
         if (roll < 1000)
             return new List<Program> { loot.GetDropCustom(Rarity.Debug) };
-        throw new System.Exception("Roll should be in between 0 and 999");
+        return new List<Program>() { loot.GetDropStandard(LootProvider.LootQuality.Standard) };
     }
 
     protected override int GenerateDeclineBonus(List<Program> drops)

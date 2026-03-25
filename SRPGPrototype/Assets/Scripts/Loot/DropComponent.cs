@@ -6,6 +6,7 @@ public abstract class DropComponent<T> : MonoBehaviour where T : ILootable
 {
     protected const int defaultRandomDeclineRange = 3;
     protected const int nullDeclineBonusOverride = int.MinValue;
+    public string DisplayName => dropName;
     [SerializeField] private string dropName;
     [SerializeField] protected int declineBonusOverride = nullDeclineBonusOverride;
     public List<T> GenerateDrop(Loot<T> loot, out string name, out int declineBonus)

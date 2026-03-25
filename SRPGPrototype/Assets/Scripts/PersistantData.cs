@@ -57,7 +57,7 @@ public class PersistantData : MonoBehaviour
 
     public void SaveRunData(SaveManager.RunData runData, SaveManager.State state)
     {
-        bool isBattle = state == SaveManager.State.Battle;
+        bool isBattle = IsBattle(state);
         runData.currId = CurrentId;
         runData.inv = inventory.Save(isBattle, ref runData.fArgs);
         runData.map = mapManager.Save();
@@ -73,8 +73,7 @@ public class PersistantData : MonoBehaviour
 
     public void LoadRunData(SaveManager.RunData data, SaveManager.Loader loader, SaveManager.State state)
     {
-        bool isBattle = state == SaveManager.State.Battle;
-
+        bool isBattle = IsBattle(state);
         inventory.Load(data.inv, loader, isBattle);
         mapManager.Load(data.map);
         LoadBattleData(data.battle, loader);
@@ -86,6 +85,8 @@ public class PersistantData : MonoBehaviour
         UIManager.main.UpdateShellViewerController();
         CurrentId = data.currId;
     }
+
+    private bool IsBattle(SaveManager.State state) => state == SaveManager.State.Battle || state == SaveManager.State.BattleLoot;
 
     private void LoadBattleData(SaveManager.BattleEncounterData battleData, SaveManager.Loader loader)
     {

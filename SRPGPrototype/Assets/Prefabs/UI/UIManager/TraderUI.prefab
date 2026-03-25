@@ -204,7 +204,7 @@ RectTransform:
   - {fileID: 9088335238956156642}
   - {fileID: 2715639779452616301}
   m_Father: {fileID: 103038769545736368}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -410,7 +410,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4550663748704348681}
   - {fileID: 3688030580337128009}
   m_Father: {fileID: 1497572935903889264}
   m_RootOrder: 1
@@ -631,41 +630,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &4598038835561139300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4550663748704348681}
-  m_Layer: 0
-  m_Name: Options
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4550663748704348681
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4598038835561139300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 103038769545736368}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6338441693157349100
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +702,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1497572935903889264}
   - component: {fileID: 3866220188313761067}
+  - component: {fileID: 2330547882361378598}
+  - component: {fileID: 6273482125448856342}
+  - component: {fileID: 2759132883225772597}
+  - component: {fileID: 609240520687004653}
+  - component: {fileID: 3743892810609258367}
+  - component: {fileID: 3610282931960462104}
+  - component: {fileID: 2510767345330311710}
+  - component: {fileID: 4767588250682714855}
+  - component: {fileID: 7244843975626793015}
   m_Layer: 0
   m_Name: TraderUI
   m_TagString: Untagged
@@ -779,12 +752,164 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac795f83d072754a9687eabf28ad1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewButtonContainer: {fileID: 4550663748704348681}
-  previewButtonPrefab: {fileID: 4049138412295460138, guid: 9b2328d2398fc694ab923f6a5548459a,
-    type: 3}
   tradeArguments:
   - {fileID: 7046288846199840412}
   - {fileID: 855004761695989979}
+  tradeButtonContainer: {fileID: 2715639779452616301}
+  tradeButtonPrefab: {fileID: 3386226712119454705, guid: 8838fe5833fbefd429c6bc8a42e08e09,
+    type: 3}
+  colorDrops:
+  - color: 1
+    dropComponent: {fileID: 2330547882361378598}
+  - color: 2
+    dropComponent: {fileID: 6273482125448856342}
+  - color: 3
+    dropComponent: {fileID: 2759132883225772597}
+  - color: 4
+    dropComponent: {fileID: 609240520687004653}
+  commonDrop: {fileID: 3610282931960462104}
+  uncommonDrop: {fileID: 2510767345330311710}
+  rareDrop: {fileID: 4767588250682714855}
+  rarePlusDrop: {fileID: 7244843975626793015}
+  gambleDrop: {fileID: 3743892810609258367}
+--- !u!114 &2330547882361378598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96d790bf0e081947a99a53dc5101d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Red Program
+  declineBonusOverride: -2147483648
+  color: 1
+  lootQualities: 000000000000000001000000
+--- !u!114 &6273482125448856342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96d790bf0e081947a99a53dc5101d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Blue Program
+  declineBonusOverride: -2147483648
+  color: 2
+  lootQualities: 000000000000000001000000
+--- !u!114 &2759132883225772597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96d790bf0e081947a99a53dc5101d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Green Program
+  declineBonusOverride: -2147483648
+  color: 3
+  lootQualities: 000000000000000001000000
+--- !u!114 &609240520687004653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96d790bf0e081947a99a53dc5101d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Yellow Program
+  declineBonusOverride: -2147483648
+  color: 4
+  lootQualities: 000000000000000001000000
+--- !u!114 &3743892810609258367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7641dc07b3f0547aa80a86ccee84ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Gamble
+  declineBonusOverride: -2147483648
+--- !u!114 &3610282931960462104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5d29d932f0e8947a21e93257d13471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Random Program
+  declineBonusOverride: -2147483648
+  lootQualities: 000000000000000000000000
+--- !u!114 &2510767345330311710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5d29d932f0e8947a21e93257d13471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Random Program (U)
+  declineBonusOverride: -2147483648
+  lootQualities: 000000000000000001000000
+--- !u!114 &4767588250682714855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5d29d932f0e8947a21e93257d13471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Random Program (R)
+  declineBonusOverride: -2147483648
+  lootQualities: 010000000100000002000000
+--- !u!114 &7244843975626793015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582006381983837963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5d29d932f0e8947a21e93257d13471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropName: Random Program (UR)
+  declineBonusOverride: 25
+  lootQualities: 020000000200000002000000
 --- !u!1001 &1462945733547335790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1044,12 +1169,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2328d2398fc694ab923f6a5548459a, type: 3}
---- !u!224 &5733306652492636559 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8970105735654376574, guid: 9b2328d2398fc694ab923f6a5548459a,
-    type: 3}
-  m_PrefabInstance: {fileID: 3741642064604603889}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &855004761695989979 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4049138412295460138, guid: 9b2328d2398fc694ab923f6a5548459a,
@@ -1062,6 +1181,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66c80cb6910f9541aa7cc062976bba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5733306652492636559 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8970105735654376574, guid: 9b2328d2398fc694ab923f6a5548459a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3741642064604603889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6482966511518174134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1181,6 +1306,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2328d2398fc694ab923f6a5548459a, type: 3}
+--- !u!224 &2703329750118879176 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8970105735654376574, guid: 9b2328d2398fc694ab923f6a5548459a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6482966511518174134}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7046288846199840412 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4049138412295460138, guid: 9b2328d2398fc694ab923f6a5548459a,
@@ -1193,9 +1324,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66c80cb6910f9541aa7cc062976bba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2703329750118879176 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8970105735654376574, guid: 9b2328d2398fc694ab923f6a5548459a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6482966511518174134}
-  m_PrefabAsset: {fileID: 0}
