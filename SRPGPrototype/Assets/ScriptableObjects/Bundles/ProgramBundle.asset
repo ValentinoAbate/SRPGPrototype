@@ -249,9 +249,9 @@ MonoBehaviour:
   - CapacityUpgradeP
   - CapacityUpgradeR
   - CapacityUpgradeS
+  - CapacityUpgradeStandardBig
+  - CapacityUpgradeStandardColor
   - CapacityUpgradeStandardMed
-  - CapacityUpgradeStandardMedHP
-  - CapacityUpgradeStandardMedRP
   - CapacityUpgradeStandardRare
   - CapacityUpgradeStandardSmall
   - CapacityUpgradeX
@@ -548,9 +548,9 @@ MonoBehaviour:
   - {fileID: 2576600437051023739, guid: 9286ba40c53f66d41b120c67aef3c2a7, type: 3}
   - {fileID: 2576600437051023739, guid: e7d6e4978a2537449ab63c0c939e45f4, type: 3}
   - {fileID: 2576600437051023739, guid: 63f1b9d230fabef47ae19f4f9986dd3e, type: 3}
+  - {fileID: 2576600437051023739, guid: 59179386eb4be1949bf93e6977513366, type: 3}
+  - {fileID: 2576600437051023739, guid: 6a4658fb07048904ba5076b81daee9fd, type: 3}
   - {fileID: 2576600437051023739, guid: d96c9e690bf797643bc7c3a5b5087ebf, type: 3}
-  - {fileID: 2576600437051023739, guid: 91a7adfeafe86854aa6116d0f9300af3, type: 3}
-  - {fileID: 2576600437051023739, guid: f0f4391731a38244c82db8c2b8ac958c, type: 3}
   - {fileID: 2576600437051023739, guid: 908858301ad69b347b31d94a7cc0be1c, type: 3}
   - {fileID: 2576600437051023739, guid: 84b65d1807a14fa42b67ca4d7b49f9c0, type: 3}
   - {fileID: 2576600437051023739, guid: a2c0217b2767c0e4ca2bd83ac840f400, type: 3}
