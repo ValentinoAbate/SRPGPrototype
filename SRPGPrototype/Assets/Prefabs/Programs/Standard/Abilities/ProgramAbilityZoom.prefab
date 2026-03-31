@@ -234,7 +234,7 @@ MonoBehaviour:
       constant: 1
       type: 0
     type: 0
-  abilityName: +1 AP after using a move action (once/turn)
+  abilityName: +1 AP after move action (once/turn)
   limiter:
     frequency: 1
     limit: 1
