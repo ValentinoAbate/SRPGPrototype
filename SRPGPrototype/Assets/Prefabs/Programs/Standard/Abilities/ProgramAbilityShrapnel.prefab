@@ -27,7 +27,7 @@ PrefabInstance:
       propertyPath: description
       value: Whenever you a destroy a unit that has at least 1 Break, it explodes,
         spreading the Break it had to all ajacent units and then damaging them for
-        1 damage. Doesn't chain.
+        1 damage. Doesn't chain if the explosion destroys a unit with Break.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
