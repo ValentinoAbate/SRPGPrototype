@@ -16,6 +16,13 @@ public class ModifierRangeExtend : ModifierRange
 
     protected override bool AppliesToPattern(RangePattern.Type t, RangePatternGenerator generator)
     {
-        return t != RangePattern.Type.Self && t != RangePattern.Type.Generated;
+        return t != RangePattern.Type.Self && (t != RangePattern.Type.Generated || IsSupportedGenerator(generator));
+    }
+
+    private bool IsSupportedGenerator(RangePatternGenerator generator)
+    {
+        return generator is RangePatternGeneratorDirectionalRaycastOver
+            || generator is RangePatternGeneratorTunnel
+            || generator is RangePatternGeneratorClockwise;
     }
 }
