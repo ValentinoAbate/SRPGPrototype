@@ -34,6 +34,7 @@ public abstract class AIUnit : Unit
     public override OnSubAction OnAfterSubActionFn { get; set; }
     public override OnAfterAction OnAfterActionFn { get; set; }
     public override OnDeath OnDeathFn { get; set; }
+    public override OnDeath OnKill { get; set; }
     public override OnDamaged OnDamagedFn { get; set; }
     public override IncomingDamageMod IncomingDamageMods { get; set; }
     public override OnRepositioned OnRepositionedFn { get; set; }

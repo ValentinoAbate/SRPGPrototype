@@ -96,6 +96,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
     public abstract OnSubAction OnAfterSubActionFn { get; set; }
     public abstract OnAfterAction OnAfterActionFn { get; set; }
     public abstract OnDeath OnDeathFn { get; set; }
+    public abstract OnDeath OnKill { get; set; }
     public abstract OnDamaged OnDamagedFn { get; set; }
     public abstract IncomingDamageMod IncomingDamageMods { get; set; }
     public abstract OnRepositioned OnRepositionedFn { get; set; }
@@ -239,6 +240,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         // On Death call may prevent death somehow
         if(Dead)
         {
+            killedBy.OnKill?.Invoke(grid, this, killedBy);
             EncounterEventManager.main.OnUnitDeath?.Invoke(grid, this, killedBy);
             if(Pos != BattleGrid.OutOfBounds)
                 grid.Remove(this);

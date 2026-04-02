@@ -11,6 +11,8 @@ public class UnitNumber : DynamicNumber
         AP,
         MaxAP,
         Repair,
+        Power,
+        Break,
     }
 
     [SerializeField]
@@ -44,6 +46,14 @@ public class UnitNumber : DynamicNumber
         else if(type == Type.Repair)
         {
             number = unit.Repair;
+        }
+        else if (type == Type.Break)
+        {
+            number = unit.Break;
+        }
+        else if (type == Type.Power)
+        {
+            number = unit.Power;
         }
         return Value(number);
     }

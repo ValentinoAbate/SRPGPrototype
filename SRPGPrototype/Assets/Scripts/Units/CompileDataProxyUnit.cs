@@ -38,6 +38,7 @@ public class CompileDataProxyUnit : Unit
     public override OnAfterAction OnAfterActionFn { get => CompileData.onAfterAction; set { } }
 
     public override OnDeath OnDeathFn { get => CompileData.onDeath; set { } }
+    public override OnDeath OnKill { get => CompileData.onKill; set { } }
 
     public override OnDamaged OnDamagedFn { get => CompileData.onDamaged; set { } }
 

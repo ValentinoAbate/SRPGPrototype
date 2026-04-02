@@ -29,6 +29,7 @@ public class PlayerUnit : Unit
     public override OnSubAction OnAfterSubActionFn { get => Shell.OnAfterSubAction; set { } }
     public override OnAfterAction OnAfterActionFn { get => Shell.OnAfterAction; set { } }
     public override OnDeath OnDeathFn { get => Shell.OnDeath; set { } }
+    public override OnDeath OnKill { get => Shell.OnKill; set { } }
     public override OnDamaged OnDamagedFn { get => Shell.OnDamaged; set { } }
     public override IncomingDamageMod IncomingDamageMods { get => Shell.IncomingDamageMods; set { } }
     public override OnRepositioned OnRepositionedFn { get => Shell.OnRepositioned; set { } }

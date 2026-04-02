@@ -84,6 +84,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
     public Unit.OnSubAction OnAfterSubAction { get; private set; }
     public Unit.OnAfterAction OnAfterAction { get; private set; }
     public Unit.OnDeath OnDeath { get; private set; }
+    public Unit.OnDeath OnKill { get; private set; }
     public Unit.OnDamaged OnDamaged { get; private set; }
     public Unit.IncomingDamageMod IncomingDamageMods { get; private set; }
     public Unit.OnRepositioned OnRepositioned { get; private set; }
@@ -505,6 +506,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         OnBeforeSubAction = compileData.onBeforeSubAction;
         OnAfterAction = compileData.onAfterAction;
         OnDeath = compileData.onDeath;
+        OnKill = compileData.onKill;
         OnDamaged = compileData.onDamaged;
         IncomingDamageMods = compileData.incomingDamageMods;
         OnRepositioned = compileData.onRepositioned;
@@ -581,6 +583,7 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         public Unit.OnSubAction onBeforeSubAction = null;
         public Unit.OnSubAction onAfterSubAction = null;
         public Unit.OnAfterAction onAfterAction = null;
+        public Unit.OnDeath onKill = null;
         public Unit.OnDeath onDeath = null;
         public Unit.OnDamaged onDamaged = null;
         public Unit.IncomingDamageMod incomingDamageMods = null;
