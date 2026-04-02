@@ -161,7 +161,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: displayName
-      value: Bombrella
+      value: Blowback Umbrella
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7f74e7ea5650d44962ee5e9a49da3b, type: 3}
@@ -188,6 +188,7 @@ MonoBehaviour:
   affectUser: 1
   ignoreInValidRangeCalcs: 1
   numSpaces: 1
+  scale: 0
 --- !u!114 &1884827043973909256
 MonoBehaviour:
   m_ObjectHideFlags: 0
