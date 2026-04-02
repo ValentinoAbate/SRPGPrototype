@@ -21,7 +21,7 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[0]
       value: 
-      objectReference: {fileID: 8532022681806069095}
+      objectReference: {fileID: 1057496684525126977}
     - target: {fileID: -7636195719904913636, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: effects.Array.data[1]
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf768414c1e57c44beb4f349f66be4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8532022681806069095
+--- !u!114 &1057496684525126977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,12 +240,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6730647448015984549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a4bc18127d3ad4999bdac0d41021cf, type: 3}
+  m_Script: {fileID: 11500000, guid: ff8b85204ceeb0e4c8e5994336a4d339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   standaloneSubActionType: 0
   standaloneSubActionOptions: 0
   affectUser: 1
-  ignoreInValidRangeCalcs: 0
-  targetStat: 0
-  damage: 999
+  ignoreInValidRangeCalcs: 1

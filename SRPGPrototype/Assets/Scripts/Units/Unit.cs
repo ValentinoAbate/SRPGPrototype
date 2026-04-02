@@ -230,6 +230,10 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
 
     public virtual void Kill(BattleGrid grid, Unit killedBy)
     {
+        if (Dead)
+        {
+            return;
+        }
         HP = 0;
         OnDeathFn?.Invoke(grid, this, killedBy);
         // On Death call may prevent death somehow
