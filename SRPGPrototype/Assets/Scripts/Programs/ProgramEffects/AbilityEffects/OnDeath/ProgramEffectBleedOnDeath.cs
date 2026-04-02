@@ -8,6 +8,6 @@ public class ProgramEffectBleedOnDeath : ProgramEffectAddOnDeathAbility
 
     public override void Ability(BattleGrid grid, Unit self, Unit killedBy)
     {
-        AbilityUtils.TriggerBleed(grid);
+        EncounterEventManager.EnqueueDelayedEffect(() => AbilityUtils.TriggerBleed(grid));
     }
 }

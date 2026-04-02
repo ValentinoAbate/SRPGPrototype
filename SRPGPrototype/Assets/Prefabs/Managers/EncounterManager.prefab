@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1130085307575049263}
   - component: {fileID: 1052570043710556164}
-  - component: {fileID: 1977477791017345835}
+  - component: {fileID: 3668239365591439944}
+  - component: {fileID: 6374404775443807097}
   m_Layer: 0
   m_Name: EncounterManager
   m_TagString: Untagged
@@ -54,7 +55,7 @@ MonoBehaviour:
   spawnPositionPrefab: {fileID: 6706155129792552969, guid: dac9bcfdad9ea4948958f414de9ea088,
     type: 3}
   ui: {fileID: 1130085309517156903}
---- !u!114 &1977477791017345835
+--- !u!114 &3668239365591439944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,6 +65,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a0538d74bda3894c85d0f8a709a06cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayedEffectQueue: {fileID: 6374404775443807097}
+--- !u!114 &6374404775443807097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130085307575049256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3d8cc97afdd9c438d807c794dff4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5653658574179703731

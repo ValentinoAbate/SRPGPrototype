@@ -8,6 +8,6 @@ public class ProgramEffectBleedOnDamaged : ProgramEffectAddOnDamagedAbility
 
     public override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
     {
-        AbilityUtils.TriggerBleed(grid);
+        EncounterEventManager.EnqueueDelayedEffect(() => AbilityUtils.TriggerBleed(grid));
     }
 }

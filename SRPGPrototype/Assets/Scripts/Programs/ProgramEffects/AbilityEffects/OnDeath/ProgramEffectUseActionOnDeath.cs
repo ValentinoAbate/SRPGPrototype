@@ -21,8 +21,12 @@
         var targetPos = target == Target.Self ? self.Pos : killedBy.Pos;
         var targetUnit = target == Target.Self ? self : killedBy;
         var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
-        actionInstance.UseAll(grid, targetUnit, targetPos, false);
-        Destroy(actionInstance);
+        void ApplyAction()
+        {
+            actionInstance.UseAll(grid, targetUnit, targetPos, false);
+            Destroy(actionInstance);
+        }
+        EncounterEventManager.EnqueueDelayedEffect(ApplyAction);
     }
 
     public void Detonate(BattleGrid grid, Unit self, Unit detonator)

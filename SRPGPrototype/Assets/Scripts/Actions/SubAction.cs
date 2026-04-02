@@ -277,10 +277,12 @@ public class SubAction : MonoBehaviour
 
     private void ApplyEffect(ActionEffect effect, BattleGrid grid, Action action, Unit user, Vector2Int selectedPos, Vector2Int originalUserPos, List<Unit> targets, List<Vector2Int> emptyTargetPositions, List<Vector2Int> targetPositions)
     {
+        EncounterEventManager.StartQueueDelay();
         effect.Initialize(grid, action, this, user, targetPositions);
         if (effect.AffectUser)
         {
             effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos, originalUserPos));
+            EncounterEventManager.EndQueueDelay();
             return;
         }
         foreach (var pos in emptyTargetPositions)
@@ -291,6 +293,7 @@ public class SubAction : MonoBehaviour
         {
             effect.ApplyEffect(grid, action, this, user, target, new ActionEffect.PositionData(target.Pos, selectedPos, originalUserPos));
         }
+        EncounterEventManager.EndQueueDelay();
     }
 
     public int ActionMacroDamage(BattleGrid grid, Action action, Unit user, Queue<int> indices)

@@ -42,8 +42,12 @@ public class ProgramEffectUseActionOnDamaged : ProgramEffectAddOnDamagedAbility
         {
             return;
         }
-        var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
-        actionInstance.UseAll(grid, self, targetPos, false);
-        Destroy(actionInstance);
+        void UseAction()
+        {
+            var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
+            actionInstance.UseAll(grid, self, targetPos, false);
+            Destroy(actionInstance);
+        }
+        EncounterEventManager.EnqueueDelayedEffect(UseAction);
     }
 }

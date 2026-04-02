@@ -11,6 +11,11 @@ public class ProgramEffectAddStatOnDamaged : ProgramEffectAddOnDamagedAbility
 
     public override void Ability(BattleGrid grid, Unit self, Unit source, int amount)
     {
-        self.ModifyStat(grid, stat, number.Value(self), self);
+        int value = number.Value(self);
+        void ApplyStat()
+        {
+            self.ModifyStat(grid, stat, value, self);
+        }
+        EncounterEventManager.EnqueueDelayedEffect(ApplyStat);
     }
 }

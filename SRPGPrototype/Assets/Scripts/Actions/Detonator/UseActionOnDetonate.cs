@@ -11,7 +11,12 @@ public class UseActionOnDetonate : MonoBehaviour, IDetonatable
     public void Detonate(BattleGrid grid, Unit self, Unit detonator)
     {
         var actionInstance = Instantiate(action.gameObject, transform).GetComponent<Action>();
-        actionInstance.UseAll(grid, self, self.Pos, false);
-        Destroy(actionInstance);
+        var targetPos = self.Pos;
+        void UseAction()
+        {
+            actionInstance.UseAll(grid, self, targetPos, false);
+            Destroy(actionInstance);
+        }
+        EncounterEventManager.EnqueueDelayedEffect(UseAction);
     }
 }
