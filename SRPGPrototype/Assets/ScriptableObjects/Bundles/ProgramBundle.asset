@@ -145,6 +145,7 @@ MonoBehaviour:
   - AttackUmbrellaBreaker
   - AttackUmbrellaGun
   - AttackUmbrellaHeavy
+  - AttackUmbrellaLong
   - AttackParasol
   - AttackUmbrellaPull
   - AttackUmbrellaPush
@@ -451,6 +452,7 @@ MonoBehaviour:
   - {fileID: 4551076113953349650, guid: 3a9f4f89116af9c4caa367db41b7406c, type: 3}
   - {fileID: 4551076113953349650, guid: 3019e9fdc190eec4d8a84b6191a1c78a, type: 3}
   - {fileID: 4551076113953349650, guid: 0d9c9807a7da2e74ab66b834dae78e25, type: 3}
+  - {fileID: 4551076113953349650, guid: 8ab493d3aed9adc4a90fd26191aa7d04, type: 3}
   - {fileID: 4551076113953349650, guid: c8abe5fda23d8ca42914bb0560815c6c, type: 3}
   - {fileID: 4551076113953349650, guid: 3a482a93c2f367a49b4696f1fa89e250, type: 3}
   - {fileID: 4551076113953349650, guid: 996b83acf4b9c1049a09b82cf7b11ab9, type: 3}
