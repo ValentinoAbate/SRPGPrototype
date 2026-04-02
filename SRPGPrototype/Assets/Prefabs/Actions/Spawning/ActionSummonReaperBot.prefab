@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 5597248024022581365, guid: 8b7f74e7ea5650d44962ee5e9a49da3b,
         type: 3}
       propertyPath: description
-      value: Summon a controllable 5 HP 1 AP robot that has a two-target 2-damage
+      value: Summon a controllable 5 HP 1 AP robot that has a two-target 3-damage
         slash and gains 1 AP when destroying an Enemy or Player unit into an adjacent
         tile.
       objectReference: {fileID: 0}

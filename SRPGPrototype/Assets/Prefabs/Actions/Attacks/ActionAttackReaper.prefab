@@ -193,4 +193,4 @@ MonoBehaviour:
   affectUser: 0
   ignoreInValidRangeCalcs: 0
   targetStat: 0
-  damage: 2
+  damage: 3
