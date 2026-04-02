@@ -190,36 +190,40 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
             Damage(grid, -amount, source);
     }
 
-    public virtual void Heal(int amount, Unit source)
+    public virtual int Heal(int amount, Unit source)
     {
         if (Dead || amount <= 0)
-            return;
+            return 0;
         HP = Mathf.Min(HP + amount, MaxHP);
         UIManager.main.PlayDamageNumber(transform.position, $"+{amount}", Color.green);
+        return amount;
     }
 
-    public virtual void Damage(BattleGrid grid, int amount, Unit source)
+    public virtual int Damage(BattleGrid grid, int amount, Unit source)
     {
         if (Dead)
         {
-            return;
+            return 0;
         }
         int damage = amount + Break;
         if (amount <= 0)
         {
             UIManager.main.PlayDamageNumber(transform.position, "0", Color.white);
-            return;
+            return 0;
         }
         UIManager.main.PlayDamageNumber(transform.position, damage.ToString(), UnitTeam == Team.Player ? Color.red : Color.white);
         if (damage >= HP)
         {
+            int damageDealt = HP;
             Kill(grid, source);
+            return damageDealt;
         }
         else
         {
             HP -= damage;
             OnDamagedFn?.Invoke(grid, this, source, damage);
             EncounterEventManager.main.OnUnitDamaged?.Invoke(grid, this, source, amount);
+            return damage;
         }
     }
 

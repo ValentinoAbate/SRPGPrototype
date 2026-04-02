@@ -41,11 +41,15 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
         }
     }
 
-    sealed public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
         if (target == null)
             return;
+        DealDamage(grid, action, sub, user, target, targetData);
+    }
 
+    protected int DealDamage(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
+    {
         // Calculate final damage
         int damage = CalculateDamage(grid, action, sub, user, target, targetData, false);
 
@@ -55,22 +59,24 @@ public abstract class ActionEffectDamage : ActionEffect, IDamagingActionEffect
 #if DEBUG
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " damage and is now at " + (target.HP - damage) + " HP");
 #endif
-            target.Damage(grid, damage, user);
+            return target.Damage(grid, damage, user);
         }
-        else if(targetStat == TargetStat.AP) // Target stat is AP
+        else if (targetStat == TargetStat.AP) // Target stat is AP
         {
 #if DEBUG
             Debug.Log(target.DisplayName + " takes " + damage.ToString() + " AP damage and is now at " + (target.AP - damage) + " AP");
 #endif
             target.AP -= damage;
+            return damage;
         }
-        else
+        else if (targetStat == TargetStat.HealHP)
         {
 #if DEBUG
             Debug.Log(target.DisplayName + " heals " + damage.ToString() + " damage and is now at " + (target.HP + damage) + " HP");
 #endif
-            target.Heal(damage, user);
+            return target.Heal(damage, user);
         }
+        return 0;
     }
 
     protected sealed override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)

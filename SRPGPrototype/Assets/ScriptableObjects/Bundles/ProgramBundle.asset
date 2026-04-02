@@ -135,6 +135,7 @@ MonoBehaviour:
   - AttackSniper
   - AttackSpear
   - AttackStiletto
+  - AttackStrangeDagger
   - AttackSword
   - AttackThunderclap
   - AttackTrident
@@ -439,6 +440,7 @@ MonoBehaviour:
   - {fileID: 4551076113953349650, guid: 279a975dd72a7174d888490ed4a33b60, type: 3}
   - {fileID: 4551076113953349650, guid: ed37159534528c241aec9e0ecf2d98fa, type: 3}
   - {fileID: 4551076113953349650, guid: 73d2baef873e2f5408f9de9471b7d439, type: 3}
+  - {fileID: 4551076113953349650, guid: dfaede7cce84905489f7c4cdcef5d7d7, type: 3}
   - {fileID: 4551076113953349650, guid: a2914311ef38d644b9a9a1195ceca40a, type: 3}
   - {fileID: 4551076113953349650, guid: c381ebad5b23fbe4ea6649a2cc1d29a2, type: 3}
   - {fileID: 4551076113953349650, guid: 5157a073cfb79284d95855ff1a77c441, type: 3}
