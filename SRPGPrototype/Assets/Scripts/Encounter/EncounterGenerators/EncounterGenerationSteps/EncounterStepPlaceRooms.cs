@@ -11,7 +11,8 @@ public class EncounterStepPlaceRooms : EncounterGeneratorStep
     [SerializeField] private List<float> numRoomsWeights = new List<float>();
     [SerializeField] private List<int> roomSizes = new List<int>();
     [SerializeField] private List<float> roomSizesWeights = new List<float>();
-    [SerializeField] private Unit wallUnit;
+    [SerializeField] private List<Unit> wallUnits = new List<Unit>();
+    [SerializeField] private List<float> wallUnitChoiceWeights = new List<float>();
     [SerializeField] private Unit cornerUnit;
 
     public override void Apply(Metadata metadata, ref Encounter encounter, ref HashSet<Vector2Int> validPositions)
@@ -73,7 +74,7 @@ public class EncounterStepPlaceRooms : EncounterGeneratorStep
                 {
                     if(validPositions.Contains(adj))
                     {
-                        encounter.AddUnit(wallUnit, adj);
+                        encounter.AddUnit(RandomU.instance.ChoiceWeightsOptional(wallUnits, wallUnitChoiceWeights), adj);
                         validPositions.Remove(adj);
                     }
                 }

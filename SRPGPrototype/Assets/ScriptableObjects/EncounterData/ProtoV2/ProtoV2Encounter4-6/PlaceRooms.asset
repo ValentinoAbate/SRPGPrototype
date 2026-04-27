@@ -18,6 +18,11 @@ MonoBehaviour:
   - 1
   roomSizes: 0200000003000000
   roomSizesWeights: []
-  wallUnit: {fileID: 193806825012982144, guid: 0b74c461826e7a040a2bd5a21430dc98, type: 3}
+  wallUnits:
+  - {fileID: 193806825012982144, guid: 0b74c461826e7a040a2bd5a21430dc98, type: 3}
+  - {fileID: 193806825012982144, guid: ccd49bc97e9b12f49976e4d684ef06c3, type: 3}
+  wallUnitChoiceWeights:
+  - 9
+  - 1
   cornerUnit: {fileID: 193806825012982144, guid: 009994165b07eb34594d12de6f66bd6c,
     type: 3}
