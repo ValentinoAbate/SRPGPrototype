@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84536a28b455a5d44851070a3d6f6b2e, type: 3}
-  m_Name: PlaceBurrows
+  m_Script: {fileID: 11500000, guid: 4f7f699368228bf4dbaea1a3429ed861, type: 3}
+  m_Name: PlaceBurrowsOld
   m_EditorClassIdentifier: 
+  numUnits: 03000000
+  numUnitsWeights: []
   units:
   - {fileID: 2679527008744717267, guid: 548f20339b2d2e741b7c18c1d639d344, type: 3}
-  - {fileID: 2679527008744717267, guid: 548f20339b2d2e741b7c18c1d639d344, type: 3}
-  - {fileID: 2679527008744717267, guid: 548f20339b2d2e741b7c18c1d639d344, type: 3}
+  unitChoiceWeights: []

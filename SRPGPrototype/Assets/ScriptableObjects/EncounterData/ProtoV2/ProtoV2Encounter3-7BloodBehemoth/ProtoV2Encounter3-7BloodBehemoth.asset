@@ -17,7 +17,7 @@ MonoBehaviour:
   targetDifficulty: 57
   steps:
   - {fileID: 11400000, guid: 7a00c00827858774d9c3ab2cc9f28baf, type: 2}
-  - {fileID: 11400000, guid: 17dd3e0359b7187469f6985be76fe01d, type: 2}
+  - {fileID: 11400000, guid: d2355b905dd78434ea74a131c702bbc8, type: 2}
   - {fileID: 11400000, guid: 54638c5f1fc760d4a8c91fa1b3dc99be, type: 2}
   - {fileID: 11400000, guid: bc0fea085bffeb640b30bc1c268f83eb, type: 2}
   - {fileID: 11400000, guid: c7114a14ee218904d9d881f433fdd370, type: 2}
@@ -28,6 +28,9 @@ MonoBehaviour:
     nameOverride: 
     dimensions: {x: 0, y: 0}
     units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 4568531750757968395, guid: b5beabdc29a34be46ba52226d12d26b1,
+        type: 3}
     - pos: {x: -1, y: -1}
       unit: {fileID: 4568531750757968395, guid: b5beabdc29a34be46ba52226d12d26b1,
         type: 3}
