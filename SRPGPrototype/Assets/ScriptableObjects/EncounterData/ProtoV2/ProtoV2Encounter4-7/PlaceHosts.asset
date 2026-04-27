@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468990c595d407c46b4de1f036ae8d6d, type: 3}
-  m_Name: PlaceUnitsInRooms
+  m_Script: {fileID: 11500000, guid: 84536a28b455a5d44851070a3d6f6b2e, type: 3}
+  m_Name: PlaceHosts
   m_EditorClassIdentifier: 
-  numUnits: 01000000
-  numUnitsWeights: []
   units:
-  - {fileID: 7927054458215739916, guid: 7376622ea407a8b42a70d116dfb8017e, type: 3}
-  unitChoiceWeights: []
-  pointsOfInterest: 4
-  booleanOperator: 0
+  - {fileID: 266703525309771305, guid: 7f18a33ce88c1b34695db5d2d015e368, type: 3}
+  - {fileID: 266703525309771305, guid: 7f18a33ce88c1b34695db5d2d015e368, type: 3}
