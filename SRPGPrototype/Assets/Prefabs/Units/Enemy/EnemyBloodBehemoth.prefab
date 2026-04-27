@@ -122,7 +122,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8238bfb2e99f77943bea66c8a697c40d,
+      objectReference: {fileID: 21300000, guid: 6e40f615b3d6ffc4c84c8f360b3bd6d1,
         type: 3}
     - target: {fileID: 5001296401130045625, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -188,4 +188,5 @@ MonoBehaviour:
   secondaryAction: {fileID: 0}
   options: 0
   targetTeams: 02000000
+  secondaryTargetTeams: 
   runAwayFromTeams: 02000000
