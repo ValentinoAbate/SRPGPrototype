@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Gain 2 Power at the start of every battle.
+      value: Gain 1 Power at the start of each turn.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -56,7 +56,7 @@ PrefabInstance:
         type: 3}
       propertyPath: effects.Array.data[0]
       value: 
-      objectReference: {fileID: -5816926297225372136}
+      objectReference: {fileID: -8675990217369353826}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: variants.Array.data[0]
@@ -105,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 8497322418614506830, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: m_Name
-      value: ProgramAbilityGainPowerOnBattleStart
+      value: ProgramAbilityBulkUp
       objectReference: {fileID: 0}
     - target: {fileID: 8497322418614506831, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -170,7 +170,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1592762870832421066}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-5816926297225372136
+--- !u!114 &-8675990217369353826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7202993979176963460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6cb1a5ec167c142a79f211bd713e87, type: 3}
+  m_Script: {fileID: 11500000, guid: 33852fd1af3e5704c9952d35126020d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stat: 5
@@ -190,9 +190,9 @@ MonoBehaviour:
     modifier: 0
     multiplier: 1
     negateNumber: 0
-    constant: 2
+    constant: 1
     type: 0
-  abilityName: +2 Power on battle start
+  abilityName: +1 Power on turn start
 --- !u!114 &4177984762466535102
 MonoBehaviour:
   m_ObjectHideFlags: 0
