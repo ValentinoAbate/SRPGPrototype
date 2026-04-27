@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
       propertyPath: maxHP
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184,
         type: 3}
@@ -138,6 +138,7 @@ MonoBehaviour:
   secondaryAction: {fileID: 0}
   options: 0
   targetTeams: 02000000
+  secondaryTargetTeams: 
   runAwayFromTeams: 02000000
   sprite: {fileID: 7147905420614587438}
   sprites:
