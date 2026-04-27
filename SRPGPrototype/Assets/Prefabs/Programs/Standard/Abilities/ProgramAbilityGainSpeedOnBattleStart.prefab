@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
       propertyPath: description
-      value: Gain 2 AP at the start of every battle.
+      value: Gain 1 AP at the start of every battle.
       objectReference: {fileID: 0}
     - target: {fileID: -103476442041646501, guid: 6a3be8752a4b0e247a6d0bd5d67ae765,
         type: 3}
@@ -190,9 +190,9 @@ MonoBehaviour:
     modifier: 0
     multiplier: 1
     negateNumber: 0
-    constant: 2
+    constant: 1
     type: 0
-  abilityName: +2 AP on battle start
+  abilityName: +1 AP on battle start
 --- !u!114 &6608428150645800180
 MonoBehaviour:
   m_ObjectHideFlags: 0
