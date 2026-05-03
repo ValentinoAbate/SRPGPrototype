@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95894705adac3db43acf64bd02fba487, type: 3}
-  m_Name: ProtoV2Encounter4-7
+  m_Name: ProtoV2Encounter4-6
   m_EditorClassIdentifier: 
   encounterType: 0
   dimensions: {x: 9, y: 6}
