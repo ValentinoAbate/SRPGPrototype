@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class UnitBehaviorReactOnActionUsed : UnitBehavior
 {
-    [SerializeField] private AIUnit self;
     [SerializeField] private Unit.Team[] targetTeams;
 
-    void Start()
+    protected override void AttachListeners()
     {
         if (EncounterEventManager.main != null)
         {
@@ -16,12 +15,7 @@ public class UnitBehaviorReactOnActionUsed : UnitBehavior
         }
     }
 
-    private void OnDestroy()
-    {
-        Cleanup();
-    }
-
-    private void Cleanup()
+    protected override void CleanupListeners()
     {
         if (EncounterEventManager.main != null)
         {
@@ -33,7 +27,7 @@ public class UnitBehaviorReactOnActionUsed : UnitBehavior
     {
         if (self.Dead)
         {
-            Cleanup();
+            CleanupListeners();
             return;
         }
         if (user == self || !UnitFilters.IsOnTeam(user, targetTeams))

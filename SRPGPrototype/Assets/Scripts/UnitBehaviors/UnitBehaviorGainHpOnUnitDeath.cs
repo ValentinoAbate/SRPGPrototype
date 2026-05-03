@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class UnitBehaviorGainHpOnUnitDeath : UnitBehavior
 {
-    [SerializeField] private AIUnit self;
     [SerializeField] private List<Unit.Team> teams;
     [SerializeField] private int amount = 2;
-    void Start()
+
+    protected override void AttachListeners()
     {
         if (EncounterEventManager.main != null)
         {
@@ -17,12 +17,7 @@ public class UnitBehaviorGainHpOnUnitDeath : UnitBehavior
         }
     }
 
-    private void OnDestroy()
-    {
-        Cleanup();
-    }
-
-    private void Cleanup()
+    protected override void CleanupListeners()
     {
         if (EncounterEventManager.main != null)
         {

@@ -5,21 +5,31 @@ using UnityEngine;
 
 public class UnitBehaviorApplyAPModToUnits : UnitBehavior
 {
-    [SerializeField] private Unit self;
     [SerializeField] private Unit.PassiveEffect effectKey;
     [SerializeField] private int modifier;
     [SerializeField] private List<Unit.Team> applyToTeams;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         self.OnSpawned += OnSpawned;
         self.OnDeathFn += RemoveEffect;
         self.OnRemoved += RemoveEffect;
+    }
+
+    protected override void AttachListeners()
+    {
         if (EncounterEventManager.Ready)
         {
             EncounterEventManager.main.OnUnitSpawned += TryApplyEffectToUnit;
             EncounterEventManager.main.OnUnitRemoved += TryRemoveEffectFromUnit;
         }
+    }
+
+    protected override void CleanupListeners()
+    {
+        EncounterEventManager.main.OnUnitSpawned -= TryApplyEffectToUnit;
+        EncounterEventManager.main.OnUnitRemoved -= TryRemoveEffectFromUnit;
     }
 
     private void OnSpawned(BattleGrid grid, Unit self)
@@ -37,8 +47,7 @@ public class UnitBehaviorApplyAPModToUnits : UnitBehavior
 
     private void RemoveEffect(BattleGrid grid, Unit self)
     {
-        EncounterEventManager.main.OnUnitSpawned -= TryApplyEffectToUnit;
-        EncounterEventManager.main.OnUnitRemoved -= TryRemoveEffectFromUnit;
+        CleanupListeners();
         foreach (var unit in grid)
         {
             TryRemoveEffectFromUnit(unit);

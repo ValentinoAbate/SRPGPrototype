@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
 {
-    [SerializeField] private AIUnit self;
     [SerializeField] private Action action;
     [SerializeField] private bool targetEmptySpaces;
     [SerializeField] private List<Unit.Team> damagedTeams;
@@ -14,20 +13,19 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
 
     void Start()
     {
-        action = action.Validate(self.ActionTransform);
-        if(EncounterEventManager.main != null)
+        action = action.Validate(self.ActionTransform); 
+    }
+
+    protected override void AttachListeners()
+    {
+        if (EncounterEventManager.main != null)
         {
             EncounterEventManager.main.OnUnitDamaged -= OnUnitDamaged;
             EncounterEventManager.main.OnUnitDamaged += OnUnitDamaged;
-        }    
+        }
     }
 
-    private void OnDestroy()
-    {
-        Cleanup();
-    }
-
-    private void Cleanup()
+    protected override void CleanupListeners()
     {
         if (EncounterEventManager.main != null)
         {
@@ -39,7 +37,7 @@ public class UnitBehaviorUseActionOnUnitDamaged : UnitBehavior
     {
         if (self.Dead)
         {
-            Cleanup();
+            CleanupListeners();
             return;
         }
         if (amount <= 0 || !damagedTeams.Contains(damaged.UnitTeam))
