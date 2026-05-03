@@ -80,9 +80,9 @@ MonoBehaviour:
   - AbilityAdrenaline
   - AbilityBlastAmplifier
   - AbilityBlastPadding
+  - AbilityGainPowerOnBattleStart
   - AbilityBulletproofVest
   - AbilityFeedback
-  - AbilityGainPowerOnBattleStart
   - AbilityGainPowerOnMoveAction
   - AbilityGainPowerOnMultiHit
   - AbilityGainPowerOnReposition
@@ -387,9 +387,9 @@ MonoBehaviour:
   - {fileID: 7533046481697725073, guid: 71d7c5b02b2eea341bfa755f81cdc799, type: 3}
   - {fileID: 7533046481697725073, guid: f1b65f452709f104fbd843571cb68a0a, type: 3}
   - {fileID: 7533046481697725073, guid: bbe032ad99f458a4cb09d3a45dcbed16, type: 3}
+  - {fileID: 7533046481697725073, guid: 1d168c101cd29f444aae70a61564fd98, type: 3}
   - {fileID: 7533046481697725073, guid: 4e8d025e02673f2439df50935ac8fb2e, type: 3}
   - {fileID: 7533046481697725073, guid: b7459d6edce68c7428f77bc568e5ff56, type: 3}
-  - {fileID: 7533046481697725073, guid: 1d168c101cd29f444aae70a61564fd98, type: 3}
   - {fileID: 7533046481697725073, guid: f5be8298b84b79c408a32a040d60943e, type: 3}
   - {fileID: 7533046481697725073, guid: 24e5473df2cb841498b04b68a76a63cd, type: 3}
   - {fileID: 7533046481697725073, guid: be7bfe463a11b4b4c80f1bc9a6dd8104, type: 3}

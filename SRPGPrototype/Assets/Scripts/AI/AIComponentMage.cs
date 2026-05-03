@@ -28,7 +28,10 @@ public class AIComponentMage : AIComponent
         get
         {
             yield return StandardAction;
-            yield return moveAction;
+            if(moveAction != null)
+            {
+                yield return moveAction;
+            }
             if(attackAction != null)
             {
                 yield return attackAction;
@@ -41,7 +44,10 @@ public class AIComponentMage : AIComponent
     public override void Initialize(AIUnit self)
     {
         standardAction = standardAction.Validate(self.ActionTransform);
-        moveAction = moveAction.Validate(self.ActionTransform);
+        if(moveAction != null)
+        {
+            moveAction = moveAction.Validate(self.ActionTransform);
+        }
         if(attackAction != null)
         {
             attackAction = attackAction.Validate(self.ActionTransform);
@@ -103,10 +109,13 @@ public class AIComponentMage : AIComponent
         {
             SetCastReady(true);
         }
-        var runRoutine = RunAway(grid, self, moveAction, RunAwayFromUnit);
-        if(runRoutine != null)
+        if(moveAction != null)
         {
-            yield return runRoutine;
+            var runRoutine = RunAway(grid, self, moveAction, RunAwayFromUnit);
+            if (runRoutine != null)
+            {
+                yield return runRoutine;
+            }
         }
     }
 

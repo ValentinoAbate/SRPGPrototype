@@ -9,7 +9,8 @@ public class EncounterEventManager : MonoBehaviour
     public Unit.OnDeath OnUnitDeath { get; set; }
     public Unit.OnDamaged OnUnitDamaged { get; set; }
     public System.Action<Unit> OnUnitSpawned { get; set; }
-    public System.Action<Unit> OnUnitRemoved{ get; set; }
+    public System.Action<Unit> OnUnitRemoved { get; set; }
+    public Unit.OnAfterAction OnAfterAction { get; set; }
     public DelayedEffectQueue DelayedEffectQueue => delayedEffectQueue;
     [SerializeField] private DelayedEffectQueue delayedEffectQueue;
 
@@ -33,6 +34,44 @@ public class EncounterEventManager : MonoBehaviour
             return;
         main.DelayedEffectQueue.Enqueue(action);
     }
+
+    public Queue<System.Func<Coroutine>> Reactions { get; } = new Queue<System.Func<Coroutine>>();
+
+    public static void QueueReaction(System.Func<Coroutine> reaction)
+    {
+
+    }
+
+    public static bool HasReactions() => main.Reactions.Count > 0;
+
+    public static void EnqueueReaction(System.Func<Coroutine> reaction)
+    {
+        main.Reactions.Enqueue(reaction);
+    }
+
+    public static bool ProcessReactions(System.Action onComplete)
+    {
+        if (!HasReactions())
+        {
+            return false;
+        }
+        main.StartCoroutine(main.ProcessReactionsCr(onComplete));
+        return true;
+    }
+
+    private IEnumerator ProcessReactionsCr(System.Action onComplete)
+    {
+        while(Reactions.Count > 0)
+        {
+            var reactionCr = Reactions.Dequeue().Invoke();
+            if(reactionCr != null)
+            {
+                yield return reactionCr;
+            }
+        }
+        onComplete?.Invoke();
+    }
+
 
     private void Awake()
     {

@@ -363,9 +363,30 @@ public class BattleUI : MonoBehaviour
         action.FinishAction(grid, unit);
         if (!playerPhase.CheckEndBattle())
         {
-            EnterUnitSelection();
-            SaveManager.Save(SaveManager.State.Battle);
+            if (EncounterEventManager.HasReactions())
+            {
+                cursor.NullAllActions();
+                EncounterEventManager.ProcessReactions(OnProcessReactionsComplete);
+            }
+            else
+            {
+                OnActionComplete();
+            }
         }
+    }
+
+    private void OnProcessReactionsComplete()
+    {
+        if (!playerPhase.CheckEndBattle())
+        {
+            OnActionComplete();
+        }
+    }
+
+    private void OnActionComplete()
+    {
+        EnterUnitSelection();
+        SaveManager.Save(SaveManager.State.Battle);
     }
 
     private void CancelTargetSelection(Action action, Unit unit, ref int currAction, ref List<TileUI.Entry> entries)

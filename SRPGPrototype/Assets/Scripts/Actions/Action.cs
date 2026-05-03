@@ -282,6 +282,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             }
         }
         user.OnAfterActionFn?.Invoke(grid, this, user, cost);
+        EncounterEventManager.main.OnAfterAction?.Invoke(grid, this, user, cost);
     }
 
     public void GrantFreeUse()

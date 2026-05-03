@@ -43,7 +43,11 @@ MonoBehaviour:
   - StandardDataRare
   - StandardDataUncommon
   - Enemy
+  - Async
   - Beacon
+  - BeaconAsync
+  - BeaconBotAsync
+  - BeaconBotAsyncMini
   - Bishop
   - BloodBehemoth
   - BlungusGolem
@@ -166,7 +170,11 @@ MonoBehaviour:
   - {fileID: 1846159298873122756, guid: 20b57e337ac6be447a06e3483e58d93b, type: 3}
   - {fileID: 7213195582889399909, guid: 85464e331c8c5334a8f5d5ffe3b4160b, type: 3}
   - {fileID: 1099992409197916429, guid: 7ad1ec7a0493cc149835e689342fc184, type: 3}
+  - {fileID: 4568531750757968395, guid: f04d6c38a248a3c4cbdae8d2cbf9ed76, type: 3}
   - {fileID: 1804830191990631305, guid: 9827a46d0aec9f4409ea0da810f30616, type: 3}
+  - {fileID: 1804830191990631305, guid: 46f88739e1e3ea340a8b7d02eb2f0fc4, type: 3}
+  - {fileID: 1804830191990631305, guid: d9d2f83f91e8aec449f8849ad67b7f2b, type: 3}
+  - {fileID: 1804830191990631305, guid: c83a3b6c79d0d89428c0760370e6caef, type: 3}
   - {fileID: 4568531750757968395, guid: 96f3d94a303e11c418c3790c1591a298, type: 3}
   - {fileID: 4568531750757968395, guid: b5beabdc29a34be46ba52226d12d26b1, type: 3}
   - {fileID: 661975691798095813, guid: 7abf5daf18d06eb40b7224190fcfb70b, type: 3}
