@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b25b599b96824db405008d774bd19, type: 3}
+  m_Name: DebugEncounterData
+  m_EditorClassIdentifier: 
+  encounterType: 0
+  dimensions: {x: 7, y: 6}
+  lootUnits: {fileID: 11400000, guid: ebc4ec785cc867e43b7b2f38fbbde49a, type: 2}
+  targetDifficulty: 21
+  numSpawnPositions: 3
+  numEnemies: 0200000001000000
+  numEnemiesWeights:
+  - 8
+  - 2
+  enemies:
+  - {fileID: 4568531750757968395, guid: 9d70d33ca0f990c47a4d1d4069c63220, type: 3}
+  - {fileID: 4568531750757968395, guid: 87b366d6c920b784aa3aeba5538f5d86, type: 3}
+  - {fileID: 266703525309771305, guid: 872dcd695ee12bd4f879ce7a5de2c26d, type: 3}
+  baseEnemyWeights:
+  - 2
+  - 2
+  - 1
+  numObstacles: 07000000
+  numObstaclesWeights:
+  - 1
+  obstacles:
+  - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
+  - {fileID: 2642816320315214134, guid: 070a4d9d5a3dd1f4b917c09509f9f6b5, type: 3}
+  baseObstacleWeights:
+  - 1
+  - 1
+  - 1
+  lootFlags: 0
+  moneyOption: 1
+  seed:
+    nameOverride: 
+    dimensions: {x: 0, y: 0}
+    units:
+    - pos: {x: -1, y: -1}
+      unit: {fileID: 7594287889711242676, guid: 46900c4bca375c04b9dda3fb7ea11d5a,
+        type: 3}
+    ambushUnits: []
+    spawnPositions: []
+    giveCompletionMoney: 0
+    baseCompletionMoney: 0
+    completionMoneyVariance: 0
