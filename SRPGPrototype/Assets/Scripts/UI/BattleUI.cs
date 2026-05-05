@@ -299,6 +299,7 @@ public class BattleUI : MonoBehaviour
         cursor.OnHighlight = (pos) => HighlightActionTarget(pos, action, unit, ref currAction);
         cursor.OnUnHighlight = (pos) => HideManyTiles(targetPatternEntries, true);
         var currentPos = cursor.HighlightedPosition;
+        action.StartAction();
         if (grid.IsLegal(currentPos))
         {
             HighlightActionTarget(currentPos, action, unit, ref currAction);

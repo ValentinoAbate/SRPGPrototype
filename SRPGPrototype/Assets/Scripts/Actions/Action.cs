@@ -171,6 +171,8 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     }
     [SerializeField] private SubAction[] subActions;
 
+    private bool freeUseGranted;
+
     public IEnumerable<Vector2Int> GetRange(BattleGrid grid, Vector2Int origin, Unit user, int subActionIndex = 0)
     {
         if (subActionIndex < 0 || subActionIndex >= SubActions.Count)
@@ -244,6 +246,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
     {
         var lastTargets = new List<Unit>();
+        StartAction();
         foreach (var sub in SubActions)
         {
             sub.Use(grid, this, user, targetPos, lastTargets, out var targets);
@@ -251,6 +254,11 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             lastTargets.AddRange(targets);
         }
         FinishAction(grid, user, applyAPCost);
+    }
+
+    public void StartAction()
+    {
+        freeUseGranted = false;
     }
 
     public void FinishAction(BattleGrid grid, Unit user, bool applyAPCost = true)
@@ -261,6 +269,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             cost = APCost;
             user.AP -= Mathf.Max(cost, 0);
         }
+        // Count use
         ++TimesUsed;
         ++TimesUsedThisBattle;
         ++TimesUsedThisTurn;
@@ -269,7 +278,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
             var noSlowdownMods = Program.ModifiedByType<ModifierActionNoSlowdownChance>();
             if (noSlowdownMods.Any() && RandomU.instance.RandomDouble() < noSlowdownMods.Sum((m) => m.Chance))
             {
-                GrantFreeUse();
+                freeUseGranted = true;
             }
             if(Program.attributes.HasFlag(Program.Attributes.Transient))
             {
@@ -281,15 +290,20 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
                 }
             }
         }
+        if (freeUseGranted)
+        {
+            ++FreeUses;
+            ++FreeUsesThisBattle;
+            ++FreeUsesThisTurn;
+            freeUseGranted = false;
+        }
         user.OnAfterActionFn?.Invoke(grid, this, user, cost);
         EncounterEventManager.main.OnAfterAction?.Invoke(grid, this, user, cost);
     }
 
     public void GrantFreeUse()
     {
-        ++FreeUses;
-        ++FreeUsesThisBattle;
-        ++FreeUsesThisTurn;
+        freeUseGranted = true;
     }
 
     public IEnumerator<SubAction> GetEnumerator()

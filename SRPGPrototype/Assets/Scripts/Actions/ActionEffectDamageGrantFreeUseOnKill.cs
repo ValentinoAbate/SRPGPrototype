@@ -2,20 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionEffectGrantFreeUseOnKill : ActionEffect
+public class ActionEffectDamageGrantFreeUseOnKill : ActionEffectDamageBasic
 {
     public override void ApplyEffect(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
     {
-        if (target == null)
+        if (target == null || target.Dead)
             return;
+        DealDamage(grid, action, sub, user, target, targetData);
         if (target.Dead)
         {
             action.GrantFreeUse();
         }
-    }
-
-    protected override bool IsValidTargetInternal(BattleGrid grid, Action action, SubAction sub, Unit user, Unit target, PositionData targetData)
-    {
-        return target != null;
     }
 }
