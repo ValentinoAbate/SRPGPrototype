@@ -95,7 +95,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2147300373272971273}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3567758121471563877
+--- !u!114 &6869149542040573753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6764646451675230786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c52a4d1a18f4b47a22c82e7638e4ad, type: 3}
+  m_Script: {fileID: 11500000, guid: e6c4164c77b47bc4e87429ae4184b008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dropName: Boss Capacity Data
