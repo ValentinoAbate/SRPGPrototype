@@ -175,11 +175,20 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         // Confirm program is actually in shell and record index for later removal
         int index = GetProgramIndex(program);
         if (index == -1)
+        {
+            Debug.LogError($"Trying to uninstall {program.DisplayName} that isn't installed in this shell {DisplayName}: no program entry");
             return;
+        }
+        if (!InstallPositions.TryGetValue(program, out var positions))
+        {
+            Debug.LogError($"Trying to uninstall {program.DisplayName} that isn't installed in this shell {DisplayName}: no install positions");
+            return;
+        }
         program.Shell = null;
-        var positions = program.shape.OffsetsShifted(program.Pos, false);
         foreach (var pos in positions)
+        {
             InstallMap[pos.x, pos.y] = null;
+        }
         InstallPositions.Remove(program);
         if (destroy)
         {
@@ -202,6 +211,13 @@ public class Shell : MonoBehaviour, ILootable, IHasKey
         }
         InstallPositions.Clear();
         programs.Clear();
+        for (int i = 0; i < InstallMap.GetLength(0); i++)
+        {
+            for(int j = 0; j < InstallMap.GetLength(1); ++j)
+            {
+                InstallMap[i,j] = null;
+            }
+        }
     }
 
     public void DestroyProgram(Program program, BattleGrid grid, Unit user)
