@@ -186,11 +186,17 @@ public class Program : GridObject, ILootable, IHasKey
                 return string.Empty;
             if (mods.Count == 1)
                 return mods[0].DisplayName;
-            var text = new string[mods.Count];
+            var text = new List<string>(mods.Count);
             for (int i = 0; i < mods.Count; i++)
-            {
-                text[i] = mods[i].DisplayName;
+            { 
+                var displayName = mods[i].DisplayName;
+                if(!string.IsNullOrEmpty(displayName))
+                    text.Add(displayName);
             }
+            if (text.Count == 0)
+                return string.Empty;
+            if (text.Count == 1)
+                return text[0];
             return string.Join(" ", text);
         }
     }

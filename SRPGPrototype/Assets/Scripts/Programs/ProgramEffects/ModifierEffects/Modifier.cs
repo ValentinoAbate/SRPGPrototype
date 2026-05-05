@@ -12,12 +12,15 @@ public abstract class Modifier : MonoBehaviour
     }
     [SerializeField] private FilterMode attributeFilterMode = FilterMode.None;
     [SerializeField] private Program.Attributes attributes = Program.Attributes.None;
-    [SerializeField] protected string displayNameOverride;
+    [SerializeField] private string displayNameOverride;
+    [SerializeField] private bool hideDisplayName;
 
-    public virtual string DisplayName
+    public string DisplayName
     {
         get
         {
+            if (hideDisplayName)
+                return string.Empty;
             if (!string.IsNullOrEmpty(displayNameOverride))
                 return displayNameOverride;
             var originalProg = OriginalProgram;

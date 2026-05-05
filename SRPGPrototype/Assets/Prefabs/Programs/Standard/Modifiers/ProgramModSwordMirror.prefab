@@ -126,6 +126,7 @@ MonoBehaviour:
   attributeFilterMode: 0
   attributes: 0
   displayNameOverride: 
+  hideDisplayName: 0
   filterByActionType: 0
   actionTypes: 
   filterBySubType: 1
@@ -145,6 +146,7 @@ MonoBehaviour:
   attributeFilterMode: 0
   attributes: 0
   displayNameOverride: 
+  hideDisplayName: 1
   filterByActionType: 0
   actionTypes: 
   filterBySubType: 1
