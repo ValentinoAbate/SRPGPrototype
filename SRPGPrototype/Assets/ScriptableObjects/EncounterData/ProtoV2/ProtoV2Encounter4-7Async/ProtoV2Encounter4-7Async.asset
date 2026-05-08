@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounterType: 0
   dimensions: {x: 9, y: 6}
-  targetDifficulty: 30
+  targetDifficulty: 99
   steps:
   - {fileID: 11400000, guid: d718b5e99e4a83649a89d7bba2284481, type: 2}
   - {fileID: 11400000, guid: de794d49acd2e6b40838f161f6323247, type: 2}
@@ -27,9 +27,6 @@ MonoBehaviour:
     nameOverride: 
     dimensions: {x: 0, y: 0}
     units:
-    - pos: {x: -1, y: -1}
-      unit: {fileID: 4568531750757968395, guid: f04d6c38a248a3c4cbdae8d2cbf9ed76,
-        type: 3}
     - pos: {x: -1, y: -1}
       unit: {fileID: 4568531750757968395, guid: f04d6c38a248a3c4cbdae8d2cbf9ed76,
         type: 3}

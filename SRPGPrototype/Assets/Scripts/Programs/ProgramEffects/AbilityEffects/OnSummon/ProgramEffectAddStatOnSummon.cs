@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgramEffectModifyStatOnSummon : ProgramEffectAddOnSummonAbility
+public class ProgramEffectAddStatOnSummon : ProgramEffectAddOnSummonAbility
 {
     public override string AbilityName => abilityName;
     [SerializeField] private string abilityName = string.Empty;
