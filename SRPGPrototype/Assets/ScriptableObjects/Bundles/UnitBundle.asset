@@ -128,6 +128,7 @@ MonoBehaviour:
   - Egg
   - FusionAltar
   - IceBlock
+  - Mjolnir
   - Pillar
   - SharkBurrow
   - ShopKiosk
@@ -255,6 +256,7 @@ MonoBehaviour:
   - {fileID: 2642816320315214134, guid: 08584be23751eea49b748dae3d604d50, type: 3}
   - {fileID: 4319513862531312890, guid: 380dabed22c3c1649bf475acb7d642ac, type: 3}
   - {fileID: 5132225929935089415, guid: 751ab3c4b12d0074ea220cdd3c892a6e, type: 3}
+  - {fileID: 5132225929935089415, guid: a9b1651d97f166d48bba2db876bcd166, type: 3}
   - {fileID: 193806825012982144, guid: 009994165b07eb34594d12de6f66bd6c, type: 3}
   - {fileID: 2679527008744717267, guid: 548f20339b2d2e741b7c18c1d639d344, type: 3}
   - {fileID: 6241129000377480468, guid: b64219cb9182d7944ae76f4caafd657c, type: 3}

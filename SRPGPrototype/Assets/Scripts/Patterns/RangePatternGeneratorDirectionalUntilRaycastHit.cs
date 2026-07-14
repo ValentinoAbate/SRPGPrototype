@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class RangePatternGeneratorDirectional : RangePatternGenerator
+public class RangePatternGeneratorDirectionalUntilRaycastHit : RangePatternGenerator
 {
     [SerializeField] private AdjacencyDirections directions;
     public override IEnumerable<Vector2Int> Generate(BattleGrid grid, Vector2Int userPos, Unit user)

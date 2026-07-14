@@ -32,7 +32,7 @@ public class AIComponentPawn : AIComponent
             yield return attackRoutine;
         }
         // Try moving to any available space
-        while (self.CanUseAction(moveAction))
+        while (moveAction.CanUse(grid, self))
         {
             bool foundMove = false;
             foreach (var rPos in moveAction.GetRange(grid, self.Pos, self))

@@ -25,7 +25,7 @@ public abstract class AIComponent : MonoBehaviour
         foreach (var pos in path)
         {
             // If we can't move any further, end the turn
-            if (!self.CanUseAction(moveAction))
+            if (!moveAction.CanUse(grid, self))
                 yield break;
             moveAction.UseAll(grid, self, pos);
             yield return moveDelay;
@@ -67,7 +67,7 @@ public abstract class AIComponent : MonoBehaviour
 
     protected IEnumerator AttackUntilExhausted(BattleGrid grid, AIUnit self, Action standardAction, Vector2Int tPos)
     {
-        while (!self.Dead && self.CanUseAction(standardAction))
+        while (!self.Dead && standardAction.CanUse(grid, self))
         {
             Debug.Log(self.DisplayName + " is targeting tile: " + tPos.ToString() + " for an attack!");
             yield return attackDelay;
@@ -110,7 +110,7 @@ public abstract class AIComponent : MonoBehaviour
         foreach (var pos in tPath.path)
         {
             // If we can't move any further, end the turn
-            if (!self.CanUseAction(moveAction))
+            if (!moveAction.CanUse(grid, self))
                 yield break;
             moveAction.UseAll(grid, self, pos);
             yield return moveDelay;

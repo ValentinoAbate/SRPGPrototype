@@ -50,7 +50,7 @@ public class ActionButton : MonoBehaviour
         hideActionDesc.callback.AddListener(UIManager.main.HideActionDescriptionUI);
         trigger.triggers.Add(hideActionDesc);
         // Continue if the unit doesn't have enough AP
-        if (!unit.CanUseAction(action))
+        if (!action.CanUse(ui.grid, unit))
         {
             Interactable = false;
             return;

@@ -50,7 +50,7 @@ public class AIComponentSpawner : AIComponent
             yield break;
         }
         // Check for targetspace in range
-        while (!self.Dead && self.CanUseAction(StandardAction))
+        while (!self.Dead && StandardAction.CanUse(grid, self))
         {
             var tPos = CheckForEmptyTargetPosition(grid, self, StandardAction);
             if (tPos == BattleGrid.OutOfBounds)

@@ -168,6 +168,10 @@ public class SubAction : MonoBehaviour
         {
             return effect.IsValidTarget(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos, user.Pos));
         }
+        if (effect.AffectSelectedPos)
+        {
+            return effect.IsValidTarget(grid, action, this, user, grid.Get(selectedPos), new ActionEffect.PositionData(selectedPos, selectedPos, user.Pos));
+        }
         foreach (var pos in emptyTargetPositions)
         {
             if (effect.IsValidTarget(grid, action, this, user, null, new ActionEffect.PositionData(pos, selectedPos, user.Pos)))
@@ -282,6 +286,12 @@ public class SubAction : MonoBehaviour
         if (effect.AffectUser)
         {
             effect.ApplyEffect(grid, action, this, user, user, new ActionEffect.PositionData(user.Pos, selectedPos, originalUserPos));
+            EncounterEventManager.EndQueueDelay();
+            return;
+        }
+        if (effect.AffectSelectedPos)
+        {
+            effect.ApplyEffect(grid, action, this, user, grid.Get(selectedPos), new ActionEffect.PositionData(selectedPos, selectedPos, originalUserPos));
             EncounterEventManager.EndQueueDelay();
             return;
         }

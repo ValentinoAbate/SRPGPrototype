@@ -66,7 +66,8 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         C4 = 2,
         Boss = 4,
         TravelStone = 8,
-        PlaceHolder = 16, // So unity doesn't serialize as "everything"
+        Mjolnir = 16,
+        PlaceHolder = 32, // So unity doesn't serialize as "everything"
     }
 
     public enum PassiveEffect
@@ -74,6 +75,7 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
         None,
         Frostbite,
         Haste,
+        Mjolnir,
     }
 
     public int HotkeyIndex { get; set; } = -1;
@@ -350,11 +352,6 @@ public abstract class Unit : GridObject, System.IComparable<Unit>, IHasKey
                 Break = value;
                 break;
         }
-    }
-
-    public bool CanUseAction(Action action)
-    {
-        return AP >= action.APCost;
     }
 
     public int ActionUsesUntilNoAP(Action action, int apToSave = 0)

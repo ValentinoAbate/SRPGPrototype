@@ -19,6 +19,8 @@ public abstract class ActionEffect : MonoBehaviour
     [SerializeField] SubAction.Options standaloneSubActionOptions;
     public bool AffectUser => affectUser;
     [SerializeField] private bool affectUser = false;
+    public bool AffectSelectedPos => !AffectUser && affectSelectedPos;
+    [SerializeField] private bool affectSelectedPos = false;
     public bool IgnoreInValidRangeCalcs => ignoreInValidRangeCalcs;
     [SerializeField] private bool ignoreInValidRangeCalcs = false;
 

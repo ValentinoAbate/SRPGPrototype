@@ -83,7 +83,7 @@ public class AIComponentMage : AIComponent
             else if (targetEmptySpaces)
             {
                 // Check for targetspace in range
-                while (!self.Dead && self.CanUseAction(StandardAction))
+                while (!self.Dead && StandardAction.CanUse(grid, self))
                 {
                     var tPos = ChooseRandomEmptyTargetPosition(grid, self, StandardAction);
                     if (tPos == BattleGrid.OutOfBounds)

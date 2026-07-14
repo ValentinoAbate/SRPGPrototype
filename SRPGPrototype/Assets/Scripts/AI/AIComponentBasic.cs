@@ -97,7 +97,7 @@ public class AIComponentBasic : AIComponent
             yield break;
         }
         // Check for seconday action target in range
-        if(SecondaryAction != null && self.CanUseAction(SecondaryAction))
+        if(SecondaryAction != null && SecondaryAction.CanUse(grid, self))
         {
             tPos = GetBestValidTargetPosInRange(grid, self, SecondaryAction, targetFilter);
             if (tPos != BattleGrid.OutOfBounds)
@@ -123,7 +123,7 @@ public class AIComponentBasic : AIComponent
             yield break;
         }
         // Check valid paths for secondary action
-        if(SecondaryAction != null && self.CanUseAction(SecondaryAction))
+        if (SecondaryAction != null && SecondaryAction.CanUse(grid, self))
         {
             // Find Paths to target range
             paths = PathsToTargetRange(grid, self, MoveAction, SecondaryAction, targetUnits);
@@ -348,7 +348,7 @@ public class AIComponentBasic : AIComponent
 
     private bool TryRunAwayAfterAttack(BattleGrid grid, AIUnit self, out Coroutine routine)
     {
-        if(!options.HasFlag(Options.RunAwayAfterAttacking) || !self.CanUseAction(MoveAction))
+        if(!options.HasFlag(Options.RunAwayAfterAttacking) || !MoveAction.CanUse(grid, self))
         {
             routine = null;
             return false;

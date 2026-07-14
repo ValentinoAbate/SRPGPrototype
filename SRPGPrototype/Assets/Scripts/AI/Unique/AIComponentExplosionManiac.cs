@@ -33,7 +33,7 @@ public class AIComponentExplosionManiac : AIComponent
     public override IEnumerator DoTurn(BattleGrid grid, AIUnit self)
     {
         // Try using detonate action (if applicable target is found)
-        if (self.CanUseAction(detonateAction))
+        if (detonateAction.CanUse(grid, self))
         {
             var detonateTargets = grid.FindUnitsWithTags(Unit.Tags.Explosive);
             if (detonateTargets.Any())
@@ -68,7 +68,7 @@ public class AIComponentExplosionManiac : AIComponent
         }
 
         // Spawn bombs (if applicable)
-        if (self.CanUseAction(summonActionStandard))
+        if (summonActionStandard.CanUse(grid, self))
         {
             bool applyAPCost = true;
             var targetUnits = grid.FindAll(IsPlayerUnit);

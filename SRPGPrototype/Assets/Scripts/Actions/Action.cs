@@ -170,6 +170,7 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         }
     }
     [SerializeField] private SubAction[] subActions;
+    [SerializeField] private ActionCondition[] conditions;
 
     private bool freeUseGranted;
 
@@ -241,6 +242,26 @@ public class Action : MonoBehaviour, IEnumerable<SubAction>, IComparable<Action>
         else if (SlowdownReset == Trigger.EncounterStart)
             baseUsage = TimesUsedThisBattle;
         return baseAp + Slowdown * ((baseUsage + uses) / interval);
+    }
+
+    public bool CanUse(BattleGrid grid, Unit user) => CanUse(grid, user, out _);
+
+    public bool CanUse(BattleGrid grid, Unit user, out string failMessage)
+    {
+        if(user.AP < APCost)
+        {
+            failMessage = "Not enough AP!";
+            return false;
+        }
+        foreach(var condition in conditions)
+        {
+            if(!condition.CanUse(grid, user, this, out failMessage))
+            {
+                return false;
+            }
+        }
+        failMessage = null;
+        return true;
     }
 
     public void UseAll(BattleGrid grid, Unit user, Vector2Int targetPos, bool applyAPCost = true)
