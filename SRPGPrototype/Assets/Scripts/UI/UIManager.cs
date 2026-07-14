@@ -107,17 +107,17 @@ public class UIManager : MonoBehaviour
     }
 
     private const float floatTime = 0.5f;
-    public void PlayFloatText(Vector2 pos, string text, Color color, System.Action onComplete = null)
+    public void PlayFloatText(Vector2 pos, string text, Color color, bool screenSpace = false, System.Action onComplete = null)
     {
-        PlayFloatTextInternal(pos, text, color, textFontSize, onComplete);
+        PlayFloatTextInternal(pos, text, color, textFontSize, screenSpace, onComplete);
     }
 
-    public void PlayDamageNumber(Vector2 pos, string text, Color color, System.Action onComplete = null)
+    public void PlayDamageNumber(Vector2 pos, string text, Color color, bool screenSpace = false, System.Action onComplete = null)
     {
-        PlayFloatTextInternal(pos, text, color, damageNumberFontSize, onComplete);
+        PlayFloatTextInternal(pos, text, color, damageNumberFontSize, screenSpace, onComplete);
     }
 
-    private void PlayFloatTextInternal(Vector2 pos, string text, Color color, int fontSize, System.Action onComplete)
+    private void PlayFloatTextInternal(Vector2 pos, string text, Color color, int fontSize, bool screenSpace, System.Action onComplete)
     {
         var floatText = floatTextPool.Get();
         void OnComplete()
@@ -125,6 +125,13 @@ public class UIManager : MonoBehaviour
             floatTextPool.Release(floatText);
             onComplete?.Invoke();
         }
-        floatText.Play(Camera.main.WorldToScreenPoint(pos), text, color, floatTime, fontSize, OnComplete);
+        if (screenSpace)
+        {
+            floatText.Play(pos, text, color, floatTime, fontSize, OnComplete);
+        }
+        else
+        {
+            floatText.Play(Camera.main.WorldToScreenPoint(pos), text, color, floatTime, fontSize, OnComplete);
+        }
     }
 }

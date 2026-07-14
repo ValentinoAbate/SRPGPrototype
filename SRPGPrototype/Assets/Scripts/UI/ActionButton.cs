@@ -14,11 +14,20 @@ public class ActionButton : MonoBehaviour
 
     private static readonly Color dimColor = new Color(0xC8, 0xC8, 0xC8, 0.5f);
 
-    public bool Interactable
+    public bool Enabled
     {
         set
         {
-            button.interactable = value;
+            float a = value ? 1 : 0.5f;
+            button.colors = new ColorBlock() {
+                normalColor = button.colors.normalColor.WithAlpha(a),
+                highlightedColor = button.colors.highlightedColor.WithAlpha(a),
+                pressedColor = button.colors.pressedColor.WithAlpha(a),
+                disabledColor = button.colors.disabledColor.WithAlpha(a),
+                selectedColor = button.colors.selectedColor.WithAlpha(a),
+                fadeDuration = button.colors.fadeDuration,
+                colorMultiplier = button.colors.colorMultiplier,
+            };
             hotKeyUI.color = value ? Color.white : dimColor;
         }
     }
@@ -49,15 +58,19 @@ public class ActionButton : MonoBehaviour
         var hideActionDesc = new EventTrigger.Entry() { eventID = EventTriggerType.PointerExit };
         hideActionDesc.callback.AddListener(UIManager.main.HideActionDescriptionUI);
         trigger.triggers.Add(hideActionDesc);
-        // Continue if the unit doesn't have enough AP
-        if (!action.CanUse(ui.grid, unit))
-        {
-            Interactable = false;
-            return;
-        }
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(onHide);
-        button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
+        // Continue if the unit doesn't have enough AP
+        if (!action.CanUse(ui.grid, unit, out string failMessage))
+        {
+            button.onClick.AddListener(() => UIManager.main.PlayFloatText(transform.position, failMessage, Color.white, true));
+            Enabled = false;
+        }
+        else
+        {
+            button.onClick.AddListener(onHide);
+            button.onClick.AddListener(() => ui.EnterActionUI(action, unit));
+            Enabled = true;
+        }
     }
 
     public void OnHotKey()
